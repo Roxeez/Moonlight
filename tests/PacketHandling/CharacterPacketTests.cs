@@ -57,5 +57,18 @@ namespace NtCore.Tests.PacketHandling
 
             Check.That(_client.Character.Faction).IsEqualTo(faction);
         }
+
+        [Theory]
+        [InlineData("sp 875000 1000000 8500 10000", 875000, 1000000, 8500, 10000)]
+        [InlineData("sp 875000 900000 2500 100000", 875000, 900000, 2500, 100000)]
+        public void Sp_Packet_Update_Character_Sp_Points(string packet, int additionalPoints, int maximumAdditionalPoints, int points, int maximumPoints)
+        {
+            _client.ReceivePacket(packet);
+
+            Check.That(_client.Character.AdditionalSpPoints).IsEqualTo(additionalPoints);
+            Check.That(_client.Character.MaximumAdditionalSpPoints).IsEqualTo(maximumAdditionalPoints);
+            Check.That(_client.Character.SpPoints).IsEqualTo(points);
+            Check.That(_client.Character.MaximumSpPoints).IsEqualTo(maximumPoints);
+        }
     }
 }

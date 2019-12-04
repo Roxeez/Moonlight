@@ -8,8 +8,10 @@ namespace NtCore.API.Game.Entities
         int Reputation { get; }
         int Dignity { get; }
         Faction Faction { get; }
-        int SpPoint { get; }
-        int AdditionalSpPoint { get; }
+        int SpPoints { get; }
+        int AdditionalSpPoints { get; }
+        int MaximumSpPoints { get; }
+        int MaximumAdditionalSpPoints { get; }
         int Gold { get; }
     }
 }

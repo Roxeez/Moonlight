@@ -14,8 +14,10 @@ namespace NtCore.Game.Entities
         public int Reputation { get; set; }
         public int Dignity { get; set; }
         public Faction Faction { get; set; }
-        public int SpPoint { get; set; }
-        public int AdditionalSpPoint { get; set; }
+        public int SpPoints { get; set; }
+        public int AdditionalSpPoints { get; set; }
+        public int MaximumSpPoints { get; set; }
+        public int MaximumAdditionalSpPoints { get; set; }
         public int Gold { get; set; }
         public int Level { get; set; }
         public int Hp { get; set; }

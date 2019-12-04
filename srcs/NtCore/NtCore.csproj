@@ -92,9 +92,11 @@
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Network\Handlers\Character\FactionPacketHandler.cs" />
     <Compile Include="Network\Handlers\Character\GoldPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Character\SpPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\InPacketHandler.cs" />
     <Compile Include="Network\Packets\Character\FactionPacket.cs" />
     <Compile Include="Network\Packets\Character\GoldPacket.cs" />
+    <Compile Include="Network\Packets\Character\SpPacket.cs" />
     <Compile Include="Network\Packets\Maps\InPacket.cs" />
     <Compile Include="NtCoreManager.cs" />
     <Compile Include="Logging\ConsoleLogger.cs" />
