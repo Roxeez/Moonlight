@@ -12,7 +12,7 @@ namespace NtCore.Tests.PacketHandling
         public StatPacketTests()
         {
             _ntCoreManager = new NtCoreManager();
-            _client = _ntCoreManager.CreateClient();
+            _client = _ntCoreManager.CreateLocalClient();
         }
         
         [Fact]

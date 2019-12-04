@@ -1,4 +1,5 @@
-﻿using NFluent;
+﻿using System.Diagnostics;
+using NFluent;
 using NtCore.API;
 using NtCore.API.Client;
 using NtCore.API.Game.Entities;
@@ -16,7 +17,7 @@ namespace NtCore.Tests.PacketHandling
         public MapPacketTests()
         {
             _ntCoreManager = new NtCoreManager();
-            _client = _ntCoreManager.CreateClient();
+            _client = _ntCoreManager.CreateLocalClient();
         }
         
         [Fact]

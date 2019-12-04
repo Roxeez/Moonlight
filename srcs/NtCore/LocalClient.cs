@@ -7,7 +7,7 @@ using System.Diagnostics;
 
  namespace NtCore
 {
-    public sealed class Client : IClient
+    public sealed class LocalClient : IClient
     {
         public event Action<string> PacketSend;
         public event Action<string> PacketReceived;
@@ -18,10 +18,12 @@ using System.Diagnostics;
         private readonly NtNative.PacketCallback _sendCallback;
         private readonly NtNative.PacketCallback _recvCallback;
 
-        public ICharacter Character { get; } = new Character();
+        public ICharacter Character { get; }
 
-        public Client(ProcessModule mainModule)
+        public LocalClient(ProcessModule mainModule)
         {
+            Character = new Character();
+            
             _sendCallback = OnPacketSend;
             _recvCallback = OnPacketReceived;
             

@@ -42,21 +42,40 @@ namespace NtCore
             _packetManager.Initialize(provider);
         }
         
-        public IClient CreateClient()
+        /// <summary>
+        /// Create a local client (need to be injected)
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        public IClient CreateLocalClient()
         {
             Process process = Process.GetCurrentProcess();
-
+            
             if (process.MainModule == null)
             {
                 throw new InvalidOperationException("Process module can't be null");
             }
             
-            Client client = new Client(process.MainModule);
+            LocalClient localClient = new LocalClient(process.MainModule);
 
-            client.PacketReceived += packet => _packetManager.Handle(client, packet, PacketType.Recv);
-            client.PacketSend += packet => _packetManager.Handle(client, packet, PacketType.Send);
+            localClient.PacketReceived += packet => _packetManager.Handle(localClient, packet, PacketType.Recv);
+            localClient.PacketSend += packet => _packetManager.Handle(localClient, packet, PacketType.Send);
 
-            return client;
+            return localClient;
+        }
+        
+        /// <summary>
+        /// Create a clientless client
+        /// </summary>
+        /// <returns></returns>
+        public IClient CreateRemoteClient()
+        {
+            RemoteClient remoteClient = new RemoteClient();
+            
+            remoteClient.PacketReceived += packet => _packetManager.Handle(remoteClient, packet, PacketType.Recv);
+            remoteClient.PacketSend += packet => _packetManager.Handle(remoteClient, packet, PacketType.Send);
+
+            return remoteClient;
         }
     }
 }
