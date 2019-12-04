@@ -1,7 +1,9 @@
 ﻿using NtCore.API;
 using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
+using NtCore.API.Game.Inventory;
 using NtCore.API.Game.Maps;
+using NtCore.Game.Inventory;
 
 namespace NtCore.Game.Entities
 {
@@ -18,6 +20,7 @@ namespace NtCore.Game.Entities
         public int AdditionalSpPoints { get; set; }
         public int MaximumSpPoints { get; set; }
         public int MaximumAdditionalSpPoints { get; set; }
+        public IEquipment Equipment { get; set; }
         public int Gold { get; set; }
         public int Level { get; set; }
         public int Hp { get; set; }
@@ -26,5 +29,10 @@ namespace NtCore.Game.Entities
         public int MaxMp { get; set; }
         public byte HpPercentage { get; set; }
         public byte MpPercentage { get; set; }
+
+        public Character()
+        {
+            Equipment = new Equipment();
+        }
     }
 }

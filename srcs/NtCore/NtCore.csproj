@@ -78,6 +78,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\Inventory\Equipment.cs" />
+    <Compile Include="Game\Inventory\Fairy.cs" />
+    <Compile Include="Game\Inventory\Specialist.cs" />
     <Compile Include="LocalClient.cs" />
     <Compile Include="Enums\EntityType.cs" />
     <Compile Include="Extensions\CastExtensions.cs" />
@@ -92,10 +95,12 @@
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Network\Handlers\Character\FactionPacketHandler.cs" />
     <Compile Include="Network\Handlers\Character\GoldPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Character\PairyPacketHandler.cs" />
     <Compile Include="Network\Handlers\Character\SpPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\InPacketHandler.cs" />
     <Compile Include="Network\Packets\Character\FactionPacket.cs" />
     <Compile Include="Network\Packets\Character\GoldPacket.cs" />
+    <Compile Include="Network\Packets\Character\PairyPacket.cs" />
     <Compile Include="Network\Packets\Character\SpPacket.cs" />
     <Compile Include="Network\Packets\Maps\InPacket.cs" />
     <Compile Include="NtCoreManager.cs" />

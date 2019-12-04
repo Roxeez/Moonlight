@@ -6,7 +6,9 @@ namespace NtCore.Network.Packets.Maps
     [PacketInfo("in", PacketType.Recv)]
     public class InPacket : Packet
     {
+        [PacketIndex(1)]
         public EntityType EntityType { get; set; }
+        
         public string Name { get; set; }
         public int Vnum { get; set; }
         public int Id { get; set; }
@@ -18,9 +20,7 @@ namespace NtCore.Network.Packets.Maps
 
         public override bool Deserialize(string[] packet)
         {
-            byte entityTypeId = byte.Parse(packet[1]);
-
-            EntityType = (EntityType) entityTypeId;
+            base.Deserialize(packet);
 
             switch (EntityType)
             {

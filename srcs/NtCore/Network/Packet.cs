@@ -38,6 +38,14 @@ namespace NtCore.Network
 
         private static object Parse(string value, Type targetType)
         {
+            if (targetType.BaseType == typeof(Enum))
+            {
+                if (targetType.IsEnumDefined(Enum.Parse(targetType, value)))
+                {
+                    return Enum.Parse(targetType, value);
+                }
+            }
+            
             if (targetType == typeof(bool))
             {
                 return value == "1";
