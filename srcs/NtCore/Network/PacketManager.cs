@@ -10,7 +10,7 @@ using NtCore.Logging;
 
 namespace NtCore.Network
 {
-    internal interface IPacketManager
+    public interface IPacketManager
     {
         void Handle(IClient client, string packet, PacketType packetType);
         void Initialize(ServiceProvider provider);

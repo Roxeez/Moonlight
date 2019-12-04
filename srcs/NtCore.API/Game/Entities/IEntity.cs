@@ -4,7 +4,7 @@ namespace NtCore.API.Game.Entities
 {
     public interface IEntity
     {
-        long Id { get; }
+        int Id { get; }
         IMap Map { get; }
         Position Position { get; }
     }

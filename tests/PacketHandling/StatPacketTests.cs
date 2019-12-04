@@ -1,5 +1,8 @@
-﻿using NFluent;
+﻿using Moq;
+using NFluent;
 using NtCore.API.Client;
+using NtCore.Game.Entities;
+using NtCore.Network;
 using Xunit;
 
 namespace NtCore.Tests.PacketHandling
@@ -12,25 +15,25 @@ namespace NtCore.Tests.PacketHandling
         public StatPacketTests()
         {
             _ntCoreManager = new NtCoreManager();
-            _client = _ntCoreManager.CreateLocalClient();
+            var mock = new Mock<IClient>();
+            
+            mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  _ntCoreManager.PacketManager.Handle(mock.Object, p, PacketType.Recv));
+            mock.SetupGet(x => x.Character).Returns(new Character());
+
+            _client = mock.Object;
         }
         
-        [Fact]
-        public void Stat_Packet_Update_Character_Stats()
+        [Theory]
+        [InlineData("stat 2500 2000 1500 1000", 2500, 2000, 1500, 1000)]
+        [InlineData("stat 1 2 3 4", 1, 2, 3, 4)]
+        public void Stat_Packet_Update_Character_Stats(string packet, int hp, int maxHp, int mp, int maxMp)
         {
-            _client.ReceivePacket("stat 2500 2000 1500 1000");
+            _client.ReceivePacket(packet);
 
-            Check.That(_client.Character.Hp).Equals(2500);
-            Check.That(_client.Character.MaxHp).Equals(2000);
-            Check.That(_client.Character.Mp).Equals(1500);
-            Check.That(_client.Character.MaxMp).Equals(1000);
-            
-            _client.ReceivePacket("stat 1 2 3 4");
-            
-            Check.That(_client.Character.Hp).Equals(1);
-            Check.That(_client.Character.MaxHp).Equals(2);
-            Check.That(_client.Character.Mp).Equals(3);
-            Check.That(_client.Character.MaxMp).Equals(4);
+            Check.That(_client.Character.Hp).IsEqualTo(hp);
+            Check.That(_client.Character.Mp).IsEqualTo(mp);
+            Check.That(_client.Character.MaxHp).IsEqualTo(maxHp);
+            Check.That(_client.Character.MaxMp).IsEqualTo(maxMp);
         }
     }
 }

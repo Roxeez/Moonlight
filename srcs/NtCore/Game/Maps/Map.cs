@@ -8,9 +8,9 @@ namespace NtCore.Game.Maps
 {
     public class Map : IMap
     {
-        private readonly IDictionary<long, IMonster> _monsters;
-        private readonly IDictionary<long, INpc> _npcs;
-        private readonly IDictionary<long, IDrop> _drops;
+        private readonly IDictionary<int, IMonster> _monsters;
+        private readonly IDictionary<int, INpc> _npcs;
+        private readonly IDictionary<int, IDrop> _drops;
         
         public int Id { get; }
 
@@ -22,9 +22,9 @@ namespace NtCore.Game.Maps
         {
             Id = id;
             
-            _monsters = new Dictionary<long, IMonster>();
-            _npcs = new Dictionary<long, INpc>();
-            _drops = new Dictionary<long, IDrop>();
+            _monsters = new Dictionary<int, IMonster>();
+            _npcs = new Dictionary<int, INpc>();
+            _drops = new Dictionary<int, IDrop>();
         }
 
         public void AddMonster(Monster monster)
@@ -45,17 +45,17 @@ namespace NtCore.Game.Maps
             drop.Map = this;
         }
         
-        public IMonster GetMonster(long id)
+        public IMonster GetMonster(int id)
         {
             return _monsters.GetValueOrDefault(id);
         }
 
-        public INpc GetNpc(long id)
+        public INpc GetNpc(int id)
         {
             return _npcs.GetValueOrDefault(id);
         }
 
-        public IDrop GetDrop(long id)
+        public IDrop GetDrop(int id)
         {
             return _drops.GetValueOrDefault(id);
         }

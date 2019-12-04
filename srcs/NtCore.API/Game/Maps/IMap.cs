@@ -11,8 +11,8 @@ namespace NtCore.API.Game.Maps
         IEnumerable<INpc> Npcs { get; }
         IEnumerable<IDrop> Drops { get; }
 
-        IMonster GetMonster(long id);
-        INpc GetNpc(long id);
-        IDrop GetDrop(long id);
+        IMonster GetMonster(int id);
+        INpc GetNpc(int id);
+        IDrop GetDrop(int id);
     }
 }

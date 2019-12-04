@@ -27,27 +27,23 @@ using System.Diagnostics;
             _sendCallback = OnPacketSend;
             _recvCallback = OnPacketReceived;
             
-            /*
             NtNative.SetSendCallback(_sendCallback);
             NtNative.SetRecvCallback(_recvCallback);
             
             NtNative.Setup((uint)mainModule.BaseAddress, (uint)mainModule.ModuleMemorySize);
-            */
         }
 
-        private void OnPacketSend(string packet) => PacketSend?.Invoke(packet);
-        private void OnPacketReceived(string packet) => PacketReceived?.Invoke(packet);
+        public void OnPacketSend(string packet) => PacketSend?.Invoke(packet);
+        public void OnPacketReceived(string packet) => PacketReceived?.Invoke(packet);
 
         public void SendPacket(string packet)
         {
-            OnPacketSend(packet);
-            // NtNative.SendPacket(packet);
+            NtNative.SendPacket(packet);
         }
 
         public void ReceivePacket(string packet)
         {
-            OnPacketReceived(packet);
-            // NtNative.RecvPacket(packet);
+            NtNative.RecvPacket(packet);
         }
     }
 }

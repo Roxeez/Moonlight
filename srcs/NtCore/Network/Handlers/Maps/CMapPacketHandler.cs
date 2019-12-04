@@ -1,4 +1,5 @@
-﻿using NtCore.API.Client;
+﻿using System;
+using NtCore.API.Client;
 using NtCore.API.Managers;
 using NtCore.Extensions;
 using NtCore.Network.Packets.Maps;
@@ -22,7 +23,7 @@ namespace NtCore.Network.Handlers.Maps
             {
                 return;
             }
-            
+
             character.Map = _mapManager.GetMapById(packet.MapId);
         }
     }

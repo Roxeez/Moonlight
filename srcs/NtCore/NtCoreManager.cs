@@ -11,7 +11,7 @@ namespace NtCore
 {
     public class NtCoreManager
     {
-        private readonly IPacketManager _packetManager;
+        public IPacketManager PacketManager { get; }
         
         public NtCoreManager()
         {
@@ -38,8 +38,8 @@ namespace NtCore
 
             ServiceProvider provider = services.BuildServiceProvider();
 
-            _packetManager = provider.GetService<IPacketManager>();
-            _packetManager.Initialize(provider);
+            PacketManager = provider.GetService<IPacketManager>();
+            PacketManager.Initialize(provider);
         }
         
         /// <summary>
@@ -58,8 +58,8 @@ namespace NtCore
             
             LocalClient localClient = new LocalClient(process.MainModule);
 
-            localClient.PacketReceived += packet => _packetManager.Handle(localClient, packet, PacketType.Recv);
-            localClient.PacketSend += packet => _packetManager.Handle(localClient, packet, PacketType.Send);
+            localClient.PacketReceived += packet => PacketManager.Handle(localClient, packet, PacketType.Recv);
+            localClient.PacketSend += packet => PacketManager.Handle(localClient, packet, PacketType.Send);
 
             return localClient;
         }
@@ -72,8 +72,8 @@ namespace NtCore
         {
             RemoteClient remoteClient = new RemoteClient();
             
-            remoteClient.PacketReceived += packet => _packetManager.Handle(remoteClient, packet, PacketType.Recv);
-            remoteClient.PacketSend += packet => _packetManager.Handle(remoteClient, packet, PacketType.Send);
+            remoteClient.PacketReceived += packet => PacketManager.Handle(remoteClient, packet, PacketType.Recv);
+            remoteClient.PacketSend += packet => PacketManager.Handle(remoteClient, packet, PacketType.Send);
 
             return remoteClient;
         }

@@ -6,7 +6,7 @@ namespace NtCore.Game.Entities
 {
     public class Character : ICharacter
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public IMap Map { get; set; }
         public Position Position { get; set; }
         public string Name { get; set; }
