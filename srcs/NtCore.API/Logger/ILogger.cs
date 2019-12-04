@@ -1,4 +1,4 @@
-﻿namespace NtCore.Logging
+﻿namespace NtCore.API.Logger
 {
     public interface ILogger
     {

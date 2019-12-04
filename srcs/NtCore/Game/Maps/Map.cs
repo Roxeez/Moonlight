@@ -55,6 +55,11 @@ namespace NtCore.Game.Maps
             _players[player.Id] = player;
             player.Map = this;
         }
+
+        public void RemovePlayer(Player player)
+        {
+            _players[player.Id] = player;
+        }
         
         public IMonster GetMonster(int id)
         {

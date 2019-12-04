@@ -1,5 +1,4 @@
-﻿using NtCore.API.Enums;
-using NtCore.API.Game.Inventory;
+﻿using NtCore.API.Game.Inventory;
 
 namespace NtCore.API.Game.Entities
 {

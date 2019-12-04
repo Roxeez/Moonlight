@@ -78,6 +78,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PluginManager.cs" />
     <Compile Include="Game\Entities\Player.cs" />
     <Compile Include="Game\Inventory\Equipment.cs" />
     <Compile Include="Game\Inventory\Fairy.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Import\Kernel32.cs" />
     <Compile Include="Import\NtNative.cs" />
     <Compile Include="Import\User32.cs" />
+    <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Network\Handlers\Character\CondPacketHandler.cs" />
     <Compile Include="Network\Handlers\Character\FactionPacketHandler.cs" />
@@ -105,9 +107,7 @@
     <Compile Include="Network\Packets\Character\PairyPacket.cs" />
     <Compile Include="Network\Packets\Character\SpPacket.cs" />
     <Compile Include="Network\Packets\Maps\InPacket.cs" />
-    <Compile Include="NtCoreManager.cs" />
-    <Compile Include="Logging\ConsoleLogger.cs" />
-    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="NtCore.cs" />
     <Compile Include="Network\Handlers\Character\StatPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\CMapPacketHandler.cs" />
     <Compile Include="Network\PacketIndex.cs" />

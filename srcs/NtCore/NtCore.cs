@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
+using NtCore.API;
 using NtCore.API.Client;
+using NtCore.API.Logger;
 using NtCore.API.Managers;
-using NtCore.Logging;
+using NtCore.Logger;
 using NtCore.Managers;
 using NtCore.Network;
 
 namespace NtCore
 {
-    public class NtCoreManager
+    public sealed class NtCore : INtCore
     {
         public IPacketManager PacketManager { get; }
+        public IPluginManager PluginManager { get; }
         
-        public NtCoreManager()
+        public NtCore()
         {
             var services = new ServiceCollection();
 
             services.AddSingleton<IPacketManager, PacketManager>();
             services.AddSingleton<IMapManager, MapManager>();
             services.AddSingleton<ILogger, ConsoleLogger>();
+            services.AddSingleton<PluginManager>();
 
             foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
             {
@@ -39,14 +43,11 @@ namespace NtCore
             ServiceProvider provider = services.BuildServiceProvider();
 
             PacketManager = provider.GetService<IPacketManager>();
+            PluginManager = provider.GetService<PluginManager>();
+            
             PacketManager.Initialize(provider);
         }
-        
-        /// <summary>
-        /// Create a local client (need to be injected)
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="InvalidOperationException"></exception>
+
         public IClient CreateLocalClient()
         {
             Process process = Process.GetCurrentProcess();
@@ -64,10 +65,6 @@ namespace NtCore
             return localClient;
         }
         
-        /// <summary>
-        /// Create a clientless client
-        /// </summary>
-        /// <returns></returns>
         public IClient CreateRemoteClient()
         {
             RemoteClient remoteClient = new RemoteClient();

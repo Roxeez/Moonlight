@@ -6,7 +6,7 @@ using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.API.Client;
 using NtCore.API.Extensions;
-using NtCore.Logging;
+using NtCore.API.Logger;
 
 namespace NtCore.Network
 {

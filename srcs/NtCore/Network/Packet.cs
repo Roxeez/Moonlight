@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using NtCore.Logging;
 
 namespace NtCore.Network
 {
