@@ -3,6 +3,7 @@
     public interface ILivingEntity : IEntity
     {
         int Level { get; }
+        byte Speed { get; }
         
         int Hp { get; }
         int Mp { get; }

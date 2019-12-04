@@ -23,8 +23,23 @@ namespace NtCore.Extensions
         {
             return equipment.AsModifiable<Equipment>();
         }
-        
-        private static TDestination AsModifiable<TDestination>(this object source) where TDestination : class
+
+        public static Monster AsModifiable(this IMonster monster)
+        {
+            return monster.AsModifiable<Monster>();
+        }
+
+        public static Npc AsModifiable(this INpc npc)
+        {
+            return npc.AsModifiable<Npc>();
+        }
+
+        public static Player AsModifiable(this IPlayer player)
+        {
+            return player.AsModifiable<Player>();
+        }
+
+        public static TDestination AsModifiable<TDestination>(this object source) where TDestination : class
         {
             return source as TDestination;
         }

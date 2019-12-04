@@ -27,7 +27,7 @@ namespace NtCore.Tests.PacketHandling
             
             _client = mock.Object;
 
-            _client.Character.AsModifiable().Map = new Map(0);
+            PacketHandlingTestUtility.CreateFakeMap(_client);
         }
         
         [Theory]

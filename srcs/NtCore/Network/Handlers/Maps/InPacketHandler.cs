@@ -1,6 +1,5 @@
 ﻿using NtCore.API.Client;
-using NtCore.API.Game.Maps;
-using NtCore.Enums;
+using NtCore.API.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;

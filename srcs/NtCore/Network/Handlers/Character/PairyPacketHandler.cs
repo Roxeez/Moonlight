@@ -1,5 +1,5 @@
 ﻿using NtCore.API.Client;
-using NtCore.Enums;
+using NtCore.API.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Inventory;
 using NtCore.Network.Packets.Character;

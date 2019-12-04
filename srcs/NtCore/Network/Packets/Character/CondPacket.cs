@@ -2,19 +2,22 @@
 
 namespace NtCore.Network.Packets.Character
 {
-    [PacketInfo("pairy", PacketType.Recv)]
-    public class PairyPacket : Packet
+    [PacketInfo("cond", PacketType.Recv)]
+    public class CondPacket : Packet
     {
         [PacketIndex(1)]
         public EntityType EntityType { get; set; }
-        
+
         [PacketIndex(2)]
         public int EntityId { get; set; }
-        
+
         [PacketIndex(3)]
-        public Element Element { get; set; }
-        
+        public bool IsAttackAllowed { get; set; }
+
         [PacketIndex(4)]
-        public int Power { get; set; }
+        public bool IsMovementAllowed { get; set; }
+
+        [PacketIndex(5)]
+        public byte Speed { get; set; }
     }
 }

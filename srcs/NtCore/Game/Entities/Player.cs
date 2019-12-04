@@ -1,13 +1,13 @@
 ﻿using NtCore.API;
+using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
 using NtCore.API.Game.Maps;
 
 namespace NtCore.Game.Entities
 {
-    public class Monster : IMonster
+    public class Player : IPlayer
     {
         public int Id { get; set; }
-        public int Vnum { get; set; }
         public IMap Map { get; set; }
         public Position Position { get; set; }
         public int Level { get; set; }
@@ -18,5 +18,9 @@ namespace NtCore.Game.Entities
         public int MaxMp { get; set; }
         public byte HpPercentage { get; set; }
         public byte MpPercentage { get; set; }
+        public string Name { get; set; }
+        public int Reputation { get; set; }
+        public int Dignity { get; set; }
+        public Faction Faction { get; set; }
     }
 }

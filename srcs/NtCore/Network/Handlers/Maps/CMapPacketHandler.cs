@@ -1,5 +1,6 @@
 ﻿using System;
 using NtCore.API.Client;
+using NtCore.API.Game.Maps;
 using NtCore.API.Managers;
 using NtCore.Extensions;
 using NtCore.Network.Packets.Maps;
@@ -17,14 +18,14 @@ namespace NtCore.Network.Handlers.Maps
         
         public override void Handle(IClient client, CMapPacket packet)
         {
-            var character = client.Character.AsModifiable();
-            
             if (!packet.IsJoining)
             {
                 return;
             }
 
-            character.Map = _mapManager.GetMapById(packet.MapId);
+            IMap map = _mapManager.GetMapById(packet.MapId);
+            
+            map.AsModifiable().AddPlayer(client.Character.AsModifiable());
         }
     }
 }

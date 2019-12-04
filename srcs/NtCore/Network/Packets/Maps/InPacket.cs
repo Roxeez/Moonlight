@@ -1,5 +1,5 @@
 ﻿using NtCore.API;
-using NtCore.Enums;
+using NtCore.API.Enums;
 
 namespace NtCore.Network.Packets.Maps
 {

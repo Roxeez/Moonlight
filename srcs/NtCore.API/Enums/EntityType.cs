@@ -1,4 +1,4 @@
-﻿namespace NtCore.Enums
+﻿namespace NtCore.API.Enums
 {
     public enum EntityType : byte
     {

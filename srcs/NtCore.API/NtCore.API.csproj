@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Client\IClient.cs" />
     <Compile Include="Enums\Element.cs" />
+    <Compile Include="Enums\EntityType.cs" />
     <Compile Include="Enums\Faction.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Game\Entities\ILivingEntity.cs" />
     <Compile Include="Game\Entities\IMonster.cs" />
     <Compile Include="Game\Entities\INpc.cs" />
+    <Compile Include="Game\Entities\IPlayer.cs" />
     <Compile Include="Game\Inventory\IEquipment.cs" />
     <Compile Include="Game\Inventory\IFairy.cs" />
     <Compile Include="Game\Inventory\ISpecialist.cs" />

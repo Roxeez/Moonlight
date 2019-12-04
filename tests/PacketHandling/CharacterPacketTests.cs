@@ -1,7 +1,9 @@
-﻿using Moq;
+﻿
+using Moq;
 using NFluent;
 using NtCore.API.Client;
 using NtCore.API.Enums;
+using NtCore.API.Game.Entities;
 using NtCore.API.Game.Inventory;
 using NtCore.Game.Entities;
 using NtCore.Network;
@@ -23,6 +25,8 @@ namespace NtCore.Tests.PacketHandling
             mock.SetupGet(x => x.Character).Returns(new Character());
 
             _client = mock.Object;
+            
+            PacketHandlingTestUtility.CreateFakeMap(_client);
         }
         
         [Theory]
@@ -83,6 +87,20 @@ namespace NtCore.Tests.PacketHandling
 
             Check.That(fairy.Element).IsEqualTo(element);
             Check.That(fairy.Power).IsEqualTo(power);
+        }
+
+        [Theory]
+        [InlineData("cond 1 0 0 0 10", EntityType.Player, 0, 10)]
+        [InlineData("cond 2 2053 0 1 14", EntityType.Npc, 2053, 14)]
+        [InlineData("cond 3 1874 1 0 8", EntityType.Monster, 1874, 8)]
+        public void Cond_Packet_Change_Entity_Speed(string packet, EntityType entityType, int entityId, int speed)
+        {
+            _client.ReceivePacket(packet);
+
+            ILivingEntity entity = _client.Character.Map.GetLivingEntity(entityType, entityId);
+
+            Check.That(entity).IsNotNull();
+            Check.That(entity.Speed).IsEqualTo(speed);
         }
     }
 }

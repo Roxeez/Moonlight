@@ -11,6 +11,7 @@ namespace NtCore.Game.Entities
         public IMap Map { get; set; }
         public Position Position { get; set; }
         public int Level { get; set; }
+        public byte Speed { get; set; }
         public int Hp { get; set; }
         public int Mp { get; set; }
         public int MaxHp { get; set; }

@@ -3,12 +3,8 @@ using NtCore.API.Game.Inventory;
 
 namespace NtCore.API.Game.Entities
 {
-    public interface ICharacter : ILivingEntity
+    public interface ICharacter : IPlayer
     {
-        string Name { get; }
-        int Reputation { get; }
-        int Dignity { get; }
-        Faction Faction { get; }
         int SpPoints { get; }
         int AdditionalSpPoints { get; }
         int MaximumSpPoints { get; }
