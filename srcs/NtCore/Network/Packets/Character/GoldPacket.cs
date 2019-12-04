@@ -1,7 +1,9 @@
 ﻿namespace NtCore.Network.Packets.Character
 {
-    public class GoldPacket
+    [PacketInfo("gold", PacketType.Recv)]
+    public class GoldPacket : Packet
     {
-        
+        [PacketIndex(1)]
+        public int Gold { get; set; }
     }
 }

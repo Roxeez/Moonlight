@@ -1,18 +1,19 @@
 ﻿using Moq;
 using NFluent;
 using NtCore.API.Client;
+using NtCore.API.Enums;
 using NtCore.Game.Entities;
 using NtCore.Network;
 using Xunit;
 
 namespace NtCore.Tests.PacketHandling
 {
-    public class StatPacketTests
+    public class CharacterPacketTests
     {
         private readonly NtCoreManager _ntCoreManager;
         private readonly IClient _client;
 
-        public StatPacketTests()
+        public CharacterPacketTests()
         {
             _ntCoreManager = new NtCoreManager();
             var mock = new Mock<IClient>();
@@ -34,6 +35,27 @@ namespace NtCore.Tests.PacketHandling
             Check.That(_client.Character.Mp).IsEqualTo(mp);
             Check.That(_client.Character.MaxHp).IsEqualTo(maxHp);
             Check.That(_client.Character.MaxMp).IsEqualTo(maxMp);
+        }
+
+        [Theory]
+        [InlineData("gold 1000000 1000", 1000000)]
+        [InlineData("gold 1987 1000", 1987)]
+        public void Gold_Packet_Update_Character_Golds(string packet, int gold)
+        {
+            _client.ReceivePacket(packet);
+
+            Check.That(_client.Character.Gold).IsEqualTo(gold);
+        }
+
+        [Theory]
+        [InlineData("fs 0", Faction.NEUTRAL)]
+        [InlineData("fs 1", Faction.ANGEL)]
+        [InlineData("fs 2", Faction.DEMON)]
+        public void Faction_Packet_Update_Character_Faction(string packet, Faction faction)
+        {
+            _client.ReceivePacket(packet);
+
+            Check.That(_client.Character.Faction).IsEqualTo(faction);
         }
     }
 }

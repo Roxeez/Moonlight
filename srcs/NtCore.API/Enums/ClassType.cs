@@ -1,7 +1,11 @@
 ﻿namespace NtCore.API.Enums
 {
-    public class ClassType
+    public enum ClassType
     {
-        
+        ADVENTURER,
+        SWORDSMAN,
+        ARCHER,
+        MAGICIAN,
+        MARTIAL_ARTIST
     }
 }

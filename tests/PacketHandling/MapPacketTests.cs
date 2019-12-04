@@ -52,6 +52,10 @@ namespace NtCore.Tests.PacketHandling
             INpc npc = _client.Character.Map.GetNpc(id);
 
             Check.That(npc).IsNotNull();
+            Check.That(npc.Vnum).IsEqualTo(vnum);
+            Check.That(npc.Position).IsEqualTo(new Position(x, y));
+            Check.That(npc.HpPercentage).IsEqualTo(hpPercentage);
+            Check.That(npc.MpPercentage).IsEqualTo(mpPercentage);
 
         }
         

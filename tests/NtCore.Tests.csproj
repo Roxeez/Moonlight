@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PacketHandling\MapPacketTests.cs" />
-    <Compile Include="PacketHandling\StatPacketTests.cs" />
+    <Compile Include="PacketHandling\CharacterPacketTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

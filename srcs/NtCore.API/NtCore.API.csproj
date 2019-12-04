@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\IClient.cs" />
+    <Compile Include="Enums\ClassType.cs" />
+    <Compile Include="Enums\Faction.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
     <Compile Include="Game\Entities\IDrop.cs" />

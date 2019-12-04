@@ -1,4 +1,5 @@
 ﻿using NtCore.API;
+using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
 using NtCore.API.Game.Maps;
 
@@ -10,6 +11,12 @@ namespace NtCore.Game.Entities
         public IMap Map { get; set; }
         public Position Position { get; set; }
         public string Name { get; set; }
+        public int Reputation { get; set; }
+        public int Dignity { get; set; }
+        public Faction Faction { get; set; }
+        public int SpPoint { get; set; }
+        public int AdditionalSpPoint { get; set; }
+        public int Gold { get; set; }
         public int Level { get; set; }
         public int Hp { get; set; }
         public int Mp { get; set; }
