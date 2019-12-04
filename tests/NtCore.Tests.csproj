@@ -94,8 +94,8 @@
   <ItemGroup>
     <Compile Include="PacketHandling\MapPacketTests.cs" />
     <Compile Include="PacketHandling\CharacterPacketTests.cs" />
-    <Compile Include="PacketHandling\PacketHandlingTestUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

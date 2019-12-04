@@ -4,9 +4,7 @@ using NFluent;
 using NtCore.API;
 using NtCore.API.Client;
 using NtCore.API.Game.Entities;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Maps;
 using NtCore.Network;
 using Xunit;
 
@@ -27,7 +25,7 @@ namespace NtCore.Tests.PacketHandling
             
             _client = mock.Object;
 
-            PacketHandlingTestUtility.CreateFakeMap(_client);
+            TestUtility.CreateFakeMap(_client);
         }
         
         [Theory]

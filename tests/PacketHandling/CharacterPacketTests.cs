@@ -1,5 +1,4 @@
-﻿
-using Moq;
+﻿using Moq;
 using NFluent;
 using NtCore.API.Client;
 using NtCore.API.Enums;
@@ -26,7 +25,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client = mock.Object;
             
-            PacketHandlingTestUtility.CreateFakeMap(_client);
+            TestUtility.CreateFakeMap(_client);
         }
         
         [Theory]
