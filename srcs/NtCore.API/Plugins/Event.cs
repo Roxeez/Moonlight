@@ -1,6 +1,6 @@
 ﻿namespace NtCore.API.Plugins
 {
-    public class Event
+    public abstract class Event
     {
         
     }
