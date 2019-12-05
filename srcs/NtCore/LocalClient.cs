@@ -33,8 +33,8 @@ using System.Diagnostics;
             NtNative.Setup((uint)mainModule.BaseAddress, (uint)mainModule.ModuleMemorySize);
         }
 
-        public void OnPacketSend(string packet) => PacketSend?.Invoke(packet);
-        public void OnPacketReceived(string packet) => PacketReceived?.Invoke(packet);
+        private void OnPacketSend(string packet) => PacketSend?.Invoke(packet);
+        private void OnPacketReceived(string packet) => PacketReceived?.Invoke(packet);
 
         public void SendPacket(string packet)
         {
