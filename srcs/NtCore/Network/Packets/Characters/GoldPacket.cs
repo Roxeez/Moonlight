@@ -1,4 +1,4 @@
-﻿namespace NtCore.Network.Packets.Character
+﻿namespace NtCore.Network.Packets.Characters
 {
     [PacketInfo("gold", PacketType.Recv)]
     public class GoldPacket : Packet

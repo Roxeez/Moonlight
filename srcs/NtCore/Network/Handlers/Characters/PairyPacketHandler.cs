@@ -1,10 +1,11 @@
 ﻿using NtCore.API.Client;
 using NtCore.API.Enums;
 using NtCore.Extensions;
+using NtCore.Game.Entities;
 using NtCore.Game.Inventory;
-using NtCore.Network.Packets.Character;
+using NtCore.Network.Packets.Characters;
 
-namespace NtCore.Network.Handlers.Character
+namespace NtCore.Network.Handlers.Characters
 {
     public class PairyPacketHandler : PacketHandler<PairyPacket>
     {
@@ -15,13 +16,13 @@ namespace NtCore.Network.Handlers.Character
                 return;
             }
 
-            var character = client.Character.AsModifiable();
+            var character = client.Character.AsModifiable<Character>();
             if (character.Id != packet.EntityId)
             {
                 return;
             }
 
-            var equipment = character.Equipment.AsModifiable();
+            var equipment = character.Equipment.AsModifiable<Equipment>();
             equipment.Fairy = new Fairy
             {
                 Element = packet.Element,

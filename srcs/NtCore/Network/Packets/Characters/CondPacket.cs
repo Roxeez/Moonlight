@@ -1,6 +1,6 @@
 ﻿using NtCore.API.Enums;
 
-namespace NtCore.Network.Packets.Character
+namespace NtCore.Network.Packets.Characters
 {
     [PacketInfo("cond", PacketType.Recv)]
     public class CondPacket : Packet

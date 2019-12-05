@@ -1,4 +1,4 @@
-﻿namespace NtCore.Network.Packets.Character
+﻿namespace NtCore.Network.Packets.Characters
 {
     [PacketInfo("stat", PacketType.Recv)]
     public class StatPacket : Packet

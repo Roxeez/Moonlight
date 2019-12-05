@@ -3,9 +3,9 @@ using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Network.Packets.Character;
+using NtCore.Network.Packets.Characters;
 
-namespace NtCore.Network.Handlers.Character
+namespace NtCore.Network.Handlers.Characters
 {
     public class CondPacketHandler : PacketHandler<CondPacket>
     {

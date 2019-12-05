@@ -56,7 +56,7 @@ namespace NtCore.Game.Maps
             player.Map = this;
         }
 
-        public void RemovePlayer(Player player)
+        public void RemovePlayer(IPlayer player)
         {
             _players[player.Id] = player;
         }

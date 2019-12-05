@@ -3,6 +3,8 @@ using NtCore.API.Events.Maps;
 using NtCore.API.Game.Maps;
 using NtCore.API.Managers;
 using NtCore.Extensions;
+using NtCore.Game.Entities;
+using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps
@@ -25,17 +27,18 @@ namespace NtCore.Network.Handlers.Maps
                 return;
             }
 
-            IMap oldMap = client.Character.Map;
-            if (oldMap != null)
-            {
-                var currentMap = oldMap.AsModifiable();
-                currentMap.RemovePlayer(client.Character.AsModifiable());
-            }
-
-            IMap map = _mapManager.GetMapById(packet.MapId);
-            map.AsModifiable().AddPlayer(client.Character.AsModifiable());
+            var character = client.Character.AsModifiable<Character>();
+            var source = client.Character.Map.AsModifiable<Map>();
+            var destination = _mapManager.GetMapById(packet.MapId).AsModifiable<Map>();
             
-            _pluginManager.Trigger(new MapChangeEvent(client, oldMap, map));
+            if (source != null)
+            {
+                source.RemovePlayer(character);
+            }
+            
+            destination.AddPlayer(character);
+            
+            _pluginManager.Trigger(new MapChangeEvent(client, source, destination));
         }
     }
 }

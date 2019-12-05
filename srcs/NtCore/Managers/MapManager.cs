@@ -15,7 +15,7 @@ namespace NtCore.Managers
             IMap map = _maps.GetValueOrDefault(id);
             if (map == null)
             {
-                map = new Map(id);
+                map = id == 20001 ? new Miniland() : new Map(id);
                 _maps[id] = map;
             }
 

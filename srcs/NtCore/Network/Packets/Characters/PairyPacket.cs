@@ -1,6 +1,6 @@
 ﻿using NtCore.API.Enums;
 
-namespace NtCore.Network.Packets.Character
+namespace NtCore.Network.Packets.Characters
 {
     [PacketInfo("pairy", PacketType.Recv)]
     public class PairyPacket : Packet

@@ -78,6 +78,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\Maps\Miniland.cs" />
     <Compile Include="PluginManager.cs" />
     <Compile Include="Game\Entities\Player.cs" />
     <Compile Include="Game\Inventory\Equipment.cs" />
@@ -95,20 +96,20 @@
     <Compile Include="Import\User32.cs" />
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Managers\MapManager.cs" />
-    <Compile Include="Network\Handlers\Character\CondPacketHandler.cs" />
-    <Compile Include="Network\Handlers\Character\FactionPacketHandler.cs" />
-    <Compile Include="Network\Handlers\Character\GoldPacketHandler.cs" />
-    <Compile Include="Network\Handlers\Character\PairyPacketHandler.cs" />
-    <Compile Include="Network\Handlers\Character\SpPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\CondPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\FactionPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\GoldPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\PairyPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\SpPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\InPacketHandler.cs" />
-    <Compile Include="Network\Packets\Character\CondPacket.cs" />
-    <Compile Include="Network\Packets\Character\FactionPacket.cs" />
-    <Compile Include="Network\Packets\Character\GoldPacket.cs" />
-    <Compile Include="Network\Packets\Character\PairyPacket.cs" />
-    <Compile Include="Network\Packets\Character\SpPacket.cs" />
+    <Compile Include="Network\Packets\Characters\CondPacket.cs" />
+    <Compile Include="Network\Packets\Characters\FactionPacket.cs" />
+    <Compile Include="Network\Packets\Characters\GoldPacket.cs" />
+    <Compile Include="Network\Packets\Characters\PairyPacket.cs" />
+    <Compile Include="Network\Packets\Characters\SpPacket.cs" />
     <Compile Include="Network\Packets\Maps\InPacket.cs" />
     <Compile Include="NtCore.cs" />
-    <Compile Include="Network\Handlers\Character\StatPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\StatPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\CMapPacketHandler.cs" />
     <Compile Include="Network\PacketIndex.cs" />
     <Compile Include="Network\IPacket.cs" />
@@ -116,7 +117,7 @@
     <Compile Include="Network\Packet.cs" />
     <Compile Include="Network\PacketInfo.cs" />
     <Compile Include="Network\PacketManager.cs" />
-    <Compile Include="Network\Packets\Character\StatPacket.cs" />
+    <Compile Include="Network\Packets\Characters\StatPacket.cs" />
     <Compile Include="Network\Packets\Maps\CMapPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteClient.cs" />

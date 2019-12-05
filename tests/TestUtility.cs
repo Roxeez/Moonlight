@@ -29,7 +29,7 @@ namespace NtCore.Tests
                 Id = 1026
             });
             
-            map.AddPlayer(client.Character.AsModifiable());
+            map.AddPlayer(client.Character.AsModifiable<Character>());
         }
     }
 }

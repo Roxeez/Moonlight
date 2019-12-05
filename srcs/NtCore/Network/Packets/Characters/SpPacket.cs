@@ -1,4 +1,4 @@
-﻿namespace NtCore.Network.Packets.Character
+﻿namespace NtCore.Network.Packets.Characters
 {
     [PacketInfo("sp", PacketType.Recv)]
     public class SpPacket : Packet

@@ -1,14 +1,15 @@
 ﻿using NtCore.API.Client;
 using NtCore.Extensions;
-using NtCore.Network.Packets.Character;
+using NtCore.Game.Entities;
+using NtCore.Network.Packets.Characters;
 
-namespace NtCore.Network.Handlers.Character
+namespace NtCore.Network.Handlers.Characters
 {
     public class StatPacketHandler : PacketHandler<StatPacket>
     {
         public override void Handle(IClient client, StatPacket packet)
         {
-            var character = client.Character.AsModifiable();
+            var character = client.Character.AsModifiable<Character>();
             
             character.Hp = packet.Hp;
             character.Mp = packet.Mp;
