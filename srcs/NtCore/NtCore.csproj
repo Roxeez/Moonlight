@@ -79,6 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game\Maps\Miniland.cs" />
+    <Compile Include="Game\Maps\MinilandObject.cs" />
+    <Compile Include="Network\Handlers\Maps\MlInfoBrPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Maps\MltObjPacketHandler.cs" />
+    <Compile Include="Network\Packets\Maps\MlInfoBrPacket.cs" />
+    <Compile Include="Network\Packets\Maps\MltObjPacket.cs" />
     <Compile Include="PluginManager.cs" />
     <Compile Include="Game\Entities\Player.cs" />
     <Compile Include="Game\Inventory\Equipment.cs" />

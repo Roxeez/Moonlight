@@ -27,9 +27,9 @@ namespace NtCore.Network.Handlers.Maps
                 return;
             }
 
-            var character = client.Character.AsModifiable<Character>();
-            var source = client.Character.Map.AsModifiable<Map>();
-            var destination = _mapManager.GetMapById(packet.MapId).AsModifiable<Map>();
+            var character = client.Character.As<Character>();
+            var source = client.Character.Map.As<Map>();
+            var destination = _mapManager.GetMapById(packet.MapId).As<Map>();
             
             if (source != null)
             {

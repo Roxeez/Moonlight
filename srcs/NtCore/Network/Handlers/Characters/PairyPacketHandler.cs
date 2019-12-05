@@ -16,13 +16,13 @@ namespace NtCore.Network.Handlers.Characters
                 return;
             }
 
-            var character = client.Character.AsModifiable<Character>();
+            var character = client.Character.As<Character>();
             if (character.Id != packet.EntityId)
             {
                 return;
             }
 
-            var equipment = character.Equipment.AsModifiable<Equipment>();
+            var equipment = character.Equipment.As<Equipment>();
             equipment.Fairy = new Fairy
             {
                 Element = packet.Element,

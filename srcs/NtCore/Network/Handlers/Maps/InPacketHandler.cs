@@ -11,7 +11,7 @@ namespace NtCore.Network.Handlers.Maps
     {
         public override void Handle(IClient client, InPacket packet)
         {
-            var map = client.Character.Map.AsModifiable<Map>();
+            var map = client.Character.Map.As<Map>();
             if (map == null)
             {
                 return;

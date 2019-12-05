@@ -2,7 +2,7 @@
 {
     public static class CastExtensions
     {
-        public static TDestination AsModifiable<TDestination>(this object source) where TDestination : class
+        public static TDestination As<TDestination>(this object source) where TDestination : class
         {
             return source as TDestination;
         }

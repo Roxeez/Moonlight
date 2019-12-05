@@ -16,13 +16,13 @@ namespace NtCore.Network.Handlers.Characters
             switch (packet.EntityType)
             {
                 case EntityType.Monster:
-                    entity.AsModifiable<Monster>().Speed = packet.Speed;
+                    entity.As<Monster>().Speed = packet.Speed;
                     break;
                 case EntityType.Npc:
-                    entity.AsModifiable<Npc>().Speed = packet.Speed;
+                    entity.As<Npc>().Speed = packet.Speed;
                     break;
                 case EntityType.Player:
-                    entity.AsModifiable<Player>().Speed = packet.Speed;
+                    entity.As<Player>().Speed = packet.Speed;
                     break;
             }
         }

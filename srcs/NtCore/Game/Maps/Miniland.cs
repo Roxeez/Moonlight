@@ -1,23 +1,32 @@
 ﻿using System.Collections.Generic;
+using NtCore.API.Extensions;
 using NtCore.API.Game.Maps;
 
 namespace NtCore.Game.Maps
 {
     public class Miniland : Map, IMiniland
     {
-        private readonly List<IMinilandObject> _minilandObjects;
+        private readonly Dictionary<int, IMinilandObject> _minilandObjects;
         
         public string Owner { get; set; }
-        public IEnumerable<IMinilandObject> MinilandObjects => _minilandObjects;
-        
+        public int Visitor { get; set; }
+        public int TotalVisitor { get; set; }
+        public string Message { get; set; }
+        public IEnumerable<IMinilandObject> MinilandObjects => _minilandObjects.Values;
+
         public Miniland() : base(20001)
         {
-            _minilandObjects = new List<IMinilandObject>();
+            _minilandObjects = new Dictionary<int, IMinilandObject>();
         }
 
-        public void AddObject(IMinilandObject obj)
+        public void AddMinilandObject(IMinilandObject obj)
         {
-            _minilandObjects.Add(obj);
+            _minilandObjects[obj.Id] = obj;
+        }
+        
+        public IMinilandObject GetMinilandObject(int id)
+        {
+            return _minilandObjects.GetValueOrDefault(id);
         }
     }
 }

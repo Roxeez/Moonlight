@@ -6,6 +6,7 @@ using NtCore.API.Game.Entities;
 using NtCore.API.Game.Inventory;
 using NtCore.Game.Entities;
 using NtCore.Network;
+using NtCore.Tests.Extensions;
 using Xunit;
 
 namespace NtCore.Tests.PacketHandling
@@ -24,8 +25,6 @@ namespace NtCore.Tests.PacketHandling
             mock.SetupGet(x => x.Character).Returns(new Character());
 
             _client = mock.Object;
-            
-            TestUtility.CreateFakeMap(_client);
         }
         
         [Theory]
@@ -94,6 +93,8 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("cond 3 1874 1 0 8", EntityType.Monster, 1874, 8)]
         public void Cond_Packet_Change_Entity_Speed(string packet, EntityType entityType, int entityId, int speed)
         {
+            _client.CreateMapMock();
+            
             _client.ReceivePacket(packet);
 
             ILivingEntity entity = _client.Character.Map.GetLivingEntity(entityType, entityId);

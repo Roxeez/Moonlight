@@ -9,7 +9,7 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, GoldPacket packet)
         {
-            var character = client.Character.AsModifiable<Character>();
+            var character = client.Character.As<Character>();
 
             character.Gold = packet.Gold;
         }
