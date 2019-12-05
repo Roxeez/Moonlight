@@ -4,6 +4,7 @@ using NtCore.API.Client;
 using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
 using NtCore.API.Game.Inventory;
+using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Network;
 using NtCore.Tests.Extensions;
@@ -97,7 +98,7 @@ namespace NtCore.Tests.PacketHandling
             
             _client.ReceivePacket(packet);
 
-            ILivingEntity entity = _client.Character.Map.GetLivingEntity(entityType, entityId);
+            ILivingEntity entity = _client.Character.Map.GetEntity(entityType, entityId).As<ILivingEntity>();
 
             Check.That(entity).IsNotNull();
             Check.That(entity.Speed).IsEqualTo(speed);

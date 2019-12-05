@@ -1,17 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Moq;
+﻿using Moq;
 using NFluent;
-using NtCore.API;
 using NtCore.API.Client;
 using NtCore.API.Game.Maps;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Maps;
 using NtCore.Network;
 using NtCore.Tests.Extensions;
 using Xunit;
-using Xunit.Sdk;
 
 namespace NtCore.Tests.PacketHandling
 {

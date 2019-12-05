@@ -50,7 +50,7 @@ namespace NtCore.Tests.PacketHandling
             
             _client.ReceivePacket(packet);
 
-            INpc npc = _client.Character.Map.GetNpc(id);
+            INpc npc = _client.Character.Map.GetEntity<INpc>(id);
 
             Check.That(npc).IsNotNull();
             Check.That(npc.Vnum).IsEqualTo(vnum);
@@ -69,7 +69,7 @@ namespace NtCore.Tests.PacketHandling
             
             _client.ReceivePacket(packet);
 
-            IMonster monster = _client.Character.Map.GetMonster(id);
+            IMonster monster = _client.Character.Map.GetEntity<IMonster>(id);
 
             Check.That(monster).IsNotNull();
             Check.That(monster.Vnum).IsEqualTo(vnum);
@@ -87,7 +87,7 @@ namespace NtCore.Tests.PacketHandling
             
             _client.ReceivePacket(packet);
 
-            IDrop drop = _client.Character.Map.GetDrop(id);
+            IDrop drop = _client.Character.Map.GetEntity<IDrop>(id);
 
             Check.That(drop).IsNotNull();
             Check.That(drop.Vnum).IsEqualTo(vnum);

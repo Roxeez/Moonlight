@@ -11,25 +11,25 @@ namespace NtCore.Tests.Extensions
         {
             Map map = new Map(0);
             
-            map.AddMonster(new Monster
+            map.AddEntity(new Monster
             {
                 Id = 1874
             });
-            map.AddMonster(new Monster
+            map.AddEntity(new Monster
             {
                 Id = 874
             });
             
-            map.AddNpc(new Npc
+            map.AddEntity(new Npc
             {
                 Id = 2053
             });
-            map.AddNpc(new Npc
+            map.AddEntity(new Npc
             {
                 Id = 1026
             });
             
-            map.AddPlayer(client.Character.As<Character>());
+            map.AddEntity(client.Character.As<Character>());
         }
 
         public static void CreateMinilandMock(this IClient client)

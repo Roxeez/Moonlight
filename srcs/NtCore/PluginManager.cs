@@ -54,7 +54,7 @@ namespace NtCore
             }
         }
 
-        public void Trigger(Event e)
+        public void CallEvent(Event e)
         {
             List<(IListener, MethodInfo)> handlers = _eventHandlers.GetValueOrDefault(e.GetType());
 

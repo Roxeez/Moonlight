@@ -62,7 +62,9 @@
     <Compile Include="Enums\Element.cs" />
     <Compile Include="Enums\EntityType.cs" />
     <Compile Include="Enums\Faction.cs" />
+    <Compile Include="Events\Maps\EntitySpawnEvent.cs" />
     <Compile Include="Events\Maps\MapChangeEvent.cs" />
+    <Compile Include="Events\Maps\MinilandJoinEvent.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
     <Compile Include="Game\Entities\IDrop.cs" />

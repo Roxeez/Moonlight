@@ -33,12 +33,12 @@ namespace NtCore.Network.Handlers.Maps
             
             if (source != null)
             {
-                source.RemovePlayer(character);
+                source.RemoveEntity(character);
             }
             
-            destination.AddPlayer(character);
+            destination.AddEntity(character);
             
-            _pluginManager.Trigger(new MapChangeEvent(client, source, destination));
+            _pluginManager.CallEvent(new MapChangeEvent(client, source, destination));
         }
     }
 }

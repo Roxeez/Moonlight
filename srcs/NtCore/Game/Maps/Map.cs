@@ -1,9 +1,11 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using NtCore.API.Enums;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
 using NtCore.API.Game.Maps;
+using NtCore.Extensions;
 using NtCore.Game.Entities;
 
 namespace NtCore.Game.Maps
@@ -22,6 +24,41 @@ namespace NtCore.Game.Maps
         public IEnumerable<IDrop> Drops => _drops.Values;
         public IEnumerable<IPlayer> Players => _players.Values;
 
+        private readonly IDictionary<Type, EntityType> _mapping = new Dictionary<Type, EntityType>()
+        {
+            [typeof(IMonster)] = EntityType.Monster,
+            [typeof(Monster)] = EntityType.Monster,
+            [typeof(INpc)] = EntityType.Npc,
+            [typeof(Npc)] = EntityType.Npc,
+            [typeof(IPlayer)] = EntityType.Player,
+            [typeof(Player)] = EntityType.Player,
+            [typeof(IDrop)] = EntityType.Drop,
+            [typeof(Drop)] = EntityType.Drop,
+        };
+        
+        public T GetEntity<T>(int id) where T : IEntity
+        {
+            EntityType entityType = _mapping.GetValueOrDefault(typeof(T));
+            return (T)GetEntity(entityType, id);
+        }
+
+        public IEntity GetEntity(EntityType entityType, int id)
+        {
+            switch (entityType)
+            {
+                case EntityType.Player:
+                    return _players.GetValueOrDefault(id);
+                case EntityType.Drop:
+                    return _drops.GetValueOrDefault(id);
+                case EntityType.Monster:
+                    return _monsters.GetValueOrDefault(id);
+                case EntityType.Npc:
+                    return _npcs.GetValueOrDefault(id);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(entityType), entityType, null);
+            }
+        }
+
         public Map(int id)
         {
             Id = id;
@@ -31,71 +68,51 @@ namespace NtCore.Game.Maps
             _drops = new Dictionary<int, IDrop>();
             _players = new Dictionary<int, IPlayer>();
         }
-
-        public void AddMonster(Monster monster)
-        {
-            _monsters[monster.Id] = monster;
-            monster.Map = this;
-        }
-
-        public void AddNpc(Npc npc)
-        {
-            _npcs[npc.Id] = npc;
-            npc.Map = this;
-        }
-
-        public void AddDrop(Drop drop)
-        {
-            _drops[drop.Id] = drop;
-            drop.Map = this;
-        }
-
-        public void AddPlayer(Player player)
-        {
-            _players[player.Id] = player;
-            player.Map = this;
-        }
-
-        public void RemovePlayer(IPlayer player)
-        {
-            _players[player.Id] = player;
-        }
         
-        public IMonster GetMonster(int id)
+        public void AddEntity(IEntity entity)
         {
-            return _monsters.GetValueOrDefault(id);
-        }
-
-        public INpc GetNpc(int id)
-        {
-            return _npcs.GetValueOrDefault(id);
-        }
-
-        public IDrop GetDrop(int id)
-        {
-            return _drops.GetValueOrDefault(id);
-        }
-
-        public ILivingEntity GetLivingEntity(EntityType entityType, int id)
-        {
-            switch (entityType)
+            switch (entity.EntityType)
             {
                 case EntityType.Player:
-                    return _players.GetValueOrDefault(id);
-                case EntityType.Npc:
-                    return _npcs.GetValueOrDefault(id);
+                    var player = entity.As<Player>();
+                    player.Map = this;
+                    _players[entity.Id] = player;
+                    break;
                 case EntityType.Monster:
-                    return _monsters.GetValueOrDefault(id);
+                    var monster = entity.As<Monster>();
+                    monster.Map = this;
+                    _monsters[entity.Id] = monster;
+                    break;
+                case EntityType.Npc:
+                    var npc = entity.As<Npc>();
+                    npc.Map = this;
+                    _npcs[entity.Id] = npc;
+                    break;
                 case EntityType.Drop:
-                    throw new InvalidOperationException("Drop is not a living entity");
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(entityType), entityType, null);
+                    var drop = entity.As<Drop>();
+                    drop.Map = this;
+                    _drops[entity.Id] = drop;
+                    break;
             }
         }
 
-        public IPlayer GetPlayer(int id)
+        public void RemoveEntity(IEntity entity)
         {
-            return _players.GetValueOrDefault(id);
+            switch (entity.EntityType)
+            {
+                case EntityType.Player:
+                    _players.Remove(entity.Id);
+                    break;
+                case EntityType.Monster:
+                    _monsters.Remove(entity.Id);
+                    break;
+                case EntityType.Npc:
+                    _npcs.Remove(entity.Id);
+                    break;
+                case EntityType.Drop:
+                    _drops.Remove(entity.Id);
+                    break;
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ namespace NtCore.Game.Entities
         public int Id { get; set; }
         public IMap Map { get; set; }
         public Position Position { get; set; }
+        public EntityType EntityType { get; }
         public int Level { get; set; }
         public byte Speed { get; set; }
         public int Hp { get; set; }
@@ -22,5 +23,10 @@ namespace NtCore.Game.Entities
         public int Reputation { get; set; }
         public int Dignity { get; set; }
         public Faction Faction { get; set; }
+
+        public Player()
+        {
+            EntityType = EntityType.Player;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using NtCore.API.Client;
 using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
+using NtCore.API.Game.Maps;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Network.Packets.Characters;
@@ -11,18 +12,18 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, CondPacket packet)
         {
-            ILivingEntity entity = client.Character.Map.GetLivingEntity(packet.EntityType, packet.EntityId);
-
+            IMap map = client.Character.Map;
+            
             switch (packet.EntityType)
             {
                 case EntityType.Monster:
-                    entity.As<Monster>().Speed = packet.Speed;
+                    map.GetEntity<Monster>(packet.EntityId).Speed = packet.Speed;
                     break;
                 case EntityType.Npc:
-                    entity.As<Npc>().Speed = packet.Speed;
+                    map.GetEntity<Npc>(packet.EntityId).Speed = packet.Speed;
                     break;
                 case EntityType.Player:
-                    entity.As<Player>().Speed = packet.Speed;
+                    map.GetEntity<Player>(packet.EntityId).Speed = packet.Speed;
                     break;
             }
         }

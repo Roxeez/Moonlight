@@ -12,12 +12,9 @@ namespace NtCore.API.Game.Maps
         IEnumerable<INpc> Npcs { get; }
         IEnumerable<IDrop> Drops { get; }
         IEnumerable<IPlayer> Players { get; }
+        
+        T GetEntity<T>(int id) where T : IEntity;
 
-        IPlayer GetPlayer(int id);
-        IMonster GetMonster(int id);
-        INpc GetNpc(int id);
-        IDrop GetDrop(int id);
-
-        ILivingEntity GetLivingEntity(EntityType entityType, int id);
+        IEntity GetEntity(EntityType entityType, int id);
     }
 }
