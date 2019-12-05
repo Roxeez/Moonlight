@@ -87,6 +87,7 @@
     <Compile Include="Plugins\EventHandler.cs" />
     <Compile Include="Plugins\IListener.cs" />
     <Compile Include="Plugins\Plugin.cs" />
+    <Compile Include="Plugins\PluginInfo.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />
