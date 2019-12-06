@@ -7,13 +7,13 @@ using Microsoft.Extensions.DependencyInjection;
 using NtCore.API.Client;
 using NtCore.API.Extensions;
 using NtCore.API.Logger;
+using NtCore.Network;
 
-namespace NtCore.Network
+namespace NtCore.Core
 {
     public interface IPacketManager
     {
         void Handle(IClient client, string packet, PacketType packetType);
-        void Initialize(ServiceProvider provider);
     }
     
     internal sealed class PacketManager : IPacketManager
@@ -30,7 +30,25 @@ namespace NtCore.Network
             _logger = logger;
         }
 
-        public void Initialize(ServiceProvider provider)
+        public void Load(IServiceCollection services)
+        {
+            foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
+            {
+                if (!typeof(IPacketHandler).IsAssignableFrom(type))
+                {
+                    continue;
+                }
+
+                if (type.IsAbstract || type.IsInterface || !type.IsPublic)
+                {
+                    continue;
+                }
+                
+                services.AddSingleton(typeof(IPacketHandler), type);
+            }
+        }
+        
+        public void Start(IServiceProvider provider)
         {
             IEnumerable<IPacketHandler> packetHandlers = provider.GetServices<IPacketHandler>();
             
@@ -78,7 +96,6 @@ namespace NtCore.Network
             IPacketHandler packetHandler = _packetHandlers.GetValueOrDefault((header, packetType));
             if (packetHandler == null)
             {
-                // _logger.Debug($"No packet handler found for packet {header}");
                 return;
             }
             

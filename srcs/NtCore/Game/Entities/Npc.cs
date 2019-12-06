@@ -23,7 +23,7 @@ namespace NtCore.Game.Entities
 
         public Npc()
         {
-            EntityType = EntityType.Npc;
+            EntityType = EntityType.NPC;
         }
     }
 }

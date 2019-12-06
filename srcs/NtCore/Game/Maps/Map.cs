@@ -1,11 +1,9 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using NtCore.API.Enums;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
 using NtCore.API.Game.Maps;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 
 namespace NtCore.Game.Maps
@@ -26,14 +24,14 @@ namespace NtCore.Game.Maps
 
         private readonly IDictionary<Type, EntityType> _mapping = new Dictionary<Type, EntityType>()
         {
-            [typeof(IMonster)] = EntityType.Monster,
-            [typeof(Monster)] = EntityType.Monster,
-            [typeof(INpc)] = EntityType.Npc,
-            [typeof(Npc)] = EntityType.Npc,
-            [typeof(IPlayer)] = EntityType.Player,
-            [typeof(Player)] = EntityType.Player,
-            [typeof(IDrop)] = EntityType.Drop,
-            [typeof(Drop)] = EntityType.Drop,
+            [typeof(IMonster)] = EntityType.MONSTER,
+            [typeof(Monster)] = EntityType.MONSTER,
+            [typeof(INpc)] = EntityType.NPC,
+            [typeof(Npc)] = EntityType.NPC,
+            [typeof(IPlayer)] = EntityType.PLAYER,
+            [typeof(Player)] = EntityType.PLAYER,
+            [typeof(IDrop)] = EntityType.DROP,
+            [typeof(Drop)] = EntityType.DROP,
         };
         
         public T GetEntity<T>(int id) where T : IEntity
@@ -46,13 +44,13 @@ namespace NtCore.Game.Maps
         {
             switch (entityType)
             {
-                case EntityType.Player:
+                case EntityType.PLAYER:
                     return _players.GetValueOrDefault(id);
-                case EntityType.Drop:
+                case EntityType.DROP:
                     return _drops.GetValueOrDefault(id);
-                case EntityType.Monster:
+                case EntityType.MONSTER:
                     return _monsters.GetValueOrDefault(id);
-                case EntityType.Npc:
+                case EntityType.NPC:
                     return _npcs.GetValueOrDefault(id);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(entityType), entityType, null);
@@ -73,22 +71,22 @@ namespace NtCore.Game.Maps
         {
             switch (entity.EntityType)
             {
-                case EntityType.Player:
+                case EntityType.PLAYER:
                     var player = entity.As<Player>();
                     player.Map = this;
                     _players[entity.Id] = player;
                     break;
-                case EntityType.Monster:
+                case EntityType.MONSTER:
                     var monster = entity.As<Monster>();
                     monster.Map = this;
                     _monsters[entity.Id] = monster;
                     break;
-                case EntityType.Npc:
+                case EntityType.NPC:
                     var npc = entity.As<Npc>();
                     npc.Map = this;
                     _npcs[entity.Id] = npc;
                     break;
-                case EntityType.Drop:
+                case EntityType.DROP:
                     var drop = entity.As<Drop>();
                     drop.Map = this;
                     _drops[entity.Id] = drop;
@@ -100,16 +98,16 @@ namespace NtCore.Game.Maps
         {
             switch (entity.EntityType)
             {
-                case EntityType.Player:
+                case EntityType.PLAYER:
                     _players.Remove(entity.Id);
                     break;
-                case EntityType.Monster:
+                case EntityType.MONSTER:
                     _monsters.Remove(entity.Id);
                     break;
-                case EntityType.Npc:
+                case EntityType.NPC:
                     _npcs.Remove(entity.Id);
                     break;
-                case EntityType.Drop:
+                case EntityType.DROP:
                     _drops.Remove(entity.Id);
                     break;
             }

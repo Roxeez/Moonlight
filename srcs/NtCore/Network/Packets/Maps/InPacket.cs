@@ -24,8 +24,8 @@ namespace NtCore.Network.Packets.Maps
 
             switch (EntityType)
             {
-                case EntityType.Monster:
-                case EntityType.Npc:
+                case EntityType.MONSTER:
+                case EntityType.NPC:
                     Vnum = int.Parse(packet[2]);
                     Id = int.Parse(packet[3]);
                     Position = new Position(short.Parse(packet[4]), short.Parse(packet[5]));
@@ -33,7 +33,7 @@ namespace NtCore.Network.Packets.Maps
                     HpPercentage = byte.Parse(packet[7]);
                     MpPercentage = byte.Parse(packet[8]);
                     break;
-                case EntityType.Drop:
+                case EntityType.DROP:
                     Vnum = int.Parse(packet[2]);
                     Id = int.Parse(packet[3]);
                     Position = new Position(short.Parse(packet[4]), short.Parse(packet[5]));

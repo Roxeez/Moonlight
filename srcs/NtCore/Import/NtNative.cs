@@ -17,10 +17,10 @@ namespace NtCore.Import
         [DllImport(LibraryName, CallingConvention = CallingConvention.StdCall)]
         public static extern void Setup(uint moduleBase, uint moduleSize);
 
-        [DllImport(LibraryName, EntryPoint = "SendPacket", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode)]
+        [DllImport(LibraryName, EntryPoint = "SendPacket", CallingConvention = CallingConvention.StdCall)]
         public static extern void SendPacket(string packet);
 
-        [DllImport(LibraryName, EntryPoint = "RecvPacket", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode)]
+        [DllImport(LibraryName, EntryPoint = "RecvPacket", CallingConvention = CallingConvention.StdCall)]
         public static extern void RecvPacket(string packet);
     }
 }

@@ -97,7 +97,6 @@
     <Compile Include="PacketHandling\CharacterPacketTests.cs" />
     <Compile Include="PacketHandling\MinilandPacketTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestUtility.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>

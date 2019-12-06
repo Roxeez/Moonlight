@@ -1,9 +1,10 @@
 ﻿using System;
+using NtCore.API;
 using NtCore.API.Client;
 using NtCore.API.Enums;
 using NtCore.API.Events.Maps;
+using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
@@ -12,9 +13,9 @@ namespace NtCore.Network.Handlers.Maps
 {
     public class InPacketHandler : PacketHandler<InPacket>
     {
-        private readonly PluginManager _pluginManager;
+        private readonly IPluginManager _pluginManager;
 
-        public InPacketHandler(PluginManager pluginManager)
+        public InPacketHandler(IPluginManager pluginManager)
         {
             _pluginManager = pluginManager;
         }
@@ -30,7 +31,7 @@ namespace NtCore.Network.Handlers.Maps
             IEntity entity;
             switch (packet.EntityType)
             {
-                case EntityType.Npc:
+                case EntityType.NPC:
                     entity = new Npc
                     {
                         Id = packet.Id,
@@ -40,7 +41,7 @@ namespace NtCore.Network.Handlers.Maps
                         MpPercentage = packet.MpPercentage
                     };
                     break;
-                case EntityType.Monster:
+                case EntityType.MONSTER:
                     entity = new Monster
                     {
                         Id = packet.Id,
@@ -50,7 +51,7 @@ namespace NtCore.Network.Handlers.Maps
                         MpPercentage = packet.MpPercentage
                     };
                     break;
-                case EntityType.Drop:
+                case EntityType.DROP:
                     entity = new Drop
                     {
                         Id = packet.Id,
@@ -59,7 +60,7 @@ namespace NtCore.Network.Handlers.Maps
                         Amount = packet.Amount
                     };
                     break;
-                case EntityType.Player:
+                case EntityType.PLAYER:
                     entity = new Player
                     {
                         Id = packet.Id,

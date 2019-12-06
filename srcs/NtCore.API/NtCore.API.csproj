@@ -59,12 +59,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\IClient.cs" />
+    <Compile Include="Client\ICommunication.cs" />
+    <Compile Include="Enums\ChatMessageType.cs" />
     <Compile Include="Enums\Element.cs" />
     <Compile Include="Enums\EntityType.cs" />
     <Compile Include="Enums\Faction.cs" />
+    <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Events\Maps\EntitySpawnEvent.cs" />
     <Compile Include="Events\Maps\MapChangeEvent.cs" />
     <Compile Include="Events\Maps\MinilandJoinEvent.cs" />
+    <Compile Include="Extensions\CastExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
     <Compile Include="Game\Entities\IDrop.cs" />
@@ -79,7 +83,6 @@
     <Compile Include="Game\Maps\IMap.cs" />
     <Compile Include="Game\Maps\IMiniland.cs" />
     <Compile Include="Game\Maps\IMinilandObject.cs" />
-    <Compile Include="INtCore.cs" />
     <Compile Include="IPluginManager.cs" />
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Managers\IMapManager.cs" />
@@ -91,6 +94,7 @@
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />
+    <Compile Include="Scheduler\IScheduler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

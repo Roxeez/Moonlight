@@ -26,7 +26,7 @@ namespace NtCore.Game.Entities
 
         public Player()
         {
-            EntityType = EntityType.Player;
+            EntityType = EntityType.PLAYER;
         }
     }
 }

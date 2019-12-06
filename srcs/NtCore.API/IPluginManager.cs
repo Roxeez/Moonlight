@@ -5,5 +5,6 @@ namespace NtCore.API
     public interface IPluginManager
     {
         void Register(params IListener[] listeners);
+        void CallEvent(Event e);
     }
 }

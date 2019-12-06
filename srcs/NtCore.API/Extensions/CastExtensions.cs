@@ -1,4 +1,4 @@
-﻿namespace NtCore.Extensions
+﻿namespace NtCore.API.Extensions
 {
     public static class CastExtensions
     {

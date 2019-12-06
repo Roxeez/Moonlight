@@ -1,6 +1,6 @@
 ﻿using NtCore.API.Client;
 using NtCore.API.Enums;
-using NtCore.Extensions;
+using NtCore.API.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Inventory;
 using NtCore.Network.Packets.Characters;
@@ -11,7 +11,7 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, PairyPacket packet)
         {
-            if (packet.EntityType != EntityType.Player)
+            if (packet.EntityType != EntityType.PLAYER)
             {
                 return;
             }

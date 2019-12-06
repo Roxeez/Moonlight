@@ -23,7 +23,7 @@ namespace NtCore.Game.Entities
 
         public Monster()
         {
-            EntityType = EntityType.Monster;
+            EntityType = EntityType.MONSTER;
         }
     }
 }

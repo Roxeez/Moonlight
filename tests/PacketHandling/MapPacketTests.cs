@@ -15,15 +15,14 @@ namespace NtCore.Tests.PacketHandling
 {
     public class MapPacketTests
     {
-        private readonly NtCore _ntCore;
         private readonly IClient _client;
 
         public MapPacketTests()
         {
-            _ntCore = new NtCore();
+            var ntCore = Program.Setup();
             var mock = new Mock<IClient>();
             
-            mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  _ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
+            mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
             mock.SetupGet(x => x.Character).Returns(new Character());
             
             _client = mock.Object;

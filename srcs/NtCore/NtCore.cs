@@ -1,55 +1,41 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.API;
-using NtCore.API.Client;
 using NtCore.API.Logger;
 using NtCore.API.Managers;
-using NtCore.Logger;
+using NtCore.Clients;
+using NtCore.Core;
 using NtCore.Managers;
 using NtCore.Network;
 
 namespace NtCore
 {
-    public sealed class NtCore : INtCore
+    public sealed class NtCore
     {
-        public IPacketManager PacketManager { get; }
-        public IPluginManager PluginManager { get; }
+        public static readonly string PluginsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Path.Combine("NtCore", "plugins"));
+
+        public ILogger Logger { get; }
+        public IPacketManager PacketManager { get;  }
+        public IPluginManager PluginManager { get;  }
+
+        private bool _localAlreadyExist;
         
-        public NtCore()
+        public NtCore(IPacketManager packetManager, IPluginManager pluginManager, ILogger logger)
         {
-            var services = new ServiceCollection();
-
-            services.AddSingleton<IPacketManager, PacketManager>();
-            services.AddSingleton<IMapManager, MapManager>();
-            services.AddSingleton<ILogger, ConsoleLogger>();
-            services.AddSingleton<PluginManager>();
-
-            foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
-            {
-                if (!typeof(IPacketHandler).IsAssignableFrom(type))
-                {
-                    continue;
-                }
-
-                if (type.IsAbstract || type.IsInterface || !type.IsPublic)
-                {
-                    continue;
-                }
-                
-                services.AddSingleton(typeof(IPacketHandler), type);
-            }
-
-            ServiceProvider provider = services.BuildServiceProvider();
-
-            PacketManager = provider.GetService<IPacketManager>();
-            PluginManager = provider.GetService<PluginManager>();
-            
-            PacketManager.Initialize(provider);
+            PacketManager = packetManager;
+            PluginManager = pluginManager;
+            Logger = logger;
         }
 
-        public IClient CreateLocalClient()
+        public void CreateLocalClient()
         {
+            if (_localAlreadyExist)
+            {
+                return;
+            }
+            
             Process process = Process.GetCurrentProcess();
             
             if (process.MainModule == null)
@@ -62,17 +48,14 @@ namespace NtCore
             localClient.PacketReceived += packet => PacketManager.Handle(localClient, packet, PacketType.Recv);
             localClient.PacketSend += packet => PacketManager.Handle(localClient, packet, PacketType.Send);
 
-            return localClient;
+            _localAlreadyExist = true;
         }
-        
-        public IClient CreateRemoteClient()
-        {
-            RemoteClient remoteClient = new RemoteClient();
-            
-            remoteClient.PacketReceived += packet => PacketManager.Handle(remoteClient, packet, PacketType.Recv);
-            remoteClient.PacketSend += packet => PacketManager.Handle(remoteClient, packet, PacketType.Send);
 
-            return remoteClient;
+        public void Load(IServiceCollection services)
+        {
+            Logger.Information("Initializing NtCore...");
+            
+            services.AddSingleton<IMapManager, MapManager>();
         }
     }
 }

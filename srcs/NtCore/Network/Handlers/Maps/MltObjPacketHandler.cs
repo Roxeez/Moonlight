@@ -1,6 +1,5 @@
-﻿using System.Reflection;
-using NtCore.API.Client;
-using NtCore.Extensions;
+﻿using NtCore.API.Client;
+using NtCore.API.Extensions;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 

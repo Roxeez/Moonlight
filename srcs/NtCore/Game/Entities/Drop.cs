@@ -16,7 +16,7 @@ namespace NtCore.Game.Entities
 
         public Drop()
         {
-            EntityType = EntityType.Drop;
+            EntityType = EntityType.DROP;
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿using NtCore.API.Client;
+﻿using NtCore.API;
+using NtCore.API.Client;
 using NtCore.API.Events.Maps;
-using NtCore.Extensions;
+using NtCore.API.Extensions;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 
@@ -8,9 +9,9 @@ namespace NtCore.Network.Handlers.Maps
 {
     public class MlInfoBrPacketHandler : PacketHandler<MlInfoBrPacket>
     {
-        private readonly PluginManager _pluginManager;
+        private readonly IPluginManager _pluginManager;
 
-        public MlInfoBrPacketHandler(PluginManager pluginManager)
+        public MlInfoBrPacketHandler(IPluginManager pluginManager)
         {
             _pluginManager = pluginManager;
         }

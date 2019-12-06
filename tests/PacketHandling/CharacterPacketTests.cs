@@ -2,9 +2,9 @@
 using NFluent;
 using NtCore.API.Client;
 using NtCore.API.Enums;
+using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
 using NtCore.API.Game.Inventory;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Network;
 using NtCore.Tests.Extensions;
@@ -14,15 +14,15 @@ namespace NtCore.Tests.PacketHandling
 {
     public class CharacterPacketTests
     {
-        private readonly NtCore _ntCore;
         private readonly IClient _client;
 
         public CharacterPacketTests()
         {
-            _ntCore = new NtCore();
+            var ntCore = Program.Setup();
+            
             var mock = new Mock<IClient>();
             
-            mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  _ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
+            mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
             mock.SetupGet(x => x.Character).Returns(new Character());
 
             _client = mock.Object;
@@ -89,9 +89,9 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Theory]
-        [InlineData("cond 1 0 0 0 10", EntityType.Player, 0, 10)]
-        [InlineData("cond 2 2053 0 1 14", EntityType.Npc, 2053, 14)]
-        [InlineData("cond 3 1874 1 0 8", EntityType.Monster, 1874, 8)]
+        [InlineData("cond 1 0 0 0 10", EntityType.PLAYER, 0, 10)]
+        [InlineData("cond 2 2053 0 1 14", EntityType.NPC, 2053, 14)]
+        [InlineData("cond 3 1874 1 0 8", EntityType.MONSTER, 1874, 8)]
         public void Cond_Packet_Change_Entity_Speed(string packet, EntityType entityType, int entityId, int speed)
         {
             _client.CreateMapMock();
