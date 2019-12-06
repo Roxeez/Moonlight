@@ -9,7 +9,6 @@ using NtCore.API.Core;
 using NtCore.API.Extensions;
 using NtCore.API.Logger;
 using NtCore.API.Plugins;
-using EventHandler = NtCore.API.Plugins.EventHandler;
 
 namespace NtCore.Core
 {
@@ -44,7 +43,7 @@ namespace NtCore.Core
             foreach (string file in plugins)
             {
                 Assembly assembly = Assembly.LoadFile(Path.Combine(NtCore.PluginsFolder, file));
-                Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(Plugin).IsAssignableFrom(x));
+                Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(IPlugin).IsAssignableFrom(x));
 
                 if (pluginMain == null)
                 {
@@ -59,17 +58,17 @@ namespace NtCore.Core
                     continue;
                 }
                 
-                services.AddSingleton(typeof(Plugin), pluginMain);
+                services.AddSingleton(typeof(IPlugin), pluginMain);
             }
         }
 
         public void Start(IServiceProvider serviceProvider)
         {
-            IEnumerable<Plugin> plugins = serviceProvider.GetServices<Plugin>();
+            IEnumerable<IPlugin> plugins = serviceProvider.GetServices<IPlugin>();
 
-            foreach (Plugin plugin in plugins)
+            foreach (IPlugin plugin in plugins)
             {
-                plugin.Run();
+                plugin.OnStart();
             }
 
             if (plugins.Any(x => x.GetType().GetCustomAttribute<PluginInfo>().IsInjected))
@@ -84,8 +83,8 @@ namespace NtCore.Core
             {
                 foreach (MethodInfo methodInfo in listener.GetType().GetMethods())
                 {
-                    EventHandler eventHandler = methodInfo.GetCustomAttribute<EventHandler>();
-                    if (eventHandler == null)
+                    Handler handler = methodInfo.GetCustomAttribute<Handler>();
+                    if (handler == null)
                     {
                         continue;
                     }

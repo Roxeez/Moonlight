@@ -45,11 +45,13 @@ namespace NtCore.Network.Handlers.Maps
             }
             
             destination.AddEntity(character);
-            
-            _scheduler.Schedule(TimeSpan.FromSeconds(1), () =>
+
+            if (character.LastMapChange != DateTime.MinValue) // Used for avoiding MapChangeEvent trigger on connection
             {
                 _pluginManager.CallEvent(new MapChangeEvent(client, source, destination));
-            });
+            }
+
+            character.LastMapChange = DateTime.Now;
         }
     }
 }

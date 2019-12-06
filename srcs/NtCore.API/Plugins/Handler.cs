@@ -3,7 +3,7 @@
 namespace NtCore.API.Plugins
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class EventHandler : Attribute
+    public class Handler : Attribute
     {
         
     }

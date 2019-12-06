@@ -5,9 +5,9 @@ namespace NtCore.API.Client
 {
     public interface ICommunication
     {
-        void ReceiveChatMessage(string message, ChatMessageType messageType);
-        void ShowBubble(string message);
-        void ShowBubble(string message, ILivingEntity sender);
-        void ReceiveMessage(string message, MessageType messageType);
+        void ShowMessage(string message, ChatMessageType messageType);
+        void ShowDialogBubble(string message);
+        void ShowDialogBubble(string message, ILivingEntity sender);
+        void ShowMessage(string message, MessageType messageType);
     }
 }

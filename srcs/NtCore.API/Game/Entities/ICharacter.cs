@@ -1,8 +1,10 @@
-﻿using NtCore.API.Game.Inventory;
+﻿using System;
+using NtCore.API.Client;
+using NtCore.API.Game.Inventory;
 
 namespace NtCore.API.Game.Entities
 {
-    public interface ICharacter : IPlayer
+    public interface ICharacter : IPlayer, ICommunication
     {
         int SpPoints { get; }
         int AdditionalSpPoints { get; }
@@ -10,5 +12,6 @@ namespace NtCore.API.Game.Entities
         int MaximumAdditionalSpPoints { get; }
         IEquipment Equipment { get; }
         int Gold { get; }
+        DateTime LastMapChange { get; }
     }
 }

@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using NtCore.API;
-using NtCore.API.Core;
 using NtCore.API.Enums;
 using NtCore.API.Events.Maps;
+using NtCore.API.Extensions;
+using NtCore.API.Game.Entities;
 using NtCore.API.Logger;
 using NtCore.API.Plugins;
 using NtCore.API.Scheduler;
@@ -11,27 +11,51 @@ using NtCore.API.Scheduler;
 namespace NtCore.Example
 {
     [PluginInfo(Name = "MyPlugin", Version = "1.0", IsInjected = true)]
-    public class MyPlugin : Plugin, IListener
+    public class MyPlugin : IPlugin
     {
-        public override void Run()
+        private readonly ILogger _logger;
+        private readonly IPluginManager _pluginManager;
+        private readonly IScheduler _scheduler;
+        
+        public MyPlugin(ILogger logger, IPluginManager pluginManager, IScheduler scheduler)
         {
-            Logger.Information("Started");
-            RegisterListeners(this);
+            _logger = logger;
+            _pluginManager = pluginManager;
+            _scheduler = scheduler;
+        }
+        
+        public void OnStart()
+        {
+            _pluginManager.Register(new MyListener(_scheduler));
+            _logger.Information("[MyPlugin] Successfully started");
+        }
+    }
+
+    public class MyListener : IListener
+    {
+        private readonly IScheduler _scheduler;
+        
+        public MyListener(IScheduler scheduler)
+        {
+            _scheduler = scheduler;
+        }
+        
+        [Handler]
+        public void OnEntitySpawn(EntitySpawnEvent e)
+        {
+            if (e.Entity.EntityType == EntityType.MONSTER)
+            {
+                IMonster monster = e.Entity.As<IMonster>();
+            }
         }
 
-        [EventHandler]
+        [Handler]
         public void OnMapChange(MapChangeEvent e)
         {
-            Logger.Information("Map changed");
-            
-            e.Client.Communication.ReceiveChatMessage($"Monsters : {e.Destination.Monsters.Count()}", ChatMessageType.LIGHT_PURPLE);
-            e.Client.Communication.ReceiveChatMessage($"Npcs : {e.Destination.Npcs.Count()}", ChatMessageType.LIGHT_PURPLE);
-            e.Client.Communication.ReceiveChatMessage($"Drops : {e.Destination.Drops.Count()}", ChatMessageType.LIGHT_PURPLE);
-        }
-
-        public MyPlugin(IPluginManager pluginManager, IScheduler scheduler, ILogger logger, IClientManager clientManager) : base(pluginManager, scheduler, logger, clientManager)
-        {
-            
+            _scheduler.Schedule(TimeSpan.FromSeconds(1), () =>
+            {
+                
+            });
         }
     }
 }

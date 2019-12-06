@@ -102,7 +102,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients\Communication.cs" />
     <Compile Include="Clients\LocalClient.cs" />
     <Compile Include="Core\ClientManager.cs" />
     <Compile Include="Core\PacketManager.cs" />

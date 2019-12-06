@@ -23,7 +23,7 @@ namespace NtCore.Tests.PacketHandling
             var mock = new Mock<IClient>();
             
             mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
-            mock.SetupGet(x => x.Character).Returns(new Character());
+            mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
 
             _client = mock.Object;
         }

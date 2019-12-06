@@ -9,11 +9,6 @@ namespace NtCore.Network
         {
             Type type = GetType();
 
-            if (packet[0] == "c_map")
-            {
-                Console.WriteLine(string.Join(", ", packet));
-            }
-
             foreach (PropertyInfo propertyInfo in type.GetProperties())
             {
                 PacketIndex packetIndexAttribute = propertyInfo.GetCustomAttribute<PacketIndex>();
