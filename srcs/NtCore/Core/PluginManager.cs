@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.API;
+using NtCore.API.Core;
 using NtCore.API.Extensions;
 using NtCore.API.Logger;
 using NtCore.API.Plugins;
@@ -17,9 +18,11 @@ namespace NtCore.Core
         private readonly Dictionary<Type, List<(IListener, MethodInfo)>> _eventHandlers = new Dictionary<Type, List<(IListener, MethodInfo)>>();
         
         private readonly ILogger _logger;
+        private readonly IClientManager _clientManager;
         
-        public PluginManager(ILogger logger)
+        public PluginManager(ILogger logger, IClientManager clientManager)
         {
+            _clientManager = clientManager;
             _logger = logger;
         }
 
@@ -55,9 +58,13 @@ namespace NtCore.Core
                     _logger.Warning($"Can't load plugin {file}, main class without PluginInfo attribute");
                     continue;
                 }
-
                 
                 services.AddSingleton(typeof(Plugin), pluginMain);
+
+                if (info.IsInjected && _clientManager.LocalClient == null)
+                {
+                    _clientManager.CreateLocalClient();
+                }
             }
         }
 

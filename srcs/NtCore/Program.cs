@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.API;
+using NtCore.API.Core;
 using NtCore.API.Extensions;
 using NtCore.API.Logger;
 using NtCore.API.Scheduler;
@@ -26,6 +27,7 @@ namespace NtCore
             services.AddSingleton<IScheduler, ObservableScheduler>();
             services.AddSingleton<IPluginManager, PluginManager>();
             services.AddSingleton<IPacketManager, PacketManager>();
+            services.AddSingleton<IClientManager, ClientManager>();
 
             var root = services.BuildServiceProvider();
 

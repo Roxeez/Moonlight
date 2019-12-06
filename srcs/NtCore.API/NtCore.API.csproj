@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="Client\IClient.cs" />
     <Compile Include="Client\ICommunication.cs" />
+    <Compile Include="Core\IClientManager.cs" />
+    <Compile Include="Core\IPluginManager.cs" />
     <Compile Include="Enums\ChatMessageType.cs" />
     <Compile Include="Enums\Element.cs" />
     <Compile Include="Enums\EntityType.cs" />
@@ -83,7 +85,6 @@
     <Compile Include="Game\Maps\IMap.cs" />
     <Compile Include="Game\Maps\IMiniland.cs" />
     <Compile Include="Game\Maps\IMinilandObject.cs" />
-    <Compile Include="IPluginManager.cs" />
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Managers\IMapManager.cs" />
     <Compile Include="Plugins\Event.cs" />
