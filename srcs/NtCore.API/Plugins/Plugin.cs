@@ -1,4 +1,5 @@
 ﻿using NtCore.API.Client;
+using NtCore.API.Core;
 using NtCore.API.Logger;
 using NtCore.API.Scheduler;
 
@@ -10,11 +11,13 @@ namespace NtCore.API.Plugins
 
         public IScheduler Scheduler { get; }
         public ILogger Logger { get; }
+        public IClientManager ClientManager { get; }
 
-        protected Plugin(IPluginManager pluginManager, IScheduler scheduler, ILogger logger)
+        protected Plugin(IPluginManager pluginManager, IScheduler scheduler, ILogger logger, IClientManager clientManager)
         {
             _pluginManager = pluginManager;
 
+            ClientManager = clientManager;
             Scheduler = scheduler;
             Logger = logger;
         }

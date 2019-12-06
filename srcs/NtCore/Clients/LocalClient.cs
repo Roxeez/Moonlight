@@ -46,7 +46,6 @@ using System.Diagnostics;
 
         public void ReceivePacket(string packet)
         {
-            Console.WriteLine(packet);
             NtNative.RecvPacket(packet);
         }
     }

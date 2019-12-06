@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.API;
 using NtCore.API.Core;
@@ -33,13 +34,13 @@ namespace NtCore
 
             root.GetService<NtCore>().Load(services);
             
-            root.GetService<IPluginManager>().As<PluginManager>().Load(services);
             root.GetService<IPacketManager>().As<PacketManager>().Load(services);
+            root.GetService<IPluginManager>().As<PluginManager>().Load(services);
 
             root = services.BuildServiceProvider();
-
-            root.GetService<IPluginManager>().As<PluginManager>().Start(root);
+            
             root.GetService<IPacketManager>().As<PacketManager>().Start(root);
+            root.GetService<IPluginManager>().As<PluginManager>().Start(root);
 
             return root.GetService<NtCore>();
         }
@@ -47,24 +48,15 @@ namespace NtCore
         [DllExport]
         public static void Main()
         {
-            var thread = new Thread(() =>
+            var t = new Thread(() =>
             {
                 Kernel32.AllocConsole();
-
                 Setup();
                 
-                while (true)
-                {
-                    string command = Console.ReadLine();
-                    if (command == "exit")
-                    {
-                        break;
-                    }
-                }
+                Console.ReadKey();
             });
             
-            thread.SetApartmentState(ApartmentState.MTA);
-            thread.Start();
+            t.Start();
         }
     }
 }

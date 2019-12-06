@@ -60,11 +60,6 @@ namespace NtCore.Core
                 }
                 
                 services.AddSingleton(typeof(Plugin), pluginMain);
-
-                if (info.IsInjected && _clientManager.LocalClient == null)
-                {
-                    _clientManager.CreateLocalClient();
-                }
             }
         }
 
@@ -75,6 +70,11 @@ namespace NtCore.Core
             foreach (Plugin plugin in plugins)
             {
                 plugin.Run();
+            }
+
+            if (plugins.Any(x => x.GetType().GetCustomAttribute<PluginInfo>().IsInjected))
+            {
+                _clientManager.CreateLocalClient();
             }
         }
         
@@ -123,7 +123,6 @@ namespace NtCore.Core
 
             if (handlers == null)
             {
-                _logger.Warning($"No handlers found for event {e.GetType().Name}");
                 return;
             }
             

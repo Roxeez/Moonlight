@@ -38,7 +38,7 @@ namespace NtCore.Core
             localClient.PacketSend += packet => _packetManager.Handle(localClient, packet, PacketType.Send);
 
             LocalClient = localClient;
-            
+
             return localClient;
         }
     }

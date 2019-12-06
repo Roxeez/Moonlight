@@ -90,7 +90,7 @@ namespace NtCore.Core
         
         public void Handle(IClient client, string packet, PacketType packetType)
         {
-            string[] arguments = packet.Split(' ');
+            string[] arguments = packet.Trim().Split(' ');
             string header = arguments.Length > 0 ? arguments[0] : packet;
 
             IPacketHandler packetHandler = _packetHandlers.GetValueOrDefault((header, packetType));

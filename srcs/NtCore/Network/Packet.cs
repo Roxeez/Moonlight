@@ -9,6 +9,11 @@ namespace NtCore.Network
         {
             Type type = GetType();
 
+            if (packet[0] == "c_map")
+            {
+                Console.WriteLine(string.Join(", ", packet));
+            }
+
             foreach (PropertyInfo propertyInfo in type.GetProperties())
             {
                 PacketIndex packetIndexAttribute = propertyInfo.GetCustomAttribute<PacketIndex>();
@@ -37,17 +42,17 @@ namespace NtCore.Network
 
         private static object Parse(string value, Type targetType)
         {
+            if (targetType == typeof(bool))
+            {
+                return value.Equals("1");
+            }
+            
             if (targetType.BaseType == typeof(Enum))
             {
                 if (targetType.IsEnumDefined(Enum.Parse(targetType, value)))
                 {
                     return Enum.Parse(targetType, value);
                 }
-            }
-            
-            if (targetType == typeof(bool))
-            {
-                return value == "1";
             }
 
             return Convert.ChangeType(value, targetType);

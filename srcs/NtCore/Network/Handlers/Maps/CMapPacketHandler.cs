@@ -1,4 +1,5 @@
-﻿using NtCore.API;
+﻿using System;
+using NtCore.API;
 using NtCore.API.Client;
 using NtCore.API.Events.Maps;
 using NtCore.API.Extensions;
@@ -45,7 +46,10 @@ namespace NtCore.Network.Handlers.Maps
             
             destination.AddEntity(character);
             
-            _pluginManager.CallEvent(new MapChangeEvent(client, source, destination));
+            _scheduler.Schedule(TimeSpan.FromSeconds(1), () =>
+            {
+                _pluginManager.CallEvent(new MapChangeEvent(client, source, destination));
+            });
         }
     }
 }
