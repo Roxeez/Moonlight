@@ -106,6 +106,7 @@
     <Compile Include="Core\ClientManager.cs" />
     <Compile Include="Core\PacketManager.cs" />
     <Compile Include="Core\PluginManager.cs" />
+    <Compile Include="Game\Entities\LivingEntity.cs" />
     <Compile Include="Game\Maps\Miniland.cs" />
     <Compile Include="Game\Maps\MinilandObject.cs" />
     <Compile Include="Program.cs" />
@@ -114,9 +115,6 @@
     <Compile Include="Network\Packets\Maps\MlInfoBrPacket.cs" />
     <Compile Include="Network\Packets\Maps\MltObjPacket.cs" />
     <Compile Include="Game\Entities\Player.cs" />
-    <Compile Include="Game\Inventory\Equipment.cs" />
-    <Compile Include="Game\Inventory\Fairy.cs" />
-    <Compile Include="Game\Inventory\Specialist.cs" />
     <Compile Include="Game\Entities\Character.cs" />
     <Compile Include="Game\Entities\Drop.cs" />
     <Compile Include="Game\Entities\Monster.cs" />

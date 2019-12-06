@@ -4,7 +4,6 @@ using NtCore.API.Client;
 using NtCore.API.Enums;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
-using NtCore.API.Game.Inventory;
 using NtCore.Game.Entities;
 using NtCore.Network;
 using NtCore.Tests.Extensions;
@@ -73,19 +72,6 @@ namespace NtCore.Tests.PacketHandling
             Check.That(_client.Character.MaximumAdditionalSpPoints).IsEqualTo(maximumAdditionalPoints);
             Check.That(_client.Character.SpPoints).IsEqualTo(points);
             Check.That(_client.Character.MaximumSpPoints).IsEqualTo(maximumPoints);
-        }
-
-        [Theory]
-        [InlineData("pairy 1 0 0 0 0", Element.NEUTRAL, 0)]
-        [InlineData("pairy 1 0 1 50 0", Element.FIRE, 50)]
-        public void Pairy_Packet_Change_Character_Fairy(string packet, Element element, int power)
-        {
-            _client.ReceivePacket(packet);
-
-            IFairy fairy = _client.Character.Equipment.Fairy;
-
-            Check.That(fairy.Element).IsEqualTo(element);
-            Check.That(fairy.Power).IsEqualTo(power);
         }
 
         [Theory]

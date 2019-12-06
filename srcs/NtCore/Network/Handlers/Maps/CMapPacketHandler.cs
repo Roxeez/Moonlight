@@ -1,6 +1,7 @@
 ﻿using System;
 using NtCore.API;
 using NtCore.API.Client;
+using NtCore.API.Core;
 using NtCore.API.Events.Maps;
 using NtCore.API.Extensions;
 using NtCore.API.Logger;
@@ -46,7 +47,7 @@ namespace NtCore.Network.Handlers.Maps
             
             destination.AddEntity(character);
 
-            if (character.LastMapChange != DateTime.MinValue) // Used for avoiding MapChangeEvent trigger on connection
+            if (source != null)
             {
                 _pluginManager.CallEvent(new MapChangeEvent(client, source, destination));
             }

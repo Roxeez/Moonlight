@@ -1,5 +1,8 @@
 ﻿namespace NtCore.API.Enums
 {
+    /// <summary>
+    /// Represent all kind of ChatMessage
+    /// </summary>
     public enum ChatMessageType : byte
     {
         WHITE = 0,

@@ -2,7 +2,6 @@
 using NtCore.API.Enums;
 using NtCore.API.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Inventory;
 using NtCore.Network.Packets.Characters;
 
 namespace NtCore.Network.Handlers.Characters
@@ -21,13 +20,6 @@ namespace NtCore.Network.Handlers.Characters
             {
                 return;
             }
-
-            var equipment = character.Equipment.As<Equipment>();
-            equipment.Fairy = new Fairy
-            {
-                Element = packet.Element,
-                Power = packet.Power
-            };
         }
     }
 }

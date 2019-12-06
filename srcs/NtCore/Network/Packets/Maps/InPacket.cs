@@ -17,6 +17,10 @@ namespace NtCore.Network.Packets.Maps
         public byte HpPercentage { get; set; }
         public byte MpPercentage { get; set; }
         public int Amount { get; set; }
+        
+        public ClassType ClassType { get; set; }
+        public Gender Gender { get; set; }
+        public byte Level { get; set; }
 
         public override bool Deserialize(string[] packet)
         {
@@ -38,6 +42,17 @@ namespace NtCore.Network.Packets.Maps
                     Id = int.Parse(packet[3]);
                     Position = new Position(short.Parse(packet[4]), short.Parse(packet[5]));
                     Amount = int.Parse(packet[6]);
+                    break;
+                case EntityType.PLAYER:
+                    Name = packet[2];
+                    Id = int.Parse(packet[4]);
+                    Position = new Position(short.Parse(packet[5]), short.Parse(packet[6]));
+                    Direction = byte.Parse(packet[7]);
+                    Gender = (Gender) byte.Parse(packet[9]);
+                    ClassType = (ClassType) byte.Parse(packet[12]);
+                    HpPercentage = byte.Parse(packet[14]);
+                    MpPercentage = byte.Parse(packet[15]);
+                    Level = byte.Parse(packet[33]);
                     break;
             }
 

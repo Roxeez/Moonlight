@@ -1,8 +1,16 @@
-﻿namespace NtCore.API.Extensions
+﻿using JetBrains.Annotations;
+
+namespace NtCore.API.Extensions
 {
     public static class CastExtensions
     {
-        public static TDestination As<TDestination>(this object source) where TDestination : class
+        /// <summary>
+        /// Readable cast
+        /// </summary>
+        /// <param name="source">Object to cast</param>
+        /// <typeparam name="TDestination">Cast type</typeparam>
+        /// <returns>Casted object or null</returns>
+        public static TDestination As<TDestination>([NotNull] this object source) where TDestination : class
         {
             return source as TDestination;
         }

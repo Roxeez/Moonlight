@@ -1,6 +1,7 @@
 ﻿using System;
 using NtCore.API;
 using NtCore.API.Client;
+using NtCore.API.Core;
 using NtCore.API.Enums;
 using NtCore.API.Events.Maps;
 using NtCore.API.Extensions;
@@ -22,7 +23,9 @@ namespace NtCore.Network.Handlers.Maps
         
         public override void Handle(IClient client, InPacket packet)
         {
+            var character = client.Character.As<Character>();
             var map = client.Character.Map.As<Map>();
+            
             if (map == null)
             {
                 return;
@@ -37,6 +40,7 @@ namespace NtCore.Network.Handlers.Maps
                         Id = packet.Id,
                         Vnum = packet.Vnum,
                         Position = packet.Position,
+                        Direction = packet.Direction,
                         HpPercentage = packet.HpPercentage,
                         MpPercentage = packet.MpPercentage
                     };
@@ -47,6 +51,7 @@ namespace NtCore.Network.Handlers.Maps
                         Id = packet.Id,
                         Vnum = packet.Vnum,
                         Position = packet.Position,
+                        Direction = packet.Direction,
                         HpPercentage = packet.HpPercentage,
                         MpPercentage = packet.MpPercentage
                     };
@@ -65,6 +70,10 @@ namespace NtCore.Network.Handlers.Maps
                     {
                         Id = packet.Id,
                         Name = packet.Name,
+                        Level = packet.Level,
+                        Class = packet.ClassType,
+                        Direction = packet.Direction,
+                        Gender = packet.Gender,
                         Position = packet.Position,
                         HpPercentage = packet.HpPercentage,
                         MpPercentage = packet.MpPercentage
@@ -75,8 +84,11 @@ namespace NtCore.Network.Handlers.Maps
             }
             
             map.AddEntity(entity);
-            
-            _pluginManager.CallEvent(new EntitySpawnEvent(client, entity, map));
+
+            if (character.LastMapChange.AddSeconds(2) < DateTime.Now)
+            {
+                _pluginManager.CallEvent(new EntitySpawnEvent(client, entity, map));
+            }
         }
     }
 }

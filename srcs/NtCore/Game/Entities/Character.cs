@@ -1,53 +1,48 @@
 ﻿using System;
-using NtCore.API;
 using NtCore.API.Client;
 using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
-using NtCore.API.Game.Inventory;
-using NtCore.API.Game.Maps;
-using NtCore.Game.Inventory;
-using NtCore.Game.Maps;
 
 namespace NtCore.Game.Entities
 {
     public class Character : Player, ICharacter
     {
         private readonly IClient _client;
-        
         public int SpPoints { get; set; }
         public int AdditionalSpPoints { get; set; }
         public int MaximumSpPoints { get; set; }
         public int MaximumAdditionalSpPoints { get; set; }
-        public IEquipment Equipment { get; }
         public int Gold { get; set; }
         public DateTime LastMapChange { get; set; }
+        public int Hp { get; set; }
+        public int MaxHp { get; set; }
+        public int Mp { get; set; }
+        public int MaxMp { get; set; }
 
         public Character(IClient client)
         {
             _client = client;
-            
-            LastMapChange = DateTime.MinValue;
-            Equipment = new Equipment();
         }
         
-        public void ShowMessage(string message, ChatMessageType messageType)
-        {
-            _client.ReceivePacket($"say {(byte)_client.Character.EntityType} {_client.Character.Id} {(byte)messageType} {message}");
-        }
-
-        public void ShowDialogBubble(string message)
-        {
-            ShowDialogBubble(message, _client.Character);
-        }
-
-        public void ShowDialogBubble(string message, ILivingEntity sender)
-        {
-            _client.ReceivePacket($"say {(byte)sender.EntityType} {sender.Id} 1 {message}");
-        }
-
         public void ShowMessage(string message, MessageType messageType)
         {
-            _client.ReceivePacket($"msg {(byte)messageType} {message}");
+            _client.SendPacket($"msg {(byte)messageType} {message}");
         }
+
+        public void ShowChatMessage(string message, ChatMessageType messageType)
+        {
+            _client.SendPacket($"say {(byte)EntityType} {Id} {(byte)messageType} {message}");
+        }
+
+        public void ShowBubbleMessage(string message)
+        {
+            _client.SendPacket($"say {(byte)EntityType} {Id} 1 {message}");
+        }
+
+        public void ShowBubbleMessage(string message, ILivingEntity entity)
+        {
+            _client.SendPacket($"say {(byte)entity.EntityType} {entity.EntityType} 1 {message}");
+        }
+        
     }
 }

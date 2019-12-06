@@ -1,10 +1,23 @@
-﻿using NtCore.API.Plugins;
+﻿using JetBrains.Annotations;
+using NtCore.API.Plugins;
 
-namespace NtCore.API
+namespace NtCore.API.Core
 {
+    /// <summary>
+    /// PluginManager used for registering listener & call events
+    /// </summary>
     public interface IPluginManager
     {
-        void Register(params IListener[] listeners);
-        void CallEvent(Event e);
+        /// <summary>
+        /// Register selected IListener
+        /// </summary>
+        /// <param name="listeners">Listeners to register</param>
+        void Register([NotNull] params IListener[] listeners);
+        
+        /// <summary>
+        /// Call an event (execute all registered Handler of this event)
+        /// </summary>
+        /// <param name="e">Event to call</param>
+        void CallEvent([NotNull] Event e);
     }
 }

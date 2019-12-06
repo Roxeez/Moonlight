@@ -52,6 +52,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=2019.1.3.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
+      <HintPath>..\..\packages\JetBrains.Annotations.2019.1.3\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -59,19 +63,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\IClient.cs" />
-    <Compile Include="Client\ICommunication.cs" />
     <Compile Include="Core\IClientManager.cs" />
     <Compile Include="Core\IPluginManager.cs" />
     <Compile Include="Enums\ChatMessageType.cs" />
+    <Compile Include="Enums\ClassType.cs" />
     <Compile Include="Enums\Element.cs" />
     <Compile Include="Enums\EntityType.cs" />
     <Compile Include="Enums\Faction.cs" />
+    <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Events\Maps\EntitySpawnEvent.cs" />
     <Compile Include="Events\Maps\MapChangeEvent.cs" />
     <Compile Include="Events\Maps\MinilandJoinEvent.cs" />
     <Compile Include="Extensions\CastExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
+    <Compile Include="Game\Battle\ITarget.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
     <Compile Include="Game\Entities\IDrop.cs" />
     <Compile Include="Game\Entities\IEntity.cs" />
@@ -79,9 +85,6 @@
     <Compile Include="Game\Entities\IMonster.cs" />
     <Compile Include="Game\Entities\INpc.cs" />
     <Compile Include="Game\Entities\IPlayer.cs" />
-    <Compile Include="Game\Inventory\IEquipment.cs" />
-    <Compile Include="Game\Inventory\IFairy.cs" />
-    <Compile Include="Game\Inventory\ISpecialist.cs" />
     <Compile Include="Game\Maps\IMap.cs" />
     <Compile Include="Game\Maps\IMiniland.cs" />
     <Compile Include="Game\Maps\IMinilandObject.cs" />
@@ -96,6 +99,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Scheduler\IScheduler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

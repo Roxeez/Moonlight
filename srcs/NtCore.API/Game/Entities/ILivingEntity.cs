@@ -2,16 +2,21 @@
 {
     public interface ILivingEntity : IEntity
     {
-        int Level { get; }
+        /// <summary>
+        /// Current movement speed
+        /// </summary>
         byte Speed { get; }
-        
-        int Hp { get; }
-        int Mp { get; }
-        
-        int MaxHp { get; }
-        int MaxMp { get; }
-        
+        byte Level { get; }
+        byte Direction { get; }
+
+        /// <summary>
+        /// Current hp percentage
+        /// </summary>
         byte HpPercentage { get; }
+        
+        /// <summary>
+        /// Current mp percentage
+        /// </summary>
         byte MpPercentage { get; }
     }
 }
