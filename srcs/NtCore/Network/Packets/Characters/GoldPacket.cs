@@ -3,7 +3,6 @@
     [PacketInfo("gold", PacketType.Recv)]
     public class GoldPacket : Packet
     {
-        [PacketIndex(1)]
-        public int Gold { get; set; }
+        [PacketIndex(1)] public int Gold { get; set; }
     }
 }

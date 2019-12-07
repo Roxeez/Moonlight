@@ -1,4 +1,4 @@
-﻿using NtCore.API.Client;
+﻿using NtCore.API.Clients;
 using NtCore.API.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
@@ -9,8 +9,8 @@ namespace NtCore.Tests.Extensions
     {
         public static void CreateMapMock(this IClient client)
         {
-            Map map = new Map(0);
-            
+            var map = new Map(0);
+
             map.AddEntity(new Monster
             {
                 Id = 1874
@@ -19,7 +19,7 @@ namespace NtCore.Tests.Extensions
             {
                 Id = 874
             });
-            
+
             map.AddEntity(new Npc
             {
                 Id = 2053
@@ -28,7 +28,7 @@ namespace NtCore.Tests.Extensions
             {
                 Id = 1026
             });
-            
+
             map.AddEntity(client.Character.As<Character>());
         }
 

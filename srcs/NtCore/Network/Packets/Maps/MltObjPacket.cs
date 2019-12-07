@@ -12,11 +12,11 @@ namespace NtCore.Network.Packets.Maps
         public override bool Deserialize(string[] packet)
         {
             MinilandObjects = new List<MltObjSubPacket>();
-            
-            foreach (string value in packet.Skip(1))
+
+            foreach (var value in packet.Skip(1))
             {
-                string[] split = value.Split('.');
-                
+                var split = value.Split('.');
+
                 MinilandObjects.Add(new MltObjSubPacket
                 {
                     Vnum = int.Parse(split[0]),

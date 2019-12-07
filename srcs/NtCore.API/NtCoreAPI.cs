@@ -1,6 +1,6 @@
 ﻿using System;
-using NtCore.API.Core;
 using NtCore.API.Logger;
+using NtCore.API.Plugins;
 using NtCore.API.Scheduler;
 
 namespace NtCore.API
@@ -8,13 +8,10 @@ namespace NtCore.API
     public static class NtCoreAPI
     {
         private static INtCore _ntCore;
-        
+
         public static void Initialize(INtCore ntCore)
         {
-            if (_ntCore != null)
-            {
-                throw new InvalidOperationException();
-            }
+            if (_ntCore != null) throw new InvalidOperationException();
             _ntCore = ntCore;
         }
 

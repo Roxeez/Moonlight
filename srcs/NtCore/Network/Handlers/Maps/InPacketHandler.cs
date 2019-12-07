@@ -1,11 +1,10 @@
 ﻿using System;
-using NtCore.API;
-using NtCore.API.Client;
-using NtCore.API.Core;
+using NtCore.API.Clients;
 using NtCore.API.Enums;
 using NtCore.API.Events.Maps;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
+using NtCore.API.Plugins;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
@@ -20,16 +19,13 @@ namespace NtCore.Network.Handlers.Maps
         {
             _pluginManager = pluginManager;
         }
-        
+
         public override void Handle(IClient client, InPacket packet)
         {
             var character = client.Character.As<Character>();
             var map = client.Character.Map.As<Map>();
-            
-            if (map == null)
-            {
-                return;
-            }
+
+            if (map == null) return;
 
             IEntity entity;
             switch (packet.EntityType)
@@ -82,13 +78,11 @@ namespace NtCore.Network.Handlers.Maps
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+
             map.AddEntity(entity);
 
             if (character.LastMapChange.AddSeconds(5) < DateTime.Now)
-            {
                 _pluginManager.CallEvent(new EntitySpawnEvent(client, entity, map));
-            }
         }
     }
 }

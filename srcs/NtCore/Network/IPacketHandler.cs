@@ -1,4 +1,4 @@
-﻿using NtCore.API.Client;
+﻿using NtCore.API.Clients;
 
 namespace NtCore.Network
 {
@@ -9,7 +9,11 @@ namespace NtCore.Network
 
     public abstract class PacketHandler<TPacket> : IPacketHandler where TPacket : IPacket
     {
-        public void Handle(IClient client, IPacket packet) => Handle(client, (TPacket) packet);
+        public void Handle(IClient client, IPacket packet)
+        {
+            Handle(client, (TPacket) packet);
+        }
+
         public abstract void Handle(IClient client, TPacket packet);
     }
 }

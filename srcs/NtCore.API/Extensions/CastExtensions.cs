@@ -5,7 +5,7 @@ namespace NtCore.API.Extensions
     public static class CastExtensions
     {
         /// <summary>
-        /// Readable cast
+        ///     Readable cast
         /// </summary>
         /// <param name="source">Object to cast</param>
         /// <typeparam name="TDestination">Cast type</typeparam>

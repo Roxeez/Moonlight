@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NFluent;
-using NtCore.API.Client;
+using NtCore.API.Clients;
 using NtCore.API.Enums;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
-using NtCore.Core;
 using NtCore.Game.Entities;
 using NtCore.Network;
 using NtCore.Tests.Extensions;
@@ -21,13 +20,14 @@ namespace NtCore.Tests.PacketHandling
         {
             var packetManager = Program.UnitTestProvider().GetService<IPacketManager>();
             var mock = new Mock<IClient>();
-            
-            mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  packetManager.Handle(mock.Object, p, PacketType.Recv));
+
+            mock.Setup(x => x.ReceivePacket(It.IsAny<string>()))
+                .Callback((string p) => packetManager.Handle(mock.Object, p, PacketType.Recv));
             mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
 
             _client = mock.Object;
         }
-        
+
         [Theory]
         [InlineData("stat 2500 2000 1500 1000", 2500, 2000, 1500, 1000)]
         [InlineData("stat 1 2 3 4", 1, 2, 3, 4)]
@@ -65,7 +65,8 @@ namespace NtCore.Tests.PacketHandling
         [Theory]
         [InlineData("sp 875000 1000000 8500 10000", 875000, 1000000, 8500, 10000)]
         [InlineData("sp 875000 900000 2500 100000", 875000, 900000, 2500, 100000)]
-        public void Sp_Packet_Update_Character_Sp_Points(string packet, int additionalPoints, int maximumAdditionalPoints, int points, int maximumPoints)
+        public void Sp_Packet_Update_Character_Sp_Points(string packet, int additionalPoints,
+            int maximumAdditionalPoints, int points, int maximumPoints)
         {
             _client.ReceivePacket(packet);
 
@@ -82,10 +83,10 @@ namespace NtCore.Tests.PacketHandling
         public void Cond_Packet_Change_Entity_Speed(string packet, EntityType entityType, int entityId, int speed)
         {
             _client.CreateMapMock();
-            
+
             _client.ReceivePacket(packet);
 
-            ILivingEntity entity = _client.Character.Map.GetEntity(entityType, entityId).As<ILivingEntity>();
+            var entity = _client.Character.Map.GetEntity(entityType, entityId).As<ILivingEntity>();
 
             Check.That(entity).IsNotNull();
             Check.That(entity.Speed).IsEqualTo(speed);

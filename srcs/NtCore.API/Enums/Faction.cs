@@ -1,7 +1,7 @@
 ﻿namespace NtCore.API.Enums
 {
     /// <summary>
-    /// Represent all kind of Faction
+    ///     Represent all kind of Faction
     /// </summary>
     public enum Faction : byte
     {

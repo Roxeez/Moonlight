@@ -1,5 +1,5 @@
-﻿using NtCore.API.Core;
-using NtCore.API.Logger;
+﻿using NtCore.API.Logger;
+using NtCore.API.Plugins;
 using NtCore.API.Scheduler;
 
 namespace NtCore.API

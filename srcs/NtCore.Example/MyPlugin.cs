@@ -12,7 +12,7 @@ namespace NtCore.Example
     {
         public override string Name => "MyPlugin";
         public override string Version => "1.0.0";
-        
+
         public override void OnEnable()
         {
             NtCoreAPI.GetPluginManager().RegisterListeners(this, new MyListener());
@@ -25,11 +25,11 @@ namespace NtCore.Example
         public void OnEntitySpawn(EntitySpawnEvent e)
         {
             var character = e.Client.Character;
-            
+
             if (e.Entity.EntityType == EntityType.PLAYER)
             {
-                IPlayer player = e.Entity.As<IPlayer>();
-                
+                var player = e.Entity.As<IPlayer>();
+
                 character.ShowChatMessage($"{player.Id}/{player.Name}/{player.Level}", ChatMessageType.RED);
             }
         }

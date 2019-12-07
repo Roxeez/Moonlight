@@ -7,21 +7,15 @@ namespace NtCore.Network
     {
         public virtual bool Deserialize(string[] packet)
         {
-            Type type = GetType();
+            var type = GetType();
 
-            foreach (PropertyInfo propertyInfo in type.GetProperties())
+            foreach (var propertyInfo in type.GetProperties())
             {
-                PacketIndex packetIndexAttribute = propertyInfo.GetCustomAttribute<PacketIndex>();
-                if (packetIndexAttribute == null)
-                {
-                    continue;
-                }
+                var packetIndexAttribute = propertyInfo.GetCustomAttribute<PacketIndex>();
+                if (packetIndexAttribute == null) continue;
 
-                int index = packetIndexAttribute.Value;
-                if (index >= packet.Length)
-                {
-                    continue;
-                }
+                var index = packetIndexAttribute.Value;
+                if (index >= packet.Length) continue;
 
                 try
                 {
@@ -32,23 +26,17 @@ namespace NtCore.Network
                     return false;
                 }
             }
+
             return true;
         }
 
         private static object Parse(string value, Type targetType)
         {
-            if (targetType == typeof(bool))
-            {
-                return value.Equals("1");
-            }
-            
+            if (targetType == typeof(bool)) return value.Equals("1");
+
             if (targetType.BaseType == typeof(Enum))
-            {
                 if (targetType.IsEnumDefined(Enum.Parse(targetType, value)))
-                {
                     return Enum.Parse(targetType, value);
-                }
-            }
 
             return Convert.ChangeType(value, targetType);
         }

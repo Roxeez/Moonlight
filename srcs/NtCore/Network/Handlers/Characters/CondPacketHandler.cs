@@ -1,6 +1,5 @@
-﻿using NtCore.API.Client;
+﻿using NtCore.API.Clients;
 using NtCore.API.Enums;
-using NtCore.API.Game.Maps;
 using NtCore.Game.Entities;
 using NtCore.Network.Packets.Characters;
 
@@ -10,8 +9,8 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, CondPacket packet)
         {
-            IMap map = client.Character.Map;
-            
+            var map = client.Character.Map;
+
             switch (packet.EntityType)
             {
                 case EntityType.MONSTER:

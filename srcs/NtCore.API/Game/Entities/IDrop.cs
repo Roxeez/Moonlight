@@ -3,12 +3,12 @@
     public interface IDrop : IEntity
     {
         /// <summary>
-        /// Vnum of the item
+        ///     Vnum of the item
         /// </summary>
         int Vnum { get; }
-        
+
         /// <summary>
-        /// Amount of item drop
+        ///     Amount of item drop
         /// </summary>
         int Amount { get; }
     }

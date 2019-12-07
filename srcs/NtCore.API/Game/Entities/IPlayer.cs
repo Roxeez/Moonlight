@@ -5,25 +5,25 @@ namespace NtCore.API.Game.Entities
     public interface IPlayer : ILivingEntity
     {
         /// <summary>
-        /// Player name
+        ///     Player name
         /// </summary>
         string Name { get; }
-        
+
         /// <summary>
-        /// Player reputation
+        ///     Player reputation
         /// </summary>
         int Reputation { get; }
-        
+
         /// <summary>
-        /// Player dignity
+        ///     Player dignity
         /// </summary>
         int Dignity { get; }
-        
+
         ClassType Class { get; }
         Gender Gender { get; }
 
         /// <summary>
-        /// Player faction
+        ///     Player faction
         /// </summary>
         Faction Faction { get; }
     }

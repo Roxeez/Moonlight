@@ -1,13 +1,13 @@
-﻿﻿using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace NtCore.Import
 {
     internal static class NtNative
     {
+        public delegate void PacketCallback(string packet);
+
         private const string LibraryName = "NtNative.dll";
 
-        public delegate void PacketCallback(string packet);
-        
         [DllImport(LibraryName, CallingConvention = CallingConvention.StdCall)]
         public static extern void SetRecvCallback(PacketCallback callback);
 

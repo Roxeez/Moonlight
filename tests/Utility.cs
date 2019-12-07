@@ -27,7 +27,7 @@ namespace NtCore.Tests
                     Vnum = 1285,
                     Id = 3,
                     Position = new Position(65, 87)
-                },
+                }
             };
         }
     }

@@ -62,9 +62,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\IClient.cs" />
-    <Compile Include="Core\IClientManager.cs" />
-    <Compile Include="Core\IPluginManager.cs" />
+    <Compile Include="Clients\IClient.cs" />
+    <Compile Include="Clients\IClientManager.cs" />
+    <Compile Include="Commands\CommandAttribute.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
     <Compile Include="Enums\ChatMessageType.cs" />
     <Compile Include="Enums\ClassType.cs" />
     <Compile Include="Enums\Element.cs" />
@@ -86,16 +87,17 @@
     <Compile Include="Game\Entities\INpc.cs" />
     <Compile Include="Game\Entities\IPlayer.cs" />
     <Compile Include="Game\Maps\IMap.cs" />
+    <Compile Include="Game\Maps\IMapManager.cs" />
     <Compile Include="Game\Maps\IMiniland.cs" />
     <Compile Include="Game\Maps\IMinilandObject.cs" />
     <Compile Include="INtCore.cs" />
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Logger\ILogger.cs" />
-    <Compile Include="Managers\IMapManager.cs" />
     <Compile Include="NtCoreAPI.cs" />
     <Compile Include="Plugins\Event.cs" />
     <Compile Include="Plugins\Handler.cs" />
     <Compile Include="Plugins\IListener.cs" />
+    <Compile Include="Plugins\IPluginManager.cs" />
     <Compile Include="Plugins\Plugin.cs" />
     <Compile Include="Plugins\PluginInfo.cs" />
     <Compile Include="Position.cs" />

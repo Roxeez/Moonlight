@@ -3,7 +3,7 @@
     public interface INpc : ILivingEntity
     {
         /// <summary>
-        /// Npc vnum
+        ///     Npc vnum
         /// </summary>
         int Vnum { get; }
     }

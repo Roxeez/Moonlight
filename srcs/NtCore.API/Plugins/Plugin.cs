@@ -1,32 +1,26 @@
-﻿using System.Reflection;
-using NtCore.API.Core;
-using NtCore.API.Logger;
-using NtCore.API.Scheduler;
+﻿using NtCore.API.Logger;
 
 namespace NtCore.API.Plugins
 {
     public abstract class Plugin
     {
+        private ILogger _logger;
         public abstract string Name { get; }
         public abstract string Version { get; }
-
-        private ILogger _logger;
         public ILogger Logger => _logger ?? (_logger = new ConsoleLogger($"NtCore - {Name}"));
 
         /// <summary>
-        /// Called on plugin start
+        ///     Called on plugin start
         /// </summary>
         public virtual void OnEnable()
         {
-            
         }
 
         /// <summary>
-        /// Called on plugin shutdown
+        ///     Called on plugin shutdown
         /// </summary>
         public virtual void OnDisable()
         {
-            
         }
     }
 }

@@ -10,19 +10,9 @@ namespace NtCore.Game.Maps
 {
     public class Map : IMap
     {
-        private readonly IDictionary<int, IMonster> _monsters;
-        private readonly IDictionary<int, INpc> _npcs;
         private readonly IDictionary<int, IDrop> _drops;
-        private readonly IDictionary<int, IPlayer> _players;
 
-        public int Id { get; }
-
-        public IEnumerable<IMonster> Monsters => _monsters.Values;
-        public IEnumerable<INpc> Npcs => _npcs.Values;
-        public IEnumerable<IDrop> Drops => _drops.Values;
-        public IEnumerable<IPlayer> Players => _players.Values;
-
-        private readonly IDictionary<Type, EntityType> _mapping = new Dictionary<Type, EntityType>()
+        private readonly IDictionary<Type, EntityType> _mapping = new Dictionary<Type, EntityType>
         {
             [typeof(IMonster)] = EntityType.MONSTER,
             [typeof(Monster)] = EntityType.MONSTER,
@@ -31,13 +21,34 @@ namespace NtCore.Game.Maps
             [typeof(IPlayer)] = EntityType.PLAYER,
             [typeof(Player)] = EntityType.PLAYER,
             [typeof(IDrop)] = EntityType.DROP,
-            [typeof(Drop)] = EntityType.DROP,
+            [typeof(Drop)] = EntityType.DROP
         };
-        
+
+        private readonly IDictionary<int, IMonster> _monsters;
+        private readonly IDictionary<int, INpc> _npcs;
+        private readonly IDictionary<int, IPlayer> _players;
+
+        public Map(int id)
+        {
+            Id = id;
+
+            _monsters = new Dictionary<int, IMonster>();
+            _npcs = new Dictionary<int, INpc>();
+            _drops = new Dictionary<int, IDrop>();
+            _players = new Dictionary<int, IPlayer>();
+        }
+
+        public int Id { get; }
+
+        public IEnumerable<IMonster> Monsters => _monsters.Values;
+        public IEnumerable<INpc> Npcs => _npcs.Values;
+        public IEnumerable<IDrop> Drops => _drops.Values;
+        public IEnumerable<IPlayer> Players => _players.Values;
+
         public T GetEntity<T>(int id) where T : IEntity
         {
-            EntityType entityType = _mapping.GetValueOrDefault(typeof(T));
-            return (T)GetEntity(entityType, id);
+            var entityType = _mapping.GetValueOrDefault(typeof(T));
+            return (T) GetEntity(entityType, id);
         }
 
         public IEntity GetEntity(EntityType entityType, int id)
@@ -57,16 +68,6 @@ namespace NtCore.Game.Maps
             }
         }
 
-        public Map(int id)
-        {
-            Id = id;
-            
-            _monsters = new Dictionary<int, IMonster>();
-            _npcs = new Dictionary<int, INpc>();
-            _drops = new Dictionary<int, IDrop>();
-            _players = new Dictionary<int, IPlayer>();
-        }
-        
         public void AddEntity(IEntity entity)
         {
             switch (entity.EntityType)

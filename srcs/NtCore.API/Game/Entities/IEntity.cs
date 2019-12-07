@@ -6,22 +6,22 @@ namespace NtCore.API.Game.Entities
     public interface IEntity
     {
         /// <summary>
-        /// Id of entity
+        ///     Id of entity
         /// </summary>
         int Id { get; }
-        
+
         /// <summary>
-        /// Map of entity
+        ///     Map of entity
         /// </summary>
         IMap Map { get; }
-        
+
         /// <summary>
-        /// Position in map
+        ///     Position in map
         /// </summary>
         Position Position { get; }
-        
+
         /// <summary>
-        /// Type of entity
+        ///     Type of entity
         /// </summary>
         EntityType EntityType { get; }
     }

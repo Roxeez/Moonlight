@@ -3,7 +3,7 @@
     public interface IMonster : ILivingEntity
     {
         /// <summary>
-        /// Monster vnum
+        ///     Monster vnum
         /// </summary>
         int Vnum { get; }
     }

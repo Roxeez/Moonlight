@@ -1,4 +1,4 @@
-﻿using NtCore.API.Client;
+﻿using NtCore.API.Clients;
 using NtCore.API.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Network.Packets.Characters;

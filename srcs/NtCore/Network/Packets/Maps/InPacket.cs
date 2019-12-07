@@ -6,9 +6,8 @@ namespace NtCore.Network.Packets.Maps
     [PacketInfo("in", PacketType.Recv)]
     public class InPacket : Packet
     {
-        [PacketIndex(1)]
-        public EntityType EntityType { get; set; }
-        
+        [PacketIndex(1)] public EntityType EntityType { get; set; }
+
         public string Name { get; set; }
         public int Vnum { get; set; }
         public int Id { get; set; }
@@ -17,7 +16,7 @@ namespace NtCore.Network.Packets.Maps
         public byte HpPercentage { get; set; }
         public byte MpPercentage { get; set; }
         public int Amount { get; set; }
-        
+
         public ClassType ClassType { get; set; }
         public Gender Gender { get; set; }
         public byte Level { get; set; }

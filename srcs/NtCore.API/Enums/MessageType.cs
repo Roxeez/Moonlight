@@ -1,7 +1,7 @@
 ﻿namespace NtCore.API.Enums
 {
     /// <summary>
-    /// Represent all kind of Message (not Chat related)
+    ///     Represent all kind of Message (not Chat related)
     /// </summary>
     public enum MessageType : byte
     {

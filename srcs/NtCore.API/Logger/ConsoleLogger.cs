@@ -1,5 +1,4 @@
 ﻿using System;
-using NtCore.API.Logger;
 
 namespace NtCore.API.Logger
 {
@@ -7,13 +6,15 @@ namespace NtCore.API.Logger
     {
         private readonly string _prefix;
 
-        public ConsoleLogger() : this("NtCore") { }
-        
+        public ConsoleLogger() : this("NtCore")
+        {
+        }
+
         public ConsoleLogger(string prefix)
         {
             _prefix = prefix;
         }
-        
+
         public void Debug(string message)
         {
             Console.WriteLine($"[{_prefix}][DEBUG] {message}");

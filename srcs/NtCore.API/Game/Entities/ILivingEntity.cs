@@ -3,19 +3,20 @@
     public interface ILivingEntity : IEntity
     {
         /// <summary>
-        /// Current movement speed
+        ///     Current movement speed
         /// </summary>
         byte Speed { get; }
+
         byte Level { get; }
         byte Direction { get; }
 
         /// <summary>
-        /// Current hp percentage
+        ///     Current hp percentage
         /// </summary>
         byte HpPercentage { get; }
-        
+
         /// <summary>
-        /// Current mp percentage
+        ///     Current mp percentage
         /// </summary>
         byte MpPercentage { get; }
     }
