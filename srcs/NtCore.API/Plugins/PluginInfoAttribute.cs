@@ -3,7 +3,7 @@
 namespace NtCore.API.Plugins
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class PluginInfo : Attribute
+    public class PluginInfoAttribute : Attribute
     {
         public bool NeedInjection { get; set; }
     }

@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="Clients\ClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
+    <Compile Include="Commands\CommandManager.cs" />
     <Compile Include="Game\Entities\LivingEntity.cs" />
     <Compile Include="Game\Maps\MapManager.cs" />
     <Compile Include="Game\Maps\Miniland.cs" />

@@ -66,6 +66,7 @@
     <Compile Include="Clients\IClientManager.cs" />
     <Compile Include="Commands\CommandAttribute.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\ICommandManager.cs" />
     <Compile Include="Enums\ChatMessageType.cs" />
     <Compile Include="Enums\ClassType.cs" />
     <Compile Include="Enums\Element.cs" />
@@ -99,7 +100,7 @@
     <Compile Include="Plugins\IListener.cs" />
     <Compile Include="Plugins\IPluginManager.cs" />
     <Compile Include="Plugins\Plugin.cs" />
-    <Compile Include="Plugins\PluginInfo.cs" />
+    <Compile Include="Plugins\PluginInfoAttribute.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />

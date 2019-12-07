@@ -6,11 +6,13 @@ using System.Runtime.InteropServices;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.API;
 using NtCore.API.Clients;
+using NtCore.API.Commands;
 using NtCore.API.Logger;
 using NtCore.API.Managers;
 using NtCore.API.Plugins;
 using NtCore.API.Scheduler;
 using NtCore.Clients;
+using NtCore.Commands;
 using NtCore.Import;
 using NtCore.Managers;
 using NtCore.Network;
@@ -108,6 +110,7 @@ namespace NtCore
             services.AddSingleton<IClientManager, ClientManager>();
             services.AddSingleton<IPluginManager, PluginManager>();
             services.AddSingleton<IPacketManager, PacketManager>();
+            services.AddSingleton<ICommandManager, CommandManager>();
             services.AddSingleton<IMapManager, MapManager>();
 
             services.AddSingleton<INtCore, NtCore>();
@@ -140,7 +143,7 @@ namespace NtCore
 
                 if (pluginMain == null) continue;
 
-                var info = pluginMain.GetCustomAttribute<PluginInfo>();
+                var info = pluginMain.GetCustomAttribute<PluginInfoAttribute>();
                 if (info == null) continue;
 
                 services.AddSingleton(typeof(Plugin), pluginMain);

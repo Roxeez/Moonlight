@@ -1,4 +1,5 @@
 ﻿using System;
+using NtCore.API.Commands;
 using NtCore.API.Logger;
 using NtCore.API.Plugins;
 using NtCore.API.Scheduler;
@@ -28,6 +29,11 @@ namespace NtCore.API
         public static ILogger GetLogger()
         {
             return _ntCore.Logger;
+        }
+
+        public static ICommandManager GetCommandManager()
+        {
+            return _ntCore.CommandManager;
         }
     }
 }
