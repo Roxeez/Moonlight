@@ -24,7 +24,7 @@ namespace NtCore.Example
             character.ShowChatMessage($"Monsters : {map.Monsters.Count()}", ChatMessageColor.YELLOW);
             character.ShowChatMessage($"Npcs : {map.Npcs.Count()}", ChatMessageColor.YELLOW);
             character.ShowChatMessage($"Drops : {map.Drops.Count()}", ChatMessageColor.YELLOW);
-            character.ShowChatMessage($"-============================-", ChatMessageColor.GREEN);
+            character.ShowChatMessage($"-==================-", ChatMessageColor.GREEN);
         }
     }
 }
