@@ -1,17 +1,90 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using NtCore.API.Clients;
 using NtCore.API.Commands;
+using NtCore.API.Enums;
+using NtCore.API.Extensions;
+using NtCore.API.Logger;
+using NtCore.API.Plugins;
 
 namespace NtCore.Commands
 {
     public class CommandManager : ICommandManager
     {
-        public void Register(ICommandHandler handler)
+        private readonly IDictionary<string, (ICommandHandler, MethodInfo)> _registeredCommands = new Dictionary<string, (ICommandHandler, MethodInfo)>();
+        private readonly ILogger _logger;
+        
+        public CommandManager(ILogger logger)
         {
-            throw new NotImplementedException();
+            _logger = logger;
+        }
+        
+        public void Register(ICommandHandler handler, Plugin plugin)
+        {
+            foreach (var methodInfo in handler.GetType().GetMethods())
+            {
+                var command = methodInfo.GetCustomAttribute<CommandAttribute>();
+                if (command == null) continue;
+
+                ParameterInfo[] parameters = methodInfo.GetParameters();
+                if (parameters.Length == 0 || parameters.Length > 2)
+                {
+                    continue;
+                }
+
+                if (parameters.Length > 0 && parameters[0].ParameterType != typeof(IClient))
+                {
+                    continue;
+                }
+
+                if (parameters.Length > 1 && parameters[1].ParameterType != typeof(string[]))
+                {
+                    continue;
+                }
+
+                if (_registeredCommands.ContainsKey(command.Name))
+                {
+                    _logger.Warning($"[{nameof(CommandManager)}] Command {command.Name} already registered");
+                    continue;
+                }
+
+                plugin.Logger.Information($"Command {command.Name} registered");
+                _registeredCommands[command.Name] = (handler, methodInfo);
+            }
         }
 
-        public void Execute(string command)
+        public void Register<T>(Plugin plugin) where T : ICommandHandler
         {
+            var obj = Activator.CreateInstance<T>();
+            Register(obj, plugin);
+        }
+
+        public void Execute(IClient client, string command, string[] args)
+        {
+            (ICommandHandler, MethodInfo) handler = _registeredCommands.GetValueOrDefault(command);
+
+            if (handler == default((ICommandHandler, MethodInfo)))
+            {
+                client.Character.ShowChatMessage($"There is no command : {command}", ChatMessageType.RED);
+                return;
+            }
+
+            ICommandHandler commandHandler = handler.Item1;
+            MethodInfo method = handler.Item2;
+
+            ParameterInfo[] parameters = method.GetParameters();
+
+            switch (parameters.Length)
+            {
+                case 1:
+                    method.Invoke(commandHandler, new object[] {client});
+                    return;
+                case 2:
+                    method.Invoke(commandHandler, new object[] {client, args});
+                    break;
+            }
         }
     }
 }

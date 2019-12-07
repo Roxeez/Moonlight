@@ -7,7 +7,7 @@ namespace NtCore.API.Plugins
         private ILogger _logger;
         public abstract string Name { get; }
         public abstract string Version { get; }
-        public ILogger Logger => _logger ?? (_logger = new ConsoleLogger($"NtCore - {Name}"));
+        public ILogger Logger => _logger ?? (_logger = new ConsoleLogger($"{Name}"));
 
         /// <summary>
         ///     Called on plugin start

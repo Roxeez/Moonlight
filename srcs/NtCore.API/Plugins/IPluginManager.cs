@@ -10,9 +10,10 @@ namespace NtCore.API.Plugins
         /// <summary>
         ///     Register selected IListener
         /// </summary>
-        /// <param name="plugin">Plugin instance</param>
-        /// <param name="listeners">Listeners to register</param>
-        void RegisterListeners([NotNull] Plugin plugin, [NotNull] params IListener[] listeners);
+        /// <param name="listener">Listener to register</param>
+        void Register([NotNull] IListener listener, Plugin plugin);
+
+        void Register<T>(Plugin plugin) where T : IListener;
 
         /// <summary>
         ///     Call an event (execute all registered Handler of this event)

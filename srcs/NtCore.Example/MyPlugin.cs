@@ -1,5 +1,7 @@
 ﻿using System;
 using NtCore.API;
+using NtCore.API.Clients;
+using NtCore.API.Commands;
 using NtCore.API.Enums;
 using NtCore.API.Events.Character;
 using NtCore.API.Events.Entity;
@@ -18,7 +20,24 @@ namespace NtCore.Example
 
         public override void OnEnable()
         {
-            NtCoreAPI.GetPluginManager().RegisterListeners(this, new MyListener());
+            NtCoreAPI.GetPluginManager().Register<MyListener>(this);
+            NtCoreAPI.GetCommandManager().Register<MyCommandHandler>(this);
+        }
+    }
+
+    public class MyCommandHandler : ICommandHandler
+    {
+        [Command("ping")]
+        public void OnPingCommand(IClient sender)
+        {
+            sender.Character.ShowMessage("pong", MessageType.MIDDLE_SCREEN);
+        }
+
+        [Command("echo")]
+        public void OnEchoCommand(IClient sender, string[] args)
+        {
+            Console.WriteLine("Echo executed");
+            sender.Character.ShowBubbleMessage(string.Join(" ", args));
         }
     }
 

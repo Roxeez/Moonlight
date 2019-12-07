@@ -18,8 +18,7 @@ namespace NtCore.Plugins
 
         private readonly IClientManager _clientManager;
 
-        private readonly Dictionary<Type, List<(IListener, MethodInfo)>> _eventHandlers =
-            new Dictionary<Type, List<(IListener, MethodInfo)>>();
+        private readonly Dictionary<Type, List<(IListener, MethodInfo)>> _eventHandlers = new Dictionary<Type, List<(IListener, MethodInfo)>>();
 
         private readonly ILogger _logger;
 
@@ -38,9 +37,8 @@ namespace NtCore.Plugins
             plugin.OnEnable();
         }
 
-        public void RegisterListeners(Plugin plugin, IListener[] listeners)
+        public void Register(IListener listener, Plugin plugin)
         {
-            foreach (var listener in listeners)
             foreach (var methodInfo in listener.GetType().GetMethods())
             {
                 var handler = methodInfo.GetCustomAttribute<Handler>();
@@ -49,15 +47,12 @@ namespace NtCore.Plugins
                 ParameterInfo[] parameters = methodInfo.GetParameters();
                 if (parameters.Length != 1)
                 {
-                    _logger.Warning($"Wrong parameter length (Method: {methodInfo.Name} / Plugin: {plugin.Name})");
                     continue;
                 }
 
                 var type = methodInfo.GetParameters().First().ParameterType;
                 if (!typeof(Event).IsAssignableFrom(type))
                 {
-                    _logger.Warning(
-                        $"Parameter type is not an event (Method: {methodInfo.Name} / Plugin: {plugin.Name})");
                     continue;
                 }
 
@@ -68,8 +63,15 @@ namespace NtCore.Plugins
                     _eventHandlers[type] = handlers;
                 }
 
+                plugin.Logger.Information($"{type.Name} handler registered");
                 handlers.Add((listener, methodInfo));
             }
+        }
+
+        public void Register<T>(Plugin plugin) where T : IListener
+        {
+            var obj = Activator.CreateInstance<T>();
+            Register(obj, plugin);
         }
 
         public void CallEvent(Event e)

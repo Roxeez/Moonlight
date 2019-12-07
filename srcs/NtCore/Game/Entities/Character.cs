@@ -27,6 +27,7 @@ namespace NtCore.Game.Entities
         public int Mp { get; set; }
         public int MaxMp { get; set; }
         public ITarget Target { get; set; }
+        public byte JobLevel { get; set; }
 
         public void ShowMessage(string message, MessageType messageType)
         {

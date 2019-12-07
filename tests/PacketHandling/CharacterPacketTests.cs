@@ -115,5 +115,25 @@ namespace NtCore.Tests.PacketHandling
             Check.That(target.Entity.HpPercentage).IsEqualTo(hpPercentage);
             Check.That(target.Entity.MpPercentage).IsEqualTo(mpPercentage);
         }
+
+        [Fact]
+        public void CInfo_Packet_Initialize_Character()
+        {
+            _client.ReceivePacket("c_info Roxeetest - -1 -1 - 1290125 0 1 0 9 0 1 0 0 0 0 0 0 0");
+
+            Check.That(_client.Character.Name).IsEqualTo("Roxeetest");
+            Check.That(_client.Character.Id).IsEqualTo(1290125);
+            Check.That(_client.Character.Gender).IsEqualTo(Gender.FEMALE);
+            Check.That(_client.Character.Class).IsEqualTo(ClassType.ADVENTURER);
+        }
+
+        [Fact]
+        public void Lev_Packet_Change_Character_Level()
+        {
+            _client.ReceivePacket("lev 5 3840 3 1380 5460 3600 0 6 0 0 3 0");
+
+            Check.That(_client.Character.Level).IsEqualTo(5);
+            Check.That(_client.Character.JobLevel).IsEqualTo(3);
+        }
     }
 }

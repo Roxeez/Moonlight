@@ -58,6 +58,8 @@ namespace NtCore.API.Game.Entities
         int MaxMp { get; }
         
         ITarget Target { get; }
+        
+        byte JobLevel { get; }
 
         /// <summary>
         ///     Show a message to character (clientside only it's a received packet)

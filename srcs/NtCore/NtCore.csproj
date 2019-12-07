@@ -110,8 +110,12 @@
     <Compile Include="Game\Maps\MapManager.cs" />
     <Compile Include="Game\Maps\Miniland.cs" />
     <Compile Include="Game\Maps\MinilandObject.cs" />
+    <Compile Include="Network\Handlers\Characters\CInfoPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\LevPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\StPacketHandler.cs" />
     <Compile Include="Network\PacketManager.cs" />
+    <Compile Include="Network\Packets\Characters\CInfoPacket.cs" />
+    <Compile Include="Network\Packets\Characters\LevPacket.cs" />
     <Compile Include="Network\Packets\Characters\StPacket.cs" />
     <Compile Include="NtCore.cs" />
     <Compile Include="Plugins\PluginManager.cs" />
