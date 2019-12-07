@@ -33,7 +33,7 @@ namespace NtCore.Network
 
         public void Handle(IClient client, string packet, PacketType packetType)
         {
-            var arguments = packet.Trim().Split(' ');
+            string[] arguments = packet.Trim().Split(' ');
             var header = arguments.Length > 0 ? arguments[0] : packet;
 
             var packetHandler = _packetHandlers.GetValueOrDefault((header, packetType));

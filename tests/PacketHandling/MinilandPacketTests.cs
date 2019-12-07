@@ -62,7 +62,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket("mltobj 3250.1.15.25 3285.2.25.65 1285.3.65.87");
 
-            var objects = Utility.CreateDummyMinilandObjects();
+            IMinilandObject[] objects = Utility.CreateDummyMinilandObjects();
 
             var miniland = _client.Character.Map.As<IMiniland>();
 

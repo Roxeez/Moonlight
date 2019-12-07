@@ -21,7 +21,7 @@ namespace NtCore.API.Plugins
         void CallEvent([NotNull] Event e);
 
         /// <summary>
-        /// Start selected plugin
+        ///     Start selected plugin
         /// </summary>
         /// <param name="plugin">Plugin to start</param>
         void Start([NotNull] Plugin plugin);

@@ -85,7 +85,7 @@ namespace NtCore
             Console.WriteLine(separator + logo + separator);
             Console.ForegroundColor = ConsoleColor.White;
         }
-
+        
         public static IServiceProvider UnitTestProvider()
         {
             var services = new ServiceCollection();
@@ -133,7 +133,7 @@ namespace NtCore
             if (!Directory.Exists(PluginManager.PluginDirectory))
                 Directory.CreateDirectory(PluginManager.PluginDirectory);
 
-            var plugins = Directory.GetFiles(PluginManager.PluginDirectory);
+            string[] plugins = Directory.GetFiles(PluginManager.PluginDirectory);
             if (plugins.Length == 0) return;
 
             foreach (var file in plugins)

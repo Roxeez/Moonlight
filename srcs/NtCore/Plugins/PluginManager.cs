@@ -46,7 +46,7 @@ namespace NtCore.Plugins
                 var handler = methodInfo.GetCustomAttribute<Handler>();
                 if (handler == null) continue;
 
-                var parameters = methodInfo.GetParameters();
+                ParameterInfo[] parameters = methodInfo.GetParameters();
                 if (parameters.Length != 1)
                 {
                     _logger.Warning($"Wrong parameter length (Method: {methodInfo.Name} / Plugin: {plugin.Name})");
@@ -61,7 +61,7 @@ namespace NtCore.Plugins
                     continue;
                 }
 
-                var handlers = _eventHandlers.GetValueOrDefault(type);
+                List<(IListener, MethodInfo)> handlers = _eventHandlers.GetValueOrDefault(type);
                 if (handlers == null)
                 {
                     handlers = new List<(IListener, MethodInfo)>();
@@ -74,11 +74,11 @@ namespace NtCore.Plugins
 
         public void CallEvent(Event e)
         {
-            var handlers = _eventHandlers.GetValueOrDefault(e.GetType());
+            List<(IListener, MethodInfo)> handlers = _eventHandlers.GetValueOrDefault(e.GetType());
 
             if (handlers == null) return;
 
-            foreach ((var listener, var methodInfo) in handlers) methodInfo.Invoke(listener, new object[] {e});
+            foreach (var (listener, methodInfo) in handlers) methodInfo.Invoke(listener, new object[] {e});
         }
     }
 }
