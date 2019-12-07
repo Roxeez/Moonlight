@@ -1,5 +1,5 @@
 ﻿using NtCore.API.Clients;
-using NtCore.API.Events.Maps;
+using NtCore.API.Events.Map;
 using NtCore.API.Extensions;
 using NtCore.API.Plugins;
 using NtCore.Game.Maps;

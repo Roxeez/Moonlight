@@ -4,7 +4,7 @@ using NtCore.API.Game.Entities;
 using NtCore.API.Game.Maps;
 using NtCore.API.Plugins;
 
-namespace NtCore.API.Events.Maps
+namespace NtCore.API.Events.Entity
 {
     /// <summary>
     ///     Event called when an Entity Spawn

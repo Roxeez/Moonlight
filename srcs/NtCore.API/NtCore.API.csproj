@@ -74,9 +74,9 @@
     <Compile Include="Enums\Faction.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\MessageType.cs" />
-    <Compile Include="Events\Maps\EntitySpawnEvent.cs" />
-    <Compile Include="Events\Maps\MapChangeEvent.cs" />
-    <Compile Include="Events\Maps\MinilandJoinEvent.cs" />
+    <Compile Include="Events\Entity\EntitySpawnEvent.cs" />
+    <Compile Include="Events\Map\MapChangeEvent.cs" />
+    <Compile Include="Events\Map\MinilandJoinEvent.cs" />
     <Compile Include="Extensions\CastExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Game\Battle\ITarget.cs" />

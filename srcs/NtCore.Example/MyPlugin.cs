@@ -1,6 +1,6 @@
 ﻿using NtCore.API;
 using NtCore.API.Enums;
-using NtCore.API.Events.Maps;
+using NtCore.API.Events.Entity;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
 using NtCore.API.Plugins;

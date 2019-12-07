@@ -1,6 +1,6 @@
 ﻿using System;
 using NtCore.API.Clients;
-using NtCore.API.Events.Maps;
+using NtCore.API.Events.Map;
 using NtCore.API.Extensions;
 using NtCore.API.Managers;
 using NtCore.API.Plugins;

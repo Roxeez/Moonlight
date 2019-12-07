@@ -3,7 +3,7 @@ using NtCore.API.Clients;
 using NtCore.API.Game.Maps;
 using NtCore.API.Plugins;
 
-namespace NtCore.API.Events.Maps
+namespace NtCore.API.Events.Map
 {
     /// <summary>
     ///     Event called when client change map BEFORE receiving all in packets
