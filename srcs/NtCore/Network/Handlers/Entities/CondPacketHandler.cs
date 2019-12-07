@@ -2,9 +2,9 @@
 using NtCore.API.Enums;
 using NtCore.API.Game.Maps;
 using NtCore.Game.Entities;
-using NtCore.Network.Packets.Characters;
+using NtCore.Network.Packets.Entities;
 
-namespace NtCore.Network.Handlers.Characters
+namespace NtCore.Network.Handlers.Entities
 {
     public class CondPacketHandler : PacketHandler<CondPacket>
     {

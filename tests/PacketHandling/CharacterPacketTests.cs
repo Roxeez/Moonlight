@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NFluent;
+using NtCore.API;
 using NtCore.API.Clients;
 using NtCore.API.Enums;
 using NtCore.API.Extensions;
@@ -93,6 +94,32 @@ namespace NtCore.Tests.PacketHandling
             var entity = _client.Character.Map.GetEntity(entityType, entityId).As<ILivingEntity>();
 
             Check.That(entity).IsNotNull();
+            Check.That(entity.Speed).IsEqualTo(speed);
+        }
+
+        [Theory]
+        [InlineData("walk 15 35 0 10", 15, 35, 10)]
+        [InlineData("walk 128 11 0 6", 128, 11, 6)]
+        public void Walk_Packet_Change_Character_Position_And_Speed(string packet, byte x, byte y, byte speed)
+        {
+            _client.SendPacket(packet);
+
+            Check.That(_client.Character.Position).IsEqualTo(new Position(x, y));
+            Check.That(_client.Character.Speed).IsEqualTo(speed);
+        }
+
+        [Theory]
+        [InlineData("mv 2 2053 18 10 21", EntityType.NPC, 2053, 18, 10, 21)]
+        [InlineData("mv 3 874 87 3 14", EntityType.MONSTER, 874, 87, 3, 14)]
+        public void Mv_Packet_Change_Entity_Position_And_Speed(string packet, EntityType entityType, int id, byte x, byte y, byte speed)
+        {
+            _client.CreateMapMock();
+            
+            _client.ReceivePacket(packet);
+
+            var entity = _client.Character.Map.GetEntity(entityType, id).As<ILivingEntity>();
+
+            Check.That(entity.Position).IsEqualTo(new Position(x, y));
             Check.That(entity.Speed).IsEqualTo(speed);
         }
 

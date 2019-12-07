@@ -69,6 +69,7 @@
     <Compile Include="Commands\ICommandManager.cs" />
     <Compile Include="Enums\ChatMessageColor.cs" />
     <Compile Include="Enums\ClassType.cs" />
+    <Compile Include="Enums\ClientType.cs" />
     <Compile Include="Enums\Element.cs" />
     <Compile Include="Enums\EntityType.cs" />
     <Compile Include="Enums\Faction.cs" />

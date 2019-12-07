@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 using NtCore.API.Clients;
+using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
 using NtCore.Game.Entities;
 using NtCore.Import;
@@ -27,7 +28,8 @@ namespace NtCore.Clients
         public LocalClient(ProcessModule mainModule)
         {
             Character = new Character(this);
-
+            Type = ClientType.LOCAL;
+            
             _sendCallback = OnPacketSend;
             _recvCallback = OnPacketReceived;
 
@@ -41,6 +43,7 @@ namespace NtCore.Clients
         }
 
         public ICharacter Character { get; }
+        public ClientType Type { get; }
 
         public void SendPacket(string packet)
         {

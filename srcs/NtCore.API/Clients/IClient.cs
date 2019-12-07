@@ -1,5 +1,6 @@
 ﻿using System;
 using JetBrains.Annotations;
+using NtCore.API.Enums;
 using NtCore.API.Game.Entities;
 
 namespace NtCore.API.Clients
@@ -15,6 +16,7 @@ namespace NtCore.API.Clients
         /// </summary>
         ICharacter Character { get; }
 
+        ClientType Type { get; }
         /// <summary>
         ///     Send a packet
         /// </summary>

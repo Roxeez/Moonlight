@@ -1,6 +1,6 @@
 ﻿using NtCore.API.Enums;
 
-namespace NtCore.Network.Packets.Characters
+namespace NtCore.Network.Packets.Entities
 {
     [PacketInfo("st", PacketType.Recv)]
     public class StPacket : Packet
