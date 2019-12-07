@@ -116,24 +116,28 @@ namespace NtCore.Tests.PacketHandling
             Check.That(target.Entity.MpPercentage).IsEqualTo(mpPercentage);
         }
 
-        [Fact]
-        public void CInfo_Packet_Initialize_Character()
+        [Theory]
+        [InlineData("c_info Roxeetest - -1 -1 - 1290125 0 1 0 9 0 1 0 0 0 0 0 0 0", "Roxeetest", 1290125, Gender.FEMALE, ClassType.ADVENTURER)]
+        [InlineData("c_info Roxeez - -1 -1 - 999999 0 0 0 9 1 1 0 0 0 0 0 0 0", "Roxeez", 999999, Gender.MALE, ClassType.SWORDSMAN)]
+        public void CInfo_Packet_Initialize_Character(string packet, string name, int id, Gender gender, ClassType classType)
         {
-            _client.ReceivePacket("c_info Roxeetest - -1 -1 - 1290125 0 1 0 9 0 1 0 0 0 0 0 0 0");
+            _client.ReceivePacket(packet);
 
-            Check.That(_client.Character.Name).IsEqualTo("Roxeetest");
-            Check.That(_client.Character.Id).IsEqualTo(1290125);
-            Check.That(_client.Character.Gender).IsEqualTo(Gender.FEMALE);
-            Check.That(_client.Character.Class).IsEqualTo(ClassType.ADVENTURER);
+            Check.That(_client.Character.Name).IsEqualTo(name);
+            Check.That(_client.Character.Id).IsEqualTo(id);
+            Check.That(_client.Character.Gender).IsEqualTo(gender);
+            Check.That(_client.Character.Class).IsEqualTo(classType);
         }
 
-        [Fact]
-        public void Lev_Packet_Change_Character_Level()
+        [Theory]
+        [InlineData("lev 5 3840 3 1380 5460 3600 0 6 0 0 3 0", 5, 3)]
+        [InlineData("lev 55 3840 28 1380 5460 3600 0 6 0 0 3 0", 55, 28)]
+        public void Lev_Packet_Change_Character_Level(string packet, int level, int jobLevel)
         {
-            _client.ReceivePacket("lev 5 3840 3 1380 5460 3600 0 6 0 0 3 0");
+            _client.ReceivePacket(packet);
 
-            Check.That(_client.Character.Level).IsEqualTo(5);
-            Check.That(_client.Character.JobLevel).IsEqualTo(3);
+            Check.That(_client.Character.Level).IsEqualTo(level);
+            Check.That(_client.Character.JobLevel).IsEqualTo(jobLevel);
         }
     }
 }
