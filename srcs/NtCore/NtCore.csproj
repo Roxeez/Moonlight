@@ -123,7 +123,6 @@
     <Compile Include="Import\Kernel32.cs" />
     <Compile Include="Import\NtNative.cs" />
     <Compile Include="Import\User32.cs" />
-    <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Network\Handlers\Characters\CondPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\FactionPacketHandler.cs" />

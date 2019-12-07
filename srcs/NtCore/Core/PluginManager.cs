@@ -45,7 +45,7 @@ namespace NtCore.Core
             foreach (string file in plugins)
             {
                 Assembly assembly = Assembly.LoadFile(Path.Combine(PluginDirectory, file));
-                Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(IPlugin).IsAssignableFrom(x));
+                Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(Plugin).IsAssignableFrom(x));
 
                 if (pluginMain == null)
                 {
@@ -60,27 +60,26 @@ namespace NtCore.Core
                     continue;
                 }
                 
-                _logger.Information($"Loaded {info.Name} v{info.Version}");
-                services.AddSingleton(typeof(IPlugin), pluginMain);
+                services.AddSingleton(typeof(Plugin), pluginMain);
             }
         }
 
-        public void Start(IServiceProvider serviceProvider)
+        public void Start(IEnumerable<Plugin> plugins)
         {
-            IEnumerable<IPlugin> plugins = serviceProvider.GetServices<IPlugin>();
-
-            foreach (IPlugin plugin in plugins)
+            foreach (Plugin plugin in plugins)
             {
-                plugin.OnStart();
+                _logger.Information($"Starting {plugin.Name} {plugin.Version}");
+                plugin.OnEnable();
             }
 
             if (plugins.Any(x => x.GetType().GetCustomAttribute<PluginInfo>().IsInjected))
             {
+                _logger.Information("Local client created successfully");
                 _clientManager.CreateLocalClient();
             }
         }
-        
-        public void Register(IListener[] listeners)
+
+        public void RegisterListeners(Plugin plugin, IListener[] listeners)
         {
             foreach (IListener listener in listeners)
             {

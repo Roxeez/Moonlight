@@ -1,29 +1,22 @@
-﻿using NtCore.API.Core;
-using NtCore.API.Enums;
+﻿using NtCore.API.Enums;
 using NtCore.API.Events.Maps;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Entities;
-using NtCore.API.Logger;
 using NtCore.API.Plugins;
 
 namespace NtCore.Example
 {
-    [PluginInfo(Name = "MyPlugin", Version = "1.0", IsInjected = true)]
-    public class MyPlugin : IPlugin
+    [PluginInfo(IsInjected = true)]
+    public class MyPlugin : Plugin
     {
-        private readonly ILogger _logger;
-        private readonly IPluginManager _pluginManager;
+        public override string Name => "MyPlugin";
+        public override string Version => "1.0.0";
 
-        public MyPlugin(ILogger logger, IPluginManager pluginManager)
-        {
-            _logger = logger;
-            _pluginManager = pluginManager;
-        }
         
-        public void OnStart()
+        public override void OnEnable()
         {
-            _pluginManager.Register(new MyListener());
-            _logger.Information("[MyPlugin] Successfully started");
+            PluginManager.RegisterListeners(this, new MyListener());
+            Logger.Information("Successfully started");
         }
     }
 

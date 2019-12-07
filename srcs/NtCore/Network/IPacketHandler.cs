@@ -2,7 +2,7 @@
 
 namespace NtCore.Network
 {
-    internal interface IPacketHandler
+    public interface IPacketHandler
     {
         void Handle(IClient client, IPacket packet);
     }

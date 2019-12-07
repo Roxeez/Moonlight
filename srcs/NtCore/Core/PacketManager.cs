@@ -16,7 +16,7 @@ namespace NtCore.Core
         void Handle(IClient client, string packet, PacketType packetType);
     }
     
-    internal sealed class PacketManager : IPacketManager
+    public sealed class PacketManager : IPacketManager
     {
         private delegate IPacket PacketCreator();
         
@@ -48,11 +48,9 @@ namespace NtCore.Core
             }
         }
         
-        public void Start(IServiceProvider provider)
+        public void Start(IEnumerable<IPacketHandler> handlers)
         {
-            IEnumerable<IPacketHandler> packetHandlers = provider.GetServices<IPacketHandler>();
-            
-            foreach (IPacketHandler packetHandler in packetHandlers)
+            foreach (IPacketHandler packetHandler in handlers)
             {
                 Type type = packetHandler.GetType();
                 if (type.BaseType == null)

@@ -1,7 +1,7 @@
 ﻿using System;
 using NtCore.API.Logger;
 
-namespace NtCore.Logger
+namespace NtCore.API.Logger
 {
     public class ConsoleLogger : ILogger
     {

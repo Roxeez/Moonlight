@@ -18,7 +18,7 @@ namespace NtCore.Tests.PacketHandling
 
         public MinilandPacketTests()
         {
-            var packetManager = Program.Setup().GetService<IPacketManager>();
+            var packetManager = Program.Build().GetService<IPacketManager>();
             var mock = new Mock<IClient>();
             
             mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  packetManager.Handle(mock.Object, p, PacketType.Recv));

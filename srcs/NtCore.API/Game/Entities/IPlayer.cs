@@ -21,9 +21,7 @@ namespace NtCore.API.Game.Entities
         
         ClassType Class { get; }
         Gender Gender { get; }
-        
-        byte Level { get; }
-        
+
         /// <summary>
         /// Player faction
         /// </summary>
