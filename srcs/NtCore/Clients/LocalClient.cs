@@ -65,11 +65,17 @@ namespace NtCore.Clients
         {
             while (!_dispose)
             {
-                if (_sendQueue.TryDequeue(out var sendPacket)) NtNative.SendPacket(sendPacket);
+                while (_sendQueue.TryDequeue(out var sendPacket))
+                {
+                    NtNative.SendPacket(sendPacket);
+                }
 
-                if (_recvQueue.TryDequeue(out var receivePacket)) NtNative.RecvPacket(receivePacket);
+                while (_recvQueue.TryDequeue(out var receivePacket))
+                {
+                    NtNative.RecvPacket(receivePacket);
+                }
 
-                Thread.Sleep(1);
+                Thread.Sleep(10);
             }
         }
 
