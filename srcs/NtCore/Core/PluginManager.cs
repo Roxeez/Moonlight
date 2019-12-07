@@ -14,6 +14,7 @@ namespace NtCore.Core
 {
     public class PluginManager : IPluginManager
     {
+        private static readonly string PluginDirectory = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NtCore"), "plugins");
         private readonly Dictionary<Type, List<(IListener, MethodInfo)>> _eventHandlers = new Dictionary<Type, List<(IListener, MethodInfo)>>();
         
         private readonly ILogger _logger;
@@ -27,22 +28,23 @@ namespace NtCore.Core
 
         public void Load(IServiceCollection services)
         {
-            if (!Directory.Exists(NtCore.PluginsFolder))
+            if (!Directory.Exists(PluginDirectory))
             {
-                Directory.CreateDirectory(NtCore.PluginsFolder);
+                _logger.Information($"Creating {PluginDirectory} folder");
+                Directory.CreateDirectory(PluginDirectory);
             }
 
-            string[] plugins = Directory.GetFiles(NtCore.PluginsFolder);
-
+            string[] plugins = Directory.GetFiles(PluginDirectory);
             if (plugins.Length == 0)
             {
                 _logger.Warning("Plugin folder is empty");
                 return;
             }
-
+            
+            _logger.Information($"Found {plugins}");
             foreach (string file in plugins)
             {
-                Assembly assembly = Assembly.LoadFile(Path.Combine(NtCore.PluginsFolder, file));
+                Assembly assembly = Assembly.LoadFile(Path.Combine(PluginDirectory, file));
                 Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(IPlugin).IsAssignableFrom(x));
 
                 if (pluginMain == null)
@@ -58,6 +60,7 @@ namespace NtCore.Core
                     continue;
                 }
                 
+                _logger.Information($"Loaded {info.Name} v{info.Version}");
                 services.AddSingleton(typeof(IPlugin), pluginMain);
             }
         }

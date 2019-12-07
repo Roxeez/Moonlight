@@ -1,5 +1,4 @@
 ﻿using System;
-using NtCore.API;
 using NtCore.API.Client;
 using NtCore.API.Core;
 using NtCore.API.Enums;
@@ -85,7 +84,7 @@ namespace NtCore.Network.Handlers.Maps
             
             map.AddEntity(entity);
 
-            if (character.LastMapChange.AddSeconds(2) < DateTime.Now)
+            if (character.LastMapChange.AddSeconds(5) < DateTime.Now)
             {
                 _pluginManager.CallEvent(new EntitySpawnEvent(client, entity, map));
             }

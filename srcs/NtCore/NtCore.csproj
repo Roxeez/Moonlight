@@ -137,7 +137,6 @@
     <Compile Include="Network\Packets\Characters\PairyPacket.cs" />
     <Compile Include="Network\Packets\Characters\SpPacket.cs" />
     <Compile Include="Network\Packets\Maps\InPacket.cs" />
-    <Compile Include="NtCore.cs" />
     <Compile Include="Network\Handlers\Characters\StatPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\CMapPacketHandler.cs" />
     <Compile Include="Network\PacketIndex.cs" />

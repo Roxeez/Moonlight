@@ -13,7 +13,6 @@ namespace NtCore.Game.Entities
         public int Dignity { get; set; }
         public ClassType Class { get; set; }
         public Gender Gender { get; set; }
-        public byte Level { get; set; }
         public Faction Faction { get; set; }
 
         public Player()

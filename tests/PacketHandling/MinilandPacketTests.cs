@@ -1,8 +1,10 @@
-﻿using Moq;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using NFluent;
 using NtCore.API.Client;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Maps;
+using NtCore.Core;
 using NtCore.Game.Entities;
 using NtCore.Network;
 using NtCore.Tests.Extensions;
@@ -16,11 +18,10 @@ namespace NtCore.Tests.PacketHandling
 
         public MinilandPacketTests()
         {
-            var ntCore = Program.Setup();
-            
+            var packetManager = Program.Setup().GetService<IPacketManager>();
             var mock = new Mock<IClient>();
             
-            mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
+            mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  packetManager.Handle(mock.Object, p, PacketType.Recv));
             mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
             
             _client = mock.Object;

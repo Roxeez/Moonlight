@@ -15,17 +15,13 @@ namespace NtCore.Network.Handlers.Maps
 {
     public class CMapPacketHandler : PacketHandler<CMapPacket>
     {
-        private readonly ILogger _logger;
         private readonly IPluginManager _pluginManager;
         private readonly IMapManager _mapManager;
-        private readonly IScheduler _scheduler;
-        
-        public CMapPacketHandler(ILogger logger, IMapManager mapManager, IPluginManager pluginManager, IScheduler scheduler)
+
+        public CMapPacketHandler(IMapManager mapManager, IPluginManager pluginManager)
         {
-            _logger = logger;
             _pluginManager = pluginManager;
             _mapManager = mapManager;
-            _scheduler = scheduler;
         }
         
         public override void Handle(IClient client, CMapPacket packet)
@@ -36,7 +32,6 @@ namespace NtCore.Network.Handlers.Maps
 
             if (!packet.IsJoining)
             {
-                _logger.Debug("Is not joining map");
                 return;
             }
             
