@@ -8,10 +8,7 @@ namespace NtCore.Game.Maps
     {
         private readonly Dictionary<int, IMinilandObject> _minilandObjects;
 
-        public Miniland() : base(20001)
-        {
-            _minilandObjects = new Dictionary<int, IMinilandObject>();
-        }
+        public Miniland() : base(20001) => _minilandObjects = new Dictionary<int, IMinilandObject>();
 
         public string Owner { get; set; }
         public int Visitor { get; set; }
@@ -19,10 +16,7 @@ namespace NtCore.Game.Maps
         public string Message { get; set; }
         public IEnumerable<IMinilandObject> MinilandObjects => _minilandObjects.Values;
 
-        public IMinilandObject GetMinilandObject(int id)
-        {
-            return _minilandObjects.GetValueOrDefault(id);
-        }
+        public IMinilandObject GetMinilandObject(int id) => _minilandObjects.GetValueOrDefault(id);
 
         public void AddMinilandObject(IMinilandObject obj)
         {

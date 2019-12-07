@@ -34,7 +34,7 @@ namespace NtCore.Clients
             NtNative.SetSendCallback(_sendCallback);
             NtNative.SetRecvCallback(_recvCallback);
 
-            NtNative.Setup((uint) mainModule.BaseAddress, (uint) mainModule.ModuleMemorySize);
+            NtNative.Setup((uint)mainModule.BaseAddress, (uint)mainModule.ModuleMemorySize);
 
             _thread = new Thread(Loop);
             _thread.Start();
@@ -65,12 +65,12 @@ namespace NtCore.Clients
         {
             while (!_dispose)
             {
-                while (_sendQueue.TryDequeue(out var sendPacket))
+                while (_sendQueue.TryDequeue(out string sendPacket))
                 {
                     NtNative.SendPacket(sendPacket);
                 }
 
-                while (_recvQueue.TryDequeue(out var receivePacket))
+                while (_recvQueue.TryDequeue(out string receivePacket))
                 {
                     NtNative.RecvPacket(receivePacket);
                 }

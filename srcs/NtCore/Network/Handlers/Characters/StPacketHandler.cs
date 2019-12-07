@@ -19,7 +19,7 @@ namespace NtCore.Network.Handlers.Characters
             _logger = logger;
             _pluginManager = pluginManager;
         }
-        
+
         public override void Handle(IClient client, StPacket packet)
         {
             var character = client.Character.As<Character>();
@@ -30,7 +30,7 @@ namespace NtCore.Network.Handlers.Characters
                 _logger.Warning($"{nameof(StPacketHandler)} - Can't find entity in map.");
                 return;
             }
-            
+
             entity.HpPercentage = packet.HpPercentage;
             entity.MpPercentage = packet.MpPercentage;
             entity.Level = packet.Level;
@@ -42,8 +42,8 @@ namespace NtCore.Network.Handlers.Characters
                     Hp = packet.Hp,
                     Mp = packet.Mp
                 };
-                
-                _pluginManager.CallEvent(new TargetChangeEvent(client, character.Target));
+
+                _pluginManager.CallEvent(new TargetChangeEvent(client.Character, character.Target));
                 return;
             }
 
@@ -51,8 +51,8 @@ namespace NtCore.Network.Handlers.Characters
 
             target.Hp = packet.Hp;
             target.Mp = packet.Mp;
-            
-            _pluginManager.CallEvent(new TargetStatUpdateEvent(client, target));
+
+            _pluginManager.CallEvent(new TargetStatUpdateEvent(client.Character, target));
         }
     }
 }

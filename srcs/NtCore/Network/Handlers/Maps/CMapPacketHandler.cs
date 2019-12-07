@@ -27,13 +27,22 @@ namespace NtCore.Network.Handlers.Maps
             var source = client.Character.Map.As<Map>();
             var destination = _mapManager.GetMapById(packet.MapId).As<Map>();
 
-            if (!packet.IsJoining) return;
+            if (!packet.IsJoining)
+            {
+                return;
+            }
 
-            if (source != null) source.RemoveEntity(character);
+            if (source != null)
+            {
+                source.RemoveEntity(character);
+            }
 
             destination.AddEntity(character);
 
-            if (source != null) _pluginManager.CallEvent(new MapChangeEvent(client, source, destination));
+            if (source != null)
+            {
+                _pluginManager.CallEvent(new MapChangeEvent(client.Character, source, destination));
+            }
 
             character.LastMapChange = DateTime.Now;
         }

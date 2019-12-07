@@ -5,10 +5,7 @@ namespace NtCore.Game.Entities
 {
     public class Monster : LivingEntity, IMonster
     {
-        public Monster()
-        {
-            EntityType = EntityType.MONSTER;
-        }
+        public Monster() => EntityType = EntityType.MONSTER;
 
         public int Vnum { get; set; }
     }

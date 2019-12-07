@@ -11,23 +11,23 @@ namespace NtCore.Network.Handlers.Maps
     {
         private readonly IPluginManager _pluginManager;
 
-        public MlInfoBrPacketHandler(IPluginManager pluginManager)
-        {
-            _pluginManager = pluginManager;
-        }
+        public MlInfoBrPacketHandler(IPluginManager pluginManager) => _pluginManager = pluginManager;
 
         public override void Handle(IClient client, MlInfoBrPacket packet)
         {
             var miniland = client.Character.Map.As<Miniland>();
 
-            if (miniland == null) return;
+            if (miniland == null)
+            {
+                return;
+            }
 
             miniland.Owner = packet.Owner;
             miniland.Visitor = packet.Visitor;
             miniland.TotalVisitor = packet.TotalVisitor;
             miniland.Message = packet.Message;
 
-            _pluginManager.CallEvent(new MinilandJoinEvent(client, miniland));
+            _pluginManager.CallEvent(new MinilandJoinEvent(client.Character, miniland));
         }
     }
 }

@@ -12,28 +12,20 @@ namespace NtCore.API
 
         public static void Initialize(INtCore ntCore)
         {
-            if (_ntCore != null) throw new InvalidOperationException();
+            if (_ntCore != null)
+            {
+                throw new InvalidOperationException();
+            }
+
             _ntCore = ntCore;
         }
 
-        public static IScheduler GetScheduler()
-        {
-            return _ntCore.Scheduler;
-        }
+        public static IScheduler GetScheduler() => _ntCore.Scheduler;
 
-        public static IPluginManager GetPluginManager()
-        {
-            return _ntCore.PluginManager;
-        }
+        public static IPluginManager GetPluginManager() => _ntCore.PluginManager;
 
-        public static ILogger GetLogger()
-        {
-            return _ntCore.Logger;
-        }
+        public static ILogger GetLogger() => _ntCore.Logger;
 
-        public static ICommandManager GetCommandManager()
-        {
-            return _ntCore.CommandManager;
-        }
+        public static ICommandManager GetCommandManager() => _ntCore.CommandManager;
     }
 }

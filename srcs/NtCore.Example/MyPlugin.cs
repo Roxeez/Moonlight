@@ -1,6 +1,4 @@
-﻿using System;
-using NtCore.API;
-using NtCore.API.Clients;
+﻿using NtCore.API;
 using NtCore.API.Commands;
 using NtCore.API.Enums;
 using NtCore.API.Events.Character;
@@ -28,16 +26,15 @@ namespace NtCore.Example
     public class MyCommandHandler : ICommandHandler
     {
         [Command("ping")]
-        public void OnPingCommand(IClient sender)
+        public void OnPingCommand(ICharacter sender)
         {
-            sender.Character.ShowMessage("pong", MessageType.MIDDLE_SCREEN);
+            sender.ShowMessage("pong", MessageType.MIDDLE_SCREEN);
         }
 
         [Command("echo")]
-        public void OnEchoCommand(IClient sender, string[] args)
+        public void OnEchoCommand(ICharacter sender, string[] args)
         {
-            Console.WriteLine("Echo executed");
-            sender.Character.ShowBubbleMessage(string.Join(" ", args));
+            sender.ShowBubbleMessage(string.Join(" ", args));
         }
     }
 
@@ -46,24 +43,21 @@ namespace NtCore.Example
         [Handler]
         public void OnEntitySpawn(EntitySpawnEvent e)
         {
-            ICharacter character = e.Client.Character;
-
             if (e.Entity.EntityType == EntityType.PLAYER)
             {
-                IPlayer player = e.Entity.As<IPlayer>();
+                var player = e.Entity.As<IPlayer>();
 
-                character.ShowChatMessage($"{player.Id}/{player.Name}/{player.Level}", ChatMessageType.RED);
+                e.Character.ShowChatMessage($"{player.Id}/{player.Name}/{player.Level}", ChatMessageType.RED);
             }
         }
 
         [Handler]
         public void OnTargetChange(TargetChangeEvent e)
         {
-            ICharacter character = e.Client.Character;
             ITarget target = e.Target;
             ILivingEntity entity = e.Target.Entity;
-            
-            character.ShowBubbleMessage($"Id {entity.Id} / Type {entity.EntityType} / Level {entity.Level} / Hp {target.Hp} / Mp {target.Mp}", entity);
+
+            e.Character.ShowBubbleMessage($"Id {entity.Id} / Type {entity.EntityType} / Level {entity.Level} / Hp {target.Hp} / Mp {target.Mp}", entity);
         }
     }
 }

@@ -12,10 +12,14 @@ namespace NtCore.Managers
 
         public IMap GetMapById(int id)
         {
-            var map = _maps.GetValueOrDefault(id);
+            IMap map = _maps.GetValueOrDefault(id);
             if (map == null)
             {
-                if (id == 20001) return new Miniland();
+                if (id == 20001)
+                {
+                    return new Miniland();
+                }
+
                 map = new Map(id);
                 _maps[id] = map;
             }

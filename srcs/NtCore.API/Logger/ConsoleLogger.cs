@@ -10,10 +10,7 @@ namespace NtCore.API.Logger
         {
         }
 
-        public ConsoleLogger(string prefix)
-        {
-            _prefix = prefix;
-        }
+        public ConsoleLogger(string prefix) => _prefix = prefix;
 
         public void Debug(string message)
         {

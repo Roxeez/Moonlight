@@ -16,10 +16,7 @@ namespace NtCore.Game.Entities
         public byte Direction { get; set; }
         public byte HpPercentage { get; set; }
         public byte MpPercentage { get; set; }
-        
-        public bool Equals(ILivingEntity other)
-        {
-            return other != null && other.EntityType == EntityType && other.Id == Id;
-        }
+
+        public bool Equals(ILivingEntity other) => other != null && other.EntityType == EntityType && other.Id == Id;
     }
 }

@@ -41,7 +41,7 @@ namespace NtCore
             BuildPacketHandlers(services);
             BuildPlugins(services);
 
-            var core = services.BuildServiceProvider();
+            ServiceProvider core = services.BuildServiceProvider();
             logger.Information("Core services registered.");
 
             logger.Information("Initializing NtCoreAPI...");
@@ -52,11 +52,19 @@ namespace NtCore
             var pluginManager = core.GetService<IPluginManager>();
 
             logger.Information("Registering packet handlers...");
-            foreach (var packetHandler in core.GetServices<IPacketHandler>()) packetManager.Register(packetHandler);
+            foreach (IPacketHandler packetHandler in core.GetServices<IPacketHandler>())
+            {
+                packetManager.Register(packetHandler);
+            }
+
             logger.Information("Packet handlers registered.");
 
             logger.Information("Starting plugins...");
-            foreach (var plugin in core.GetServices<Plugin>()) pluginManager.Start(plugin);
+            foreach (Plugin plugin in core.GetServices<Plugin>())
+            {
+                pluginManager.Start(plugin);
+            }
+
             logger.Information("Plugins started.");
 
             string command;
@@ -77,15 +85,15 @@ namespace NtCore
  |_| \_|\__|\_____\___/|_|  \___|
 ";
 
-            var separator = new string('=', Console.WindowWidth);
-            var logo = text.Split('\n')
+            string separator = new string('=', Console.WindowWidth);
+            string logo = text.Split('\n')
                 .Select(s => string.Format("{0," + (Console.WindowWidth / 2 + s.Length / 2) + "}\n", s))
                 .Aggregate("", (current, i) => current + i);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(separator + logo + separator);
             Console.ForegroundColor = ConsoleColor.White;
         }
-        
+
         public static IServiceProvider UnitTestProvider()
         {
             var services = new ServiceCollection();
@@ -93,11 +101,14 @@ namespace NtCore
             BuildCore(services);
             BuildPacketHandlers(services);
 
-            var core = services.BuildServiceProvider();
+            ServiceProvider core = services.BuildServiceProvider();
 
             var packetManager = core.GetService<IPacketManager>();
 
-            foreach (var packetHandler in core.GetServices<IPacketHandler>()) packetManager.Register(packetHandler);
+            foreach (IPacketHandler packetHandler in core.GetServices<IPacketHandler>())
+            {
+                packetManager.Register(packetHandler);
+            }
 
             return core;
         }
@@ -118,11 +129,17 @@ namespace NtCore
 
         private static void BuildPacketHandlers(IServiceCollection services)
         {
-            foreach (var type in typeof(IPacketHandler).Assembly.GetTypes())
+            foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
             {
-                if (!typeof(IPacketHandler).IsAssignableFrom(type)) continue;
+                if (!typeof(IPacketHandler).IsAssignableFrom(type))
+                {
+                    continue;
+                }
 
-                if (type.IsAbstract || type.IsInterface || !type.IsPublic) continue;
+                if (type.IsAbstract || type.IsInterface || !type.IsPublic)
+                {
+                    continue;
+                }
 
                 services.AddSingleton(typeof(IPacketHandler), type);
             }
@@ -131,20 +148,31 @@ namespace NtCore
         private static void BuildPlugins(IServiceCollection services)
         {
             if (!Directory.Exists(PluginManager.PluginDirectory))
+            {
                 Directory.CreateDirectory(PluginManager.PluginDirectory);
+            }
 
             string[] plugins = Directory.GetFiles(PluginManager.PluginDirectory);
-            if (plugins.Length == 0) return;
-
-            foreach (var file in plugins)
+            if (plugins.Length == 0)
             {
-                var assembly = Assembly.LoadFile(Path.Combine(PluginManager.PluginDirectory, file));
-                var pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(Plugin).IsAssignableFrom(x));
+                return;
+            }
 
-                if (pluginMain == null) continue;
+            foreach (string file in plugins)
+            {
+                Assembly assembly = Assembly.LoadFile(Path.Combine(PluginManager.PluginDirectory, file));
+                Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(Plugin).IsAssignableFrom(x));
+
+                if (pluginMain == null)
+                {
+                    continue;
+                }
 
                 var info = pluginMain.GetCustomAttribute<PluginInfoAttribute>();
-                if (info == null) continue;
+                if (info == null)
+                {
+                    continue;
+                }
 
                 services.AddSingleton(typeof(Plugin), pluginMain);
             }

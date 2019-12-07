@@ -11,7 +11,7 @@ namespace NtCore.Network
     {
         public void Handle(IClient client, IPacket packet)
         {
-            Handle(client, (TPacket) packet);
+            Handle(client, (TPacket)packet);
         }
 
         public abstract void Handle(IClient client, TPacket packet);

@@ -1,5 +1,5 @@
 ﻿using JetBrains.Annotations;
-using NtCore.API.Clients;
+using NtCore.API.Game.Entities;
 using NtCore.API.Game.Maps;
 using NtCore.API.Plugins;
 
@@ -10,14 +10,14 @@ namespace NtCore.API.Events.Map
     /// </summary>
     public class MapChangeEvent : Event
     {
-        public MapChangeEvent([NotNull] IClient client, [NotNull] IMap source, [NotNull] IMap destination)
+        public MapChangeEvent([NotNull] ICharacter character, [NotNull] IMap source, [NotNull] IMap destination)
         {
-            Client = client;
+            Character = character;
             Source = source;
             Destination = destination;
         }
 
-        public IClient Client { get; }
+        public ICharacter Character { get; }
         public IMap Source { get; }
         public IMap Destination { get; }
     }

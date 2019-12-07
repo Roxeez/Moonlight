@@ -5,10 +5,7 @@ namespace NtCore.Game.Entities
 {
     public class Player : LivingEntity, IPlayer
     {
-        public Player()
-        {
-            EntityType = EntityType.PLAYER;
-        }
+        public Player() => EntityType = EntityType.PLAYER;
 
         public string Name { get; set; }
         public int Reputation { get; set; }

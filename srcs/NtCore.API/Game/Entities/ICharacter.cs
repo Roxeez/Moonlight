@@ -56,9 +56,9 @@ namespace NtCore.API.Game.Entities
         ///     Character max mp
         /// </summary>
         int MaxMp { get; }
-        
+
         ITarget Target { get; }
-        
+
         byte JobLevel { get; }
 
         /// <summary>

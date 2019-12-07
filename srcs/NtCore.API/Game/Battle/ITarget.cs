@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using NtCore.API.Game.Entities;
+﻿using NtCore.API.Game.Entities;
 
 namespace NtCore.API.Game.Battle
 {
@@ -11,7 +8,5 @@ namespace NtCore.API.Game.Battle
 
         int Hp { get; }
         int Mp { get; }
-        
-        
     }
 }

@@ -5,10 +5,7 @@ namespace NtCore.Game.Entities
 {
     public class Npc : LivingEntity, INpc
     {
-        public Npc()
-        {
-            EntityType = EntityType.NPC;
-        }
+        public Npc() => EntityType = EntityType.NPC;
 
         public int Vnum { get; set; }
     }

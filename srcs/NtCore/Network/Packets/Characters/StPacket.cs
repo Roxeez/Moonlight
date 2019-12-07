@@ -7,7 +7,7 @@ namespace NtCore.Network.Packets.Characters
     {
         [PacketIndex(1)]
         public EntityType EntityType { get; set; }
-        
+
         [PacketIndex(2)]
         public int EntityId { get; set; }
 

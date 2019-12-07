@@ -7,10 +7,7 @@ namespace NtCore.Game.Entities
 {
     public class Drop : IDrop
     {
-        public Drop()
-        {
-            EntityType = EntityType.DROP;
-        }
+        public Drop() => EntityType = EntityType.DROP;
 
         public int Id { get; set; }
         public int Vnum { get; set; }

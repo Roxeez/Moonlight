@@ -11,15 +11,20 @@ namespace NtCore.Network.Handlers.Maps
         {
             var miniland = client.Character.Map.As<Miniland>();
 
-            if (miniland == null) return;
+            if (miniland == null)
+            {
+                return;
+            }
 
-            foreach (var obj in packet.MinilandObjects)
+            foreach (MltObjSubPacket obj in packet.MinilandObjects)
+            {
                 miniland.AddMinilandObject(new MinilandObject
                 {
                     Vnum = obj.Vnum,
                     Id = obj.Id,
                     Position = obj.Position
                 });
+            }
         }
     }
 }

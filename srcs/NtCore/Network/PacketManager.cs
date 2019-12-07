@@ -19,9 +19,9 @@ namespace NtCore.Network
 
     public sealed class PacketManager : IPacketManager
     {
-        private readonly ILogger _logger;
         private readonly ICommandManager _commandManager;
-        
+        private readonly ILogger _logger;
+
         private readonly Dictionary<(string, PacketType), PacketCreator> _packetCreators =
             new Dictionary<(string, PacketType), PacketCreator>();
 
@@ -45,18 +45,21 @@ namespace NtCore.Network
                 return;
             }
 
-            var packetHandler = _packetHandlers.GetValueOrDefault((header, packetType));
-            if (packetHandler == null) return;
+            IPacketHandler packetHandler = _packetHandlers.GetValueOrDefault((header, packetType));
+            if (packetHandler == null)
+            {
+                return;
+            }
 
-            var packetCreator = _packetCreators.GetValueOrDefault((header, packetType));
+            PacketCreator packetCreator = _packetCreators.GetValueOrDefault((header, packetType));
             if (packetCreator == null)
             {
                 _logger.Debug($"No packet creator found for packet {header}");
                 return;
             }
 
-            var p = packetCreator();
-            var deserialized = p.Deserialize(arguments);
+            IPacket p = packetCreator();
+            bool deserialized = p.Deserialize(arguments);
 
             if (!deserialized)
             {
@@ -69,10 +72,13 @@ namespace NtCore.Network
 
         public void Register(IPacketHandler packetHandler)
         {
-            var type = packetHandler.GetType();
-            if (type.BaseType == null) return;
+            Type type = packetHandler.GetType();
+            if (type.BaseType == null)
+            {
+                return;
+            }
 
-            var packetType =
+            Type packetType =
                 type.BaseType.GenericTypeArguments.FirstOrDefault(x => typeof(IPacket).IsAssignableFrom(x));
             if (packetType == null)
             {
@@ -87,7 +93,7 @@ namespace NtCore.Network
                 return;
             }
 
-            var packetConstructor = packetType.GetConstructor(Type.EmptyTypes);
+            ConstructorInfo packetConstructor = packetType.GetConstructor(Type.EmptyTypes);
             if (packetConstructor == null)
             {
                 _logger.Debug($"No constructor found for {packetType.Name}");

@@ -31,7 +31,10 @@ namespace NtCore.Plugins
         public void Start(Plugin plugin)
         {
             var info = plugin.GetType().GetCustomAttribute<PluginInfoAttribute>();
-            if (info != null && info.NeedInjection) _clientManager.CreateLocalClient();
+            if (info != null && info.NeedInjection)
+            {
+                _clientManager.CreateLocalClient();
+            }
 
             _logger.Information($"Starting {plugin.Name} {plugin.Version}");
             plugin.OnEnable();
@@ -39,10 +42,13 @@ namespace NtCore.Plugins
 
         public void Register(IListener listener, Plugin plugin)
         {
-            foreach (var methodInfo in listener.GetType().GetMethods())
+            foreach (MethodInfo methodInfo in listener.GetType().GetMethods())
             {
                 var handler = methodInfo.GetCustomAttribute<Handler>();
-                if (handler == null) continue;
+                if (handler == null)
+                {
+                    continue;
+                }
 
                 ParameterInfo[] parameters = methodInfo.GetParameters();
                 if (parameters.Length != 1)
@@ -50,7 +56,7 @@ namespace NtCore.Plugins
                     continue;
                 }
 
-                var type = methodInfo.GetParameters().First().ParameterType;
+                Type type = methodInfo.GetParameters().First().ParameterType;
                 if (!typeof(Event).IsAssignableFrom(type))
                 {
                     continue;
@@ -78,9 +84,15 @@ namespace NtCore.Plugins
         {
             List<(IListener, MethodInfo)> handlers = _eventHandlers.GetValueOrDefault(e.GetType());
 
-            if (handlers == null) return;
+            if (handlers == null)
+            {
+                return;
+            }
 
-            foreach (var (listener, methodInfo) in handlers) methodInfo.Invoke(listener, new object[] {e});
+            foreach ((IListener listener, MethodInfo methodInfo) in handlers)
+            {
+                methodInfo.Invoke(listener, new object[] { e });
+            }
         }
     }
 }

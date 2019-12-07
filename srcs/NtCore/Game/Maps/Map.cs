@@ -47,8 +47,8 @@ namespace NtCore.Game.Maps
 
         public T GetEntity<T>(int id) where T : IEntity
         {
-            var entityType = _mapping.GetValueOrDefault(typeof(T));
-            return (T) GetEntity(entityType, id);
+            EntityType entityType = _mapping.GetValueOrDefault(typeof(T));
+            return (T)GetEntity(entityType, id);
         }
 
         public IEntity GetEntity(EntityType entityType, int id)

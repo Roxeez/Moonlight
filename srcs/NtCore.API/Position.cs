@@ -11,21 +11,15 @@
             Y = y;
         }
 
-        public bool Equals(Position other)
-        {
-            return X == other.X && Y == other.Y;
-        }
+        public bool Equals(Position other) => X == other.X && Y == other.Y;
 
-        public override bool Equals(object obj)
-        {
-            return obj is Position other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is Position other && Equals(other);
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return (X.GetHashCode() * 397) ^ Y.GetHashCode();
+                return X.GetHashCode() * 397 ^ Y.GetHashCode();
             }
         }
     }

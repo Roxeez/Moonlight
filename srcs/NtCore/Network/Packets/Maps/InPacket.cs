@@ -6,7 +6,8 @@ namespace NtCore.Network.Packets.Maps
     [PacketInfo("in", PacketType.Recv)]
     public class InPacket : Packet
     {
-        [PacketIndex(1)] public EntityType EntityType { get; set; }
+        [PacketIndex(1)]
+        public EntityType EntityType { get; set; }
 
         public string Name { get; set; }
         public int Vnum { get; set; }
@@ -47,8 +48,8 @@ namespace NtCore.Network.Packets.Maps
                     Id = int.Parse(packet[4]);
                     Position = new Position(short.Parse(packet[5]), short.Parse(packet[6]));
                     Direction = byte.Parse(packet[7]);
-                    Gender = (Gender) byte.Parse(packet[9]);
-                    ClassType = (ClassType) byte.Parse(packet[12]);
+                    Gender = (Gender)byte.Parse(packet[9]);
+                    ClassType = (ClassType)byte.Parse(packet[12]);
                     HpPercentage = byte.Parse(packet[14]);
                     MpPercentage = byte.Parse(packet[15]);
                     Level = byte.Parse(packet[33]);

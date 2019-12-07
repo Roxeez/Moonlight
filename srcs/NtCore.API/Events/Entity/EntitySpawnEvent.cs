@@ -1,5 +1,4 @@
 ﻿using JetBrains.Annotations;
-using NtCore.API.Clients;
 using NtCore.API.Game.Entities;
 using NtCore.API.Game.Maps;
 using NtCore.API.Plugins;
@@ -11,14 +10,14 @@ namespace NtCore.API.Events.Entity
     /// </summary>
     public class EntitySpawnEvent : Event
     {
-        public EntitySpawnEvent([NotNull] IClient client, [NotNull] IEntity entity, [NotNull] IMap map)
+        public EntitySpawnEvent([NotNull] ICharacter character, [NotNull] IEntity entity, [NotNull] IMap map)
         {
-            Client = client;
+            Character = character;
             Entity = entity;
             Map = map;
         }
 
-        public IClient Client { get; }
+        public ICharacter Character { get; }
         public IEntity Entity { get; }
         public IMap Map { get; }
     }

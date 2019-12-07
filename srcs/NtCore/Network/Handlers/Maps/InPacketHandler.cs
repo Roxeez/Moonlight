@@ -15,17 +15,17 @@ namespace NtCore.Network.Handlers.Maps
     {
         private readonly IPluginManager _pluginManager;
 
-        public InPacketHandler(IPluginManager pluginManager)
-        {
-            _pluginManager = pluginManager;
-        }
+        public InPacketHandler(IPluginManager pluginManager) => _pluginManager = pluginManager;
 
         public override void Handle(IClient client, InPacket packet)
         {
             var character = client.Character.As<Character>();
             var map = client.Character.Map.As<Map>();
 
-            if (map == null) return;
+            if (map == null)
+            {
+                return;
+            }
 
             IEntity entity;
             switch (packet.EntityType)
@@ -82,7 +82,9 @@ namespace NtCore.Network.Handlers.Maps
             map.AddEntity(entity);
 
             if (character.LastMapChange.AddSeconds(5) < DateTime.Now)
-                _pluginManager.CallEvent(new EntitySpawnEvent(client, entity, map));
+            {
+                _pluginManager.CallEvent(new EntitySpawnEvent(client.Character, entity, map));
+            }
         }
     }
 }

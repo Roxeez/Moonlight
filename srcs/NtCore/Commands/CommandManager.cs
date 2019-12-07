@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using NtCore.API.Clients;
 using NtCore.API.Commands;
 using NtCore.API.Enums;
 using NtCore.API.Extensions;
+using NtCore.API.Game.Entities;
 using NtCore.API.Logger;
 using NtCore.API.Plugins;
 
@@ -13,20 +13,20 @@ namespace NtCore.Commands
 {
     public class CommandManager : ICommandManager
     {
-        private readonly IDictionary<string, (ICommandHandler, MethodInfo)> _registeredCommands = new Dictionary<string, (ICommandHandler, MethodInfo)>();
         private readonly ILogger _logger;
-        
-        public CommandManager(ILogger logger)
-        {
-            _logger = logger;
-        }
-        
+        private readonly IDictionary<string, (ICommandHandler, MethodInfo)> _registeredCommands = new Dictionary<string, (ICommandHandler, MethodInfo)>();
+
+        public CommandManager(ILogger logger) => _logger = logger;
+
         public void Register(ICommandHandler handler, Plugin plugin)
         {
-            foreach (var methodInfo in handler.GetType().GetMethods())
+            foreach (MethodInfo methodInfo in handler.GetType().GetMethods())
             {
                 var command = methodInfo.GetCustomAttribute<CommandAttribute>();
-                if (command == null) continue;
+                if (command == null)
+                {
+                    continue;
+                }
 
                 ParameterInfo[] parameters = methodInfo.GetParameters();
                 if (parameters.Length == 0 || parameters.Length > 2)
@@ -34,7 +34,7 @@ namespace NtCore.Commands
                     continue;
                 }
 
-                if (parameters.Length > 0 && parameters[0].ParameterType != typeof(IClient))
+                if (parameters.Length > 0 && parameters[0].ParameterType != typeof(ICharacter))
                 {
                     continue;
                 }
@@ -79,10 +79,10 @@ namespace NtCore.Commands
             switch (parameters.Length)
             {
                 case 1:
-                    method.Invoke(commandHandler, new object[] {client});
+                    method.Invoke(commandHandler, new object[] { client.Character });
                     return;
                 case 2:
-                    method.Invoke(commandHandler, new object[] {client, args});
+                    method.Invoke(commandHandler, new object[] { client.Character, args });
                     break;
             }
         }

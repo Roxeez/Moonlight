@@ -15,8 +15,6 @@ namespace NtCore.Tests.PacketHandling
 {
     public class CharacterPacketTests
     {
-        private readonly IClient _client;
-
         public CharacterPacketTests()
         {
             var packetManager = Program.UnitTestProvider().GetService<IPacketManager>();
@@ -26,11 +24,13 @@ namespace NtCore.Tests.PacketHandling
                 .Callback((string p) => packetManager.Handle(mock.Object, p, PacketType.Recv));
             mock.Setup(x => x.SendPacket(It.IsAny<string>()))
                 .Callback((string p) => packetManager.Handle(mock.Object, p, PacketType.Send));
-            
+
             mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
 
             _client = mock.Object;
         }
+
+        private readonly IClient _client;
 
         [Theory]
         [InlineData("stat 2500 2000 1500 1000", 2500, 2000, 1500, 1000)]

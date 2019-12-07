@@ -13,7 +13,7 @@ namespace NtCore.Network.Packets.Maps
         {
             MinilandObjects = new List<MltObjSubPacket>();
 
-            foreach (var value in packet.Skip(1))
+            foreach (string value in packet.Skip(1))
             {
                 string[] split = value.Split('.');
 

@@ -9,20 +9,23 @@ namespace NtCore.Clients
     {
         private readonly IPacketManager _packetManager;
 
-        public ClientManager(IPacketManager packetManager)
-        {
-            _packetManager = packetManager;
-        }
+        public ClientManager(IPacketManager packetManager) => _packetManager = packetManager;
 
         public IClient LocalClient { get; private set; }
 
         public IClient CreateLocalClient()
         {
-            if (LocalClient != null) return LocalClient;
+            if (LocalClient != null)
+            {
+                return LocalClient;
+            }
 
-            var process = Process.GetCurrentProcess();
+            Process process = Process.GetCurrentProcess();
 
-            if (process.MainModule == null) throw new InvalidOperationException("Process module can't be null");
+            if (process.MainModule == null)
+            {
+                throw new InvalidOperationException("Process module can't be null");
+            }
 
             var localClient = new LocalClient(process.MainModule);
 

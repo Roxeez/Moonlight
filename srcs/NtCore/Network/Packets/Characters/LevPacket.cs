@@ -5,7 +5,7 @@
     {
         [PacketIndex(1)]
         public byte Level { get; set; }
-        
+
         [PacketIndex(3)]
         public byte JobLevel { get; set; }
     }
