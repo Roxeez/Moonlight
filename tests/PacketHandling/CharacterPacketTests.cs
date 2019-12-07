@@ -4,6 +4,7 @@ using NFluent;
 using NtCore.API.Clients;
 using NtCore.API.Enums;
 using NtCore.API.Extensions;
+using NtCore.API.Game.Battle;
 using NtCore.API.Game.Entities;
 using NtCore.Game.Entities;
 using NtCore.Network;
@@ -23,6 +24,9 @@ namespace NtCore.Tests.PacketHandling
 
             mock.Setup(x => x.ReceivePacket(It.IsAny<string>()))
                 .Callback((string p) => packetManager.Handle(mock.Object, p, PacketType.Recv));
+            mock.Setup(x => x.SendPacket(It.IsAny<string>()))
+                .Callback((string p) => packetManager.Handle(mock.Object, p, PacketType.Send));
+            
             mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
 
             _client = mock.Object;
@@ -90,6 +94,26 @@ namespace NtCore.Tests.PacketHandling
 
             Check.That(entity).IsNotNull();
             Check.That(entity.Speed).IsEqualTo(speed);
+        }
+
+        [Theory]
+        [InlineData("st 2 2053 10 0 100 100 5000 2500", EntityType.NPC, 2053, 10, 100, 100, 5000, 2500)]
+        [InlineData("st 3 1874 88 0 50 75 24578 8745", EntityType.MONSTER, 1874, 88, 50, 75, 24578, 8745)]
+        public void St_Packet_Update_Target_Stats(string packet, EntityType entityType, int id, byte level, byte hpPercentage, byte mpPercentage, int hp, int mp)
+        {
+            _client.CreateMapMock();
+            _client.ReceivePacket(packet);
+
+            ITarget target = _client.Character.Target;
+
+            Check.That(target).IsNotNull();
+            Check.That(target.Hp).IsEqualTo(hp);
+            Check.That(target.Mp).IsEqualTo(mp);
+            Check.That(target.Entity.Level).IsEqualTo(level);
+            Check.That(target.Entity.EntityType).IsEqualTo(entityType);
+            Check.That(target.Entity.Id).IsEqualTo(id);
+            Check.That(target.Entity.HpPercentage).IsEqualTo(hpPercentage);
+            Check.That(target.Entity.MpPercentage).IsEqualTo(mpPercentage);
         }
     }
 }

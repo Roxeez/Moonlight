@@ -1,7 +1,10 @@
-﻿using NtCore.API;
+﻿using System;
+using NtCore.API;
 using NtCore.API.Enums;
+using NtCore.API.Events.Character;
 using NtCore.API.Events.Entity;
 using NtCore.API.Extensions;
+using NtCore.API.Game.Battle;
 using NtCore.API.Game.Entities;
 using NtCore.API.Plugins;
 
@@ -24,14 +27,24 @@ namespace NtCore.Example
         [Handler]
         public void OnEntitySpawn(EntitySpawnEvent e)
         {
-            var character = e.Client.Character;
+            ICharacter character = e.Client.Character;
 
             if (e.Entity.EntityType == EntityType.PLAYER)
             {
-                var player = e.Entity.As<IPlayer>();
+                IPlayer player = e.Entity.As<IPlayer>();
 
                 character.ShowChatMessage($"{player.Id}/{player.Name}/{player.Level}", ChatMessageType.RED);
             }
+        }
+
+        [Handler]
+        public void OnTargetChange(TargetChangeEvent e)
+        {
+            ICharacter character = e.Client.Character;
+            ITarget target = e.Target;
+            ILivingEntity entity = e.Target.Entity;
+            
+            character.ShowBubbleMessage($"Id {entity.Id} / Type {entity.EntityType} / Level {entity.Level} / Hp {target.Hp} / Mp {target.Mp}", entity);
         }
     }
 }

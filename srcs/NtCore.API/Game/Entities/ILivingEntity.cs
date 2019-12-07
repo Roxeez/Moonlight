@@ -1,6 +1,8 @@
-﻿namespace NtCore.API.Game.Entities
+﻿using System;
+
+namespace NtCore.API.Game.Entities
 {
-    public interface ILivingEntity : IEntity
+    public interface ILivingEntity : IEntity, IEquatable<ILivingEntity>
     {
         /// <summary>
         ///     Current movement speed

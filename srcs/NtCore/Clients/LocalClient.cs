@@ -69,7 +69,7 @@ namespace NtCore.Clients
 
                 if (_recvQueue.TryDequeue(out var receivePacket)) NtNative.RecvPacket(receivePacket);
 
-                Thread.Sleep(10);
+                Thread.Sleep(1);
             }
         }
 

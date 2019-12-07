@@ -105,11 +105,14 @@
     <Compile Include="Clients\ClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
     <Compile Include="Commands\CommandManager.cs" />
+    <Compile Include="Game\Battle\Target.cs" />
     <Compile Include="Game\Entities\LivingEntity.cs" />
     <Compile Include="Game\Maps\MapManager.cs" />
     <Compile Include="Game\Maps\Miniland.cs" />
     <Compile Include="Game\Maps\MinilandObject.cs" />
+    <Compile Include="Network\Handlers\Characters\StPacketHandler.cs" />
     <Compile Include="Network\PacketManager.cs" />
+    <Compile Include="Network\Packets\Characters\StPacket.cs" />
     <Compile Include="NtCore.cs" />
     <Compile Include="Plugins\PluginManager.cs" />
     <Compile Include="Program.cs" />

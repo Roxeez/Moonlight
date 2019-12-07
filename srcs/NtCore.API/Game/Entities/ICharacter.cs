@@ -1,6 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 using NtCore.API.Enums;
+using NtCore.API.Game.Battle;
 
 namespace NtCore.API.Game.Entities
 {
@@ -55,6 +56,8 @@ namespace NtCore.API.Game.Entities
         ///     Character max mp
         /// </summary>
         int MaxMp { get; }
+        
+        ITarget Target { get; }
 
         /// <summary>
         ///     Show a message to character (clientside only it's a received packet)
