@@ -72,8 +72,8 @@ namespace NtCore.API.Game.Entities
         ///     Show a chat message to character (clientside only it's a received packet)
         /// </summary>
         /// <param name="message">Message to show</param>
-        /// <param name="messageType">Type of message</param>
-        void ShowChatMessage([NotNull] string message, ChatMessageType messageType);
+        /// <param name="messageColor">Type of message</param>
+        void ShowChatMessage([NotNull] string message, ChatMessageColor messageColor);
 
         /// <summary>
         ///     Show a bubble message on top of character with selected message

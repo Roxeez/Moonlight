@@ -83,6 +83,7 @@ namespace NtCore
  | . ` | __| |    / _ \| '__/ _ \
  | |\  | |_| |___| (_) | | |  __/
  |_| \_|\__|\_____\___/|_|  \___|
+
 ";
 
             string separator = new string('=', Console.WindowWidth);
@@ -164,12 +165,6 @@ namespace NtCore
                 Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(Plugin).IsAssignableFrom(x));
 
                 if (pluginMain == null)
-                {
-                    continue;
-                }
-
-                var info = pluginMain.GetCustomAttribute<PluginInfoAttribute>();
-                if (info == null)
                 {
                     continue;
                 }

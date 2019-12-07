@@ -34,9 +34,9 @@ namespace NtCore.Game.Entities
             _client.ReceivePacket($"msg {(byte)messageType} {message}");
         }
 
-        public void ShowChatMessage(string message, ChatMessageType messageType)
+        public void ShowChatMessage(string message, ChatMessageColor messageColor)
         {
-            _client.ReceivePacket($"say {(byte)EntityType} {Id} {(byte)messageType} {message}");
+            _client.ReceivePacket($"say {(byte)EntityType} {Id} {(byte)messageColor} {message}");
         }
 
         public void ShowBubbleMessage(string message)

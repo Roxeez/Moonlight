@@ -30,8 +30,7 @@ namespace NtCore.Plugins
 
         public void Start(Plugin plugin)
         {
-            var info = plugin.GetType().GetCustomAttribute<PluginInfoAttribute>();
-            if (info != null && info.NeedInjection)
+            if (_clientManager.LocalClient == null)
             {
                 _clientManager.CreateLocalClient();
             }

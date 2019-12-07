@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyPlugin.cs" />
+    <Compile Include="ExampleCommandHandler.cs" />
+    <Compile Include="ExampleListener.cs" />
+    <Compile Include="ExamplePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
