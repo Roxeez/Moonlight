@@ -53,14 +53,14 @@ namespace NtCore.Core
                     ParameterInfo[] parameters = methodInfo.GetParameters();
                     if (parameters.Length != 1)
                     {
-                        _logger.Warning("Wrong parameter length");
+                        _logger.Warning($"Wrong parameter length (Method: {methodInfo.Name} / Plugin: {plugin.Name})");
                         continue;
                     }
 
                     Type type = methodInfo.GetParameters().First().ParameterType;
                     if (!typeof(Event).IsAssignableFrom(type))
                     {
-                        _logger.Warning("Parameter type is not an event");
+                        _logger.Warning($"Parameter type is not an event (Method: {methodInfo.Name} / Plugin: {plugin.Name})");
                         continue;
                     }
 
@@ -71,7 +71,6 @@ namespace NtCore.Core
                         _eventHandlers[type] = handlers;
                     }
                     
-                    _logger.Information($"Registered handler for event {type.Name}");
                     handlers.Add((listener, methodInfo));
                 }
             }

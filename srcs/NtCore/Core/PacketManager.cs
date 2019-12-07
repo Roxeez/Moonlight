@@ -91,7 +91,7 @@ namespace NtCore.Core
                 return;
             }
 
-            _logger.Debug($"Registering handler {type.Name} with packet {packetType.Name}");
+            _logger.Information($"Registered packet handler {type.Name} for packet {packetType.Name}");
 
             _packetHandlers[(info.Header, info.Type)] = packetHandler;
             _packetCreators[(info.Header, info.Type)] = Expression.Lambda<PacketCreator>(Expression.New(packetConstructor)).Compile();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -24,7 +25,14 @@ namespace NtCore
         public static void Main()
         {
             Kernel32.AllocConsole();
+
+            Console.Title = "NtCore";
+
+            ShowHeader();
             
+            var logger = new ConsoleLogger();
+            
+            logger.Information("Registering core services...");
             var services = new ServiceCollection();
 
             BuildCore(services);
@@ -32,23 +40,54 @@ namespace NtCore
             BuildPlugins(services);
 
             var core = services.BuildServiceProvider();
-
+            logger.Information("Core services registered.");
+            
+            logger.Information("Initializing NtCoreAPI...");
             NtCoreAPI.Initialize(core.GetService<INtCore>());
+            logger.Information("NtCoreAPI initialized.");
             
             IPacketManager packetManager = core.GetService<IPacketManager>();
             IPluginManager pluginManager = core.GetService<IPluginManager>();
 
+            logger.Information("Registering packet handlers...");
             foreach (IPacketHandler packetHandler in core.GetServices<IPacketHandler>())
             {
                 packetManager.Register(packetHandler);
             }
+            logger.Information("Packet handlers registered.");
 
+            logger.Information("Starting plugins...");
             foreach (Plugin plugin in core.GetServices<Plugin>())
             {
                 pluginManager.Start(plugin);
             }
+            logger.Information("Plugins started.");
 
-            Console.ReadKey();
+            string command;
+            do
+            {
+                command = Console.ReadLine();
+            } 
+            while (command != "exit");
+        }
+
+        private static void ShowHeader()
+        {
+            const string text = @"
+  _   _ _    _____               
+ | \ | | |  / ____|              
+ |  \| | |_| |     ___  _ __ ___ 
+ | . ` | __| |    / _ \| '__/ _ \
+ | |\  | |_| |___| (_) | | |  __/
+ |_| \_|\__|\_____\___/|_|  \___|
+";
+            
+            string separator = new string('=', Console.WindowWidth);
+            string logo = text.Split('\n').Select(s => string.Format("{0," + (Console.WindowWidth / 2 + s.Length / 2) + "}\n", s))
+                .Aggregate("", (current, i) => current + i);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(separator + logo + separator);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public static IServiceProvider UnitTestProvider()
