@@ -14,7 +14,7 @@ namespace NtCore.Core
 {
     public class PluginManager : IPluginManager
     {
-        private static readonly string PluginDirectory = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NtCore"), "plugins");
+        public static readonly string PluginDirectory = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NtCore"), "plugins");
         private readonly Dictionary<Type, List<(IListener, MethodInfo)>> _eventHandlers = new Dictionary<Type, List<(IListener, MethodInfo)>>();
         
         private readonly ILogger _logger;
@@ -25,58 +25,17 @@ namespace NtCore.Core
             _clientManager = clientManager;
             _logger = logger;
         }
-
-        public void Load(IServiceCollection services)
+        
+        public void Start(Plugin plugin)
         {
-            if (!Directory.Exists(PluginDirectory))
+            PluginInfo info = plugin.GetType().GetCustomAttribute<PluginInfo>();
+            if (info != null && info.NeedInjection)
             {
-                _logger.Information($"Creating {PluginDirectory} folder");
-                Directory.CreateDirectory(PluginDirectory);
-            }
-
-            string[] plugins = Directory.GetFiles(PluginDirectory);
-            if (plugins.Length == 0)
-            {
-                _logger.Warning("Plugin folder is empty");
-                return;
-            }
-            
-            _logger.Information($"Found {plugins}");
-            foreach (string file in plugins)
-            {
-                Assembly assembly = Assembly.LoadFile(Path.Combine(PluginDirectory, file));
-                Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(Plugin).IsAssignableFrom(x));
-
-                if (pluginMain == null)
-                {
-                    _logger.Warning($"Can't load plugin {file} unable to find Plugin main class");
-                    continue;
-                }
-
-                PluginInfo info = pluginMain.GetCustomAttribute<PluginInfo>();
-                if (info == null)
-                {
-                    _logger.Warning($"Can't load plugin {file}, main class without PluginInfo attribute");
-                    continue;
-                }
-                
-                services.AddSingleton(typeof(Plugin), pluginMain);
-            }
-        }
-
-        public void Start(IEnumerable<Plugin> plugins)
-        {
-            foreach (Plugin plugin in plugins)
-            {
-                _logger.Information($"Starting {plugin.Name} {plugin.Version}");
-                plugin.OnEnable();
-            }
-
-            if (plugins.Any(x => x.GetType().GetCustomAttribute<PluginInfo>().IsInjected))
-            {
-                _logger.Information("Local client created successfully");
                 _clientManager.CreateLocalClient();
             }
+            
+            _logger.Information($"Starting {plugin.Name} {plugin.Version}");
+            plugin.OnEnable();
         }
 
         public void RegisterListeners(Plugin plugin, IListener[] listeners)

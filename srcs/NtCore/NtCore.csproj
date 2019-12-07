@@ -109,6 +109,7 @@
     <Compile Include="Game\Entities\LivingEntity.cs" />
     <Compile Include="Game\Maps\Miniland.cs" />
     <Compile Include="Game\Maps\MinilandObject.cs" />
+    <Compile Include="NtCore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Network\Handlers\Maps\MlInfoBrPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\MltObjPacketHandler.cs" />

@@ -1,4 +1,5 @@
-﻿using NtCore.API.Core;
+﻿using System;
+using NtCore.API.Core;
 using NtCore.API.Logger;
 using NtCore.API.Scheduler;
 
@@ -6,15 +7,30 @@ namespace NtCore.API
 {
     public static class NtCoreAPI
     {
-        public static IScheduler Scheduler { get; private set; }
-        public static ILogger Logger { get; private set; }
-        public static IPluginManager PluginManager { get; private set; }
-
-        public static void Initialize(IScheduler scheduler, IPluginManager pluginManager, ILogger logger)
+        private static INtCore _ntCore;
+        
+        public static void Initialize(INtCore ntCore)
         {
-            Scheduler = scheduler;
-            PluginManager = pluginManager;
-            Logger = logger;
+            if (_ntCore != null)
+            {
+                throw new InvalidOperationException();
+            }
+            _ntCore = ntCore;
+        }
+
+        public static IScheduler GetScheduler()
+        {
+            return _ntCore.Scheduler;
+        }
+
+        public static IPluginManager GetPluginManager()
+        {
+            return _ntCore.PluginManager;
+        }
+
+        public static ILogger GetLogger()
+        {
+            return _ntCore.Logger;
         }
     }
 }

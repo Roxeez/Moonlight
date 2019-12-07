@@ -19,7 +19,7 @@ namespace NtCore.Tests.PacketHandling
 
         public CharacterPacketTests()
         {
-            var packetManager = Program.Build().GetService<IPacketManager>();
+            var packetManager = Program.UnitTestProvider().GetService<IPacketManager>();
             var mock = new Mock<IClient>();
             
             mock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback((string p) =>  packetManager.Handle(mock.Object, p, PacketType.Recv));

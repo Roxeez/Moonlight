@@ -14,6 +14,8 @@ namespace NtCore.Core
     public interface IPacketManager
     {
         void Handle(IClient client, string packet, PacketType packetType);
+
+        void Register(IPacketHandler packetHandler);
     }
     
     public sealed class PacketManager : IPacketManager
@@ -30,62 +32,6 @@ namespace NtCore.Core
             _logger = logger;
         }
 
-        public void Load(IServiceCollection services)
-        {
-            foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
-            {
-                if (!typeof(IPacketHandler).IsAssignableFrom(type))
-                {
-                    continue;
-                }
-
-                if (type.IsAbstract || type.IsInterface || !type.IsPublic)
-                {
-                    continue;
-                }
-                
-                services.AddSingleton(typeof(IPacketHandler), type);
-            }
-        }
-        
-        public void Start(IEnumerable<IPacketHandler> handlers)
-        {
-            foreach (IPacketHandler packetHandler in handlers)
-            {
-                Type type = packetHandler.GetType();
-                if (type.BaseType == null)
-                {
-                    continue;
-                }
-
-                Type packetType = type.BaseType.GenericTypeArguments.FirstOrDefault(x => typeof(IPacket).IsAssignableFrom(x));
-                if (packetType == null)
-                {
-                    _logger.Debug($"{type.Name} don't have any GenericTypeArguments of type IPacket");
-                    continue;
-                }
-                
-                var info = packetType.GetCustomAttribute<PacketInfo>();
-                if (info == null)
-                {
-                    _logger.Debug($"Missing header annotation on packet {packetType.Name}");
-                    continue;
-                }
-
-                ConstructorInfo packetConstructor = packetType.GetConstructor(Type.EmptyTypes);
-                if (packetConstructor == null)
-                {
-                    _logger.Debug($"No constructor found for {packetType.Name}");
-                    continue;
-                }
-
-                _logger.Debug($"Registering handler {type.Name} with packet {packetType.Name}");
-
-                _packetHandlers[(info.Header, info.Type)] = packetHandler;
-                _packetCreators[(info.Header, info.Type)] = Expression.Lambda<PacketCreator>(Expression.New(packetConstructor)).Compile();
-            }
-        }
-        
         public void Handle(IClient client, string packet, PacketType packetType)
         {
             string[] arguments = packet.Trim().Split(' ');
@@ -114,6 +60,41 @@ namespace NtCore.Core
             }
             
             packetHandler.Handle(client, p);
+        }
+
+        public void Register(IPacketHandler packetHandler)
+        {
+            Type type = packetHandler.GetType();
+            if (type.BaseType == null)
+            {
+                return;
+            }
+
+            Type packetType = type.BaseType.GenericTypeArguments.FirstOrDefault(x => typeof(IPacket).IsAssignableFrom(x));
+            if (packetType == null)
+            {
+                _logger.Debug($"{type.Name} don't have any GenericTypeArguments of type IPacket");
+                return;
+            }
+                
+            var info = packetType.GetCustomAttribute<PacketInfo>();
+            if (info == null)
+            {
+                _logger.Debug($"Missing header annotation on packet {packetType.Name}");
+                return;
+            }
+
+            ConstructorInfo packetConstructor = packetType.GetConstructor(Type.EmptyTypes);
+            if (packetConstructor == null)
+            {
+                _logger.Debug($"No constructor found for {packetType.Name}");
+                return;
+            }
+
+            _logger.Debug($"Registering handler {type.Name} with packet {packetType.Name}");
+
+            _packetHandlers[(info.Header, info.Type)] = packetHandler;
+            _packetCreators[(info.Header, info.Type)] = Expression.Lambda<PacketCreator>(Expression.New(packetConstructor)).Compile();
         }
     }
 }

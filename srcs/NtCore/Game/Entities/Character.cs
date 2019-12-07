@@ -22,6 +22,7 @@ namespace NtCore.Game.Entities
         public Character(IClient client)
         {
             _client = client;
+            LastMapChange = DateTime.Now;
         }
         
         public void ShowMessage(string message, MessageType messageType)

@@ -1,10 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.API;
 using NtCore.API.Core;
-using NtCore.API.Extensions;
 using NtCore.API.Logger;
 using NtCore.API.Managers;
 using NtCore.API.Plugins;
@@ -22,42 +23,116 @@ namespace NtCore
         [DllExport]
         public static void Main()
         {
-            var t = new Thread(() =>
-            {
-                Kernel32.AllocConsole();
-                
-                Build();
-
-                Console.ReadKey();
-            });
+            Kernel32.AllocConsole();
             
-            t.Start();
+            var services = new ServiceCollection();
+
+            BuildCore(services);
+            BuildPacketHandlers(services);
+            BuildPlugins(services);
+
+            var core = services.BuildServiceProvider();
+
+            NtCoreAPI.Initialize(core.GetService<INtCore>());
+            
+            IPacketManager packetManager = core.GetService<IPacketManager>();
+            IPluginManager pluginManager = core.GetService<IPluginManager>();
+
+            foreach (IPacketHandler packetHandler in core.GetServices<IPacketHandler>())
+            {
+                packetManager.Register(packetHandler);
+            }
+
+            foreach (Plugin plugin in core.GetServices<Plugin>())
+            {
+                pluginManager.Start(plugin);
+            }
+
+            Console.ReadKey();
         }
-        
-        public static IServiceProvider Build()
+
+        public static IServiceProvider UnitTestProvider()
         {
             var services = new ServiceCollection();
             
-            services.AddSingleton<ILogger>(new ConsoleLogger("NtCore"));
-            services.AddSingleton<IScheduler, ObservableScheduler>();
+            BuildCore(services);
+            BuildPacketHandlers(services);
+            
+            var core = services.BuildServiceProvider();
+
+            IPacketManager packetManager = core.GetService<IPacketManager>();
+
+            foreach (IPacketHandler packetHandler in core.GetServices<IPacketHandler>())
+            {
+                packetManager.Register(packetHandler);
+            }
+
+            return core;
+        }
+
+        private static void BuildCore(IServiceCollection services)
+        {
+            services.AddTransient<ILogger, ConsoleLogger>();
+            services.AddTransient<IScheduler, ObservableScheduler>();
+
+            services.AddSingleton<IClientManager, ClientManager>();
             services.AddSingleton<IPluginManager, PluginManager>();
             services.AddSingleton<IPacketManager, PacketManager>();
-            services.AddSingleton<IClientManager, ClientManager>();
             services.AddSingleton<IMapManager, MapManager>();
-
-            var root = services.BuildServiceProvider();
             
-            NtCoreAPI.Initialize(root.GetService<IScheduler>(), root.GetService<IPluginManager>(), root.GetService<ILogger>());
-            
-            root.GetService<IPacketManager>().As<PacketManager>().Load(services);
-            root.GetService<IPluginManager>().As<PluginManager>().Load(services);
-
-            root = services.BuildServiceProvider();
-            
-            root.GetService<IPacketManager>().As<PacketManager>().Start(root.GetServices<IPacketHandler>());
-            root.GetService<IPluginManager>().As<PluginManager>().Start(root.GetServices<Plugin>());
-
-            return root;
+            services.AddSingleton<INtCore, NtCore>();
         }
+
+        private static void BuildPacketHandlers(IServiceCollection services)
+        {
+            foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
+            {
+                if (!typeof(IPacketHandler).IsAssignableFrom(type))
+                {
+                    continue;
+                }
+
+                if (type.IsAbstract || type.IsInterface || !type.IsPublic)
+                {
+                    continue;
+                }
+                
+                services.AddSingleton(typeof(IPacketHandler), type);
+            }
+        }
+
+        private static void BuildPlugins(IServiceCollection services)
+        {
+            if (!Directory.Exists(PluginManager.PluginDirectory))
+            {
+                Directory.CreateDirectory(PluginManager.PluginDirectory);
+            }
+
+            string[] plugins = Directory.GetFiles(PluginManager.PluginDirectory);
+            if (plugins.Length == 0)
+            {
+                return;
+            }
+            
+            foreach (string file in plugins)
+            {
+                Assembly assembly = Assembly.LoadFile(Path.Combine(PluginManager.PluginDirectory, file));
+                Type pluginMain = assembly.GetTypes().FirstOrDefault(x => typeof(Plugin).IsAssignableFrom(x));
+
+                if (pluginMain == null)
+                {
+                    continue;
+                }
+
+                PluginInfo info = pluginMain.GetCustomAttribute<PluginInfo>();
+                if (info == null)
+                {
+                    continue;
+                }
+                
+                services.AddSingleton(typeof(Plugin), pluginMain);
+            }
+        }
+
     }
 }

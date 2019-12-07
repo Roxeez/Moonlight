@@ -88,6 +88,7 @@
     <Compile Include="Game\Maps\IMap.cs" />
     <Compile Include="Game\Maps\IMiniland.cs" />
     <Compile Include="Game\Maps\IMinilandObject.cs" />
+    <Compile Include="INtCore.cs" />
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Managers\IMapManager.cs" />

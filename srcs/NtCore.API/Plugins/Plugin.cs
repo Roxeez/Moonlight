@@ -9,18 +9,9 @@ namespace NtCore.API.Plugins
     {
         public abstract string Name { get; }
         public abstract string Version { get; }
-        
-        public IPluginManager PluginManager { get; }
-        public IScheduler Scheduler { get; }
-        
-        private ILogger _logger;
-        public ILogger Logger => _logger ?? (_logger = new ConsoleLogger(Name));
 
-        protected Plugin()
-        {
-            Scheduler = NtCoreAPI.Scheduler;
-            PluginManager = NtCoreAPI.PluginManager;
-        }
+        private ILogger _logger;
+        public ILogger Logger => _logger ?? (_logger = new ConsoleLogger($"NtCore - {Name}"));
 
         /// <summary>
         /// Called on plugin start

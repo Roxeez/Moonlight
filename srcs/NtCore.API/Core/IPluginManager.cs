@@ -20,5 +20,7 @@ namespace NtCore.API.Core
         /// </summary>
         /// <param name="e">Event to call</param>
         void CallEvent([NotNull] Event e);
+
+        void Start(Plugin plugin);
     }
 }
