@@ -10,14 +10,12 @@ namespace NtCore.API.Events.Entity
     /// </summary>
     public class EntitySpawnEvent : Event
     {
-        public EntitySpawnEvent([NotNull] ICharacter character, [NotNull] IEntity entity, [NotNull] IMap map)
+        public EntitySpawnEvent([NotNull] IEntity entity, [NotNull] IMap map)
         {
-            Character = character;
             Entity = entity;
             Map = map;
         }
-
-        public ICharacter Character { get; }
+        
         public IEntity Entity { get; }
         public IMap Map { get; }
     }

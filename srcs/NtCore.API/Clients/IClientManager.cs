@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace NtCore.API.Clients
 {
@@ -9,16 +10,12 @@ namespace NtCore.API.Clients
     public interface IClientManager
     {
         /// <summary>
-        ///     Get the current local client
-        /// </summary>
-        [CanBeNull]
-        IClient LocalClient { get; }
-
-        /// <summary>
         ///     Create a local client or return LocalClient if not null
         /// </summary>
         /// <returns>Current LocalClient or new one if null</returns>
         [NotNull]
         IClient CreateLocalClient();
+        bool IsLocalCreated { get; }
+        IEnumerable<IClient> Clients { get; }
     }
 }

@@ -12,13 +12,13 @@ namespace NtCore.Clients
 {
     public sealed class LocalClient : IClient
     {
-        private readonly NtNative.PacketCallback _recvCallback;
         private readonly ConcurrentQueue<string> _recvQueue = new ConcurrentQueue<string>();
 
         /// <summary>
         ///     Need to keep a reference to both callback to avoid GC
         /// </summary>
         private readonly NtNative.PacketCallback _sendCallback;
+        private readonly NtNative.PacketCallback _recvCallback;
 
         private readonly ConcurrentQueue<string> _sendQueue = new ConcurrentQueue<string>();
 
@@ -27,6 +27,7 @@ namespace NtCore.Clients
 
         public LocalClient(ProcessModule mainModule)
         {
+            Id = Guid.NewGuid();
             Character = new Character(this);
             Type = ClientType.LOCAL;
             
@@ -42,6 +43,7 @@ namespace NtCore.Clients
             _thread.Start();
         }
 
+        public Guid Id { get; }
         public ICharacter Character { get; }
         public ClientType Type { get; }
 

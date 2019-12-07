@@ -1,4 +1,5 @@
-﻿using NtCore.API.Commands;
+﻿using NtCore.API.Clients;
+using NtCore.API.Commands;
 using NtCore.API.Logger;
 using NtCore.API.Plugins;
 using NtCore.API.Scheduler;
@@ -11,5 +12,6 @@ namespace NtCore.API
         ILogger Logger { get; }
         IPluginManager PluginManager { get; }
         ICommandManager CommandManager { get; }
+        IClientManager ClientManager { get; }
     }
 }

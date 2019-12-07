@@ -11,6 +11,7 @@ namespace NtCore.API.Clients
     /// </summary>
     public interface IClient : IDisposable
     {
+        Guid Id { get; }
         /// <summary>
         ///     Get the character of this session
         /// </summary>

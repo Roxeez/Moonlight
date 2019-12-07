@@ -30,7 +30,7 @@ namespace NtCore.Plugins
 
         public void Start(Plugin plugin)
         {
-            if (_clientManager.LocalClient == null)
+            if (_clientManager.IsLocalCreated)
             {
                 _clientManager.CreateLocalClient();
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using NtCore.API;
 using NtCore.API.Clients;
 using NtCore.API.Enums;
 using NtCore.API.Game.Battle;
@@ -28,6 +29,15 @@ namespace NtCore.Game.Entities
         public int MaxMp { get; set; }
         public ITarget Target { get; set; }
         public byte JobLevel { get; set; }
+
+        public void Move(Position position)
+        {
+            _client.SendPacket($"walk {position.X} {position.Y} 0 {Speed}");
+            if (_client.Type == ClientType.LOCAL)
+            {
+                _client.ReceivePacket($"tp {(byte)EntityType} {Id} {position.X} {position.Y} 0");
+            }
+        }
 
         public void ShowMessage(string message, MessageType messageType)
         {

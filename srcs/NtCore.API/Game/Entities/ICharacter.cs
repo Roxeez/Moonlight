@@ -61,6 +61,8 @@ namespace NtCore.API.Game.Entities
 
         byte JobLevel { get; }
 
+        void Move(Position position);
+        
         /// <summary>
         ///     Show a message to character (clientside only it's a received packet)
         /// </summary>

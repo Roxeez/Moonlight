@@ -1,4 +1,5 @@
 ﻿using System;
+using NtCore.API.Clients;
 using NtCore.API.Commands;
 using NtCore.API.Logger;
 using NtCore.API.Plugins;
@@ -27,5 +28,7 @@ namespace NtCore.API
         public static ILogger GetLogger() => _ntCore.Logger;
 
         public static ICommandManager GetCommandManager() => _ntCore.CommandManager;
+
+        public static IClientManager GetClientManager() => _ntCore.ClientManager;
     }
 }

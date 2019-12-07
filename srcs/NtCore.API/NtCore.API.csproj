@@ -75,8 +75,11 @@
     <Compile Include="Enums\Faction.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\MessageType.cs" />
+    <Compile Include="Events\Character\CharacterMoveEvent.cs" />
     <Compile Include="Events\Character\TargetChangeEvent.cs" />
+    <Compile Include="Events\Character\TargetMoveEvent.cs" />
     <Compile Include="Events\Character\TargetStatUpdateEvent.cs" />
+    <Compile Include="Events\Entity\EntityMoveEvent.cs" />
     <Compile Include="Events\Entity\EntitySpawnEvent.cs" />
     <Compile Include="Events\Map\MapChangeEvent.cs" />
     <Compile Include="Events\Map\MinilandJoinEvent.cs" />
