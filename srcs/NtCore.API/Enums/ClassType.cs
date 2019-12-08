@@ -1,5 +1,8 @@
 ﻿namespace NtCore.API.Enums
 {
+    /// <summary>
+    ///     Represent all possible class of a player
+    /// </summary>
     public enum ClassType : byte
     {
         ADVENTURER = 0,

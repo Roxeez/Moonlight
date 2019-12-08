@@ -15,10 +15,10 @@ namespace NtCore.Plugins
         public static readonly string PluginDirectory =
             Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NtCore"),
                 "plugins");
-        
-        private readonly Dictionary<Type, List<(IListener, MethodInfo)>> _eventHandlers = new Dictionary<Type, List<(IListener, MethodInfo)>>();
 
         private readonly IClientManager _clientManager;
+
+        private readonly Dictionary<Type, List<(IListener, MethodInfo)>> _eventHandlers = new Dictionary<Type, List<(IListener, MethodInfo)>>();
         private readonly ILogger _logger;
 
         public PluginManager(ILogger logger, IClientManager clientManager)

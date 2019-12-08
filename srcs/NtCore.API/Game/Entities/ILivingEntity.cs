@@ -2,6 +2,9 @@
 
 namespace NtCore.API.Game.Entities
 {
+    /// <summary>
+    ///     Represent a LivingEntity
+    /// </summary>
     public interface ILivingEntity : IEntity, IEquatable<ILivingEntity>
     {
         /// <summary>
@@ -9,7 +12,14 @@ namespace NtCore.API.Game.Entities
         /// </summary>
         byte Speed { get; }
 
+        /// <summary>
+        ///     Current level
+        /// </summary>
         byte Level { get; }
+
+        /// <summary>
+        ///     Current direction
+        /// </summary>
         byte Direction { get; }
 
         /// <summary>

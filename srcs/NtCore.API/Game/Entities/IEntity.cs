@@ -3,6 +3,9 @@ using NtCore.API.Game.Maps;
 
 namespace NtCore.API.Game.Entities
 {
+    /// <summary>
+    ///     Represent an Entity
+    /// </summary>
     public interface IEntity
     {
         /// <summary>

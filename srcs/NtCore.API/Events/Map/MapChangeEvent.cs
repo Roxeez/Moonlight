@@ -6,7 +6,8 @@ using NtCore.API.Plugins;
 namespace NtCore.API.Events.Map
 {
     /// <summary>
-    ///     Event called when client change map BEFORE receiving all in packets
+    ///     Event called when character change map BEFORE
+    ///     This event is called before map initialization (before receiving in packets)
     /// </summary>
     public class MapChangeEvent : Event
     {
@@ -17,8 +18,19 @@ namespace NtCore.API.Events.Map
             Destination = destination;
         }
 
+        /// <summary>
+        ///     Character involved in this event
+        /// </summary>
         public ICharacter Character { get; }
+
+        /// <summary>
+        ///     Source map
+        /// </summary>
         public IMap Source { get; }
+
+        /// <summary>
+        ///     Destination map
+        /// </summary>
         public IMap Destination { get; }
     }
 }

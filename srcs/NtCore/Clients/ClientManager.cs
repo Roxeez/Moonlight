@@ -8,10 +8,9 @@ namespace NtCore.Clients
 {
     public class ClientManager : IClientManager
     {
+        private readonly IDictionary<Guid, IClient> _clients = new Dictionary<Guid, IClient>();
         private readonly IPacketManager _packetManager;
 
-        private readonly IDictionary<Guid, IClient> _clients = new Dictionary<Guid, IClient>();
-        
         public ClientManager(IPacketManager packetManager) => _packetManager = packetManager;
 
         public IClient CreateLocalClient()
@@ -31,7 +30,7 @@ namespace NtCore.Clients
             _clients[localClient.Id] = localClient;
 
             IsLocalCreated = true;
-            
+
             return localClient;
         }
 

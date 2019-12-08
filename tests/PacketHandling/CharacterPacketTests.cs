@@ -16,6 +16,8 @@ namespace NtCore.Tests.PacketHandling
 {
     public class CharacterPacketTests
     {
+        private readonly IClient _client;
+
         public CharacterPacketTests()
         {
             var packetManager = Program.UnitTestProvider().GetService<IPacketManager>();
@@ -30,8 +32,6 @@ namespace NtCore.Tests.PacketHandling
 
             _client = mock.Object;
         }
-
-        private readonly IClient _client;
 
         [Theory]
         [InlineData("stat 2500 2000 1500 1000", 2500, 2000, 1500, 1000)]
@@ -114,7 +114,7 @@ namespace NtCore.Tests.PacketHandling
         public void Mv_Packet_Change_Entity_Position_And_Speed(string packet, EntityType entityType, int id, byte x, byte y, byte speed)
         {
             _client.CreateMapMock();
-            
+
             _client.ReceivePacket(packet);
 
             var entity = _client.Character.Map.GetEntity(entityType, id).As<ILivingEntity>();

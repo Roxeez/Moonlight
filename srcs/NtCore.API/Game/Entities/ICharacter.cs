@@ -8,6 +8,11 @@ namespace NtCore.API.Game.Entities
     public interface ICharacter : IPlayer
     {
         /// <summary>
+        ///     Job level
+        /// </summary>
+        byte JobLevel { get; }
+
+        /// <summary>
         ///     Current sp points
         /// </summary>
         int SpPoints { get; }
@@ -57,12 +62,18 @@ namespace NtCore.API.Game.Entities
         /// </summary>
         int MaxMp { get; }
 
+        /// <summary>
+        ///     Current target
+        /// </summary>
         ITarget Target { get; }
 
-        byte JobLevel { get; }
 
+        /// <summary>
+        ///     Make your character move
+        /// </summary>
+        /// <param name="position">Position where you want to move</param>
         void Move(Position position);
-        
+
         /// <summary>
         ///     Show a message to character (clientside only it's a received packet)
         /// </summary>

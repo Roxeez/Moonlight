@@ -13,12 +13,9 @@ namespace NtCore.Network.Handlers.Entities
     public class MvPacketHandler : PacketHandler<MvPacket>
     {
         private readonly IPluginManager _pluginManager;
-        
-        public MvPacketHandler(IPluginManager pluginManager)
-        {
-            _pluginManager = pluginManager;
-        }
-        
+
+        public MvPacketHandler(IPluginManager pluginManager) => _pluginManager = pluginManager;
+
         public override void Handle(IClient client, MvPacket packet)
         {
             ICharacter character = client.Character;
@@ -30,10 +27,10 @@ namespace NtCore.Network.Handlers.Entities
             }
 
             Position from = character.Position;
-            
+
             entity.Position = new Position(packet.X, packet.Y);
             entity.Speed = packet.Speed;
-            
+
             _pluginManager.CallEvent(new EntityMoveEvent(entity, from));
 
             if (character.Target != null && character.Target.Entity.Equals(entity))

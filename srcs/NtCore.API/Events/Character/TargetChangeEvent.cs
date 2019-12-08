@@ -1,18 +1,20 @@
-﻿using NtCore.API.Game.Battle;
+﻿using JetBrains.Annotations;
 using NtCore.API.Game.Entities;
 using NtCore.API.Plugins;
 
 namespace NtCore.API.Events.Character
 {
+    /// <summary>
+    ///     Event called on Character target change
+    ///     Basically called when you click a LivingEntity and receive first St packet
+    /// </summary>
     public class TargetChangeEvent : Event
     {
-        public TargetChangeEvent(ICharacter character, ITarget target)
-        {
-            Character = character;
-            Target = target;
-        }
+        public TargetChangeEvent([NotNull] ICharacter character) => Character = character;
 
+        /// <summary>
+        ///     Character involved in this event
+        /// </summary>
         public ICharacter Character { get; }
-        public ITarget Target { get; }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using NtCore.API.Extensions;
 using NtCore.API.Game.Maps;
-using NtCore.API.Managers;
-using NtCore.Game.Maps;
 
-namespace NtCore.Managers
+namespace NtCore.Game.Maps
 {
     public class MapManager : IMapManager
     {

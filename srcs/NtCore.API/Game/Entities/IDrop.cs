@@ -1,5 +1,8 @@
 ﻿namespace NtCore.API.Game.Entities
 {
+    /// <summary>
+    ///     Represent a Drop
+    /// </summary>
     public interface IDrop : IEntity
     {
         /// <summary>

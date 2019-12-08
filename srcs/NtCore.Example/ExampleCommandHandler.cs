@@ -18,13 +18,13 @@ namespace NtCore.Example
         public void OnMapInfoCommand(ICharacter character)
         {
             IMap map = character.Map;
-            
+
             character.ShowChatMessage($"-======= MAP {map.Id} =======-", ChatMessageColor.GREEN);
             character.ShowChatMessage($"Players : {map.Players.Count()}", ChatMessageColor.YELLOW);
             character.ShowChatMessage($"Monsters : {map.Monsters.Count()}", ChatMessageColor.YELLOW);
             character.ShowChatMessage($"Npcs : {map.Npcs.Count()}", ChatMessageColor.YELLOW);
             character.ShowChatMessage($"Drops : {map.Drops.Count()}", ChatMessageColor.YELLOW);
-            character.ShowChatMessage($"-==================-", ChatMessageColor.GREEN);
+            character.ShowChatMessage("-==================-", ChatMessageColor.GREEN);
         }
     }
 }

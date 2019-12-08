@@ -1,5 +1,8 @@
 ﻿namespace NtCore.API.Game.Entities
 {
+    /// <summary>
+    ///     Represent a NPC
+    /// </summary>
     public interface INpc : ILivingEntity
     {
         /// <summary>

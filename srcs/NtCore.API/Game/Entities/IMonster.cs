@@ -1,5 +1,8 @@
 ﻿namespace NtCore.API.Game.Entities
 {
+    /// <summary>
+    ///     Represent a Monster
+    /// </summary>
     public interface IMonster : ILivingEntity
     {
         /// <summary>

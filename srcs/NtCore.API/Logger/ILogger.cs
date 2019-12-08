@@ -1,10 +1,34 @@
-﻿namespace NtCore.API.Logger
+﻿using JetBrains.Annotations;
+
+namespace NtCore.API.Logger
 {
+    /// <summary>
+    ///     Interface used for logging
+    /// </summary>
     public interface ILogger
     {
-        void Debug(string message);
-        void Information(string message);
-        void Warning(string message);
-        void Error(string message);
+        /// <summary>
+        ///     Log debug message
+        /// </summary>
+        /// <param name="message">Message to log</param>
+        void Debug([NotNull] string message);
+
+        /// <summary>
+        ///     Log info message
+        /// </summary>
+        /// <param name="message">Message to log</param>
+        void Information([NotNull] string message);
+
+        /// <summary>
+        ///     Log warning message
+        /// </summary>
+        /// <param name="message">Message to log</param>
+        void Warning([NotNull] string message);
+
+        /// <summary>
+        ///     Log error message
+        /// </summary>
+        /// <param name="message">Message to log</param>
+        void Error([NotNull] string message);
     }
 }

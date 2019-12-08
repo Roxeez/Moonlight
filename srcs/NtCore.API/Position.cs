@@ -1,10 +1,25 @@
 ﻿namespace NtCore.API
 {
+    /// <summary>
+    ///     Represent a 2D position
+    /// </summary>
     public struct Position
     {
+        /// <summary>
+        ///     X axis
+        /// </summary>
         public short X { get; }
+
+        /// <summary>
+        ///     Y axis
+        /// </summary>
         public short Y { get; }
 
+        /// <summary>
+        ///     Create a new position
+        /// </summary>
+        /// <param name="x">Position on X axis</param>
+        /// <param name="y">Position on Y asix</param>
         public Position(short x, short y)
         {
             X = x;

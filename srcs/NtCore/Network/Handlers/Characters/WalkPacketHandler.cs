@@ -11,21 +11,18 @@ namespace NtCore.Network.Handlers.Characters
     public class WalkPacketHandler : PacketHandler<WalkPacket>
     {
         private readonly IPluginManager _pluginManager;
-        
-        public WalkPacketHandler(IPluginManager pluginManager)
-        {
-            _pluginManager = pluginManager;
-        }
-        
+
+        public WalkPacketHandler(IPluginManager pluginManager) => _pluginManager = pluginManager;
+
         public override void Handle(IClient client, WalkPacket packet)
         {
             var character = client.Character.As<Character>();
 
             Position from = character.Position;
-            
+
             character.Speed = packet.Speed;
             character.Position = new Position(packet.X, packet.Y);
-            
+
             _pluginManager.CallEvent(new CharacterMoveEvent(client.Character, from));
         }
     }

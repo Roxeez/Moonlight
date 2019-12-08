@@ -6,7 +6,8 @@ using NtCore.API.Plugins;
 namespace NtCore.API.Events.Entity
 {
     /// <summary>
-    ///     Event called when an Entity Spawn
+    ///     Event called when an Entity Spawn (player, monster, npc, drop)
+    ///     It's basically called when you receive in packet
     /// </summary>
     public class EntitySpawnEvent : Event
     {
@@ -15,8 +16,15 @@ namespace NtCore.API.Events.Entity
             Entity = entity;
             Map = map;
         }
-        
+
+        /// <summary>
+        ///     Entity involved in this event
+        /// </summary>
         public IEntity Entity { get; }
+
+        /// <summary>
+        ///     Map where this entity spawned
+        /// </summary>
         public IMap Map { get; }
     }
 }

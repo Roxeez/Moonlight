@@ -6,7 +6,8 @@ using NtCore.API.Plugins;
 namespace NtCore.API.Events.Map
 {
     /// <summary>
-    ///     Event called when joining miniland (AFTER receiving in packets)
+    ///     Event called when joining miniland
+    ///     This event is called AFTER map initialization
     /// </summary>
     public class MinilandJoinEvent : Event
     {
@@ -16,7 +17,14 @@ namespace NtCore.API.Events.Map
             Miniland = miniland;
         }
 
+        /// <summary>
+        ///     Character involved in this event
+        /// </summary>
         public ICharacter Character { get; }
+
+        /// <summary>
+        ///     Miniland joined
+        /// </summary>
         public IMiniland Miniland { get; }
     }
 }

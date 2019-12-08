@@ -2,7 +2,7 @@
 using NtCore.API.Clients;
 using NtCore.API.Events.Map;
 using NtCore.API.Extensions;
-using NtCore.API.Managers;
+using NtCore.API.Game.Maps;
 using NtCore.API.Plugins;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;

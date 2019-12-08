@@ -43,7 +43,7 @@ namespace NtCore.Network.Handlers.Entities
                     Mp = packet.Mp
                 };
 
-                _pluginManager.CallEvent(new TargetChangeEvent(client.Character, character.Target));
+                _pluginManager.CallEvent(new TargetChangeEvent(client.Character));
                 return;
             }
 
@@ -52,7 +52,7 @@ namespace NtCore.Network.Handlers.Entities
             target.Hp = packet.Hp;
             target.Mp = packet.Mp;
 
-            _pluginManager.CallEvent(new TargetStatUpdateEvent(client.Character, target));
+            _pluginManager.CallEvent(new TargetStatUpdateEvent(client.Character));
         }
     }
 }

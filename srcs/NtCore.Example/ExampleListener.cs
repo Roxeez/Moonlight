@@ -17,16 +17,16 @@ namespace NtCore.Example
         {
             ICharacter character = e.Character;
             ILivingEntity target = e.Character.Target.Entity;
-            
+
             character.Move(target.Position);
         }
-        
+
         [Handler]
         public void OnTargetChange(TargetChangeEvent e)
         {
-            ITarget target = e.Target;
-            ILivingEntity entity = e.Target.Entity;
-            
+            ITarget target = e.Character.Target;
+            ILivingEntity entity = target.Entity;
+
             e.Character.ShowBubbleMessage($"{entity.Id} / {entity.EntityType} / Lv.{entity.Level}");
             e.Character.ShowChatMessage($"Hp: {target.Hp}", ChatMessageColor.GRAY);
             e.Character.ShowChatMessage($"Mp: {target.Mp}", ChatMessageColor.GRAY);

@@ -11,13 +11,21 @@ namespace NtCore.API.Clients
     /// </summary>
     public interface IClient : IDisposable
     {
+        /// <summary>
+        ///     Client Unique Id
+        /// </summary>
         Guid Id { get; }
+
         /// <summary>
         ///     Get the character of this session
         /// </summary>
         ICharacter Character { get; }
 
+        /// <summary>
+        ///     Client type
+        /// </summary>
         ClientType Type { get; }
+
         /// <summary>
         ///     Send a packet
         /// </summary>

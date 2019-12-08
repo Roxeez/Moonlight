@@ -10,12 +10,20 @@ namespace NtCore.API.Clients
     public interface IClientManager
     {
         /// <summary>
-        ///     Create a local client or return LocalClient if not null
+        ///     Define if LocalClient is already created
+        /// </summary>
+        bool IsLocalCreated { get; }
+
+        /// <summary>
+        ///     Contains all existing clients
+        /// </summary>
+        IEnumerable<IClient> Clients { get; }
+
+        /// <summary>
+        ///     Create a local client
         /// </summary>
         /// <returns>Current LocalClient or new one if null</returns>
         [NotNull]
         IClient CreateLocalClient();
-        bool IsLocalCreated { get; }
-        IEnumerable<IClient> Clients { get; }
     }
 }
