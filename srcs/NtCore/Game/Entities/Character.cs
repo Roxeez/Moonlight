@@ -33,7 +33,8 @@ namespace NtCore.Game.Entities
         public void Move(Position position)
         {
             _client.SendPacket($"walk {position.X} {position.Y} 0 {Speed}");
-            if (_client.Type == ClientType.LOCAL)
+            
+            if (_client.Type == ClientType.LOCAL) // Trick for moving player (need to find something better)
             {
                 _client.ReceivePacket($"tp {(byte)EntityType} {Id} {position.X} {position.Y} 0");
             }
