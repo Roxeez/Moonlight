@@ -1,4 +1,4 @@
-name: .NET Framework
+name: Main.Legacy
 
 on: [push]
  
