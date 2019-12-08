@@ -4,7 +4,12 @@ NtCore is basically what is Spigot to Minecraft but for NosTale, it allow you to
 
 NtCore.API give you access to all interface used by NtCore and allow you to create plugin & easily interact with everything in NosTale using a local client (injected) or remote client (clientless).  
 Since everything is managed by NtCore, you can easily interact between plugins & running clients in all your plugins
-
+<br><br>
+![Codacy grade](https://img.shields.io/codacy/grade/d7ecbcba4d48445f8a7e12f1bb4fb8e7?style=flat-square)
+![GitHub top language](https://img.shields.io/github/languages/top/Roxeez/NtCore?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/Roxeez/NtCore?style=flat-square)
+![GitHub](https://img.shields.io/github/license/Roxeez/NtCore?style=flat-square)
+![Maintenance](https://img.shields.io/maintenance/yes/2019?style=flat-square)
 ## Getting Started
 
 - Clone
