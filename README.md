@@ -22,7 +22,7 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 - Enjoy
 
 ## Example
-> This example code will make character follow a target
+> This example code will make character follow a target, full example is available [HERE](https://github.com/Roxeez/NtCore/tree/master/srcs/Example)
 ```csharp
 public class MyApplication
 {
