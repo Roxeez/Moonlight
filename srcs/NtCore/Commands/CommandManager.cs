@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using NtCore.API.Clients;
-using NtCore.API.Commands;
-using NtCore.API.Enums;
-using NtCore.API.Extensions;
-using NtCore.API.Game.Entities;
-using NtCore.API.Logger;
-using NtCore.API.Plugins;
+using NtCore.Clients;
+using NtCore.Enums;
+using NtCore.Extensions;
+using NtCore.Game.Entities;
+using NtCore.Logger;
 
 namespace NtCore.Commands
 {
@@ -18,7 +16,7 @@ namespace NtCore.Commands
 
         public CommandManager(ILogger logger) => _logger = logger;
 
-        public void Register(ICommandHandler handler, Plugin plugin)
+        public void Register(ICommandHandler handler)
         {
             foreach (MethodInfo methodInfo in handler.GetType().GetMethods())
             {
@@ -50,15 +48,15 @@ namespace NtCore.Commands
                     continue;
                 }
 
-                plugin.Logger.Information($"Command {command.Name} registered");
+                _logger.Information($"Command {command.Name} registered");
                 _registeredCommands[command.Name] = (handler, methodInfo);
             }
         }
 
-        public void Register<T>(Plugin plugin) where T : ICommandHandler
+        public void Register<T>() where T : ICommandHandler
         {
             var obj = Activator.CreateInstance<T>();
-            Register(obj, plugin);
+            Register(obj);
         }
 
         public void Execute(IClient client, string command, string[] args)

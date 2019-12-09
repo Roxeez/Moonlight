@@ -1,21 +1,21 @@
 ﻿using System;
-using NtCore.API.Clients;
-using NtCore.API.Enums;
-using NtCore.API.Events.Entity;
-using NtCore.API.Extensions;
-using NtCore.API.Game.Entities;
-using NtCore.API.Plugins;
+using NtCore.Clients;
+using NtCore.Enums;
+using NtCore.Events;
+using NtCore.Events.Entity;
+using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Maps;
+using NtCore.Game.Entities.Impl;
+using NtCore.Game.Maps.Impl;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps
 {
     public class InPacketHandler : PacketHandler<InPacket>
     {
-        private readonly IPluginManager _pluginManager;
+        private readonly IEventManager _eventManager;
 
-        public InPacketHandler(IPluginManager pluginManager) => _pluginManager = pluginManager;
+        public InPacketHandler(IEventManager eventManager) => _eventManager = eventManager;
 
         public override void Handle(IClient client, InPacket packet)
         {
@@ -83,7 +83,7 @@ namespace NtCore.Network.Handlers.Maps
 
             if (character.LastMapChange.AddSeconds(5) < DateTime.Now)
             {
-                _pluginManager.CallEvent(new EntitySpawnEvent(entity, map));
+                _eventManager.CallEvent(new EntitySpawnEvent(entity, map));
             }
         }
     }

@@ -62,6 +62,10 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="JetBrains.Annotations, Version=2019.1.3.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
+      <HintPath>..\..\packages\JetBrains.Annotations.2019.1.3\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>..\..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
       <Private>True</Private>
@@ -103,13 +107,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients\ClientManager.cs" />
+    <Compile Include="Clients\IClient.cs" />
+    <Compile Include="Clients\IClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
+    <Compile Include="Commands\CommandAttribute.cs" />
     <Compile Include="Commands\CommandManager.cs" />
-    <Compile Include="Game\Battle\Target.cs" />
-    <Compile Include="Game\Entities\LivingEntity.cs" />
-    <Compile Include="Game\Maps\MapManager.cs" />
-    <Compile Include="Game\Maps\Miniland.cs" />
-    <Compile Include="Game\Maps\MinilandObject.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\ICommandManager.cs" />
+    <Compile Include="Enums\ChatMessageColor.cs" />
+    <Compile Include="Enums\ClassType.cs" />
+    <Compile Include="Enums\ClientType.cs" />
+    <Compile Include="Enums\Element.cs" />
+    <Compile Include="Enums\EntityType.cs" />
+    <Compile Include="Enums\Faction.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\MessageType.cs" />
+    <Compile Include="Events\Character\CharacterMoveEvent.cs" />
+    <Compile Include="Events\Character\TargetChangeEvent.cs" />
+    <Compile Include="Events\Character\TargetMoveEvent.cs" />
+    <Compile Include="Events\Character\TargetStatUpdateEvent.cs" />
+    <Compile Include="Events\Entity\EntityMoveEvent.cs" />
+    <Compile Include="Events\Entity\EntitySpawnEvent.cs" />
+    <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\EventManager.cs" />
+    <Compile Include="Events\Handler.cs" />
+    <Compile Include="Events\IEventManager.cs" />
+    <Compile Include="Events\IListener.cs" />
+    <Compile Include="Events\Map\MapChangeEvent.cs" />
+    <Compile Include="Events\Map\MinilandJoinEvent.cs" />
+    <Compile Include="Extensions\CastExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtension.cs" />
+    <Compile Include="Game\Battle\Impl\Target.cs" />
+    <Compile Include="Game\Battle\ITarget.cs" />
+    <Compile Include="Game\Entities\ICharacter.cs" />
+    <Compile Include="Game\Entities\IDrop.cs" />
+    <Compile Include="Game\Entities\IEntity.cs" />
+    <Compile Include="Game\Entities\ILivingEntity.cs" />
+    <Compile Include="Game\Entities\IMonster.cs" />
+    <Compile Include="Game\Entities\Impl\Character.cs" />
+    <Compile Include="Game\Entities\Impl\Drop.cs" />
+    <Compile Include="Game\Entities\Impl\LivingEntity.cs" />
+    <Compile Include="Game\Entities\Impl\Monster.cs" />
+    <Compile Include="Game\Entities\Impl\Npc.cs" />
+    <Compile Include="Game\Entities\Impl\Player.cs" />
+    <Compile Include="Game\Entities\INpc.cs" />
+    <Compile Include="Game\Entities\IPlayer.cs" />
+    <Compile Include="Game\Maps\IMap.cs" />
+    <Compile Include="Game\Maps\IMapManager.cs" />
+    <Compile Include="Game\Maps\IMiniland.cs" />
+    <Compile Include="Game\Maps\IMinilandObject.cs" />
+    <Compile Include="Game\Maps\Impl\Map.cs" />
+    <Compile Include="Game\Maps\Impl\MapManager.cs" />
+    <Compile Include="Game\Maps\Impl\Miniland.cs" />
+    <Compile Include="Game\Maps\Impl\MinilandObject.cs" />
+    <Compile Include="Logger\ConsoleLogger.cs" />
+    <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Network\Handlers\Characters\CInfoPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\LevPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\WalkPacketHandler.cs" />
@@ -123,19 +175,12 @@
     <Compile Include="Network\Packets\Entities\CondPacket.cs" />
     <Compile Include="Network\Packets\Entities\MvPacket.cs" />
     <Compile Include="Network\Packets\Entities\StPacket.cs" />
-    <Compile Include="NtCore.cs" />
-    <Compile Include="Plugins\PluginManager.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="NtCoreAPI.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Network\Handlers\Maps\MlInfoBrPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\MltObjPacketHandler.cs" />
     <Compile Include="Network\Packets\Maps\MlInfoBrPacket.cs" />
     <Compile Include="Network\Packets\Maps\MltObjPacket.cs" />
-    <Compile Include="Game\Entities\Player.cs" />
-    <Compile Include="Game\Entities\Character.cs" />
-    <Compile Include="Game\Entities\Drop.cs" />
-    <Compile Include="Game\Entities\Monster.cs" />
-    <Compile Include="Game\Entities\Npc.cs" />
-    <Compile Include="Game\Maps\Map.cs" />
     <Compile Include="Import\Kernel32.cs" />
     <Compile Include="Import\NtNative.cs" />
     <Compile Include="Import\User32.cs" />
@@ -159,16 +204,11 @@
     <Compile Include="Network\Packets\Characters\StatPacket.cs" />
     <Compile Include="Network\Packets\Maps\CMapPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduler\IScheduler.cs" />
     <Compile Include="Scheduler\ObservableScheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NtCore.API\NtCore.API.csproj">
-      <Project>{3f3c470a-7d4e-4aff-a2bd-70139cd5c0e4}</Project>
-      <Name>NtCore.API</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

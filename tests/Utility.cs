@@ -1,5 +1,4 @@
-﻿using NtCore.API;
-using NtCore.API.Game.Maps;
+﻿using NtCore.API.Game.Maps;
 using NtCore.Game.Maps;
 
 namespace NtCore.Tests

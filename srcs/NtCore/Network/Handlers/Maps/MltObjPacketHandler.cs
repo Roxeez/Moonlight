@@ -1,6 +1,7 @@
-﻿using NtCore.API.Clients;
-using NtCore.API.Extensions;
+﻿using NtCore.Clients;
+using NtCore.Extensions;
 using NtCore.Game.Maps;
+using NtCore.Game.Maps.Impl;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps

@@ -1,20 +1,19 @@
-﻿using NtCore.API;
-using NtCore.API.Clients;
-using NtCore.API.Events.Character;
-using NtCore.API.Events.Entity;
-using NtCore.API.Extensions;
-using NtCore.API.Game.Entities;
-using NtCore.API.Plugins;
+﻿using NtCore.Clients;
+using NtCore.Events;
+using NtCore.Events.Character;
+using NtCore.Events.Entity;
+using NtCore.Extensions;
 using NtCore.Game.Entities;
+using NtCore.Game.Entities.Impl;
 using NtCore.Network.Packets.Entities;
 
 namespace NtCore.Network.Handlers.Entities
 {
     public class MvPacketHandler : PacketHandler<MvPacket>
     {
-        private readonly IPluginManager _pluginManager;
+        private readonly IEventManager _eventManager;
 
-        public MvPacketHandler(IPluginManager pluginManager) => _pluginManager = pluginManager;
+        public MvPacketHandler(IEventManager eventManager) => _eventManager = eventManager;
 
         public override void Handle(IClient client, MvPacket packet)
         {
@@ -31,11 +30,11 @@ namespace NtCore.Network.Handlers.Entities
             entity.Position = new Position(packet.X, packet.Y);
             entity.Speed = packet.Speed;
 
-            _pluginManager.CallEvent(new EntityMoveEvent(entity, from));
+            _eventManager.CallEvent(new EntityMoveEvent(entity, from));
 
             if (character.Target != null && character.Target.Entity.Equals(entity))
             {
-                _pluginManager.CallEvent(new TargetMoveEvent(character, from));
+                _eventManager.CallEvent(new TargetMoveEvent(character, from));
             }
         }
     }

@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NFluent;
-using NtCore.API;
-using NtCore.API.Clients;
-using NtCore.API.Enums;
-using NtCore.API.Game.Entities;
+using NtCore.Clients;
+using NtCore.Enums;
 using NtCore.Game.Entities;
+using NtCore.Game.Entities.Impl;
 using NtCore.Network;
 using NtCore.Tests.Extensions;
 using Xunit;
@@ -18,11 +17,11 @@ namespace NtCore.Tests.PacketHandling
 
         public MapPacketTests()
         {
-            var packetManager = Program.UnitTestProvider().GetService<IPacketManager>();
+            var ntCore = new NtCoreAPI();
             var mock = new Mock<IClient>();
 
             mock.Setup(x => x.ReceivePacket(It.IsAny<string>()))
-                .Callback((string p) => packetManager.Handle(mock.Object, p, PacketType.Recv));
+                .Callback((string p) => ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
             mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
 
             _client = mock.Object;

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using NtCore.API.Clients;
-using NtCore.API.Commands;
-using NtCore.API.Extensions;
-using NtCore.API.Logger;
+using NtCore.Clients;
+using NtCore.Commands;
+using NtCore.Extensions;
+using NtCore.Logger;
 
 namespace NtCore.Network
 {

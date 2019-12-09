@@ -1,7 +1,7 @@
-﻿using NtCore.API.Clients;
-using NtCore.API.Enums;
-using NtCore.API.Game.Maps;
-using NtCore.Game.Entities;
+﻿using NtCore.Clients;
+using NtCore.Enums;
+using NtCore.Game.Entities.Impl;
+using NtCore.Game.Maps;
 using NtCore.Network.Packets.Entities;
 
 namespace NtCore.Network.Handlers.Entities

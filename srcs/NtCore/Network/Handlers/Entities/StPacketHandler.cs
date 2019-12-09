@@ -1,23 +1,23 @@
-﻿using NtCore.API.Clients;
-using NtCore.API.Events.Character;
-using NtCore.API.Extensions;
-using NtCore.API.Logger;
-using NtCore.API.Plugins;
-using NtCore.Game.Battle;
-using NtCore.Game.Entities;
+﻿using NtCore.Clients;
+using NtCore.Events;
+using NtCore.Events.Character;
+using NtCore.Extensions;
+using NtCore.Game.Battle.Impl;
+using NtCore.Game.Entities.Impl;
+using NtCore.Logger;
 using NtCore.Network.Packets.Entities;
 
 namespace NtCore.Network.Handlers.Entities
 {
     public class StPacketHandler : PacketHandler<StPacket>
     {
+        private readonly IEventManager _eventManager;
         private readonly ILogger _logger;
-        private readonly IPluginManager _pluginManager;
 
-        public StPacketHandler(ILogger logger, IPluginManager pluginManager)
+        public StPacketHandler(ILogger logger, IEventManager eventManager)
         {
             _logger = logger;
-            _pluginManager = pluginManager;
+            _eventManager = eventManager;
         }
 
         public override void Handle(IClient client, StPacket packet)
@@ -43,7 +43,7 @@ namespace NtCore.Network.Handlers.Entities
                     Mp = packet.Mp
                 };
 
-                _pluginManager.CallEvent(new TargetChangeEvent(client.Character));
+                _eventManager.CallEvent(new TargetChangeEvent(client.Character));
                 return;
             }
 
@@ -52,7 +52,7 @@ namespace NtCore.Network.Handlers.Entities
             target.Hp = packet.Hp;
             target.Mp = packet.Mp;
 
-            _pluginManager.CallEvent(new TargetStatUpdateEvent(client.Character));
+            _eventManager.CallEvent(new TargetStatUpdateEvent(client.Character));
         }
     }
 }

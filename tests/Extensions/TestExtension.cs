@@ -1,7 +1,7 @@
-﻿using NtCore.API.Clients;
-using NtCore.API.Extensions;
-using NtCore.Game.Entities;
-using NtCore.Game.Maps;
+﻿using NtCore.Clients;
+using NtCore.Extensions;
+using NtCore.Game.Entities.Impl;
+using NtCore.Game.Maps.Impl;
 
 namespace NtCore.Tests.Extensions
 {

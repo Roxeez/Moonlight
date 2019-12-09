@@ -1,23 +1,23 @@
 ﻿using System;
-using NtCore.API.Clients;
-using NtCore.API.Events.Map;
-using NtCore.API.Extensions;
-using NtCore.API.Game.Maps;
-using NtCore.API.Plugins;
-using NtCore.Game.Entities;
+using NtCore.Clients;
+using NtCore.Events;
+using NtCore.Events.Map;
+using NtCore.Extensions;
+using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
+using NtCore.Game.Maps.Impl;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps
 {
     public class CMapPacketHandler : PacketHandler<CMapPacket>
     {
+        private readonly IEventManager _eventManager;
         private readonly IMapManager _mapManager;
-        private readonly IPluginManager _pluginManager;
 
-        public CMapPacketHandler(IMapManager mapManager, IPluginManager pluginManager)
+        public CMapPacketHandler(IMapManager mapManager, IEventManager eventManager)
         {
-            _pluginManager = pluginManager;
+            _eventManager = eventManager;
             _mapManager = mapManager;
         }
 
@@ -41,7 +41,7 @@ namespace NtCore.Network.Handlers.Maps
 
             if (source != null)
             {
-                _pluginManager.CallEvent(new MapChangeEvent(client.Character, source, destination));
+                _eventManager.CallEvent(new MapChangeEvent(client.Character, source, destination));
             }
 
             character.LastMapChange = DateTime.Now;

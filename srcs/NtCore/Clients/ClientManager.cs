@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using NtCore.API.Clients;
 using NtCore.Network;
 
 namespace NtCore.Clients

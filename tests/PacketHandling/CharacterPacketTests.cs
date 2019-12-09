@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NFluent;
-using NtCore.API;
-using NtCore.API.Clients;
-using NtCore.API.Enums;
-using NtCore.API.Extensions;
-using NtCore.API.Game.Battle;
-using NtCore.API.Game.Entities;
+using NtCore.Clients;
+using NtCore.Enums;
+using NtCore.Extensions;
+using NtCore.Game.Battle;
 using NtCore.Game.Entities;
+using NtCore.Game.Entities.Impl;
 using NtCore.Network;
 using NtCore.Tests.Extensions;
 using Xunit;
@@ -20,13 +19,13 @@ namespace NtCore.Tests.PacketHandling
 
         public CharacterPacketTests()
         {
-            var packetManager = Program.UnitTestProvider().GetService<IPacketManager>();
+            var ntCore = new NtCoreAPI();
             var mock = new Mock<IClient>();
 
             mock.Setup(x => x.ReceivePacket(It.IsAny<string>()))
-                .Callback((string p) => packetManager.Handle(mock.Object, p, PacketType.Recv));
+                .Callback((string p) => ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
             mock.Setup(x => x.SendPacket(It.IsAny<string>()))
-                .Callback((string p) => packetManager.Handle(mock.Object, p, PacketType.Send));
+                .Callback((string p) => ntCore.PacketManager.Handle(mock.Object, p, PacketType.Send));
 
             mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
 

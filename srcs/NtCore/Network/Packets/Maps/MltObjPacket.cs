@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NtCore.API;
 
 namespace NtCore.Network.Packets.Maps
 {

@@ -1,4 +1,4 @@
-﻿using NtCore.API.Clients;
+﻿using NtCore.Clients;
 
 namespace NtCore.Network
 {

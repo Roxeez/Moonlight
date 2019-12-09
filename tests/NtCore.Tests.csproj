@@ -116,10 +116,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\srcs\NtCore.API\NtCore.API.csproj">
-      <Project>{3f3c470a-7d4e-4aff-a2bd-70139cd5c0e4}</Project>
-      <Name>NtCore.API</Name>
-    </ProjectReference>
     <ProjectReference Include="..\srcs\NtCore\NtCore.csproj">
       <Project>{4395d3f4-ad1c-4caf-98ea-7a07e72f2293}</Project>
       <Name>NtCore</Name>

@@ -1,17 +1,17 @@
-﻿using NtCore.API.Clients;
-using NtCore.API.Events.Map;
-using NtCore.API.Extensions;
-using NtCore.API.Plugins;
-using NtCore.Game.Maps;
+﻿using NtCore.Clients;
+using NtCore.Events;
+using NtCore.Events.Map;
+using NtCore.Extensions;
+using NtCore.Game.Maps.Impl;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps
 {
     public class MlInfoBrPacketHandler : PacketHandler<MlInfoBrPacket>
     {
-        private readonly IPluginManager _pluginManager;
+        private readonly IEventManager _eventManager;
 
-        public MlInfoBrPacketHandler(IPluginManager pluginManager) => _pluginManager = pluginManager;
+        public MlInfoBrPacketHandler(IEventManager eventManager) => _eventManager = eventManager;
 
         public override void Handle(IClient client, MlInfoBrPacket packet)
         {
@@ -27,7 +27,7 @@ namespace NtCore.Network.Handlers.Maps
             miniland.TotalVisitor = packet.TotalVisitor;
             miniland.Message = packet.Message;
 
-            _pluginManager.CallEvent(new MinilandJoinEvent(client.Character, miniland));
+            _eventManager.CallEvent(new MinilandJoinEvent(client.Character, miniland));
         }
     }
 }
