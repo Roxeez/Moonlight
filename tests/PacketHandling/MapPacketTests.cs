@@ -3,10 +3,13 @@ using Moq;
 using NFluent;
 using NtCore.Clients;
 using NtCore.Enums;
+using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
+using NtCore.Game.Maps;
+using NtCore.Game.Maps.Impl;
 using NtCore.Network;
-using NtCore.Tests.Extensions;
+using NtCore.Tests.Utility;
 using Xunit;
 
 namespace NtCore.Tests.PacketHandling
@@ -46,8 +49,10 @@ namespace NtCore.Tests.PacketHandling
         public void In_Packet_Add_Npc_To_Map(string packet, int vnum, int id, short x, short y, byte hpPercentage,
             byte mpPercentage, byte direction)
         {
-            _client.CreateMapMock();
+            Map fakeMap = new MapBuilder().Create();
 
+            fakeMap.AddEntity(_client.Character);
+            
             _client.ReceivePacket(packet);
 
             var npc = _client.Character.Map.GetEntity<INpc>(id);
@@ -67,7 +72,9 @@ namespace NtCore.Tests.PacketHandling
         public void In_Packet_Add_Monster_To_Map(string packet, int vnum, int id, short x, short y, byte hpPercentage,
             byte mpPercentage, byte direction)
         {
-            _client.CreateMapMock();
+            Map fakeMap = new MapBuilder().Create();
+
+            fakeMap.AddEntity(_client.Character);
 
             _client.ReceivePacket(packet);
 
@@ -91,7 +98,9 @@ namespace NtCore.Tests.PacketHandling
         public void In_Packet_Add_Player_To_Map(string packet, string name, int id, byte x, byte y, byte direction,
             Gender gender, ClassType classType, byte hpPercentage, byte mpPercentage, byte level)
         {
-            _client.CreateMapMock();
+            Map fakeMap = new MapBuilder().Create();
+
+            fakeMap.AddEntity(_client.Character);
 
             _client.ReceivePacket(packet);
 
@@ -114,7 +123,9 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("in 9 1076 1573974 124 16 95 0 0 0", 1076, 1573974, 124, 16, 95)]
         public void In_Packet_Add_Drop_To_Map(string packet, int vnum, int id, short x, short y, int amount)
         {
-            _client.CreateMapMock();
+            Map fakeMap = new MapBuilder().Create();
+
+            fakeMap.AddEntity(_client.Character);
 
             _client.ReceivePacket(packet);
 
@@ -124,6 +135,24 @@ namespace NtCore.Tests.PacketHandling
             Check.That(drop.Vnum).IsEqualTo(vnum);
             Check.That(drop.Position).IsEqualTo(new Position(x, y));
             Check.That(drop.Amount).IsEqualTo(amount);
+        }
+
+        [Theory]
+        [InlineData("out 1 9854", EntityType.PLAYER, 9854)]
+        [InlineData("out 2 2053", EntityType.NPC, 2053)]
+        [InlineData("out 2 876", EntityType.NPC, 876)]
+        [InlineData("out 3 1874", EntityType.MONSTER, 1874)]
+        public void Out_Packet_Remove_Entity_From_Map(string packet, EntityType entityType, int id)
+        {
+            Map fakeMap = new MapBuilder().WithEntity(entityType, id).Create();
+
+            fakeMap.AddEntity(_client.Character);
+            
+            _client.ReceivePacket(packet);
+
+            IMap map = _client.Character.Map;
+
+            Check.That(map.GetEntity(entityType, id)).IsNull();
         }
     }
 }

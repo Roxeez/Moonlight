@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NFluent;
 using NtCore.API.Game.Maps;
@@ -6,8 +7,9 @@ using NtCore.Clients;
 using NtCore.Extensions;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
+using NtCore.Game.Maps.Impl;
 using NtCore.Network;
-using NtCore.Tests.Extensions;
+using NtCore.Tests.Utility;
 using Xunit;
 
 namespace NtCore.Tests.PacketHandling
@@ -34,7 +36,9 @@ namespace NtCore.Tests.PacketHandling
         public void MlInfoBr_Packet_Set_Miniland_Information(string packet, string owner, int visitor, int totalVisitor,
             string message)
         {
-            _client.CreateMinilandMock();
+            Map fakeMap = new MapBuilder().AsMiniland().Create();
+
+            fakeMap.AddEntity(_client.Character);
 
             _client.ReceivePacket(packet);
 
@@ -58,11 +62,33 @@ namespace NtCore.Tests.PacketHandling
         [Fact]
         public void MltObj_Packet_Add_MinilandObject_To_Miniland()
         {
-            _client.CreateMinilandMock();
+            var objects = new List<IMinilandObject>()
+            {
+                new MinilandObject
+                {
+                    Id = 1,
+                    Vnum = 3250,
+                    Position = new Position(15, 25)
+                },
+                new MinilandObject
+                {
+                    Id = 2,
+                    Vnum = 3285,
+                    Position = new Position(25, 65)
+                },
+                new MinilandObject
+                {
+                    Id = 3,
+                    Vnum = 1285,
+                    Position = new Position(65, 87)
+                }
+            };
+            
+            Map fakeMap = new MapBuilder().AsMiniland().Create();
+
+            fakeMap.AddEntity(_client.Character);
 
             _client.ReceivePacket("mltobj 3250.1.15.25 3285.2.25.65 1285.3.65.87");
-
-            IMinilandObject[] objects = Utility.CreateDummyMinilandObjects();
 
             var miniland = _client.Character.Map.As<IMiniland>();
 

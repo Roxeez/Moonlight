@@ -96,19 +96,24 @@ namespace NtCore.Game.Maps.Impl
 
         public void RemoveEntity(IEntity entity)
         {
-            switch (entity.EntityType)
+            RemoveEntity(entity.EntityType, entity.Id);
+        }
+
+        public void RemoveEntity(EntityType entityType, int entityId)
+        {
+            switch (entityType)
             {
                 case EntityType.PLAYER:
-                    _players.Remove(entity.Id);
+                    _players.Remove(entityId);
                     break;
                 case EntityType.MONSTER:
-                    _monsters.Remove(entity.Id);
+                    _monsters.Remove(entityId);
                     break;
                 case EntityType.NPC:
-                    _npcs.Remove(entity.Id);
+                    _npcs.Remove(entityId);
                     break;
                 case EntityType.DROP:
-                    _drops.Remove(entity.Id);
+                    _drops.Remove(entityId);
                     break;
             }
         }

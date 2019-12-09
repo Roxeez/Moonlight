@@ -60,7 +60,7 @@ namespace Example
         }
 
         [Handler]
-        public void OnEntitySpawn(EntitySpawnEvent e)
+        public void OnEntitySpawn(EntityJoinEvent e)
         {
             if (e.Entity.EntityType == EntityType.PLAYER)
             {

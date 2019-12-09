@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Moq;
+﻿using Moq;
 using NFluent;
 using NtCore.Clients;
 using NtCore.Enums;
@@ -7,8 +6,9 @@ using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
+using NtCore.Game.Maps.Impl;
 using NtCore.Network;
-using NtCore.Tests.Extensions;
+using NtCore.Tests.Utility;
 using Xunit;
 
 namespace NtCore.Tests.PacketHandling
@@ -80,12 +80,14 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Theory]
-        [InlineData("cond 1 0 0 0 10", EntityType.PLAYER, 0, 10)]
+        [InlineData("cond 1 47 0 0 10", EntityType.PLAYER, 47, 10)]
         [InlineData("cond 2 2053 0 1 14", EntityType.NPC, 2053, 14)]
         [InlineData("cond 3 1874 1 0 8", EntityType.MONSTER, 1874, 8)]
         public void Cond_Packet_Change_Entity_Speed(string packet, EntityType entityType, int entityId, int speed)
         {
-            _client.CreateMapMock();
+            Map fakeMap = new MapBuilder().WithEntity(entityType, entityId).Create();
+
+            fakeMap.AddEntity(_client.Character);
 
             _client.ReceivePacket(packet);
 
@@ -111,7 +113,9 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("mv 3 874 87 3 14", EntityType.MONSTER, 874, 87, 3, 14)]
         public void Mv_Packet_Change_Entity_Position_And_Speed(string packet, EntityType entityType, int id, byte x, byte y, byte speed)
         {
-            _client.CreateMapMock();
+            Map fakeMap = new MapBuilder().WithEntity(entityType, id).Create();
+
+            fakeMap.AddEntity(_client.Character);
 
             _client.ReceivePacket(packet);
 
@@ -126,7 +130,9 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("st 3 1874 88 0 50 75 24578 8745", EntityType.MONSTER, 1874, 88, 50, 75, 24578, 8745)]
         public void St_Packet_Update_Target_Stats(string packet, EntityType entityType, int id, byte level, byte hpPercentage, byte mpPercentage, int hp, int mp)
         {
-            _client.CreateMapMock();
+            Map fakeMap = new MapBuilder().WithEntity(entityType, id).Create();
+            fakeMap.AddEntity(_client.Character);
+            
             _client.ReceivePacket(packet);
 
             ITarget target = _client.Character.Target;
@@ -146,6 +152,7 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("c_info Roxeez - -1 -1 - 999999 0 0 0 9 1 1 0 0 0 0 0 0 0", "Roxeez", 999999, Gender.MALE, ClassType.SWORDSMAN)]
         public void CInfo_Packet_Initialize_Character(string packet, string name, int id, Gender gender, ClassType classType)
         {
+            
             _client.ReceivePacket(packet);
 
             Check.That(_client.Character.Name).IsEqualTo(name);

@@ -4,13 +4,9 @@ using NtCore.Game.Maps;
 
 namespace NtCore.Events.Entity
 {
-    /// <summary>
-    ///     Event called when an Entity Spawn (player, monster, npc, drop)
-    ///     It's basically called when you receive in packet
-    /// </summary>
-    public class EntitySpawnEvent : Event
+    public class EntityLeaveEvent : Event
     {
-        public EntitySpawnEvent([NotNull] IEntity entity, [NotNull] IMap map)
+        public EntityLeaveEvent([NotNull] IEntity entity, [NotNull] IMap map)
         {
             Entity = entity;
             Map = map;
@@ -22,7 +18,7 @@ namespace NtCore.Events.Entity
         public IEntity Entity { get; }
 
         /// <summary>
-        ///     Map where this entity spawned
+        ///     Map where entity leaved
         /// </summary>
         public IMap Map { get; }
     }

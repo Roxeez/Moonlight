@@ -121,8 +121,9 @@
     <Compile Include="Events\Character\TargetChangeEvent.cs" />
     <Compile Include="Events\Character\TargetMoveEvent.cs" />
     <Compile Include="Events\Character\TargetStatUpdateEvent.cs" />
+    <Compile Include="Events\Entity\EntityLeaveEvent.cs" />
     <Compile Include="Events\Entity\EntityMoveEvent.cs" />
-    <Compile Include="Events\Entity\EntitySpawnEvent.cs" />
+    <Compile Include="Events\Entity\EntityJoinEvent.cs" />
     <Compile Include="Events\Event.cs" />
     <Compile Include="Events\EventManager.cs" />
     <Compile Include="Events\Handler.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="Network\Handlers\Entities\CondPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\MvPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\StPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="Network\PacketManager.cs" />
     <Compile Include="Network\Packets\Characters\CInfoPacket.cs" />
     <Compile Include="Network\Packets\Characters\LevPacket.cs" />
@@ -170,6 +172,7 @@
     <Compile Include="Network\Packets\Entities\CondPacket.cs" />
     <Compile Include="Network\Packets\Entities\MvPacket.cs" />
     <Compile Include="Network\Packets\Entities\StPacket.cs" />
+    <Compile Include="Network\Packets\Maps\OutPacket.cs" />
     <Compile Include="NtCoreAPI.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Network\Handlers\Maps\MlInfoBrPacketHandler.cs" />
