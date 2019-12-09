@@ -13,7 +13,7 @@ namespace Example
                 var application = new MyApplication();
                 application.Run();
             });
-            
+
             // thread.SetApartmentState(ApartmentState.STA); If you're running a UI app (WPF, WINFORM)
             thread.Start();
         }

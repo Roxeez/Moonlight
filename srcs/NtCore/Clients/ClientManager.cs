@@ -11,7 +11,7 @@ namespace NtCore.Clients
         private readonly IPacketManager _packetManager;
 
         private IClient _localClient;
-        
+
         public ClientManager(IPacketManager packetManager) => _packetManager = packetManager;
 
         public IClient CreateLocalClient()
@@ -20,7 +20,7 @@ namespace NtCore.Clients
             {
                 return _localClient;
             }
-            
+
             Process process = Process.GetCurrentProcess();
             if (process.MainModule == null)
             {
@@ -35,7 +35,7 @@ namespace NtCore.Clients
             _clients[localClient.Id] = localClient;
 
             _localClient = localClient;
-            
+
             return localClient;
         }
 

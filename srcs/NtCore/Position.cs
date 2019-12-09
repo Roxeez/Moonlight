@@ -21,7 +21,7 @@ namespace NtCore
         {
             unchecked
             {
-                return (X.GetHashCode() * 397) ^ Y.GetHashCode();
+                return X.GetHashCode() * 397 ^ Y.GetHashCode();
             }
         }
     }

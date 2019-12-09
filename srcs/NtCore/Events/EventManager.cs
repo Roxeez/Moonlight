@@ -11,12 +11,9 @@ namespace NtCore.Events
     {
         private readonly IDictionary<Type, List<(IEventListener, MethodInfo)>> _eventHandlers = new Dictionary<Type, List<(IEventListener, MethodInfo)>>();
         private readonly ILogger _logger;
-        
-        public EventManager(ILogger logger)
-        {
-            _logger = logger;
-        }
-        
+
+        public EventManager(ILogger logger) => _logger = logger;
+
         public void RegisterEventListener(IEventListener eventListener)
         {
             foreach (MethodInfo methodInfo in eventListener.GetType().GetMethods())

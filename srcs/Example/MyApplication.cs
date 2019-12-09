@@ -21,10 +21,10 @@ namespace Example
 
             // Create a new local client (for injected dll)
             NtCoreAPI.Instance.CreateLocalClient();
-            
+
             // Register our event listener
             NtCoreAPI.Instance.RegisterEventListener<MyEventListener>();
-            
+
             // Register our command handler
             NtCoreAPI.Instance.RegisterCommandHandler<MyCommandHandler>();
 
@@ -33,8 +33,7 @@ namespace Example
             do
             {
                 command = Console.ReadLine();
-            } 
-            while (command != "exit");
+            } while (command != "exit");
         }
     }
 

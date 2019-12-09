@@ -1,9 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Moq;
+﻿using Moq;
 using NFluent;
 using NtCore.Clients;
 using NtCore.Enums;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
@@ -52,7 +50,7 @@ namespace NtCore.Tests.PacketHandling
             Map fakeMap = new MapBuilder().Create();
 
             fakeMap.AddEntity(_client.Character);
-            
+
             _client.ReceivePacket(packet);
 
             var npc = _client.Character.Map.GetEntity<INpc>(id);
@@ -147,7 +145,7 @@ namespace NtCore.Tests.PacketHandling
             Map fakeMap = new MapBuilder().WithEntity(entityType, id).Create();
 
             fakeMap.AddEntity(_client.Character);
-            
+
             _client.ReceivePacket(packet);
 
             IMap map = _client.Character.Map;

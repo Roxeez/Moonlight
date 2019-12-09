@@ -10,13 +10,13 @@ namespace NtCore.Tests.Utility
 {
     public class MapBuilder
     {
+        private IEnumerable<Drop> _drops = new List<Drop>();
         private int _id;
+        private bool _isMiniland;
+        private IEnumerable<MinilandObject> _minilandObjects = new List<MinilandObject>();
         private IEnumerable<Monster> _monsters = new List<Monster>();
         private IEnumerable<Npc> _npcs = new List<Npc>();
         private IEnumerable<Player> _players = new List<Player>();
-        private IEnumerable<Drop> _drops = new List<Drop>();
-        private IEnumerable<MinilandObject> _minilandObjects = new List<MinilandObject>();
-        private bool _isMiniland;
 
         public MapBuilder WithId(int id)
         {

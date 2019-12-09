@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NFluent;
 using NtCore.API.Game.Maps;
@@ -83,7 +82,7 @@ namespace NtCore.Tests.PacketHandling
                     Position = new Position(65, 87)
                 }
             };
-            
+
             Map fakeMap = new MapBuilder().AsMiniland().Create();
 
             fakeMap.AddEntity(_client.Character);

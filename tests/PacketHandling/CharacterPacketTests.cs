@@ -132,7 +132,7 @@ namespace NtCore.Tests.PacketHandling
         {
             Map fakeMap = new MapBuilder().WithEntity(entityType, id).Create();
             fakeMap.AddEntity(_client.Character);
-            
+
             _client.ReceivePacket(packet);
 
             ITarget target = _client.Character.Target;
@@ -152,7 +152,6 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("c_info Roxeez - -1 -1 - 999999 0 0 0 9 1 1 0 0 0 0 0 0 0", "Roxeez", 999999, Gender.MALE, ClassType.SWORDSMAN)]
         public void CInfo_Packet_Initialize_Character(string packet, string name, int id, Gender gender, ClassType classType)
         {
-            
             _client.ReceivePacket(packet);
 
             Check.That(_client.Character.Name).IsEqualTo(name);
