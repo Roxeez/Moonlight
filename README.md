@@ -11,19 +11,23 @@ Since everything is managed by NtCore, you can easily interact between plugins &
 ![GitHub last commit](https://img.shields.io/github/last-commit/Roxeez/NtCore?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/Roxeez/NtCore?style=flat-square)
 ![Maintenance](https://img.shields.io/maintenance/yes/2019?style=flat-square)
+
 ## Getting Started
 
 - Clone
 - Open solution
 - Build
-- Copy NtCore.dll & NtNative.dll to your NosTale folder
-- Copy srcs\NtCore.Example\bin\Release\NtCore.Example.dll to My Documents\NtCore\plugins
-- Inject NtCore.dll into your NosTale process
+- Create a new .NET library project targeting .NET Framework 4.7+ & close it
+- Copy DllExport.bat to your solution directory
+- Run DllExport.bat
+- Open your project solution & add Costura Fody as project dependency using Nuget
+- Build your application
+- Enjoy
 
 ### Prerequisites
 
-- ***.NET Framework 4.7*** (until a critical NtCore dependency is updated to .NET Core)
-- ***Costura Fody*** (for packing everything in your plugin .dll)
+- ***.NET Framework 4.7*** (until DllExport is updated to .NET Core)
+- ***Costura Fody*** (for packing everything in one .dll)
 
 ## Contributing
 
