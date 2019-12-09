@@ -1,7 +1,6 @@
-﻿using NtCore.API.Game.Battle;
-using NtCore.API.Game.Entities;
+﻿using NtCore.Game.Entities;
 
-namespace NtCore.Game.Battle
+namespace NtCore.Game.Battle.Impl
 {
     public class Target : ITarget
     {

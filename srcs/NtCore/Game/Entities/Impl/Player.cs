@@ -1,7 +1,6 @@
-﻿using NtCore.API.Enums;
-using NtCore.API.Game.Entities;
+﻿using NtCore.Enums;
 
-namespace NtCore.Game.Entities
+namespace NtCore.Game.Entities.Impl
 {
     public class Player : LivingEntity, IPlayer
     {

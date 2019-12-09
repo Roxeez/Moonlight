@@ -1,11 +1,9 @@
 ﻿using System;
-using NtCore.API;
-using NtCore.API.Clients;
-using NtCore.API.Enums;
-using NtCore.API.Game.Battle;
-using NtCore.API.Game.Entities;
+using NtCore.Clients;
+using NtCore.Enums;
+using NtCore.Game.Battle;
 
-namespace NtCore.Game.Entities
+namespace NtCore.Game.Entities.Impl
 {
     public class Character : Player, ICharacter
     {

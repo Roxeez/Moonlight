@@ -1,9 +1,7 @@
-﻿using NtCore.API;
-using NtCore.API.Enums;
-using NtCore.API.Game.Entities;
-using NtCore.API.Game.Maps;
+﻿using NtCore.Enums;
+using NtCore.Game.Maps;
 
-namespace NtCore.Game.Entities
+namespace NtCore.Game.Entities.Impl
 {
     public class Drop : IDrop
     {
