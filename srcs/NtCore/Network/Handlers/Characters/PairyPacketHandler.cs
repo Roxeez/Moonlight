@@ -10,7 +10,7 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, PairyPacket packet)
         {
-
+            // Not implemented yet
         }
     }
 }

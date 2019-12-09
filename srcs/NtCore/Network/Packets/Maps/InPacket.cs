@@ -1,11 +1,11 @@
-﻿using NtCore.Enums;
+﻿using System;
+using NtCore.Enums;
 
 namespace NtCore.Network.Packets.Maps
 {
     [PacketInfo("in", PacketType.Recv)]
     public class InPacket : Packet
     {
-        [PacketIndex(1)]
         public EntityType EntityType { get; set; }
 
         public string Name { get; set; }
@@ -23,8 +23,7 @@ namespace NtCore.Network.Packets.Maps
 
         public override bool Deserialize(string[] packet)
         {
-            base.Deserialize(packet);
-
+            EntityType = (EntityType)byte.Parse(packet[1]);
             switch (EntityType)
             {
                 case EntityType.MONSTER:
@@ -53,6 +52,8 @@ namespace NtCore.Network.Packets.Maps
                     MpPercentage = byte.Parse(packet[15]);
                     Level = byte.Parse(packet[33]);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             return true;
