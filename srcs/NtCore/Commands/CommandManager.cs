@@ -16,7 +16,7 @@ namespace NtCore.Commands
 
         public CommandManager(ILogger logger) => _logger = logger;
 
-        public void Register(ICommandHandler handler)
+        public void RegisterCommandHandler(ICommandHandler handler)
         {
             foreach (MethodInfo methodInfo in handler.GetType().GetMethods())
             {
@@ -53,13 +53,13 @@ namespace NtCore.Commands
             }
         }
 
-        public void Register<T>() where T : ICommandHandler
+        public void RegisterCommandHandler<T>() where T : ICommandHandler
         {
             var obj = Activator.CreateInstance<T>();
-            Register(obj);
+            RegisterCommandHandler(obj);
         }
 
-        public void Execute(IClient client, string command, string[] args)
+        public void ExecuteCommand(IClient client, string command, string[] args)
         {
             (ICommandHandler, MethodInfo) handler = _registeredCommands.GetValueOrDefault(command);
 

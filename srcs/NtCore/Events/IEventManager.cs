@@ -2,8 +2,8 @@
 {
     public interface IEventManager
     {
-        void Register(IListener listener);
-        void Register<T>() where T : IListener;
+        void RegisterEventListener(IEventListener eventListener);
+        void RegisterEventListener<T>() where T : IEventListener;
 
         void CallEvent(Event e);
     }

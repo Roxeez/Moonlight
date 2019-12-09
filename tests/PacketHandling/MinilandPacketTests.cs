@@ -16,11 +16,10 @@ namespace NtCore.Tests.PacketHandling
     {
         public MinilandPacketTests()
         {
-            var ntCore = new NtCoreAPI();
             var mock = new Mock<IClient>();
 
             mock.Setup(x => x.ReceivePacket(It.IsAny<string>()))
-                .Callback((string p) => ntCore.PacketManager.Handle(mock.Object, p, PacketType.Recv));
+                .Callback((string p) => NtCoreAPI.Instance.GetPacketManager().Handle(mock.Object, p, PacketType.Recv));
             mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
 
             _client = mock.Object;

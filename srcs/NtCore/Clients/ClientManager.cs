@@ -10,12 +10,18 @@ namespace NtCore.Clients
         private readonly IDictionary<Guid, IClient> _clients = new Dictionary<Guid, IClient>();
         private readonly IPacketManager _packetManager;
 
+        private IClient _localClient;
+        
         public ClientManager(IPacketManager packetManager) => _packetManager = packetManager;
 
         public IClient CreateLocalClient()
         {
+            if (_localClient != null)
+            {
+                return _localClient;
+            }
+            
             Process process = Process.GetCurrentProcess();
-
             if (process.MainModule == null)
             {
                 throw new InvalidOperationException("Process module can't be null");
@@ -28,12 +34,12 @@ namespace NtCore.Clients
 
             _clients[localClient.Id] = localClient;
 
-            IsLocalCreated = true;
-
+            _localClient = localClient;
+            
             return localClient;
         }
 
-        public bool IsLocalCreated { get; private set; }
+        public IClient CreateRemoteClient() => throw new NotImplementedException();
 
         public IEnumerable<IClient> Clients => _clients.Values;
     }

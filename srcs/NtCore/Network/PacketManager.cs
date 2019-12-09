@@ -41,7 +41,7 @@ namespace NtCore.Network
 
             if (packetType == PacketType.Send && header[0] == '$')
             {
-                _commandManager.Execute(client, header.Substring(1), arguments.Skip(1).ToArray());
+                _commandManager.ExecuteCommand(client, header.Substring(1), arguments.Skip(1).ToArray());
                 return;
             }
 
