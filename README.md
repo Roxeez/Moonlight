@@ -21,6 +21,45 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 - Build your application
 - Enjoy
 
+## Example
+> This example code will make character follow a target
+```csharp
+public class MyApplication
+{
+    /// <summary>
+    /// My application entry point
+    /// </summary>
+    public void Run()
+    {
+        // Register our event listener
+        NtCoreAPI.Instance.RegisterEventListener<MyEventListener>();
+
+        // Wait for exit command (because i'm using a console and not an UI app)
+        string command;
+        do
+        {
+            command = Console.ReadLine();
+        } 
+        while (command != "exit");
+    }
+}
+    
+public class MyEventListener : IEventListener
+{
+    /// <summary>
+    /// This method will be called each time character target move
+    /// </summary>
+    [Handler]
+    public void OnTargetMove(TargetMoveEvent e)
+    {
+        ICharacter character = e.Character;
+        ILivingEntity target = character.Target.Entity;
+
+        character.Move(target.Position);
+    }
+}
+```
+
 ### Prerequisites
 
 - ***.NET Framework 4.7*** (until DllExport is updated to .NET Core)
