@@ -82,6 +82,8 @@ namespace NtCore.Commands
                 case 2:
                     method.Invoke(commandHandler, new object[] { client.Character, args });
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

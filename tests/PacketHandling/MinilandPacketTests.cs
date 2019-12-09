@@ -62,7 +62,7 @@ namespace NtCore.Tests.PacketHandling
         [Fact]
         public void MltObj_Packet_Add_MinilandObject_To_Miniland()
         {
-            var objects = new List<IMinilandObject>()
+            var objects = new List<IMinilandObject>
             {
                 new MinilandObject
                 {

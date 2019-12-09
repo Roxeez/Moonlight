@@ -91,6 +91,8 @@ namespace NtCore.Game.Maps.Impl
                     drop.Map = this;
                     _drops[entity.Id] = drop;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -115,6 +117,8 @@ namespace NtCore.Game.Maps.Impl
                 case EntityType.DROP:
                     _drops.Remove(entityId);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(entityType), entityType, null);
             }
         }
     }

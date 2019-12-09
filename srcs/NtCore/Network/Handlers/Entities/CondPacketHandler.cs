@@ -1,4 +1,5 @@
-﻿using NtCore.Clients;
+﻿using System;
+using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
@@ -23,6 +24,10 @@ namespace NtCore.Network.Handlers.Entities
                 case EntityType.PLAYER:
                     map.GetEntity<Player>(packet.EntityId).Speed = packet.Speed;
                     break;
+                case EntityType.DROP:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

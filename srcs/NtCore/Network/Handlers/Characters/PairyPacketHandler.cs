@@ -10,15 +10,7 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, PairyPacket packet)
         {
-            if (packet.EntityType != EntityType.PLAYER)
-            {
-                return;
-            }
 
-            var character = client.Character.As<Character>();
-            if (character.Id != packet.EntityId)
-            {
-            }
         }
     }
 }
