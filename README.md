@@ -1,9 +1,7 @@
 # NtCore
 
-NtCore is basically what is Spigot to Minecraft but for NosTale, it allow you to create .NET application using NtCore.API and make them run on NtCore.
-
-NtCore.API give you access to all interface used by NtCore and allow you to create plugin & easily interact with everything in NosTale using a local client (injected) or remote client (clientless).  
-Since everything is managed by NtCore, you can easily interact between plugins & running clients in all your plugins
+NtCore aims to make NosTale .NET Application developer life easier by giving them access to a complete & easy to use API allowing them to interact with (almost) everything in the game  
+NtCore can be used with local client (injected .dll) or remote client (clientless)
 <br><br>
 ![Codacy grade](https://img.shields.io/codacy/grade/d7ecbcba4d48445f8a7e12f1bb4fb8e7?style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Roxeez/NtCore/Main.Legacy?style=flat-square)
