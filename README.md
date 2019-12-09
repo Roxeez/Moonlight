@@ -21,6 +21,8 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 - Build your application
 - Enjoy
 
+> <sub><sup>Since NtCore use only packets (no memory reading) for compatibility with local & remote client, your dll need to be injected BEFORE selecting your character</sub></sup>
+
 ## Example
 > This example code will make character follow a target, full example is available [HERE](https://github.com/Roxeez/NtCore/tree/master/srcs/Example)
 ```csharp
