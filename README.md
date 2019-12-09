@@ -16,8 +16,7 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 - Open solution
 - Build
 - Create a new .NET library project targeting .NET Framework 4.7+ & close it
-- Copy DllExport.bat to your solution directory
-- Run DllExport.bat
+- Install DllExport to your project using DllExport.bat
 - Open your project solution & add Costura Fody as project dependency using Nuget
 - Build your application
 - Enjoy
