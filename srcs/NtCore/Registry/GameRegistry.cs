@@ -16,8 +16,7 @@ namespace NtCore.Registry
             _monsterInfos = monsterInfos;
             _itemInfos = itemInfos;
         }
-
-        [CanBeNull]
+        
         public SkillInfo GetSkillInfo(int skillVnum)
         {
             return _skillInfos.GetValueOrDefault(skillVnum);
