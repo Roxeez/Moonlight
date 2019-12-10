@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using NtCore.Clients;
 using NtCore.Game.Entities;
 
 namespace NtCore.Events.Character
@@ -8,9 +9,9 @@ namespace NtCore.Events.Character
     /// </summary>
     public class TargetMoveEvent : Event
     {
-        public TargetMoveEvent([NotNull] ICharacter character, Position from)
+        public TargetMoveEvent([NotNull] IClient client, Position from) : base(client)
         {
-            Character = character;
+            Character = client.Character;
             From = from;
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using NtCore.Clients;
 using NtCore.Extensions;
 using NtCore.Logger;
 
@@ -9,12 +10,12 @@ namespace NtCore.Events
 {
     public class EventManager : IEventManager
     {
-        private readonly IDictionary<Type, List<(IEventListener, MethodInfo)>> _eventHandlers = new Dictionary<Type, List<(IEventListener, MethodInfo)>>();
+        private readonly IDictionary<Type, List<HandlerInfo>> _eventHandlers = new Dictionary<Type, List<HandlerInfo>>();
         private readonly ILogger _logger;
 
         public EventManager(ILogger logger) => _logger = logger;
 
-        public void RegisterEventListener(IEventListener eventListener)
+        public void RegisterEventListener(IEventListener eventListener, IClient client = null)
         {
             foreach (MethodInfo methodInfo in eventListener.GetType().GetMethods())
             {
@@ -36,37 +37,55 @@ namespace NtCore.Events
                     continue;
                 }
 
-                List<(IEventListener, MethodInfo)> handlers = _eventHandlers.GetValueOrDefault(type);
+                List<HandlerInfo> handlers = _eventHandlers.GetValueOrDefault(type);
                 if (handlers == null)
                 {
-                    handlers = new List<(IEventListener, MethodInfo)>();
+                    handlers = new List<HandlerInfo>();
                     _eventHandlers[type] = handlers;
                 }
 
                 _logger.Information($"{type.Name} handler registered");
-                handlers.Add((eventListener, methodInfo));
+                handlers.Add(new HandlerInfo(eventListener, methodInfo, client));
             }
         }
 
-        public void RegisterEventListener<T>() where T : IEventListener
+        public void RegisterEventListener<T>(IClient client = null) where T : IEventListener
         {
             var obj = Activator.CreateInstance<T>();
-            RegisterEventListener(obj);
+            RegisterEventListener(obj, client);
         }
 
         public void CallEvent(Event e)
         {
-            List<(IEventListener, MethodInfo)> handlers = _eventHandlers.GetValueOrDefault(e.GetType());
+            List<HandlerInfo> handlers = _eventHandlers.GetValueOrDefault(e.GetType());
 
             if (handlers == null)
             {
                 return;
             }
 
-            foreach ((IEventListener listener, MethodInfo methodInfo) in handlers)
+            foreach (HandlerInfo handler in handlers)
             {
-                methodInfo.Invoke(listener, new object[] { e });
+                if (handler.BindClient != null && !handler.BindClient.Equals(e.Client))
+                {
+                    continue;
+                }
+                handler.Method.Invoke(handler.Listener, new object[] { e });
             }
+        }
+    }
+
+    public class HandlerInfo
+    {
+        public IEventListener Listener { get; }
+        public MethodInfo Method { get; }
+        public IClient BindClient { get; }
+
+        public HandlerInfo(IEventListener listener, MethodInfo method, IClient bindClient = null)
+        {
+            Listener = listener;
+            Method = method;
+            BindClient = bindClient;
         }
     }
 }

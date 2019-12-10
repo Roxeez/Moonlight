@@ -65,7 +65,7 @@ namespace NtCore.Commands
 
             if (handler == default((ICommandHandler, MethodInfo)))
             {
-                client.Character.ShowChatMessage($"There is no command : {command}", ChatMessageColor.RED);
+                client.Character.ReceiveChatMessage($"There is no command : {command}", ChatMessageColor.RED);
                 return;
             }
 

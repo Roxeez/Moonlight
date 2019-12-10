@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using NtCore.Clients;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 
@@ -10,7 +11,7 @@ namespace NtCore.Events.Entity
     /// </summary>
     public class EntityJoinEvent : Event
     {
-        public EntityJoinEvent([NotNull] IEntity entity, [NotNull] IMap map)
+        public EntityJoinEvent([NotNull] IClient client, [NotNull] IEntity entity, [NotNull] IMap map) : base(client)
         {
             Entity = entity;
             Map = map;

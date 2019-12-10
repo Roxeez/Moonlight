@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using NtCore.Clients;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 
@@ -6,7 +7,7 @@ namespace NtCore.Events.Entity
 {
     public class EntityLeaveEvent : Event
     {
-        public EntityLeaveEvent([NotNull] IEntity entity, [NotNull] IMap map)
+        public EntityLeaveEvent([NotNull] IClient client, [NotNull] IEntity entity, [NotNull] IMap map) : base(client)
         {
             Entity = entity;
             Map = map;

@@ -26,7 +26,7 @@ namespace NtCore.Network.Handlers.Maps
             }
 
             map.RemoveEntity(entity);
-            _eventManager.CallEvent(new EntityLeaveEvent(entity, map));
+            _eventManager.CallEvent(new EntityLeaveEvent(client, entity, map));
         }
     }
 }

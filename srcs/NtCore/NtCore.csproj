@@ -134,6 +134,7 @@
     <Compile Include="Extensions\CastExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Game\Battle\Impl\Target.cs" />
+    <Compile Include="Game\Battle\ISkill.cs" />
     <Compile Include="Game\Battle\ITarget.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
     <Compile Include="Game\Entities\IDrop.cs" />

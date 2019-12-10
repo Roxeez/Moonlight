@@ -41,7 +41,7 @@ namespace NtCore.Network.Handlers.Maps
 
             if (source != null)
             {
-                _eventManager.CallEvent(new MapChangeEvent(client.Character, source, destination));
+                _eventManager.CallEvent(new MapChangeEvent(client, source, destination));
             }
 
             character.LastMapChange = DateTime.Now;

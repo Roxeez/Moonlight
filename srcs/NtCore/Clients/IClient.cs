@@ -9,7 +9,7 @@ namespace NtCore.Clients
     ///     Represent a Client
     ///     Client can be a LocalClient (injected) or RemoteClient (clientless)
     /// </summary>
-    public interface IClient : IDisposable
+    public interface IClient : IDisposable, IEquatable<IClient>
     {
         /// <summary>
         ///     Client Unique Id

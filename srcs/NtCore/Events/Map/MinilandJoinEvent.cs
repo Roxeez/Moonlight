@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using NtCore.Clients;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 
@@ -10,9 +11,9 @@ namespace NtCore.Events.Map
     /// </summary>
     public class MinilandJoinEvent : Event
     {
-        public MinilandJoinEvent([NotNull] ICharacter character, [NotNull] IMiniland miniland)
+        public MinilandJoinEvent([NotNull] IClient client, [NotNull] IMiniland miniland) : base(client)
         {
-            Character = character;
+            Character = client.Character;
             Miniland = miniland;
         }
 

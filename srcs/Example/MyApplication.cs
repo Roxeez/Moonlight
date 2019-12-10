@@ -14,19 +14,29 @@ namespace Example
 {
     public class MyApplication
     {
+        private readonly NtCoreAPI _ntCoreApi;
+        
+        public MyApplication(NtCoreAPI ntCoreApi)
+        {
+            _ntCoreApi = ntCoreApi;
+        }
+        
         public void Run()
         {
             // Alloc console (if needed)
             Kernel32.AllocConsole();
 
             // Create a new local client (for injected dll)
-            NtCoreAPI.Instance.CreateLocalClient();
+            _ntCoreApi.CreateLocalClient();
 
-            // Register our event listener
-            NtCoreAPI.Instance.RegisterEventListener<MyEventListener>();
+            // Register listener for a specific session
+            _ntCoreApi.RegisterEventListener<MySessionListener>(_ntCoreApi.LocalClient);
+            
+            // Register listener for all sessions
+            _ntCoreApi.RegisterEventListener<MyGlobalListener>();
 
             // Register our command handler
-            NtCoreAPI.Instance.RegisterCommandHandler<MyCommandHandler>();
+            _ntCoreApi.RegisterCommandHandler<MyCommandHandler>();
 
             // Wait for exit command (because i'm not using a UI application, only console)
             string command;
@@ -42,11 +52,11 @@ namespace Example
         [Command("ping")]
         public void OnPingCommand(ICharacter sender)
         {
-            sender.ShowChatMessage("pong", ChatMessageColor.GREEN);
+            sender.ReceiveChatMessage("pong", ChatMessageColor.GREEN);
         }
     }
 
-    public class MyEventListener : IEventListener
+    public class MySessionListener : IEventListener
     {
         [Handler]
         public void OnTargetMove(TargetMoveEvent e)
@@ -57,18 +67,18 @@ namespace Example
             character.Move(target.Position);
             character.ShowBubbleMessage($"Following {target.EntityType}:{target.Id}");
         }
+    }
 
+    public class MyGlobalListener : IEventListener
+    {
         [Handler]
         public void OnEntitySpawn(EntityJoinEvent e)
         {
             if (e.Entity.EntityType == EntityType.PLAYER)
             {
                 var player = e.Entity.As<IPlayer>();
-
-                foreach (IClient client in NtCoreAPI.Instance.Clients)
-                {
-                    client.Character.ShowChatMessage($"{player.Name} / Lv.{player.Level} joined map {e.Map.Id}", ChatMessageColor.YELLOW);
-                }
+                
+                e.Client.Character.ReceiveChatMessage($"{player.Name} / Lv.{player.Level} joined map {e.Map.Id}", ChatMessageColor.YELLOW);
             }
         }
     }

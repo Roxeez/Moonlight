@@ -83,7 +83,7 @@ namespace NtCore.Network.Handlers.Maps
 
             if (character.LastMapChange.AddSeconds(5) < DateTime.Now)
             {
-                _eventManager.CallEvent(new EntityJoinEvent(entity, map));
+                _eventManager.CallEvent(new EntityJoinEvent(client, entity, map));
             }
         }
     }

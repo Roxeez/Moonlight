@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Threading;
+using NtCore;
 
 namespace Example
 {
@@ -10,7 +11,7 @@ namespace Example
         {
             var thread = new Thread(() =>
             {
-                var application = new MyApplication();
+                var application = new MyApplication(NtCoreAPI.Instance);
                 application.Run();
             });
 

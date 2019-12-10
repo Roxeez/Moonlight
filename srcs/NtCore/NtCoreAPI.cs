@@ -71,6 +71,7 @@ namespace NtCore
 
         public static NtCoreAPI Instance => _instance ?? (_instance = new NtCoreAPI());
 
+        public IClient LocalClient => _clientManager.LocalClient;
         public IEnumerable<IClient> Clients => _clientManager.Clients;
         public IClient CreateLocalClient() => _clientManager.CreateLocalClient();
         public IClient CreateRemoteClient() => _clientManager.CreateRemoteClient();
@@ -90,14 +91,14 @@ namespace NtCore
             _commandManager.ExecuteCommand(client, command, args);
         }
 
-        public void RegisterEventListener(IEventListener eventListener)
+        public void RegisterEventListener(IEventListener eventListener, IClient client = null)
         {
-            _eventManager.RegisterEventListener(eventListener);
+            _eventManager.RegisterEventListener(eventListener, client);
         }
 
-        public void RegisterEventListener<T>() where T : IEventListener
+        public void RegisterEventListener<T>(IClient client = null) where T : IEventListener
         {
-            _eventManager.RegisterEventListener<T>();
+            _eventManager.RegisterEventListener<T>(client);
         }
 
         public void CallEvent(Event e)

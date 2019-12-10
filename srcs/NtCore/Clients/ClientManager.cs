@@ -10,15 +10,13 @@ namespace NtCore.Clients
         private readonly IDictionary<Guid, IClient> _clients = new Dictionary<Guid, IClient>();
         private readonly IPacketManager _packetManager;
 
-        private IClient _localClient;
-
         public ClientManager(IPacketManager packetManager) => _packetManager = packetManager;
 
         public IClient CreateLocalClient()
         {
-            if (_localClient != null)
+            if (LocalClient != null)
             {
-                return _localClient;
+                return LocalClient;
             }
 
             Process process = Process.GetCurrentProcess();
@@ -34,13 +32,14 @@ namespace NtCore.Clients
 
             _clients[localClient.Id] = localClient;
 
-            _localClient = localClient;
+            LocalClient = localClient;
 
             return localClient;
         }
 
         public IClient CreateRemoteClient() => throw new NotImplementedException();
 
+        public IClient LocalClient { get; private set; }
         public IEnumerable<IClient> Clients => _clients.Values;
     }
 }

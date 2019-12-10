@@ -79,14 +79,14 @@ namespace NtCore.Game.Entities
         /// </summary>
         /// <param name="message">Message to show</param>
         /// <param name="messageType">Type of message</param>
-        void ShowMessage([NotNull] string message, MessageType messageType);
+        void ReceiveMessage([NotNull] string message, MessageType messageType);
 
         /// <summary>
         ///     Show a chat message to character (clientside only it's a received packet)
         /// </summary>
         /// <param name="message">Message to show</param>
         /// <param name="messageColor">Type of message</param>
-        void ShowChatMessage([NotNull] string message, ChatMessageColor messageColor);
+        void ReceiveChatMessage([NotNull] string message, ChatMessageColor messageColor);
 
         /// <summary>
         ///     Show a bubble message on top of character with selected message
@@ -100,5 +100,7 @@ namespace NtCore.Game.Entities
         /// <param name="message">Message to show</param>
         /// <param name="entity">Entity where bubble need to be</param>
         void ShowBubbleMessage([NotNull] string message, [NotNull] ILivingEntity entity);
+        
+        
     }
 }

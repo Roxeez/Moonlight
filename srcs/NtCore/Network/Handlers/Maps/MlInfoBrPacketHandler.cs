@@ -27,7 +27,7 @@ namespace NtCore.Network.Handlers.Maps
             miniland.TotalVisitor = packet.TotalVisitor;
             miniland.Message = packet.Message;
 
-            _eventManager.CallEvent(new MinilandJoinEvent(client.Character, miniland));
+            _eventManager.CallEvent(new MinilandJoinEvent(client, miniland));
         }
     }
 }

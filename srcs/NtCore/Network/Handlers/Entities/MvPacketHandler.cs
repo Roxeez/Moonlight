@@ -30,11 +30,11 @@ namespace NtCore.Network.Handlers.Entities
             entity.Position = new Position(packet.X, packet.Y);
             entity.Speed = packet.Speed;
 
-            _eventManager.CallEvent(new EntityMoveEvent(entity, from));
+            _eventManager.CallEvent(new EntityMoveEvent(client, entity, from));
 
             if (character.Target != null && character.Target.Entity.Equals(entity))
             {
-                _eventManager.CallEvent(new TargetMoveEvent(character, from));
+                _eventManager.CallEvent(new TargetMoveEvent(client, from));
             }
         }
     }

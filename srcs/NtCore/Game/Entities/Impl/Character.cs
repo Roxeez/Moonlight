@@ -7,14 +7,13 @@ namespace NtCore.Game.Entities.Impl
 {
     public class Character : Player, ICharacter
     {
-        private readonly IClient _client;
-
         public Character(IClient client)
         {
-            _client = client;
+            Client = client;
             LastMapChange = DateTime.Now;
         }
 
+        public IClient Client { get; }
         public int SpPoints { get; set; }
         public int AdditionalSpPoints { get; set; }
         public int MaximumSpPoints { get; set; }
@@ -30,32 +29,32 @@ namespace NtCore.Game.Entities.Impl
 
         public void Move(Position position)
         {
-            _client.SendPacket($"walk {position.X} {position.Y} 0 {Speed}");
+            Client.SendPacket($"walk {position.X} {position.Y} 0 {Speed}");
 
-            if (_client.Type == ClientType.LOCAL) // Trick for moving player (need to find something better)
+            if (Client.Type == ClientType.LOCAL) // Trick for moving player (need to find something better)
             {
-                _client.ReceivePacket($"tp {(byte)EntityType} {Id} {position.X} {position.Y} 0");
+                Client.ReceivePacket($"tp {(byte)EntityType} {Id} {position.X} {position.Y} 0");
             }
         }
 
-        public void ShowMessage(string message, MessageType messageType)
+        public void ReceiveMessage(string message, MessageType messageType)
         {
-            _client.ReceivePacket($"msg {(byte)messageType} {message}");
+            Client.ReceivePacket($"msg {(byte)messageType} {message}");
         }
 
-        public void ShowChatMessage(string message, ChatMessageColor messageColor)
+        public void ReceiveChatMessage(string message, ChatMessageColor messageColor)
         {
-            _client.ReceivePacket($"say {(byte)EntityType} {Id} {(byte)messageColor} {message}");
+            Client.ReceivePacket($"say {(byte)EntityType} {Id} {(byte)messageColor} {message}");
         }
 
         public void ShowBubbleMessage(string message)
         {
-            _client.ReceivePacket($"say {(byte)EntityType} {Id} 1 {message}");
+            Client.ReceivePacket($"say {(byte)EntityType} {Id} 1 {message}");
         }
 
         public void ShowBubbleMessage(string message, ILivingEntity entity)
         {
-            _client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
+            Client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
         }
     }
 }

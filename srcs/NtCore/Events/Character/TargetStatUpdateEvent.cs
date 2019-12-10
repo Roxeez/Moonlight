@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using NtCore.Clients;
 using NtCore.Game.Entities;
 
 namespace NtCore.Events.Character
@@ -8,7 +9,7 @@ namespace NtCore.Events.Character
     /// </summary>
     public class TargetStatUpdateEvent : Event
     {
-        public TargetStatUpdateEvent([NotNull] ICharacter character) => Character = character;
+        public TargetStatUpdateEvent([NotNull] IClient client) : base(client) => Character = client.Character;
 
         /// <summary>
         ///     Character involved in this event

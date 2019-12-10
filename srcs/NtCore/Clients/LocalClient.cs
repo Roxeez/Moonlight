@@ -11,13 +11,13 @@ namespace NtCore.Clients
 {
     public sealed class LocalClient : IClient
     {
-        private readonly NtNative.PacketCallback _recvCallback;
         private readonly ConcurrentQueue<string> _recvQueue = new ConcurrentQueue<string>();
 
         /// <summary>
         ///     Need to keep a reference to both callback to avoid GC
         /// </summary>
         private readonly NtNative.PacketCallback _sendCallback;
+        private readonly NtNative.PacketCallback _recvCallback;
 
         private readonly ConcurrentQueue<string> _sendQueue = new ConcurrentQueue<string>();
 
@@ -92,5 +92,7 @@ namespace NtCore.Clients
         {
             PacketReceived?.Invoke(packet);
         }
+
+        public bool Equals(IClient other) => other != null && other.Id.Equals(Id);
     }
 }

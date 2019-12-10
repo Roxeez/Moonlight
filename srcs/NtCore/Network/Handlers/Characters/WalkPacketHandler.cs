@@ -22,7 +22,7 @@ namespace NtCore.Network.Handlers.Characters
             character.Speed = packet.Speed;
             character.Position = new Position(packet.X, packet.Y);
 
-            _eventManager.CallEvent(new CharacterMoveEvent(client.Character, from));
+            _eventManager.CallEvent(new CharacterMoveEvent(client, from));
         }
     }
 }

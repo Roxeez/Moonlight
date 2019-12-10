@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using NtCore.Clients;
 using NtCore.Game.Entities;
 
 namespace NtCore.Events.Entity
@@ -8,7 +9,7 @@ namespace NtCore.Events.Entity
     /// </summary>
     public class EntityMoveEvent : Event
     {
-        public EntityMoveEvent([NotNull] ILivingEntity entity, Position from)
+        public EntityMoveEvent([NotNull] IClient client, [NotNull] ILivingEntity entity, Position from) : base(client)
         {
             Entity = entity;
             From = from;

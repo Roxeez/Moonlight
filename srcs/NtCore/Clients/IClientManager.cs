@@ -9,6 +9,7 @@ namespace NtCore.Clients
     /// </summary>
     public interface IClientManager
     {
+        IClient LocalClient { get; }
         /// <summary>
         ///     Contains all existing clients
         /// </summary>
