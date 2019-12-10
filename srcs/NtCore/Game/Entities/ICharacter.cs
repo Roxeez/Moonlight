@@ -70,6 +70,9 @@ namespace NtCore.Game.Entities
 
         HashSet<ISkill> Skills { get; }
 
+        void UseSkill(ISkill skill);
+        void UseSkill(ISkill skill, ILivingEntity target);
+        
         /// <summary>
         ///     Make your character move
         /// </summary>

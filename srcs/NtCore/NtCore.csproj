@@ -122,6 +122,7 @@
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Enums\SkillType.cs" />
+    <Compile Include="Enums\TargetingType.cs" />
     <Compile Include="Events\Character\CharacterMoveEvent.cs" />
     <Compile Include="Events\Character\TargetChangeEvent.cs" />
     <Compile Include="Events\Character\TargetMoveEvent.cs" />

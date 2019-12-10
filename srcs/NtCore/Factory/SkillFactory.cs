@@ -20,13 +20,15 @@ namespace NtCore.Factory
         public ISkill CreateSkill(int vnum)
         {
             SkillInfo skillInfo = _registry.GetSkillInfo(vnum);
-            var skill = new Skill
+            if (skillInfo == null)
+            {
+                return new Skill(new SkillInfo());
+            }
+            
+            var skill = new Skill(skillInfo)
             {
                 Vnum = vnum,
-                MpCost = skillInfo?.MpCost ?? 0,
-                Name = _languageService.GetTranslation(LanguageKey.SKILL, skillInfo?.NameKey ?? $"{vnum}"),
-                Cooldown = skillInfo?.Cooldown ?? 0,
-                SkillType = (SkillType)(skillInfo?.SkillType ?? 0)
+                Name = _languageService.GetTranslation(LanguageKey.SKILL, skillInfo.NameKey),
             };
 
             return skill;

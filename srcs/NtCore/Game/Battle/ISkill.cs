@@ -10,5 +10,7 @@ namespace NtCore.Game.Battle
         int MpCost { get; }
         SkillType SkillType { get; }
         int Cooldown { get; }
+        int CastId { get; }
+        TargetingType TargetingType { get; }
     }
 }

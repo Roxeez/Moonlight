@@ -28,6 +28,27 @@ namespace NtCore.Game.Entities.Impl
         public int MaxMp { get; set; }
         public ITarget Target { get; set; }
         public HashSet<ISkill> Skills { get; }
+        
+        public void UseSkill(ISkill skill)
+        {
+            if (skill.TargetingType != TargetingType.SELF)
+            {
+                UseSkill(skill, this);
+                return;
+            }
+            UseSkill(skill, this);
+        }
+
+        public void UseSkill(ISkill skill, ILivingEntity target)
+        {
+            if (!Skills.Contains(skill))
+            {
+                return;
+            }
+            
+            Client.SendPacket($"u_s {skill.CastId} {(byte)target.EntityType} {target.Id}");
+        }
+
         public byte JobLevel { get; set; }
 
         public void Move(Position position)

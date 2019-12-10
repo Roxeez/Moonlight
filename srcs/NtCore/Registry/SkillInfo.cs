@@ -15,5 +15,11 @@ namespace NtCore.Registry
         
         [JsonProperty]
         public int MpCost { get; private set; }
+        
+        [JsonProperty]
+        public int CastId { get; private set; }
+        
+        [JsonProperty]
+        public int TargetingType { get; private set; }
     }
 }
