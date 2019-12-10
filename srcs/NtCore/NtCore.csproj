@@ -165,6 +165,7 @@
     <Compile Include="Game\Maps\Impl\Miniland.cs" />
     <Compile Include="Game\Maps\Impl\MinilandObject.cs" />
     <Compile Include="I18N\ILanguageService.cs" />
+    <Compile Include="I18N\LanguageKey.cs" />
     <Compile Include="I18N\LanguageService.cs" />
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Logger\ILogger.cs" />
