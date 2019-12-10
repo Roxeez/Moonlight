@@ -11,6 +11,6 @@ namespace NtCore.I18N
         /// <param name="key">Key</param>
         /// <returns>Translation or key</returns>
         [NotNull]
-        string GetTranslation(LanguageKey languageKey, string key);
+        string GetTranslation(LanguageKey languageKey, [NotNull] string key);
     }
 }

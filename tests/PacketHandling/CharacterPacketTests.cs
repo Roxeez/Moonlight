@@ -32,6 +32,17 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Theory]
+        [InlineData("ski 240 241", 240, 241)]
+        [InlineData("ski 248 240", 248, 240)]
+        public void Ski_Packet_Set_Character_Skills(string packet, int firstSkill, int secondSkill)
+        {
+            _client.ReceivePacket(packet);
+
+            Check.That(_client.Character.Skills).HasElementThatMatches(x => x.Vnum == firstSkill);
+            Check.That(_client.Character.Skills).HasElementThatMatches(x => x.Vnum == secondSkill);
+        }
+
+        [Theory]
         [InlineData("stat 2500 2000 1500 1000", 2500, 2000, 1500, 1000)]
         [InlineData("stat 1 2 3 4", 1, 2, 3, 4)]
         public void Stat_Packet_Update_Character_Stats(string packet, int hp, int maxHp, int mp, int maxMp)

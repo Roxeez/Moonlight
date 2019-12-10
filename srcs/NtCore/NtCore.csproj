@@ -121,6 +121,7 @@
     <Compile Include="Enums\Faction.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\MessageType.cs" />
+    <Compile Include="Enums\SkillType.cs" />
     <Compile Include="Events\Character\CharacterMoveEvent.cs" />
     <Compile Include="Events\Character\TargetChangeEvent.cs" />
     <Compile Include="Events\Character\TargetMoveEvent.cs" />
@@ -140,6 +141,8 @@
     <Compile Include="Factory\IEntityFactory.cs" />
     <Compile Include="Factory\ISkillFactory.cs" />
     <Compile Include="Factory\EntityFactory.cs" />
+    <Compile Include="Factory\SkillFactory.cs" />
+    <Compile Include="Game\Battle\Impl\Skill.cs" />
     <Compile Include="Game\Battle\Impl\Target.cs" />
     <Compile Include="Game\Battle\ISkill.cs" />
     <Compile Include="Game\Battle\ITarget.cs" />
@@ -171,6 +174,7 @@
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Network\Handlers\Characters\CInfoPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\LevPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\SkiPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\WalkPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\CondPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\MvPacketHandler.cs" />
@@ -179,6 +183,7 @@
     <Compile Include="Network\PacketManager.cs" />
     <Compile Include="Network\Packets\Characters\CInfoPacket.cs" />
     <Compile Include="Network\Packets\Characters\LevPacket.cs" />
+    <Compile Include="Network\Packets\Characters\SkiPacket.cs" />
     <Compile Include="Network\Packets\Characters\WalkPacket.cs" />
     <Compile Include="Network\Packets\Entities\CondPacket.cs" />
     <Compile Include="Network\Packets\Entities\MvPacket.cs" />

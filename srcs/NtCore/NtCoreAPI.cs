@@ -32,8 +32,7 @@ namespace NtCore
         private readonly IScheduler _scheduler;
 
         public IRegistry Registry { get; }
-        public ILanguageService Language { get; }
-        
+
         private NtCoreAPI()
         {
             IServiceCollection services = new ServiceCollection();
@@ -46,6 +45,7 @@ namespace NtCore
             services.AddSingleton<IPacketManager, PacketManager>();
             services.AddSingleton<ICommandManager, CommandManager>();
             services.AddSingleton<IEntityFactory, EntityFactory>();
+            services.AddSingleton<ISkillFactory, SkillFactory>();
             services.AddSingleton<IMapManager, MapManager>();
 
             foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
@@ -81,8 +81,7 @@ namespace NtCore
             ServiceProvider core = services.BuildServiceProvider();
 
             Registry = core.GetService<IRegistry>();
-            Language = core.GetService<ILanguageService>();
-            
+
             _logger = core.GetService<ILogger>();
             _scheduler = core.GetService<IScheduler>();
             _eventManager = core.GetService<IEventManager>();

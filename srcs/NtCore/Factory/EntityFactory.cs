@@ -22,8 +22,8 @@ namespace NtCore.Factory
             var monster = new Monster
             {
                 Vnum = vnum,
-                Level = monsterInfo.Level,
-                Name = _languageService.GetTranslation(LanguageKey.MONSTER, monsterInfo.NameKey)
+                Level = monsterInfo?.Level ?? 1,
+                Name = _languageService.GetTranslation(LanguageKey.MONSTER, monsterInfo?.NameKey ?? $"{vnum}")
             };
 
             return monster;
@@ -35,8 +35,8 @@ namespace NtCore.Factory
             var npc = new Npc
             {
                 Vnum = vnum,
-                Level = monsterInfo.Level,
-                Name = _languageService.GetTranslation(LanguageKey.MONSTER, monsterInfo.NameKey)
+                Level = monsterInfo?.Level ?? 1,
+                Name = _languageService.GetTranslation(LanguageKey.MONSTER, monsterInfo?.NameKey ?? $"{vnum}")
             };
 
             return npc;
@@ -48,7 +48,7 @@ namespace NtCore.Factory
             var drop = new Drop
             {
                 Vnum = vnum,
-                Name = _languageService.GetTranslation(LanguageKey.ITEM, itemInfo.NameKey)
+                Name = _languageService.GetTranslation(LanguageKey.ITEM, itemInfo?.NameKey ?? $"{vnum}")
             };
 
             return drop;

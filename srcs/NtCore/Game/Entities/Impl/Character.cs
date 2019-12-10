@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
@@ -11,6 +12,7 @@ namespace NtCore.Game.Entities.Impl
         {
             Client = client;
             LastMapChange = DateTime.Now;
+            Skills = new HashSet<ISkill>();
         }
 
         public IClient Client { get; }
@@ -25,6 +27,7 @@ namespace NtCore.Game.Entities.Impl
         public int Mp { get; set; }
         public int MaxMp { get; set; }
         public ITarget Target { get; set; }
+        public HashSet<ISkill> Skills { get; }
         public byte JobLevel { get; set; }
 
         public void Move(Position position)

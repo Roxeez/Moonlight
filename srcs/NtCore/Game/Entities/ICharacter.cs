@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using NtCore.Enums;
 using NtCore.Game.Battle;
@@ -67,6 +68,7 @@ namespace NtCore.Game.Entities
         /// </summary>
         ITarget Target { get; }
 
+        HashSet<ISkill> Skills { get; }
 
         /// <summary>
         ///     Make your character move
