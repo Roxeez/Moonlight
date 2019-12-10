@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using NtCore.API.Scheduler;
 using NtCore.Clients;
 using NtCore.Commands;
 using NtCore.Events;
+using NtCore.Factory;
+using NtCore.Game;
 using NtCore.Game.Maps;
 using NtCore.Game.Maps.Impl;
+using NtCore.I18N;
 using NtCore.Logger;
 using NtCore.Network;
+using NtCore.Registry;
 using NtCore.Scheduler;
 
 namespace NtCore
@@ -16,14 +23,17 @@ namespace NtCore
     public sealed class NtCoreAPI : IScheduler, IEventManager, ICommandManager, IClientManager
     {
         private static NtCoreAPI _instance;
+        
         private readonly IClientManager _clientManager;
         private readonly ICommandManager _commandManager;
         private readonly IEventManager _eventManager;
-
         private readonly ILogger _logger;
         private readonly IPacketManager _packetManager;
         private readonly IScheduler _scheduler;
 
+        public IRegistry Registry { get; }
+        public ILanguageService Language { get; }
+        
         private NtCoreAPI()
         {
             IServiceCollection services = new ServiceCollection();
@@ -35,6 +45,7 @@ namespace NtCore
             services.AddSingleton<IEventManager, EventManager>();
             services.AddSingleton<IPacketManager, PacketManager>();
             services.AddSingleton<ICommandManager, CommandManager>();
+            services.AddSingleton<IEntityFactory, EntityFactory>();
             services.AddSingleton<IMapManager, MapManager>();
 
             foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
@@ -51,9 +62,27 @@ namespace NtCore
 
                 services.AddSingleton(typeof(IPacketHandler), type);
             }
+            
+            var skillInfos = LoadJsonFromResource<Dictionary<int, SkillInfo>>("Skill.json");
+            var monsterInfos = LoadJsonFromResource<Dictionary<int, MonsterInfo>>("monster.json");
+            var itemInfos = LoadJsonFromResource<Dictionary<int, ItemInfo>>("Item.json");
+            var skillTranslations = LoadJsonFromResource<Dictionary<string, string>>("lang._code_uk_Skill.json");
+            var itemTranslations = LoadJsonFromResource<Dictionary<string, string>>("lang._code_uk_Item.json");
+            var monsterTranslations = LoadJsonFromResource<Dictionary<string, string>>("lang._code_uk_monster.json");
+            
+            services.AddSingleton<IRegistry>(new GameRegistry(skillInfos, monsterInfos, itemInfos));
+            services.AddSingleton<ILanguageService>(new LanguageService(new Dictionary<LanguageKey, IDictionary<string, string>>
+            {
+                [LanguageKey.SKILL] = skillTranslations,
+                [LanguageKey.ITEM] = itemTranslations,
+                [LanguageKey.MONSTER] = monsterTranslations
+            }));
 
             ServiceProvider core = services.BuildServiceProvider();
 
+            Registry = core.GetService<IRegistry>();
+            Language = core.GetService<ILanguageService>();
+            
             _logger = core.GetService<ILogger>();
             _scheduler = core.GetService<IScheduler>();
             _eventManager = core.GetService<IEventManager>();
@@ -67,6 +96,21 @@ namespace NtCore
             }
 
             _logger.Information("NtCoreAPI successfully initialized.");
+        }
+
+        private T LoadJsonFromResource<T>(string name)
+        {
+            var serializer = new JsonSerializer();
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("NtCore.Resources." + name))
+            {
+                if (stream == null)
+                {
+                    throw new InvalidOperationException($"Can't load {name} from resources");
+                }
+                
+                var reader = new StreamReader(stream);
+                return (T)serializer.Deserialize(reader, typeof(T));
+            }
         }
 
         public static NtCoreAPI Instance => _instance ?? (_instance = new NtCoreAPI());

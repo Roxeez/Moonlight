@@ -14,5 +14,7 @@
         ///     Amount of item drop
         /// </summary>
         int Amount { get; }
+        
+        string Name { get; }
     }
 }

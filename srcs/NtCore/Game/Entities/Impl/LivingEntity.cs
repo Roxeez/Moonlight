@@ -6,6 +6,7 @@ namespace NtCore.Game.Entities.Impl
     public abstract class LivingEntity : ILivingEntity
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public IMap Map { get; set; }
         public Position Position { get; set; }
         public EntityType EntityType { get; protected set; }

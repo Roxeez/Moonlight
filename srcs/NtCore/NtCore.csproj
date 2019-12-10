@@ -74,6 +74,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Reactive, Version=4.3.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263">
@@ -133,6 +137,9 @@
     <Compile Include="Events\Map\MinilandJoinEvent.cs" />
     <Compile Include="Extensions\CastExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
+    <Compile Include="Factory\IEntityFactory.cs" />
+    <Compile Include="Factory\ISkillFactory.cs" />
+    <Compile Include="Factory\EntityFactory.cs" />
     <Compile Include="Game\Battle\Impl\Target.cs" />
     <Compile Include="Game\Battle\ISkill.cs" />
     <Compile Include="Game\Battle\ITarget.cs" />
@@ -157,6 +164,8 @@
     <Compile Include="Game\Maps\Impl\MapManager.cs" />
     <Compile Include="Game\Maps\Impl\Miniland.cs" />
     <Compile Include="Game\Maps\Impl\MinilandObject.cs" />
+    <Compile Include="I18N\ILanguageService.cs" />
+    <Compile Include="I18N\LanguageService.cs" />
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Network\Handlers\Characters\CInfoPacketHandler.cs" />
@@ -203,6 +212,11 @@
     <Compile Include="Network\Packets\Characters\StatPacket.cs" />
     <Compile Include="Network\Packets\Maps\CMapPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registry\GameRegistry.cs" />
+    <Compile Include="Registry\IRegistry.cs" />
+    <Compile Include="Registry\ItemInfo.cs" />
+    <Compile Include="Registry\MonsterInfo.cs" />
+    <Compile Include="Registry\SkillInfo.cs" />
     <Compile Include="Scheduler\IScheduler.cs" />
     <Compile Include="Scheduler\ObservableScheduler.cs" />
   </ItemGroup>
@@ -210,12 +224,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Item.json" />
-    <Resource Include="Resources\lang\_code_uk_Item.json" />
-    <Resource Include="Resources\lang\_code_uk_monster.json" />
-    <Resource Include="Resources\lang\_code_uk_Skill.json" />
-    <Resource Include="Resources\monster.json" />
-    <Resource Include="Resources\Skill.json" />
+    <EmbeddedResource Include="Resources\Item.json" />
+    <EmbeddedResource Include="Resources\lang\_code_uk_Item.json" />
+    <EmbeddedResource Include="Resources\lang\_code_uk_monster.json" />
+    <EmbeddedResource Include="Resources\lang\_code_uk_Skill.json" />
+    <EmbeddedResource Include="Resources\monster.json" />
+    <EmbeddedResource Include="Resources\Skill.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
