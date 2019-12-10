@@ -1,0 +1,8114 @@
+﻿{
+  "1": {
+    "NameKey": "zts1e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "2": {
+    "NameKey": "zts2e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "5": {
+    "NameKey": "zts3e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "6": {
+    "NameKey": "zts4e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "10": {
+    "NameKey": "zts5e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "11": {
+    "NameKey": "zts1336e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "12": {
+    "NameKey": "zts1622e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "13": {
+    "NameKey": "zts6e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "14": {
+    "NameKey": "zts6e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "15": {
+    "NameKey": "zts6e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "16": {
+    "NameKey": "zts6e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "17": {
+    "NameKey": "zts6e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "18": {
+    "NameKey": "zts6e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "19": {
+    "NameKey": "zts6e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "20": {
+    "NameKey": "zts7e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "21": {
+    "NameKey": "zts10e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "22": {
+    "NameKey": "zts12e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "23": {
+    "NameKey": "zts13e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "24": {
+    "NameKey": "zts14e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "25": {
+    "NameKey": "zts17e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "26": {
+    "NameKey": "zts20e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "27": {
+    "NameKey": "zts21e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "28": {
+    "NameKey": "zts22e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "29": {
+    "NameKey": "zts25e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "30": {
+    "NameKey": "zts596e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "31": {
+    "NameKey": "zts598e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "32": {
+    "NameKey": "zts29e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "33": {
+    "NameKey": "zts30e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "34": {
+    "NameKey": "zts31e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "35": {
+    "NameKey": "zts32e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "36": {
+    "NameKey": "zts33e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "37": {
+    "NameKey": "zts35e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "38": {
+    "NameKey": "zts37e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "39": {
+    "NameKey": "zts38e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "40": {
+    "NameKey": "zts39e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "41": {
+    "NameKey": "zts41e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "42": {
+    "NameKey": "zts43e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "43": {
+    "NameKey": "zts44e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "44": {
+    "NameKey": "zts45e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "45": {
+    "NameKey": "zts47e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "46": {
+    "NameKey": "zts601e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "47": {
+    "NameKey": "zts603e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "48": {
+    "NameKey": "zts51e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "49": {
+    "NameKey": "zts53e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "50": {
+    "NameKey": "zts604e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "51": {
+    "NameKey": "zts606e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "52": {
+    "NameKey": "zts57e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "53": {
+    "NameKey": "zts59e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "54": {
+    "NameKey": "zts61e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "55": {
+    "NameKey": "zts62e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "56": {
+    "NameKey": "zts63e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "57": {
+    "NameKey": "zts65e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "58": {
+    "NameKey": "zts67e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "59": {
+    "NameKey": "zts68e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "60": {
+    "NameKey": "zts609e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "61": {
+    "NameKey": "zts71e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "62": {
+    "NameKey": "zts72e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "63": {
+    "NameKey": "zts73e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "64": {
+    "NameKey": "zts74e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "65": {
+    "NameKey": "zts75e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "66": {
+    "NameKey": "zts76e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "67": {
+    "NameKey": "zts77e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "68": {
+    "NameKey": "zts78e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "69": {
+    "NameKey": "zts79e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "70": {
+    "NameKey": "zts80e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "71": {
+    "NameKey": "zts81e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "72": {
+    "NameKey": "zts82e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "73": {
+    "NameKey": "zts83e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "74": {
+    "NameKey": "zts84e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "75": {
+    "NameKey": "zts85e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "76": {
+    "NameKey": "zts86e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "77": {
+    "NameKey": "zts87e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "78": {
+    "NameKey": "zts88e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "79": {
+    "NameKey": "zts89e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "80": {
+    "NameKey": "zts90e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "81": {
+    "NameKey": "zts91e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "82": {
+    "NameKey": "zts92e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "83": {
+    "NameKey": "zts93e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "84": {
+    "NameKey": "zts94e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "85": {
+    "NameKey": "zts95e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "86": {
+    "NameKey": "zts96e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "88": {
+    "NameKey": "zts2152e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "89": {
+    "NameKey": "zts2154e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "90": {
+    "NameKey": "zts2156e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "91": {
+    "NameKey": "zts2158e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "92": {
+    "NameKey": "zts2160e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "93": {
+    "NameKey": "zts2162e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "94": {
+    "NameKey": "zts2164e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "95": {
+    "NameKey": "zts2166e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "96": {
+    "NameKey": "zts2167e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "97": {
+    "NameKey": "zts2169e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "98": {
+    "NameKey": "zts2171e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "99": {
+    "NameKey": "zts2173e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "100": {
+    "NameKey": "zts2175e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "101": {
+    "NameKey": "zts2177e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "102": {
+    "NameKey": "zts2179e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "103": {
+    "NameKey": "zts2181e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "104": {
+    "NameKey": "zts2183e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "105": {
+    "NameKey": "zts2185e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "106": {
+    "NameKey": "zts2235e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "107": {
+    "NameKey": "zts2237e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "108": {
+    "NameKey": "zts2239e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "109": {
+    "NameKey": "zts2241e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "110": {
+    "NameKey": "zts2243e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "111": {
+    "NameKey": "zts2245e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "112": {
+    "NameKey": "zts2247e",
+    "SkillType": 0,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "200": {
+    "NameKey": "zts97e",
+    "SkillType": 1,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "201": {
+    "NameKey": "zts99e",
+    "SkillType": 1,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "202": {
+    "NameKey": "zts101e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 4
+  },
+  "203": {
+    "NameKey": "zts103e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 2
+  },
+  "204": {
+    "NameKey": "zts105e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 12
+  },
+  "205": {
+    "NameKey": "zts107e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 7
+  },
+  "206": {
+    "NameKey": "zts109e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 25
+  },
+  "207": {
+    "NameKey": "zts111e",
+    "SkillType": 1,
+    "Cooldown": 2,
+    "MpCost": 18
+  },
+  "208": {
+    "NameKey": "zts113e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 15
+  },
+  "209": {
+    "NameKey": "zts115e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 10
+  },
+  "210": {
+    "NameKey": "zts116e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 8
+  },
+  "211": {
+    "NameKey": "zts118e",
+    "SkillType": 1,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "212": {
+    "NameKey": "zts120e",
+    "SkillType": 1,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "213": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "214": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "215": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "216": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 22
+  },
+  "217": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 25
+  },
+  "218": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "219": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "220": {
+    "NameKey": "zts121e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "221": {
+    "NameKey": "zts123e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "222": {
+    "NameKey": "zts125e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 15
+  },
+  "223": {
+    "NameKey": "zts127e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 25
+  },
+  "224": {
+    "NameKey": "zts129e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 30
+  },
+  "225": {
+    "NameKey": "zts132e",
+    "SkillType": 1,
+    "Cooldown": 30,
+    "MpCost": 37
+  },
+  "226": {
+    "NameKey": "zts134e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 28
+  },
+  "227": {
+    "NameKey": "zts137e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 33
+  },
+  "228": {
+    "NameKey": "zts139e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 22
+  },
+  "229": {
+    "NameKey": "zts141e",
+    "SkillType": 1,
+    "Cooldown": 80,
+    "MpCost": 18
+  },
+  "230": {
+    "NameKey": "zts143e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 30
+  },
+  "231": {
+    "NameKey": "zts145e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 100
+  },
+  "232": {
+    "NameKey": "zts147e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 150
+  },
+  "233": {
+    "NameKey": "zts149e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 130
+  },
+  "234": {
+    "NameKey": "zts152e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 80
+  },
+  "235": {
+    "NameKey": "zts115e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "236": {
+    "NameKey": "zts115e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "237": {
+    "NameKey": "zts115e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "238": {
+    "NameKey": "zts154e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 15
+  },
+  "239": {
+    "NameKey": "zts612e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "240": {
+    "NameKey": "zts158e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "241": {
+    "NameKey": "zts160e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "242": {
+    "NameKey": "zts162e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 12
+  },
+  "243": {
+    "NameKey": "zts164e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 15
+  },
+  "244": {
+    "NameKey": "zts166e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 25
+  },
+  "245": {
+    "NameKey": "zts168e",
+    "SkillType": 1,
+    "Cooldown": 130,
+    "MpCost": 25
+  },
+  "246": {
+    "NameKey": "zts170e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 20
+  },
+  "247": {
+    "NameKey": "zts172e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 30
+  },
+  "248": {
+    "NameKey": "zts174e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 55
+  },
+  "249": {
+    "NameKey": "zts176e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 15
+  },
+  "250": {
+    "NameKey": "zts178e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "251": {
+    "NameKey": "zts181e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 20
+  },
+  "252": {
+    "NameKey": "zts183e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 100
+  },
+  "253": {
+    "NameKey": "zts185e",
+    "SkillType": 1,
+    "Cooldown": 3600,
+    "MpCost": 200
+  },
+  "254": {
+    "NameKey": "zts187e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 150
+  },
+  "255": {
+    "NameKey": "zts189e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 70
+  },
+  "256": {
+    "NameKey": "zts191e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 100
+  },
+  "257": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 100
+  },
+  "258": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 17
+  },
+  "259": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "260": {
+    "NameKey": "zts116e",
+    "SkillType": 1,
+    "Cooldown": 10,
+    "MpCost": 5
+  },
+  "261": {
+    "NameKey": "zts195e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 1
+  },
+  "262": {
+    "NameKey": "zts197e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 10
+  },
+  "263": {
+    "NameKey": "zts199e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 10
+  },
+  "264": {
+    "NameKey": "zts201e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 35
+  },
+  "265": {
+    "NameKey": "zts203e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 100
+  },
+  "266": {
+    "NameKey": "zts205e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 60
+  },
+  "267": {
+    "NameKey": "zts207e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 40
+  },
+  "268": {
+    "NameKey": "zts209e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 10
+  },
+  "269": {
+    "NameKey": "zts211e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 15
+  },
+  "270": {
+    "NameKey": "zts213e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 150
+  },
+  "271": {
+    "NameKey": "zts215e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 270
+  },
+  "272": {
+    "NameKey": "zts217e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 250
+  },
+  "273": {
+    "NameKey": "zts219e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 400
+  },
+  "274": {
+    "NameKey": "zts221e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 240
+  },
+  "275": {
+    "NameKey": "zts223e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 5
+  },
+  "276": {
+    "NameKey": "zts225e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 140
+  },
+  "277": {
+    "NameKey": "zts227e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 300
+  },
+  "278": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 25
+  },
+  "279": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "280": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 25
+  },
+  "281": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 80
+  },
+  "282": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 25
+  },
+  "283": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 8
+  },
+  "284": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "285": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "286": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 35
+  },
+  "287": {
+    "NameKey": "zts613e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 30
+  },
+  "288": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 40
+  },
+  "289": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 50
+  },
+  "290": {
+    "NameKey": "zts614e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 5
+  },
+  "291": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 5
+  },
+  "292": {
+    "NameKey": "zts636e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "293": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "294": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 2
+  },
+  "295": {
+    "NameKey": "zts616e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "296": {
+    "NameKey": "zts617e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "297": {
+    "NameKey": "zts618e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "298": {
+    "NameKey": "zts619e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "299": {
+    "NameKey": "zts620e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "300": {
+    "NameKey": "zts229e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 2
+  },
+  "301": {
+    "NameKey": "zts231e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "302": {
+    "NameKey": "zts233e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "303": {
+    "NameKey": "zts235e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "304": {
+    "NameKey": "zts235e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 2
+  },
+  "305": {
+    "NameKey": "zts238e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 1
+  },
+  "306": {
+    "NameKey": "zts240e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 1
+  },
+  "307": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "308": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "309": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "310": {
+    "NameKey": "zts242e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "311": {
+    "NameKey": "zts244e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "312": {
+    "NameKey": "zts245e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "313": {
+    "NameKey": "zts247e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "314": {
+    "NameKey": "zts249e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "315": {
+    "NameKey": "zts250e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 8
+  },
+  "316": {
+    "NameKey": "zts254e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "317": {
+    "NameKey": "zts256e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "318": {
+    "NameKey": "zts258e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "319": {
+    "NameKey": "zts260e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "320": {
+    "NameKey": "zts263e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 12
+  },
+  "321": {
+    "NameKey": "zts265e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 13
+  },
+  "322": {
+    "NameKey": "zts267e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 30
+  },
+  "323": {
+    "NameKey": "zts269e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "324": {
+    "NameKey": "zts271e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 25
+  },
+  "325": {
+    "NameKey": "zts272e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 35
+  },
+  "326": {
+    "NameKey": "zts275e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 5
+  },
+  "327": {
+    "NameKey": "zts277e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "328": {
+    "NameKey": "zts279e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "329": {
+    "NameKey": "zts281e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "330": {
+    "NameKey": "zts283e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 50
+  },
+  "331": {
+    "NameKey": "zts285e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 50
+  },
+  "332": {
+    "NameKey": "zts287e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "333": {
+    "NameKey": "zts289e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 35
+  },
+  "334": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "335": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "336": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "337": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "338": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "339": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "340": {
+    "NameKey": "zts291e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "341": {
+    "NameKey": "zts293e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "342": {
+    "NameKey": "zts294e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "343": {
+    "NameKey": "zts296e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "344": {
+    "NameKey": "zts298e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "345": {
+    "NameKey": "zts300e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 17
+  },
+  "346": {
+    "NameKey": "zts258e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 5
+  },
+  "347": {
+    "NameKey": "zts250e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 25
+  },
+  "348": {
+    "NameKey": "zts305e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 35
+  },
+  "349": {
+    "NameKey": "zts307e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 35
+  },
+  "350": {
+    "NameKey": "zts309e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "351": {
+    "NameKey": "zts311e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "352": {
+    "NameKey": "zts313e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "353": {
+    "NameKey": "zts315e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "354": {
+    "NameKey": "zts238e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "355": {
+    "NameKey": "zts318e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "356": {
+    "NameKey": "zts320e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 35
+  },
+  "357": {
+    "NameKey": "zts283e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 80
+  },
+  "358": {
+    "NameKey": "zts323e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 100
+  },
+  "359": {
+    "NameKey": "zts325e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 100
+  },
+  "360": {
+    "NameKey": "zts327e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "361": {
+    "NameKey": "zts329e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 40
+  },
+  "362": {
+    "NameKey": "zts331e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 50
+  },
+  "363": {
+    "NameKey": "zts333e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "364": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "365": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "366": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "367": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "368": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "369": {
+    "NameKey": "zts621e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "370": {
+    "NameKey": "zts335e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 5
+  },
+  "371": {
+    "NameKey": "zts315e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "372": {
+    "NameKey": "zts338e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 2
+  },
+  "373": {
+    "NameKey": "zts340e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "374": {
+    "NameKey": "zts341e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "375": {
+    "NameKey": "zts343e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "376": {
+    "NameKey": "zts345e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 15
+  },
+  "377": {
+    "NameKey": "zts347e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "378": {
+    "NameKey": "zts349e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 25
+  },
+  "379": {
+    "NameKey": "zts315e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 50
+  },
+  "380": {
+    "NameKey": "zts353e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 100
+  },
+  "381": {
+    "NameKey": "zts355e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 60
+  },
+  "382": {
+    "NameKey": "zts357e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 100
+  },
+  "383": {
+    "NameKey": "zts359e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "384": {
+    "NameKey": "zts622e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "385": {
+    "NameKey": "zts623e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "386": {
+    "NameKey": "zts157e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "387": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "388": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "389": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "390": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "391": {
+    "NameKey": "zts624e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "392": {
+    "NameKey": "zts625e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "393": {
+    "NameKey": "zts626e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "394": {
+    "NameKey": "zts627e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "395": {
+    "NameKey": "zts628e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "396": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "397": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "398": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "399": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "400": {
+    "NameKey": "zts361e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 30
+  },
+  "401": {
+    "NameKey": "zts362e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "402": {
+    "NameKey": "zts363e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 20
+  },
+  "403": {
+    "NameKey": "zts364e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 30
+  },
+  "404": {
+    "NameKey": "zts365e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "405": {
+    "NameKey": "zts366e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 100
+  },
+  "406": {
+    "NameKey": "zts367e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "407": {
+    "NameKey": "zts368e",
+    "SkillType": 4,
+    "Cooldown": 400,
+    "MpCost": 200
+  },
+  "408": {
+    "NameKey": "zts369e",
+    "SkillType": 4,
+    "Cooldown": 400,
+    "MpCost": 400
+  },
+  "409": {
+    "NameKey": "zts370e",
+    "SkillType": 4,
+    "Cooldown": 400,
+    "MpCost": 200
+  },
+  "410": {
+    "NameKey": "zts101e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 20
+  },
+  "411": {
+    "NameKey": "zts371e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 30
+  },
+  "412": {
+    "NameKey": "zts372e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 30
+  },
+  "413": {
+    "NameKey": "zts373e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 40
+  },
+  "414": {
+    "NameKey": "zts374e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 40
+  },
+  "415": {
+    "NameKey": "zts375e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 40
+  },
+  "416": {
+    "NameKey": "zts376e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 40
+  },
+  "417": {
+    "NameKey": "zts377e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 40
+  },
+  "418": {
+    "NameKey": "zts378e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "419": {
+    "NameKey": "zts379e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 300
+  },
+  "420": {
+    "NameKey": "zts380e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 20
+  },
+  "421": {
+    "NameKey": "zts381e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 20
+  },
+  "422": {
+    "NameKey": "zts382e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 200
+  },
+  "423": {
+    "NameKey": "zts383e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 20
+  },
+  "424": {
+    "NameKey": "zts384e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 30
+  },
+  "425": {
+    "NameKey": "zts385e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 30
+  },
+  "426": {
+    "NameKey": "zts386e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 40
+  },
+  "427": {
+    "NameKey": "zts387e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 20
+  },
+  "428": {
+    "NameKey": "zts388e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 0
+  },
+  "429": {
+    "NameKey": "zts389e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "430": {
+    "NameKey": "zts390e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "431": {
+    "NameKey": "zts391e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 300
+  },
+  "432": {
+    "NameKey": "zts392e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 100
+  },
+  "433": {
+    "NameKey": "zts393e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 100
+  },
+  "434": {
+    "NameKey": "zts394e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 300
+  },
+  "435": {
+    "NameKey": "zts395e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 20
+  },
+  "436": {
+    "NameKey": "zts396e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 200
+  },
+  "437": {
+    "NameKey": "zts397e",
+    "SkillType": 4,
+    "Cooldown": 400,
+    "MpCost": 30000
+  },
+  "438": {
+    "NameKey": "zts398e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 300
+  },
+  "439": {
+    "NameKey": "zts399e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 3000
+  },
+  "440": {
+    "NameKey": "zts400e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 5000
+  },
+  "441": {
+    "NameKey": "zts401e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "442": {
+    "NameKey": "zts402e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "443": {
+    "NameKey": "zts403e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 500
+  },
+  "444": {
+    "NameKey": "zts404e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "445": {
+    "NameKey": "zts405e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "446": {
+    "NameKey": "zts406e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "447": {
+    "NameKey": "zts407e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "448": {
+    "NameKey": "zts408e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 50
+  },
+  "449": {
+    "NameKey": "zts409e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "450": {
+    "NameKey": "zts410e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "451": {
+    "NameKey": "zts411e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "452": {
+    "NameKey": "zts412e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "453": {
+    "NameKey": "zts413e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 200
+  },
+  "454": {
+    "NameKey": "zts414e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 200
+  },
+  "455": {
+    "NameKey": "zts415e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 200
+  },
+  "456": {
+    "NameKey": "zts416e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 100
+  },
+  "457": {
+    "NameKey": "zts417e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "458": {
+    "NameKey": "zts418e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "459": {
+    "NameKey": "zts591e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "460": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "461": {
+    "NameKey": "zts157e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "462": {
+    "NameKey": "zts629e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "463": {
+    "NameKey": "zts630e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "464": {
+    "NameKey": "zts637e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "465": {
+    "NameKey": "zts638e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 0
+  },
+  "466": {
+    "NameKey": "zts639e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "467": {
+    "NameKey": "zts640e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "468": {
+    "NameKey": "zts651e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "469": {
+    "NameKey": "zts652e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "470": {
+    "NameKey": "zts653e",
+    "SkillType": 4,
+    "Cooldown": 40,
+    "MpCost": 0
+  },
+  "471": {
+    "NameKey": "zts654e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 0
+  },
+  "472": {
+    "NameKey": "zts655e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 10
+  },
+  "473": {
+    "NameKey": "zts656e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 0
+  },
+  "474": {
+    "NameKey": "zts657e",
+    "SkillType": 4,
+    "Cooldown": 550,
+    "MpCost": 1000
+  },
+  "475": {
+    "NameKey": "zts658e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 0
+  },
+  "476": {
+    "NameKey": "zts659e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 10
+  },
+  "477": {
+    "NameKey": "zts660e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 30
+  },
+  "478": {
+    "NameKey": "zts661e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 0
+  },
+  "479": {
+    "NameKey": "zts672e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "480": {
+    "NameKey": "zts673e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 10
+  },
+  "481": {
+    "NameKey": "zts674e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "482": {
+    "NameKey": "zts675e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "483": {
+    "NameKey": "zts676e",
+    "SkillType": 4,
+    "Cooldown": 6,
+    "MpCost": 10
+  },
+  "484": {
+    "NameKey": "zts677e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 50
+  },
+  "485": {
+    "NameKey": "zts693e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 20
+  },
+  "486": {
+    "NameKey": "zts679e",
+    "SkillType": 4,
+    "Cooldown": 7,
+    "MpCost": 10
+  },
+  "487": {
+    "NameKey": "zts680e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 30
+  },
+  "488": {
+    "NameKey": "zts681e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 50
+  },
+  "489": {
+    "NameKey": "zts682e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 70
+  },
+  "490": {
+    "NameKey": "zts683e",
+    "SkillType": 4,
+    "Cooldown": 13,
+    "MpCost": 10
+  },
+  "491": {
+    "NameKey": "zts684e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 50
+  },
+  "492": {
+    "NameKey": "zts685e",
+    "SkillType": 4,
+    "Cooldown": 800,
+    "MpCost": 200
+  },
+  "493": {
+    "NameKey": "zts686e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 120
+  },
+  "494": {
+    "NameKey": "zts687e",
+    "SkillType": 4,
+    "Cooldown": 16,
+    "MpCost": 50
+  },
+  "495": {
+    "NameKey": "zts688e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 200
+  },
+  "496": {
+    "NameKey": "zts689e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "497": {
+    "NameKey": "zts690e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "498": {
+    "NameKey": "zts691e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "499": {
+    "NameKey": "zts692e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 0
+  },
+  "500": {
+    "NameKey": "zts694e",
+    "SkillType": 4,
+    "Cooldown": 7,
+    "MpCost": 30
+  },
+  "501": {
+    "NameKey": "zts750e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 20
+  },
+  "502": {
+    "NameKey": "zts751e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 30
+  },
+  "503": {
+    "NameKey": "zts769e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "504": {
+    "NameKey": "zts770e",
+    "SkillType": 4,
+    "Cooldown": 14,
+    "MpCost": 0
+  },
+  "505": {
+    "NameKey": "zts771e",
+    "SkillType": 4,
+    "Cooldown": 500,
+    "MpCost": 650
+  },
+  "506": {
+    "NameKey": "zts772e",
+    "SkillType": 4,
+    "Cooldown": 7,
+    "MpCost": 10
+  },
+  "507": {
+    "NameKey": "zts773e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 0
+  },
+  "508": {
+    "NameKey": "zts774e",
+    "SkillType": 4,
+    "Cooldown": 25,
+    "MpCost": 30
+  },
+  "509": {
+    "NameKey": "zts775e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 20
+  },
+  "510": {
+    "NameKey": "zts776e",
+    "SkillType": 4,
+    "Cooldown": 9,
+    "MpCost": 10
+  },
+  "511": {
+    "NameKey": "zts777e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 0
+  },
+  "512": {
+    "NameKey": "zts778e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 70
+  },
+  "513": {
+    "NameKey": "zts779e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "514": {
+    "NameKey": "zts780e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 0
+  },
+  "515": {
+    "NameKey": "zts785e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "516": {
+    "NameKey": "zts783e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "517": {
+    "NameKey": "zts784e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 50
+  },
+  "518": {
+    "NameKey": "zts786e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 10
+  },
+  "519": {
+    "NameKey": "zts787e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 10
+  },
+  "520": {
+    "NameKey": "zts788e",
+    "SkillType": 4,
+    "Cooldown": 7,
+    "MpCost": 10
+  },
+  "521": {
+    "NameKey": "zts789e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 10
+  },
+  "522": {
+    "NameKey": "zts790e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 10
+  },
+  "523": {
+    "NameKey": "zts791e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 10
+  },
+  "524": {
+    "NameKey": "zts830e",
+    "SkillType": 4,
+    "Cooldown": 360,
+    "MpCost": 70
+  },
+  "525": {
+    "NameKey": "zts832e",
+    "SkillType": 4,
+    "Cooldown": 250,
+    "MpCost": 0
+  },
+  "526": {
+    "NameKey": "zts833e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 10
+  },
+  "527": {
+    "NameKey": "zts834e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 10
+  },
+  "528": {
+    "NameKey": "zts835e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 10
+  },
+  "529": {
+    "NameKey": "zts836e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 10
+  },
+  "530": {
+    "NameKey": "zts844e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 30
+  },
+  "531": {
+    "NameKey": "zts840e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "532": {
+    "NameKey": "zts842e",
+    "SkillType": 4,
+    "Cooldown": 9,
+    "MpCost": 10
+  },
+  "533": {
+    "NameKey": "zts843e",
+    "SkillType": 4,
+    "Cooldown": 220,
+    "MpCost": 30
+  },
+  "534": {
+    "NameKey": "zts845e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 10
+  },
+  "535": {
+    "NameKey": "zts846e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 30
+  },
+  "536": {
+    "NameKey": "zts847e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "537": {
+    "NameKey": "zts848e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "538": {
+    "NameKey": "zts906e",
+    "SkillType": 4,
+    "Cooldown": 1200,
+    "MpCost": 350
+  },
+  "539": {
+    "NameKey": "zts908e",
+    "SkillType": 4,
+    "Cooldown": 16,
+    "MpCost": 0
+  },
+  "540": {
+    "NameKey": "zts907e",
+    "SkillType": 4,
+    "Cooldown": 1200,
+    "MpCost": 300
+  },
+  "541": {
+    "NameKey": "zts899e",
+    "SkillType": 4,
+    "Cooldown": 13,
+    "MpCost": 0
+  },
+  "542": {
+    "NameKey": "zts890e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "543": {
+    "NameKey": "zts891e",
+    "SkillType": 4,
+    "Cooldown": 120,
+    "MpCost": 95
+  },
+  "544": {
+    "NameKey": "zts892e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "545": {
+    "NameKey": "zts893e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 160
+  },
+  "546": {
+    "NameKey": "zts894e",
+    "SkillType": 4,
+    "Cooldown": 500,
+    "MpCost": 300
+  },
+  "547": {
+    "NameKey": "zts895e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "548": {
+    "NameKey": "zts896e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 150
+  },
+  "549": {
+    "NameKey": "zts897e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "550": {
+    "NameKey": "zts898e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 500
+  },
+  "551": {
+    "NameKey": "zts900e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 70
+  },
+  "552": {
+    "NameKey": "zts901e",
+    "SkillType": 4,
+    "Cooldown": 13,
+    "MpCost": 50
+  },
+  "553": {
+    "NameKey": "zts902e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 10
+  },
+  "554": {
+    "NameKey": "zts903e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 10
+  },
+  "555": {
+    "NameKey": "zts904e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 30
+  },
+  "556": {
+    "NameKey": "zts905e",
+    "SkillType": 4,
+    "Cooldown": 700,
+    "MpCost": 900
+  },
+  "557": {
+    "NameKey": "zts909e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 50
+  },
+  "558": {
+    "NameKey": "zts910e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 100
+  },
+  "559": {
+    "NameKey": "zts911e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 100
+  },
+  "560": {
+    "NameKey": "zts912e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 25
+  },
+  "561": {
+    "NameKey": "zts1501e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "562": {
+    "NameKey": "zts1502e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "563": {
+    "NameKey": "zts1503e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "564": {
+    "NameKey": "zts1504e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "565": {
+    "NameKey": "zts1505e",
+    "SkillType": 4,
+    "Cooldown": 190,
+    "MpCost": 0
+  },
+  "566": {
+    "NameKey": "zts1506e",
+    "SkillType": 4,
+    "Cooldown": 140,
+    "MpCost": 0
+  },
+  "567": {
+    "NameKey": "zts1507e",
+    "SkillType": 4,
+    "Cooldown": 110,
+    "MpCost": 0
+  },
+  "568": {
+    "NameKey": "zts920e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "569": {
+    "NameKey": "zts1337e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "570": {
+    "NameKey": "zts1338e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 25
+  },
+  "571": {
+    "NameKey": "zts1339e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "572": {
+    "NameKey": "zts924e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 15
+  },
+  "573": {
+    "NameKey": "zts925e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 20
+  },
+  "574": {
+    "NameKey": "zts926e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "575": {
+    "NameKey": "zts927e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "576": {
+    "NameKey": "zts928e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "577": {
+    "NameKey": "zts929e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 15
+  },
+  "578": {
+    "NameKey": "zts930e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 25
+  },
+  "579": {
+    "NameKey": "zts931e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 450
+  },
+  "580": {
+    "NameKey": "zts932e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "581": {
+    "NameKey": "zts933e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "582": {
+    "NameKey": "zts934e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 25
+  },
+  "583": {
+    "NameKey": "zts935e",
+    "SkillType": 4,
+    "Cooldown": 13,
+    "MpCost": 0
+  },
+  "584": {
+    "NameKey": "zts936e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 120
+  },
+  "585": {
+    "NameKey": "zts912e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 25
+  },
+  "586": {
+    "NameKey": "zts937e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "587": {
+    "NameKey": "zts1335e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 30
+  },
+  "588": {
+    "NameKey": "zts939e",
+    "SkillType": 4,
+    "Cooldown": 500,
+    "MpCost": 500
+  },
+  "589": {
+    "NameKey": "zts940e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "590": {
+    "NameKey": "zts941e",
+    "SkillType": 4,
+    "Cooldown": 13,
+    "MpCost": 0
+  },
+  "591": {
+    "NameKey": "zts942e",
+    "SkillType": 4,
+    "Cooldown": 14,
+    "MpCost": 5
+  },
+  "592": {
+    "NameKey": "zts943e",
+    "SkillType": 4,
+    "Cooldown": 13,
+    "MpCost": 0
+  },
+  "593": {
+    "NameKey": "zts944e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "594": {
+    "NameKey": "zts945e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "595": {
+    "NameKey": "zts946e",
+    "SkillType": 4,
+    "Cooldown": 500,
+    "MpCost": 1500
+  },
+  "596": {
+    "NameKey": "zts947e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "597": {
+    "NameKey": "zts949e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "598": {
+    "NameKey": "zts948e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "599": {
+    "NameKey": "zts1340e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "600": {
+    "NameKey": "zts1341e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 30
+  },
+  "601": {
+    "NameKey": "zts1342e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "602": {
+    "NameKey": "zts1346e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 20
+  },
+  "603": {
+    "NameKey": "zts1409e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "604": {
+    "NameKey": "zts1410e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 0
+  },
+  "605": {
+    "NameKey": "zts1411e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "606": {
+    "NameKey": "zts1534e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 10
+  },
+  "607": {
+    "NameKey": "zts1538e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "608": {
+    "NameKey": "zts1539e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "609": {
+    "NameKey": "zts1540e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "610": {
+    "NameKey": "zts1543e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 0
+  },
+  "611": {
+    "NameKey": "zts1544e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 50
+  },
+  "612": {
+    "NameKey": "zts1580e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "613": {
+    "NameKey": "zts1581e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 10
+  },
+  "614": {
+    "NameKey": "zts1582e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 10
+  },
+  "615": {
+    "NameKey": "zts1583e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 30
+  },
+  "616": {
+    "NameKey": "zts1584e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 30
+  },
+  "617": {
+    "NameKey": "zts1585e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 10
+  },
+  "618": {
+    "NameKey": "zts1586e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 30
+  },
+  "619": {
+    "NameKey": "zts1587e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "620": {
+    "NameKey": "zts1588e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "621": {
+    "NameKey": "zts1589e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "622": {
+    "NameKey": "zts1590e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "623": {
+    "NameKey": "zts1591e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "624": {
+    "NameKey": "zts1592e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "625": {
+    "NameKey": "zts1598e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "626": {
+    "NameKey": "zts1599e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "627": {
+    "NameKey": "zts1600e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "628": {
+    "NameKey": "zts2502e",
+    "SkillType": 1,
+    "Cooldown": 4,
+    "MpCost": 0
+  },
+  "629": {
+    "NameKey": "zts2503e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 100
+  },
+  "630": {
+    "NameKey": "zts2504e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 0
+  },
+  "631": {
+    "NameKey": "zts2505e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 0
+  },
+  "632": {
+    "NameKey": "zts2506e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "633": {
+    "NameKey": "zts2507e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "634": {
+    "NameKey": "zts2508e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "635": {
+    "NameKey": "zts2509e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "636": {
+    "NameKey": "zts2510e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "637": {
+    "NameKey": "zts2511e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "638": {
+    "NameKey": "zts2512e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "639": {
+    "NameKey": "zts2514e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "640": {
+    "NameKey": "zts2515e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 0
+  },
+  "641": {
+    "NameKey": "zts2516e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "642": {
+    "NameKey": "zts2517e",
+    "SkillType": 4,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "643": {
+    "NameKey": "zts2518e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 0
+  },
+  "644": {
+    "NameKey": "zts2519e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "645": {
+    "NameKey": "zts2502e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 0
+  },
+  "646": {
+    "NameKey": "zts2526e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 50
+  },
+  "647": {
+    "NameKey": "zts2528e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 80
+  },
+  "648": {
+    "NameKey": "zts2530e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 150
+  },
+  "649": {
+    "NameKey": "zts2534e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 120
+  },
+  "650": {
+    "NameKey": "zts2538e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 150
+  },
+  "651": {
+    "NameKey": "zts2542e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 100
+  },
+  "652": {
+    "NameKey": "zts2545e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 300
+  },
+  "653": {
+    "NameKey": "zts2547e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 100
+  },
+  "654": {
+    "NameKey": "zts2550e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 100
+  },
+  "655": {
+    "NameKey": "zts2552e",
+    "SkillType": 1,
+    "Cooldown": 700,
+    "MpCost": 150
+  },
+  "656": {
+    "NameKey": "zts2555e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 150
+  },
+  "657": {
+    "NameKey": "zts2556e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 120
+  },
+  "658": {
+    "NameKey": "zts2557e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 150
+  },
+  "659": {
+    "NameKey": "zts2558e",
+    "SkillType": 1,
+    "Cooldown": 700,
+    "MpCost": 150
+  },
+  "660": {
+    "NameKey": "zts2559e",
+    "SkillType": 5,
+    "Cooldown": 100,
+    "MpCost": 100
+  },
+  "661": {
+    "NameKey": "zts523e",
+    "SkillType": 5,
+    "Cooldown": 200,
+    "MpCost": 120
+  },
+  "662": {
+    "NameKey": "zts2560e",
+    "SkillType": 5,
+    "Cooldown": 650,
+    "MpCost": 150
+  },
+  "663": {
+    "NameKey": "zts2563e",
+    "SkillType": 5,
+    "Cooldown": 700,
+    "MpCost": 40
+  },
+  "664": {
+    "NameKey": "zts2565e",
+    "SkillType": 5,
+    "Cooldown": 350,
+    "MpCost": 20
+  },
+  "717": {
+    "NameKey": "zts2567e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 0
+  },
+  "718": {
+    "NameKey": "zts2569e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 50
+  },
+  "719": {
+    "NameKey": "zts2571e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "720": {
+    "NameKey": "zts2573e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 150
+  },
+  "721": {
+    "NameKey": "zts2575e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 120
+  },
+  "722": {
+    "NameKey": "zts2577e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 150
+  },
+  "723": {
+    "NameKey": "zts2579e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 100
+  },
+  "724": {
+    "NameKey": "zts2581e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 300
+  },
+  "725": {
+    "NameKey": "zts2583e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 100
+  },
+  "726": {
+    "NameKey": "zts2585e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 100
+  },
+  "727": {
+    "NameKey": "zts2587e",
+    "SkillType": 1,
+    "Cooldown": 700,
+    "MpCost": 150
+  },
+  "728": {
+    "NameKey": "zts2589e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 10
+  },
+  "729": {
+    "NameKey": "zts2575e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 30
+  },
+  "756": {
+    "NameKey": "zts1343e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 0
+  },
+  "757": {
+    "NameKey": "zts1344e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 10
+  },
+  "786": {
+    "NameKey": "zts1216e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 50
+  },
+  "787": {
+    "NameKey": "zts1217e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "788": {
+    "NameKey": "zts1218e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "789": {
+    "NameKey": "zts1219e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "795": {
+    "NameKey": "zts1225e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 20
+  },
+  "796": {
+    "NameKey": "zts1226e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 30
+  },
+  "799": {
+    "NameKey": "zts1286e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 30
+  },
+  "800": {
+    "NameKey": "zts419e",
+    "SkillType": 1,
+    "Cooldown": 4,
+    "MpCost": 0
+  },
+  "801": {
+    "NameKey": "zts420e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "802": {
+    "NameKey": "zts421e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "803": {
+    "NameKey": "zts422e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "804": {
+    "NameKey": "zts423e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "805": {
+    "NameKey": "zts424e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "806": {
+    "NameKey": "zts425e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "807": {
+    "NameKey": "zts426e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "808": {
+    "NameKey": "zts427e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "809": {
+    "NameKey": "zts428e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "810": {
+    "NameKey": "zts429e",
+    "SkillType": 1,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "811": {
+    "NameKey": "zts430e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "812": {
+    "NameKey": "zts432e",
+    "SkillType": 1,
+    "Cooldown": 60,
+    "MpCost": 20
+  },
+  "813": {
+    "NameKey": "zts434e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 120
+  },
+  "814": {
+    "NameKey": "zts436e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 58
+  },
+  "815": {
+    "NameKey": "zts438e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "816": {
+    "NameKey": "zts440e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 65
+  },
+  "817": {
+    "NameKey": "zts442e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 150
+  },
+  "818": {
+    "NameKey": "zts445e",
+    "SkillType": 1,
+    "Cooldown": 130,
+    "MpCost": 100
+  },
+  "819": {
+    "NameKey": "zts447e",
+    "SkillType": 1,
+    "Cooldown": 700,
+    "MpCost": 220
+  },
+  "820": {
+    "NameKey": "zts449e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 140
+  },
+  "821": {
+    "NameKey": "zts451e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 180
+  },
+  "822": {
+    "NameKey": "zts121e",
+    "SkillType": 1,
+    "Cooldown": 4,
+    "MpCost": 0
+  },
+  "823": {
+    "NameKey": "zts456e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 18
+  },
+  "824": {
+    "NameKey": "zts458e",
+    "SkillType": 1,
+    "Cooldown": 80,
+    "MpCost": 45
+  },
+  "825": {
+    "NameKey": "zts460e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 27
+  },
+  "826": {
+    "NameKey": "zts462e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 85
+  },
+  "827": {
+    "NameKey": "zts464e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "828": {
+    "NameKey": "zts466e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 120
+  },
+  "829": {
+    "NameKey": "zts468e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 0
+  },
+  "830": {
+    "NameKey": "zts470e",
+    "SkillType": 1,
+    "Cooldown": 1000,
+    "MpCost": 180
+  },
+  "831": {
+    "NameKey": "zts472e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 350
+  },
+  "832": {
+    "NameKey": "zts474e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 200
+  },
+  "833": {
+    "NameKey": "zts158e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "834": {
+    "NameKey": "zts476e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 150
+  },
+  "835": {
+    "NameKey": "zts478e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 45
+  },
+  "836": {
+    "NameKey": "zts480e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 250
+  },
+  "837": {
+    "NameKey": "zts482e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 145
+  },
+  "838": {
+    "NameKey": "zts484e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "839": {
+    "NameKey": "zts486e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 120
+  },
+  "840": {
+    "NameKey": "zts488e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 100
+  },
+  "841": {
+    "NameKey": "zts490e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 135
+  },
+  "842": {
+    "NameKey": "zts492e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 300
+  },
+  "843": {
+    "NameKey": "zts494e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 200
+  },
+  "844": {
+    "NameKey": "zts496e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 0
+  },
+  "845": {
+    "NameKey": "zts498e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 100
+  },
+  "846": {
+    "NameKey": "zts500e",
+    "SkillType": 1,
+    "Cooldown": 40,
+    "MpCost": 15
+  },
+  "847": {
+    "NameKey": "zts502e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 100
+  },
+  "848": {
+    "NameKey": "zts504e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 150
+  },
+  "849": {
+    "NameKey": "zts361e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 120
+  },
+  "850": {
+    "NameKey": "zts508e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 120
+  },
+  "851": {
+    "NameKey": "zts510e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 400
+  },
+  "852": {
+    "NameKey": "zts512e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 50
+  },
+  "853": {
+    "NameKey": "zts514e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 90
+  },
+  "854": {
+    "NameKey": "zts517e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 80
+  },
+  "855": {
+    "NameKey": "zts197e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 40
+  },
+  "856": {
+    "NameKey": "zts521e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 65
+  },
+  "857": {
+    "NameKey": "zts523e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 140
+  },
+  "858": {
+    "NameKey": "zts525e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 0
+  },
+  "859": {
+    "NameKey": "zts527e",
+    "SkillType": 1,
+    "Cooldown": 140,
+    "MpCost": 230
+  },
+  "860": {
+    "NameKey": "zts529e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 100
+  },
+  "861": {
+    "NameKey": "zts531e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 570
+  },
+  "862": {
+    "NameKey": "zts533e",
+    "SkillType": 1,
+    "Cooldown": 450,
+    "MpCost": 340
+  },
+  "863": {
+    "NameKey": "zts535e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 370
+  },
+  "864": {
+    "NameKey": "zts537e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 380
+  },
+  "865": {
+    "NameKey": "zts539e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 450
+  },
+  "866": {
+    "NameKey": "zts541e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "867": {
+    "NameKey": "zts544e",
+    "SkillType": 1,
+    "Cooldown": 30,
+    "MpCost": 50
+  },
+  "868": {
+    "NameKey": "zts546e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 60
+  },
+  "869": {
+    "NameKey": "zts548e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 300
+  },
+  "870": {
+    "NameKey": "zts550e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 180
+  },
+  "871": {
+    "NameKey": "zts552e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 140
+  },
+  "872": {
+    "NameKey": "zts554e",
+    "SkillType": 1,
+    "Cooldown": 700,
+    "MpCost": 120
+  },
+  "873": {
+    "NameKey": "zts556e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 250
+  },
+  "874": {
+    "NameKey": "zts558e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 150
+  },
+  "875": {
+    "NameKey": "zts560e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 150
+  },
+  "876": {
+    "NameKey": "zts562e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 145
+  },
+  "877": {
+    "NameKey": "zts633e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "878": {
+    "NameKey": "zts634e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 200
+  },
+  "879": {
+    "NameKey": "zts635e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "880": {
+    "NameKey": "zts641e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "881": {
+    "NameKey": "zts642e",
+    "SkillType": 1,
+    "Cooldown": 60,
+    "MpCost": 25
+  },
+  "882": {
+    "NameKey": "zts643e",
+    "SkillType": 1,
+    "Cooldown": 140,
+    "MpCost": 55
+  },
+  "883": {
+    "NameKey": "zts644e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 40
+  },
+  "884": {
+    "NameKey": "zts645e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 85
+  },
+  "885": {
+    "NameKey": "zts646e",
+    "SkillType": 1,
+    "Cooldown": 1000,
+    "MpCost": 200
+  },
+  "886": {
+    "NameKey": "zts647e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 150
+  },
+  "887": {
+    "NameKey": "zts648e",
+    "SkillType": 1,
+    "Cooldown": 550,
+    "MpCost": 300
+  },
+  "888": {
+    "NameKey": "zts649e",
+    "SkillType": 1,
+    "Cooldown": 270,
+    "MpCost": 180
+  },
+  "889": {
+    "NameKey": "zts695e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "890": {
+    "NameKey": "zts696e",
+    "SkillType": 1,
+    "Cooldown": 55,
+    "MpCost": 20
+  },
+  "891": {
+    "NameKey": "zts697e",
+    "SkillType": 1,
+    "Cooldown": 340,
+    "MpCost": 42
+  },
+  "892": {
+    "NameKey": "zts752e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 60
+  },
+  "893": {
+    "NameKey": "zts753e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 90
+  },
+  "894": {
+    "NameKey": "zts754e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 40
+  },
+  "895": {
+    "NameKey": "zts701e",
+    "SkillType": 1,
+    "Cooldown": 220,
+    "MpCost": 55
+  },
+  "896": {
+    "NameKey": "zts702e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 85
+  },
+  "897": {
+    "NameKey": "zts703e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 100
+  },
+  "898": {
+    "NameKey": "zts704e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 120
+  },
+  "899": {
+    "NameKey": "zts781e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 180
+  },
+  "900": {
+    "NameKey": "zts706e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "901": {
+    "NameKey": "zts707e",
+    "SkillType": 1,
+    "Cooldown": 55,
+    "MpCost": 20
+  },
+  "902": {
+    "NameKey": "zts712e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 160
+  },
+  "903": {
+    "NameKey": "zts714e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 110
+  },
+  "904": {
+    "NameKey": "zts709e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 120
+  },
+  "905": {
+    "NameKey": "zts708e",
+    "SkillType": 1,
+    "Cooldown": 190,
+    "MpCost": 55
+  },
+  "906": {
+    "NameKey": "zts711e",
+    "SkillType": 1,
+    "Cooldown": 320,
+    "MpCost": 150
+  },
+  "907": {
+    "NameKey": "zts716e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 40
+  },
+  "908": {
+    "NameKey": "zts710e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 180
+  },
+  "909": {
+    "NameKey": "zts715e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 100
+  },
+  "910": {
+    "NameKey": "zts713e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 200
+  },
+  "911": {
+    "NameKey": "zts717e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "912": {
+    "NameKey": "zts718e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 45
+  },
+  "913": {
+    "NameKey": "zts719e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 70
+  },
+  "914": {
+    "NameKey": "zts756e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 180
+  },
+  "915": {
+    "NameKey": "zts721e",
+    "SkillType": 1,
+    "Cooldown": 5,
+    "MpCost": 50
+  },
+  "916": {
+    "NameKey": "zts722e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 90
+  },
+  "917": {
+    "NameKey": "zts723e",
+    "SkillType": 1,
+    "Cooldown": 230,
+    "MpCost": 110
+  },
+  "918": {
+    "NameKey": "zts724e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 85
+  },
+  "919": {
+    "NameKey": "zts725e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 150
+  },
+  "920": {
+    "NameKey": "zts726e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 160
+  },
+  "921": {
+    "NameKey": "zts727e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 200
+  },
+  "922": {
+    "NameKey": "zts728e",
+    "SkillType": 1,
+    "Cooldown": 7,
+    "MpCost": 0
+  },
+  "923": {
+    "NameKey": "zts729e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 50
+  },
+  "924": {
+    "NameKey": "zts730e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 85
+  },
+  "925": {
+    "NameKey": "zts731e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 150
+  },
+  "926": {
+    "NameKey": "zts732e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 70
+  },
+  "927": {
+    "NameKey": "zts733e",
+    "SkillType": 1,
+    "Cooldown": 320,
+    "MpCost": 110
+  },
+  "928": {
+    "NameKey": "zts734e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 120
+  },
+  "929": {
+    "NameKey": "zts735e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 90
+  },
+  "930": {
+    "NameKey": "zts736e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 180
+  },
+  "931": {
+    "NameKey": "zts737e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 180
+  },
+  "932": {
+    "NameKey": "zts738e",
+    "SkillType": 1,
+    "Cooldown": 1100,
+    "MpCost": 200
+  },
+  "933": {
+    "NameKey": "zts739e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 30
+  },
+  "934": {
+    "NameKey": "zts740e",
+    "SkillType": 1,
+    "Cooldown": 60,
+    "MpCost": 60
+  },
+  "935": {
+    "NameKey": "zts741e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 120
+  },
+  "936": {
+    "NameKey": "zts742e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 120
+  },
+  "937": {
+    "NameKey": "zts757e",
+    "SkillType": 1,
+    "Cooldown": 450,
+    "MpCost": 320
+  },
+  "938": {
+    "NameKey": "zts744e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 120
+  },
+  "939": {
+    "NameKey": "zts745e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 200
+  },
+  "940": {
+    "NameKey": "zts825e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 550
+  },
+  "941": {
+    "NameKey": "zts747e",
+    "SkillType": 1,
+    "Cooldown": 650,
+    "MpCost": 360
+  },
+  "942": {
+    "NameKey": "zts748e",
+    "SkillType": 1,
+    "Cooldown": 800,
+    "MpCost": 380
+  },
+  "943": {
+    "NameKey": "zts749e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 400
+  },
+  "944": {
+    "NameKey": "zts758e",
+    "SkillType": 1,
+    "Cooldown": 7,
+    "MpCost": 10
+  },
+  "945": {
+    "NameKey": "zts759e",
+    "SkillType": 1,
+    "Cooldown": 60,
+    "MpCost": 50
+  },
+  "946": {
+    "NameKey": "zts760e",
+    "SkillType": 1,
+    "Cooldown": 230,
+    "MpCost": 120
+  },
+  "947": {
+    "NameKey": "zts761e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 160
+  },
+  "948": {
+    "NameKey": "zts762e",
+    "SkillType": 1,
+    "Cooldown": 340,
+    "MpCost": 140
+  },
+  "949": {
+    "NameKey": "zts763e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 160
+  },
+  "950": {
+    "NameKey": "zts764e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 95
+  },
+  "951": {
+    "NameKey": "zts765e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 180
+  },
+  "952": {
+    "NameKey": "zts766e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 180
+  },
+  "953": {
+    "NameKey": "zts767e",
+    "SkillType": 1,
+    "Cooldown": 1000,
+    "MpCost": 240
+  },
+  "954": {
+    "NameKey": "zts768e",
+    "SkillType": 1,
+    "Cooldown": 1600,
+    "MpCost": 360
+  },
+  "955": {
+    "NameKey": "zts1287e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 100
+  },
+  "956": {
+    "NameKey": "zts1288e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 50
+  },
+  "957": {
+    "NameKey": "zts1289e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 1000
+  },
+  "958": {
+    "NameKey": "zts1290e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "959": {
+    "NameKey": "zts1291e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 30
+  },
+  "960": {
+    "NameKey": "zts1292e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 50
+  },
+  "961": {
+    "NameKey": "zts1293e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 10
+  },
+  "962": {
+    "NameKey": "zts1294e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 30
+  },
+  "963": {
+    "NameKey": "zts1295e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 30
+  },
+  "973": {
+    "NameKey": "zts564e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "974": {
+    "NameKey": "zts565e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "975": {
+    "NameKey": "zts566e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "976": {
+    "NameKey": "zts567e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "977": {
+    "NameKey": "zts568e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "978": {
+    "NameKey": "zts569e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "979": {
+    "NameKey": "zts570e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "980": {
+    "NameKey": "zts571e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "981": {
+    "NameKey": "zts572e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "982": {
+    "NameKey": "zts573e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "983": {
+    "NameKey": "zts574e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "984": {
+    "NameKey": "zts575e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "985": {
+    "NameKey": "zts576e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "986": {
+    "NameKey": "zts577e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "987": {
+    "NameKey": "zts578e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "988": {
+    "NameKey": "zts579e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "989": {
+    "NameKey": "zts580e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "990": {
+    "NameKey": "zts581e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "991": {
+    "NameKey": "zts582e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "992": {
+    "NameKey": "zts583e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "993": {
+    "NameKey": "zts584e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "994": {
+    "NameKey": "zts585e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "995": {
+    "NameKey": "zts586e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "996": {
+    "NameKey": "zts587e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "997": {
+    "NameKey": "zts588e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "998": {
+    "NameKey": "zts589e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "999": {
+    "NameKey": "zts590e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1000": {
+    "NameKey": "zts2561e",
+    "SkillType": 3,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1034": {
+    "NameKey": "zts1601e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1035": {
+    "NameKey": "zts1602e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1036": {
+    "NameKey": "zts1603e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 0
+  },
+  "1037": {
+    "NameKey": "zts1604e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "1038": {
+    "NameKey": "zts1605e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1039": {
+    "NameKey": "zts1606e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1040": {
+    "NameKey": "zts1623e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "1041": {
+    "NameKey": "zts1624e",
+    "SkillType": 4,
+    "Cooldown": 35,
+    "MpCost": 0
+  },
+  "1042": {
+    "NameKey": "zts1625e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1043": {
+    "NameKey": "zts1626e",
+    "SkillType": 4,
+    "Cooldown": 180,
+    "MpCost": 0
+  },
+  "1044": {
+    "NameKey": "zts1627e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1045": {
+    "NameKey": "zts1631e",
+    "SkillType": 4,
+    "Cooldown": 35,
+    "MpCost": 0
+  },
+  "1046": {
+    "NameKey": "zts1632e",
+    "SkillType": 4,
+    "Cooldown": 35,
+    "MpCost": 0
+  },
+  "1047": {
+    "NameKey": "zts1633e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "1048": {
+    "NameKey": "zts1634e",
+    "SkillType": 4,
+    "Cooldown": 40,
+    "MpCost": 0
+  },
+  "1049": {
+    "NameKey": "zts1635e",
+    "SkillType": 1,
+    "Cooldown": 5,
+    "MpCost": 0
+  },
+  "1050": {
+    "NameKey": "zts1636e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 120
+  },
+  "1051": {
+    "NameKey": "zts1637e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 80
+  },
+  "1052": {
+    "NameKey": "zts1639e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 150
+  },
+  "1053": {
+    "NameKey": "zts1641e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1054": {
+    "NameKey": "zts1642e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1055": {
+    "NameKey": "zts1643e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1056": {
+    "NameKey": "zts1673e",
+    "SkillType": 1,
+    "Cooldown": 5,
+    "MpCost": 0
+  },
+  "1057": {
+    "NameKey": "zts1675e",
+    "SkillType": 1,
+    "Cooldown": 60,
+    "MpCost": 70
+  },
+  "1058": {
+    "NameKey": "zts1677e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 90
+  },
+  "1059": {
+    "NameKey": "zts1679e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 80
+  },
+  "1060": {
+    "NameKey": "zts1681e",
+    "SkillType": 1,
+    "Cooldown": 160,
+    "MpCost": 200
+  },
+  "1061": {
+    "NameKey": "zts1683e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 90
+  },
+  "1062": {
+    "NameKey": "zts1685e",
+    "SkillType": 1,
+    "Cooldown": 90,
+    "MpCost": 300
+  },
+  "1063": {
+    "NameKey": "zts1687e",
+    "SkillType": 1,
+    "Cooldown": 1000,
+    "MpCost": 320
+  },
+  "1064": {
+    "NameKey": "zts1689e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 150
+  },
+  "1065": {
+    "NameKey": "zts1691e",
+    "SkillType": 1,
+    "Cooldown": 1000,
+    "MpCost": 90
+  },
+  "1066": {
+    "NameKey": "zts1693e",
+    "SkillType": 1,
+    "Cooldown": 1400,
+    "MpCost": 600
+  },
+  "1067": {
+    "NameKey": "zts1695e",
+    "SkillType": 1,
+    "Cooldown": 9,
+    "MpCost": 0
+  },
+  "1068": {
+    "NameKey": "zts1697e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 120
+  },
+  "1069": {
+    "NameKey": "zts1699e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 110
+  },
+  "1070": {
+    "NameKey": "zts1701e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 200
+  },
+  "1071": {
+    "NameKey": "zts1703e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 100
+  },
+  "1072": {
+    "NameKey": "zts1705e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 90
+  },
+  "1073": {
+    "NameKey": "zts1707e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 200
+  },
+  "1074": {
+    "NameKey": "zts1709e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 220
+  },
+  "1075": {
+    "NameKey": "zts1711e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 450
+  },
+  "1076": {
+    "NameKey": "zts1713e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 200
+  },
+  "1077": {
+    "NameKey": "zts1715e",
+    "SkillType": 1,
+    "Cooldown": 1000,
+    "MpCost": 700
+  },
+  "1078": {
+    "NameKey": "zts1717e",
+    "SkillType": 1,
+    "Cooldown": 9,
+    "MpCost": 60
+  },
+  "1079": {
+    "NameKey": "zts1719e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 190
+  },
+  "1080": {
+    "NameKey": "zts1721e",
+    "SkillType": 1,
+    "Cooldown": 220,
+    "MpCost": 210
+  },
+  "1081": {
+    "NameKey": "zts1723e",
+    "SkillType": 1,
+    "Cooldown": 320,
+    "MpCost": 550
+  },
+  "1082": {
+    "NameKey": "zts1725e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 340
+  },
+  "1083": {
+    "NameKey": "zts1727e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 300
+  },
+  "1084": {
+    "NameKey": "zts1729e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 310
+  },
+  "1085": {
+    "NameKey": "zts1731e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 340
+  },
+  "1086": {
+    "NameKey": "zts1733e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 380
+  },
+  "1087": {
+    "NameKey": "zts1735e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 420
+  },
+  "1088": {
+    "NameKey": "zts1737e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 1100
+  },
+  "1089": {
+    "NameKey": "zts1762e",
+    "SkillType": 1,
+    "Cooldown": 7,
+    "MpCost": 0
+  },
+  "1090": {
+    "NameKey": "zts1764e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 110
+  },
+  "1091": {
+    "NameKey": "zts1766e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 80
+  },
+  "1092": {
+    "NameKey": "zts1768e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 200
+  },
+  "1093": {
+    "NameKey": "zts1770e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 90
+  },
+  "1094": {
+    "NameKey": "zts1772e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 280
+  },
+  "1095": {
+    "NameKey": "zts1774e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 400
+  },
+  "1096": {
+    "NameKey": "zts1776e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 220
+  },
+  "1097": {
+    "NameKey": "zts1778e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 150
+  },
+  "1098": {
+    "NameKey": "zts1780e",
+    "SkillType": 1,
+    "Cooldown": 10,
+    "MpCost": 900
+  },
+  "1099": {
+    "NameKey": "zts1782e",
+    "SkillType": 1,
+    "Cooldown": 1000,
+    "MpCost": 600
+  },
+  "1100": {
+    "NameKey": "zts1784e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 250
+  },
+  "1101": {
+    "NameKey": "zts1786e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 270
+  },
+  "1102": {
+    "NameKey": "zts1788e",
+    "SkillType": 1,
+    "Cooldown": 9,
+    "MpCost": 50
+  },
+  "1103": {
+    "NameKey": "zts1790e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 120
+  },
+  "1104": {
+    "NameKey": "zts1792e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 180
+  },
+  "1105": {
+    "NameKey": "zts1794e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 250
+  },
+  "1106": {
+    "NameKey": "zts1796e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 200
+  },
+  "1107": {
+    "NameKey": "zts1798e",
+    "SkillType": 1,
+    "Cooldown": 450,
+    "MpCost": 600
+  },
+  "1108": {
+    "NameKey": "zts1800e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 450
+  },
+  "1109": {
+    "NameKey": "zts1802e",
+    "SkillType": 1,
+    "Cooldown": 450,
+    "MpCost": 250
+  },
+  "1110": {
+    "NameKey": "zts1804e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 220
+  },
+  "1111": {
+    "NameKey": "zts1806e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 380
+  },
+  "1112": {
+    "NameKey": "zts1808e",
+    "SkillType": 1,
+    "Cooldown": 1650,
+    "MpCost": 1200
+  },
+  "1113": {
+    "NameKey": "zts1810e",
+    "SkillType": 1,
+    "Cooldown": 700,
+    "MpCost": 0
+  },
+  "1114": {
+    "NameKey": "zts695e",
+    "SkillType": 1,
+    "Cooldown": 4,
+    "MpCost": 0
+  },
+  "1115": {
+    "NameKey": "zts1813e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 150
+  },
+  "1116": {
+    "NameKey": "zts1815e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 120
+  },
+  "1117": {
+    "NameKey": "zts1817e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 200
+  },
+  "1118": {
+    "NameKey": "zts1819e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 90
+  },
+  "1119": {
+    "NameKey": "zts1821e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 180
+  },
+  "1120": {
+    "NameKey": "zts1823e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 160
+  },
+  "1121": {
+    "NameKey": "zts1825e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 180
+  },
+  "1122": {
+    "NameKey": "zts1827e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 400
+  },
+  "1123": {
+    "NameKey": "zts1829e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 330
+  },
+  "1124": {
+    "NameKey": "zts1831e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 750
+  },
+  "1125": {
+    "NameKey": "zts1833e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 180
+  },
+  "1126": {
+    "NameKey": "zts1835e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 220
+  },
+  "1127": {
+    "NameKey": "zts1837e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 250
+  },
+  "1128": {
+    "NameKey": "zts1877e",
+    "SkillType": 1,
+    "Cooldown": 9,
+    "MpCost": 55
+  },
+  "1129": {
+    "NameKey": "zts1879e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 100
+  },
+  "1130": {
+    "NameKey": "zts1881e",
+    "SkillType": 1,
+    "Cooldown": 80,
+    "MpCost": 150
+  },
+  "1131": {
+    "NameKey": "zts1883e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 90
+  },
+  "1132": {
+    "NameKey": "zts1885e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 180
+  },
+  "1133": {
+    "NameKey": "zts1887e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 500
+  },
+  "1134": {
+    "NameKey": "zts1889e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 350
+  },
+  "1135": {
+    "NameKey": "zts1891e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 450
+  },
+  "1136": {
+    "NameKey": "zts1893e",
+    "SkillType": 1,
+    "Cooldown": 80,
+    "MpCost": 230
+  },
+  "1137": {
+    "NameKey": "zts1895e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 330
+  },
+  "1138": {
+    "NameKey": "zts1897e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 2000
+  },
+  "1139": {
+    "NameKey": "zts1893e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 400
+  },
+  "1140": {
+    "NameKey": "zts1893e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 400
+  },
+  "1141": {
+    "NameKey": "zts1899e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1142": {
+    "NameKey": "zts1900e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1143": {
+    "NameKey": "zts1901e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1144": {
+    "NameKey": "zts1902e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1145": {
+    "NameKey": "zts1903e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1146": {
+    "NameKey": "zts1904e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1147": {
+    "NameKey": "zts1905e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1148": {
+    "NameKey": "zts1906e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1149": {
+    "NameKey": "zts1883e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 100
+  },
+  "1150": {
+    "NameKey": "zts1908e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "1151": {
+    "NameKey": "zts1909e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1152": {
+    "NameKey": "zts1910e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1153": {
+    "NameKey": "zts1911e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1154": {
+    "NameKey": "zts1912e",
+    "SkillType": 1,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1155": {
+    "NameKey": "zts1914e",
+    "SkillType": 1,
+    "Cooldown": 80,
+    "MpCost": 90
+  },
+  "1156": {
+    "NameKey": "zts1916e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 120
+  },
+  "1157": {
+    "NameKey": "zts1918e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 100
+  },
+  "1158": {
+    "NameKey": "zts1920e",
+    "SkillType": 1,
+    "Cooldown": 65,
+    "MpCost": 120
+  },
+  "1159": {
+    "NameKey": "zts1922e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 120
+  },
+  "1160": {
+    "NameKey": "zts1924e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 300
+  },
+  "1161": {
+    "NameKey": "zts1926e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 180
+  },
+  "1162": {
+    "NameKey": "zts1928e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 220
+  },
+  "1163": {
+    "NameKey": "zts1930e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 250
+  },
+  "1164": {
+    "NameKey": "zts1932e",
+    "SkillType": 1,
+    "Cooldown": 750,
+    "MpCost": 999
+  },
+  "1165": {
+    "NameKey": "zts1934e",
+    "SkillType": 1,
+    "Cooldown": 40,
+    "MpCost": 150
+  },
+  "1166": {
+    "NameKey": "zts1935e",
+    "SkillType": 1,
+    "Cooldown": 20,
+    "MpCost": 180
+  },
+  "1167": {
+    "NameKey": "zts1936e",
+    "SkillType": 1,
+    "Cooldown": 280,
+    "MpCost": 180
+  },
+  "1168": {
+    "NameKey": "zts1938e",
+    "SkillType": 1,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1169": {
+    "NameKey": "zts1940e",
+    "SkillType": 1,
+    "Cooldown": 60,
+    "MpCost": 80
+  },
+  "1170": {
+    "NameKey": "zts1942e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 150
+  },
+  "1171": {
+    "NameKey": "zts1944e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 90
+  },
+  "1172": {
+    "NameKey": "zts1946e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 120
+  },
+  "1173": {
+    "NameKey": "zts1948e",
+    "SkillType": 1,
+    "Cooldown": 1500,
+    "MpCost": 280
+  },
+  "1174": {
+    "NameKey": "zts1950e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 200
+  },
+  "1175": {
+    "NameKey": "zts1952e",
+    "SkillType": 1,
+    "Cooldown": 230,
+    "MpCost": 350
+  },
+  "1176": {
+    "NameKey": "zts1954e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 500
+  },
+  "1177": {
+    "NameKey": "zts1956e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 350
+  },
+  "1178": {
+    "NameKey": "zts1958e",
+    "SkillType": 1,
+    "Cooldown": 500,
+    "MpCost": 600
+  },
+  "1179": {
+    "NameKey": "zts1944e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 180
+  },
+  "1180": {
+    "NameKey": "zts2030e",
+    "SkillType": 1,
+    "Cooldown": 4,
+    "MpCost": 0
+  },
+  "1181": {
+    "NameKey": "zts2032e",
+    "SkillType": 1,
+    "Cooldown": 80,
+    "MpCost": 80
+  },
+  "1182": {
+    "NameKey": "zts2034e",
+    "SkillType": 1,
+    "Cooldown": 140,
+    "MpCost": 120
+  },
+  "1183": {
+    "NameKey": "zts2036e",
+    "SkillType": 1,
+    "Cooldown": 90,
+    "MpCost": 150
+  },
+  "1184": {
+    "NameKey": "zts2038e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 100
+  },
+  "1185": {
+    "NameKey": "zts2040e",
+    "SkillType": 1,
+    "Cooldown": 130,
+    "MpCost": 150
+  },
+  "1186": {
+    "NameKey": "zts2042e",
+    "SkillType": 1,
+    "Cooldown": 140,
+    "MpCost": 90
+  },
+  "1187": {
+    "NameKey": "zts2044e",
+    "SkillType": 1,
+    "Cooldown": 20,
+    "MpCost": 250
+  },
+  "1188": {
+    "NameKey": "zts2046e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 280
+  },
+  "1189": {
+    "NameKey": "zts2048e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 300
+  },
+  "1190": {
+    "NameKey": "zts2050e",
+    "SkillType": 1,
+    "Cooldown": 650,
+    "MpCost": 550
+  },
+  "1191": {
+    "NameKey": "zts2052e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 150
+  },
+  "1192": {
+    "NameKey": "zts2054e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 150
+  },
+  "1193": {
+    "NameKey": "zts2056e",
+    "SkillType": 1,
+    "Cooldown": 20,
+    "MpCost": 180
+  },
+  "1194": {
+    "NameKey": "zts2058e",
+    "SkillType": 1,
+    "Cooldown": 15,
+    "MpCost": 200
+  },
+  "1195": {
+    "NameKey": "zts2060e",
+    "SkillType": 1,
+    "Cooldown": 20,
+    "MpCost": 180
+  },
+  "1200": {
+    "NameKey": "zts1645e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1201": {
+    "NameKey": "zts1646e",
+    "SkillType": 4,
+    "Cooldown": 250,
+    "MpCost": 0
+  },
+  "1202": {
+    "NameKey": "zts1647e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1203": {
+    "NameKey": "zts1648e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1204": {
+    "NameKey": "zts185e",
+    "SkillType": 4,
+    "Cooldown": 1200,
+    "MpCost": 0
+  },
+  "1205": {
+    "NameKey": "zts1649e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1206": {
+    "NameKey": "zts1650e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1207": {
+    "NameKey": "zts1651e",
+    "SkillType": 4,
+    "Cooldown": 250,
+    "MpCost": 0
+  },
+  "1208": {
+    "NameKey": "zts1652e",
+    "SkillType": 4,
+    "Cooldown": 250,
+    "MpCost": 0
+  },
+  "1209": {
+    "NameKey": "zts1661e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1210": {
+    "NameKey": "zts1662e",
+    "SkillType": 4,
+    "Cooldown": 250,
+    "MpCost": 0
+  },
+  "1211": {
+    "NameKey": "zts1655e",
+    "SkillType": 4,
+    "Cooldown": 35,
+    "MpCost": 0
+  },
+  "1212": {
+    "NameKey": "zts1656e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1213": {
+    "NameKey": "zts1657e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1214": {
+    "NameKey": "zts1663e",
+    "SkillType": 4,
+    "Cooldown": 450,
+    "MpCost": 0
+  },
+  "1215": {
+    "NameKey": "zts1659e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1216": {
+    "NameKey": "zts1660e",
+    "SkillType": 4,
+    "Cooldown": 49,
+    "MpCost": 0
+  },
+  "1217": {
+    "NameKey": "zts1668e",
+    "SkillType": 4,
+    "Cooldown": 120,
+    "MpCost": 0
+  },
+  "1218": {
+    "NameKey": "zts1665e",
+    "SkillType": 4,
+    "Cooldown": 250,
+    "MpCost": 0
+  },
+  "1219": {
+    "NameKey": "zts1666e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1220": {
+    "NameKey": "zts1667e",
+    "SkillType": 4,
+    "Cooldown": 220,
+    "MpCost": 0
+  },
+  "1221": {
+    "NameKey": "zts1669e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1222": {
+    "NameKey": "zts1670e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1223": {
+    "NameKey": "zts1739e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "1224": {
+    "NameKey": "zts1740e",
+    "SkillType": 4,
+    "Cooldown": 40,
+    "MpCost": 0
+  },
+  "1225": {
+    "NameKey": "zts1741e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1226": {
+    "NameKey": "zts1742e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "1227": {
+    "NameKey": "zts1743e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "1228": {
+    "NameKey": "zts1744e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1229": {
+    "NameKey": "zts1745e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1230": {
+    "NameKey": "zts1746e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 0
+  },
+  "1231": {
+    "NameKey": "zts1747e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1234": {
+    "NameKey": "zts1839e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1235": {
+    "NameKey": "zts1750e",
+    "SkillType": 5,
+    "Cooldown": 80,
+    "MpCost": 56
+  },
+  "1236": {
+    "NameKey": "zts1751e",
+    "SkillType": 5,
+    "Cooldown": 100,
+    "MpCost": 38
+  },
+  "1237": {
+    "NameKey": "zts1752e",
+    "SkillType": 5,
+    "Cooldown": 400,
+    "MpCost": 86
+  },
+  "1238": {
+    "NameKey": "zts1753e",
+    "SkillType": 5,
+    "Cooldown": 450,
+    "MpCost": 90
+  },
+  "1239": {
+    "NameKey": "zts1754e",
+    "SkillType": 5,
+    "Cooldown": 600,
+    "MpCost": 100
+  },
+  "1240": {
+    "NameKey": "zts1755e",
+    "SkillType": 5,
+    "Cooldown": 500,
+    "MpCost": 100
+  },
+  "1241": {
+    "NameKey": "zts1756e",
+    "SkillType": 5,
+    "Cooldown": 150,
+    "MpCost": 42
+  },
+  "1242": {
+    "NameKey": "zts1757e",
+    "SkillType": 5,
+    "Cooldown": 350,
+    "MpCost": 70
+  },
+  "1243": {
+    "NameKey": "zts1758e",
+    "SkillType": 5,
+    "Cooldown": 400,
+    "MpCost": 120
+  },
+  "1244": {
+    "NameKey": "zts1759e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1245": {
+    "NameKey": "zts1760e",
+    "SkillType": 4,
+    "Cooldown": 120,
+    "MpCost": 0
+  },
+  "1246": {
+    "NameKey": "zts1761e",
+    "SkillType": 4,
+    "Cooldown": 90,
+    "MpCost": 0
+  },
+  "1247": {
+    "NameKey": "zts1840e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1248": {
+    "NameKey": "zts1842e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1249": {
+    "NameKey": "zts1844e",
+    "SkillType": 4,
+    "Cooldown": 600,
+    "MpCost": 0
+  },
+  "1250": {
+    "NameKey": "zts1845e",
+    "SkillType": 4,
+    "Cooldown": 600,
+    "MpCost": 0
+  },
+  "1251": {
+    "NameKey": "zts1846e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "1252": {
+    "NameKey": "zts1847e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "1253": {
+    "NameKey": "zts1848e",
+    "SkillType": 4,
+    "Cooldown": 120,
+    "MpCost": 0
+  },
+  "1254": {
+    "NameKey": "zts1849e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1255": {
+    "NameKey": "zts1850e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1256": {
+    "NameKey": "zts1851e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "1257": {
+    "NameKey": "zts1852e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1258": {
+    "NameKey": "zts1854e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1259": {
+    "NameKey": "zts1855e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1260": {
+    "NameKey": "zts1857e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1261": {
+    "NameKey": "zts1859e",
+    "SkillType": 4,
+    "Cooldown": 5,
+    "MpCost": 0
+  },
+  "1262": {
+    "NameKey": "zts1861e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1263": {
+    "NameKey": "zts1863e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1264": {
+    "NameKey": "zts1864e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "1265": {
+    "NameKey": "zts1865e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 0
+  },
+  "1266": {
+    "NameKey": "zts1866e",
+    "SkillType": 4,
+    "Cooldown": 10,
+    "MpCost": 0
+  },
+  "1267": {
+    "NameKey": "zts1867e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1268": {
+    "NameKey": "zts1868e",
+    "SkillType": 5,
+    "Cooldown": 60,
+    "MpCost": 60
+  },
+  "1269": {
+    "NameKey": "zts1869e",
+    "SkillType": 5,
+    "Cooldown": 120,
+    "MpCost": 45
+  },
+  "1270": {
+    "NameKey": "zts1870e",
+    "SkillType": 5,
+    "Cooldown": 160,
+    "MpCost": 90
+  },
+  "1271": {
+    "NameKey": "zts1871e",
+    "SkillType": 5,
+    "Cooldown": 90,
+    "MpCost": 100
+  },
+  "1272": {
+    "NameKey": "zts1872e",
+    "SkillType": 5,
+    "Cooldown": 100,
+    "MpCost": 100
+  },
+  "1273": {
+    "NameKey": "zts1873e",
+    "SkillType": 5,
+    "Cooldown": 500,
+    "MpCost": 120
+  },
+  "1274": {
+    "NameKey": "zts1874e",
+    "SkillType": 5,
+    "Cooldown": 200,
+    "MpCost": 120
+  },
+  "1275": {
+    "NameKey": "zts1875e",
+    "SkillType": 5,
+    "Cooldown": 150,
+    "MpCost": 110
+  },
+  "1276": {
+    "NameKey": "zts1876e",
+    "SkillType": 5,
+    "Cooldown": 550,
+    "MpCost": 150
+  },
+  "1277": {
+    "NameKey": "zts1960e",
+    "SkillType": 4,
+    "Cooldown": 40,
+    "MpCost": 0
+  },
+  "1278": {
+    "NameKey": "zts1961e",
+    "SkillType": 4,
+    "Cooldown": 25,
+    "MpCost": 0
+  },
+  "1279": {
+    "NameKey": "zts1962e",
+    "SkillType": 4,
+    "Cooldown": 25,
+    "MpCost": 0
+  },
+  "1280": {
+    "NameKey": "zts1963e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "1281": {
+    "NameKey": "zts1964e",
+    "SkillType": 4,
+    "Cooldown": 3000,
+    "MpCost": 0
+  },
+  "1282": {
+    "NameKey": "zts1965e",
+    "SkillType": 4,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1283": {
+    "NameKey": "zts1966e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1284": {
+    "NameKey": "zts1967e",
+    "SkillType": 4,
+    "Cooldown": 45,
+    "MpCost": 0
+  },
+  "1285": {
+    "NameKey": "zts1968e",
+    "SkillType": 4,
+    "Cooldown": 65,
+    "MpCost": 0
+  },
+  "1286": {
+    "NameKey": "zts1969e",
+    "SkillType": 4,
+    "Cooldown": 55,
+    "MpCost": 0
+  },
+  "1287": {
+    "NameKey": "zts1974e",
+    "SkillType": 4,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1288": {
+    "NameKey": "zts1975e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1289": {
+    "NameKey": "zts1976e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1290": {
+    "NameKey": "zts1977e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1291": {
+    "NameKey": "zts1978e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1292": {
+    "NameKey": "zts1979e",
+    "SkillType": 5,
+    "Cooldown": 80,
+    "MpCost": 65
+  },
+  "1293": {
+    "NameKey": "zts1980e",
+    "SkillType": 5,
+    "Cooldown": 150,
+    "MpCost": 80
+  },
+  "1294": {
+    "NameKey": "zts1981e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 180
+  },
+  "1295": {
+    "NameKey": "zts1982e",
+    "SkillType": 4,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1296": {
+    "NameKey": "zts1983e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1297": {
+    "NameKey": "zts1984e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1298": {
+    "NameKey": "zts1985e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1299": {
+    "NameKey": "zts1986e",
+    "SkillType": 5,
+    "Cooldown": 80,
+    "MpCost": 65
+  },
+  "1300": {
+    "NameKey": "zts1987e",
+    "SkillType": 5,
+    "Cooldown": 280,
+    "MpCost": 80
+  },
+  "1301": {
+    "NameKey": "zts1988e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 180
+  },
+  "1302": {
+    "NameKey": "zts2011e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 0
+  },
+  "1303": {
+    "NameKey": "zts2012e",
+    "SkillType": 4,
+    "Cooldown": 350,
+    "MpCost": 0
+  },
+  "1304": {
+    "NameKey": "zts2013e",
+    "SkillType": 4,
+    "Cooldown": 4200,
+    "MpCost": 0
+  },
+  "1305": {
+    "NameKey": "zts2014e",
+    "SkillType": 4,
+    "Cooldown": 190,
+    "MpCost": 0
+  },
+  "1306": {
+    "NameKey": "zts2015e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1307": {
+    "NameKey": "zts2016e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "1308": {
+    "NameKey": "zts2017e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "1309": {
+    "NameKey": "zts2018e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1310": {
+    "NameKey": "zts2019e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1311": {
+    "NameKey": "zts2020e",
+    "SkillType": 4,
+    "Cooldown": 40,
+    "MpCost": 0
+  },
+  "1312": {
+    "NameKey": "zts2021e",
+    "SkillType": 4,
+    "Cooldown": 40,
+    "MpCost": 0
+  },
+  "1313": {
+    "NameKey": "zts2022e",
+    "SkillType": 4,
+    "Cooldown": 15,
+    "MpCost": 0
+  },
+  "1314": {
+    "NameKey": "zts2023e",
+    "SkillType": 4,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1315": {
+    "NameKey": "zts2024e",
+    "SkillType": 5,
+    "Cooldown": 60,
+    "MpCost": 80
+  },
+  "1316": {
+    "NameKey": "zts2025e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 150
+  },
+  "1317": {
+    "NameKey": "zts2026e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 200
+  },
+  "1318": {
+    "NameKey": "zts2027e",
+    "SkillType": 5,
+    "Cooldown": 50,
+    "MpCost": 80
+  },
+  "1319": {
+    "NameKey": "zts2028e",
+    "SkillType": 5,
+    "Cooldown": 250,
+    "MpCost": 150
+  },
+  "1320": {
+    "NameKey": "zts2029e",
+    "SkillType": 5,
+    "Cooldown": 400,
+    "MpCost": 200
+  },
+  "1321": {
+    "NameKey": "zts2014e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1322": {
+    "NameKey": "zts2061e",
+    "SkillType": 1,
+    "Cooldown": 10,
+    "MpCost": 55
+  },
+  "1323": {
+    "NameKey": "zts2063e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 130
+  },
+  "1324": {
+    "NameKey": "zts2065e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 180
+  },
+  "1325": {
+    "NameKey": "zts2067e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 330
+  },
+  "1326": {
+    "NameKey": "zts2069e",
+    "SkillType": 1,
+    "Cooldown": 80,
+    "MpCost": 200
+  },
+  "1327": {
+    "NameKey": "zts2071e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 300
+  },
+  "1328": {
+    "NameKey": "zts2073e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 250
+  },
+  "1329": {
+    "NameKey": "zts2075e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 400
+  },
+  "1330": {
+    "NameKey": "zts2077e",
+    "SkillType": 1,
+    "Cooldown": 10,
+    "MpCost": 350
+  },
+  "1331": {
+    "NameKey": "zts2079e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 2800
+  },
+  "1332": {
+    "NameKey": "zts2081e",
+    "SkillType": 1,
+    "Cooldown": 6000,
+    "MpCost": 1500
+  },
+  "1333": {
+    "NameKey": "zts2083e",
+    "SkillType": 5,
+    "Cooldown": 60,
+    "MpCost": 80
+  },
+  "1334": {
+    "NameKey": "zts2084e",
+    "SkillType": 5,
+    "Cooldown": 150,
+    "MpCost": 160
+  },
+  "1335": {
+    "NameKey": "zts2085e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 220
+  },
+  "1336": {
+    "NameKey": "zts2086e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1337": {
+    "NameKey": "zts2087e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1338": {
+    "NameKey": "zts2088e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 0
+  },
+  "1339": {
+    "NameKey": "zts625e",
+    "SkillType": 1,
+    "Cooldown": 60,
+    "MpCost": 60
+  },
+  "1340": {
+    "NameKey": "zts2091e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 180
+  },
+  "1341": {
+    "NameKey": "zts2093e",
+    "SkillType": 1,
+    "Cooldown": 160,
+    "MpCost": 90
+  },
+  "1342": {
+    "NameKey": "zts2095e",
+    "SkillType": 1,
+    "Cooldown": 90,
+    "MpCost": 120
+  },
+  "1343": {
+    "NameKey": "zts2097e",
+    "SkillType": 1,
+    "Cooldown": 180,
+    "MpCost": 200
+  },
+  "1344": {
+    "NameKey": "zts2099e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 120
+  },
+  "1345": {
+    "NameKey": "zts2101e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 85
+  },
+  "1346": {
+    "NameKey": "zts2103e",
+    "SkillType": 1,
+    "Cooldown": 1500,
+    "MpCost": 150
+  },
+  "1347": {
+    "NameKey": "zts2105e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 300
+  },
+  "1348": {
+    "NameKey": "zts2107e",
+    "SkillType": 1,
+    "Cooldown": 750,
+    "MpCost": 777
+  },
+  "1355": {
+    "NameKey": "zts2109e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 0
+  },
+  "1356": {
+    "NameKey": "zts2110e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1357": {
+    "NameKey": "zts2111e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "1358": {
+    "NameKey": "zts2112e",
+    "SkillType": 5,
+    "Cooldown": 70,
+    "MpCost": 60
+  },
+  "1359": {
+    "NameKey": "zts2113e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 99
+  },
+  "1360": {
+    "NameKey": "zts2114e",
+    "SkillType": 5,
+    "Cooldown": 250,
+    "MpCost": 180
+  },
+  "1361": {
+    "NameKey": "zts2117e",
+    "SkillType": 4,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1362": {
+    "NameKey": "zts2118e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1363": {
+    "NameKey": "zts2119e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1364": {
+    "NameKey": "zts2120e",
+    "SkillType": 4,
+    "Cooldown": 120,
+    "MpCost": 0
+  },
+  "1365": {
+    "NameKey": "zts2121e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1366": {
+    "NameKey": "zts2122e",
+    "SkillType": 4,
+    "Cooldown": 40,
+    "MpCost": 0
+  },
+  "1367": {
+    "NameKey": "zts2123e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1368": {
+    "NameKey": "zts2124e",
+    "SkillType": 5,
+    "Cooldown": 70,
+    "MpCost": 60
+  },
+  "1369": {
+    "NameKey": "zts2125e",
+    "SkillType": 5,
+    "Cooldown": 600,
+    "MpCost": 99
+  },
+  "1370": {
+    "NameKey": "zts2126e",
+    "SkillType": 5,
+    "Cooldown": 600,
+    "MpCost": 180
+  },
+  "1371": {
+    "NameKey": "zts2129e",
+    "SkillType": 5,
+    "Cooldown": 50,
+    "MpCost": 110
+  },
+  "1372": {
+    "NameKey": "zts2130e",
+    "SkillType": 5,
+    "Cooldown": 500,
+    "MpCost": 200
+  },
+  "1373": {
+    "NameKey": "zts2131e",
+    "SkillType": 5,
+    "Cooldown": 250,
+    "MpCost": 150
+  },
+  "1374": {
+    "NameKey": "zts2136e",
+    "SkillType": 1,
+    "Cooldown": 18000,
+    "MpCost": 0
+  },
+  "1375": {
+    "NameKey": "zts2138e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 0
+  },
+  "1376": {
+    "NameKey": "zts2141e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1377": {
+    "NameKey": "zts2140e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1378": {
+    "NameKey": "zts2142e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1379": {
+    "NameKey": "zts2143e",
+    "SkillType": 5,
+    "Cooldown": 90,
+    "MpCost": 110
+  },
+  "1380": {
+    "NameKey": "zts2144e",
+    "SkillType": 5,
+    "Cooldown": 150,
+    "MpCost": 200
+  },
+  "1381": {
+    "NameKey": "zts2145e",
+    "SkillType": 5,
+    "Cooldown": 250,
+    "MpCost": 300
+  },
+  "1400": {
+    "NameKey": "zts2187e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1401": {
+    "NameKey": "zts2188e",
+    "SkillType": 4,
+    "Cooldown": 2000,
+    "MpCost": 0
+  },
+  "1402": {
+    "NameKey": "zts2189e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1403": {
+    "NameKey": "zts2190e",
+    "SkillType": 4,
+    "Cooldown": 1500,
+    "MpCost": 0
+  },
+  "1404": {
+    "NameKey": "zts2191e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1405": {
+    "NameKey": "zts2192e",
+    "SkillType": 4,
+    "Cooldown": 1500,
+    "MpCost": 0
+  },
+  "1406": {
+    "NameKey": "zts2193e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1407": {
+    "NameKey": "zts2194e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1408": {
+    "NameKey": "zts2195e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1409": {
+    "NameKey": "zts2196e",
+    "SkillType": 4,
+    "Cooldown": 2800,
+    "MpCost": 0
+  },
+  "1410": {
+    "NameKey": "zts2197e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1411": {
+    "NameKey": "zts2198e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1412": {
+    "NameKey": "zts2199e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1413": {
+    "NameKey": "zts2200e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1414": {
+    "NameKey": "zts2201e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1415": {
+    "NameKey": "zts2202e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1416": {
+    "NameKey": "zts2203e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "1417": {
+    "NameKey": "zts2204e",
+    "SkillType": 4,
+    "Cooldown": 45,
+    "MpCost": 0
+  },
+  "1418": {
+    "NameKey": "zts2205e",
+    "SkillType": 4,
+    "Cooldown": 45,
+    "MpCost": 0
+  },
+  "1419": {
+    "NameKey": "zts2206e",
+    "SkillType": 4,
+    "Cooldown": 70,
+    "MpCost": 0
+  },
+  "1420": {
+    "NameKey": "zts2207e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1421": {
+    "NameKey": "zts2208e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1422": {
+    "NameKey": "zts2209e",
+    "SkillType": 4,
+    "Cooldown": 35,
+    "MpCost": 80
+  },
+  "1423": {
+    "NameKey": "zts2210e",
+    "SkillType": 4,
+    "Cooldown": 25,
+    "MpCost": 150
+  },
+  "1424": {
+    "NameKey": "zts2211e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 200
+  },
+  "1425": {
+    "NameKey": "zts2212e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 60
+  },
+  "1426": {
+    "NameKey": "zts2213e",
+    "SkillType": 4,
+    "Cooldown": 25,
+    "MpCost": 99
+  },
+  "1427": {
+    "NameKey": "zts2214e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 180
+  },
+  "1428": {
+    "NameKey": "zts2215e",
+    "SkillType": 4,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1429": {
+    "NameKey": "zts2216e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1430": {
+    "NameKey": "zts2217e",
+    "SkillType": 4,
+    "Cooldown": 45,
+    "MpCost": 0
+  },
+  "1431": {
+    "NameKey": "zts2218e",
+    "SkillType": 4,
+    "Cooldown": 65,
+    "MpCost": 0
+  },
+  "1432": {
+    "NameKey": "zts2219e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1433": {
+    "NameKey": "zts2146e",
+    "SkillType": 5,
+    "Cooldown": 110,
+    "MpCost": 110
+  },
+  "1434": {
+    "NameKey": "zts2147e",
+    "SkillType": 5,
+    "Cooldown": 150,
+    "MpCost": 200
+  },
+  "1435": {
+    "NameKey": "zts2148e",
+    "SkillType": 5,
+    "Cooldown": 270,
+    "MpCost": 220
+  },
+  "1436": {
+    "NameKey": "zts2149e",
+    "SkillType": 5,
+    "Cooldown": 50,
+    "MpCost": 70
+  },
+  "1437": {
+    "NameKey": "zts2150e",
+    "SkillType": 5,
+    "Cooldown": 470,
+    "MpCost": 110
+  },
+  "1438": {
+    "NameKey": "zts2151e",
+    "SkillType": 5,
+    "Cooldown": 450,
+    "MpCost": 200
+  },
+  "1439": {
+    "NameKey": "zts2221e",
+    "SkillType": 5,
+    "Cooldown": 110,
+    "MpCost": 100
+  },
+  "1440": {
+    "NameKey": "zts2222e",
+    "SkillType": 5,
+    "Cooldown": 220,
+    "MpCost": 150
+  },
+  "1441": {
+    "NameKey": "zts2223e",
+    "SkillType": 5,
+    "Cooldown": 430,
+    "MpCost": 200
+  },
+  "1442": {
+    "NameKey": "zts2224e",
+    "SkillType": 5,
+    "Cooldown": 110,
+    "MpCost": 100
+  },
+  "1443": {
+    "NameKey": "zts2225e",
+    "SkillType": 5,
+    "Cooldown": 220,
+    "MpCost": 150
+  },
+  "1444": {
+    "NameKey": "zts2226e",
+    "SkillType": 5,
+    "Cooldown": 430,
+    "MpCost": 200
+  },
+  "1445": {
+    "NameKey": "zts2227e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 1000
+  },
+  "1446": {
+    "NameKey": "zts2229e",
+    "SkillType": 5,
+    "Cooldown": 60,
+    "MpCost": 180
+  },
+  "1447": {
+    "NameKey": "zts2230e",
+    "SkillType": 5,
+    "Cooldown": 220,
+    "MpCost": 80
+  },
+  "1448": {
+    "NameKey": "zts2231e",
+    "SkillType": 5,
+    "Cooldown": 480,
+    "MpCost": 260
+  },
+  "1449": {
+    "NameKey": "zts2232e",
+    "SkillType": 5,
+    "Cooldown": 130,
+    "MpCost": 100
+  },
+  "1450": {
+    "NameKey": "zts2233e",
+    "SkillType": 5,
+    "Cooldown": 200,
+    "MpCost": 180
+  },
+  "1451": {
+    "NameKey": "zts2234e",
+    "SkillType": 5,
+    "Cooldown": 90,
+    "MpCost": 220
+  },
+  "1452": {
+    "NameKey": "zts2248e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1453": {
+    "NameKey": "zts2249e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1454": {
+    "NameKey": "zts2250e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1455": {
+    "NameKey": "zts2251e",
+    "SkillType": 4,
+    "Cooldown": 1500,
+    "MpCost": 0
+  },
+  "1456": {
+    "NameKey": "zts2252e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1457": {
+    "NameKey": "zts2253e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1458": {
+    "NameKey": "zts2254e",
+    "SkillType": 4,
+    "Cooldown": 7,
+    "MpCost": 0
+  },
+  "1459": {
+    "NameKey": "zts2255e",
+    "SkillType": 4,
+    "Cooldown": 90,
+    "MpCost": 0
+  },
+  "1460": {
+    "NameKey": "zts2256e",
+    "SkillType": 4,
+    "Cooldown": 390,
+    "MpCost": 0
+  },
+  "1461": {
+    "NameKey": "zts2257e",
+    "SkillType": 4,
+    "Cooldown": 900,
+    "MpCost": 0
+  },
+  "1462": {
+    "NameKey": "zts2258e",
+    "SkillType": 4,
+    "Cooldown": 220,
+    "MpCost": 0
+  },
+  "1463": {
+    "NameKey": "zts2259e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1464": {
+    "NameKey": "zts2260e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1465": {
+    "NameKey": "zts2261e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1466": {
+    "NameKey": "zts2262e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1467": {
+    "NameKey": "zts2263e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1468": {
+    "NameKey": "zts2264e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1469": {
+    "NameKey": "zts2265e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1470": {
+    "NameKey": "zts2266e",
+    "SkillType": 4,
+    "Cooldown": 1500,
+    "MpCost": 0
+  },
+  "1471": {
+    "NameKey": "zts2267e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1472": {
+    "NameKey": "zts2268e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1473": {
+    "NameKey": "zts2270e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 0
+  },
+  "1474": {
+    "NameKey": "zts2271e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 0
+  },
+  "1475": {
+    "NameKey": "zts2272e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 0
+  },
+  "1476": {
+    "NameKey": "zts2273e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 0
+  },
+  "1477": {
+    "NameKey": "zts2282e",
+    "SkillType": 4,
+    "Cooldown": 120,
+    "MpCost": 0
+  },
+  "1478": {
+    "NameKey": "zts2283e",
+    "SkillType": 4,
+    "Cooldown": 230,
+    "MpCost": 0
+  },
+  "1479": {
+    "NameKey": "zts2284e",
+    "SkillType": 4,
+    "Cooldown": 550,
+    "MpCost": 0
+  },
+  "1480": {
+    "NameKey": "zts2285e",
+    "SkillType": 4,
+    "Cooldown": 160,
+    "MpCost": 0
+  },
+  "1481": {
+    "NameKey": "zts2286e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 0
+  },
+  "1482": {
+    "NameKey": "zts2287e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 0
+  },
+  "1483": {
+    "NameKey": "zts2289e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 0
+  },
+  "1484": {
+    "NameKey": "zts2293e",
+    "SkillType": 4,
+    "Cooldown": 450,
+    "MpCost": 0
+  },
+  "1485": {
+    "NameKey": "zts2294e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1486": {
+    "NameKey": "zts2295e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1487": {
+    "NameKey": "zts2296e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 0
+  },
+  "1488": {
+    "NameKey": "zts2300e",
+    "SkillType": 1,
+    "Cooldown": 450,
+    "MpCost": 0
+  },
+  "1489": {
+    "NameKey": "zts2302e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 0
+  },
+  "1490": {
+    "NameKey": "zts2305e",
+    "SkillType": 5,
+    "Cooldown": 80,
+    "MpCost": 90
+  },
+  "1491": {
+    "NameKey": "zts2306e",
+    "SkillType": 5,
+    "Cooldown": 250,
+    "MpCost": 190
+  },
+  "1492": {
+    "NameKey": "zts2307e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 225
+  },
+  "1493": {
+    "NameKey": "zts2308e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 0
+  },
+  "1494": {
+    "NameKey": "zts2309e",
+    "SkillType": 4,
+    "Cooldown": 190,
+    "MpCost": 0
+  },
+  "1495": {
+    "NameKey": "zts2310e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1496": {
+    "NameKey": "zts2311e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1497": {
+    "NameKey": "zts2312e",
+    "SkillType": 4,
+    "Cooldown": 11,
+    "MpCost": 0
+  },
+  "1498": {
+    "NameKey": "zts2313e",
+    "SkillType": 4,
+    "Cooldown": 240,
+    "MpCost": 0
+  },
+  "1499": {
+    "NameKey": "zts2314e",
+    "SkillType": 4,
+    "Cooldown": 180,
+    "MpCost": 0
+  },
+  "1500": {
+    "NameKey": "zts2315e",
+    "SkillType": 4,
+    "Cooldown": 330,
+    "MpCost": 0
+  },
+  "1501": {
+    "NameKey": "zts2316e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1502": {
+    "NameKey": "zts2317e",
+    "SkillType": 4,
+    "Cooldown": 30,
+    "MpCost": 0
+  },
+  "1503": {
+    "NameKey": "zts2318e",
+    "SkillType": 4,
+    "Cooldown": 13,
+    "MpCost": 0
+  },
+  "1504": {
+    "NameKey": "zts2319e",
+    "SkillType": 4,
+    "Cooldown": 190,
+    "MpCost": 0
+  },
+  "1505": {
+    "NameKey": "zts2320e",
+    "SkillType": 4,
+    "Cooldown": 330,
+    "MpCost": 0
+  },
+  "1506": {
+    "NameKey": "zts2321e",
+    "SkillType": 4,
+    "Cooldown": 240,
+    "MpCost": 0
+  },
+  "1507": {
+    "NameKey": "zts2322e",
+    "SkillType": 1,
+    "Cooldown": 450,
+    "MpCost": 0
+  },
+  "1508": {
+    "NameKey": "zts2324e",
+    "SkillType": 1,
+    "Cooldown": 3000,
+    "MpCost": 0
+  },
+  "1509": {
+    "NameKey": "zts2305e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1510": {
+    "NameKey": "zts2306e",
+    "SkillType": 4,
+    "Cooldown": 120,
+    "MpCost": 0
+  },
+  "1511": {
+    "NameKey": "zts2307e",
+    "SkillType": 4,
+    "Cooldown": 300,
+    "MpCost": 0
+  },
+  "1512": {
+    "NameKey": "zts2326e",
+    "SkillType": 4,
+    "Cooldown": 12,
+    "MpCost": 0
+  },
+  "1513": {
+    "NameKey": "zts2327e",
+    "SkillType": 5,
+    "Cooldown": 350,
+    "MpCost": 30
+  },
+  "1514": {
+    "NameKey": "zts2331e",
+    "SkillType": 5,
+    "Cooldown": 6660,
+    "MpCost": 66
+  },
+  "1515": {
+    "NameKey": "zts2329e",
+    "SkillType": 5,
+    "Cooldown": 450,
+    "MpCost": 25
+  },
+  "1516": {
+    "NameKey": "zts2330e",
+    "SkillType": 5,
+    "Cooldown": 2400,
+    "MpCost": 50
+  },
+  "1517": {
+    "NameKey": "zts2332e",
+    "SkillType": 4,
+    "Cooldown": 80,
+    "MpCost": 0
+  },
+  "1518": {
+    "NameKey": "zts2334e",
+    "SkillType": 4,
+    "Cooldown": 150,
+    "MpCost": 0
+  },
+  "1519": {
+    "NameKey": "zts2336e",
+    "SkillType": 4,
+    "Cooldown": 120,
+    "MpCost": 0
+  },
+  "1520": {
+    "NameKey": "zts2338e",
+    "SkillType": 4,
+    "Cooldown": 500,
+    "MpCost": 0
+  },
+  "1521": {
+    "NameKey": "zts2334e",
+    "SkillType": 5,
+    "Cooldown": 150,
+    "MpCost": 75
+  },
+  "1522": {
+    "NameKey": "zts2340e",
+    "SkillType": 5,
+    "Cooldown": 250,
+    "MpCost": 190
+  },
+  "1523": {
+    "NameKey": "zts2341e",
+    "SkillType": 5,
+    "Cooldown": 420,
+    "MpCost": 333
+  },
+  "1524": {
+    "NameKey": "zts2336e",
+    "SkillType": 5,
+    "Cooldown": 350,
+    "MpCost": 50
+  },
+  "1525": {
+    "NameKey": "zts2342e",
+    "SkillType": 1,
+    "Cooldown": 7,
+    "MpCost": 0
+  },
+  "1526": {
+    "NameKey": "zts2344e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 17
+  },
+  "1527": {
+    "NameKey": "zts2346e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 28
+  },
+  "1528": {
+    "NameKey": "zts2348e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 30
+  },
+  "1529": {
+    "NameKey": "zts2350e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "1530": {
+    "NameKey": "zts2352e",
+    "SkillType": 1,
+    "Cooldown": 30,
+    "MpCost": 40
+  },
+  "1531": {
+    "NameKey": "zts2354e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 33
+  },
+  "1532": {
+    "NameKey": "zts2356e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 44
+  },
+  "1533": {
+    "NameKey": "zts2358e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 44
+  },
+  "1534": {
+    "NameKey": "zts2360e",
+    "SkillType": 1,
+    "Cooldown": 100,
+    "MpCost": 55
+  },
+  "1535": {
+    "NameKey": "zts2362e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 150
+  },
+  "1536": {
+    "NameKey": "zts2364e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 130
+  },
+  "1537": {
+    "NameKey": "zts2366e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 100
+  },
+  "1538": {
+    "NameKey": "zts2368e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 300
+  },
+  "1539": {
+    "NameKey": "zts2370e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 100
+  },
+  "1540": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1541": {
+    "NameKey": "zts2372e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1542": {
+    "NameKey": "zts2374e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1543": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1544": {
+    "NameKey": "zts2376e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1545": {
+    "NameKey": "zts2378e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1546": {
+    "NameKey": "zts2380e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1547": {
+    "NameKey": "zts2382e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1548": {
+    "NameKey": "zts2384e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1549": {
+    "NameKey": "zts2386e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1550": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1551": {
+    "NameKey": "zts1038e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1552": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1553": {
+    "NameKey": "zts2389e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1554": {
+    "NameKey": "zts2391e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1555": {
+    "NameKey": "zts2393e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1556": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1557": {
+    "NameKey": "zts315e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1558": {
+    "NameKey": "zts1161e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1559": {
+    "NameKey": "zts1159e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1560": {
+    "NameKey": "zts333e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1561": {
+    "NameKey": "zts2399e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1562": {
+    "NameKey": "zts265e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1563": {
+    "NameKey": "zts592e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1564": {
+    "NameKey": "zts283e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1565": {
+    "NameKey": "zts115e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 80
+  },
+  "1566": {
+    "NameKey": "zts2403e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1567": {
+    "NameKey": "zts2404e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1568": {
+    "NameKey": "zts2406e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1569": {
+    "NameKey": "zts2407e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1570": {
+    "NameKey": "zts2409e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1571": {
+    "NameKey": "zts2410e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1572": {
+    "NameKey": "zts2412e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1573": {
+    "NameKey": "zts2414e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1574": {
+    "NameKey": "zts2415e",
+    "SkillType": 2,
+    "Cooldown": 0,
+    "MpCost": 0
+  },
+  "1575": {
+    "NameKey": "zts2416e",
+    "SkillType": 5,
+    "Cooldown": 350,
+    "MpCost": 60
+  },
+  "1576": {
+    "NameKey": "zts2417e",
+    "SkillType": 5,
+    "Cooldown": 600,
+    "MpCost": 60
+  },
+  "1577": {
+    "NameKey": "zts2418e",
+    "SkillType": 1,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1578": {
+    "NameKey": "zts2420e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 80
+  },
+  "1579": {
+    "NameKey": "zts2422e",
+    "SkillType": 1,
+    "Cooldown": 80,
+    "MpCost": 150
+  },
+  "1580": {
+    "NameKey": "zts2424e",
+    "SkillType": 1,
+    "Cooldown": 140,
+    "MpCost": 90
+  },
+  "1581": {
+    "NameKey": "zts2426e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 300
+  },
+  "1582": {
+    "NameKey": "zts2428e",
+    "SkillType": 1,
+    "Cooldown": 120,
+    "MpCost": 280
+  },
+  "1583": {
+    "NameKey": "zts373e",
+    "SkillType": 1,
+    "Cooldown": 130,
+    "MpCost": 150
+  },
+  "1585": {
+    "NameKey": "zts2431e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 300
+  },
+  "1586": {
+    "NameKey": "zts2433e",
+    "SkillType": 1,
+    "Cooldown": 8,
+    "MpCost": 10
+  },
+  "1587": {
+    "NameKey": "zts2435e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 280
+  },
+  "1588": {
+    "NameKey": "zts2437e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 250
+  },
+  "1589": {
+    "NameKey": "zts2439e",
+    "SkillType": 1,
+    "Cooldown": 350,
+    "MpCost": 350
+  },
+  "1590": {
+    "NameKey": "zts2441e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 300
+  },
+  "1591": {
+    "NameKey": "zts2443e",
+    "SkillType": 1,
+    "Cooldown": 300,
+    "MpCost": 280
+  },
+  "1592": {
+    "NameKey": "zts2445e",
+    "SkillType": 1,
+    "Cooldown": 400,
+    "MpCost": 480
+  },
+  "1593": {
+    "NameKey": "zts2447e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 600
+  },
+  "1594": {
+    "NameKey": "zts2431e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 300
+  },
+  "1595": {
+    "NameKey": "zts2449e",
+    "SkillType": 4,
+    "Cooldown": 6,
+    "MpCost": 0
+  },
+  "1596": {
+    "NameKey": "zts2450e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1597": {
+    "NameKey": "zts2451e",
+    "SkillType": 4,
+    "Cooldown": 60,
+    "MpCost": 0
+  },
+  "1598": {
+    "NameKey": "zts2452e",
+    "SkillType": 4,
+    "Cooldown": 8,
+    "MpCost": 0
+  },
+  "1599": {
+    "NameKey": "zts2453e",
+    "SkillType": 4,
+    "Cooldown": 200,
+    "MpCost": 0
+  },
+  "1600": {
+    "NameKey": "zts2454e",
+    "SkillType": 4,
+    "Cooldown": 110,
+    "MpCost": 0
+  },
+  "1601": {
+    "NameKey": "zts2455e",
+    "SkillType": 5,
+    "Cooldown": 600,
+    "MpCost": 60
+  },
+  "1602": {
+    "NameKey": "zts2457e",
+    "SkillType": 5,
+    "Cooldown": 130,
+    "MpCost": 160
+  },
+  "1603": {
+    "NameKey": "zts2458e",
+    "SkillType": 5,
+    "Cooldown": 180,
+    "MpCost": 200
+  },
+  "1604": {
+    "NameKey": "zts2459e",
+    "SkillType": 5,
+    "Cooldown": 600,
+    "MpCost": 300
+  },
+  "1605": {
+    "NameKey": "zts2460e",
+    "SkillType": 1,
+    "Cooldown": 3,
+    "MpCost": 0
+  },
+  "1606": {
+    "NameKey": "zts2461e",
+    "SkillType": 1,
+    "Cooldown": 50,
+    "MpCost": 90
+  },
+  "1607": {
+    "NameKey": "zts2463e",
+    "SkillType": 1,
+    "Cooldown": 130,
+    "MpCost": 110
+  },
+  "1608": {
+    "NameKey": "zts2465e",
+    "SkillType": 1,
+    "Cooldown": 150,
+    "MpCost": 80
+  },
+  "1609": {
+    "NameKey": "zts2467e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 150
+  },
+  "1610": {
+    "NameKey": "zts2469e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 150
+  },
+  "1611": {
+    "NameKey": "zts2471e",
+    "SkillType": 1,
+    "Cooldown": 200,
+    "MpCost": 150
+  },
+  "1612": {
+    "NameKey": "zts2473e",
+    "SkillType": 1,
+    "Cooldown": 250,
+    "MpCost": 180
+  },
+  "1613": {
+    "NameKey": "zts2475e",
+    "SkillType": 1,
+    "Cooldown": 600,
+    "MpCost": 150
+  },
+  "1614": {
+    "NameKey": "zts2477e",
+    "SkillType": 1,
+    "Cooldown": 1500,
+    "MpCost": 300
+  },
+  "1617": {
+    "NameKey": "zts2479e",
+    "SkillType": 1,
+    "Cooldown": 900,
+    "MpCost": 130
+  },
+  "1618": {
+    "NameKey": "zts2481e",
+    "SkillType": 1,
+    "Cooldown": 1200,
+    "MpCost": 200
+  },
+  "1619": {
+    "NameKey": "zts2483e",
+    "SkillType": 1,
+    "Cooldown": 1800,
+    "MpCost": 230
+  },
+  "1620": {
+    "NameKey": "zts2485e",
+    "SkillType": 1,
+    "Cooldown": 2400,
+    "MpCost": 400
+  },
+  "1621": {
+    "NameKey": "zts2487e",
+    "SkillType": 1,
+    "Cooldown": 70,
+    "MpCost": 100
+  },
+  "1622": {
+    "NameKey": "zts2489e",
+    "SkillType": 4,
+    "Cooldown": 50,
+    "MpCost": 90
+  },
+  "1623": {
+    "NameKey": "zts2490e",
+    "SkillType": 4,
+    "Cooldown": 100,
+    "MpCost": 110
+  },
+  "1624": {
+    "NameKey": "zts2491e",
+    "SkillType": 4,
+    "Cooldown": 110,
+    "MpCost": 0
+  },
+  "1625": {
+    "NameKey": "zts2492e",
+    "SkillType": 4,
+    "Cooldown": 20,
+    "MpCost": 0
+  },
+  "1626": {
+    "NameKey": "zts2494e",
+    "SkillType": 5,
+    "Cooldown": 150,
+    "MpCost": 60
+  },
+  "1627": {
+    "NameKey": "zts2495e",
+    "SkillType": 5,
+    "Cooldown": 3000,
+    "MpCost": 60
+  },
+  "1628": {
+    "NameKey": "zts2496e",
+    "SkillType": 5,
+    "Cooldown": 100,
+    "MpCost": 100
+  },
+  "1629": {
+    "NameKey": "zts2498e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 200
+  },
+  "1630": {
+    "NameKey": "zts2500e",
+    "SkillType": 5,
+    "Cooldown": 600,
+    "MpCost": 250
+  },
+  "1631": {
+    "NameKey": "zts2520e",
+    "SkillType": 5,
+    "Cooldown": 300,
+    "MpCost": 200
+  },
+  "1632": {
+    "NameKey": "zts2518e",
+    "SkillType": 5,
+    "Cooldown": 500,
+    "MpCost": 200
+  },
+  "1633": {
+    "NameKey": "zts2523e",
+    "SkillType": 5,
+    "Cooldown": 600,
+    "MpCost": 250
+  }
+}

@@ -209,6 +209,14 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Item.json" />
+    <Resource Include="Resources\lang\_code_uk_Item.json" />
+    <Resource Include="Resources\lang\_code_uk_monster.json" />
+    <Resource Include="Resources\lang\_code_uk_Skill.json" />
+    <Resource Include="Resources\monster.json" />
+    <Resource Include="Resources\Skill.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
