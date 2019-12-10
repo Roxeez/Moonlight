@@ -1,6 +1,5 @@
 ﻿using System;
 using NtCore;
-using NtCore.Clients;
 using NtCore.Commands;
 using NtCore.Enums;
 using NtCore.Events;
@@ -8,7 +7,6 @@ using NtCore.Events.Character;
 using NtCore.Events.Entity;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Import;
 
 namespace Example
 {
@@ -23,9 +21,6 @@ namespace Example
         
         public void Run()
         {
-            // Alloc console (if needed)
-            Kernel32.AllocConsole();
-
             // Create a new local client (for injected dll)
             _ntCoreApi.CreateLocalClient();
 
@@ -74,12 +69,13 @@ namespace Example
         [Handler]
         public void OnEntitySpawn(EntityJoinEvent e)
         {
-            if (e.Entity.EntityType == EntityType.PLAYER)
+            var entity = e.Entity.As<ILivingEntity>();
+            if (entity == null)
             {
-                var player = e.Entity.As<IPlayer>();
-                
-                e.Client.Character.ReceiveChatMessage($"{player.Name} / Lv.{player.Level} joined map {e.Map.Id}", ChatMessageColor.YELLOW);
+                return;
             }
+            
+            e.Client.Character.ReceiveChatMessage($"{entity.Name} / {entity.EntityType} / Lvl.{entity.Level} / {entity.Position}", ChatMessageColor.GREEN);
         }
     }
 }

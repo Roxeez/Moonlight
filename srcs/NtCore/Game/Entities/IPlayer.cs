@@ -7,11 +7,7 @@ namespace NtCore.Game.Entities
     /// </summary>
     public interface IPlayer : ILivingEntity
     {
-        /// <summary>
-        ///     Player name
-        /// </summary>
-        string Name { get; }
-
+        
         /// <summary>
         ///     Player reputation
         /// </summary>

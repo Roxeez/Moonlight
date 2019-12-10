@@ -98,7 +98,7 @@ namespace NtCore
             _logger.Information("NtCoreAPI successfully initialized.");
         }
 
-        private T LoadJsonFromResource<T>(string name)
+        private static T LoadJsonFromResource<T>(string name)
         {
             var serializer = new JsonSerializer();
             using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("NtCore.Resources." + name))
