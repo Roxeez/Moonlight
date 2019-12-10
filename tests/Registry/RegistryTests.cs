@@ -1,5 +1,6 @@
 ﻿using System;
 using NFluent;
+using NtCore.Enums;
 using NtCore.Registry;
 using Xunit;
 
@@ -15,9 +16,9 @@ namespace NtCore.Tests.Registry
         }
         
         [Theory]
-        [InlineData(1250, "zts1845e", 4, 600, 0, 1, 0)]
-        [InlineData(1254, "zts1849e", 4, 60, 0, 0, 0)]
-        public void Skill_Registry_Return_Correct_Value(int skillVnum, string nameKey, byte skillType, int cooldown, int mpCost, int targetingType, int castId)
+        [InlineData(1250, "zts1845e", SkillType.MONSTER, 600, 0, TargetingType.SELF, 0)]
+        [InlineData(1254, "zts1849e", SkillType.MONSTER, 60, 0, TargetingType.TARGET, 0)]
+        public void Skill_Registry_Return_Correct_Value(int skillVnum, string nameKey, SkillType skillType, int cooldown, int mpCost, TargetingType targetingType, int castId)
         {
             SkillInfo skillInfo = _registry.GetSkillInfo(skillVnum);
 

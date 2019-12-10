@@ -2,9 +2,9 @@
 {
     public enum TargetingType : byte
     {
-        TARGET,
-        SELF,
-        SELF_OR_TARGET,
-        NO_TARGET
+        TARGET = 0,
+        SELF = 1,
+        SELF_OR_TARGET = 2,
+        NO_TARGET = 3
     }
 }

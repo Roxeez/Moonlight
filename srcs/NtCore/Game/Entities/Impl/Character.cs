@@ -31,9 +31,9 @@ namespace NtCore.Game.Entities.Impl
         
         public void UseSkill(ISkill skill)
         {
-            if (skill.TargetingType != TargetingType.SELF)
+            if (skill.Info.TargetingType != TargetingType.SELF && Target != null)
             {
-                UseSkill(skill, this);
+                UseSkill(skill, Target.Entity);
                 return;
             }
             UseSkill(skill, this);
@@ -46,7 +46,7 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
             
-            Client.SendPacket($"u_s {skill.CastId} {(byte)target.EntityType} {target.Id}");
+            Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
         }
 
         public byte JobLevel { get; set; }

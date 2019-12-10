@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NtCore.Enums;
 
 namespace NtCore.Registry
 {
@@ -11,7 +12,7 @@ namespace NtCore.Registry
         public int Cooldown { get; private set; }
         
         [JsonProperty]
-        public byte SkillType { get; private set; }
+        public SkillType SkillType { get; private set; }
         
         [JsonProperty]
         public int MpCost { get; private set; }
@@ -20,6 +21,6 @@ namespace NtCore.Registry
         public int CastId { get; private set; }
         
         [JsonProperty]
-        public int TargetingType { get; private set; }
+        public TargetingType TargetingType { get; private set; }
     }
 }
