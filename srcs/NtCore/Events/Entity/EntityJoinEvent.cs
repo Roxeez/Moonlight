@@ -11,7 +11,7 @@ namespace NtCore.Events.Entity
     /// </summary>
     public class EntityJoinEvent : Event
     {
-        public EntityJoinEvent([NotNull] IClient client, [NotNull] IEntity entity, [NotNull] IMap map) : base(client)
+        public EntityJoinEvent([NotNull] IClient client, [NotNull] ILivingEntity entity, [NotNull] IMap map) : base(client)
         {
             Entity = entity;
             Map = map;
@@ -20,7 +20,7 @@ namespace NtCore.Events.Entity
         /// <summary>
         ///     Entity involved in this event
         /// </summary>
-        public IEntity Entity { get; }
+        public ILivingEntity Entity { get; }
 
         /// <summary>
         ///     Map where this entity spawned

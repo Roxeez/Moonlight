@@ -81,9 +81,9 @@ namespace NtCore.Network.Handlers.Maps
 
             map.AddEntity(entity);
 
-            if (character.LastMapChange.AddSeconds(5) < DateTime.Now)
+            if (character.LastMapChange.AddSeconds(5) < DateTime.Now && entity is LivingEntity livingEntity)
             {
-                _eventManager.CallEvent(new EntityJoinEvent(client, entity, map));
+                _eventManager.CallEvent(new EntityJoinEvent(client, livingEntity, map));
             }
         }
     }

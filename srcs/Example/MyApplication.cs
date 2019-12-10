@@ -69,11 +69,7 @@ namespace Example
         [Handler]
         public void OnEntitySpawn(EntityJoinEvent e)
         {
-            var entity = e.Entity.As<ILivingEntity>();
-            if (entity == null)
-            {
-                return;
-            }
+            ILivingEntity entity = e.Entity;
             
             e.Client.Character.ReceiveChatMessage($"{entity.Name} / {entity.EntityType} / Lvl.{entity.Level} / {entity.Position}", ChatMessageColor.GREEN);
         }
