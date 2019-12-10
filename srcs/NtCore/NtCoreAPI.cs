@@ -135,14 +135,24 @@ namespace NtCore
             _commandManager.ExecuteCommand(client, command, args);
         }
 
-        public void RegisterEventListener(IEventListener eventListener, IClient client = null)
+        public void RegisterEventListener(IEventListener eventListener, IClient client)
         {
             _eventManager.RegisterEventListener(eventListener, client);
         }
 
-        public void RegisterEventListener<T>(IClient client = null) where T : IEventListener
+        public void RegisterEventListener(IEventListener eventListener)
+        {
+            _eventManager.RegisterEventListener(eventListener);
+        }
+
+        public void RegisterEventListener<T>(IClient client) where T : IEventListener
         {
             _eventManager.RegisterEventListener<T>(client);
+        }
+
+        public void RegisterEventListener<T>() where T : IEventListener
+        {
+            _eventManager.RegisterEventListener<T>();
         }
 
         public void CallEvent(Event e)

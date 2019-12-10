@@ -15,7 +15,7 @@ namespace NtCore.Events
 
         public EventManager(ILogger logger) => _logger = logger;
 
-        public void RegisterEventListener(IEventListener eventListener, IClient client = null)
+        public void RegisterEventListener(IEventListener eventListener, IClient client)
         {
             foreach (MethodInfo methodInfo in eventListener.GetType().GetMethods())
             {
@@ -49,10 +49,20 @@ namespace NtCore.Events
             }
         }
 
-        public void RegisterEventListener<T>(IClient client = null) where T : IEventListener
+        public void RegisterEventListener(IEventListener eventListener)
+        {
+            RegisterEventListener(eventListener, null);
+        }
+
+        public void RegisterEventListener<T>(IClient client) where T : IEventListener
         {
             var obj = Activator.CreateInstance<T>();
             RegisterEventListener(obj, client);
+        }
+
+        public void RegisterEventListener<T>() where T : IEventListener
+        {
+            RegisterEventListener<T>(null);
         }
 
         public void CallEvent(Event e)
