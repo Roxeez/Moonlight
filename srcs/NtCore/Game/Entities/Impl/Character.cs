@@ -31,12 +31,17 @@ namespace NtCore.Game.Entities.Impl
         
         public void UseSkill(ISkill skill)
         {
-            if (skill.Info.TargetingType != TargetingType.SELF && Target != null)
+            if (!Skills.Contains(skill))
             {
-                UseSkill(skill, Target.Entity);
                 return;
             }
-            UseSkill(skill, this);
+
+            if (skill.Info.TargetingType != TargetingType.SELF)
+            {
+                return;
+            }
+            
+            Client.SendPacket($"u_s {skill.Info.CastId} {(byte)EntityType} {Id}");
         }
 
         public void UseSkill(ISkill skill, ILivingEntity target)
@@ -45,8 +50,32 @@ namespace NtCore.Game.Entities.Impl
             {
                 return;
             }
+
+            if (skill.Info.TargetingType == TargetingType.SELF)
+            {
+                target = this;
+            }
+            
+            // TODO : Check if range is legit according to character position
             
             Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
+        }
+
+        public void UseSkill(ISkill skill, Position position)
+        {
+            if (!Skills.Contains(skill))
+            {
+                return;
+            }
+
+            if (skill.Info.TargetingType != TargetingType.NO_TARGET)
+            {
+                return;
+            }
+            
+            // TODO : Check if position is legit according to character position
+            
+            Client.SendPacket($"u_as {skill.Info.CastId} {position.X} {position.Y}");
         }
 
         public byte JobLevel { get; set; }

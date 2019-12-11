@@ -68,10 +68,30 @@ namespace NtCore.Game.Entities
         /// </summary>
         ITarget Target { get; }
 
+        /// <summary>
+        /// Contains all character skills
+        /// </summary>
         HashSet<ISkill> Skills { get; }
 
-        void UseSkill(ISkill skill);
-        void UseSkill(ISkill skill, ILivingEntity target);
+        /// <summary>
+        /// Use selected skill on self
+        /// </summary>
+        /// <param name="skill">Skill to use</param>
+        void UseSkill([NotNull] ISkill skill);
+        
+        /// <summary>
+        /// Use skill on defined target
+        /// </summary>
+        /// <param name="skill">Skill to use</param>
+        /// <param name="target">Target of the skill</param>
+        void UseSkill([NotNull] ISkill skill, [NotNull] ILivingEntity target);
+
+        /// <summary>
+        /// Use skill at specific position
+        /// </summary>
+        /// <param name="skill">Skill to use</param>
+        /// <param name="position">Target position</param>
+        void UseSkill([NotNull] ISkill skill, Position position);
         
         /// <summary>
         ///     Make your character move
