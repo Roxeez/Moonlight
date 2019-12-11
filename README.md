@@ -64,8 +64,9 @@ public class MyEventListener : IEventListener
 
 ### Prerequisites
 
-- ***.NET Framework 4.7*** (until DllExport is updated to .NET Core)
-- ***Costura Fody*** (for packing everything in one .dll)
+- **.NET Framework 4+** (until DllExport is updated to .NET Core)
+- **DllExport**
+- **Costura Fody** (for packing everything in one .dll)
 
 ## Contributing
 
