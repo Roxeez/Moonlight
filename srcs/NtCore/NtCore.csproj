@@ -137,7 +137,7 @@
     <Compile Include="Events\IEventListener.cs" />
     <Compile Include="Events\Map\MapChangeEvent.cs" />
     <Compile Include="Events\Map\MinilandJoinEvent.cs" />
-    <Compile Include="Extensions\CastExtensions.cs" />
+    <Compile Include="Extensions\CastExtension.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Factory\IEntityFactory.cs" />
     <Compile Include="Factory\ISkillFactory.cs" />

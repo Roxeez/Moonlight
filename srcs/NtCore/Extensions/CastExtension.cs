@@ -2,7 +2,7 @@
 
 namespace NtCore.Extensions
 {
-    public static class CastExtensions
+    public static class CastExtension
     {
         /// <summary>
         ///     Readable cast

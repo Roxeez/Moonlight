@@ -21,6 +21,9 @@ namespace NtCore.Registry
         public int CastId { get; private set; }
         
         [JsonProperty]
+        public int Range { get; private set; }
+        
+        [JsonProperty]
         public TargetingType TargetingType { get; private set; }
     }
 }
