@@ -36,7 +36,7 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
 
-            if (skill.Info.TargetingType != TargetingType.SELF)
+            if (skill.Info.TargetingType != TargetingType.SELF && skill.Info.TargetingType != TargetingType.SELF_OR_TARGET)
             {
                 return;
             }
@@ -53,10 +53,13 @@ namespace NtCore.Game.Entities.Impl
 
             if (skill.Info.TargetingType == TargetingType.SELF)
             {
-                target = this;
+                return;
             }
-            
-            // TODO : Check if range is legit according to character position
+
+            if (!Position.IsInRange(target.Position, skill.Info.Range + 4)) // Add some range because target can move
+            {
+                return;
+            }
             
             Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
         }
@@ -73,7 +76,10 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
             
-            // TODO : Check if position is legit according to character position
+            if (!Position.IsInRange(position, skill.Info.Range))
+            {
+                return;
+            }
             
             Client.SendPacket($"u_as {skill.Info.CastId} {position.X} {position.Y}");
         }
