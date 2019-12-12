@@ -10,7 +10,7 @@ namespace NtCore.Network.Packets.Characters
 
         public override bool Deserialize(string[] packet)
         {
-            Skills = packet.Skip(1).Select(int.Parse);
+            Skills = packet.Select(int.Parse);
 
             return true;
         }

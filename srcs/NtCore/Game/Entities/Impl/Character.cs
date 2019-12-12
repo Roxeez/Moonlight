@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
+using NtCore.Game.Relation;
 
 namespace NtCore.Game.Entities.Impl
 {
@@ -28,7 +30,8 @@ namespace NtCore.Game.Entities.Impl
         public int MaxMp { get; set; }
         public ITarget Target { get; set; }
         public HashSet<ISkill> Skills { get; }
-        
+        public IEnumerable<IFriend> Friends { get; set; }
+
         public void UseSkill(ISkill skill)
         {
             if (!Skills.Contains(skill))
@@ -94,6 +97,16 @@ namespace NtCore.Game.Entities.Impl
             {
                 Client.ReceivePacket($"tp {(byte)EntityType} {Id} {position.X} {position.Y} 0");
             }
+        }
+
+        public void SendFriendRequest(IPlayer player)
+        {
+            Client.SendPacket($"fins {(byte)player.EntityType} {player.Id}");
+        }
+
+        public void ShowInfoDialog(string message)
+        {
+            Client.ReceivePacket($"info {message}");
         }
 
         public void ReceiveMessage(string message, MessageType messageType)

@@ -59,7 +59,7 @@ namespace NtCore.Network
             }
 
             IPacket p = packetCreator();
-            bool deserialized = p.Deserialize(arguments);
+            bool deserialized = p.Deserialize(arguments.Length > 1 ? arguments.Skip(1).ToArray() : arguments);
 
             if (!deserialized)
             {

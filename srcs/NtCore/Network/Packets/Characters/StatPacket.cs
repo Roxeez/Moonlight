@@ -3,16 +3,16 @@
     [PacketInfo("stat", PacketType.Recv)]
     public class StatPacket : Packet
     {
-        [PacketIndex(1)]
+        [PacketIndex(0)]
         public int Hp { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(1)]
         public int MaxHp { get; set; }
 
-        [PacketIndex(3)]
+        [PacketIndex(2)]
         public short Mp { get; set; }
 
-        [PacketIndex(4)]
+        [PacketIndex(3)]
         public short MaxMp { get; set; }
     }
 }

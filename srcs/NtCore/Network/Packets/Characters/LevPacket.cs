@@ -3,10 +3,10 @@
     [PacketInfo("lev", PacketType.Recv)]
     public class LevPacket : Packet
     {
-        [PacketIndex(1)]
+        [PacketIndex(0)]
         public byte Level { get; set; }
 
-        [PacketIndex(3)]
+        [PacketIndex(2)]
         public byte JobLevel { get; set; }
     }
 }
