@@ -32,10 +32,6 @@ namespace NtCore.Game.Entities.Impl
         public HashSet<ISkill> Skills { get; }
         public IEnumerable<IFriend> Friends { get; set; }
 
-        public IFriend GetFriendByName(string name) => Friends.FirstOrDefault(x => x.Name == name);
-
-        public IFriend GetFriendById(int id) => Friends.FirstOrDefault(x => x.Id == id);
-
         public void UseSkill(ISkill skill)
         {
             if (!Skills.Contains(skill))

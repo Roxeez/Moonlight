@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
 using NtCore.Game.Relation;
@@ -76,9 +77,6 @@ namespace NtCore.Game.Entities
         
         IEnumerable<IFriend> Friends { get; }
 
-        IFriend GetFriendByName(string name);
-        IFriend GetFriendById(int id);
-        
         /// <summary>
         /// Use selected skill on self
         /// </summary>
