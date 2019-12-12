@@ -1,4 +1,4 @@
-﻿using NtCore.Enums;
+﻿﻿using NtCore.Enums;
 using NtCore.Game.Battle;
 using NtCore.Game.Battle.Impl;
 using NtCore.I18N;
