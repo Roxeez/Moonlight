@@ -135,6 +135,7 @@
     <Compile Include="Events\Handler.cs" />
     <Compile Include="Events\IEventManager.cs" />
     <Compile Include="Events\IEventListener.cs" />
+    <Compile Include="Events\Map\ItemDropEvent.cs" />
     <Compile Include="Events\Map\MapChangeEvent.cs" />
     <Compile Include="Events\Map\MinilandJoinEvent.cs" />
     <Compile Include="Extensions\CastExtension.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Network\Handlers\Entities\CondPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\MvPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\StPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Maps\DropPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="Network\PacketManager.cs" />
     <Compile Include="Network\Packets\Characters\CInfoPacket.cs" />
@@ -189,6 +191,7 @@
     <Compile Include="Network\Packets\Entities\CondPacket.cs" />
     <Compile Include="Network\Packets\Entities\MvPacket.cs" />
     <Compile Include="Network\Packets\Entities\StPacket.cs" />
+    <Compile Include="Network\Packets\Maps\DropPacket.cs" />
     <Compile Include="Network\Packets\Maps\OutPacket.cs" />
     <Compile Include="NtCoreAPI.cs" />
     <Compile Include="Position.cs" />
