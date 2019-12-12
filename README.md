@@ -15,10 +15,12 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 - Clone
 - Open solution
 - Build
-- Create a new .NET library project targeting .NET Framework 4.7+ & close it
+- Create a new .NET library project targeting .NET Framework 4.7+
+- Add NtCore.dll & Costura Fody as dependency
 - Install DllExport to your project using DllExport.bat
-- Open your project solution & add Costura Fody as project dependency using Nuget
 - Build your application
+- Copy your generated .dll and NtNative.dll to your NosTale folder
+- Inject your generated .dll to NosTale process
 - Enjoy
 
 > <sub><sup>Since NtCore use only packets (no memory reading) for compatibility with local & remote client, your dll need to be injected BEFORE selecting your character</sub></sup>
