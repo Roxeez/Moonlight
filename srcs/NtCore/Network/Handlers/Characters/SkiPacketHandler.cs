@@ -1,4 +1,6 @@
-﻿using NtCore.Clients;
+﻿using System;
+using NtCore.Clients;
+using NtCore.Enums;
 using NtCore.Factory;
 using NtCore.Game.Battle;
 using NtCore.Game.Entities;
@@ -24,6 +26,10 @@ namespace NtCore.Network.Handlers.Characters
             foreach (int skillVnum in packet.Skills)
             {
                 ISkill skill = _skillFactory.CreateSkill(skillVnum);
+                if (skill.Info.SkillType != SkillType.PLAYER) // Filter upgrades & skill upgrades
+                {
+                    continue;
+                }
                 character.Skills.Add(skill);
             }
         }

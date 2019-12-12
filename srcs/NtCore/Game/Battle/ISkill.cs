@@ -1,5 +1,4 @@
 ﻿using System;
-using NtCore.Enums;
 using NtCore.Registry;
 
 namespace NtCore.Game.Battle
