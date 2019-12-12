@@ -20,6 +20,7 @@ namespace NtCore.Network.Packets.Maps
         public ClassType ClassType { get; set; }
         public Gender Gender { get; set; }
         public byte Level { get; set; }
+        public int DropOwnerId { get; set; }
 
         public override bool Deserialize(string[] packet)
         {
@@ -40,6 +41,7 @@ namespace NtCore.Network.Packets.Maps
                     Id = int.Parse(packet[3]);
                     Position = new Position(short.Parse(packet[4]), short.Parse(packet[5]));
                     Amount = int.Parse(packet[6]);
+                    DropOwnerId = int.Parse(packet[9]);
                     break;
                 case EntityType.PLAYER:
                     Name = packet[2];

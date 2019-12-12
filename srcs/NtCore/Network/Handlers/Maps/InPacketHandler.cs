@@ -33,47 +33,26 @@ namespace NtCore.Network.Handlers.Maps
                 return;
             }
 
+            if (map.GetEntity(packet.EntityType, packet.Id) != null)
+            {
+                return;
+            }
+
             IEntity entity;
             switch (packet.EntityType)
             {
                 case EntityType.NPC:
-                    Npc npc = _entityFactory.CreateNpc(packet.Vnum);
-                    npc.Id = packet.Id;
-                    npc.Position = packet.Position;
-                    npc.Direction = packet.Direction;
-                    npc.HpPercentage = packet.HpPercentage;
-                    npc.MpPercentage = packet.MpPercentage;
-                    entity = npc;
+                    entity = _entityFactory.CreateNpc(packet.Id, packet.Vnum, packet.Position, packet.Direction, packet.HpPercentage, packet.MpPercentage);
                     break;
                 case EntityType.MONSTER:
-                    Monster monster = _entityFactory.CreateMonster(packet.Vnum);
-                    monster.Id = packet.Id;
-                    monster.Position = packet.Position;
-                    monster.Direction = packet.Direction;
-                    monster.HpPercentage = packet.HpPercentage;
-                    monster.MpPercentage = packet.MpPercentage;
-                    entity = monster;
+                    entity = _entityFactory.CreateMonster(packet.Id, packet.Vnum, packet.Position, packet.Direction, packet.HpPercentage, packet.MpPercentage);
                     break;
                 case EntityType.DROP:
-                    Drop drop = _entityFactory.CreateDrop(packet.Vnum);
-                    drop.Id = packet.Id;
-                    drop.Position = packet.Position;
-                    drop.Amount = packet.Amount;
-                    entity = drop;
+                    var owner = map.GetEntity<IPlayer>(packet.DropOwnerId);
+                    entity = _entityFactory.CreateDrop(packet.Id, packet.Vnum, packet.Amount, packet.Position, owner);
                     break;
                 case EntityType.PLAYER:
-                    entity = new Player
-                    {
-                        Id = packet.Id,
-                        Name = packet.Name,
-                        Level = packet.Level,
-                        Class = packet.ClassType,
-                        Direction = packet.Direction,
-                        Gender = packet.Gender,
-                        Position = packet.Position,
-                        HpPercentage = packet.HpPercentage,
-                        MpPercentage = packet.MpPercentage
-                    };
+                    entity = _entityFactory.CreatePlayer(packet.Id, packet.Name, packet.Level, packet.ClassType, packet.Direction, packet.Gender, packet.Position, packet.HpPercentage, packet.MpPercentage);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
