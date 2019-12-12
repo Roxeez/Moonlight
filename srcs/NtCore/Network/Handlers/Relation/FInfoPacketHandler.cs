@@ -34,9 +34,14 @@ namespace NtCore.Network.Handlers.Relation
                 bool wasConnected = friend.IsConnected;
                 friend.As<Friend>().IsConnected = info.IsConnected;
 
-                if (!wasConnected)
+                if (!wasConnected && friend.IsConnected)
                 {
                     _eventManager.CallEvent(new FriendConnectEvent(client, friend));
+                }
+
+                if (wasConnected && !friend.IsConnected)
+                {
+                    _eventManager.CallEvent(new FriendDisconnectEvent(client, friend));
                 }
             }
         }

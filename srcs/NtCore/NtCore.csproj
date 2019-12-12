@@ -139,6 +139,7 @@
     <Compile Include="Events\Map\MapChangeEvent.cs" />
     <Compile Include="Events\Map\MinilandJoinEvent.cs" />
     <Compile Include="Events\Relation\FriendConnectEvent.cs" />
+    <Compile Include="Events\Relation\FriendDisconnectEvent.cs" />
     <Compile Include="Extensions\CastExtension.cs" />
     <Compile Include="Extensions\CharacterExtension.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
