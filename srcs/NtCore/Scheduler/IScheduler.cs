@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NtCore.API.Scheduler
+namespace NtCore.Scheduler
 {
     /// <summary>
     ///     Represent a scheduler used for delaying action

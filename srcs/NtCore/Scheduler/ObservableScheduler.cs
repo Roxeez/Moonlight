@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reactive.Linq;
-using NtCore.API.Scheduler;
 
 namespace NtCore.Scheduler
 {
