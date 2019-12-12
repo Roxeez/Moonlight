@@ -1,4 +1,4 @@
-name: Main.Legacy
+name: build
 
 on: [push]
  
