@@ -7,7 +7,7 @@ namespace NtCore.Events.Relation
     {
         public IFriend Friend { get; }
         
-        public FriendConnectEvent(IClient client, IFriend friend) : base(client)
+        public FriendDisconnectEvent(IClient client, IFriend friend) : base(client)
         {
             Friend = friend;
         }
