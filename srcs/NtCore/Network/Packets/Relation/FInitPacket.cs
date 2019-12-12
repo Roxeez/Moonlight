@@ -9,7 +9,7 @@ namespace NtCore.Network.Packets.Relation
 
         public override bool Deserialize(string[] packet)
         {
-            if (packet.Length == 1)
+            if (packet.Length == 0)
             {
                 return true;
             }

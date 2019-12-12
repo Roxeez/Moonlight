@@ -24,5 +24,10 @@ namespace NtCore.Game.Relation.Impl
         {
             _client.SendPacket($"btk {Id} {message}");
         }
+
+        public void Delete()
+        {
+            _client.SendPacket($"fdel {Id}");
+        }
     }
 }
