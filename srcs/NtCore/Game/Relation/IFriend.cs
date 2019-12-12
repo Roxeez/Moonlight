@@ -6,5 +6,6 @@ namespace NtCore.Game.Relation
     {
         int Id { get; }
         string Name { get; }
+        bool IsConnected { get; }
     }
 }

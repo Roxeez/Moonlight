@@ -1,6 +1,8 @@
-﻿using NtCore.Clients;
+﻿using System.Linq;
+using NtCore.Clients;
 using NtCore.Extensions;
 using NtCore.Game.Entities.Impl;
+using NtCore.Game.Relation.Impl;
 using NtCore.Network.Packets.Relation;
 
 namespace NtCore.Network.Handlers.Relation
@@ -11,7 +13,10 @@ namespace NtCore.Network.Handlers.Relation
         {
             var character = client.Character.As<Character>();
 
-            character.Friends = packet.Friends;
+            character.Friends = packet.Friends.Select(x => new Friend(x.Id, x.Name)
+            {
+                IsConnected = x.IsConnected
+            });
         }
     }
 }

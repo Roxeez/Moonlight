@@ -3,13 +3,13 @@
     [PacketInfo("walk", PacketType.Send)]
     public class WalkPacket : Packet
     {
-        [PacketIndex(1)]
+        [PacketIndex(0)]
         public byte X { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(1)]
         public byte Y { get; set; }
 
-        [PacketIndex(4)]
+        [PacketIndex(3)]
         public byte Speed { get; set; }
     }
 }

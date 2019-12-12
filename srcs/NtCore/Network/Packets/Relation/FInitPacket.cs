@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using NtCore.Game.Relation;
-using NtCore.Game.Relation.Impl;
 
 namespace NtCore.Network.Packets.Relation
 {
     [PacketInfo("finit", PacketType.Recv)]
     public class FInitPacket : Packet
     {
-        public List<IFriend> Friends { get; } = new List<IFriend>();
+        public List<FriendInfo> Friends { get; } = new List<FriendInfo>();
 
         public override bool Deserialize(string[] packet)
         {
@@ -16,14 +14,29 @@ namespace NtCore.Network.Packets.Relation
                 return true;
             }
             
-            for (int i = 1; i < packet.Length; i++)
+            foreach (string value in packet)
             {
-                string[] split = packet[i].Split('|');
+                string[] split = value.Split('|');
+                bool isConnected = split[2] == "1";
                 
-                Friends.Add(new Friend(int.Parse(split[0]), split[3]));
+                Friends.Add(new FriendInfo(int.Parse(split[0]), split[3], isConnected));
             }
 
             return true;
+        }
+
+        public class FriendInfo
+        {
+            public int Id { get; }
+            public string Name { get; }
+            public bool IsConnected { get; }
+
+            public FriendInfo(int id, string name, bool isConnected)
+            {
+                Id = id;
+                Name = name;
+                IsConnected = isConnected;
+            }
         }
     }
 }

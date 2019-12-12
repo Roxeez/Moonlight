@@ -196,6 +196,7 @@
     <Compile Include="Network\Packets\Entities\StPacket.cs" />
     <Compile Include="Network\Packets\Maps\DropPacket.cs" />
     <Compile Include="Network\Packets\Maps\OutPacket.cs" />
+    <Compile Include="Network\Packets\Relation\FInfoPacket.cs" />
     <Compile Include="Network\Packets\Relation\FInitPacket.cs" />
     <Compile Include="NtCoreAPI.cs" />
     <Compile Include="Position.cs" />

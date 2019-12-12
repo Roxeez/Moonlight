@@ -3,10 +3,10 @@
     [PacketInfo("c_map", PacketType.Recv)]
     public class CMapPacket : Packet
     {
-        [PacketIndex(2)]
+        [PacketIndex(1)]
         public short MapId { get; set; }
 
-        [PacketIndex(3)]
+        [PacketIndex(2)]
         public bool IsJoining { get; set; }
     }
 }

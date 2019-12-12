@@ -4,6 +4,7 @@
     {
         public int Id { get; }
         public string Name { get; }
+        public bool IsConnected { get; set; }
 
         public Friend(int id, string name)
         {

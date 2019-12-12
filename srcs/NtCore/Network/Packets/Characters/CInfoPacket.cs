@@ -5,16 +5,16 @@ namespace NtCore.Network.Packets.Characters
     [PacketInfo("c_info", PacketType.Recv)]
     public class CInfoPacket : Packet
     {
-        [PacketIndex(1)]
+        [PacketIndex(0)]
         public string Name { get; set; }
 
-        [PacketIndex(6)]
+        [PacketIndex(5)]
         public int CharacterId { get; set; }
 
-        [PacketIndex(8)]
+        [PacketIndex(7)]
         public Gender Gender { get; set; }
 
-        [PacketIndex(11)]
+        [PacketIndex(10)]
         public ClassType Class { get; set; }
     }
 }

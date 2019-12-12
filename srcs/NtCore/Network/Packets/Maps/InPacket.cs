@@ -24,35 +24,35 @@ namespace NtCore.Network.Packets.Maps
 
         public override bool Deserialize(string[] packet)
         {
-            EntityType = (EntityType)byte.Parse(packet[1]);
+            EntityType = (EntityType)byte.Parse(packet[0]);
             switch (EntityType)
             {
                 case EntityType.MONSTER:
                 case EntityType.NPC:
-                    Vnum = int.Parse(packet[2]);
+                    Vnum = int.Parse(packet[1]);
+                    Id = int.Parse(packet[2]);
+                    Position = new Position(short.Parse(packet[3]), short.Parse(packet[4]));
+                    Direction = byte.Parse(packet[5]);
+                    HpPercentage = byte.Parse(packet[6]);
+                    MpPercentage = byte.Parse(packet[7]);
+                    break;
+                case EntityType.DROP:
+                    Vnum = int.Parse(packet[1]);
+                    Id = int.Parse(packet[2]);
+                    Position = new Position(short.Parse(packet[3]), short.Parse(packet[4]));
+                    Amount = int.Parse(packet[5]);
+                    DropOwnerId = int.Parse(packet[8]);
+                    break;
+                case EntityType.PLAYER:
+                    Name = packet[1];
                     Id = int.Parse(packet[3]);
                     Position = new Position(short.Parse(packet[4]), short.Parse(packet[5]));
                     Direction = byte.Parse(packet[6]);
-                    HpPercentage = byte.Parse(packet[7]);
-                    MpPercentage = byte.Parse(packet[8]);
-                    break;
-                case EntityType.DROP:
-                    Vnum = int.Parse(packet[2]);
-                    Id = int.Parse(packet[3]);
-                    Position = new Position(short.Parse(packet[4]), short.Parse(packet[5]));
-                    Amount = int.Parse(packet[6]);
-                    DropOwnerId = int.Parse(packet[9]);
-                    break;
-                case EntityType.PLAYER:
-                    Name = packet[2];
-                    Id = int.Parse(packet[4]);
-                    Position = new Position(short.Parse(packet[5]), short.Parse(packet[6]));
-                    Direction = byte.Parse(packet[7]);
-                    Gender = (Gender)byte.Parse(packet[9]);
-                    ClassType = (ClassType)byte.Parse(packet[12]);
-                    HpPercentage = byte.Parse(packet[14]);
-                    MpPercentage = byte.Parse(packet[15]);
-                    Level = byte.Parse(packet[33]);
+                    Gender = (Gender)byte.Parse(packet[8]);
+                    ClassType = (ClassType)byte.Parse(packet[11]);
+                    HpPercentage = byte.Parse(packet[13]);
+                    MpPercentage = byte.Parse(packet[14]);
+                    Level = byte.Parse(packet[32]);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
