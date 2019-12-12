@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using NtCore.Enums;
 using NtCore.Game.Battle;
+using NtCore.Game.Relation;
 
 namespace NtCore.Game.Entities
 {
@@ -72,6 +73,8 @@ namespace NtCore.Game.Entities
         /// Contains all character skills
         /// </summary>
         HashSet<ISkill> Skills { get; }
+        
+        IEnumerable<IFriend> Friends { get; }
 
         /// <summary>
         /// Use selected skill on self
@@ -98,6 +101,18 @@ namespace NtCore.Game.Entities
         /// </summary>
         /// <param name="position">Position where you want to move</param>
         void Move(Position position);
+
+        /// <summary>
+        /// Send a friend request to selected player
+        /// </summary>
+        /// <param name="player">Selected player</param>
+        void SendFriendRequest(IPlayer player);
+
+        /// <summary>
+        /// Show info dialog with selected message
+        /// </summary>
+        /// <param name="message">Message to show</param>
+        void ShowInfoDialog(string message);
 
         /// <summary>
         ///     Show a message to character (clientside only it's a received packet)
