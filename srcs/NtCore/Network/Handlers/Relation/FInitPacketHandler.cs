@@ -13,7 +13,7 @@ namespace NtCore.Network.Handlers.Relation
         {
             var character = client.Character.As<Character>();
 
-            character.Friends = packet.Friends.Select(x => new Friend(x.Id, x.Name)
+            character.Friends = packet.Friends.Select(x => new Friend(client, x.Id, x.Name)
             {
                 IsConnected = x.IsConnected
             });
