@@ -76,6 +76,9 @@ namespace NtCore.Game.Entities
         
         IEnumerable<IFriend> Friends { get; }
 
+        IFriend GetFriendByName(string name);
+        IFriend GetFriendById(int id);
+        
         /// <summary>
         /// Use selected skill on self
         /// </summary>

@@ -185,6 +185,7 @@
     <Compile Include="Network\Handlers\Entities\StPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\DropPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\OutPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Relation\FInfoPacketHandler.cs" />
     <Compile Include="Network\Handlers\Relation\FInitPacketHandler.cs" />
     <Compile Include="Network\PacketManager.cs" />
     <Compile Include="Network\Packets\Characters\CInfoPacket.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
@@ -30,6 +31,10 @@ namespace NtCore.Game.Entities.Impl
         public ITarget Target { get; set; }
         public HashSet<ISkill> Skills { get; }
         public IEnumerable<IFriend> Friends { get; set; }
+
+        public IFriend GetFriendByName(string name) => Friends.FirstOrDefault(x => x.Name == name);
+
+        public IFriend GetFriendById(int id) => Friends.FirstOrDefault(x => x.Id == id);
 
         public void UseSkill(ISkill skill)
         {
