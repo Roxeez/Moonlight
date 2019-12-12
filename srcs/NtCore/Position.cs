@@ -18,7 +18,6 @@ namespace NtCore
         /// Position on Y axis
         /// </summary>
         public short Y { get; }
-
         
         /// <summary>
         /// Create a new position
