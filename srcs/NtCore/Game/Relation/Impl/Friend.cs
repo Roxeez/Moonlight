@@ -22,12 +22,25 @@ namespace NtCore.Game.Relation.Impl
         
         public void SendPrivateMessage(string message)
         {
+            if (!IsConnected)
+            {
+                return;
+            }
             _client.SendPacket($"btk {Id} {message}");
         }
 
         public void Delete()
         {
             _client.SendPacket($"fdel {Id}");
+        }
+
+        public void JoinMiniland()
+        {
+            if (!IsConnected)
+            {
+                return;
+            }
+            _client.SendPacket($"mjoin 1 {Id}");
         }
     }
 }

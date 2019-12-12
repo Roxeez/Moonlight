@@ -18,5 +18,10 @@ namespace NtCore.Game.Relation
         /// Delete from friends
         /// </summary>
         void Delete();
+
+        /// <summary>
+        /// Join friend miniland
+        /// </summary>
+        void JoinMiniland();
     }
 }
