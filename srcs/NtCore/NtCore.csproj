@@ -184,7 +184,6 @@
     <Compile Include="Network\Handlers\Characters\WalkPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\CondPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\MvPacketHandler.cs" />
-    <Compile Include="Network\Handlers\Entities\StPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\DropPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="Network\Handlers\Relation\FInfoPacketHandler.cs" />
@@ -196,7 +195,6 @@
     <Compile Include="Network\Packets\Characters\WalkPacket.cs" />
     <Compile Include="Network\Packets\Entities\CondPacket.cs" />
     <Compile Include="Network\Packets\Entities\MvPacket.cs" />
-    <Compile Include="Network\Packets\Entities\StPacket.cs" />
     <Compile Include="Network\Packets\Maps\DropPacket.cs" />
     <Compile Include="Network\Packets\Maps\OutPacket.cs" />
     <Compile Include="Network\Packets\Relation\FInfoPacket.cs" />

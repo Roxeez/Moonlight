@@ -64,8 +64,6 @@ namespace NtCore.Game.Entities
         ///     Character max mp
         /// </summary>
         int MaxMp { get; }
-        
-        ILivingEntity LastSelectedEntity { get; }
 
         /// <summary>
         /// Contains all character skills

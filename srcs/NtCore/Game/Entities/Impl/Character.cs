@@ -28,7 +28,6 @@ namespace NtCore.Game.Entities.Impl
         public int MaxHp { get; set; }
         public int Mp { get; set; }
         public int MaxMp { get; set; }
-        public ILivingEntity LastSelectedEntity { get; set; }
         public HashSet<ISkill> Skills { get; }
         public IEnumerable<IFriend> Friends { get; set; }
 
