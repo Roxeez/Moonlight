@@ -124,6 +124,7 @@
     <Compile Include="Enums\SkillType.cs" />
     <Compile Include="Enums\TargetingType.cs" />
     <Compile Include="Events\Character\CharacterMoveEvent.cs" />
+    <Compile Include="Events\Character\StatUpdateEvent.cs" />
     <Compile Include="Events\Character\TargetChangeEvent.cs" />
     <Compile Include="Events\Character\TargetMoveEvent.cs" />
     <Compile Include="Events\Character\TargetStatUpdateEvent.cs" />
@@ -148,9 +149,7 @@
     <Compile Include="Factory\EntityFactory.cs" />
     <Compile Include="Factory\SkillFactory.cs" />
     <Compile Include="Game\Battle\Impl\Skill.cs" />
-    <Compile Include="Game\Battle\Impl\Target.cs" />
     <Compile Include="Game\Battle\ISkill.cs" />
-    <Compile Include="Game\Battle\ITarget.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
     <Compile Include="Game\Entities\IDrop.cs" />
     <Compile Include="Game\Entities\IEntity.cs" />

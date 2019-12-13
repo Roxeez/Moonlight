@@ -11,13 +11,11 @@ namespace NtCore.Network.Handlers.Entities
 {
     public class StPacketHandler : PacketHandler<StPacket>
     {
-        private readonly IEventManager _eventManager;
         private readonly ILogger _logger;
 
-        public StPacketHandler(ILogger logger, IEventManager eventManager)
+        public StPacketHandler(ILogger logger)
         {
             _logger = logger;
-            _eventManager = eventManager;
         }
 
         public override void Handle(IClient client, StPacket packet)
@@ -31,28 +29,7 @@ namespace NtCore.Network.Handlers.Entities
                 return;
             }
 
-            entity.HpPercentage = packet.HpPercentage;
-            entity.MpPercentage = packet.MpPercentage;
-            entity.Level = packet.Level;
-
-            if (character.Target == null || !character.Target.Entity.Equals(entity))
-            {
-                character.Target = new Target(entity)
-                {
-                    Hp = packet.Hp,
-                    Mp = packet.Mp
-                };
-
-                _eventManager.CallEvent(new TargetChangeEvent(client));
-                return;
-            }
-
-            var target = character.Target.As<Target>();
-
-            target.Hp = packet.Hp;
-            target.Mp = packet.Mp;
-
-            _eventManager.CallEvent(new TargetStatUpdateEvent(client));
+            character.LastSelectedEntity = entity;
         }
     }
 }

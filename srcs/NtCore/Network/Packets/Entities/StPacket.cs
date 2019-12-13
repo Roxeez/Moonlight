@@ -1,4 +1,4 @@
-﻿using NtCore.Enums;
+﻿﻿using NtCore.Enums;
 
 namespace NtCore.Network.Packets.Entities
 {

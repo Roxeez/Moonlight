@@ -137,28 +137,6 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Theory]
-        [InlineData("st 2 2053 10 0 100 100 5000 2500", EntityType.NPC, 2053, 10, 100, 100, 5000, 2500)]
-        [InlineData("st 3 1874 88 0 50 75 24578 8745", EntityType.MONSTER, 1874, 88, 50, 75, 24578, 8745)]
-        public void St_Packet_Update_Target_Stats(string packet, EntityType entityType, int id, byte level, byte hpPercentage, byte mpPercentage, int hp, int mp)
-        {
-            Map fakeMap = new MapBuilder().WithEntity(entityType, id).Create();
-            fakeMap.AddEntity(_client.Character);
-
-            _client.ReceivePacket(packet);
-
-            ITarget target = _client.Character.Target;
-
-            Check.That(target).IsNotNull();
-            Check.That(target.Hp).IsEqualTo(hp);
-            Check.That(target.Mp).IsEqualTo(mp);
-            Check.That(target.Entity.Level).IsEqualTo(level);
-            Check.That(target.Entity.EntityType).IsEqualTo(entityType);
-            Check.That(target.Entity.Id).IsEqualTo(id);
-            Check.That(target.Entity.HpPercentage).IsEqualTo(hpPercentage);
-            Check.That(target.Entity.MpPercentage).IsEqualTo(mpPercentage);
-        }
-
-        [Theory]
         [InlineData("c_info Roxeetest - -1 -1 - 1290125 0 1 0 9 0 1 0 0 0 0 0 0 0", "Roxeetest", 1290125, Gender.FEMALE, ClassType.ADVENTURER)]
         [InlineData("c_info Roxeez - -1 -1 - 999999 0 0 0 9 1 1 0 0 0 0 0 0 0", "Roxeez", 999999, Gender.MALE, ClassType.SWORDSMAN)]
         public void CInfo_Packet_Initialize_Character(string packet, string name, int id, Gender gender, ClassType classType)
