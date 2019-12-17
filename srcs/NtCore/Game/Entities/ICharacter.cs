@@ -4,12 +4,15 @@ using JetBrains.Annotations;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
+using NtCore.Game.Inventories;
 using NtCore.Game.Relation;
 
 namespace NtCore.Game.Entities
 {
     public interface ICharacter : IPlayer
     {
+        IEquipment Equipment { get; }
+        
         /// <summary>
         ///     Job level
         /// </summary>
@@ -69,7 +72,10 @@ namespace NtCore.Game.Entities
         /// Contains all character skills
         /// </summary>
         HashSet<ISkill> Skills { get; }
-        
+
+        /// <summary>
+        /// Contains all character friends
+        /// </summary>
         IEnumerable<IFriend> Friends { get; }
 
         /// <summary>

@@ -6,6 +6,7 @@ using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
+using NtCore.Game.Items.Impl;
 using NtCore.Game.Maps.Impl;
 using NtCore.Network;
 using NtCore.Tests.Utility;
@@ -158,6 +159,25 @@ namespace NtCore.Tests.PacketHandling
 
             Check.That(_client.Character.Level).IsEqualTo(level);
             Check.That(_client.Character.JobLevel).IsEqualTo(jobLevel);
+        }
+
+        [Fact]
+        public void Equip_Packet_Initialize_Character_Equipment()
+        {
+            _client.ReceivePacket("equip 0 0 0.124.1.0 1.148.7.10 10.87.0.0");
+
+            ICharacter character = _client.Character;
+
+            Check.That(character.Equipment).IsNotNull();
+            Check.That(character.Equipment.MainWeapon).IsNotNull();
+            Check.That(character.Equipment.Armor).IsNotNull();
+            Check.That(character.Equipment.Fairy).IsNotNull();
+            Check.That(character.Equipment.MainWeapon.Vnum).IsEqualTo(124);
+            Check.That(character.Equipment.MainWeapon.Rarity).IsEqualTo(1);
+            Check.That(character.Equipment.MainWeapon.Upgrade).IsEqualTo(0);
+            Check.That(character.Equipment.Armor.Vnum).IsEqualTo(148);
+            Check.That(character.Equipment.Armor.Rarity).IsEqualTo(7);
+            Check.That(character.Equipment.Armor.Upgrade).IsEqualTo(10);
         }
     }
 }

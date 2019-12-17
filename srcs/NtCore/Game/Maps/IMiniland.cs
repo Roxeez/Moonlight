@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using NtCore.API.Game.Maps;
 
 namespace NtCore.Game.Maps
 {

@@ -118,6 +118,7 @@
     <Compile Include="Enums\ClientType.cs" />
     <Compile Include="Enums\Element.cs" />
     <Compile Include="Enums\EntityType.cs" />
+    <Compile Include="Enums\EquipmentType.cs" />
     <Compile Include="Enums\Faction.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\MessageType.cs" />
@@ -163,9 +164,19 @@
     <Compile Include="Game\Entities\Impl\Player.cs" />
     <Compile Include="Game\Entities\INpc.cs" />
     <Compile Include="Game\Entities\IPlayer.cs" />
+    <Compile Include="Game\Inventories\IEquipment.cs" />
+    <Compile Include="Game\Inventories\Impl\Equipment.cs" />
+    <Compile Include="Game\Items\IArmor.cs" />
+    <Compile Include="Game\Items\IFairy.cs" />
+    <Compile Include="Game\Items\IItem.cs" />
+    <Compile Include="Game\Items\Impl\Armor.cs" />
+    <Compile Include="Game\Items\Impl\Fairy.cs" />
+    <Compile Include="Game\Items\Impl\Weapon.cs" />
+    <Compile Include="Game\Items\IWeapon.cs" />
     <Compile Include="Game\Maps\IMap.cs" />
     <Compile Include="Game\Maps\IMapManager.cs" />
     <Compile Include="Game\Maps\IMiniland.cs" />
+    <Compile Include="Game\Maps\IMinilandGame.cs" />
     <Compile Include="Game\Maps\IMinilandObject.cs" />
     <Compile Include="Game\Maps\Impl\Map.cs" />
     <Compile Include="Game\Maps\Impl\MapManager.cs" />
@@ -179,6 +190,7 @@
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Network\Handlers\Characters\CInfoPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\EquipPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\LevPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\SkiPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\WalkPacketHandler.cs" />
@@ -190,6 +202,7 @@
     <Compile Include="Network\Handlers\Relation\FInitPacketHandler.cs" />
     <Compile Include="Network\PacketManager.cs" />
     <Compile Include="Network\Packets\Characters\CInfoPacket.cs" />
+    <Compile Include="Network\Packets\Characters\EquipPacket.cs" />
     <Compile Include="Network\Packets\Characters\LevPacket.cs" />
     <Compile Include="Network\Packets\Characters\SkiPacket.cs" />
     <Compile Include="Network\Packets\Characters\WalkPacket.cs" />
@@ -228,6 +241,7 @@
     <Compile Include="Network\Packets\Characters\StatPacket.cs" />
     <Compile Include="Network\Packets\Maps\CMapPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Range.cs" />
     <Compile Include="Registry\GameRegistry.cs" />
     <Compile Include="Registry\IRegistry.cs" />
     <Compile Include="Registry\ItemInfo.cs" />
