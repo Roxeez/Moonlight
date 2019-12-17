@@ -15,6 +15,6 @@ namespace NtCore.Network.Packets.Characters
         public Element Element { get; set; }
 
         [PacketIndex(3)]
-        public int Power { get; set; }
+        public short Power { get; set; }
     }
 }

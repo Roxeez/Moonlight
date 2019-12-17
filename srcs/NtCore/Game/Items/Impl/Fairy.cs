@@ -6,6 +6,6 @@ namespace NtCore.Game.Items.Impl
     {
         public int Vnum { get; set; }
         public Element Element { get; set; }
-        public byte Percent { get; set; }
+        public short Power { get; set; }
     }
 }
