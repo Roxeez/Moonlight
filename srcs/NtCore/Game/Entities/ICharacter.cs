@@ -97,6 +97,12 @@ namespace NtCore.Game.Entities
         /// <param name="skill">Skill to use</param>
         /// <param name="position">Target position</param>
         void UseSkill([NotNull] ISkill skill, Position position);
+
+        /// <summary>
+        /// Get drop on ground
+        /// </summary>
+        /// <param name="drop">Drop to pick up</param>
+        void PickUp([NotNull] IDrop drop);
         
         /// <summary>
         ///     Make your character move

@@ -4,7 +4,6 @@ using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
 using NtCore.Game.Inventories;
-using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
 
 namespace NtCore.Game.Entities.Impl
@@ -25,6 +24,7 @@ namespace NtCore.Game.Entities.Impl
         public int MaxHp { get; set; }
         public int Mp { get; set; }
         public int MaxMp { get; set; }
+        public byte JobLevel { get; set; }
         public int SpPoints { get; set; }
         public int AdditionalSpPoints { get; set; }
         public int MaximumSpPoints { get; set; }
@@ -61,7 +61,7 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
 
-            if (!Position.IsInRange(target.Position, skill.Info.Range + 4)) // Add some range because target can move
+            if (!Position.IsInRange(target.Position, skill.Info.Range + 4))
             {
                 return;
             }
@@ -88,8 +88,21 @@ namespace NtCore.Game.Entities.Impl
             
             Client.SendPacket($"u_as {skill.Info.CastId} {position.X} {position.Y}");
         }
-        
-        public byte JobLevel { get; set; }
+
+        public void PickUp(IDrop drop)
+        {
+            if (drop.Owner != null && !drop.Owner.Equals(this))
+            {
+                return;
+            }
+
+            if (!drop.Position.IsInArea(Position, 1))
+            {
+                return;
+            }
+            
+            Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
+        }
 
         public void Move(Position position)
         {

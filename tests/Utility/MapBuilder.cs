@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;

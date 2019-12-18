@@ -137,6 +137,7 @@
     <Compile Include="Events\Handler.cs" />
     <Compile Include="Events\IEventManager.cs" />
     <Compile Include="Events\IEventListener.cs" />
+    <Compile Include="Events\Map\EntityPickupDropEvent.cs" />
     <Compile Include="Events\Map\ItemDropEvent.cs" />
     <Compile Include="Events\Map\MapChangeEvent.cs" />
     <Compile Include="Events\Map\MinilandJoinEvent.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Network\Handlers\Entities\CondPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\MvPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\DropPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Maps\GetPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="Network\Handlers\Relation\FInfoPacketHandler.cs" />
     <Compile Include="Network\Handlers\Relation\FInitPacketHandler.cs" />
@@ -209,6 +211,7 @@
     <Compile Include="Network\Packets\Entities\CondPacket.cs" />
     <Compile Include="Network\Packets\Entities\MvPacket.cs" />
     <Compile Include="Network\Packets\Maps\DropPacket.cs" />
+    <Compile Include="Network\Packets\Maps\GetPacket.cs" />
     <Compile Include="Network\Packets\Maps\OutPacket.cs" />
     <Compile Include="Network\Packets\Relation\FInfoPacket.cs" />
     <Compile Include="Network\Packets\Relation\FInitPacket.cs" />
