@@ -49,5 +49,7 @@ namespace NtCore.Game.Maps
         /// <param name="id">Entity id</param>
         /// <returns>Entity found or null if none</returns>
         IEntity GetEntity(EntityType entityType, int id);
+
+        bool IsWalkable(Position position);
     }
 }

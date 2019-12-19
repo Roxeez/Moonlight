@@ -7,7 +7,7 @@ namespace NtCore.Resources
 {
     public static class Resource
     {
-        public static T Load<T>(string name)
+        public static T LoadJson<T>(string name)
         {
             var serializer = new JsonSerializer();
             using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("NtCore.Resources." + name))

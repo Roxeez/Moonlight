@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using JetBrains.Annotations;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
 using NtCore.Extensions;
 using NtCore.Resources;
 
@@ -19,9 +14,9 @@ namespace NtCore.I18N
         {
             _translations = new Dictionary<LanguageKey, IDictionary<string, string>>()
             {
-                [LanguageKey.SKILL] = Resource.Load<Dictionary<string, string>>($"lang._code_{languageKey}_Skill.json"),
-                [LanguageKey.ITEM] = Resource.Load<Dictionary<string, string>>($"lang._code_{languageKey}_Item.json"),
-                [LanguageKey.MONSTER] = Resource.Load<Dictionary<string, string>>($"lang._code_{languageKey}_monster.json")
+                [LanguageKey.SKILL] = Resource.LoadJson<Dictionary<string, string>>($"lang._code_{languageKey}_Skill.json"),
+                [LanguageKey.ITEM] = Resource.LoadJson<Dictionary<string, string>>($"lang._code_{languageKey}_Item.json"),
+                [LanguageKey.MONSTER] = Resource.LoadJson<Dictionary<string, string>>($"lang._code_{languageKey}_monster.json")
             };
         }
     }

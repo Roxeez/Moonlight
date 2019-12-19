@@ -12,12 +12,12 @@ namespace NtCore
         /// <summary>
         /// Position on X axis
         /// </summary>
-        public short X { get; }
+        public short X { get; set; }
         
         /// <summary>
         /// Position on Y axis
         /// </summary>
-        public short Y { get; }
+        public short Y { get; set; }
         
         /// <summary>
         /// Create a new position
@@ -45,6 +45,10 @@ namespace NtCore
             
             return (int)(min * Sqrt + max - min);
         }
+
+        public int GetDistanceX(Position destination) => Math.Abs(X - destination.X);
+
+        public int GetDistanceY(Position destination) => Math.Abs(Y - destination.Y);
 
         /// <summary>
         /// Check if the position is in range

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using NtCore.Clients;
 using NtCore.Enums;
+using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Inventories;
 using NtCore.Game.Inventories.Impl;
@@ -36,7 +38,7 @@ namespace NtCore.Game.Entities.Impl
         public HashSet<ISkill> Skills { get; }
         public IEnumerable<IFriend> Friends { get; set; }
 
-        public void UseSkill(ISkill skill)
+        public async Task UseSkill(ISkill skill)
         {
             if (!Skills.Contains(skill))
             {
@@ -48,10 +50,10 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
             
-            Client.SendPacket($"u_s {skill.Info.CastId} {(byte)EntityType} {Id}");
+            await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)EntityType} {Id}");
         }
 
-        public void UseSkill(ISkill skill, ILivingEntity target)
+        public async Task UseSkill(ISkill skill, ILivingEntity target)
         {
             if (!Skills.Contains(skill))
             {
@@ -68,10 +70,10 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
             
-            Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
+            await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
         }
 
-        public void UseSkill(ISkill skill, Position position)
+        public async Task UseSkill(ISkill skill, Position position)
         {
             if (!Skills.Contains(skill))
             {
@@ -88,10 +90,10 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
             
-            Client.SendPacket($"u_as {skill.Info.CastId} {position.X} {position.Y}");
+            await Client.SendPacket($"u_as {skill.Info.CastId} {position.X} {position.Y}");
         }
 
-        public void PickUp(IDrop drop)
+        public async Task PickUp(IDrop drop)
         {
             if (drop.Owner != null && !drop.Owner.Equals(this))
             {
@@ -103,47 +105,79 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
             
-            Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
+            await Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
         }
 
-        public void Move(Position position)
+        public async Task<bool> Move(Position destination)
         {
-            Client.SendPacket($"walk {position.X} {position.Y} 0 {Speed}");
-
-            if (Client.Type == ClientType.LOCAL) // Trick for moving player (need to find something better)
+            if (Map.IsWalkable(destination))
             {
-                Client.ReceivePacket($"tp {(byte)EntityType} {Id} {position.X} {position.Y} 0");
+                return false;
             }
+
+            bool positiveX = destination.X > Position.X;
+            bool positiveY = destination.Y > Position.Y;
+
+            while (!Position.Equals(destination))
+            {
+                var position = new Position(Position.X, Position.Y);
+
+                int distanceX = position.GetDistanceX(destination);
+                int distanceY = position.GetDistanceY(destination);
+                
+                int stepX = distanceX >= 5 ? 5 : distanceX;
+                int stepY = distanceY >= 5 ? 5 : distanceY;
+                
+                position.X = (short)((positiveX ? 1 : -1) * stepX + position.X);
+                position.Y = (short)((positiveY ? 1 : -1) * stepY + position.Y);
+
+                if (!Map.IsWalkable(position))
+                {
+                    return false;
+                }
+                
+                await Client.SendPacket($"walk {Position.X} {Position.Y} 0 {Speed}");
+                if (Client.IsLocal())
+                {
+                    await Client.SendPacket($"tp {(byte)EntityType} {Id} {position.X} {position.Y} 0");
+                }
+
+                await Task.Delay((stepX + stepY) * (1000 / Speed));
+                
+                Position = position;
+            }
+
+            return true;
         }
 
-        public void SendFriendRequest(IPlayer player)
+        public async Task SendFriendRequest(IPlayer player)
         {
-            Client.SendPacket($"fins {(byte)player.EntityType} {player.Id}");
+            await Client.SendPacket($"fins {(byte)player.EntityType} {player.Id}");
         }
 
-        public void ShowInfoDialog(string message)
+        public async Task ShowInfoDialog(string message)
         {
-            Client.ReceivePacket($"info {message}");
+            await Client.ReceivePacket($"info {message}");
         }
 
-        public void ReceiveMessage(string message, MessageType messageType)
+        public async Task ReceiveMessage(string message, MessageType messageType)
         {
-            Client.ReceivePacket($"msg {(byte)messageType} {message}");
+            await Client.ReceivePacket($"msg {(byte)messageType} {message}");
         }
 
-        public void ReceiveChatMessage(string message, ChatMessageColor messageColor)
+        public async Task ReceiveChatMessage(string message, ChatMessageColor messageColor)
         {
-            Client.ReceivePacket($"say {(byte)EntityType} {Id} {(byte)messageColor} {message}");
+            await Client.ReceivePacket($"say {(byte)EntityType} {Id} {(byte)messageColor} {message}");
         }
 
-        public void ShowBubbleMessage(string message)
+        public async Task ShowBubbleMessage(string message)
         {
-            Client.ReceivePacket($"say {(byte)EntityType} {Id} 1 {message}");
+            await Client.ReceivePacket($"say {(byte)EntityType} {Id} 1 {message}");
         }
 
-        public void ShowBubbleMessage(string message, ILivingEntity entity)
+        public async Task ShowBubbleMessage(string message, ILivingEntity entity)
         {
-            Client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
+            await Client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
         }
     }
 }

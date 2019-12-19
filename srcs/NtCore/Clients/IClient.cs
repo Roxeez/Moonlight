@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 using NtCore.Enums;
 using NtCore.Game.Entities;
@@ -30,12 +31,12 @@ namespace NtCore.Clients
         ///     Send a packet
         /// </summary>
         /// <param name="packet">Packet to send</param>
-        void SendPacket([NotNull] string packet);
+        Task SendPacket([NotNull] string packet);
 
         /// <summary>
         ///     Receive a packet
         /// </summary>
         /// <param name="packet">Packet to receive</param>
-        void ReceivePacket([NotNull] string packet);
+        Task ReceivePacket([NotNull] string packet);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 using NtCore.Clients;
 using NtCore.Enums;
@@ -82,73 +83,71 @@ namespace NtCore.Game.Entities
         /// Use selected skill on self
         /// </summary>
         /// <param name="skill">Skill to use</param>
-        void UseSkill([NotNull] ISkill skill);
+        Task UseSkill([NotNull] ISkill skill);
         
         /// <summary>
         /// Use skill on defined target
         /// </summary>
         /// <param name="skill">Skill to use</param>
         /// <param name="target">Target of the skill</param>
-        void UseSkill([NotNull] ISkill skill, [NotNull] ILivingEntity target);
+        Task UseSkill([NotNull] ISkill skill, [NotNull] ILivingEntity target);
 
         /// <summary>
         /// Use skill at specific position
         /// </summary>
         /// <param name="skill">Skill to use</param>
         /// <param name="position">Target position</param>
-        void UseSkill([NotNull] ISkill skill, Position position);
+        Task UseSkill([NotNull] ISkill skill, Position position);
 
         /// <summary>
         /// Get drop on ground
         /// </summary>
         /// <param name="drop">Drop to pick up</param>
-        void PickUp([NotNull] IDrop drop);
+        Task PickUp([NotNull] IDrop drop);
         
         /// <summary>
         ///     Make your character move
         /// </summary>
         /// <param name="position">Position where you want to move</param>
-        void Move(Position position);
+        Task<bool> Move(Position position);
 
         /// <summary>
         /// Send a friend request to selected player
         /// </summary>
         /// <param name="player">Selected player</param>
-        void SendFriendRequest(IPlayer player);
+        Task SendFriendRequest(IPlayer player);
 
         /// <summary>
         /// Show info dialog with selected message
         /// </summary>
         /// <param name="message">Message to show</param>
-        void ShowInfoDialog(string message);
+        Task ShowInfoDialog(string message);
 
         /// <summary>
         ///     Show a message to character (clientside only it's a received packet)
         /// </summary>
         /// <param name="message">Message to show</param>
         /// <param name="messageType">Type of message</param>
-        void ReceiveMessage([NotNull] string message, MessageType messageType);
+        Task ReceiveMessage([NotNull] string message, MessageType messageType);
 
         /// <summary>
         ///     Show a chat message to character (clientside only it's a received packet)
         /// </summary>
         /// <param name="message">Message to show</param>
         /// <param name="messageColor">Type of message</param>
-        void ReceiveChatMessage([NotNull] string message, ChatMessageColor messageColor);
+        Task ReceiveChatMessage([NotNull] string message, ChatMessageColor messageColor);
 
         /// <summary>
         ///     Show a bubble message on top of character with selected message
         /// </summary>
         /// <param name="message">Message to show</param>
-        void ShowBubbleMessage([NotNull] string message);
+        Task ShowBubbleMessage([NotNull] string message);
 
         /// <summary>
         ///     Show a bubble message on top of entity with selected message
         /// </summary>
         /// <param name="message">Message to show</param>
         /// <param name="entity">Entity where bubble need to be</param>
-        void ShowBubbleMessage([NotNull] string message, [NotNull] ILivingEntity entity);
-        
-        
+        Task ShowBubbleMessage([NotNull] string message, [NotNull] ILivingEntity entity);
     }
 }

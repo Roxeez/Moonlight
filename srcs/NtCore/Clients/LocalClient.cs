@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using NtCore.Enums;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
@@ -46,14 +47,16 @@ namespace NtCore.Clients
         public ICharacter Character { get; }
         public ClientType Type { get; }
 
-        public void SendPacket(string packet)
+        public Task SendPacket(string packet)
         {
             _sendQueue.Enqueue(packet);
+            return Task.CompletedTask;
         }
 
-        public void ReceivePacket(string packet)
+        public Task ReceivePacket(string packet)
         {
             _recvQueue.Enqueue(packet);
+            return Task.CompletedTask;
         }
 
         public void Dispose()

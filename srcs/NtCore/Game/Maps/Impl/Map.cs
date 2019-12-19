@@ -67,6 +67,8 @@ namespace NtCore.Game.Maps.Impl
             }
         }
 
+        public bool IsWalkable(Position position) => true;
+
         public void AddEntity(IEntity entity)
         {
             switch (entity.EntityType)

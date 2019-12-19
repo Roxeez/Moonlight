@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 using NtCore.Clients;
 using NtCore.Commands;
 using NtCore.Events;
@@ -60,9 +57,9 @@ namespace NtCore
                 services.AddSingleton(typeof(IPacketHandler), type);
             }
             
-            var skillInfos = Resource.Load<Dictionary<int, SkillInfo>>("Skill.json");
-            var monsterInfos = Resource.Load<Dictionary<int, MonsterInfo>>("monster.json");
-            var itemInfos = Resource.Load<Dictionary<int, ItemInfo>>("Item.json");
+            var skillInfos = Resource.LoadJson<Dictionary<int, SkillInfo>>("Skill.json");
+            var monsterInfos = Resource.LoadJson<Dictionary<int, MonsterInfo>>("monster.json");
+            var itemInfos = Resource.LoadJson<Dictionary<int, ItemInfo>>("Item.json");
 
             services.AddSingleton<IRegistry>(new GameRegistry(skillInfos, monsterInfos, itemInfos));
             services.AddSingleton<ILanguageService, LanguageService>();
