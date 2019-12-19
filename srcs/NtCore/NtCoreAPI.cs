@@ -14,24 +14,23 @@ using NtCore.I18N;
 using NtCore.Logger;
 using NtCore.Network;
 using NtCore.Registry;
+using NtCore.Resources;
 using NtCore.Scheduler;
 
 namespace NtCore
 {
-    public sealed class NtCoreAPI : IScheduler, IEventManager, ICommandManager, IClientManager
+    public static class NtCoreAPI
     {
-        private static NtCoreAPI _instance;
-        
-        private readonly IClientManager _clientManager;
-        private readonly ICommandManager _commandManager;
-        private readonly IEventManager _eventManager;
-        private readonly ILogger _logger;
-        private readonly IPacketManager _packetManager;
-        private readonly IScheduler _scheduler;
+        private static readonly IClientManager ClientManager;
+        private static readonly ICommandManager CommandManager;
+        private static readonly IEventManager EventManager;
+        private static readonly ILogger Logger;
+        private static readonly IPacketManager PacketManager;
+        private static readonly IScheduler Scheduler;
+        private static readonly IRegistry Registry;
+        private static readonly ILanguageService LanguageService;
 
-        public IRegistry Registry { get; }
-
-        private NtCoreAPI()
+        static NtCoreAPI()
         {
             IServiceCollection services = new ServiceCollection();
 
@@ -61,109 +60,41 @@ namespace NtCore
                 services.AddSingleton(typeof(IPacketHandler), type);
             }
             
-            var skillInfos = LoadJsonFromResource<Dictionary<int, SkillInfo>>("Skill.json");
-            var monsterInfos = LoadJsonFromResource<Dictionary<int, MonsterInfo>>("monster.json");
-            var itemInfos = LoadJsonFromResource<Dictionary<int, ItemInfo>>("Item.json");
-            var skillTranslations = LoadJsonFromResource<Dictionary<string, string>>("lang._code_uk_Skill.json");
-            var itemTranslations = LoadJsonFromResource<Dictionary<string, string>>("lang._code_uk_Item.json");
-            var monsterTranslations = LoadJsonFromResource<Dictionary<string, string>>("lang._code_uk_monster.json");
-            
+            var skillInfos = Resource.Load<Dictionary<int, SkillInfo>>("Skill.json");
+            var monsterInfos = Resource.Load<Dictionary<int, MonsterInfo>>("monster.json");
+            var itemInfos = Resource.Load<Dictionary<int, ItemInfo>>("Item.json");
+
             services.AddSingleton<IRegistry>(new GameRegistry(skillInfos, monsterInfos, itemInfos));
-            services.AddSingleton<ILanguageService>(new LanguageService(new Dictionary<LanguageKey, IDictionary<string, string>>
-            {
-                [LanguageKey.SKILL] = skillTranslations,
-                [LanguageKey.ITEM] = itemTranslations,
-                [LanguageKey.MONSTER] = monsterTranslations
-            }));
+            services.AddSingleton<ILanguageService, LanguageService>();
 
             ServiceProvider core = services.BuildServiceProvider();
 
             Registry = core.GetService<IRegistry>();
+            Logger = core.GetService<ILogger>();
+            Scheduler = core.GetService<IScheduler>();
+            EventManager = core.GetService<IEventManager>();
+            CommandManager = core.GetService<ICommandManager>();
+            PacketManager = core.GetService<IPacketManager>();
+            ClientManager = core.GetService<IClientManager>();
+            LanguageService = core.GetService<ILanguageService>();
 
-            _logger = core.GetService<ILogger>();
-            _scheduler = core.GetService<IScheduler>();
-            _eventManager = core.GetService<IEventManager>();
-            _commandManager = core.GetService<ICommandManager>();
-            _packetManager = core.GetService<IPacketManager>();
-            _clientManager = core.GetService<IClientManager>();
-
+            LanguageService.Load("uk");
+            
             foreach (IPacketHandler packetHandler in core.GetServices<IPacketHandler>())
             {
-                _packetManager.Register(packetHandler);
+                PacketManager.Register(packetHandler);
             }
 
-            _logger.Information("NtCoreAPI successfully initialized.");
+            Logger.Information("NtCoreAPI successfully initialized.");
         }
-
-        private static T LoadJsonFromResource<T>(string name)
-        {
-            var serializer = new JsonSerializer();
-            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("NtCore.Resources." + name))
-            {
-                if (stream == null)
-                {
-                    throw new InvalidOperationException($"Can't load {name} from resources");
-                }
-                
-                var reader = new StreamReader(stream);
-                return (T)serializer.Deserialize(reader, typeof(T));
-            }
-        }
-
-        public static NtCoreAPI Instance => _instance ?? (_instance = new NtCoreAPI());
-
-        public IClient LocalClient => _clientManager.LocalClient;
-        public IEnumerable<IClient> Clients => _clientManager.Clients;
-        public IClient CreateLocalClient() => _clientManager.CreateLocalClient();
-        public IClient CreateRemoteClient() => _clientManager.CreateRemoteClient();
-
-        public void RegisterCommandHandler(ICommandHandler handler)
-        {
-            _commandManager.RegisterCommandHandler(handler);
-        }
-
-        public void RegisterCommandHandler<T>() where T : ICommandHandler
-        {
-            _commandManager.RegisterCommandHandler<T>();
-        }
-
-        public void ExecuteCommand(IClient client, string command, string[] args)
-        {
-            _commandManager.ExecuteCommand(client, command, args);
-        }
-
-        public void RegisterEventListener(IEventListener eventListener, IClient client)
-        {
-            _eventManager.RegisterEventListener(eventListener, client);
-        }
-
-        public void RegisterEventListener(IEventListener eventListener)
-        {
-            _eventManager.RegisterEventListener(eventListener);
-        }
-
-        public void RegisterEventListener<T>(IClient client) where T : IEventListener
-        {
-            _eventManager.RegisterEventListener<T>(client);
-        }
-
-        public void RegisterEventListener<T>() where T : IEventListener
-        {
-            _eventManager.RegisterEventListener<T>();
-        }
-
-        public void CallEvent(Event e)
-        {
-            _eventManager.CallEvent(e);
-        }
-
-        public void Schedule(TimeSpan delay, Action action)
-        {
-            _scheduler.Schedule(delay, action);
-        }
-
-        public ILogger GetLogger() => _logger;
-
-        public IPacketManager GetPacketManager() => _packetManager;
+        
+        public static IClientManager GetClientManager() => ClientManager;
+        public static IPacketManager GetPacketManager() => PacketManager;
+        public static ILogger GetLogger() => Logger;
+        public static IEventManager GetEventManager() => EventManager;
+        public static ICommandManager GetCommandManager() => CommandManager;
+        public static IScheduler GetScheduler() => Scheduler;
+        public static IRegistry GetRegistry() => Registry;
+        public static ILanguageService GetLanguageService() => LanguageService;
     }
 }

@@ -250,6 +250,7 @@
     <Compile Include="Registry\ItemInfo.cs" />
     <Compile Include="Registry\MonsterInfo.cs" />
     <Compile Include="Registry\SkillInfo.cs" />
+    <Compile Include="Resources\Resource.cs" />
     <Compile Include="Scheduler\IScheduler.cs" />
     <Compile Include="Scheduler\ObservableScheduler.cs" />
   </ItemGroup>

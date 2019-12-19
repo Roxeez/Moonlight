@@ -12,7 +12,7 @@ namespace NtCore.Tests.Registry
         
         public RegistryTests()
         {
-            _registry = NtCoreAPI.Instance.Registry;
+            _registry = NtCoreAPI.GetRegistry();
         }
         
         [Theory]

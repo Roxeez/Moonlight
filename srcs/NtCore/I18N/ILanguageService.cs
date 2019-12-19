@@ -12,5 +12,7 @@ namespace NtCore.I18N
         /// <returns>Translation or key</returns>
         [NotNull]
         string GetTranslation(LanguageKey languageKey, [NotNull] string key);
+
+        void Load(string languageKey);
     }
 }
