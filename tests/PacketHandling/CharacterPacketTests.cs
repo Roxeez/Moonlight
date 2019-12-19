@@ -16,6 +16,8 @@ namespace NtCore.Tests.PacketHandling
 {
     public class CharacterPacketTests
     {
+        public const int CharacterId = 99999;
+        
         private readonly IClient _client;
 
         public CharacterPacketTests()
@@ -27,7 +29,10 @@ namespace NtCore.Tests.PacketHandling
             mock.Setup(x => x.SendPacket(It.IsAny<string>()))
                 .Callback((string p) => NtCoreAPI.Instance.GetPacketManager().Handle(mock.Object, p, PacketType.Send));
 
-            mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
+            mock.SetupGet(x => x.Character).Returns(new Character(mock.Object)
+            {
+                Id = CharacterId
+            });
 
             _client = mock.Object;
         }
@@ -178,6 +183,18 @@ namespace NtCore.Tests.PacketHandling
             Check.That(character.Equipment.Armor.Vnum).IsEqualTo(148);
             Check.That(character.Equipment.Armor.Rarity).IsEqualTo(7);
             Check.That(character.Equipment.Armor.Upgrade).IsEqualTo(10);
+        }
+
+        [Fact]
+        public void Pairy_Packet_Change_Fairy()
+        {
+            _client.ReceivePacket($"pairy 1 {CharacterId} 0 4 2 41 0");
+
+            ICharacter character = _client.Character;
+
+            Check.That(character.Equipment.Fairy).IsNotNull();
+            Check.That(character.Equipment.Fairy.Element).IsEqualTo(Element.WATER);
+            Check.That(character.Equipment.Fairy.Power).IsEqualTo(41);
         }
     }
 }

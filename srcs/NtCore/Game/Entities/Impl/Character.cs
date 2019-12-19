@@ -4,6 +4,7 @@ using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
 using NtCore.Game.Inventories;
+using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
 
 namespace NtCore.Game.Entities.Impl
@@ -14,6 +15,7 @@ namespace NtCore.Game.Entities.Impl
         {
             Client = client;
             LastMapChange = DateTime.Now;
+            Equipment = new Equipment();
             Skills = new HashSet<ISkill>();
             Friends = new List<IFriend>();
         }
