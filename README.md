@@ -36,7 +36,7 @@ public class MyApplication
     public void Run()
     {
         // Register our event listener
-        NtCoreAPI.Instance.RegisterEventListener<MyEventListener>();
+        NtCoreAPI.GetEventManager().RegisterEventListener<MyEventListener>();
 
         // Wait for exit command (because i'm using a console and not an UI app)
         string command;
@@ -50,16 +50,18 @@ public class MyApplication
     
 public class MyEventListener : IEventListener
 {
-    /// <summary>
-    /// This method will be called each time character target move
-    /// </summary>
     [Handler]
-    public void OnTargetMove(TargetMoveEvent e)
+    public void OnItemDrop(ItemDropEvent e)
     {
-        ICharacter character = e.Character;
-        ILivingEntity target = character.Target.Entity;
+        ICharacter character = e.Client.Character;
 
-        character.Move(target.Position);
+        if (e.Drop.Owner != null && character.Equals(e.Drop.Owner))
+        {
+            return;
+        }
+
+        character.Move(e.Drop.Position);
+        character.PickUp(e.Drop);
     }
 }
 ```
