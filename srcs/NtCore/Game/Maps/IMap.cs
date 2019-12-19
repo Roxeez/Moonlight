@@ -14,6 +14,11 @@ namespace NtCore.Game.Maps
         /// </summary>
         int Id { get; }
 
+        byte[] Data { get; }
+        
+        short Height { get; }
+        short Width { get; }
+        
         /// <summary>
         ///     Contains all monsters currently in map
         /// </summary>

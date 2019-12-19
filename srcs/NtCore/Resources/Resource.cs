@@ -21,5 +21,22 @@ namespace NtCore.Resources
                 return (T)serializer.Deserialize(reader, typeof(T));
             }
         }
+
+        public static byte[] Read(string name)
+        {
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("NtCore.Resources." + name))
+            {
+                if (stream == null)
+                {
+                    throw new InvalidOperationException($"Can't load {name} from resources");
+                }
+
+                using (var memory = new MemoryStream())
+                {
+                    stream.CopyTo(memory);
+                    return memory.ToArray();
+                }
+            }
+        }
     }
 }

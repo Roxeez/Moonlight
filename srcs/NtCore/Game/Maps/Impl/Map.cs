@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
@@ -27,17 +28,25 @@ namespace NtCore.Game.Maps.Impl
         private readonly IDictionary<int, INpc> _npcs;
         private readonly IDictionary<int, IPlayer> _players;
 
-        public Map(int id)
+        public Map(int id, byte[] data)
         {
             Id = id;
-
+            Data = data;
+            // Width = BitConverter.ToInt16(Data.Take(2).ToArray(), 0);
+            // Height = BitConverter.ToInt16(Data.Skip(2).Take(2).ToArray(), 0);
+            
             _monsters = new Dictionary<int, IMonster>();
             _npcs = new Dictionary<int, INpc>();
             _drops = new Dictionary<int, IDrop>();
             _players = new Dictionary<int, IPlayer>();
         }
 
+        private byte this[Position position] => Data.Skip(4 + position.Y * Height + position.X).FirstOrDefault();
+        
         public int Id { get; }
+        public byte[] Data { get; }
+        public short Height { get; }
+        public short Width { get; }
 
         public IEnumerable<IMonster> Monsters => _monsters.Values;
         public IEnumerable<INpc> Npcs => _npcs.Values;
@@ -67,7 +76,17 @@ namespace NtCore.Game.Maps.Impl
             }
         }
 
-        public bool IsWalkable(Position position) => true;
+        public bool IsWalkable(Position position)
+        {
+            if (position.X > Height || position.X < 0 || (position.Y > Width) || (position.Y < 0))
+            {
+                return false;
+            }
+
+            byte value = this[position];
+            
+            return value == 0 || value == 2 || value >= 16 && value <= 19;
+        }
 
         public void AddEntity(IEntity entity)
         {

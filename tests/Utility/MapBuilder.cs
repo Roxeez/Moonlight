@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using NtCore.Clients;
 using NtCore.Enums;
+using NtCore.Extensions;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
 using NtCore.Game.Maps.Impl;
+using NtCore.Resources;
 
 namespace NtCore.Tests.Utility
 {
@@ -18,7 +20,12 @@ namespace NtCore.Tests.Utility
         private IEnumerable<Monster> _monsters = new List<Monster>();
         private IEnumerable<Npc> _npcs = new List<Npc>();
         private IEnumerable<Player> _players = new List<Player>();
-
+        
+        public MapBuilder()
+        {
+            
+        }
+        
         public MapBuilder WithId(int id)
         {
             _id = id;
@@ -92,7 +99,7 @@ namespace NtCore.Tests.Utility
 
         public Map Create()
         {
-            Map map = _isMiniland ? new Miniland() : new Map(_id);
+            Map map = _isMiniland ? new Miniland(Resource.Read($"maps.20001.bin")) : new Map(_id, Resource.Read($"maps.{_id}.bin"));
 
             foreach (Monster monster in _monsters)
             {

@@ -29,9 +29,9 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Theory]
-        [InlineData("c_map 0 150 1", 150)]
-        [InlineData("c_map 0 1550 1", 1550)]
-        [InlineData("c_map 0 100 1", 100)]
+        [InlineData("c_map 0 0 1", 0)]
+        [InlineData("c_map 0 1 1", 1)]
+        [InlineData("c_map 0 3 1", 3)]
         public void CMap_Packet_Change_Character_Map(string packet, int mapId)
         {
             _client.ReceivePacket(packet);
@@ -48,7 +48,7 @@ namespace NtCore.Tests.PacketHandling
         public void In_Packet_Add_Npc_To_Map(string packet, int vnum, int id, short x, short y, byte hpPercentage,
             byte mpPercentage, byte direction)
         {
-            Map fakeMap = new MapBuilder().Create();
+            Map fakeMap = new MapBuilder().WithId(1).Create();
 
             fakeMap.AddEntity(_client.Character);
 
@@ -71,7 +71,7 @@ namespace NtCore.Tests.PacketHandling
         public void In_Packet_Add_Monster_To_Map(string packet, int vnum, int id, short x, short y, byte hpPercentage,
             byte mpPercentage, byte direction)
         {
-            Map fakeMap = new MapBuilder().Create();
+            Map fakeMap = new MapBuilder().WithId(1).Create();
 
             fakeMap.AddEntity(_client.Character);
 

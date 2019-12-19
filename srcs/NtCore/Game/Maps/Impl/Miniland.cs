@@ -7,7 +7,7 @@ namespace NtCore.Game.Maps.Impl
     {
         private readonly Dictionary<int, IMinilandObject> _minilandObjects;
 
-        public Miniland() : base(20001) => _minilandObjects = new Dictionary<int, IMinilandObject>();
+        public Miniland(byte[] data) : base(20001, data) => _minilandObjects = new Dictionary<int, IMinilandObject>();
 
         public string Owner { get; set; }
         public int Visitor { get; set; }
