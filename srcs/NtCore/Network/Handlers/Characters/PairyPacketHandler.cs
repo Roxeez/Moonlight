@@ -1,4 +1,9 @@
 ﻿using NtCore.Clients;
+using NtCore.Enums;
+using NtCore.Extensions;
+using NtCore.Game.Entities.Impl;
+using NtCore.Game.Inventories.Impl;
+using NtCore.Game.Items.Impl;
 using NtCore.Network.Packets.Characters;
 
 namespace NtCore.Network.Handlers.Characters
@@ -7,7 +12,26 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, PairyPacket packet)
         {
-            // Not implemented yet
+            if (packet.EntityType != EntityType.PLAYER)
+            {
+                return;
+            }
+
+            if (packet.EntityId != client.Character.Id)
+            {
+                return;
+            }
+
+            var fairy = client.Character.Equipment.Fairy.As<Fairy>();
+
+            if (fairy == null)
+            {
+                fairy = new Fairy();
+                client.Character.Equipment.As<Equipment>().Fairy = fairy;
+            }
+            
+            fairy.Element = packet.Element;
+            fairy.Power = packet.Power;
         }
     }
 }

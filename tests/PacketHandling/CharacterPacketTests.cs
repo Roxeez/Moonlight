@@ -6,6 +6,7 @@ using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
+using NtCore.Game.Items.Impl;
 using NtCore.Game.Maps.Impl;
 using NtCore.Network;
 using NtCore.Tests.Utility;
@@ -15,6 +16,8 @@ namespace NtCore.Tests.PacketHandling
 {
     public class CharacterPacketTests
     {
+        public const int CharacterId = 99999;
+        
         private readonly IClient _client;
 
         public CharacterPacketTests()
@@ -26,7 +29,10 @@ namespace NtCore.Tests.PacketHandling
             mock.Setup(x => x.SendPacket(It.IsAny<string>()))
                 .Callback((string p) => NtCoreAPI.Instance.GetPacketManager().Handle(mock.Object, p, PacketType.Send));
 
-            mock.SetupGet(x => x.Character).Returns(new Character(mock.Object));
+            mock.SetupGet(x => x.Character).Returns(new Character(mock.Object)
+            {
+                Id = CharacterId
+            });
 
             _client = mock.Object;
         }
@@ -137,28 +143,6 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Theory]
-        [InlineData("st 2 2053 10 0 100 100 5000 2500", EntityType.NPC, 2053, 10, 100, 100, 5000, 2500)]
-        [InlineData("st 3 1874 88 0 50 75 24578 8745", EntityType.MONSTER, 1874, 88, 50, 75, 24578, 8745)]
-        public void St_Packet_Update_Target_Stats(string packet, EntityType entityType, int id, byte level, byte hpPercentage, byte mpPercentage, int hp, int mp)
-        {
-            Map fakeMap = new MapBuilder().WithEntity(entityType, id).Create();
-            fakeMap.AddEntity(_client.Character);
-
-            _client.ReceivePacket(packet);
-
-            ITarget target = _client.Character.Target;
-
-            Check.That(target).IsNotNull();
-            Check.That(target.Hp).IsEqualTo(hp);
-            Check.That(target.Mp).IsEqualTo(mp);
-            Check.That(target.Entity.Level).IsEqualTo(level);
-            Check.That(target.Entity.EntityType).IsEqualTo(entityType);
-            Check.That(target.Entity.Id).IsEqualTo(id);
-            Check.That(target.Entity.HpPercentage).IsEqualTo(hpPercentage);
-            Check.That(target.Entity.MpPercentage).IsEqualTo(mpPercentage);
-        }
-
-        [Theory]
         [InlineData("c_info Roxeetest - -1 -1 - 1290125 0 1 0 9 0 1 0 0 0 0 0 0 0", "Roxeetest", 1290125, Gender.FEMALE, ClassType.ADVENTURER)]
         [InlineData("c_info Roxeez - -1 -1 - 999999 0 0 0 9 1 1 0 0 0 0 0 0 0", "Roxeez", 999999, Gender.MALE, ClassType.SWORDSMAN)]
         public void CInfo_Packet_Initialize_Character(string packet, string name, int id, Gender gender, ClassType classType)
@@ -180,6 +164,37 @@ namespace NtCore.Tests.PacketHandling
 
             Check.That(_client.Character.Level).IsEqualTo(level);
             Check.That(_client.Character.JobLevel).IsEqualTo(jobLevel);
+        }
+
+        [Fact]
+        public void Equip_Packet_Initialize_Character_Equipment()
+        {
+            _client.ReceivePacket("equip 0 0 0.124.1.0 1.148.7.10 10.87.0.0");
+
+            ICharacter character = _client.Character;
+
+            Check.That(character.Equipment).IsNotNull();
+            Check.That(character.Equipment.MainWeapon).IsNotNull();
+            Check.That(character.Equipment.Armor).IsNotNull();
+            Check.That(character.Equipment.Fairy).IsNotNull();
+            Check.That(character.Equipment.MainWeapon.Vnum).IsEqualTo(124);
+            Check.That(character.Equipment.MainWeapon.Rarity).IsEqualTo(1);
+            Check.That(character.Equipment.MainWeapon.Upgrade).IsEqualTo(0);
+            Check.That(character.Equipment.Armor.Vnum).IsEqualTo(148);
+            Check.That(character.Equipment.Armor.Rarity).IsEqualTo(7);
+            Check.That(character.Equipment.Armor.Upgrade).IsEqualTo(10);
+        }
+
+        [Fact]
+        public void Pairy_Packet_Change_Fairy()
+        {
+            _client.ReceivePacket($"pairy 1 {CharacterId} 0 4 2 41 0");
+
+            ICharacter character = _client.Character;
+
+            Check.That(character.Equipment.Fairy).IsNotNull();
+            Check.That(character.Equipment.Fairy.Element).IsEqualTo(Element.WATER);
+            Check.That(character.Equipment.Fairy.Power).IsEqualTo(41);
         }
     }
 }

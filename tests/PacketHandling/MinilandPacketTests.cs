@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Moq;
 using NFluent;
-using NtCore.API.Game.Maps;
 using NtCore.Clients;
 using NtCore.Extensions;
 using NtCore.Game.Entities.Impl;

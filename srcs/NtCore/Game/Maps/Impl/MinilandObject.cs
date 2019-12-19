@@ -1,6 +1,4 @@
-﻿using NtCore.API.Game.Maps;
-
-namespace NtCore.Game.Maps
+﻿namespace NtCore.Game.Maps
 {
     public class MinilandObject : IMinilandObject
     {

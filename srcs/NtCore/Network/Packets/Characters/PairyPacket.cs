@@ -11,10 +11,10 @@ namespace NtCore.Network.Packets.Characters
         [PacketIndex(1)]
         public int EntityId { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(4)]
         public Element Element { get; set; }
 
-        [PacketIndex(3)]
-        public int Power { get; set; }
+        [PacketIndex(5)]
+        public short Power { get; set; }
     }
 }

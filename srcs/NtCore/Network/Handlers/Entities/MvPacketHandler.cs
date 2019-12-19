@@ -31,11 +31,6 @@ namespace NtCore.Network.Handlers.Entities
             entity.Speed = packet.Speed;
 
             _eventManager.CallEvent(new EntityMoveEvent(client, entity, from));
-
-            if (character.Target != null && character.Target.Entity.Equals(entity))
-            {
-                _eventManager.CallEvent(new TargetMoveEvent(client, from));
-            }
         }
     }
 }

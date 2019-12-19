@@ -4,12 +4,15 @@ using JetBrains.Annotations;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
+using NtCore.Game.Inventories;
 using NtCore.Game.Relation;
 
 namespace NtCore.Game.Entities
 {
     public interface ICharacter : IPlayer
     {
+        IEquipment Equipment { get; }
+        
         /// <summary>
         ///     Job level
         /// </summary>
@@ -66,15 +69,13 @@ namespace NtCore.Game.Entities
         int MaxMp { get; }
 
         /// <summary>
-        ///     Current target
-        /// </summary>
-        ITarget Target { get; }
-
-        /// <summary>
         /// Contains all character skills
         /// </summary>
         HashSet<ISkill> Skills { get; }
-        
+
+        /// <summary>
+        /// Contains all character friends
+        /// </summary>
         IEnumerable<IFriend> Friends { get; }
 
         /// <summary>
@@ -96,6 +97,12 @@ namespace NtCore.Game.Entities
         /// <param name="skill">Skill to use</param>
         /// <param name="position">Target position</param>
         void UseSkill([NotNull] ISkill skill, Position position);
+
+        /// <summary>
+        /// Get drop on ground
+        /// </summary>
+        /// <param name="drop">Drop to pick up</param>
+        void PickUp([NotNull] IDrop drop);
         
         /// <summary>
         ///     Make your character move

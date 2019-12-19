@@ -1,4 +1,4 @@
-﻿namespace NtCore.API.Game.Maps
+﻿namespace NtCore.Game.Maps
 {
     /// <summary>
     ///     Represent a miniland object

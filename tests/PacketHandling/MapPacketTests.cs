@@ -176,5 +176,18 @@ namespace NtCore.Tests.PacketHandling
             Check.That(drop.Owner).IsEqualTo(owner);
             Check.That(drop.IsGold).IsEqualTo(isGold);
         }
+
+        [Theory]
+        [InlineData("get 1 252525 12645 0", EntityType.PLAYER, 252525, 12645)]
+        [InlineData("get 1 1294576 478569 0", EntityType.PLAYER, 1294576, 478569)]
+        public void Get_Packet_Remove_Drop_From_Map(string packet, EntityType entityType, int entityId, int dropId)
+        {
+            Map fakeMap = new MapBuilder().WithEntity(entityType, entityId).WithDrops(dropId).Create();
+            
+            fakeMap.AddEntity(_client.Character);
+            _client.ReceivePacket(packet);
+            
+            Check.That(fakeMap.GetEntity<IDrop>(dropId)).IsNull();
+        }
     }
 }

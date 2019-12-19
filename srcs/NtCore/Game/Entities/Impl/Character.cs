@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
+using NtCore.Game.Inventories;
+using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
 
 namespace NtCore.Game.Entities.Impl
@@ -14,21 +15,24 @@ namespace NtCore.Game.Entities.Impl
         {
             Client = client;
             LastMapChange = DateTime.Now;
+            Equipment = new Equipment();
             Skills = new HashSet<ISkill>();
+            Friends = new List<IFriend>();
         }
 
-        public IClient Client { get; }
+        private IClient Client { get; }
+        public IEquipment Equipment { get; set; }
+        public int Hp { get; set; }
+        public int MaxHp { get; set; }
+        public int Mp { get; set; }
+        public int MaxMp { get; set; }
+        public byte JobLevel { get; set; }
         public int SpPoints { get; set; }
         public int AdditionalSpPoints { get; set; }
         public int MaximumSpPoints { get; set; }
         public int MaximumAdditionalSpPoints { get; set; }
         public int Gold { get; set; }
         public DateTime LastMapChange { get; set; }
-        public int Hp { get; set; }
-        public int MaxHp { get; set; }
-        public int Mp { get; set; }
-        public int MaxMp { get; set; }
-        public ITarget Target { get; set; }
         public HashSet<ISkill> Skills { get; }
         public IEnumerable<IFriend> Friends { get; set; }
 
@@ -59,7 +63,7 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
 
-            if (!Position.IsInRange(target.Position, skill.Info.Range + 4)) // Add some range because target can move
+            if (!Position.IsInRange(target.Position, skill.Info.Range + 4))
             {
                 return;
             }
@@ -87,7 +91,20 @@ namespace NtCore.Game.Entities.Impl
             Client.SendPacket($"u_as {skill.Info.CastId} {position.X} {position.Y}");
         }
 
-        public byte JobLevel { get; set; }
+        public void PickUp(IDrop drop)
+        {
+            if (drop.Owner != null && !drop.Owner.Equals(this))
+            {
+                return;
+            }
+
+            if (!drop.Position.IsInArea(Position, 1))
+            {
+                return;
+            }
+            
+            Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
+        }
 
         public void Move(Position position)
         {
