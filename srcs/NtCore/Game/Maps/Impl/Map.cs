@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using NtCore.Enums;
 using NtCore.Extensions;
@@ -32,8 +34,8 @@ namespace NtCore.Game.Maps.Impl
         {
             Id = id;
             Data = data;
-            Height = BitConverter.ToInt16(Data.Take(2).ToArray(), 0);
-            Width = BitConverter.ToInt16(Data.Skip(2).Take(2).ToArray(), 0);
+            Width = BitConverter.ToInt16(Data.Take(2).ToArray(), 0);
+            Height = BitConverter.ToInt16(Data.Skip(2).Take(2).ToArray(), 0);
             
             _monsters = new Dictionary<int, IMonster>();
             _npcs = new Dictionary<int, INpc>();
@@ -41,9 +43,10 @@ namespace NtCore.Game.Maps.Impl
             _players = new Dictionary<int, IPlayer>();
         }
 
-        private byte this[Position position] => Data.Skip(4 + position.Y * Height + position.X).FirstOrDefault();
+        private byte this[Position position] => Data.Skip(4 + position.Y * Width + position.X).Take(1).FirstOrDefault();
         
         public int Id { get; }
+        public string Name { get; set; }
         public byte[] Data { get; }
         public short Height { get; }
         public short Width { get; }
@@ -78,8 +81,9 @@ namespace NtCore.Game.Maps.Impl
 
         public bool IsWalkable(Position position)
         {
-            if (position.X > Height || position.X < 0 || (position.Y > Width) || (position.Y < 0))
+            if (position.X > Width || position.X < 0 || (position.Y > Height) || position.Y < 0)
             {
+                Trace.WriteLine("false");
                 return false;
             }
 

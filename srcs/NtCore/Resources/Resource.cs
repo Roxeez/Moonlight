@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Resources;
+using System.Text;
 using Newtonsoft.Json;
 
 namespace NtCore.Resources
@@ -30,11 +32,11 @@ namespace NtCore.Resources
                 {
                     throw new InvalidOperationException($"Can't load {name} from resources");
                 }
-
-                using (var memory = new MemoryStream())
+                
+                using (var ms = new MemoryStream())
                 {
-                    stream.CopyTo(memory);
-                    return memory.ToArray();
+                    stream.CopyTo(ms);
+                    return ms.ToArray();
                 }
             }
         }

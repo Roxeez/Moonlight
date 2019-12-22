@@ -9,6 +9,7 @@ namespace NtCore.Registry
         private readonly Dictionary<int, SkillInfo> _skillInfos;
         private readonly Dictionary<int, MonsterInfo> _monsterInfos;
         private readonly Dictionary<int, ItemInfo> _itemInfos;
+        private readonly Dictionary<int, MapInfo> _mapInfos;
 
         public GameRegistry(Dictionary<int, SkillInfo> skillInfos, Dictionary<int, MonsterInfo> monsterInfos, Dictionary<int, ItemInfo> itemInfos)
         {
@@ -31,5 +32,7 @@ namespace NtCore.Registry
         {
             return _monsterInfos.GetValueOrDefault(monsterVnum);
         }
+
+        public MapInfo GetMapInfo(int mapId) => null;
     }
 }

@@ -99,7 +99,7 @@ namespace NtCore.Tests.Utility
 
         public Map Create()
         {
-            Map map = _isMiniland ? new Miniland(Resource.Read($"maps.20001.bin")) : new Map(_id, Resource.Read($"maps.{_id}.bin"));
+            Map map = _isMiniland ? new Miniland(Resource.Read($"maps.20001")) : new Map(_id, Resource.Read($"maps.{_id}"));
 
             foreach (Monster monster in _monsters)
             {

@@ -27,5 +27,8 @@ namespace NtCore.Registry
         /// <returns>Monster info or null if none</returns>
         [CanBeNull]
         MonsterInfo GetMonsterInfo(int monsterVnum);
+
+        [CanBeNull]
+        MapInfo GetMapInfo(int mapId);
     }
 }

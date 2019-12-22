@@ -111,10 +111,40 @@ namespace NtCore.Game.Entities.Impl
 
         public async Task<bool> Move(Position destination)
         {
-            await Client.SendPacket($"walk {Position.X} {Position.Y} 0 {Speed}");
-            if (Client.IsLocal())
+            if (!Map.IsWalkable(destination))
             {
-                NtNative.Walk(destination.X, destination.Y);
+                return false;
+            }
+
+            bool positiveX = destination.X > Position.X;
+            bool positiveY = destination.Y > Position.Y;
+
+            while (!Position.Equals(destination))
+            {
+                var position = new Position(Position.X, Position.Y);
+
+                int distanceX = position.GetDistanceX(destination);
+                int distanceY = position.GetDistanceY(destination);
+
+                int stepX = distanceX >= 5 ? 5 : distanceX;
+                int stepY = distanceY >= 5 ? 5 : distanceY;
+
+                position.X = (short)((positiveX ? 1 : -1) * stepX + position.X);
+                position.Y = (short)((positiveY ? 1 : -1) * stepY + position.Y);
+
+                if (!Map.IsWalkable(position))
+                {
+                    return false;
+                }
+                
+                await Client.SendPacket($"walk {position.X} {position.Y} {((position.X + position.Y) % 3) % 2} {Speed}");
+                if (Client.IsLocal())
+                {
+                    // NtNative.Walk(position.X, position.Y);
+                }
+
+                await Task.Delay((stepX + stepY) * (1000 / Speed));
+                Position = position;
             }
 
             return true;

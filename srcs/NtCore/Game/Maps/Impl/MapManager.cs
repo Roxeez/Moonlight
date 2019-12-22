@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using NtCore.Extensions;
+using NtCore.I18N;
+using NtCore.Registry;
 using NtCore.Resources;
 
 namespace NtCore.Game.Maps.Impl
@@ -7,12 +9,14 @@ namespace NtCore.Game.Maps.Impl
     public class MapManager : IMapManager
     {
         private readonly IDictionary<int, IMap> _maps;
-        private readonly IDictionary<int, byte[]> _data;
-
-        public MapManager()
+        private readonly ILanguageService _languageService;
+        private readonly IRegistry _registry;
+        
+        public MapManager(ILanguageService languageService, IRegistry registry)
         {
             _maps = new Dictionary<int, IMap>();
-            _data = new Dictionary<int, byte[]>();
+            _languageService = languageService;
+            _registry = registry;
         }
         
         public IMap GetMapById(int id)
@@ -23,19 +27,21 @@ namespace NtCore.Game.Maps.Impl
                 return map;
             }
 
-            byte[] data = _data.GetValueOrDefault(id);
-            if (data == null)
-            {
-                data = Resource.Read($"maps.{id}.bin");
-                _data[id] = data;
-            }
-                
+            MapInfo info = _registry.GetMapInfo(id);
+            byte[] data = Resource.Read($"maps.{id}");
+
             if (id == 20001)
             {
-                return new Miniland(data);
+                return new Miniland(data)
+                {
+                    Name = info != null ? _languageService.GetTranslation(LanguageKey.MAP, info.NameKey) : $"{id}"
+                };
             }
 
-            map = new Map(id, data);
+            map = new Map(id, data)
+            {
+                Name = info != null ? _languageService.GetTranslation(LanguageKey.MAP, info.NameKey) : $"{id}"
+            };
             _maps[id] = map;
 
             return map;

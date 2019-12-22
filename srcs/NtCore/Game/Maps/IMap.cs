@@ -14,6 +14,7 @@ namespace NtCore.Game.Maps
         /// </summary>
         int Id { get; }
 
+        string Name { get; }
         byte[] Data { get; }
         
         short Height { get; }

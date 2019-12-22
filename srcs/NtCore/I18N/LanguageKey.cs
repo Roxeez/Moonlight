@@ -4,6 +4,7 @@
     {
         MONSTER,
         ITEM,
-        SKILL
+        SKILL,
+        MAP
     }
 }
