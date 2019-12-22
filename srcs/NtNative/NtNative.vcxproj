@@ -160,15 +160,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Network.cpp" />
     <ClCompile Include="Nostale.cpp" />
+    <ClCompile Include="NtString.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.hpp" />
     <ClInclude Include="Module.hpp" />
     <ClInclude Include="Network.hpp" />
     <ClInclude Include="Nostale.hpp" />
+    <ClInclude Include="NtString.hpp" />
     <ClInclude Include="PacketType.hpp" />
     <ClInclude Include="Types.hpp" />
   </ItemGroup>

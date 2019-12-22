@@ -1,4 +1,5 @@
 #include "Nostale.hpp"
+#include "NtString.hpp"
 
 Nostale* nostale;
 
@@ -17,26 +18,26 @@ extern "C"
 
     __declspec(dllexport) void __stdcall setSendCallback(PacketCallback callback)
     {
-        nostale->network().setCallback(PacketType::SEND, callback);
+        Network::instance()->setCallback(PacketType::SEND, callback);
     }
 
     __declspec(dllexport) void __stdcall setRecvCallback(PacketCallback callback)
     {
-        nostale->network().setCallback(PacketType::RECV, callback);
+        Network::instance()->setCallback(PacketType::RECV, callback);
     }
 
     __declspec(dllexport) void __stdcall sendPacket(const char* packet)
     {
-        nostale->network().sendPacket(packet);
+        Network::instance()->sendPacket(NtString(packet).toString());
     }
 
     __declspec(dllexport) void __stdcall recvPacket(const char* packet)
     {
-        nostale->network().recvPacket(packet);
+        Network::instance()->recvPacket(NtString(packet).toString());
     }
 
     __declspec(dllexport) void __stdcall walk(short x, short y)
     {
-        nostale->walk(x, y);
+        nostale->character().walk(x, y);
     }
 }

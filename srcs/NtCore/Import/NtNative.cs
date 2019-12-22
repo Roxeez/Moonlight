@@ -26,5 +26,8 @@ namespace NtCore.Import
 
         [DllImport(LibraryName, EntryPoint = "recvPacket", CallingConvention = CallingConvention.StdCall)]
         public static extern void RecvPacket(string packet);
+
+        [DllImport(LibraryName, EntryPoint = "walk", CallingConvention = CallingConvention.StdCall)]
+        public static extern void Walk(short x, short y);
     }
 }

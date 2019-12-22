@@ -6,11 +6,11 @@
 #include "Module.hpp"
 #include <Psapi.h>
 
-DWORD* Module::find(const char *signature, const char *mask) const
+byte* Module::find(const char *signature, const char *mask) const
 {
     for(size_t i = 0; i < _size; i++)
     {
-        DWORD* data = &reinterpret_cast<DWORD*>(_base)[i];
+        byte* data = &reinterpret_cast<byte*>(_base)[i];
         if (Module::isMatch(data, signature, mask))
         {
             return data;
@@ -20,11 +20,11 @@ DWORD* Module::find(const char *signature, const char *mask) const
     return nullptr;
 }
 
-bool Module::isMatch(const DWORD* data, const char* signature, const char* mask) const
+bool Module::isMatch(const byte* data, const char* signature, const char* mask) const
 {
     for(size_t i = 0; i < strlen(mask); i++)
     {
-        if (mask[i] == 'x' && data[i] != static_cast<DWORD>(signature[i]))
+        if (mask[i] == 'x' && data[i] != static_cast<byte>(signature[i]))
         {
             return false;
         }
@@ -48,6 +48,6 @@ void Module::initialize()
         throw "Can't get module handle information";
     }
 
-    _base = reinterpret_cast<DWORD>(moduleInfo.lpBaseOfDll);
+    _base = reinterpret_cast<unsigned int>(moduleInfo.lpBaseOfDll);
     _size = moduleInfo.SizeOfImage;
 }

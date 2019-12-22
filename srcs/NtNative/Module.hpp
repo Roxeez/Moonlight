@@ -17,10 +17,10 @@ public:
     void initialize();
 
 private:
-    DWORD _base;
-    DWORD _size;
-    DWORD* find(const char* signature, const char* mask) const;
-    bool isMatch(const DWORD* data, const char* signature, const char* mask) const;
+    unsigned int _base;
+    unsigned int _size;
+    byte* find(const char* signature, const char* mask) const;
+    bool isMatch(const byte* data, const char* signature, const char* mask) const;
 };
 
 

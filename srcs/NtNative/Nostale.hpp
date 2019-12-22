@@ -7,21 +7,15 @@
 
 #include "Module.hpp"
 #include "Network.hpp"
+#include "Character.hpp"
 
 class Nostale {
 public:
-    Network network();
+    Character character();
     void initialize();
-    void walk(short x, short y);
 private:
     Module _module;
-    Network _network;
-
-    DWORD _walkObject;
-    DWORD _walkFunction;
-
-    static void onNetworkPacketReceived();
-    static void onNetworkPacketSend();
+    Character _character;
 };
 
 #endif //NTCORE_NOSTALE_HPP

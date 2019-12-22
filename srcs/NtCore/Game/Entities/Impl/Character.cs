@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using NtCore.Clients;
@@ -8,6 +8,7 @@ using NtCore.Game.Battle;
 using NtCore.Game.Inventories;
 using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
+using NtCore.Import;
 
 namespace NtCore.Game.Entities.Impl
 {
@@ -110,41 +111,10 @@ namespace NtCore.Game.Entities.Impl
 
         public async Task<bool> Move(Position destination)
         {
-            if (!Map.IsWalkable(destination))
+            await Client.SendPacket($"walk {Position.X} {Position.Y} 0 {Speed}");
+            if (Client.IsLocal())
             {
-                return false;
-            }
-
-            bool positiveX = destination.X > Position.X;
-            bool positiveY = destination.Y > Position.Y;
-
-            while (!Position.Equals(destination))
-            {
-                var position = new Position(Position.X, Position.Y);
-
-                int distanceX = position.GetDistanceX(destination);
-                int distanceY = position.GetDistanceY(destination);
-                
-                int stepX = distanceX >= 5 ? 5 : distanceX;
-                int stepY = distanceY >= 5 ? 5 : distanceY;
-                
-                position.X = (short)((positiveX ? 1 : -1) * stepX + position.X);
-                position.Y = (short)((positiveY ? 1 : -1) * stepY + position.Y);
-
-                if (!Map.IsWalkable(position))
-                {
-                    return false;
-                }
-                
-                await Client.SendPacket($"walk {Position.X} {Position.Y} 0 {Speed}");
-                if (Client.IsLocal())
-                {
-                    await Client.SendPacket($"tp {(byte)EntityType} {Id} {position.X} {position.Y} 0");
-                }
-
-                await Task.Delay((stepX + stepY) * (1000 / Speed));
-                
-                Position = position;
+                NtNative.Walk(destination.X, destination.Y);
             }
 
             return true;

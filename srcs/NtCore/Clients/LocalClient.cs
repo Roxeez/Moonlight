@@ -34,10 +34,10 @@ namespace NtCore.Clients
             _sendCallback = OnPacketSend;
             _recvCallback = OnPacketReceived;
 
+            NtNative.Initialize();
+
             NtNative.SetSendCallback(_sendCallback);
             NtNative.SetRecvCallback(_recvCallback);
-
-            NtNative.Initialize();
 
             _thread = new Thread(Loop);
             _thread.Start();
