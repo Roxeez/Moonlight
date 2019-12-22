@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+using JetBrains.Annotations;
 using NtCore.Clients;
 
 namespace NtCore.Commands
@@ -26,6 +26,6 @@ namespace NtCore.Commands
         /// <param name="client">Client who used this command</param>
         /// <param name="command">Command to execute</param>
         /// <param name="args">Command arguments</param>
-        void ExecuteCommand([NotNull] IClient client, [NotNull] string command, [NotNull] string[] args);
+        bool ExecuteCommand([NotNull] IClient client, [NotNull] string command, [NotNull] string[] args);
     }
 }

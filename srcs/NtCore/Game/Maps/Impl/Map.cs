@@ -32,8 +32,8 @@ namespace NtCore.Game.Maps.Impl
         {
             Id = id;
             Data = data;
-            // Width = BitConverter.ToInt16(Data.Take(2).ToArray(), 0);
-            // Height = BitConverter.ToInt16(Data.Skip(2).Take(2).ToArray(), 0);
+            Height = BitConverter.ToInt16(Data.Take(2).ToArray(), 0);
+            Width = BitConverter.ToInt16(Data.Skip(2).Take(2).ToArray(), 0);
             
             _monsters = new Dictionary<int, IMonster>();
             _npcs = new Dictionary<int, INpc>();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -12,7 +12,7 @@ namespace NtCore.Network
 {
     public interface IPacketManager
     {
-        void Handle(IClient client, string packet, PacketType packetType);
+        bool Handle(IClient client, string packet, PacketType packetType);
 
         void Register(IPacketHandler packetHandler);
     }
@@ -34,28 +34,27 @@ namespace NtCore.Network
             _commandManager = commandManager;
         }
 
-        public void Handle(IClient client, string packet, PacketType packetType)
+        public bool Handle(IClient client, string packet, PacketType packetType)
         {
             string[] arguments = packet.Trim().Split(' ');
             string header = arguments.Length > 0 ? arguments[0] : packet;
 
             if (packetType == PacketType.Send && header[0] == '$')
             {
-                _commandManager.ExecuteCommand(client, header.Substring(1), arguments.Skip(1).ToArray());
-                return;
+                return _commandManager.ExecuteCommand(client, header.Substring(1), arguments.Skip(1).ToArray());
             }
 
             IPacketHandler packetHandler = _packetHandlers.GetValueOrDefault((header, packetType));
             if (packetHandler == null)
             {
-                return;
+                return true;
             }
 
             PacketCreator packetCreator = _packetCreators.GetValueOrDefault((header, packetType));
             if (packetCreator == null)
             {
                 _logger.Debug($"No packet creator found for packet {header}");
-                return;
+                return true;
             }
 
             IPacket p = packetCreator();
@@ -64,10 +63,11 @@ namespace NtCore.Network
             if (!deserialized)
             {
                 _logger.Debug($"Failed to deserialize packet {header}");
-                return;
+                return true;
             }
 
             packetHandler.Handle(client, p);
+            return true;
         }
 
         public void Register(IPacketHandler packetHandler)

@@ -110,7 +110,7 @@ namespace NtCore.Game.Entities.Impl
 
         public async Task<bool> Move(Position destination)
         {
-            if (Map.IsWalkable(destination))
+            if (!Map.IsWalkable(destination))
             {
                 return false;
             }

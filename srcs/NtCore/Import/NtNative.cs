@@ -1,26 +1,30 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace NtCore.Import
 {
     internal static class NtNative
     {
-        public delegate void PacketCallback(string packet);
+        public delegate bool PacketCallback(string packet);
 
         private const string LibraryName = "NtNative.dll";
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(LibraryName, EntryPoint = "setRecvCallback", CallingConvention = CallingConvention.StdCall)]
         public static extern void SetRecvCallback(PacketCallback callback);
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(LibraryName, EntryPoint = "setSendCallback", CallingConvention = CallingConvention.StdCall)]
         public static extern void SetSendCallback(PacketCallback callback);
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention.StdCall)]
-        public static extern void Setup(uint moduleBase, uint moduleSize);
+        [DllImport(LibraryName, EntryPoint = "initialize", CallingConvention = CallingConvention.StdCall)]
+        public static extern void Initialize();
 
-        [DllImport(LibraryName, EntryPoint = "SendPacket", CallingConvention = CallingConvention.StdCall)]
+        [DllImport(LibraryName, EntryPoint = "clean", CallingConvention = CallingConvention.StdCall)]
+        public static extern void Clean();
+
+        [DllImport(LibraryName, EntryPoint = "sendPacket", CallingConvention = CallingConvention.StdCall)]
         public static extern void SendPacket(string packet);
 
-        [DllImport(LibraryName, EntryPoint = "RecvPacket", CallingConvention = CallingConvention.StdCall)]
+        [DllImport(LibraryName, EntryPoint = "recvPacket", CallingConvention = CallingConvention.StdCall)]
         public static extern void RecvPacket(string packet);
     }
 }

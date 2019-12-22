@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using NtCore.Clients;
@@ -59,14 +59,14 @@ namespace NtCore.Commands
             RegisterCommandHandler(obj);
         }
 
-        public void ExecuteCommand(IClient client, string command, string[] args)
+        public bool ExecuteCommand(IClient client, string command, string[] args)
         {
             (ICommandHandler, MethodInfo) handler = _registeredCommands.GetValueOrDefault(command);
 
             if (handler == default((ICommandHandler, MethodInfo)))
             {
                 client.Character.ReceiveChatMessage($"There is no command : {command}", ChatMessageColor.RED);
-                return;
+                return true;
             }
 
             ICommandHandler commandHandler = handler.Item1;
@@ -78,10 +78,10 @@ namespace NtCore.Commands
             {
                 case 1:
                     method.Invoke(commandHandler, new object[] { client.Character });
-                    return;
+                    return false;
                 case 2:
                     method.Invoke(commandHandler, new object[] { client.Character, args });
-                    break;
+                    return false;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

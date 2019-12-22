@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
@@ -25,7 +25,7 @@ namespace NtCore.Clients
         private readonly Thread _thread;
         private bool _dispose;
 
-        public LocalClient(ProcessModule mainModule)
+        public LocalClient()
         {
             Id = Guid.NewGuid();
             Character = new Character(this);
@@ -37,7 +37,7 @@ namespace NtCore.Clients
             NtNative.SetSendCallback(_sendCallback);
             NtNative.SetRecvCallback(_recvCallback);
 
-            NtNative.Setup((uint)mainModule.BaseAddress, (uint)mainModule.ModuleMemorySize);
+            NtNative.Initialize();
 
             _thread = new Thread(Loop);
             _thread.Start();
@@ -65,8 +65,8 @@ namespace NtCore.Clients
             _thread.Join();
         }
 
-        public event Action<string> PacketSend;
-        public event Action<string> PacketReceived;
+        public event Func<string, bool> PacketSend;
+        public event Func<string, bool> PacketReceived;
 
         private void Loop()
         {
@@ -86,14 +86,22 @@ namespace NtCore.Clients
             }
         }
 
-        private void OnPacketSend(string packet)
+        private bool OnPacketSend(string packet)
         {
-            PacketSend?.Invoke(packet);
+            if (PacketSend == null)
+            {
+                return true;
+            }
+            return PacketSend.Invoke(packet);
         }
 
-        private void OnPacketReceived(string packet)
+        private bool OnPacketReceived(string packet)
         {
-            PacketReceived?.Invoke(packet);
+            if (PacketReceived == null)
+            {
+                return true;
+            }
+            return PacketReceived.Invoke(packet);
         }
 
         public bool Equals(IClient other) => other != null && other.Id.Equals(Id);

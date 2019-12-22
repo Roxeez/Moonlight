@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using NtCore.Network;
@@ -19,13 +19,7 @@ namespace NtCore.Clients
                 return LocalClient;
             }
 
-            Process process = Process.GetCurrentProcess();
-            if (process.MainModule == null)
-            {
-                throw new InvalidOperationException("Process module can't be null");
-            }
-
-            var localClient = new LocalClient(process.MainModule);
+            var localClient = new LocalClient();
 
             localClient.PacketReceived += packet => _packetManager.Handle(localClient, packet, PacketType.Recv);
             localClient.PacketSend += packet => _packetManager.Handle(localClient, packet, PacketType.Send);
