@@ -56,6 +56,9 @@
     <ClInclude Include="NtString.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PatternScanner.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

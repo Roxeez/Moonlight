@@ -5,16 +5,13 @@
 #ifndef NTCORE_CHARACTER_HPP
 #define NTCORE_CHARACTER_HPP
 
-#include "Module.hpp"
+#include <Windows.h>
 
 class Character
 {
 public:
-    void initialize(Module module);
+    void initialize();
     void walk(short x, short y);
-private:
-    DWORD _walkObject;
-    DWORD _walkFunction;
 };
 
 #endif //NTCORE_CHARACTER_HPP
