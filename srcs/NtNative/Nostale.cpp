@@ -8,7 +8,7 @@
 void Nostale::initialize()
 {
     _module.initialize();
-    _character.initialize();
+    _character.initialize(_module);
 
     Network::instance()->initialize(_module);
 }

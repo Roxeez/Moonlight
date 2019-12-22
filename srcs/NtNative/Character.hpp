@@ -6,11 +6,12 @@
 #define NTCORE_CHARACTER_HPP
 
 #include <Windows.h>
+#include "Module.hpp"
 
 class Character
 {
 public:
-    void initialize();
+    void initialize(Module module);
     void walk(short x, short y);
 };
 

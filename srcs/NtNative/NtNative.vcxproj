@@ -174,7 +174,6 @@
     <ClInclude Include="Nostale.hpp" />
     <ClInclude Include="NtString.hpp" />
     <ClInclude Include="PacketType.hpp" />
-    <ClInclude Include="PatternScanner.hpp" />
     <ClInclude Include="Types.hpp" />
   </ItemGroup>
   <ItemGroup>
