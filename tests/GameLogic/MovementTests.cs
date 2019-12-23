@@ -20,7 +20,9 @@ namespace NtCore.Tests.GameLogic
         public MovementTests()
         {
             var mock = new Mock<IClient>();
-            
+
+            mock.SetupGet(x => x.Type).Returns(Enums.ClientType.REMOTE); // Avoid error with NtNative
+
             mock.SetupGet(x => x.Character).Returns(new Character(mock.Object)
             {
                 Speed = 10
@@ -38,16 +40,9 @@ namespace NtCore.Tests.GameLogic
             character.As<Character>().Position = new Position(0, 0);
             
             map.AddEntity(character);
-
-            short y = BitConverter.ToInt16(character.Map.Data.Take(2).ToArray(), 0);
-            short x = BitConverter.ToInt16(character.Map.Data.Skip(2).Take(2).ToArray(), 0);
             
-            Trace.WriteLine(y);
-            Trace.WriteLine(x);
+            await character.Move(new Position(2, 3));
             
-            bool moved = await character.Move(new Position(2, 3));
-            
-            Check.That(moved).IsTrue();
             Check.That(character.Position).IsEqualTo(new Position(2, 3));
         }
 

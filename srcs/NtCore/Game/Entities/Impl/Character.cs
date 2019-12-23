@@ -109,13 +109,19 @@ namespace NtCore.Game.Entities.Impl
             await Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
         }
 
-        public async Task<bool> Move(Position destination)
+        public async Task Move(Position destination)
         {
             if (!Map.IsWalkable(destination))
             {
-                return false;
+                return;
             }
-
+            
+            if (Client.IsLocal())
+            {
+                NtNative.Walk(destination.X, destination.Y);
+                return;
+            }
+            
             bool positiveX = destination.X > Position.X;
             bool positiveY = destination.Y > Position.Y;
 
@@ -134,20 +140,14 @@ namespace NtCore.Game.Entities.Impl
 
                 if (!Map.IsWalkable(position))
                 {
-                    return false;
+                    return;
                 }
-                
+            
                 await Client.SendPacket($"walk {position.X} {position.Y} {((position.X + position.Y) % 3) % 2} {Speed}");
-                if (Client.IsLocal())
-                {
-                    // NtNative.Walk(position.X, position.Y);
-                }
 
                 await Task.Delay((stepX + stepY) * (1000 / Speed));
                 Position = position;
             }
-
-            return true;
         }
 
         public async Task SendFriendRequest(IPlayer player)

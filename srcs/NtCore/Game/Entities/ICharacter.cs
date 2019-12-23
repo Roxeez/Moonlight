@@ -109,7 +109,7 @@ namespace NtCore.Game.Entities
         ///     Make your character move
         /// </summary>
         /// <param name="position">Position where you want to move</param>
-        Task<bool> Move(Position position);
+        Task Move(Position position);
 
         /// <summary>
         /// Send a friend request to selected player
