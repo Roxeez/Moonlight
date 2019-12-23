@@ -26,7 +26,8 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 > <sub><sup>Since NtCore use only packets (no memory reading) for compatibility with local & remote client, your dll need to be injected BEFORE selecting your character</sub></sup>
 
 ## Example
-> This example code will make character follow a target, full example is available [HERE](https://github.com/Roxeez/NtCore.Example)
+> This example code will make character move to dropped item when they spawn & pick up them.  
+You can find a full example [HERE](https://github.com/Roxeez/NtCore.Example)
 ```csharp
 public class MyApplication
 {
