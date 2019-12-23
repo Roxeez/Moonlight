@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.Clients;
@@ -56,12 +56,8 @@ namespace NtCore
 
                 services.AddSingleton(typeof(IPacketHandler), type);
             }
-            
-            var skillInfos = Resource.LoadJson<Dictionary<int, SkillInfo>>("Skill.json");
-            var monsterInfos = Resource.LoadJson<Dictionary<int, MonsterInfo>>("monster.json");
-            var itemInfos = Resource.LoadJson<Dictionary<int, ItemInfo>>("Item.json");
 
-            services.AddSingleton<IRegistry>(new GameRegistry(skillInfos, monsterInfos, itemInfos));
+            services.AddSingleton<IRegistry, GameRegistry>();
             services.AddSingleton<ILanguageService, LanguageService>();
 
             ServiceProvider core = services.BuildServiceProvider();
@@ -75,6 +71,7 @@ namespace NtCore
             ClientManager = core.GetService<IClientManager>();
             LanguageService = core.GetService<ILanguageService>();
 
+            Registry.Load();
             LanguageService.Load("uk");
             
             foreach (IPacketHandler packetHandler in core.GetServices<IPacketHandler>())

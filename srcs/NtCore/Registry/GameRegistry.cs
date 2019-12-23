@@ -1,22 +1,17 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using NtCore.Extensions;
+using NtCore.Resources;
 
 namespace NtCore.Registry
 {
     public class GameRegistry : IRegistry
     {
-        private readonly Dictionary<int, SkillInfo> _skillInfos;
-        private readonly Dictionary<int, MonsterInfo> _monsterInfos;
-        private readonly Dictionary<int, ItemInfo> _itemInfos;
-        private readonly Dictionary<int, MapInfo> _mapInfos;
+        private Dictionary<int, SkillInfo> _skillInfos;
+        private Dictionary<int, MonsterInfo> _monsterInfos;
+        private Dictionary<int, ItemInfo> _itemInfos;
+        private Dictionary<int, MapInfo> _mapInfos;
 
-        public GameRegistry(Dictionary<int, SkillInfo> skillInfos, Dictionary<int, MonsterInfo> monsterInfos, Dictionary<int, ItemInfo> itemInfos)
-        {
-            _skillInfos = skillInfos;
-            _monsterInfos = monsterInfos;
-            _itemInfos = itemInfos;
-        }
 
         public SkillInfo GetSkillInfo(int skillVnum)
         {
@@ -34,5 +29,13 @@ namespace NtCore.Registry
         }
 
         public MapInfo GetMapInfo(int mapId) => null;
+
+        public void Load()
+        {
+            _skillInfos = Resource.LoadJson<Dictionary<int, SkillInfo>>("Skill.json");
+            _monsterInfos = Resource.LoadJson<Dictionary<int, MonsterInfo>>("monster.json");
+            _itemInfos = Resource.LoadJson<Dictionary<int, ItemInfo>>("Item.json");
+            _mapInfos = Resource.LoadJson<Dictionary<int, MapInfo>>("MapIDData.json");
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+using JetBrains.Annotations;
 
 namespace NtCore.Registry
 {
@@ -30,5 +30,7 @@ namespace NtCore.Registry
 
         [CanBeNull]
         MapInfo GetMapInfo(int mapId);
+
+        void Load();
     }
 }

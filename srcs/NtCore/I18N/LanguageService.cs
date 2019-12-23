@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using NtCore.Extensions;
 using NtCore.Resources;
 
@@ -16,7 +16,8 @@ namespace NtCore.I18N
             {
                 [LanguageKey.SKILL] = Resource.LoadJson<Dictionary<string, string>>($"lang._code_{languageKey}_Skill.json"),
                 [LanguageKey.ITEM] = Resource.LoadJson<Dictionary<string, string>>($"lang._code_{languageKey}_Item.json"),
-                [LanguageKey.MONSTER] = Resource.LoadJson<Dictionary<string, string>>($"lang._code_{languageKey}_monster.json")
+                [LanguageKey.MONSTER] = Resource.LoadJson<Dictionary<string, string>>($"lang._code_{languageKey}_monster.json"),
+                [LanguageKey.MAP] = Resource.LoadJson<Dictionary<string, string>>($"lang._code_{languageKey}_MapIDData.json")
             };
         }
     }

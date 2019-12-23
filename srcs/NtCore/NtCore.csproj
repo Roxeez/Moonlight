@@ -850,6 +850,8 @@
     <EmbeddedResource Include="Resources\maps\9995" />
     <EmbeddedResource Include="Resources\maps\9998" />
     <EmbeddedResource Include="Resources\maps\9999" />
+    <EmbeddedResource Include="Resources\MapIDData.json" />
+    <EmbeddedResource Include="Resources\lang\_code_uk_MapIDData.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Item.json" />
