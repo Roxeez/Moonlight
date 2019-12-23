@@ -69,6 +69,8 @@ namespace NtCore.Game.Entities
         /// </summary>
         int MaxMp { get; }
 
+        IParty Party { get; }
+        
         /// <summary>
         /// Contains all character skills
         /// </summary>

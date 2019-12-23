@@ -29,6 +29,7 @@ namespace NtCore.Game.Entities.Impl
         public int MaxHp { get; set; }
         public int Mp { get; set; }
         public int MaxMp { get; set; }
+        public IParty Party { get; set; }
         public byte JobLevel { get; set; }
         public int SpPoints { get; set; }
         public int AdditionalSpPoints { get; set; }
@@ -101,7 +102,7 @@ namespace NtCore.Game.Entities.Impl
                 return;
             }
 
-            if (!drop.Position.IsInArea(Position, 1))
+            if (!drop.Position.IsInArea(Position, 2))
             {
                 return;
             }
@@ -115,13 +116,7 @@ namespace NtCore.Game.Entities.Impl
             {
                 return;
             }
-            
-            if (Client.IsLocal())
-            {
-                NtNative.Walk(destination.X, destination.Y);
-                return;
-            }
-            
+
             bool positiveX = destination.X > Position.X;
             bool positiveY = destination.Y > Position.Y;
 
@@ -142,8 +137,15 @@ namespace NtCore.Game.Entities.Impl
                 {
                     return;
                 }
-            
-                await Client.SendPacket($"walk {position.X} {position.Y} {((position.X + position.Y) % 3) % 2} {Speed}");
+
+                if (Client.IsLocal())
+                {
+                    NtNative.Walk(position.X, position.Y);
+                }
+                else
+                {
+                    await Client.SendPacket($"walk {position.X} {position.Y} {((position.X + position.Y) % 3) % 2} {Speed}");
+                }
 
                 await Task.Delay((stepX + stepY) * (1000 / Speed));
                 Position = position;
