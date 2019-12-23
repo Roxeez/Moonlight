@@ -196,5 +196,33 @@ namespace NtCore.Tests.PacketHandling
             Check.That(character.Equipment.Fairy.Element).IsEqualTo(Element.WATER);
             Check.That(character.Equipment.Fairy.Power).IsEqualTo(41);
         }
+
+        [Fact]
+        public void At_Packet_Change_Position()
+        {
+            Map map = new MapBuilder().WithId(1).Create();
+            ICharacter character = _client.Character;
+            
+            map.AddEntity(character);
+            
+            _client.ReceivePacket($"at {CharacterId} 1 5 8 2 0 80 6 -1");
+
+            Check.That(character.Position).IsEqualTo(new Position(5, 8));
+        }
+
+        [Fact]
+        public void PInit_Set_Character_Party()
+        {
+            Map map = new MapBuilder().WithId(1).WithNpcs(55, 66).WithPlayers(77).Create();
+            ICharacter character = _client.Character;
+            
+            map.AddEntity(character);
+
+            _client.ReceivePacket($"pinit 4 2|55|0|6|Léona|1|822|1 2|66|1|41|Fenrir|1|843|0 1|{CharacterId}|2|50|Roxeez|1|0|2|0|0 1|77|3|3|Testastos|1|1|0|0|0");
+
+            Check.That(character.Party).IsNotNull();
+            Check.That(character.Party.Members).CountIs(4);
+            Check.That(character.Party.Owner).IsEqualTo(character);
+        }
     }
 }

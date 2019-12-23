@@ -4,6 +4,7 @@ using NtCore.Enums;
 
 namespace NtCore.Network.Packets.Relation
 {
+    [PacketInfo("pinit", PacketType.Recv)]
     public class PInitPacket : Packet
     {
         public List<PartyMemberInfo> PartyMemberInfos { get; } = new List<PartyMemberInfo>();
