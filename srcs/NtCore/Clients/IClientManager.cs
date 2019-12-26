@@ -22,7 +22,12 @@ namespace NtCore.Clients
         [NotNull]
         IClient CreateLocalClient();
 
+        /// <summary>
+        /// Create a remote client
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         [NotNull]
-        IClient CreateRemoteClient();
+        IClient CreateRemoteClient(RemoteClientInfo info);
     }
 }

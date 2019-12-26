@@ -21,9 +21,9 @@ namespace NtCore.Clients
         private readonly NtNative.PacketCallback _recvCallback;
 
         private readonly ConcurrentQueue<string> _sendQueue = new ConcurrentQueue<string>();
-
-        private readonly Thread _thread;
+        
         private bool _dispose;
+        private readonly Task _loop;
 
         public LocalClient()
         {
@@ -39,8 +39,7 @@ namespace NtCore.Clients
             NtNative.SetSendCallback(_sendCallback);
             NtNative.SetRecvCallback(_recvCallback);
 
-            _thread = new Thread(Loop);
-            _thread.Start();
+            _loop = Task.Run(Loop);
         }
 
         public Guid Id { get; }
@@ -59,10 +58,13 @@ namespace NtCore.Clients
             return Task.CompletedTask;
         }
 
-        public void Dispose()
+        public async void Dispose()
         {
             _dispose = true;
-            _thread.Join();
+            if (_loop != null && _loop.IsCompleted)
+            {
+                await _loop;
+            }
         }
 
         public event Func<string, bool> PacketSend;

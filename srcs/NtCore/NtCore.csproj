@@ -105,10 +105,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\ClientInfo.cs" />
     <Compile Include="Clients\ClientManager.cs" />
+    <Compile Include="Clients\Cryptography\ICryptography.cs" />
+    <Compile Include="Clients\Cryptography\LoginEncryption.cs" />
+    <Compile Include="Clients\Cryptography\WorldEncryption.cs" />
     <Compile Include="Clients\IClient.cs" />
     <Compile Include="Clients\IClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
+    <Compile Include="Clients\NetworkClient.cs" />
+    <Compile Include="Clients\RemoteClient.cs" />
+    <Compile Include="Clients\RemoteClientCreator.cs" />
+    <Compile Include="Clients\RemoteClientInfo.cs" />
     <Compile Include="Commands\CommandAttribute.cs" />
     <Compile Include="Commands\CommandManager.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
