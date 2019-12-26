@@ -31,7 +31,7 @@ namespace NtCore.Clients
             _loop = Task.Run(Loop);
         }
 
-        private void Loop()
+        private async void Loop()
         {
             while (!_dispose)
             {
@@ -40,10 +40,8 @@ namespace NtCore.Clients
                     Thread.Sleep(100);
                     continue;
                 }
-                var buffer = new byte[_socket.ReceiveBufferSize];
-                int size = _socket.Receive(buffer, SocketFlags.None);
 
-                IEnumerable<string> packets = _cryptography.Decrypt(buffer, size);
+                IEnumerable<string> packets = await ReceivePackets();
                 foreach (string packet in packets)
                 {
                     PacketReceived?.Invoke(packet);
