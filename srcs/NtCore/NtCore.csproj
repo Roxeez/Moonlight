@@ -112,6 +112,9 @@
     <Compile Include="Clients\IClient.cs" />
     <Compile Include="Clients\IClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
+    <Compile Include="Clients\RemoteClient.cs" />
+    <Compile Include="Clients\Remote\INetworkClient.cs" />
+    <Compile Include="Clients\Remote\NetworkClient.cs" />
     <Compile Include="Commands\CommandAttribute.cs" />
     <Compile Include="Commands\CommandManager.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
