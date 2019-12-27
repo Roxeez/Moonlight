@@ -32,7 +32,13 @@ namespace NtCore.Clients.Remote
             var buffer = new byte[_socket.ReceiveBufferSize];
             int size = await _socket.ReceiveAsync(new ArraySegment<byte>(buffer), SocketFlags.None);
 
-            return _cryptography.Decrypt(buffer, size);
+            IEnumerable<string> packets = _cryptography.Decrypt(buffer, size);
+            foreach (string packet in packets)
+            {
+                PacketReceived?.Invoke(packet);
+            }
+
+            return packets;
         }
 
         public async Task SendPacket(string packet, bool session = false)
