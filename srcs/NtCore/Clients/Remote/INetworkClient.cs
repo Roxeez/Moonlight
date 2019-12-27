@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace NtCore.Clients.Remote
@@ -10,5 +11,7 @@ namespace NtCore.Clients.Remote
 
         Task<IEnumerable<string>> ReceivePackets();
         Task SendPacket(string packet, bool session = false);
+        Task Connect(IPEndPoint ip);
+        void Disconnect();
     }
 }

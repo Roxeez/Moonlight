@@ -10,14 +10,12 @@ namespace NtCore.Clients.Remote
     public class NetworkClient : INetworkClient
     {
         public event Action<string> PacketReceived;
-
-        private readonly IPEndPoint _ip;
+        
         private readonly Socket _socket;
         private readonly ICryptography _cryptography;
         
-        public NetworkClient(IPEndPoint ip, ICryptography cryptography)
+        public NetworkClient(ICryptography cryptography)
         {
-            _ip = ip;
             _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _cryptography = cryptography;
         }
@@ -41,15 +39,21 @@ namespace NtCore.Clients.Remote
             return packets;
         }
 
+        public async Task Connect(IPEndPoint ip)
+        {
+            await _socket.ConnectAsync(ip);
+        }
+
+        public void Disconnect()
+        {
+            _socket.Disconnect(true);
+        }
+
         public async Task SendPacket(string packet, bool session = false)
         {
             if (!_socket.Connected)
             {
-                await _socket.ConnectAsync(_ip);
-                if (!_socket.Connected)
-                {
-                    throw new InvalidOperationException("Can't send if socket is not connected");
-                }
+                throw new InvalidOperationException("Can't send if socket is not connected");
             }
 
             byte[] encrypted = _cryptography.Encrypt(packet, session);
@@ -58,6 +62,8 @@ namespace NtCore.Clients.Remote
         
         public void Dispose()
         {
+            Disconnect();
+            
             _socket.Dispose();
         }
     }
