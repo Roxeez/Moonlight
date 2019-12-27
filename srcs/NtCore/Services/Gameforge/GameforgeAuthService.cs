@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -26,7 +27,7 @@ namespace NtCore.Services.Gameforge
             _serializer = serializer;
         }
 
-        public async Task<GameforgeAccount> GetAccount(string username, string password, Language language)
+        public async Task<GameforgeAccount> Connect(string username, string password, Language language)
         {
             string serialized = _serializer.Serialize(new AuthForm
             {
@@ -39,7 +40,6 @@ namespace NtCore.Services.Gameforge
 
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/sessions"))
             {
-                request.Headers.Add("User-Agent", USER_AGENT);
                 request.Content = new StringContent(serialized, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
@@ -47,8 +47,9 @@ namespace NtCore.Services.Gameforge
                 response.EnsureSuccessStatusCode();
 
                 string content = await response.Content.ReadAsStringAsync();
+                var account = _serializer.Deserialize<GameforgeAccount>(content);
 
-                return _serializer.Deserialize<GameforgeAccount>(content);
+                return account;
             }
         }
 
