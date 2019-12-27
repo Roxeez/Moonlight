@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using NtCore.Clients;
 using NtCore.Commands;
@@ -11,8 +10,9 @@ using NtCore.I18N;
 using NtCore.Logger;
 using NtCore.Network;
 using NtCore.Registry;
-using NtCore.Resources;
 using NtCore.Scheduler;
+using NtCore.Serialization;
+using NtCore.Services.Gameforge;
 
 namespace NtCore
 {
@@ -41,6 +41,8 @@ namespace NtCore
             services.AddSingleton<IEntityFactory, EntityFactory>();
             services.AddSingleton<ISkillFactory, SkillFactory>();
             services.AddSingleton<IMapManager, MapManager>();
+            services.AddSingleton<ISerializer, JsonSerializer>();
+            services.AddSingleton<IGameforgeAuthService, GameforgeAuthService>();
 
             foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())
             {

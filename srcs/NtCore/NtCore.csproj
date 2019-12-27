@@ -113,11 +113,6 @@
     <Compile Include="Clients\IClient.cs" />
     <Compile Include="Clients\IClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
-    <Compile Include="Clients\NetworkClient.cs" />
-    <Compile Include="Clients\Remote\Account.cs" />
-    <Compile Include="Clients\Remote\GameforgeAuth.cs" />
-    <Compile Include="Clients\Remote\IGameforgeAuth.cs" />
-    <Compile Include="Clients\Remote\Language.cs" />
     <Compile Include="Commands\CommandAttribute.cs" />
     <Compile Include="Commands\CommandManager.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
@@ -272,6 +267,14 @@
     <Compile Include="Resources\Resource.cs" />
     <Compile Include="Scheduler\IScheduler.cs" />
     <Compile Include="Scheduler\ObservableScheduler.cs" />
+    <Compile Include="Serialization\ISerializer.cs" />
+    <Compile Include="Serialization\JsonSerializer.cs" />
+    <Compile Include="Services\Gameforge\Forms\AuthForm.cs" />
+    <Compile Include="Services\Gameforge\Forms\SessionForm.cs" />
+    <Compile Include="Services\Gameforge\GameforgeAccount.cs" />
+    <Compile Include="Services\Gameforge\GameforgeAuthService.cs" />
+    <Compile Include="Services\Gameforge\IGameforgeAuthService.cs" />
+    <Compile Include="Services\Gameforge\Language.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

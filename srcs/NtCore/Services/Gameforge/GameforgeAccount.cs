@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace NtCore.Clients.Remote
+namespace NtCore.Services.Gameforge
 {
-    public class Account
+    public class GameforgeAccount
     {
         [JsonProperty(PropertyName = "token")]
         public string Token { get; set; }
         
         [JsonProperty(PropertyName = "platformGameAccountId")]
-        public string PlatformAccountId { get; set; }
+        public string PlatformGameAccountId { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace NtCore.Clients.Remote
+﻿namespace NtCore.Services.Gameforge
 {
     public class Language
     {
@@ -7,7 +7,7 @@
         public string Name { get; }
         public string Locale { get; }
         
-        private Language(string name, string locale)
+        public Language(string name, string locale)
         {
             Name = name;
             Locale = locale;
