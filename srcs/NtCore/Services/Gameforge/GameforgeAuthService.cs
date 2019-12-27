@@ -80,7 +80,9 @@ namespace NtCore.Services.Gameforge
                 string content = await response.Content.ReadAsStringAsync();
                 var jsonContent = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
 
-                return jsonContent.GetValueOrDefault("code");
+                string token = jsonContent.GetValueOrDefault("code");
+                
+                return token == null ? string.Empty : token.ToHex();
             }
         }
     }

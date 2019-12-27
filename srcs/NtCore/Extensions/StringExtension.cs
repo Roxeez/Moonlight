@@ -4,7 +4,7 @@ namespace NtCore.Extensions
 {
     public static class StringExtension
     {
-        public static string ToHex(string value)
+        public static string ToHex(this string value)
         {
             var sb = new StringBuilder();
 

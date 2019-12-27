@@ -4,7 +4,7 @@
     {
         public static readonly Language FR = new Language("fr", "fr_FR");
 
-        public Language(string name, string locale)
+        private Language(string name, string locale)
         {
             Name = name;
             Locale = locale;
