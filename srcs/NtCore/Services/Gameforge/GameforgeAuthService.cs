@@ -66,19 +66,19 @@ namespace NtCore.Services.Gameforge
                 request.Headers.Add("TNT-Installation-Id", installationId.ToString());
                 request.Headers.Add("User-Agent", USER_AGENT);
 
-                var form = new SessionForm
+                string json = _serializer.Serialize(new SessionForm
                 {
                     PlatformGameAccountId = account.PlatformGameAccountId
-                };
+                });
 
-                request.Content = new StringContent(JsonConvert.SerializeObject(form), Encoding.UTF8, "application/json");
+                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
 
                 response.EnsureSuccessStatusCode();
 
                 string content = await response.Content.ReadAsStringAsync();
-                var jsonContent = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+                var jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
 
                 string token = jsonContent.GetValueOrDefault("code");
                 
