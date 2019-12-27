@@ -10,6 +10,7 @@ namespace NtCore.Clients
     public interface IClientManager
     {
         IClient LocalClient { get; }
+        
         /// <summary>
         ///     Contains all existing clients
         /// </summary>
@@ -21,13 +22,8 @@ namespace NtCore.Clients
         /// <returns>Current LocalClient or new one if null</returns>
         [NotNull]
         IClient CreateLocalClient();
-
-        /// <summary>
-        /// Create a remote client
-        /// </summary>
-        /// <param name="info"></param>
-        /// <returns></returns>
+        
         [NotNull]
-        IClient CreateRemoteClient(RemoteClientInfo info);
+        IClient CreateRemoteClient();
     }
 }

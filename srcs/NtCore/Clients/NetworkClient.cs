@@ -37,8 +37,8 @@ namespace NtCore.Clients
             {
                 if (!_socket.Connected)
                 {
-                    Thread.Sleep(100);
-                    continue;
+                    Dispose();
+                    return;
                 }
 
                 IEnumerable<string> packets = await ReceivePackets();

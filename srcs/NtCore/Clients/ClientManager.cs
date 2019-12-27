@@ -31,7 +31,7 @@ namespace NtCore.Clients
             return localClient;
         }
 
-        public IClient CreateRemoteClient(RemoteClientInfo info) => throw new NotImplementedException();
+        public IClient CreateRemoteClient() => throw new NotImplementedException();
 
         public IClient LocalClient { get; private set; }
         public IEnumerable<IClient> Clients => _clients.Values;
