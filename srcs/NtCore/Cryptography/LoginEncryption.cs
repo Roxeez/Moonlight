@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NtCore.Clients.Cryptography
+namespace NtCore.Cryptography
 {
     public class LoginEncryption : ICryptography
     {

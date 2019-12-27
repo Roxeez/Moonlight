@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NtCore.Clients.Cryptography
+namespace NtCore.Cryptography
 {
     public sealed class WorldEncryption : ICryptography
     {
@@ -10,17 +10,8 @@ namespace NtCore.Clients.Cryptography
 
         private int _key { get; }
         
-        public WorldEncryption(int key)
-        {
-            _key = key;
-        }
+        public WorldEncryption(int key) => _key = key;
 
-        /// <summary>
-        ///     Decrypt the raw packet (byte array) to a readable list string
-        /// </summary>
-        /// <param name="bytes">Bytes to decrypt</param>
-        /// <param name="size">Amount of byte to read</param>
-        /// <returns>Decrypted packet to string list</returns>
         public IEnumerable<string> Decrypt(byte[] bytes, int size)
         {
             var output = new List<string>();
@@ -54,15 +45,21 @@ namespace NtCore.Clients.Cryptography
                             byte firstIndex = (byte)(((currentByte & 0xF0u) >> 4) - 1);
                             byte first = (byte)(firstIndex != 255 ? firstIndex != 14 ? Keys[firstIndex] : '\u0000' : '?');
                             if (first != 0x6E)
+                            {
                                 currentPacket += Convert.ToChar(first);
+                            }
 
                             if (length <= 1)
+                            {
                                 break;
-                        
+                            }
+
                             byte secondIndex = (byte)((currentByte & 0xF) - 1);
                             byte second = (byte)(secondIndex != 255 ? secondIndex != 14 ? Keys[secondIndex] : '\u0000' : '?');
                             if (second != 0x6E)
+                            {
                                 currentPacket += Convert.ToChar(second);
+                            }
 
                             length -= 2;
                         }
@@ -108,10 +105,15 @@ namespace NtCore.Clients.Cryptography
             {
                 sbyte b = (sbyte) c;
                 if (c == '#' || c == '/' || c == '%')
+                {
                     return '0';
-                if ((b -= 0x20) == 0 || (b += unchecked((sbyte) 0xF1)) < 0 || (b -= 0xB) < 0 ||
-                    b - unchecked((sbyte) 0xC5) == 0)
+                }
+
+                if ((b -= 0x20) == 0 || (b += unchecked((sbyte) 0xF1)) < 0 || (b -= 0xB) < 0 || (b - unchecked((sbyte) 0xC5)) == 0)
+                {
                     return '1';
+                }
+
                 return '0';
             }).ToArray());
 
@@ -124,7 +126,9 @@ namespace NtCore.Clients.Cryptography
             {
                 int lastPosition = currentPosition;
                 while (currentPosition < packetLength && mask[currentPosition] == '0')
+                {
                     currentPosition++;
+                }
 
                 int sequences;
                 int length;
@@ -135,7 +139,7 @@ namespace NtCore.Clients.Cryptography
                     sequences = length / 0x7E;
                     for (int i = 0; i < length; i++, lastPosition++)
                     {
-                        if (i == sequenceCounter * 0x7E)
+                        if (i == (sequenceCounter * 0x7E))
                         {
                             if (sequences == 0)
                             {
@@ -154,19 +158,26 @@ namespace NtCore.Clients.Cryptography
                 }
 
                 if (currentPosition >= packetLength)
+                {
                     break;
+                }
 
                 lastPosition = currentPosition;
                 while (currentPosition < packetLength && mask[currentPosition] == '1')
+                {
                     currentPosition++;
+                }
 
-                if (currentPosition == 0) continue;
+                if (currentPosition == 0)
+                {
+                    continue;
+                }
 
                 length = currentPosition - lastPosition;
                 sequences = length / 0x7E;
                 for (int i = 0; i < length; i++, lastPosition++)
                 {
-                    if (i == sequenceCounter * 0x7E)
+                    if (i == (sequenceCounter * 0x7E))
                     {
                         if (sequences == 0)
                         {
@@ -197,12 +208,19 @@ namespace NtCore.Clients.Cryptography
                             break;
                     }
 
-                    if (currentByte == 0x00) continue;
+                    if (currentByte == 0x00)
+                    {
+                        continue;
+                    }
 
-                    if (i % 2 == 0)
+                    if ((i % 2) == 0)
+                    {
                         output.Add((byte) (currentByte << 4));
+                    }
                     else
+                    {
                         output[output.Count - 1] = (byte) (output.Last() | currentByte);
+                    }
                 }
             }
 
@@ -211,34 +229,53 @@ namespace NtCore.Clients.Cryptography
             sbyte sessionNumber = (sbyte) ((_key >> 6) & 0xFF & 0x80000003);
 
             if (sessionNumber < 0)
+            {
                 sessionNumber = (sbyte) (((sessionNumber - 1) | 0xFFFFFFFC) + 1);
+            }
 
             byte sessionKey = (byte) (_key & 0xFF);
 
             if (session)
+            {
                 sessionNumber = -1;
+            }
 
             switch (sessionNumber)
             {
                 case 0:
                     for (int i = 0; i < output.Count; i++)
+                    {
                         output[i] = (byte) (output[i] + sessionKey + 0x40);
+                    }
+
                     break;
                 case 1:
                     for (int i = 0; i < output.Count; i++)
+                    {
                         output[i] = (byte) (output[i] - (sessionKey + 0x40));
+                    }
+
                     break;
                 case 2:
                     for (int i = 0; i < output.Count; i++)
+                    {
                         output[i] = (byte) ((output[i] ^ 0xC3) + sessionKey + 0x40);
+                    }
+
                     break;
                 case 3:
                     for (int i = 0; i < output.Count; i++)
+                    {
                         output[i] = (byte) ((output[i] ^ 0xC3) - (sessionKey + 0x40));
+                    }
+
                     break;
                 default:
                     for (int i = 0; i < output.Count; i++)
+                    {
                         output[i] = (byte) (output[i] + 0x0F);
+                    }
+
                     break;
             }
             
