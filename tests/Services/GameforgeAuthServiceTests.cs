@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using NFluent;
 using NtCore.Core;
 using NtCore.Serialization;
@@ -9,8 +10,8 @@ namespace NtCore.Tests.Services
 {
     public class GameforgeAuthServiceTests
     {
-        private const string Username = "roxeeztsu";
-        private const string Password = "yann59150";
+        private const string Username = "";
+        private const string Password = "";
         
         private readonly IGameforgeAuthService _gameforgeAuthService;
         
@@ -20,7 +21,7 @@ namespace NtCore.Tests.Services
         }
 
         [Fact]
-        public async void Service_Should_Return_Token()
+        public async Task Service_Should_Return_Token()
         {
             Optional<GameforgeAccount> account = await _gameforgeAuthService.Connect(Username, Password, Language.FR);
             Check.That(account.IsPresent()).IsTrue();

@@ -148,7 +148,7 @@ namespace NtCore.Game.Entities.Impl
                     await Client.SendPacket($"walk {position.X} {position.Y} {(position.X + position.Y) % 3 % 2} {Speed}");
                 }
 
-                await Task.Delay((stepX + stepY) * (1000 / Speed));
+                await Task.Delay((stepX + stepY) * (1200 / Speed)).ConfigureAwait(false);
                 Position = position;
             }
         }

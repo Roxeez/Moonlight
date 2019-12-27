@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NtCore.Enums;
 
@@ -25,7 +26,7 @@ namespace NtCore.Network.Packets.Relation
         }
     }
 
-    public struct PartyMemberInfo
+    public struct PartyMemberInfo : IEquatable<PartyMemberInfo>
     {
         public EntityType EntityType { get; }
         public int EntityId { get; }
@@ -35,5 +36,7 @@ namespace NtCore.Network.Packets.Relation
             EntityType = entityType;
             EntityId = entityId;
         }
+
+        public bool Equals(PartyMemberInfo other) => other.EntityType == EntityType && other.EntityId == EntityId;
     }
 }
