@@ -114,6 +114,7 @@
     <Compile Include="PacketHandling\MinilandPacketTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registry\RegistryTests.cs" />
+    <Compile Include="Services\GameforgeAuthServiceTests.cs" />
     <Compile Include="Utility\MapBuilder.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NtCore
+namespace NtCore.Core
 {
     /// <summary>
     ///     Represent a position on Map

@@ -1,4 +1,5 @@
-﻿using NtCore.Enums;
+﻿using NtCore.Core;
+using NtCore.Enums;
 using NtCore.Game.Maps;
 
 namespace NtCore.Game.Entities

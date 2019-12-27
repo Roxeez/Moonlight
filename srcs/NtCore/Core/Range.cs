@@ -1,4 +1,4 @@
-﻿namespace NtCore
+﻿namespace NtCore.Core
 {
     public class Range
     {

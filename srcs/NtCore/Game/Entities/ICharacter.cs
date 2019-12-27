@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Game.Battle;
 using NtCore.Game.Inventories;

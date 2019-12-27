@@ -116,6 +116,9 @@
     <Compile Include="Commands\CommandManager.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
     <Compile Include="Commands\ICommandManager.cs" />
+    <Compile Include="Core\Optional.cs" />
+    <Compile Include="Core\Position.cs" />
+    <Compile Include="Core\Range.cs" />
     <Compile Include="Cryptography\ICryptography.cs" />
     <Compile Include="Cryptography\LoginEncryption.cs" />
     <Compile Include="Cryptography\WorldEncryption.cs" />
@@ -232,7 +235,6 @@
     <Compile Include="Network\Packets\Relation\FInitPacket.cs" />
     <Compile Include="Network\Packets\Relation\PInitPacket.cs" />
     <Compile Include="NtCoreAPI.cs" />
-    <Compile Include="Position.cs" />
     <Compile Include="Network\Handlers\Maps\MlInfoBrPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\MltObjPacketHandler.cs" />
     <Compile Include="Network\Packets\Maps\MlInfoBrPacket.cs" />
@@ -260,7 +262,6 @@
     <Compile Include="Network\Packets\Characters\StatPacket.cs" />
     <Compile Include="Network\Packets\Maps\CMapPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Range.cs" />
     <Compile Include="Registry\GameRegistry.cs" />
     <Compile Include="Registry\IRegistry.cs" />
     <Compile Include="Registry\ItemInfo.cs" />

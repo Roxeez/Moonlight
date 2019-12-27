@@ -1,4 +1,6 @@
-﻿namespace NtCore.Game.Maps
+﻿using NtCore.Core;
+
+namespace NtCore.Game.Maps
 {
     public class MinilandObject : IMinilandObject
     {

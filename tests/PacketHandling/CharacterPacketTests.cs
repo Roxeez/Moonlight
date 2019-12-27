@@ -1,6 +1,7 @@
 ﻿using Moq;
 using NFluent;
 using NtCore.Clients;
+using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Entities;

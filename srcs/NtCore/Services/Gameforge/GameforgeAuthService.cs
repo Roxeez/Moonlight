@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using NtCore.Core;
 using NtCore.Extensions;
 using NtCore.Serialization;
 using NtCore.Services.Gameforge.Forms;
@@ -25,7 +26,7 @@ namespace NtCore.Services.Gameforge
             _serializer = serializer;
         }
 
-        public async Task<GameforgeAccount> Connect(string username, string password, Language language)
+        public async Task<Optional<GameforgeAccount>> Connect(string username, string password, Language language)
         {
             string serialized = _serializer.Serialize(new AuthForm
             {
@@ -41,17 +42,20 @@ namespace NtCore.Services.Gameforge
                 request.Content = new StringContent(serialized, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
-
-                response.EnsureSuccessStatusCode();
-
+                
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Optional.Empty<GameforgeAccount>();
+                }
+                
                 string content = await response.Content.ReadAsStringAsync();
                 var account = _serializer.Deserialize<GameforgeAccount>(content);
 
-                return account;
+                return Optional.Of(account);
             }
         }
 
-        public async Task<string> GetToken(GameforgeAccount account, Guid installationId = default)
+        public async Task<Optional<string>> GetToken(GameforgeAccount account, Guid installationId = default)
         {
             if (installationId == default)
             {
@@ -73,14 +77,17 @@ namespace NtCore.Services.Gameforge
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
 
-                response.EnsureSuccessStatusCode();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Optional.Empty<string>();
+                }
 
                 string content = await response.Content.ReadAsStringAsync();
                 var jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
 
                 string token = jsonContent.GetValueOrDefault("code");
                 
-                return token == null ? string.Empty : token.ToHex();
+                return Optional.OfNullable(token);
             }
         }
     }

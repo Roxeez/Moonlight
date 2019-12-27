@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using NtCore.Clients;
+using NtCore.Core;
 using NtCore.Game.Entities;
 
 namespace NtCore.Events.Entity
