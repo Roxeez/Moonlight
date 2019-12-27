@@ -1,4 +1,4 @@
-﻿﻿using NtCore.Game.Battle;
+﻿using NtCore.Game.Battle;
 
 namespace NtCore.Factory
 {

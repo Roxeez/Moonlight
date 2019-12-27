@@ -10,7 +10,7 @@ namespace NtCore.Factory
     {
         private readonly ILanguageService _languageService;
         private readonly IRegistry _registry;
-        
+
         public EntityFactory(ILanguageService languageService, IRegistry registry)
         {
             _languageService = languageService;
@@ -63,15 +63,14 @@ namespace NtCore.Factory
                 Amount = amount,
                 Position = position,
                 Owner = owner,
-                Name = _languageService.GetTranslation(LanguageKey.ITEM, itemInfo?.NameKey ?? $"{vnum}"),
+                Name = _languageService.GetTranslation(LanguageKey.ITEM, itemInfo?.NameKey ?? $"{vnum}")
             };
 
             return drop;
         }
 
-        public Player CreatePlayer(int id, string name, byte level, ClassType classType, byte direction, Gender gender, Position position, byte hpPercentage, byte mpPercentage)
-        {
-            return new Player
+        public Player CreatePlayer(int id, string name, byte level, ClassType classType, byte direction, Gender gender, Position position, byte hpPercentage, byte mpPercentage) =>
+            new Player
             {
                 Id = id,
                 Name = name,
@@ -83,6 +82,5 @@ namespace NtCore.Factory
                 HpPercentage = hpPercentage,
                 MpPercentage = mpPercentage
             };
-        }
     }
 }

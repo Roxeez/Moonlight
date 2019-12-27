@@ -18,7 +18,7 @@ namespace NtCore.Network.Packets.Characters
                 {
                     continue;
                 }
-                
+
                 var equipmentType = (EquipmentType)byte.Parse(split[0]);
                 var subPacket = new EquipSubPacket
                 {
@@ -37,9 +37,9 @@ namespace NtCore.Network.Packets.Characters
     public class EquipSubPacket
     {
         public int Vnum { get; set; }
-        
+
         public byte Rarity { get; set; }
-        
+
         public byte Upgrade { get; set; }
     }
 }

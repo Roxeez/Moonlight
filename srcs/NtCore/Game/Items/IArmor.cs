@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NtCore.Game.Items
+﻿namespace NtCore.Game.Items
 {
     public interface IArmor : IItem
     {

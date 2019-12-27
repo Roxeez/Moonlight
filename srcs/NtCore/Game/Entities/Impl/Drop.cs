@@ -10,7 +10,7 @@ namespace NtCore.Game.Entities.Impl
         {
             EntityType = EntityType.DROP;
             DropTime = DateTime.Now;
-        } 
+        }
 
         public int Id { get; set; }
         public int Vnum { get; set; }

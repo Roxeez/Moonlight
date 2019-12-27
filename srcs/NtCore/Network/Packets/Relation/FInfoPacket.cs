@@ -20,14 +20,14 @@ namespace NtCore.Network.Packets.Relation
 
         public class Info
         {
-            public int Id { get; }
-            public bool IsConnected { get; }
-
             public Info(int id, bool isConnected)
             {
                 Id = id;
                 IsConnected = isConnected;
             }
+
+            public int Id { get; }
+            public bool IsConnected { get; }
         }
     }
 }

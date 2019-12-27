@@ -5,27 +5,28 @@ namespace NtCore.Game.Relation.Impl
     public class Friend : IFriend
     {
         private readonly IClient _client;
-        
-        public int Id { get; }
-        public string Name { get; }
-        public bool IsConnected { get; set; }
 
         public Friend(IClient client, int id, string name)
         {
             _client = client;
-            
+
             Id = id;
             Name = name;
         }
 
+        public int Id { get; }
+        public string Name { get; }
+        public bool IsConnected { get; set; }
+
         public bool Equals(IFriend other) => other != null && other.Id == Id;
-        
+
         public void SendPrivateMessage(string message)
         {
             if (!IsConnected)
             {
                 return;
             }
+
             _client.SendPacket($"btk {Id} {message}");
         }
 
@@ -40,6 +41,7 @@ namespace NtCore.Game.Relation.Impl
             {
                 return;
             }
+
             _client.SendPacket($"mjoin 1 {Id}");
         }
     }

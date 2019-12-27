@@ -3,10 +3,8 @@ using NFluent;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Extensions;
-using NtCore.Game.Battle;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
-using NtCore.Game.Items.Impl;
 using NtCore.Game.Maps.Impl;
 using NtCore.Network;
 using NtCore.Tests.Utility;
@@ -16,10 +14,6 @@ namespace NtCore.Tests.PacketHandling
 {
     public class CharacterPacketTests
     {
-        public const int CharacterId = 99999;
-        
-        private readonly IClient _client;
-
         public CharacterPacketTests()
         {
             var mock = new Mock<IClient>();
@@ -36,6 +30,10 @@ namespace NtCore.Tests.PacketHandling
 
             _client = mock.Object;
         }
+
+        public const int CharacterId = 99999;
+
+        private readonly IClient _client;
 
         [Theory]
         [InlineData("ski 240 241", 240, 241)]
@@ -167,6 +165,19 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Fact]
+        public void At_Packet_Change_Position()
+        {
+            Map map = new MapBuilder().WithId(1).Create();
+            ICharacter character = _client.Character;
+
+            map.AddEntity(character);
+
+            _client.ReceivePacket($"at {CharacterId} 1 5 8 2 0 80 6 -1");
+
+            Check.That(character.Position).IsEqualTo(new Position(5, 8));
+        }
+
+        [Fact]
         public void Equip_Packet_Initialize_Character_Equipment()
         {
             _client.ReceivePacket("equip 0 0 0.124.1.0 1.148.7.10 10.87.0.0");
@@ -198,24 +209,11 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Fact]
-        public void At_Packet_Change_Position()
-        {
-            Map map = new MapBuilder().WithId(1).Create();
-            ICharacter character = _client.Character;
-            
-            map.AddEntity(character);
-            
-            _client.ReceivePacket($"at {CharacterId} 1 5 8 2 0 80 6 -1");
-
-            Check.That(character.Position).IsEqualTo(new Position(5, 8));
-        }
-
-        [Fact]
         public void PInit_Set_Character_Party()
         {
             Map map = new MapBuilder().WithId(1).WithNpcs(55, 66).WithPlayers(77).Create();
             ICharacter character = _client.Character;
-            
+
             map.AddEntity(character);
 
             _client.ReceivePacket($"pinit 4 2|55|0|6|Léona|1|822|1 2|66|1|41|Fenrir|1|843|0 1|{CharacterId}|2|50|Roxeez|1|0|2|0|0 1|77|3|3|Testastos|1|1|0|0|0");

@@ -15,7 +15,7 @@ namespace NtCore.Network.Handlers.Relation
         public override void Handle(IClient client, PInitPacket packet)
         {
             var character = client.Character.As<Character>();
-            
+
             var members = new List<ILivingEntity>();
             foreach (PartyMemberInfo info in packet.PartyMemberInfos)
             {
@@ -24,12 +24,12 @@ namespace NtCore.Network.Handlers.Relation
                 {
                     continue;
                 }
-                
+
                 members.Add(entity);
             }
 
             var owner = members.FirstOrDefault(x => x.EntityType == EntityType.PLAYER)?.As<IPlayer>();
-            
+
             character.Party = new Party(owner ?? client.Character, members);
         }
     }

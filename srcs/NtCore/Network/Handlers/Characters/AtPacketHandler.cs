@@ -19,7 +19,7 @@ namespace NtCore.Network.Handlers.Characters
             {
                 return;
             }
-            
+
             character.Position = new Position(packet.PositionX, packet.PositionY);
         }
     }

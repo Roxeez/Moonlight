@@ -31,7 +31,7 @@ namespace NtCore.Game.Entities
         ///     Current mp percentage
         /// </summary>
         byte MpPercentage { get; }
-        
+
         string Name { get; }
     }
 }

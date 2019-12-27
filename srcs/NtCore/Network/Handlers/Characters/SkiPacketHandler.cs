@@ -1,5 +1,4 @@
-﻿using System;
-using NtCore.Clients;
+﻿using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Factory;
 using NtCore.Game.Battle;
@@ -12,17 +11,14 @@ namespace NtCore.Network.Handlers.Characters
     {
         private readonly ISkillFactory _skillFactory;
 
-        public SkiPacketHandler(ISkillFactory skillFactory)
-        {
-            _skillFactory = skillFactory;
-        }
-        
+        public SkiPacketHandler(ISkillFactory skillFactory) => _skillFactory = skillFactory;
+
         public override void Handle(IClient client, SkiPacket packet)
         {
             ICharacter character = client.Character;
-            
+
             character.Skills.Clear();
-            
+
             foreach (int skillVnum in packet.Skills)
             {
                 ISkill skill = _skillFactory.CreateSkill(skillVnum);
@@ -30,6 +26,7 @@ namespace NtCore.Network.Handlers.Characters
                 {
                     continue;
                 }
+
                 character.Skills.Add(skill);
             }
         }

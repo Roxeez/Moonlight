@@ -12,11 +12,8 @@ namespace NtCore.Network.Handlers.Maps
     {
         private readonly IEventManager _eventManager;
 
-        public GetPacketHandler(IEventManager eventManager)
-        {
-            _eventManager = eventManager;
-        }
-        
+        public GetPacketHandler(IEventManager eventManager) => _eventManager = eventManager;
+
         public override void Handle(IClient client, GetPacket packet)
         {
             var map = client.Character.Map.As<Map>();
@@ -28,9 +25,9 @@ namespace NtCore.Network.Handlers.Maps
             {
                 return;
             }
-            
+
             map.RemoveEntity(drop);
-            
+
             _eventManager.CallEvent(new EntityPickupDropEvent(client, entity, drop));
         }
     }

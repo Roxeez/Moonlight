@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using NtCore.Enums;
@@ -12,18 +11,18 @@ namespace NtCore.Clients
 {
     public sealed class LocalClient : IClient
     {
+        private readonly Task _loop;
+        private readonly NtNative.PacketCallback _recvCallback;
         private readonly ConcurrentQueue<string> _recvQueue = new ConcurrentQueue<string>();
 
         /// <summary>
         ///     Need to keep a reference to both callback to avoid GC
         /// </summary>
         private readonly NtNative.PacketCallback _sendCallback;
-        private readonly NtNative.PacketCallback _recvCallback;
 
         private readonly ConcurrentQueue<string> _sendQueue = new ConcurrentQueue<string>();
-        
+
         private bool _dispose;
-        private readonly Task _loop;
 
         public LocalClient()
         {
@@ -70,6 +69,8 @@ namespace NtCore.Clients
         public event Func<string, bool> PacketSend;
         public event Func<string, bool> PacketReceived;
 
+        public bool Equals(IClient other) => other != null && other.Id.Equals(Id);
+
         private void Loop()
         {
             while (!_dispose)
@@ -94,6 +95,7 @@ namespace NtCore.Clients
             {
                 return true;
             }
+
             return PacketSend.Invoke(packet);
         }
 
@@ -103,9 +105,8 @@ namespace NtCore.Clients
             {
                 return true;
             }
+
             return PacketReceived.Invoke(packet);
         }
-
-        public bool Equals(IClient other) => other != null && other.Id.Equals(Id);
     }
 }

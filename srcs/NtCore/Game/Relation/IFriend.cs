@@ -9,18 +9,18 @@ namespace NtCore.Game.Relation
         bool IsConnected { get; }
 
         /// <summary>
-        /// Send a private message
+        ///     Send a private message
         /// </summary>
         /// <param name="message">message to send</param>
         void SendPrivateMessage(string message);
 
         /// <summary>
-        /// Delete from friends
+        ///     Delete from friends
         /// </summary>
         void Delete();
 
         /// <summary>
-        /// Join friend miniland
+        ///     Join friend miniland
         /// </summary>
         void JoinMiniland();
     }

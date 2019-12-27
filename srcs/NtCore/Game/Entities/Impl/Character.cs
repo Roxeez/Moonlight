@@ -51,7 +51,7 @@ namespace NtCore.Game.Entities.Impl
             {
                 return;
             }
-            
+
             await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)EntityType} {Id}");
         }
 
@@ -71,7 +71,7 @@ namespace NtCore.Game.Entities.Impl
             {
                 return;
             }
-            
+
             await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
         }
 
@@ -86,12 +86,12 @@ namespace NtCore.Game.Entities.Impl
             {
                 return;
             }
-            
+
             if (!Position.IsInRange(position, skill.Info.Range))
             {
                 return;
             }
-            
+
             await Client.SendPacket($"u_as {skill.Info.CastId} {position.X} {position.Y}");
         }
 
@@ -106,7 +106,7 @@ namespace NtCore.Game.Entities.Impl
             {
                 return;
             }
-            
+
             await Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
         }
 
@@ -144,7 +144,7 @@ namespace NtCore.Game.Entities.Impl
                 }
                 else
                 {
-                    await Client.SendPacket($"walk {position.X} {position.Y} {((position.X + position.Y) % 3) % 2} {Speed}");
+                    await Client.SendPacket($"walk {position.X} {position.Y} {(position.X + position.Y) % 3 % 2} {Speed}");
                 }
 
                 await Task.Delay((stepX + stepY) * (1000 / Speed));

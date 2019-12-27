@@ -18,7 +18,7 @@ namespace NtCore.Network.Handlers.Characters
             EquipSubPacket armorSub = packet.EquipSubPackets.GetValueOrDefault(EquipmentType.ARMOR);
             EquipSubPacket secondaryWeaponSub = packet.EquipSubPackets.GetValueOrDefault(EquipmentType.SECONDARY_WEAPON);
             EquipSubPacket fairySub = packet.EquipSubPackets.GetValueOrDefault(EquipmentType.FAIRY);
-            
+
             var equipment = new Equipment();
 
             if (mainWeaponSub != null)

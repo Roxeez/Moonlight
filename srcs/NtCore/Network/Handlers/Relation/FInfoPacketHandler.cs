@@ -12,12 +12,9 @@ namespace NtCore.Network.Handlers.Relation
     public class FInfoPacketHandler : PacketHandler<FInfoPacket>
     {
         private readonly IEventManager _eventManager;
-        
-        public FInfoPacketHandler(IEventManager eventManager)
-        {
-            _eventManager = eventManager;
-        }
-        
+
+        public FInfoPacketHandler(IEventManager eventManager) => _eventManager = eventManager;
+
         public override void Handle(IClient client, FInfoPacket packet)
         {
             var character = client.Character.As<Character>();

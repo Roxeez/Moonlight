@@ -80,6 +80,7 @@ namespace NtCore.Events
                 {
                     continue;
                 }
+
                 handler.Method.Invoke(handler.Listener, new object[] { e });
             }
         }
@@ -87,15 +88,15 @@ namespace NtCore.Events
 
     public class HandlerInfo
     {
-        public IEventListener Listener { get; }
-        public MethodInfo Method { get; }
-        public IClient BindClient { get; }
-
         public HandlerInfo(IEventListener listener, MethodInfo method, IClient bindClient = null)
         {
             Listener = listener;
             Method = method;
             BindClient = bindClient;
         }
+
+        public IEventListener Listener { get; }
+        public MethodInfo Method { get; }
+        public IClient BindClient { get; }
     }
 }

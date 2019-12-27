@@ -1,6 +1,5 @@
 ﻿using NtCore.Clients;
 using NtCore.Events;
-using NtCore.Events.Character;
 using NtCore.Events.Entity;
 using NtCore.Extensions;
 using NtCore.Game.Entities;

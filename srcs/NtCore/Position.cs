@@ -3,24 +3,24 @@
 namespace NtCore
 {
     /// <summary>
-    /// Represent a position on Map
+    ///     Represent a position on Map
     /// </summary>
     public struct Position : IEquatable<Position>
     {
         private static readonly double Sqrt = Math.Sqrt(2);
-        
+
         /// <summary>
-        /// Position on X axis
+        ///     Position on X axis
         /// </summary>
         public short X { get; set; }
-        
+
         /// <summary>
-        /// Position on Y axis
+        ///     Position on Y axis
         /// </summary>
         public short Y { get; set; }
-        
+
         /// <summary>
-        /// Create a new position
+        ///     Create a new position
         /// </summary>
         /// <param name="x">Position on X axis</param>
         /// <param name="y">Position on Y axis</param>
@@ -29,9 +29,9 @@ namespace NtCore
             X = x;
             Y = y;
         }
-        
+
         /// <summary>
-        /// Get distance between this position and destination
+        ///     Get distance between this position and destination
         /// </summary>
         /// <param name="destination">Destination position</param>
         /// <returns>Distance between both position</returns>
@@ -39,10 +39,10 @@ namespace NtCore
         {
             int x = Math.Abs(X - destination.X);
             int y = Math.Abs(Y - destination.Y);
-            
+
             int min = Math.Min(x, y);
             int max = Math.Max(x, y);
-            
+
             return (int)(min * Sqrt + max - min);
         }
 
@@ -51,7 +51,7 @@ namespace NtCore
         public int GetDistanceY(Position destination) => Math.Abs(Y - destination.Y);
 
         /// <summary>
-        /// Check if the position is in range
+        ///     Check if the position is in range
         /// </summary>
         /// <param name="position">Position to check</param>
         /// <param name="range">Range</param>
@@ -59,7 +59,7 @@ namespace NtCore
         public bool IsInRange(Position position, int range) => GetDistance(position) <= range;
 
         /// <summary>
-        /// Check if the position is in area range
+        ///     Check if the position is in area range
         /// </summary>
         /// <param name="position">Position to check</param>
         /// <param name="range">Range of the area</param>

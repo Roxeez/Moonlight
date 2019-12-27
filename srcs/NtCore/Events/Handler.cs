@@ -8,6 +8,5 @@ namespace NtCore.Events
     [AttributeUsage(AttributeTargets.Method)]
     public class Handler : Attribute
     {
-        
     }
 }

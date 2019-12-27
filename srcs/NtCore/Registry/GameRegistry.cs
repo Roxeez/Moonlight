@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using NtCore.Extensions;
 using NtCore.Resources;
 
@@ -7,17 +6,13 @@ namespace NtCore.Registry
 {
     public class GameRegistry : IRegistry
     {
-        private Dictionary<int, SkillInfo> _skillInfos;
-        private Dictionary<int, MonsterInfo> _monsterInfos;
+        private readonly ResourceManager _resourceManager;
         private Dictionary<int, ItemInfo> _itemInfos;
         private Dictionary<int, MapInfo> _mapInfos;
+        private Dictionary<int, MonsterInfo> _monsterInfos;
+        private Dictionary<int, SkillInfo> _skillInfos;
 
-        private readonly ResourceManager _resourceManager;
-        
-        public GameRegistry(ResourceManager resourceManager)
-        {
-            _resourceManager = resourceManager;
-        }
+        public GameRegistry(ResourceManager resourceManager) => _resourceManager = resourceManager;
 
         public SkillInfo GetSkillInfo(int skillVnum) => _skillInfos.GetValueOrDefault(skillVnum);
 

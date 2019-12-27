@@ -16,10 +16,10 @@ namespace NtCore.Game.Maps
 
         string Name { get; }
         byte[] Data { get; }
-        
+
         short Height { get; }
         short Width { get; }
-        
+
         /// <summary>
         ///     Contains all monsters currently in map
         /// </summary>

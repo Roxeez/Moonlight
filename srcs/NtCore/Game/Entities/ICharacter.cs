@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Game.Battle;
 using NtCore.Game.Inventories;
@@ -13,7 +12,7 @@ namespace NtCore.Game.Entities
     public interface ICharacter : IPlayer
     {
         IEquipment Equipment { get; }
-        
+
         /// <summary>
         ///     Job level
         /// </summary>
@@ -70,43 +69,43 @@ namespace NtCore.Game.Entities
         int MaxMp { get; }
 
         IParty Party { get; }
-        
+
         /// <summary>
-        /// Contains all character skills
+        ///     Contains all character skills
         /// </summary>
         HashSet<ISkill> Skills { get; }
 
         /// <summary>
-        /// Contains all character friends
+        ///     Contains all character friends
         /// </summary>
         IEnumerable<IFriend> Friends { get; }
 
         /// <summary>
-        /// Use selected skill on self
+        ///     Use selected skill on self
         /// </summary>
         /// <param name="skill">Skill to use</param>
         Task UseSkill([NotNull] ISkill skill);
-        
+
         /// <summary>
-        /// Use skill on defined target
+        ///     Use skill on defined target
         /// </summary>
         /// <param name="skill">Skill to use</param>
         /// <param name="target">Target of the skill</param>
         Task UseSkill([NotNull] ISkill skill, [NotNull] ILivingEntity target);
 
         /// <summary>
-        /// Use skill at specific position
+        ///     Use skill at specific position
         /// </summary>
         /// <param name="skill">Skill to use</param>
         /// <param name="position">Target position</param>
         Task UseSkill([NotNull] ISkill skill, Position position);
 
         /// <summary>
-        /// Get drop on ground
+        ///     Get drop on ground
         /// </summary>
         /// <param name="drop">Drop to pick up</param>
         Task PickUp([NotNull] IDrop drop);
-        
+
         /// <summary>
         ///     Make your character move
         /// </summary>
@@ -114,13 +113,13 @@ namespace NtCore.Game.Entities
         Task Move(Position position);
 
         /// <summary>
-        /// Send a friend request to selected player
+        ///     Send a friend request to selected player
         /// </summary>
         /// <param name="player">Selected player</param>
         Task SendFriendRequest(IPlayer player);
 
         /// <summary>
-        /// Show info dialog with selected message
+        ///     Show info dialog with selected message
         /// </summary>
         /// <param name="message">Message to show</param>
         Task ShowInfoDialog(string message);

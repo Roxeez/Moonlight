@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace NtCore.Serialization
+﻿namespace NtCore.Serialization
 {
     public interface ISerializer
     {

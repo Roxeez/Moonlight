@@ -29,14 +29,14 @@ namespace NtCore.Network.Handlers.Maps
             {
                 return;
             }
-            
+
             var position = new Position(packet.PositionX, packet.PositionY);
             var owner = map.GetEntity<IPlayer>(packet.OwnerId);
 
             Drop drop = _entityFactory.CreateDrop(packet.DropId, packet.VNum, packet.Amount, position, owner);
 
             map.AddEntity(drop);
-            
+
             _eventManager.CallEvent(new ItemDropEvent(client, drop));
         }
     }

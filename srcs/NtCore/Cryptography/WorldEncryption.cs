@@ -6,11 +6,11 @@ namespace NtCore.Cryptography
 {
     public sealed class WorldEncryption : ICryptography
     {
-        private static readonly char[] Keys = {' ', '-', '.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'n'};
+        private static readonly char[] Keys = { ' ', '-', '.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'n' };
+
+        public WorldEncryption(int key) => _key = key;
 
         private int _key { get; }
-        
-        public WorldEncryption(int key) => _key = key;
 
         public IEnumerable<string> Decrypt(byte[] bytes, int size)
         {
@@ -31,7 +31,7 @@ namespace NtCore.Cryptography
                     continue;
                 }
 
-                byte length = (byte) (currentByte & 0x7F);
+                byte length = (byte)(currentByte & 0x7F);
 
                 if ((currentByte & 0x80) != 0)
                 {
@@ -88,6 +88,7 @@ namespace NtCore.Cryptography
                     }
                 }
             }
+
             return output;
         }
 
@@ -103,13 +104,13 @@ namespace NtCore.Cryptography
 
             string mask = new string(value.Select(c =>
             {
-                sbyte b = (sbyte) c;
+                sbyte b = (sbyte)c;
                 if (c == '#' || c == '/' || c == '%')
                 {
                     return '0';
                 }
 
-                if ((b -= 0x20) == 0 || (b += unchecked((sbyte) 0xF1)) < 0 || (b -= 0xB) < 0 || (b - unchecked((sbyte) 0xC5)) == 0)
+                if ((b -= 0x20) == 0 || (b += unchecked((sbyte)0xF1)) < 0 || (b -= 0xB) < 0 || (b - unchecked((sbyte)0xC5)) == 0)
                 {
                     return '1';
                 }
@@ -143,7 +144,7 @@ namespace NtCore.Cryptography
                         {
                             if (sequences == 0)
                             {
-                                output.Add((byte) (length - i));
+                                output.Add((byte)(length - i));
                             }
                             else
                             {
@@ -153,7 +154,7 @@ namespace NtCore.Cryptography
                             }
                         }
 
-                        output.Add((byte) ((byte) value[lastPosition] ^ 0xFF));
+                        output.Add((byte)((byte)value[lastPosition] ^ 0xFF));
                     }
                 }
 
@@ -181,7 +182,7 @@ namespace NtCore.Cryptography
                     {
                         if (sequences == 0)
                         {
-                            output.Add((byte) ((length - i) | 0x80));
+                            output.Add((byte)(length - i | 0x80));
                         }
                         else
                         {
@@ -191,7 +192,7 @@ namespace NtCore.Cryptography
                         }
                     }
 
-                    byte currentByte = (byte) value[lastPosition];
+                    byte currentByte = (byte)value[lastPosition];
                     switch (currentByte)
                     {
                         case 0x20:
@@ -215,25 +216,25 @@ namespace NtCore.Cryptography
 
                     if ((i % 2) == 0)
                     {
-                        output.Add((byte) (currentByte << 4));
+                        output.Add((byte)(currentByte << 4));
                     }
                     else
                     {
-                        output[output.Count - 1] = (byte) (output.Last() | currentByte);
+                        output[output.Count - 1] = (byte)(output.Last() | currentByte);
                     }
                 }
             }
 
             output.Add(0xFF);
-            
-            sbyte sessionNumber = (sbyte) ((_key >> 6) & 0xFF & 0x80000003);
+
+            sbyte sessionNumber = (sbyte)(_key >> 6 & 0xFF & 0x80000003);
 
             if (sessionNumber < 0)
             {
-                sessionNumber = (sbyte) (((sessionNumber - 1) | 0xFFFFFFFC) + 1);
+                sessionNumber = (sbyte)((sessionNumber - 1 | 0xFFFFFFFC) + 1);
             }
 
-            byte sessionKey = (byte) (_key & 0xFF);
+            byte sessionKey = (byte)(_key & 0xFF);
 
             if (session)
             {
@@ -245,42 +246,41 @@ namespace NtCore.Cryptography
                 case 0:
                     for (int i = 0; i < output.Count; i++)
                     {
-                        output[i] = (byte) (output[i] + sessionKey + 0x40);
+                        output[i] = (byte)(output[i] + sessionKey + 0x40);
                     }
 
                     break;
                 case 1:
                     for (int i = 0; i < output.Count; i++)
                     {
-                        output[i] = (byte) (output[i] - (sessionKey + 0x40));
+                        output[i] = (byte)(output[i] - (sessionKey + 0x40));
                     }
 
                     break;
                 case 2:
                     for (int i = 0; i < output.Count; i++)
                     {
-                        output[i] = (byte) ((output[i] ^ 0xC3) + sessionKey + 0x40);
+                        output[i] = (byte)((output[i] ^ 0xC3) + sessionKey + 0x40);
                     }
 
                     break;
                 case 3:
                     for (int i = 0; i < output.Count; i++)
                     {
-                        output[i] = (byte) ((output[i] ^ 0xC3) - (sessionKey + 0x40));
+                        output[i] = (byte)((output[i] ^ 0xC3) - (sessionKey + 0x40));
                     }
 
                     break;
                 default:
                     for (int i = 0; i < output.Count; i++)
                     {
-                        output[i] = (byte) (output[i] + 0x0F);
+                        output[i] = (byte)(output[i] + 0x0F);
                     }
 
                     break;
             }
-            
+
             return output.ToArray();
         }
-       
     }
 }

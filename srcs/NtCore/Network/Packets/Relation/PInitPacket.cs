@@ -17,14 +17,14 @@ namespace NtCore.Network.Packets.Relation
 
                 var entityType = (EntityType)short.Parse(split[0]);
                 int entityId = int.Parse(split[1]);
-                
+
                 PartyMemberInfos.Add(new PartyMemberInfo(entityType, entityId));
             }
 
             return true;
         }
     }
-    
+
     public struct PartyMemberInfo
     {
         public EntityType EntityType { get; }

@@ -9,12 +9,9 @@ namespace NtCore.Tests.Registry
     public class RegistryTests
     {
         private readonly IRegistry _registry;
-        
-        public RegistryTests()
-        {
-            _registry = NtCoreAPI.GetRegistry();
-        }
-        
+
+        public RegistryTests() => _registry = NtCoreAPI.GetRegistry();
+
         [Theory]
         [InlineData(1250, "zts1845e", SkillType.MONSTER, 600, 0, TargetingType.SELF, 0)]
         [InlineData(1254, "zts1849e", SkillType.MONSTER, 60, 0, TargetingType.TARGET, 0)]
@@ -26,7 +23,7 @@ namespace NtCore.Tests.Registry
             {
                 throw new InvalidOperationException();
             }
-            
+
             Check.That(skillInfo.NameKey).IsEqualTo(nameKey);
             Check.That(skillInfo.SkillType).IsEqualTo(skillType);
             Check.That(skillInfo.Cooldown).IsEqualTo(cooldown);
@@ -41,12 +38,12 @@ namespace NtCore.Tests.Registry
         public void Monster_Registry_Return_Correct_Value(int monsterVnum, string nameKey, int level)
         {
             MonsterInfo monsterInfo = _registry.GetMonsterInfo(monsterVnum);
-            
+
             if (monsterInfo == null)
             {
                 throw new InvalidOperationException();
             }
-            
+
             Check.That(monsterInfo.NameKey).IsEqualTo(nameKey);
             Check.That(monsterInfo.Level).IsEqualTo(level);
         }
@@ -62,7 +59,7 @@ namespace NtCore.Tests.Registry
             {
                 throw new InvalidOperationException();
             }
-            
+
             Check.That(itemInfo.NameKey).IsEqualTo(nameKey);
             Check.That(itemInfo.InventoryTab).IsEqualTo(inventoryTab);
             Check.That(itemInfo.EquipmentSlot).IsEqualTo(equipmentSlot);

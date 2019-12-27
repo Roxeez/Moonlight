@@ -77,7 +77,7 @@ namespace NtCore
 
             Registry.Load();
             LanguageService.Load("uk");
-            
+
             foreach (IPacketHandler packetHandler in core.GetServices<IPacketHandler>())
             {
                 PacketManager.Register(packetHandler);
@@ -85,7 +85,7 @@ namespace NtCore
 
             Logger.Information("NtCoreAPI successfully initialized.");
         }
-        
+
         public static IClientManager GetClientManager() => ClientManager;
         public static IPacketManager GetPacketManager() => PacketManager;
         public static ILogger GetLogger() => Logger;

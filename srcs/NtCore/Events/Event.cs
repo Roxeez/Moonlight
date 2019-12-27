@@ -7,11 +7,11 @@ namespace NtCore.Events
     /// </summary>
     public abstract class Event
     {
+        protected Event(IClient client) => Client = client;
+
         /// <summary>
-        /// Client triggering this event
+        ///     Client triggering this event
         /// </summary>
         public IClient Client { get; }
-
-        protected Event(IClient client) => Client = client;
     }
 }

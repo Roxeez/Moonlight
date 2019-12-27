@@ -14,8 +14,8 @@ namespace NtCore.Network.Handlers.Maps
 {
     public class InPacketHandler : PacketHandler<InPacket>
     {
-        private readonly IEventManager _eventManager;
         private readonly IEntityFactory _entityFactory;
+        private readonly IEventManager _eventManager;
 
         public InPacketHandler(IEventManager eventManager, IEntityFactory entityFactory)
         {
@@ -52,7 +52,8 @@ namespace NtCore.Network.Handlers.Maps
                     entity = _entityFactory.CreateDrop(packet.Id, packet.Vnum, packet.Amount, packet.Position, owner);
                     break;
                 case EntityType.PLAYER:
-                    entity = _entityFactory.CreatePlayer(packet.Id, packet.Name, packet.Level, packet.ClassType, packet.Direction, packet.Gender, packet.Position, packet.HpPercentage, packet.MpPercentage);
+                    entity = _entityFactory.CreatePlayer(packet.Id, packet.Name, packet.Level, packet.ClassType, packet.Direction, packet.Gender, packet.Position, packet.HpPercentage,
+                        packet.MpPercentage);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

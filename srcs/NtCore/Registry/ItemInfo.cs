@@ -1,5 +1,4 @@
 ﻿using System.Runtime.Serialization;
-using Newtonsoft.Json;
 
 namespace NtCore.Registry
 {
@@ -8,10 +7,10 @@ namespace NtCore.Registry
     {
         [DataMember]
         public string NameKey { get; private set; }
-        
+
         [DataMember]
         public int InventoryTab { get; private set; }
-        
+
         [DataMember]
         public int EquipmentSlot { get; private set; }
     }

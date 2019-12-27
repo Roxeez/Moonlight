@@ -10,10 +10,7 @@ namespace NtCore.Events.Character
     /// </summary>
     public class TargetChangeEvent : Event
     {
-        public TargetChangeEvent([NotNull] IClient client) : base(client)
-        {
-            Character = client.Character;
-        }
+        public TargetChangeEvent([NotNull] IClient client) : base(client) => Character = client.Character;
 
         /// <summary>
         ///     Character involved in this event

@@ -8,17 +8,17 @@ namespace NtCore.Game.Maps.Impl
 {
     public class MapManager : IMapManager
     {
-        private readonly IDictionary<int, IMap> _maps;
         private readonly ILanguageService _languageService;
+        private readonly IDictionary<int, IMap> _maps;
         private readonly IRegistry _registry;
-        
+
         public MapManager(ILanguageService languageService, IRegistry registry)
         {
             _maps = new Dictionary<int, IMap>();
             _languageService = languageService;
             _registry = registry;
         }
-        
+
         public IMap GetMapById(int id)
         {
             IMap map = _maps.GetValueOrDefault(id);

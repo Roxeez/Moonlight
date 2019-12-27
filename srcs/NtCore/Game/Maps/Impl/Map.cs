@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using NtCore.Enums;
 using NtCore.Extensions;
@@ -36,7 +35,7 @@ namespace NtCore.Game.Maps.Impl
             Data = data;
             Width = BitConverter.ToInt16(Data.Take(2).ToArray(), 0);
             Height = BitConverter.ToInt16(Data.Skip(2).Take(2).ToArray(), 0);
-            
+
             _monsters = new Dictionary<int, IMonster>();
             _npcs = new Dictionary<int, INpc>();
             _drops = new Dictionary<int, IDrop>();
@@ -44,7 +43,7 @@ namespace NtCore.Game.Maps.Impl
         }
 
         private byte this[Position position] => Data.Skip(4 + position.Y * Width + position.X).Take(1).FirstOrDefault();
-        
+
         public int Id { get; }
         public string Name { get; set; }
         public byte[] Data { get; }
@@ -81,14 +80,14 @@ namespace NtCore.Game.Maps.Impl
 
         public bool IsWalkable(Position position)
         {
-            if (position.X > Width || position.X < 0 || (position.Y > Height) || position.Y < 0)
+            if (position.X > Width || position.X < 0 || position.Y > Height || position.Y < 0)
             {
                 Trace.WriteLine("false");
                 return false;
             }
 
             byte value = this[position];
-            
+
             return value == 0 || value == 2 || value >= 16 && value <= 19;
         }
 

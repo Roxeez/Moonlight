@@ -38,7 +38,7 @@ namespace NtCore.Clients
         /// </summary>
         /// <param name="packet">Packet to receive</param>
         Task ReceivePacket([NotNull] string packet);
-        
+
         event Func<string, bool> PacketSend;
         event Func<string, bool> PacketReceived;
     }

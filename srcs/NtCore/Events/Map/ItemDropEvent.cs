@@ -5,11 +5,8 @@ namespace NtCore.Events.Map
 {
     public class ItemDropEvent : Event
     {
-        public IDrop Drop { get; }
+        public ItemDropEvent(IClient client, IDrop drop) : base(client) => Drop = drop;
 
-        public ItemDropEvent(IClient client, IDrop drop) : base(client)
-        {
-            Drop = drop;
-        }
+        public IDrop Drop { get; }
     }
 }

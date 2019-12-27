@@ -5,7 +5,7 @@ namespace NtCore.I18N
     public interface ILanguageService
     {
         /// <summary>
-        /// Get the translation according to language key & key
+        ///     Get the translation according to language key & key
         /// </summary>
         /// <param name="languageKey">Language key</param>
         /// <param name="key">Key</param>

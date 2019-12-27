@@ -16,24 +16,24 @@ namespace NtCore.Game.Entities
         ///     Amount of item drop
         /// </summary>
         int Amount { get; }
-        
+
         /// <summary>
-        /// Name of the item
+        ///     Name of the item
         /// </summary>
         string Name { get; }
-        
+
         /// <summary>
-        /// Owner of the drop
+        ///     Owner of the drop
         /// </summary>
         IPlayer Owner { get; }
-        
+
         /// <summary>
-        /// Time where drop spawned
+        ///     Time where drop spawned
         /// </summary>
         DateTime DropTime { get; }
-        
+
         /// <summary>
-        /// Define if drop is gold or not
+        ///     Define if drop is gold or not
         /// </summary>
         bool IsGold { get; }
     }

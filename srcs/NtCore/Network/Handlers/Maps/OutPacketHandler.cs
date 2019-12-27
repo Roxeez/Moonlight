@@ -27,7 +27,7 @@ namespace NtCore.Network.Handlers.Maps
             }
 
             map.RemoveEntity(entity);
-            
+
             if (entity is LivingEntity livingEntity)
             {
                 _eventManager.CallEvent(new EntityLeaveEvent(client, livingEntity, map));

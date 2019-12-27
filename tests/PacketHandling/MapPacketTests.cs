@@ -2,7 +2,6 @@
 using NFluent;
 using NtCore.Clients;
 using NtCore.Enums;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
@@ -160,15 +159,15 @@ namespace NtCore.Tests.PacketHandling
         public void Drop_Packet_Add_Drop_To_Map(string packet, int vnum, int dropId, short x, short y, int amount, int ownerId, bool isGold)
         {
             Map fakeMap = new MapBuilder().WithPlayers(1290125, 1299318).Create();
-            
+
             fakeMap.AddEntity(_client.Character);
             _client.ReceivePacket(packet);
-            
+
             IMap map = _client.Character.Map;
 
             var drop = map.GetEntity<IDrop>(dropId);
             var owner = map.GetEntity<IPlayer>(ownerId);
-            
+
             Check.That(drop).IsNotNull();
             Check.That(drop.Vnum).IsEqualTo(vnum);
             Check.That(drop.Position).IsEqualTo(new Position(x, y));
@@ -183,10 +182,10 @@ namespace NtCore.Tests.PacketHandling
         public void Get_Packet_Remove_Drop_From_Map(string packet, EntityType entityType, int entityId, int dropId)
         {
             Map fakeMap = new MapBuilder().WithEntity(entityType, entityId).WithDrops(dropId).Create();
-            
+
             fakeMap.AddEntity(_client.Character);
             _client.ReceivePacket(packet);
-            
+
             Check.That(fakeMap.GetEntity<IDrop>(dropId)).IsNull();
         }
     }

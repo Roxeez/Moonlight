@@ -6,20 +6,16 @@ namespace NtCore.I18N
 {
     public class LanguageService : ILanguageService
     {
+        private readonly ResourceManager _resourceManager;
         private IDictionary<LanguageKey, IDictionary<string, string>> _translations = new Dictionary<LanguageKey, IDictionary<string, string>>();
 
-        private readonly ResourceManager _resourceManager;
+        public LanguageService(ResourceManager resourceManager) => _resourceManager = resourceManager;
 
-        public LanguageService(ResourceManager resourceManager)
-        {
-            _resourceManager = resourceManager;
-        }
-        
         public string GetTranslation(LanguageKey languageKey, string key) => _translations.GetValueOrDefault(languageKey)?.GetValueOrDefault(key) ?? key;
 
         public void Load(string languageKey)
         {
-            _translations = new Dictionary<LanguageKey, IDictionary<string, string>>()
+            _translations = new Dictionary<LanguageKey, IDictionary<string, string>>
             {
                 [LanguageKey.SKILL] = _resourceManager.Load<Dictionary<string, string>>($"lang._code_{languageKey}_Skill.json"),
                 [LanguageKey.ITEM] = _resourceManager.Load<Dictionary<string, string>>($"lang._code_{languageKey}_Item.json"),
