@@ -15,7 +15,7 @@ namespace NtCore.Services.Gameforge
     public class GameforgeAuthService : IGameforgeAuthService
     {
         private const string URL = "https://spark.gameforge.com/api/v1";
-        private const string PLATFORM_ID = "dd4e22d6-00d1-44b9-8126-d8b40e0cd7c9";
+        private const string PLATFORM_GAME_ID = "dd4e22d6-00d1-44b9-8126-d8b40e0cd7c9";
         private const string USER_AGENT = "GameforgeClient/2.0.48";
 
         private readonly HttpClient _httpClient;
@@ -35,7 +35,7 @@ namespace NtCore.Services.Gameforge
                 Identity = username,
                 Locale = language.Locale,
                 Password = password,
-                PlatformGameId = PLATFORM_ID
+                PlatformGameId = PLATFORM_GAME_ID
             });
 
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/sessions"))
@@ -68,7 +68,7 @@ namespace NtCore.Services.Gameforge
 
                 var form = new SessionForm
                 {
-                    PlatformAccountId = account.PlatformGameAccountId
+                    PlatformGameAccountId = account.PlatformGameAccountId
                 };
 
                 request.Content = new StringContent(JsonConvert.SerializeObject(form), Encoding.UTF8, "application/json");

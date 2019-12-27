@@ -6,6 +6,6 @@ namespace NtCore.Services.Gameforge.Forms
     public class SessionForm
     {
         [DataMember(Name = "platformGameAccountId")]
-        public string PlatformAccountId { get; set; }
+        public string PlatformGameAccountId { get; set; }
     }
 }
