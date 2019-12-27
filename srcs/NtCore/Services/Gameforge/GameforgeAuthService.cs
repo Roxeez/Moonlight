@@ -13,10 +13,10 @@ namespace NtCore.Services.Gameforge
 {
     public class GameforgeAuthService : IGameforgeAuthService
     {
-        private const string Url = "https://spark.gameforge.com/api/v1";
-        private const string PlatformId = "dd4e22d6-00d1-44b9-8126-d8b40e0cd7c9";
-        private const string UserAgent = "GameforgeClient/2.0.48";
-        
+        private const string URL = "https://spark.gameforge.com/api/v1";
+        private const string PLATFORM_ID = "dd4e22d6-00d1-44b9-8126-d8b40e0cd7c9";
+        private const string USER_AGENT = "GameforgeClient/2.0.48";
+
         private readonly HttpClient _httpClient;
         private readonly ISerializer _serializer;
 
@@ -25,7 +25,7 @@ namespace NtCore.Services.Gameforge
             _httpClient = new HttpClient();
             _serializer = serializer;
         }
-        
+
         public async Task<GameforgeAccount> GetAccount(string username, string password, Language language)
         {
             string serialized = _serializer.Serialize(new AuthForm
@@ -34,18 +34,18 @@ namespace NtCore.Services.Gameforge
                 Identity = username,
                 Locale = language.Locale,
                 Password = password,
-                PlatformGameId = PlatformId
+                PlatformGameId = PLATFORM_ID
             });
-            
-            using (var request = new HttpRequestMessage(HttpMethod.Post, $"{Url}/auth/thin/sessions"))
+
+            using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/sessions"))
             {
-                request.Headers.Add("User-Agent", UserAgent);
+                request.Headers.Add("User-Agent", USER_AGENT);
                 request.Content = new StringContent(serialized, Encoding.UTF8, "application/json");
-                
+
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
 
                 response.EnsureSuccessStatusCode();
-                
+
                 string content = await response.Content.ReadAsStringAsync();
 
                 return _serializer.Deserialize<GameforgeAccount>(content);
@@ -58,27 +58,27 @@ namespace NtCore.Services.Gameforge
             {
                 installationId = Guid.NewGuid();
             }
-            
-            using (var request = new HttpRequestMessage(HttpMethod.Post, $"{Url}/auth/thin/codes"))
+
+            using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/codes"))
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", account.Token);
                 request.Headers.Add("TNT-Installation-Id", installationId.ToString());
-                request.Headers.Add("User-Agent", UserAgent);
+                request.Headers.Add("User-Agent", USER_AGENT);
 
                 var form = new SessionForm
                 {
                     PlatformAccountId = account.PlatformGameAccountId
                 };
-                
+
                 request.Content = new StringContent(JsonConvert.SerializeObject(form), Encoding.UTF8, "application/json");
-                
+
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
 
                 response.EnsureSuccessStatusCode();
-                
+
                 string content = await response.Content.ReadAsStringAsync();
                 var jsonContent = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
-                
+
                 return jsonContent.GetValueOrDefault("code");
             }
         }

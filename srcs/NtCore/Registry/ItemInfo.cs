@@ -1,16 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace NtCore.Registry
 {
+    [DataContract]
     public class ItemInfo
     {
-        [JsonProperty]
+        [DataMember]
         public string NameKey { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public int InventoryTab { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public int EquipmentSlot { get; private set; }
     }
 }

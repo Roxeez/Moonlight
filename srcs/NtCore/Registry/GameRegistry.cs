@@ -12,30 +12,27 @@ namespace NtCore.Registry
         private Dictionary<int, ItemInfo> _itemInfos;
         private Dictionary<int, MapInfo> _mapInfos;
 
-
-        public SkillInfo GetSkillInfo(int skillVnum)
+        private readonly ResourceManager _resourceManager;
+        
+        public GameRegistry(ResourceManager resourceManager)
         {
-            return _skillInfos.GetValueOrDefault(skillVnum);
+            _resourceManager = resourceManager;
         }
 
-        public ItemInfo GetItemInfo(int itemVnum)
-        {
-            return _itemInfos.GetValueOrDefault(itemVnum);
-        }
+        public SkillInfo GetSkillInfo(int skillVnum) => _skillInfos.GetValueOrDefault(skillVnum);
 
-        public MonsterInfo GetMonsterInfo(int monsterVnum)
-        {
-            return _monsterInfos.GetValueOrDefault(monsterVnum);
-        }
+        public ItemInfo GetItemInfo(int itemVnum) => _itemInfos.GetValueOrDefault(itemVnum);
 
-        public MapInfo GetMapInfo(int mapId) => null;
+        public MonsterInfo GetMonsterInfo(int monsterVnum) => _monsterInfos.GetValueOrDefault(monsterVnum);
+
+        public MapInfo GetMapInfo(int mapId) => _mapInfos.GetValueOrDefault(mapId);
 
         public void Load()
         {
-            _skillInfos = Resource.LoadJson<Dictionary<int, SkillInfo>>("Skill.json");
-            _monsterInfos = Resource.LoadJson<Dictionary<int, MonsterInfo>>("monster.json");
-            _itemInfos = Resource.LoadJson<Dictionary<int, ItemInfo>>("Item.json");
-            _mapInfos = Resource.LoadJson<Dictionary<int, MapInfo>>("MapIDData.json");
+            _skillInfos = _resourceManager.Load<Dictionary<int, SkillInfo>>("Skill.json");
+            _monsterInfos = _resourceManager.Load<Dictionary<int, MonsterInfo>>("monster.json");
+            _itemInfos = _resourceManager.Load<Dictionary<int, ItemInfo>>("Item.json");
+            _mapInfos = _resourceManager.Load<Dictionary<int, MapInfo>>("MapIDData.json");
         }
     }
 }

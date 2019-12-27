@@ -1,29 +1,31 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using NtCore.Enums;
 
 namespace NtCore.Registry
 {
+    [DataContract]
     public class SkillInfo
     {
-        [JsonProperty]
+        [DataMember]
         public string NameKey { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public int Cooldown { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public SkillType SkillType { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public int MpCost { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public int CastId { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public int Range { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public TargetingType TargetingType { get; private set; }
     }
 }

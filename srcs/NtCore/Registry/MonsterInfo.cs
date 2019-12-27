@@ -1,13 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace NtCore.Registry
 {
+    [DataContract]
     public class MonsterInfo
     {
-        [JsonProperty]
+        [DataMember]
         public string NameKey { get; private set; }
         
-        [JsonProperty]
+        [DataMember]
         public byte Level { get; private set; }
     }
 }

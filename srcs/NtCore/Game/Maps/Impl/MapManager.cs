@@ -28,7 +28,7 @@ namespace NtCore.Game.Maps.Impl
             }
 
             MapInfo info = _registry.GetMapInfo(id);
-            byte[] data = Resource.Read($"maps.{id}");
+            byte[] data = ResourceManager.Read($"maps.{id}");
 
             if (id == 20001)
             {

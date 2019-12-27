@@ -1,13 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace NtCore.Services.Gameforge
 {
+    [DataContract]
     public class GameforgeAccount
     {
-        [JsonProperty(PropertyName = "token")]
+        [DataMember(Name = "token")]
         public string Token { get; set; }
-        
-        [JsonProperty(PropertyName = "platformGameAccountId")]
+
+        [DataMember(Name = "platformGameAccountId")]
         public string PlatformGameAccountId { get; set; }
     }
 }

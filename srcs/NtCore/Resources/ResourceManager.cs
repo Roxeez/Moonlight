@@ -1,17 +1,21 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using System.Resources;
-using System.Text;
-using Newtonsoft.Json;
+using System.Runtime.InteropServices;
+using NtCore.Serialization;
 
 namespace NtCore.Resources
 {
-    public static class Resource
+    public class ResourceManager
     {
-        public static T LoadJson<T>(string name)
+        private readonly ISerializer _serializer;
+        public ResourceManager(ISerializer serializer)
         {
-            var serializer = new JsonSerializer();
+            _serializer = serializer;
+        }
+        
+        public T Load<T>(string name)
+        {
             using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("NtCore.Resources." + name))
             {
                 if (stream == null)
@@ -20,7 +24,7 @@ namespace NtCore.Resources
                 }
                 
                 var reader = new StreamReader(stream);
-                return (T)serializer.Deserialize(reader, typeof(T));
+                return _serializer.Deserialize<T>(reader.ReadToEnd());
             }
         }
 

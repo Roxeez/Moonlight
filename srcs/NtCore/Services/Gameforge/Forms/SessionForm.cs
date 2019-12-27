@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace NtCore.Services.Gameforge.Forms
 {
+    [DataContract]
     public class SessionForm
     {
-        [JsonProperty(PropertyName = "platformGameAccountId")]
+        [DataMember(Name =  "platformGameAccountId")]
         public string PlatformAccountId { get; set; }
     }
 }
