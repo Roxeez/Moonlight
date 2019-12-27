@@ -1,4 +1,5 @@
-﻿using NFluent;
+﻿using System;
+using NFluent;
 using NtCore.Core;
 using NtCore.Serialization;
 using NtCore.Services.Gameforge;
@@ -8,8 +9,8 @@ namespace NtCore.Tests.Services
 {
     public class GameforgeAuthServiceTests
     {
-        private const string Username = "";
-        private const string Password = "";
+        private const string Username = "roxeeztsu";
+        private const string Password = "yann59150";
         
         private readonly IGameforgeAuthService _gameforgeAuthService;
         
@@ -24,7 +25,7 @@ namespace NtCore.Tests.Services
             Optional<GameforgeAccount> account = await _gameforgeAuthService.Connect(Username, Password, Language.FR);
             Check.That(account.IsPresent()).IsTrue();
             
-            Optional<string> token = await _gameforgeAuthService.GetToken(account.Get());
+            Optional<string> token = await _gameforgeAuthService.GetToken(account.Get(), Guid.NewGuid());
             Check.That(token.IsPresent()).IsTrue();
         }
     }

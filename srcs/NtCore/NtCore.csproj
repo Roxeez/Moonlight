@@ -282,6 +282,8 @@
     <Compile Include="Services\Gameforge\GameforgeAuthService.cs" />
     <Compile Include="Services\Gameforge\IGameforgeAuthService.cs" />
     <Compile Include="Services\Gameforge\Language.cs" />
+    <Compile Include="Services\Registry\IRegistryReader.cs" />
+    <Compile Include="Services\Registry\RegistryReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

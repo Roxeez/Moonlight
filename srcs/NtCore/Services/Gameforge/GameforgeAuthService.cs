@@ -16,6 +16,7 @@ namespace NtCore.Services.Gameforge
         private const string URL = "https://spark.gameforge.com/api/v1";
         private const string PLATFORM_GAME_ID = "dd4e22d6-00d1-44b9-8126-d8b40e0cd7c9";
         private const string USER_AGENT = "GameforgeClient/2.0.48";
+        private const string MEDIA_TYPE = "application/json";
 
         private readonly HttpClient _httpClient;
         private readonly ISerializer _serializer;
@@ -39,7 +40,7 @@ namespace NtCore.Services.Gameforge
 
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/sessions"))
             {
-                request.Content = new StringContent(serialized, Encoding.UTF8, "application/json");
+                request.Content = new StringContent(serialized, Encoding.UTF8, MEDIA_TYPE);
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
                 
@@ -55,13 +56,8 @@ namespace NtCore.Services.Gameforge
             }
         }
 
-        public async Task<Optional<string>> GetToken(GameforgeAccount account, Guid installationId = default)
+        public async Task<Optional<string>> GetToken(GameforgeAccount account, Guid installationId)
         {
-            if (installationId == default)
-            {
-                installationId = Guid.NewGuid();
-            }
-
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/codes"))
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", account.Token);
@@ -73,7 +69,7 @@ namespace NtCore.Services.Gameforge
                     PlatformGameAccountId = account.PlatformGameAccountId
                 });
 
-                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+                request.Content = new StringContent(json, Encoding.UTF8, MEDIA_TYPE);
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
 
