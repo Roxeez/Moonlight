@@ -1,22 +1,23 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace NtCore.Services.Gameforge.Forms
 {
+    [DataContract]
     public class AuthForm
     {
-        [JsonProperty(PropertyName = "gfLang")]
+        [DataMember(Name = "gfLang")]
         public string GfLang { get; set; }
 
-        [JsonProperty(PropertyName = "identity")]
+        [DataMember(Name = "identity")]
         public string Identity { get; set; }
 
-        [JsonProperty(PropertyName = "locale")]
+        [DataMember(Name = "locale")]
         public string Locale { get; set; }
 
-        [JsonProperty(PropertyName = "password")]
+        [DataMember(Name = "password")]
         public string Password { get; set; }
 
-        [JsonProperty(PropertyName = "platformGameId")]
+        [DataMember(Name = "platformGameId")]
         public string PlatformGameId { get; set; }
     }
 }
