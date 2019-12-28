@@ -5,7 +5,7 @@ using NtCore.Game.Entities.Impl;
 using NtCore.I18N;
 using NtCore.Registry;
 
-namespace NtCore.Factory
+namespace NtCore.Game.Factory
 {
     public class EntityFactory : IEntityFactory
     {

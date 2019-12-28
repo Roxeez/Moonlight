@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using NtCore.Cryptography;
 
-namespace NtCore.Clients.Remote
+namespace NtCore.Clients.Remote.Network
 {
     public class NetworkClient : INetworkClient
     {
@@ -39,9 +39,10 @@ namespace NtCore.Clients.Remote
             return packets;
         }
 
-        public async Task Connect(IPEndPoint ip)
+        public async Task<bool> Connect(string ip, short port)
         {
-            await _socket.ConnectAsync(ip);
+            await _socket.ConnectAsync(ip, port);
+            return _socket.Connected;
         }
 
         public void Disconnect()

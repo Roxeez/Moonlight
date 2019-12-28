@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Net.Sockets;
 using System.Threading.Tasks;
-using NtCore.Clients.Remote;
-using NtCore.Cryptography;
+using NtCore.Clients.Remote.Network;
 using NtCore.Enums;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;

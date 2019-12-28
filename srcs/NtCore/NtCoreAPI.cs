@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NtCore.Clients;
 using NtCore.Commands;
 using NtCore.Events;
-using NtCore.Factory;
+using NtCore.Game.Factory;
 using NtCore.Game.Maps;
 using NtCore.Game.Maps.Impl;
 using NtCore.I18N;

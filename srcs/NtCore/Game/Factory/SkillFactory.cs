@@ -3,7 +3,7 @@ using NtCore.Game.Battle.Impl;
 using NtCore.I18N;
 using NtCore.Registry;
 
-namespace NtCore.Factory
+namespace NtCore.Game.Factory
 {
     public class SkillFactory : ISkillFactory
     {

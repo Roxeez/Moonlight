@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 
 namespace NtCore.Extensions
 {
@@ -15,6 +16,36 @@ namespace NtCore.Extensions
             }
 
             return sb.ToString();
+        }
+
+        public static string ToMd5(this string value)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] bytes = md5.ComputeHash(Encoding.ASCII.GetBytes(value));
+                var sb = new StringBuilder();
+        
+                foreach (byte b in bytes)
+                {
+                    sb.Append(b.ToString("X2"));
+                }
+                return sb.ToString();
+            }
+        }
+        
+        public static string ToSha512(this string value)
+        {
+            using (SHA512 md5 = SHA512.Create())
+            {
+                byte[] bytes = md5.ComputeHash(Encoding.ASCII.GetBytes(value));
+                var sb = new StringBuilder();
+        
+                foreach (byte b in bytes)
+                {
+                    sb.Append(b.ToString("X2"));
+                }
+                return sb.ToString();
+            }
         }
     }
 }
