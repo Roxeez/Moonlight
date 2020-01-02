@@ -7,17 +7,23 @@ using NtCore.Core;
 using NtCore.Cryptography;
 using NtCore.Extensions;
 using NtCore.Services.Gameforge;
+using NtCore.Services.Registry;
 
 namespace NtCore.Clients.Remote
 {
     public class RemoteClientFactory : IRemoteClientFactory
     {
+        private const string RegistryPath = "SOFTWARE\\WOW6432Node\\Gameforge4d\\TNTClient\\MainApp";
+        private const string RegistryKey = "InstallationId";
+        
         private readonly Random _random = new Random();
         private readonly IGameforgeAuthService _gameforgeAuthService;
+        private readonly IRegistryReader _registryReader;
         
-        public RemoteClientFactory(IGameforgeAuthService gameforgeAuthService)
+        public RemoteClientFactory(IGameforgeAuthService gameforgeAuthService, IRegistryReader registryReader)
         {
             _gameforgeAuthService = gameforgeAuthService;
+            _registryReader = registryReader;
         }
 
         public async Task<LoginResult> Login(string username, string password, ClientInformation clientInformation, LoginServer server, LoginType type)
@@ -30,17 +36,24 @@ namespace NtCore.Clients.Remote
                 return new LoginResult(false);
             }
             
-            Guid installationId = Guid.NewGuid(); // TODO : Use registry reader
+            Guid installationId = _registryReader.GetValue<Guid>(Microsoft.Win32.Registry.LocalMachine, RegistryPath, RegistryKey).OrElse(Guid.NewGuid());
+            
             string packet;
             if (type == LoginType.NEW)
             {
-                Optional<GameforgeAccount> account = await _gameforgeAuthService.Connect(username, password, server.Language);
-                if (!account.IsPresent())
+                Optional<string> authToken = await _gameforgeAuthService.GetAuthToken(username, password, server.Language);
+                if (!authToken.IsPresent())
                 {
                     return new LoginResult(false);
                 }
 
-                Optional<string> token = await _gameforgeAuthService.GetToken(account.Get(), installationId);
+                Optional<IEnumerable<GameforgeAccount>> accounts = await _gameforgeAuthService.GetAllAccounts(authToken.Get(), installationId);
+                if (!accounts.IsPresent())
+                {
+                    return new LoginResult(false);
+                }
+
+                Optional<string> token = await _gameforgeAuthService.GetSessionToken(authToken.Get(), accounts.Get().FirstOrDefault(), installationId);
                 if (!token.IsPresent())
                 {
                     return new LoginResult(false);

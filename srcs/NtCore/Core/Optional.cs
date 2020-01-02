@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace NtCore.Core
@@ -33,6 +34,26 @@ namespace NtCore.Core
             {
                 action.Invoke(_value);
             }
+        }
+
+        public K IfPresent<K>([NotNull] Func<T, K> action)
+        {
+            if (IsPresent())
+            {
+                return action.Invoke(_value);
+            }
+
+            return default;
+        }
+        
+        public Task<K> IfPresent<K>([NotNull] Func<T, Task<K>> action)
+        {
+            if (IsPresent())
+            {
+                return action.Invoke(_value);
+            }
+
+            return default;
         }
 
         public bool IsPresent() => _value != null;
