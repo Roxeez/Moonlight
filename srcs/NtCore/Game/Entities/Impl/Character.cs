@@ -9,6 +9,7 @@ using NtCore.Game.Battle;
 using NtCore.Game.Inventories;
 using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
+using NtCore.Game.Relation.Impl;
 using NtCore.Import;
 
 namespace NtCore.Game.Entities.Impl

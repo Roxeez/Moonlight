@@ -193,6 +193,7 @@
     <Compile Include="Game\Items\IItem.cs" />
     <Compile Include="Game\Items\Impl\Armor.cs" />
     <Compile Include="Game\Items\Impl\Fairy.cs" />
+    <Compile Include="Game\Items\Impl\Item.cs" />
     <Compile Include="Game\Items\Impl\Weapon.cs" />
     <Compile Include="Game\Items\IWeapon.cs" />
     <Compile Include="Game\Maps\IMap.cs" />

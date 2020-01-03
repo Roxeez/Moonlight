@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NtCore.Enums;
@@ -12,6 +12,11 @@ namespace NtCore.Network.Packets.Relation
 
         public override bool Deserialize(string[] packet)
         {
+            if (packet.Length == 1)
+            {
+                return true;
+            }
+
             foreach (string value in packet.Skip(1))
             {
                 string[] split = value.Split('|');
