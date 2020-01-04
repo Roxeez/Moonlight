@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameLogic\MovementTests.cs" />
+    <Compile Include="PacketHandling\BattlePacketTests.cs" />
     <Compile Include="PacketHandling\MapPacketTests.cs" />
     <Compile Include="PacketHandling\CharacterPacketTests.cs" />
     <Compile Include="PacketHandling\MinilandPacketTests.cs" />

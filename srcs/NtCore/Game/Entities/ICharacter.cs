@@ -12,8 +12,16 @@ namespace NtCore.Game.Entities
 {
     public interface ICharacter : IPlayer
     {
+        /// <summary>
+        /// Character wear equipment
+        /// </summary>
         IEquipment Equipment { get; }
 
+        /// <summary>
+        /// Current target (null if none)
+        /// </summary>
+        ITarget Target { get; }
+        
         /// <summary>
         ///     Job level
         /// </summary>
@@ -69,6 +77,9 @@ namespace NtCore.Game.Entities
         /// </summary>
         int MaxMp { get; }
 
+        /// <summary>
+        /// Current party
+        /// </summary>
         IParty Party { get; }
 
         /// <summary>
@@ -113,6 +124,12 @@ namespace NtCore.Game.Entities
         /// <param name="position">Position where you want to move</param>
         Task Move(Position position);
 
+        /// <summary>
+        /// Set current target
+        /// </summary>
+        /// <param name="entity">Entity to target</param>
+        Task SetTarget(ILivingEntity entity);
+        
         /// <summary>
         ///     Send a friend request to selected player
         /// </summary>

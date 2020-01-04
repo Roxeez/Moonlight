@@ -1,6 +1,7 @@
 ﻿using NtCore.Clients;
 using NtCore.Core;
 using NtCore.Events;
+using NtCore.Events.Character;
 using NtCore.Events.Entity;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
@@ -30,6 +31,11 @@ namespace NtCore.Network.Handlers.Entities
             entity.Position = new Position(packet.X, packet.Y);
             entity.Speed = packet.Speed;
 
+            if (entity.Equals(character.Target?.Entity))
+            {
+                _eventManager.CallEvent(new TargetMoveEvent(client, from));
+            }
+            
             _eventManager.CallEvent(new EntityMoveEvent(client, entity, from));
         }
     }
