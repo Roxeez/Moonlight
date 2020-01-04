@@ -2,6 +2,7 @@
 using NFluent;
 using NtCore.Clients;
 using NtCore.Enums;
+using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps.Impl;
@@ -50,6 +51,23 @@ namespace NtCore.Tests.PacketHandling
             Check.That(character.Target.Mp).IsEqualTo(mp);
             Check.That(character.Target.Entity.HpPercentage).IsEqualTo(hpPercent);
             Check.That(character.Target.Entity.MpPercentage).IsEqualTo(mpPercent);
+        }
+
+        [Theory]
+        [InlineData("su 1 99999 3 1 250 10 0 0 0 0 0 50 1000 1 1", EntityType.MONSTER, 1, 50)]
+        [InlineData("su 1 99999 3 50 250 10 0 0 0 0 0 78 1000 1 1", EntityType.MONSTER, 50, 78)]
+        public void Su_Packet_Update_Entity_Hp(string packet, EntityType entityType, int entityId, int hpPercentage)
+        {
+            ICharacter character = _client.Character;
+            
+            Map map = new MapBuilder().WithEntity(entityType, entityId).Create();
+            map.AddEntity(character);
+
+            _client.ReceivePacket(packet);
+
+            var entity = map.GetEntity(entityType, entityId).As<ILivingEntity>();
+
+            Check.That(entity.HpPercentage).IsEqualTo(hpPercentage);
         }
     }
 }

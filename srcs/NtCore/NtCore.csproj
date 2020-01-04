@@ -143,6 +143,7 @@
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Enums\SkillType.cs" />
     <Compile Include="Enums\TargetingType.cs" />
+    <Compile Include="Events\Battle\EntityDamageEvent.cs" />
     <Compile Include="Events\Battle\TargetChangeEvent.cs" />
     <Compile Include="Events\Character\CharacterMoveEvent.cs" />
     <Compile Include="Events\Character\StatUpdateEvent.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Network\Handlers\Battle\StPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Battle\SuPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\AtPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\CInfoPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\EquipPacketHandler.cs" />
@@ -235,6 +237,7 @@
     <Compile Include="Network\Handlers\Relation\PInitPacketHandler.cs" />
     <Compile Include="Network\PacketManager.cs" />
     <Compile Include="Network\Packets\Battle\StPacket.cs" />
+    <Compile Include="Network\Packets\Battle\SuPacket.cs" />
     <Compile Include="Network\Packets\Characters\AtPacket.cs" />
     <Compile Include="Network\Packets\Characters\CInfoPacket.cs" />
     <Compile Include="Network\Packets\Characters\EquipPacket.cs" />
