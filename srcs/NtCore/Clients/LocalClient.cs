@@ -57,12 +57,12 @@ namespace NtCore.Clients
             return Task.CompletedTask;
         }
 
-        public async void Dispose()
+        public void Dispose()
         {
             _dispose = true;
             if (_loop != null && _loop.IsCompleted)
             {
-                await _loop;
+                Task.WaitAll(_loop);
             }
         }
 

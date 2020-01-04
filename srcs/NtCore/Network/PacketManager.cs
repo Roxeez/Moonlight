@@ -66,7 +66,15 @@ namespace NtCore.Network
                 return true;
             }
 
-            packetHandler.Handle(client, p);
+            try
+            {
+                packetHandler.Handle(client, p);
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e.ToString());
+            }
+
             return true;
         }
 

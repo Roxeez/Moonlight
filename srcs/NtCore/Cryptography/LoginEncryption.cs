@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace NtCore.Cryptography
 {
@@ -19,13 +20,13 @@ namespace NtCore.Cryptography
 
         public IEnumerable<string> Decrypt(byte[] packet, int size)
         {
-            string output = "";
+            var output = new StringBuilder();
             for (int i = 0; i < size; i++)
             {
-                output += Convert.ToChar(packet[i] - 0xF);
+                output.Append(Convert.ToChar(packet[i] - 0xF));
             }
 
-            return new List<string> { output };
+            return new List<string> { output.ToString() };
         }
     }
 }

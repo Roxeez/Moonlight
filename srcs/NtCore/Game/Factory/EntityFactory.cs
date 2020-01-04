@@ -2,10 +2,11 @@
 using NtCore.Enums;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
+using NtCore.Game.Items.Impl;
 using NtCore.I18N;
 using NtCore.Registry;
 
-namespace NtCore.Factory
+namespace NtCore.Game.Factory
 {
     public class EntityFactory : IEntityFactory
     {
@@ -60,11 +61,10 @@ namespace NtCore.Factory
             var drop = new Drop
             {
                 Id = id,
-                Vnum = vnum,
                 Amount = amount,
                 Position = position,
                 Owner = owner,
-                Name = _languageService.GetTranslation(LanguageKey.ITEM, itemInfo?.NameKey ?? $"{vnum}")
+                Item = new Item(vnum, _languageService.GetTranslation(LanguageKey.ITEM, itemInfo?.NameKey ?? $"{vnum}"))
             };
 
             return drop;

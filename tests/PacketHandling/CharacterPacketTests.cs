@@ -1,4 +1,4 @@
-﻿using Moq;
+using Moq;
 using NFluent;
 using NtCore.Clients;
 using NtCore.Core;
@@ -222,6 +222,17 @@ namespace NtCore.Tests.PacketHandling
             Check.That(character.Party).IsNotNull();
             Check.That(character.Party.Members).CountIs(4);
             Check.That(character.Party.Owner).IsEqualTo(character);
+        }
+
+        [Fact]
+        public void At_Packet_Set_Map()
+        {
+            ICharacter character = _client.Character;
+
+            _client.ReceivePacket($"at {CharacterId} 1 50 50 1 0 0 0 0");
+
+            Check.That(character.Map.Id).IsEqualTo(1);
+            Check.That(character.Position).IsEqualTo(new Position(50, 50));
         }
     }
 }

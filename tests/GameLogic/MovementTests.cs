@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Moq;
 using NFluent;
 using NtCore.Clients;
@@ -31,7 +32,7 @@ namespace NtCore.Tests.GameLogic
         private readonly IClient _client;
 
         [Fact]
-        public async void Move_On_Allowed_Position()
+        public async Task Move_On_Allowed_Position()
         {
             Map map = new MapBuilder().WithId(1).Create();
 

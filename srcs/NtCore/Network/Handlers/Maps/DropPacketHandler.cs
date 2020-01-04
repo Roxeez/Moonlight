@@ -3,9 +3,9 @@ using NtCore.Core;
 using NtCore.Events;
 using NtCore.Events.Map;
 using NtCore.Extensions;
-using NtCore.Factory;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
+using NtCore.Game.Factory;
 using NtCore.Game.Maps.Impl;
 using NtCore.Network.Packets.Maps;
 

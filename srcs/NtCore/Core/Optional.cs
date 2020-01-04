@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace NtCore.Core
@@ -10,7 +11,7 @@ namespace NtCore.Core
         public static Optional<T> OfNullable<T>([CanBeNull] T value) => value == null ? new Optional<T>() : new Optional<T>(value);
     }
     
-    public struct Optional<T>
+    public struct Optional<T> : IEquatable<Optional<T>>
     {
         private readonly T _value;
         
@@ -35,8 +36,38 @@ namespace NtCore.Core
             }
         }
 
+        public K IfPresent<K>([NotNull] Func<T, K> action)
+        {
+            if (IsPresent())
+            {
+                return action.Invoke(_value);
+            }
+
+            return default;
+        }
+        
+        public Task<K> IfPresent<K>([NotNull] Func<T, Task<K>> action)
+        {
+            if (IsPresent())
+            {
+                return action.Invoke(_value);
+            }
+
+            return default;
+        }
+
         public bool IsPresent() => _value != null;
 
         public T OrElse([NotNull] T value) => IsPresent() ? _value : value;
+
+        public bool Equals(Optional<T> other)
+        {
+            if (IsPresent())
+            {
+                return other.IsPresent() && other.Get().Equals(Get());
+            }
+
+            return !other.IsPresent();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Moq;
+using Moq;
 using NFluent;
 using NtCore.Clients;
 using NtCore.Core;
@@ -131,7 +131,7 @@ namespace NtCore.Tests.PacketHandling
             var drop = _client.Character.Map.GetEntity<IDrop>(id);
 
             Check.That(drop).IsNotNull();
-            Check.That(drop.Vnum).IsEqualTo(vnum);
+            Check.That(drop.Item.Vnum).IsEqualTo(vnum);
             Check.That(drop.Position).IsEqualTo(new Position(x, y));
             Check.That(drop.Amount).IsEqualTo(amount);
         }
@@ -170,7 +170,7 @@ namespace NtCore.Tests.PacketHandling
             var owner = map.GetEntity<IPlayer>(ownerId);
 
             Check.That(drop).IsNotNull();
-            Check.That(drop.Vnum).IsEqualTo(vnum);
+            Check.That(drop.Item.Vnum).IsEqualTo(vnum);
             Check.That(drop.Position).IsEqualTo(new Position(x, y));
             Check.That(drop.Amount).IsEqualTo(amount);
             Check.That(drop.Owner).IsEqualTo(owner);

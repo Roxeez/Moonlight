@@ -9,6 +9,7 @@ using NtCore.Game.Battle;
 using NtCore.Game.Inventories;
 using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
+using NtCore.Game.Relation.Impl;
 using NtCore.Import;
 
 namespace NtCore.Game.Entities.Impl
@@ -148,7 +149,7 @@ namespace NtCore.Game.Entities.Impl
                     await Client.SendPacket($"walk {position.X} {position.Y} {(position.X + position.Y) % 3 % 2} {Speed}");
                 }
 
-                await Task.Delay((stepX + stepY) * (1000 / Speed));
+                await Task.Delay((stepX + stepY) * (1200 / Speed)).ConfigureAwait(false);
                 Position = position;
             }
         }

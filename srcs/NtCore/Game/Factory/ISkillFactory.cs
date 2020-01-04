@@ -1,6 +1,6 @@
 ﻿using NtCore.Game.Battle;
 
-namespace NtCore.Factory
+namespace NtCore.Game.Factory
 {
     public interface ISkillFactory
     {

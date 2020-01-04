@@ -1,8 +1,8 @@
 ﻿using NtCore.Clients;
 using NtCore.Enums;
-using NtCore.Factory;
 using NtCore.Game.Battle;
 using NtCore.Game.Entities;
+using NtCore.Game.Factory;
 using NtCore.Network.Packets.Characters;
 
 namespace NtCore.Network.Handlers.Characters

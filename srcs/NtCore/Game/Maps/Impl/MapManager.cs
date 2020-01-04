@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using NtCore.Extensions;
 using NtCore.I18N;
 using NtCore.Registry;

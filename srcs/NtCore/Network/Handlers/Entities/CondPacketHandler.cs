@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using NtCore.Clients;
 using NtCore.Enums;
+using NtCore.Extensions;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Entities;
@@ -12,23 +13,22 @@ namespace NtCore.Network.Handlers.Entities
         public override void Handle(IClient client, CondPacket packet)
         {
             IMap map = client.Character.Map;
-
-            switch (packet.EntityType)
+            if (map == null)
             {
-                case EntityType.MONSTER:
-                    map.GetEntity<Monster>(packet.EntityId).Speed = packet.Speed;
-                    break;
-                case EntityType.NPC:
-                    map.GetEntity<Npc>(packet.EntityId).Speed = packet.Speed;
-                    break;
-                case EntityType.PLAYER:
-                    map.GetEntity<Player>(packet.EntityId).Speed = packet.Speed;
-                    break;
-                case EntityType.DROP:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                if (packet.EntityType == EntityType.PLAYER && packet.EntityId == client.Character.Id)
+                {
+                    client.Character.As<Character>().Speed = packet.Speed;
+                }
+                return;
             }
+
+            var entity = map.GetEntity(packet.EntityType, packet.EntityId).As<LivingEntity>();
+            if (entity == null)
+            {
+                return;
+            }
+
+            entity.Speed = packet.Speed;
         }
     }
 }

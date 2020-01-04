@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -16,6 +17,7 @@ namespace NtCore.Services.Gameforge
         private const string URL = "https://spark.gameforge.com/api/v1";
         private const string PLATFORM_GAME_ID = "dd4e22d6-00d1-44b9-8126-d8b40e0cd7c9";
         private const string USER_AGENT = "GameforgeClient/2.0.48";
+        private const string MEDIA_TYPE = "application/json";
 
         private readonly HttpClient _httpClient;
         private readonly ISerializer _serializer;
@@ -26,7 +28,7 @@ namespace NtCore.Services.Gameforge
             _serializer = serializer;
         }
 
-        public async Task<Optional<GameforgeAccount>> Connect(string username, string password, Language language)
+        public async Task<Optional<string>> GetAuthToken(string username, string password, Language language)
         {
             string serialized = _serializer.Serialize(new AuthForm
             {
@@ -39,41 +41,62 @@ namespace NtCore.Services.Gameforge
 
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/sessions"))
             {
-                request.Content = new StringContent(serialized, Encoding.UTF8, "application/json");
+                request.Content = new StringContent(serialized, Encoding.UTF8, MEDIA_TYPE);
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
                 
                 if (!response.IsSuccessStatusCode)
                 {
-                    return Optional.Empty<GameforgeAccount>();
+                    return Optional.Empty<string>();
                 }
                 
                 string content = await response.Content.ReadAsStringAsync();
-                var account = _serializer.Deserialize<GameforgeAccount>(content);
-
-                return Optional.Of(account);
+                var jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
+                
+                string token = jsonContent.GetValueOrDefault("token");
+                
+                return Optional.OfNullable(token);
             }
         }
 
-        public async Task<Optional<string>> GetToken(GameforgeAccount account, Guid installationId = default)
+        public async Task<Optional<IEnumerable<GameforgeAccount>>> GetAllAccounts(string authToken, Guid installationId)
         {
-            if (installationId == default)
+            using (var request = new HttpRequestMessage(HttpMethod.Get, $"{URL}/user/accounts"))
             {
-                installationId = Guid.NewGuid();
-            }
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+                request.Headers.Add("TNT-Installation-Id", installationId.ToString());
+                request.Headers.Add("User-Agent", USER_AGENT);
+                
+                HttpResponseMessage response = await _httpClient.SendAsync(request);
 
+                Trace.WriteLine(authToken);
+                
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Optional.Empty<IEnumerable<GameforgeAccount>>();
+                }
+                
+                string content = await response.Content.ReadAsStringAsync();
+                var jsonContent = _serializer.Deserialize<Dictionary<string, GameforgeAccount>>(content);
+
+                return Optional.Of<IEnumerable<GameforgeAccount>>(jsonContent.Values);
+            }
+        }
+        
+        public async Task<Optional<string>> GetSessionToken(string authToken, GameforgeAccount account, Guid installationId)
+        {
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/codes"))
             {
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", account.Token);
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
                 request.Headers.Add("TNT-Installation-Id", installationId.ToString());
                 request.Headers.Add("User-Agent", USER_AGENT);
 
                 string json = _serializer.Serialize(new SessionForm
                 {
-                    PlatformGameAccountId = account.PlatformGameAccountId
+                    PlatformGameAccountId = account.Id
                 });
 
-                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+                request.Content = new StringContent(json, Encoding.UTF8, MEDIA_TYPE);
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
 

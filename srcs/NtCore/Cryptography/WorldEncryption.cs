@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace NtCore.Cryptography
 {
@@ -16,7 +17,7 @@ namespace NtCore.Cryptography
         {
             var output = new List<string>();
 
-            string currentPacket = "";
+            var currentPacket = new StringBuilder();
             int index = 0;
 
             while (index < size)
@@ -26,8 +27,8 @@ namespace NtCore.Cryptography
 
                 if (currentByte == 0xFF)
                 {
-                    output.Add(currentPacket);
-                    currentPacket = "";
+                    output.Add(currentPacket.ToString());
+                    currentPacket = new StringBuilder();
                     continue;
                 }
 
@@ -46,7 +47,7 @@ namespace NtCore.Cryptography
                             byte first = (byte)(firstIndex != 255 ? firstIndex != 14 ? Keys[firstIndex] : '\u0000' : '?');
                             if (first != 0x6E)
                             {
-                                currentPacket += Convert.ToChar(first);
+                                currentPacket.Append(Convert.ToChar(first));
                             }
 
                             if (length <= 1)
@@ -58,7 +59,7 @@ namespace NtCore.Cryptography
                             byte second = (byte)(secondIndex != 255 ? secondIndex != 14 ? Keys[secondIndex] : '\u0000' : '?');
                             if (second != 0x6E)
                             {
-                                currentPacket += Convert.ToChar(second);
+                                currentPacket.Append(Convert.ToChar(second));
                             }
 
                             length -= 2;
@@ -75,12 +76,12 @@ namespace NtCore.Cryptography
                     {
                         if (index < size)
                         {
-                            currentPacket += Convert.ToChar(bytes[index] ^ 0xFF);
+                            currentPacket.Append(Convert.ToChar(bytes[index] ^ 0xFF));
                             index++;
                         }
                         else if (index == size)
                         {
-                            currentPacket += Convert.ToChar(0xFF);
+                            currentPacket.Append(Convert.ToChar(0xFF));
                             index++;
                         }
 

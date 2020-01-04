@@ -1,4 +1,5 @@
 ﻿using System;
+using NtCore.Game.Items;
 
 namespace NtCore.Game.Entities
 {
@@ -7,20 +8,11 @@ namespace NtCore.Game.Entities
     /// </summary>
     public interface IDrop : IEntity
     {
-        /// <summary>
-        ///     Vnum of the item
-        /// </summary>
-        int Vnum { get; }
-
+        IItem Item { get; }
         /// <summary>
         ///     Amount of item drop
         /// </summary>
         int Amount { get; }
-
-        /// <summary>
-        ///     Name of the item
-        /// </summary>
-        string Name { get; }
 
         /// <summary>
         ///     Owner of the drop

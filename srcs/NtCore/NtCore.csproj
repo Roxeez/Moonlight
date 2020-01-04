@@ -112,6 +112,16 @@
     <Compile Include="Clients\IClient.cs" />
     <Compile Include="Clients\IClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
+    <Compile Include="Clients\RemoteClient.cs" />
+    <Compile Include="Clients\Remote\ClientInformation.cs" />
+    <Compile Include="Clients\Remote\IRemoteClientFactory.cs" />
+    <Compile Include="Clients\Remote\LoginServer.cs" />
+    <Compile Include="Clients\Remote\LoginType.cs" />
+    <Compile Include="Clients\Remote\Network\INetworkClient.cs" />
+    <Compile Include="Clients\Remote\Network\NetworkClient.cs" />
+    <Compile Include="Clients\Remote\RemoteClientFactory.cs" />
+    <Compile Include="Clients\Remote\Server.cs" />
+    <Compile Include="Clients\Remote\WorldServer.cs" />
     <Compile Include="Commands\CommandAttribute.cs" />
     <Compile Include="Commands\CommandManager.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
@@ -157,10 +167,6 @@
     <Compile Include="Extensions\ClientExtension.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
-    <Compile Include="Factory\IEntityFactory.cs" />
-    <Compile Include="Factory\ISkillFactory.cs" />
-    <Compile Include="Factory\EntityFactory.cs" />
-    <Compile Include="Factory\SkillFactory.cs" />
     <Compile Include="Game\Battle\Impl\Skill.cs" />
     <Compile Include="Game\Battle\ISkill.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
@@ -176,6 +182,10 @@
     <Compile Include="Game\Entities\Impl\Player.cs" />
     <Compile Include="Game\Entities\INpc.cs" />
     <Compile Include="Game\Entities\IPlayer.cs" />
+    <Compile Include="Game\Factory\EntityFactory.cs" />
+    <Compile Include="Game\Factory\IEntityFactory.cs" />
+    <Compile Include="Game\Factory\ISkillFactory.cs" />
+    <Compile Include="Game\Factory\SkillFactory.cs" />
     <Compile Include="Game\Inventories\IEquipment.cs" />
     <Compile Include="Game\Inventories\Impl\Equipment.cs" />
     <Compile Include="Game\Items\IArmor.cs" />
@@ -183,6 +193,7 @@
     <Compile Include="Game\Items\IItem.cs" />
     <Compile Include="Game\Items\Impl\Armor.cs" />
     <Compile Include="Game\Items\Impl\Fairy.cs" />
+    <Compile Include="Game\Items\Impl\Item.cs" />
     <Compile Include="Game\Items\Impl\Weapon.cs" />
     <Compile Include="Game\Items\IWeapon.cs" />
     <Compile Include="Game\Maps\IMap.cs" />
@@ -279,6 +290,8 @@
     <Compile Include="Services\Gameforge\GameforgeAuthService.cs" />
     <Compile Include="Services\Gameforge\IGameforgeAuthService.cs" />
     <Compile Include="Services\Gameforge\Language.cs" />
+    <Compile Include="Services\Registry\IRegistryReader.cs" />
+    <Compile Include="Services\Registry\RegistryReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
