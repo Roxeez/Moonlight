@@ -27,6 +27,7 @@ namespace NtCore.Game.Entities.Impl
 
         private IClient Client { get; }
         public IEquipment Equipment { get; set; }
+        public ITarget Target { get; set; }
         public int Hp { get; set; }
         public int MaxHp { get; set; }
         public int Mp { get; set; }
@@ -152,6 +153,11 @@ namespace NtCore.Game.Entities.Impl
                 await Task.Delay((stepX + stepY) * (1200 / Speed)).ConfigureAwait(false);
                 Position = position;
             }
+        }
+
+        public async Task SetTarget(ILivingEntity entity)
+        {
+            await Client.SendPacket($"ncif {(byte)entity.EntityType} {entity.Id}");
         }
 
         public async Task SendFriendRequest(IPlayer player)
