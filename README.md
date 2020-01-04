@@ -8,7 +8,7 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 ![GitHub top language](https://img.shields.io/github/languages/top/Roxeez/NtCore?style=flat-square)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Roxeez/NtCore?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/Roxeez/NtCore?style=flat-square)
-![Maintenance](https://img.shields.io/maintenance/yes/2019?style=flat-square)
+![Maintenance](https://img.shields.io/maintenance/yes/2020?style=flat-square)
 
 ## Getting Started
 
