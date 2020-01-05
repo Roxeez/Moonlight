@@ -89,10 +89,10 @@ namespace NtCore.Tests.PacketHandling
         {
             _client.ReceivePacket(packet);
 
-            Check.That(_client.Character.AdditionalSpPoints).IsEqualTo(additionalPoints);
-            Check.That(_client.Character.MaximumAdditionalSpPoints).IsEqualTo(maximumAdditionalPoints);
-            Check.That(_client.Character.SpPoints).IsEqualTo(points);
-            Check.That(_client.Character.MaximumSpPoints).IsEqualTo(maximumPoints);
+            Check.That(_client.Character.SpPointInfo.AdditionalSpPoints).IsEqualTo(additionalPoints);
+            Check.That(_client.Character.SpPointInfo.MaximumAdditionalSpPoints).IsEqualTo(maximumAdditionalPoints);
+            Check.That(_client.Character.SpPointInfo.SpPoints).IsEqualTo(points);
+            Check.That(_client.Character.SpPointInfo.MaximumSpPoints).IsEqualTo(maximumPoints);
         }
 
         [Theory]

@@ -171,6 +171,8 @@
     <Compile Include="Game\Battle\Impl\Target.cs" />
     <Compile Include="Game\Battle\ISkill.cs" />
     <Compile Include="Game\Battle\ITarget.cs" />
+    <Compile Include="Game\Core\LevelInfo.cs" />
+    <Compile Include="Game\Core\SpPointInfo.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
     <Compile Include="Game\Entities\IDrop.cs" />
     <Compile Include="Game\Entities\IEntity.cs" />
@@ -223,6 +225,7 @@
     <Compile Include="Network\Handlers\Characters\EquipPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\FdPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\LevPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Characters\NcifPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\SkiPacketHandler.cs" />
     <Compile Include="Network\Handlers\Characters\WalkPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\CondPacketHandler.cs" />
@@ -241,6 +244,7 @@
     <Compile Include="Network\Packets\Characters\EquipPacket.cs" />
     <Compile Include="Network\Packets\Characters\FdPacket.cs" />
     <Compile Include="Network\Packets\Characters\LevPacket.cs" />
+    <Compile Include="Network\Packets\Characters\NcifPacket.cs" />
     <Compile Include="Network\Packets\Characters\SkiPacket.cs" />
     <Compile Include="Network\Packets\Characters\WalkPacket.cs" />
     <Compile Include="Network\Packets\Entities\CondPacket.cs" />

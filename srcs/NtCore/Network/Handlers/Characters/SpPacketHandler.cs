@@ -11,11 +11,11 @@ namespace NtCore.Network.Handlers.Characters
         {
             var character = client.Character.As<Character>();
 
-            character.MaximumSpPoints = packet.MaximumPoints;
-            character.MaximumAdditionalSpPoints = packet.MaximumAdditionalPoints;
+            character.SpPointInfo.MaximumSpPoints = packet.MaximumPoints;
+            character.SpPointInfo.MaximumAdditionalSpPoints = packet.MaximumAdditionalPoints;
 
-            character.SpPoints = packet.Points;
-            character.AdditionalSpPoints = packet.AdditionalPoints;
+            character.SpPointInfo.SpPoints = packet.Points;
+            character.SpPointInfo.AdditionalSpPoints = packet.AdditionalPoints;
         }
     }
 }

@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using NtCore.Clients;
 using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Battle;
+using NtCore.Game.Battle.Impl;
+using NtCore.Game.Core;
 using NtCore.Game.Inventories;
 using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
@@ -23,6 +26,7 @@ namespace NtCore.Game.Entities.Impl
             Equipment = new Equipment();
             Skills = new HashSet<ISkill>();
             Friends = new List<IFriend>();
+            SpPointInfo = new SpPointInfo();
         }
 
         private IClient Client { get; }
@@ -34,10 +38,7 @@ namespace NtCore.Game.Entities.Impl
         public int MaxMp { get; set; }
         public IParty Party { get; set; }
         public byte JobLevel { get; set; }
-        public int SpPoints { get; set; }
-        public int AdditionalSpPoints { get; set; }
-        public int MaximumSpPoints { get; set; }
-        public int MaximumAdditionalSpPoints { get; set; }
+        public SpPointInfo SpPointInfo { get; }
         public int Gold { get; set; }
         public DateTime LastMapChange { get; set; }
         public HashSet<ISkill> Skills { get; }
@@ -188,6 +189,11 @@ namespace NtCore.Game.Entities.Impl
         public async Task ShowBubbleMessage(string message, ILivingEntity entity)
         {
             await Client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

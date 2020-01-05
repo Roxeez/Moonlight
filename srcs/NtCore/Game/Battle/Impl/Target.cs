@@ -1,4 +1,5 @@
-﻿using NtCore.Game.Entities;
+﻿using System;
+using NtCore.Game.Entities;
 
 namespace NtCore.Game.Battle.Impl
 {

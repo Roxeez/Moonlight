@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Game.Battle;
+using NtCore.Game.Core;
 using NtCore.Game.Inventories;
 using NtCore.Game.Relation;
 
@@ -26,26 +27,11 @@ namespace NtCore.Game.Entities
         ///     Job level
         /// </summary>
         byte JobLevel { get; }
-
+        
         /// <summary>
-        ///     Current sp points
+        /// Info about current sp points
         /// </summary>
-        int SpPoints { get; }
-
-        /// <summary>
-        ///     Current additional sp points
-        /// </summary>
-        int AdditionalSpPoints { get; }
-
-        /// <summary>
-        ///     Maximum sp points
-        /// </summary>
-        int MaximumSpPoints { get; }
-
-        /// <summary>
-        ///     Maximum additional sp points
-        /// </summary>
-        int MaximumAdditionalSpPoints { get; }
+        SpPointInfo SpPointInfo { get; }
 
         /// <summary>
         ///     Current golds
@@ -124,12 +110,6 @@ namespace NtCore.Game.Entities
         /// <param name="position">Position where you want to move</param>
         Task Move(Position position);
 
-        /// <summary>
-        /// Set current target
-        /// </summary>
-        /// <param name="entity">Entity to target</param>
-        Task SetTarget(ILivingEntity entity);
-        
         /// <summary>
         ///     Send a friend request to selected player
         /// </summary>
