@@ -20,9 +20,9 @@ namespace NtCore.Extensions
             return character.Friends.FirstOrDefault(x => x.Name == name);
         }
 
-        public static async Task Move(this Character character, [NotNull] Entity entity)
+        public static async Task WalkTo(this Character character, [NotNull] Entity entity)
         {
-            await character.Move(entity.Position);
+            await character.Walk(entity.Position);
         }
     }
 }

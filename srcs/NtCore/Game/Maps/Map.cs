@@ -84,7 +84,6 @@ namespace NtCore.Game.Maps
         {
             if (position.X > Width || position.X < 0 || position.Y > Height || position.Y < 0)
             {
-                Trace.WriteLine("false");
                 return false;
             }
 

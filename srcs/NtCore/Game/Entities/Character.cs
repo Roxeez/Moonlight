@@ -55,7 +55,7 @@ namespace NtCore.Game.Entities
             await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)EntityType} {Id}");
         }
 
-        public async Task UseSkill(Skill skill, LivingEntity target)
+        public async Task UseSkillOn(Skill skill, LivingEntity target)
         {
             if (!Skills.Contains(skill))
             {
@@ -75,7 +75,7 @@ namespace NtCore.Game.Entities
             await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
         }
 
-        public async Task UseSkill(Skill skill, Position position)
+        public async Task UseSkillAt(Skill skill, Position position)
         {
             if (!Skills.Contains(skill))
             {
@@ -110,7 +110,7 @@ namespace NtCore.Game.Entities
             await Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
         }
 
-        public async Task Move(Position destination)
+        public async Task Walk(Position destination)
         {
             if (!Map.IsWalkable(destination))
             {
@@ -188,7 +188,7 @@ namespace NtCore.Game.Entities
             await Client.ReceivePacket($"say {(byte)EntityType} {Id} 1 {message}");
         }
 
-        public async Task ShowBubbleMessage(string message, LivingEntity entity)
+        public async Task ShowBubbleMessageOn(string message, LivingEntity entity)
         {
             await Client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
         }
