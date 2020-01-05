@@ -3,7 +3,7 @@ using NtCore.Events;
 using NtCore.Events.Entity;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Maps.Impl;
+using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps

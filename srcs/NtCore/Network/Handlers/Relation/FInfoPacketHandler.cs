@@ -4,7 +4,6 @@ using NtCore.Events.Relation;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Relation;
-using NtCore.Game.Relation.Impl;
 using NtCore.Network.Packets.Relation;
 
 namespace NtCore.Network.Handlers.Relation

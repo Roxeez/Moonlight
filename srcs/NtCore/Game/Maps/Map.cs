@@ -8,28 +8,23 @@ using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
 
-namespace NtCore.Game.Maps.Impl
+namespace NtCore.Game.Maps
 {
-    public class Map : IMap
+    public class Map
     {
-        private readonly IDictionary<int, IDrop> _drops;
+        private readonly IDictionary<int, Drop> _drops;
+        private readonly IDictionary<int, Monster> _monsters;
+        private readonly IDictionary<int, Npc> _npcs;
+        private readonly IDictionary<int, Player> _players;
 
-        private readonly IDictionary<Type, EntityType> _mapping = new Dictionary<Type, EntityType>
+        private static readonly IDictionary<Type, EntityType> _mapping = new Dictionary<Type, EntityType>
         {
-            [typeof(IMonster)] = EntityType.MONSTER,
             [typeof(Monster)] = EntityType.MONSTER,
-            [typeof(INpc)] = EntityType.NPC,
             [typeof(Npc)] = EntityType.NPC,
-            [typeof(IPlayer)] = EntityType.PLAYER,
             [typeof(Player)] = EntityType.PLAYER,
-            [typeof(IDrop)] = EntityType.DROP,
             [typeof(Drop)] = EntityType.DROP
         };
-
-        private readonly IDictionary<int, IMonster> _monsters;
-        private readonly IDictionary<int, INpc> _npcs;
-        private readonly IDictionary<int, IPlayer> _players;
-
+        
         public Map(int id, byte[] data)
         {
             Id = id;
@@ -37,10 +32,10 @@ namespace NtCore.Game.Maps.Impl
             Width = BitConverter.ToInt16(Data.Take(2).ToArray(), 0);
             Height = BitConverter.ToInt16(Data.Skip(2).Take(2).ToArray(), 0);
 
-            _monsters = new ConcurrentDictionary<int, IMonster>();
-            _npcs = new ConcurrentDictionary<int, INpc>();
-            _drops = new ConcurrentDictionary<int, IDrop>();
-            _players = new ConcurrentDictionary<int, IPlayer>();
+            _monsters = new ConcurrentDictionary<int, Monster>();
+            _npcs = new ConcurrentDictionary<int, Npc>();
+            _drops = new ConcurrentDictionary<int, Drop>();
+            _players = new ConcurrentDictionary<int, Player>();
         }
 
         private byte this[Position position] => Data.Skip(4 + position.Y * Width + position.X).Take(1).FirstOrDefault();
@@ -51,18 +46,18 @@ namespace NtCore.Game.Maps.Impl
         public short Height { get; }
         public short Width { get; }
 
-        public IEnumerable<IMonster> Monsters => _monsters.Values;
-        public IEnumerable<INpc> Npcs => _npcs.Values;
-        public IEnumerable<IDrop> Drops => _drops.Values;
-        public IEnumerable<IPlayer> Players => _players.Values;
+        public IEnumerable<Monster> Monsters => _monsters.Values;
+        public IEnumerable<Npc> Npcs => _npcs.Values;
+        public IEnumerable<Drop> Drops => _drops.Values;
+        public IEnumerable<Player> Players => _players.Values;
 
-        public T GetEntity<T>(int id) where T : IEntity
+        public T GetEntity<T>(int id) where T : Entity
         {
             EntityType entityType = _mapping.GetValueOrDefault(typeof(T));
             return (T)GetEntity(entityType, id);
         }
 
-        public IEntity GetEntity(EntityType entityType, int id)
+        public Entity GetEntity(EntityType entityType, int id)
         {
             switch (entityType)
             {
@@ -92,7 +87,7 @@ namespace NtCore.Game.Maps.Impl
             return value == 0 || value == 2 || value >= 16 && value <= 19;
         }
 
-        public void AddEntity(IEntity entity)
+        internal void AddEntity(Entity entity)
         {
             switch (entity.EntityType)
             {
@@ -121,12 +116,12 @@ namespace NtCore.Game.Maps.Impl
             }
         }
 
-        public void RemoveEntity(IEntity entity)
+        internal void RemoveEntity(Entity entity)
         {
             RemoveEntity(entity.EntityType, entity.Id);
         }
 
-        public void RemoveEntity(EntityType entityType, int entityId)
+        internal void RemoveEntity(EntityType entityType, int entityId)
         {
             switch (entityType)
             {

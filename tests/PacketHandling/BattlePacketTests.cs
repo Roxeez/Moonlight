@@ -5,7 +5,7 @@ using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Entities;
-using NtCore.Game.Maps.Impl;
+using NtCore.Game.Maps;
 using NtCore.Network;
 using NtCore.Tests.Utility;
 using Xunit;

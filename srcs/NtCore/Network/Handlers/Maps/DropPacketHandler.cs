@@ -5,7 +5,7 @@ using NtCore.Events.Map;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Factory;
-using NtCore.Game.Maps.Impl;
+using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps

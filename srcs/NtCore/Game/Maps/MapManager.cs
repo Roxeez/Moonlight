@@ -4,24 +4,24 @@ using NtCore.I18N;
 using NtCore.Registry;
 using NtCore.Resources;
 
-namespace NtCore.Game.Maps.Impl
+namespace NtCore.Game.Maps
 {
     public class MapManager : IMapManager
     {
         private readonly ILanguageService _languageService;
-        private readonly IDictionary<int, IMap> _maps;
+        private readonly IDictionary<int, Map> _maps;
         private readonly IRegistry _registry;
 
         public MapManager(ILanguageService languageService, IRegistry registry)
         {
-            _maps = new Dictionary<int, IMap>();
+            _maps = new Dictionary<int, Map>();
             _languageService = languageService;
             _registry = registry;
         }
 
-        public IMap GetMapById(int id)
+        public Map GetMapById(int id)
         {
-            IMap map = _maps.GetValueOrDefault(id);
+            Map map = _maps.GetValueOrDefault(id);
             if (map != null)
             {
                 return map;

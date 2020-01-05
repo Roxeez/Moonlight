@@ -22,7 +22,7 @@ namespace NtCore.Game.Entities
             LastMapChange = DateTime.Now;
             Equipment = new Equipment();
             Skills = new HashSet<Skill>();
-            Friends = new List<IFriend>();
+            Friends = new List<Friend>();
             SpPointInfo = new SpPointInfo();
         }
 
@@ -33,16 +33,14 @@ namespace NtCore.Game.Entities
         public int MaxHp { get; internal set; }
         public int Mp { get; internal set; }
         public int MaxMp { get; internal set; }
-        public IParty Party { get; internal set; }
+        public Party Party { get; internal set; }
         public byte JobLevel { get; internal set; }
         public SpPointInfo SpPointInfo { get; }
         public int Gold { get; internal set; }
         public DateTime LastMapChange { get; internal set; }
         public HashSet<Skill> Skills { get; }
-        public IEnumerable<IFriend> Friends { get; internal set; }
+        public IEnumerable<Friend> Friends { get; internal set; }
 
-        private Task _worker;
-        
         public async Task UseSkill(Skill skill)
         {
             if (!Skills.Contains(skill))
@@ -155,25 +153,9 @@ namespace NtCore.Game.Entities
             }
         }
         
-        /**
-         * Looks crap but i'm gonna keep like this until i've something in NtNative for selecting entities for local client
-         */
         public async Task SelectEntity(LivingEntity entity)
         {
-            if (entity == null) // Reset target
-            {
-                Target = null;
-            }
-            
-            if (_worker != null && !_worker.IsCompleted) // Wait current running task
-            {
-                await _worker;
-            }
-
-            if (entity != null)
-            {
-
-            }
+            // TODO : Find a way to handle selection
         }
 
         public async Task SendFriendRequest(Player player)
@@ -208,12 +190,7 @@ namespace NtCore.Game.Entities
 
         public void Dispose()
         {
-            Target = null;
-            if (_worker != null)
-            {
-                Target = null;
-                Task.WaitAll(_worker);
-            }
+
         }
     }
 }

@@ -5,13 +5,11 @@ using NtCore.Game.Maps;
 
 namespace NtCore.Game.Entities
 {
-    public abstract class LivingEntity : IEquatable<LivingEntity>
+    public abstract class LivingEntity : Entity, IEquatable<LivingEntity>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        public IMap Map { get; set; }
+        public Map Map { get; set; }
         public Position Position { get; set; }
-        public EntityType EntityType { get; protected set; }
         public byte Speed { get; set; }
         public byte Level { get; set; }
         public byte Direction { get; set; }

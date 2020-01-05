@@ -1,8 +1,8 @@
 ﻿using NtCore.Clients;
 
-namespace NtCore.Game.Relation.Impl
+namespace NtCore.Game.Relation
 {
-    public class Friend : IFriend
+    public class Friend
     {
         private readonly IClient _client;
 
@@ -18,7 +18,7 @@ namespace NtCore.Game.Relation.Impl
         public string Name { get; }
         public bool IsConnected { get; set; }
 
-        public bool Equals(IFriend other) => other != null && other.Id == Id;
+        public bool Equals(Friend other) => other != null && other.Id == Id;
 
         public void SendPrivateMessage(string message)
         {
