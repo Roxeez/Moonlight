@@ -20,6 +20,9 @@ namespace NtCore.Network.Packets.Battle
         [PacketIndex(4)]
         public int SkillVnum { get; set; }
 
+        [PacketIndex(10)]
+        public bool TargetIsAlive { get; set; }
+        
         [PacketIndex(11)]
         public byte TargetHpPercentage { get; set; }
 

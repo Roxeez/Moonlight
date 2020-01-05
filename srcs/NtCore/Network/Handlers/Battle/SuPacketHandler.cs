@@ -24,6 +24,7 @@ namespace NtCore.Network.Handlers.Battle
 
             var caster = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
             var target = map.GetEntity<LivingEntity>(packet.TargetEntityType, packet.TargetEntityId);
+            
             if (target == null || caster == null)
             {
                 return;
@@ -32,6 +33,19 @@ namespace NtCore.Network.Handlers.Battle
             target.HpPercentage = packet.TargetHpPercentage;
 
             _eventManager.CallEvent(new EntityDamageEvent(client, target, caster, packet.Damage));
+
+            if (packet.TargetIsAlive)
+            {
+                return;
+            }
+
+            if (client.Character.Target != null && client.Character.Target.Entity.Equals(target))
+            {
+                client.Character.Target = null;
+            }
+            
+            _eventManager.CallEvent(new EntityDeathEvent(client, target, caster));
+            map.RemoveEntity(target);
         }
     }
 }

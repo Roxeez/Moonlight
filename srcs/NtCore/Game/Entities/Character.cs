@@ -152,9 +152,15 @@ namespace NtCore.Game.Entities
             }
         }
 
-        public Task SelectEntity(LivingEntity entity)
+        public async Task TargetEntity(LivingEntity entity)
         {
-            throw new NotImplementedException("Not implemented yet (need to find something for compatibility with remote/local)");
+            if (entity == null)
+            {
+                Target = null;
+                return;
+            }
+            
+            await Client.SendPacket($"ncif {(byte)entity.EntityType} {entity.Id}");
         }
 
         public async Task SendFriendRequest(Player player)

@@ -10,19 +10,12 @@ namespace NtCore.Clients
 {
     public sealed class LocalClient : IClient
     {
-        private readonly Task _loop;
-        private readonly NtNative.PacketCallback _recvCallback;
-        private readonly ConcurrentQueue<string> _recvQueue = new ConcurrentQueue<string>();
-
         /// <summary>
         ///     Need to keep a reference to both callback to avoid GC
         /// </summary>
         private readonly NtNative.PacketCallback _sendCallback;
-
-        private readonly ConcurrentQueue<string> _sendQueue = new ConcurrentQueue<string>();
-
-        private bool _dispose;
-
+        private readonly NtNative.PacketCallback _recvCallback;
+        
         public LocalClient()
         {
             Id = Guid.NewGuid();
@@ -36,8 +29,6 @@ namespace NtCore.Clients
 
             NtNative.SetSendCallback(_sendCallback);
             NtNative.SetRecvCallback(_recvCallback);
-
-            _loop = Task.Run(Loop);
         }
 
         public Guid Id { get; }
@@ -46,47 +37,20 @@ namespace NtCore.Clients
 
         public Task SendPacket(string packet)
         {
-            _sendQueue.Enqueue(packet);
+            NtNative.SendPacket(packet);
             return Task.CompletedTask;
         }
 
         public Task ReceivePacket(string packet)
         {
-            _recvQueue.Enqueue(packet);
+            NtNative.RecvPacket(packet);
             return Task.CompletedTask;
-        }
-
-        public void Dispose()
-        {
-            _dispose = true;
-            if (_loop != null && _loop.IsCompleted)
-            {
-                Task.WaitAll(_loop);
-            }
         }
 
         public event Func<string, bool> PacketSend;
         public event Func<string, bool> PacketReceived;
 
         public bool Equals(IClient other) => other != null && other.Id.Equals(Id);
-
-        private void Loop()
-        {
-            while (!_dispose)
-            {
-                while (_sendQueue.TryDequeue(out string sendPacket))
-                {
-                    NtNative.SendPacket(sendPacket);
-                }
-
-                while (_recvQueue.TryDequeue(out string receivePacket))
-                {
-                    NtNative.RecvPacket(receivePacket);
-                }
-
-                Thread.Sleep(10);
-            }
-        }
 
         private bool OnPacketSend(string packet)
         {
@@ -106,6 +70,11 @@ namespace NtCore.Clients
             }
 
             return PacketReceived.Invoke(packet);
+        }
+
+        public void Dispose()
+        {
+            NtNative.Clean();
         }
     }
 }

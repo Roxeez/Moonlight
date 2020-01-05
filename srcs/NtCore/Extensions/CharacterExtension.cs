@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 using NtCore.Game.Entities;
 using NtCore.Game.Relation;
@@ -17,6 +18,11 @@ namespace NtCore.Extensions
         public static Friend FindFriendByName(this Character character, [NotNull] string name)
         {
             return character.Friends.FirstOrDefault(x => x.Name == name);
+        }
+
+        public static async Task Move(this Character character, [NotNull] Entity entity)
+        {
+            await character.Move(entity.Position);
         }
     }
 }
