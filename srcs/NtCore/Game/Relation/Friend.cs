@@ -1,8 +1,9 @@
-﻿using NtCore.Clients;
+﻿using System;
+using NtCore.Clients;
 
 namespace NtCore.Game.Relation
 {
-    public class Friend
+    public class Friend : IEquatable<Friend>
     {
         private readonly IClient _client;
 

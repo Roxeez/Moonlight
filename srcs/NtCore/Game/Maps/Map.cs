@@ -39,7 +39,7 @@ namespace NtCore.Game.Maps
             _players = new ConcurrentDictionary<int, Player>();
         }
 
-        private byte this[Position position] => Data.Skip(4 + position.Y * Width + position.X).Take(1).FirstOrDefault();
+        private byte this[int x, int y] => Data.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
 
         public int Id { get; }
         public string Name { get; set; }
@@ -88,7 +88,7 @@ namespace NtCore.Game.Maps
                 return false;
             }
 
-            byte value = this[position];
+            byte value = this[position.X, position.Y];
 
             return value == 0 || value == 2 || value >= 16 && value <= 19;
         }

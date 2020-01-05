@@ -186,9 +186,5 @@ namespace NtCore.Game.Entities
         {
             await Client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
         }
-
-        public void Dispose()
-        {
-        }
     }
 }

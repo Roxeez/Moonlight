@@ -67,7 +67,6 @@ namespace NtCore.Clients.Remote
                 string fileHash = (clientInformation.DxHash.ToUpper() + clientInformation.GlHash.ToUpper()).ToMd5();
 
                 packet = $"NoS0577 {token.Get().ToHex()} {installationId.ToString()} {version} 0 {fileHash}";
-                ;
             }
             else
             {
