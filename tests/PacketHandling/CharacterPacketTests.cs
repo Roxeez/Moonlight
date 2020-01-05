@@ -59,6 +59,8 @@ namespace NtCore.Tests.PacketHandling
             Check.That(_client.Character.Mp).IsEqualTo(mp);
             Check.That(_client.Character.MaxHp).IsEqualTo(maxHp);
             Check.That(_client.Character.MaxMp).IsEqualTo(maxMp);
+            Check.That(_client.Character.HpPercentage).IsNotZero();
+            Check.That(_client.Character.MpPercentage).IsNotZero();
         }
 
         [Theory]

@@ -40,7 +40,7 @@ namespace NtCore.Tests.GameLogic
 
             map.AddEntity(character);
 
-            await character.Walk(new Position(2, 3));
+            await character.Walk(new Position(10, 10));
 
             Check.That(character.Position).IsEqualTo(new Position(2, 3));
         }

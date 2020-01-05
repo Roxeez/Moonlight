@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using NtCore.Clients;
 using NtCore.Core;
@@ -28,8 +29,8 @@ namespace NtCore.Game.Entities
         private IClient Client { get; }
         public Equipment Equipment { get; internal set; }
         public Target Target { get; internal set; }
-        public new byte HpPercentage => (byte)(Hp == 0 ? 0 : Hp / MaxHp * 100);
-        public new byte MpPercentage => (byte)(Mp == 0 ? 0 : Mp / MaxMp * 100);
+        public new byte HpPercentage => (byte)(Hp == 0 ? 0 : (double)Hp / MaxHp * 100);
+        public new byte MpPercentage => (byte)(Mp == 0 ? 0 : (double)Mp / MaxMp * 100);
         public int Hp { get; internal set; }
         public int MaxHp { get; internal set; }
         public int Mp { get; internal set; }
@@ -119,6 +120,7 @@ namespace NtCore.Game.Entities
 
         public async Task Walk(Position destination)
         {
+            Trace.WriteLine("WALKING");
             if (!Map.IsWalkable(destination))
             {
                 return;
@@ -154,7 +156,9 @@ namespace NtCore.Game.Entities
                     await Client.SendPacket($"walk {position.X} {position.Y} {(position.X + position.Y) % 3 % 2} {Speed}");
                 }
 
-                await Task.Delay((stepX + stepY) * (1200 / Speed)).ConfigureAwait(false);
+                int time = (stepX + stepY) * (2000 / Speed);
+                await Task.Delay(time);
+                
                 Position = position;
             }
         }

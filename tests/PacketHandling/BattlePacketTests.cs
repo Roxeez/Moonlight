@@ -55,20 +55,19 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Theory]
-        [InlineData("su 1 99999 3 1 250 10 0 0 0 0 0 50 1000 1 1", EntityType.MONSTER, 1, 50)]
-        [InlineData("su 1 99999 3 50 250 10 0 0 0 0 0 78 1000 1 1", EntityType.MONSTER, 50, 78)]
+        [InlineData("su 1 99999 3 1 250 10 0 0 0 0 1 50 1000 1 1", EntityType.MONSTER, 1, 50)]
+        [InlineData("su 1 99999 3 50 250 10 0 0 0 0 1 78 1000 1 1", EntityType.MONSTER, 50, 78)]
         public void Su_Packet_Update_Entity_Hp(string packet, EntityType entityType, int entityId, int hpPercentage)
         {
             Character character = _client.Character;
             
             Map map = new MapBuilder().WithEntity(entityType, entityId).Create();
             map.AddEntity(character);
-
             _client.ReceivePacket(packet);
 
             var entity = map.GetEntity<LivingEntity>(entityType, entityId);
-            
-            Check.That(entity.HpPercentage).IsEqualTo(hpPercentage);
+            Check.That(entity).IsNotNull();
+            Check.That(entity?.HpPercentage).IsEqualTo(hpPercentage);
         }
 
         [Theory]
