@@ -29,119 +29,66 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 > This example is simple bot, killing monsters around & pickup drops of player.  
 You can find a full example [HERE](https://github.com/Roxeez/NtCore.Example)
 ```csharp
-public class MyApplication
+private async Task Work(Character character)
 {
-    public void Run()
+    _isRunning = true;
+
+    while (_isRunning)
     {
-        Kernel32.AllocConsole();
+        Position startPosition = character.Position;
 
-        IClientManager clientManager = NtCoreAPI.GetClientManager();
-        IEventManager eventManager = NtCoreAPI.GetEventManager();
-        ICommandManager commandManager = NtCoreAPI.GetCommandManager();
+        Map map = character.Map;
+        IEnumerable<Monster> monsters = map.Monsters.Where(x => x.Position.IsInArea(character.Position, MonsterRadius)).OrderBy(x => x.Position.GetDistance(character.Position));
+        Skill skill = character.Skills.First();
 
-        IClient localClient = clientManager.CreateLocalClient();
-
-        var bot = new Bot();
-
-        eventManager.RegisterEventListener(bot, localClient);
-        commandManager.RegisterCommandHandler(bot);
-
-        string command;
-        do
+        foreach (Monster monster in monsters)
         {
-            command = Console.ReadLine();
-        } 
-        while (command != "exit");
-    }
-}
-
-public class Bot : IEventListener, ICommandHandler
-{
-    private bool _pickUpDrops;
-    private bool _isRunning;
-
-    private Task _worker;
-
-    [Command("stop")]
-    public async void StopCommand(Character sender)
-    {
-        if (_worker == null || _worker.IsCompleted)
-        {
-            await sender.ReceiveChatMessage("Not yet started.", ChatMessageColor.RED);
-            return;
-        }
-
-        _isRunning = false;
-        await _worker;
-    }
-
-    [Command("start")]
-    public async void OnStartCommand(Character sender)
-    {
-        if (_worker != null)
-        {
-            await sender.ReceiveChatMessage("Already started.", ChatMessageColor.RED);
-            return;
-        }
-
-        _worker = Task.Run(() => Work(sender));
-        await sender.ReceiveChatMessage("Bot started", ChatMessageColor.RED);
-    }
-
-    [Command("pickup")]
-    public async void OnPickUpCommand(Character sender)
-    {
-        _pickUpDrops = !_pickUpDrops;
-
-        await sender.ReceiveChatMessage($"Drop pickup : {(_pickUpDrops ? "Enabled" : "Disabled")}", ChatMessageColor.GREEN);
-    }
-
-    private async Task Work(Character character)
-    {
-        _isRunning = true;
-
-        while (_isRunning)
-        {
-            Map map = character.Map;
-            Monster closestMonster = map.Monsters.OrderBy(x => x.Position.GetDistance(character.Position)).FirstOrDefault();
-            Skill skill = character.Skills.First();
-
-            if (_pickUpDrops)
-            {
-                IEnumerable<Drop> drops = map.Drops.Where(x => (x.Owner.Equals(character) || x.DropTime.AddMinutes(1) < DateTime.Now)  && x.Position.IsInArea(character.Position, 5));
-                foreach (Drop drop in drops)
-                {
-                    await character.WalkTo(drop);
-                    await character.PickUp(drop);
-                }
-            }
-
             if (character.HpPercentage < 20)
             {
+                await character.ShowBubbleMessage("Resting...");
                 await character.Rest();
+
                 do
                 {
-                    await Task.Delay(100);
+                    await Task.Delay(1000);
                 } 
                 while (character.HpPercentage < 100 && character.IsResting);
             }
 
-            if (closestMonster == null)
+            await character.ShowBubbleMessageOn($"{monster.Name} Lv.{monster.Level}", monster);
+
+            while (monster.HpPercentage > 0 && _isRunning)
+            {
+                if (monster.Position.GetDistance(character.Position) > skill.Info.Range)
+                {
+                    await character.Walk(monster.Position);
+                }
+
+                await character.UseSkillOn(skill, monster);
+
+                await Task.Delay(skill.Info.Cooldown * 100);
+            }
+        }
+
+        await Task.Delay(1000);
+
+        IEnumerable<Drop> drops = map.Drops.Where(x => x.Position.IsInArea(startPosition, DropRadius)).OrderBy(x => x.Position.GetDistance(character.Position));
+        foreach (Drop drop in drops)
+        {
+            if (!character.Equals(drop.Owner))
             {
                 continue;
             }
 
-            await character.ShowBubbleMessage("Attacking target.");
-            await character.ShowBubbleMessageOn($"-> Id {closestMonster.Id} / Name {closestMonster.Name} / Level {closestMonster.Level} <-", closestMonster);
+            await character.ShowBubbleMessage($"Trying to pickup {drop.Item.Name}");
 
-            while (closestMonster.HpPercentage > 0 && _isRunning)
-            {
-                await character.WalkTo(closestMonster);
-                await character.UseSkillOn(skill, closestMonster);
+            await character.Walk(drop.Position);
+            await character.PickUp(drop);
 
-                await Task.Delay(skill.Info.Cooldown * 1000);
-            }
+            await Task.Delay(1000);
         }
+
+        await character.Walk(startPosition);
     }
 }
 ```
