@@ -152,6 +152,7 @@
     <Compile Include="Events\Entity\EntityLeaveEvent.cs" />
     <Compile Include="Events\Entity\EntityMoveEvent.cs" />
     <Compile Include="Events\Entity\EntityJoinEvent.cs" />
+    <Compile Include="Events\Entity\EntityRestEvent.cs" />
     <Compile Include="Events\Event.cs" />
     <Compile Include="Events\EventManager.cs" />
     <Compile Include="Events\Handler.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Network\Handlers\Characters\WalkPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\CondPacketHandler.cs" />
     <Compile Include="Network\Handlers\Entities\MvPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Entities\RestPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\DropPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\GetPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\OutPacketHandler.cs" />
@@ -231,6 +233,7 @@
     <Compile Include="Network\Packets\Characters\WalkPacket.cs" />
     <Compile Include="Network\Packets\Entities\CondPacket.cs" />
     <Compile Include="Network\Packets\Entities\MvPacket.cs" />
+    <Compile Include="Network\Packets\Entities\RestPacket.cs" />
     <Compile Include="Network\Packets\Maps\DropPacket.cs" />
     <Compile Include="Network\Packets\Maps\GetPacket.cs" />
     <Compile Include="Network\Packets\Maps\OutPacket.cs" />

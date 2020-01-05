@@ -28,6 +28,8 @@ namespace NtCore.Game.Entities
         private IClient Client { get; }
         public Equipment Equipment { get; internal set; }
         public Target Target { get; internal set; }
+        public new byte HpPercentage => (byte)(Hp == 0 ? 0 : Hp / MaxHp * 100);
+        public new byte MpPercentage => (byte)(Mp == 0 ? 0 : Mp / MaxMp * 100);
         public int Hp { get; internal set; }
         public int MaxHp { get; internal set; }
         public int Mp { get; internal set; }
@@ -73,6 +75,11 @@ namespace NtCore.Game.Entities
             }
 
             await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
+        }
+
+        public async Task Rest()
+        {
+            await Client.SendPacket($"rest 1 1 {Id}");
         }
 
         public async Task UseSkillAt(Skill skill, Position position)
