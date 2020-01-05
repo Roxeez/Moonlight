@@ -32,7 +32,7 @@ namespace NtCore.Commands
                     continue;
                 }
 
-                if (parameters.Length > 0 && parameters[0].ParameterType != typeof(ICharacter))
+                if (parameters.Length > 0 && parameters[0].ParameterType != typeof(Character))
                 {
                     continue;
                 }
