@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Game.Battle;
-using NtCore.Game.Core;
+using NtCore.Game.Data;
 using NtCore.Game.Inventories;
 using NtCore.Game.Relation;
 

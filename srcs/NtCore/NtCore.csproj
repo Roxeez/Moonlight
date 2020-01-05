@@ -171,8 +171,7 @@
     <Compile Include="Game\Battle\Impl\Target.cs" />
     <Compile Include="Game\Battle\ISkill.cs" />
     <Compile Include="Game\Battle\ITarget.cs" />
-    <Compile Include="Game\Core\LevelInfo.cs" />
-    <Compile Include="Game\Core\SpPointInfo.cs" />
+    <Compile Include="Game\Data\SpPointInfo.cs" />
     <Compile Include="Game\Entities\ICharacter.cs" />
     <Compile Include="Game\Entities\IDrop.cs" />
     <Compile Include="Game\Entities\IEntity.cs" />

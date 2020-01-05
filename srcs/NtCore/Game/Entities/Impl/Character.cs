@@ -8,7 +8,7 @@ using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Battle.Impl;
-using NtCore.Game.Core;
+using NtCore.Game.Data;
 using NtCore.Game.Inventories;
 using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;

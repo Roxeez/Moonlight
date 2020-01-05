@@ -1,4 +1,4 @@
-﻿namespace NtCore.Game.Core
+﻿namespace NtCore.Game.Data
 {
     public class SpPointInfo
     {
