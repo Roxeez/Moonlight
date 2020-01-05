@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading.Tasks;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Extensions;
@@ -32,7 +33,7 @@ namespace NtCore.Commands
                     continue;
                 }
 
-                if (parameters.Length > 0 && parameters[0].ParameterType != typeof(ICharacter))
+                if (parameters.Length > 0 && parameters[0].ParameterType != typeof(Character))
                 {
                     continue;
                 }
@@ -59,13 +60,13 @@ namespace NtCore.Commands
             RegisterCommandHandler(obj);
         }
 
-        public bool ExecuteCommand(IClient client, string command, string[] args)
+        public async Task<bool> ExecuteCommand(IClient client, string command, string[] args)
         {
             (ICommandHandler, MethodInfo) handler = _registeredCommands.GetValueOrDefault(command);
 
             if (handler == default((ICommandHandler, MethodInfo)))
             {
-                client.Character.ReceiveChatMessage($"There is no command : {command}", ChatMessageColor.RED);
+                await client.Character.ReceiveChatMessage($"There is no command : {command}", ChatMessageColor.RED);
                 return true;
             }
 

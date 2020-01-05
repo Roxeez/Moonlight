@@ -1,5 +1,4 @@
 ﻿using NtCore.Clients;
-using NtCore.Game.Entities;
 
 namespace NtCore.Events.Character
 {
@@ -7,6 +6,6 @@ namespace NtCore.Events.Character
     {
         public StatUpdateEvent(IClient client) : base(client) => Character = client.Character;
 
-        public ICharacter Character { get; }
+        public Game.Entities.Character Character { get; }
     }
 }

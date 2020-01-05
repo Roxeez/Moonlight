@@ -1,7 +1,6 @@
 ﻿using JetBrains.Annotations;
 using NtCore.Clients;
 using NtCore.Core;
-using NtCore.Game.Entities;
 
 namespace NtCore.Events.Character
 {
@@ -19,7 +18,7 @@ namespace NtCore.Events.Character
         /// <summary>
         ///     Character involved in this event
         /// </summary>
-        public ICharacter Character { get; }
+        public Game.Entities.Character Character { get; }
 
         /// <summary>
         ///     Position of target before movement

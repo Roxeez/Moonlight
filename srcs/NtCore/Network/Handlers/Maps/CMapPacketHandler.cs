@@ -2,10 +2,8 @@
 using NtCore.Clients;
 using NtCore.Events;
 using NtCore.Events.Map;
-using NtCore.Extensions;
-using NtCore.Game.Entities.Impl;
+using NtCore.Game.Entities;
 using NtCore.Game.Maps;
-using NtCore.Game.Maps.Impl;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps
@@ -23,9 +21,9 @@ namespace NtCore.Network.Handlers.Maps
 
         public override void Handle(IClient client, CMapPacket packet)
         {
-            var character = client.Character.As<Character>();
-            var source = client.Character.Map.As<Map>();
-            var destination = _mapManager.GetMapById(packet.MapId).As<Map>();
+            Character character = client.Character;
+            Map source = client.Character.Map;
+            Map destination = _mapManager.GetMapById(packet.MapId);
 
             if (!packet.IsJoining)
             {

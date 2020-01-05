@@ -20,7 +20,7 @@ namespace NtCore.Clients
         /// <summary>
         ///     Get the character of this session
         /// </summary>
-        ICharacter Character { get; }
+        Character Character { get; }
 
         /// <summary>
         ///     Client type

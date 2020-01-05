@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Moq;
 using NFluent;
 using NtCore.Clients;
 using NtCore.Core;
 using NtCore.Extensions;
-using NtCore.Game.Entities.Impl;
+using NtCore.Game.Entities;
 using NtCore.Game.Maps;
-using NtCore.Game.Maps.Impl;
 using NtCore.Network;
 using NtCore.Tests.Utility;
 using Xunit;
@@ -41,7 +41,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var miniland = _client.Character.Map.As<IMiniland>();
+            var miniland = _client.Character.Map as Miniland;
 
             Check.That(miniland).IsNotNull();
             Check.That(miniland.Owner).IsEqualTo(owner);
@@ -55,32 +55,17 @@ namespace NtCore.Tests.PacketHandling
         {
             _client.ReceivePacket("c_map 0 20001 1");
 
-            Check.That(_client.Character.Map).InheritsFrom<IMiniland>();
+            Check.That(_client.Character.Map).InheritsFrom<Miniland>();
         }
 
         [Fact]
         public void MltObj_Packet_Add_MinilandObject_To_Miniland()
         {
-            var objects = new List<IMinilandObject>
+            var objects = new List<MinilandObject>
             {
-                new MinilandObject
-                {
-                    Id = 1,
-                    Vnum = 3250,
-                    Position = new Position(15, 25)
-                },
-                new MinilandObject
-                {
-                    Id = 2,
-                    Vnum = 3285,
-                    Position = new Position(25, 65)
-                },
-                new MinilandObject
-                {
-                    Id = 3,
-                    Vnum = 1285,
-                    Position = new Position(65, 87)
-                }
+                new MinilandObject(3250, 1, new Position(15, 25)),
+                new MinilandObject(3285, 2, new Position(25, 65)),
+                new MinilandObject(1285, 3, new Position(65, 87))
             };
 
             Map fakeMap = new MapBuilder().AsMiniland().Create();
@@ -89,11 +74,11 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket("mltobj 3250.1.15.25 3285.2.25.65 1285.3.65.87");
 
-            var miniland = _client.Character.Map.As<IMiniland>();
+            var miniland = _client.Character.Map as Miniland;
 
             Check.That(miniland).IsNotNull();
             Check.That(miniland.MinilandObjects).CountIs(3);
-            Check.That(miniland.MinilandObjects).ContainsExactly(objects);
+            Check.That(miniland.MinilandObjects.Select(x => x.Id)).ContainsExactly(objects.Select(x => x.Id));
         }
     }
 }

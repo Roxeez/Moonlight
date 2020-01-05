@@ -1,8 +1,6 @@
 ﻿using NtCore.Clients;
 using NtCore.Enums;
-using NtCore.Extensions;
-using NtCore.Game.Inventories.Impl;
-using NtCore.Game.Items.Impl;
+using NtCore.Game.Items;
 using NtCore.Network.Packets.Characters;
 
 namespace NtCore.Network.Handlers.Characters
@@ -21,12 +19,11 @@ namespace NtCore.Network.Handlers.Characters
                 return;
             }
 
-            var fairy = client.Character.Equipment.Fairy.As<Fairy>();
+            Fairy fairy = client.Character.Equipment.Fairy;
 
             if (fairy == null)
             {
-                fairy = new Fairy();
-                client.Character.Equipment.As<Equipment>().Fairy = fairy;
+                return;
             }
 
             fairy.Element = packet.Element;

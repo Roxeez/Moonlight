@@ -1,9 +1,8 @@
 ﻿using NtCore.Clients;
 using NtCore.Events;
 using NtCore.Events.Map;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Maps.Impl;
+using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps
@@ -16,10 +15,10 @@ namespace NtCore.Network.Handlers.Maps
 
         public override void Handle(IClient client, GetPacket packet)
         {
-            var map = client.Character.Map.As<Map>();
+            Map map = client.Character.Map;
 
-            var entity = map.GetEntity(packet.EntityType, packet.EntityId).As<ILivingEntity>();
-            var drop = map.GetEntity<IDrop>(packet.DropId);
+            var entity = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
+            var drop = map.GetEntity<Drop>(packet.DropId);
 
             if (entity == null && drop == null)
             {

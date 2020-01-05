@@ -1,8 +1,7 @@
 ﻿using NtCore.Clients;
 using NtCore.Events;
 using NtCore.Events.Map;
-using NtCore.Extensions;
-using NtCore.Game.Maps.Impl;
+using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps
@@ -15,9 +14,7 @@ namespace NtCore.Network.Handlers.Maps
 
         public override void Handle(IClient client, MlInfoBrPacket packet)
         {
-            var miniland = client.Character.Map.As<Miniland>();
-
-            if (miniland == null)
+            if (!(client.Character.Map is Miniland miniland))
             {
                 return;
             }

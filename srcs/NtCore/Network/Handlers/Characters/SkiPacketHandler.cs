@@ -15,13 +15,13 @@ namespace NtCore.Network.Handlers.Characters
 
         public override void Handle(IClient client, SkiPacket packet)
         {
-            ICharacter character = client.Character;
+            Character character = client.Character;
 
             character.Skills.Clear();
 
             foreach (int skillVnum in packet.Skills)
             {
-                ISkill skill = _skillFactory.CreateSkill(skillVnum);
+                Skill skill = _skillFactory.CreateSkill(skillVnum);
                 if (skill.Info.SkillType != SkillType.PLAYER) // Filter upgrades & skill upgrades
                 {
                     continue;

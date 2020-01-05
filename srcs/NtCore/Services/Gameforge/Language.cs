@@ -8,7 +8,7 @@
         public static readonly Language IT = new Language("it", "it_IT");
         public static readonly Language ES = new Language("es", "es_ES");
         public static readonly Language PL = new Language("pl", "pl_PL");
-        
+
         private Language(string name, string locale)
         {
             Name = name;

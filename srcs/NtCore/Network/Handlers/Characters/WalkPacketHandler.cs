@@ -2,8 +2,7 @@
 using NtCore.Core;
 using NtCore.Events;
 using NtCore.Events.Character;
-using NtCore.Extensions;
-using NtCore.Game.Entities.Impl;
+using NtCore.Game.Entities;
 using NtCore.Network.Packets.Characters;
 
 namespace NtCore.Network.Handlers.Characters
@@ -16,7 +15,7 @@ namespace NtCore.Network.Handlers.Characters
 
         public override void Handle(IClient client, WalkPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             Position from = character.Position;
 

@@ -1,8 +1,6 @@
 ﻿using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
-using NtCore.Game.Items.Impl;
 using NtCore.I18N;
 using NtCore.Registry;
 
@@ -10,13 +8,15 @@ namespace NtCore.Game.Factory
 {
     public class EntityFactory : IEntityFactory
     {
+        private readonly IItemFactory _itemFactory;
         private readonly ILanguageService _languageService;
         private readonly IRegistry _registry;
 
-        public EntityFactory(ILanguageService languageService, IRegistry registry)
+        public EntityFactory(ILanguageService languageService, IRegistry registry, IItemFactory itemFactory)
         {
             _languageService = languageService;
             _registry = registry;
+            _itemFactory = itemFactory;
         }
 
         public Monster CreateMonster(int id, int vnum, Position position, byte direction, byte hpPercentage, byte mpPercentage)
@@ -55,23 +55,23 @@ namespace NtCore.Game.Factory
             return npc;
         }
 
-        public Drop CreateDrop(int id, int vnum, int amount, Position position, IPlayer owner)
+        public Drop CreateDrop(int id, int vnum, int amount, Position position, Player owner)
         {
-            ItemInfo itemInfo = _registry.GetItemInfo(vnum);
             var drop = new Drop
             {
                 Id = id,
                 Amount = amount,
                 Position = position,
                 Owner = owner,
-                Item = new Item(vnum, _languageService.GetTranslation(LanguageKey.ITEM, itemInfo?.NameKey ?? $"{vnum}"))
+                Item = _itemFactory.CreateItem(vnum)
             };
 
             return drop;
         }
 
-        public Player CreatePlayer(int id, string name, byte level, ClassType classType, byte direction, Gender gender, Position position, byte hpPercentage, byte mpPercentage) =>
-            new Player
+        public Player CreatePlayer(int id, string name, byte level, ClassType classType, byte direction, Gender gender, Position position, byte hpPercentage, byte mpPercentage)
+        {
+            var player = new Player
             {
                 Id = id,
                 Name = name,
@@ -83,5 +83,8 @@ namespace NtCore.Game.Factory
                 HpPercentage = hpPercentage,
                 MpPercentage = mpPercentage
             };
+
+            return player;
+        }
     }
 }

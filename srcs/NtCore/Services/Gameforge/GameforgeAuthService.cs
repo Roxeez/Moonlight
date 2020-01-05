@@ -44,17 +44,17 @@ namespace NtCore.Services.Gameforge
                 request.Content = new StringContent(serialized, Encoding.UTF8, MEDIA_TYPE);
 
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
-                
+
                 if (!response.IsSuccessStatusCode)
                 {
                     return Optional.Empty<string>();
                 }
-                
+
                 string content = await response.Content.ReadAsStringAsync();
                 var jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
-                
+
                 string token = jsonContent.GetValueOrDefault("token");
-                
+
                 return Optional.OfNullable(token);
             }
         }
@@ -66,23 +66,23 @@ namespace NtCore.Services.Gameforge
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
                 request.Headers.Add("TNT-Installation-Id", installationId.ToString());
                 request.Headers.Add("User-Agent", USER_AGENT);
-                
+
                 HttpResponseMessage response = await _httpClient.SendAsync(request);
 
                 Trace.WriteLine(authToken);
-                
+
                 if (!response.IsSuccessStatusCode)
                 {
                     return Optional.Empty<IEnumerable<GameforgeAccount>>();
                 }
-                
+
                 string content = await response.Content.ReadAsStringAsync();
                 var jsonContent = _serializer.Deserialize<Dictionary<string, GameforgeAccount>>(content);
 
                 return Optional.Of<IEnumerable<GameforgeAccount>>(jsonContent.Values);
             }
         }
-        
+
         public async Task<Optional<string>> GetSessionToken(string authToken, GameforgeAccount account, Guid installationId)
         {
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"{URL}/auth/thin/codes"))
@@ -109,7 +109,7 @@ namespace NtCore.Services.Gameforge
                 var jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
 
                 string token = jsonContent.GetValueOrDefault("code");
-                
+
                 return Optional.OfNullable(token);
             }
         }

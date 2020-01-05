@@ -24,26 +24,28 @@ namespace NtCore.Extensions
             {
                 byte[] bytes = md5.ComputeHash(Encoding.ASCII.GetBytes(value));
                 var sb = new StringBuilder();
-        
+
                 foreach (byte b in bytes)
                 {
                     sb.Append(b.ToString("X2"));
                 }
+
                 return sb.ToString();
             }
         }
-        
+
         public static string ToSha512(this string value)
         {
             using (SHA512 md5 = SHA512.Create())
             {
                 byte[] bytes = md5.ComputeHash(Encoding.ASCII.GetBytes(value));
                 var sb = new StringBuilder();
-        
+
                 foreach (byte b in bytes)
                 {
                     sb.Append(b.ToString("X2"));
                 }
+
                 return sb.ToString();
             }
         }

@@ -5,6 +5,6 @@
     /// </summary>
     public interface IMapManager
     {
-        IMap GetMapById(int id);
+        Map GetMapById(int id);
     }
 }

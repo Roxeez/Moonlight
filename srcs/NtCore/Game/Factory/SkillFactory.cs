@@ -1,5 +1,4 @@
 ﻿using NtCore.Game.Battle;
-using NtCore.Game.Battle.Impl;
 using NtCore.I18N;
 using NtCore.Registry;
 
@@ -16,21 +15,13 @@ namespace NtCore.Game.Factory
             _languageService = languageService;
         }
 
-        public ISkill CreateSkill(int vnum)
+        public Skill CreateSkill(int vnum)
         {
             SkillInfo skillInfo = _registry.GetSkillInfo(vnum);
-            if (skillInfo == null)
-            {
-                return new Skill(new SkillInfo());
-            }
 
-            var skill = new Skill(skillInfo)
-            {
-                Vnum = vnum,
-                Name = _languageService.GetTranslation(LanguageKey.SKILL, skillInfo.NameKey)
-            };
+            string name = _languageService.GetTranslation(LanguageKey.SKILL, skillInfo?.NameKey ?? $"{vnum}");
 
-            return skill;
+            return new Skill(vnum, name, skillInfo);
         }
     }
 }

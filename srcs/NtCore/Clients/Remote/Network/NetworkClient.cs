@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using NtCore.Cryptography;
@@ -9,16 +8,17 @@ namespace NtCore.Clients.Remote.Network
 {
     public class NetworkClient : INetworkClient
     {
-        public event Action<string> PacketReceived;
-        
-        private readonly Socket _socket;
         private readonly ICryptography _cryptography;
-        
+
+        private readonly Socket _socket;
+
         public NetworkClient(ICryptography cryptography)
         {
             _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _cryptography = cryptography;
         }
+
+        public event Action<string> PacketReceived;
 
         public async Task<IEnumerable<string>> ReceivePackets()
         {
@@ -60,11 +60,11 @@ namespace NtCore.Clients.Remote.Network
             byte[] encrypted = _cryptography.Encrypt(packet, session);
             await _socket.SendAsync(new ArraySegment<byte>(encrypted), SocketFlags.None);
         }
-        
+
         public void Dispose()
         {
             Disconnect();
-            
+
             _socket.Dispose();
         }
     }

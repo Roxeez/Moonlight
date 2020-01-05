@@ -5,7 +5,6 @@ using NtCore.Commands;
 using NtCore.Events;
 using NtCore.Game.Factory;
 using NtCore.Game.Maps;
-using NtCore.Game.Maps.Impl;
 using NtCore.I18N;
 using NtCore.Logger;
 using NtCore.Network;
@@ -44,6 +43,7 @@ namespace NtCore
             services.AddSingleton<IMapManager, MapManager>();
             services.AddSingleton<ISerializer, JsonSerializer>();
             services.AddSingleton<IGameforgeAuthService, GameforgeAuthService>();
+            services.AddSingleton<IItemFactory, ItemFactory>();
             services.AddSingleton<ResourceManager>();
 
             foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())

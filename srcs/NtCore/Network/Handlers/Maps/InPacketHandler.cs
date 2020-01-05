@@ -3,11 +3,9 @@ using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Events;
 using NtCore.Events.Entity;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 using NtCore.Game.Factory;
-using NtCore.Game.Maps.Impl;
+using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 
 namespace NtCore.Network.Handlers.Maps
@@ -25,8 +23,8 @@ namespace NtCore.Network.Handlers.Maps
 
         public override void Handle(IClient client, InPacket packet)
         {
-            var character = client.Character.As<Character>();
-            var map = client.Character.Map.As<Map>();
+            Character character = client.Character;
+            Map map = client.Character.Map;
 
             if (map == null)
             {
@@ -38,7 +36,7 @@ namespace NtCore.Network.Handlers.Maps
                 return;
             }
 
-            IEntity entity;
+            Entity entity;
             switch (packet.EntityType)
             {
                 case EntityType.NPC:
@@ -48,7 +46,7 @@ namespace NtCore.Network.Handlers.Maps
                     entity = _entityFactory.CreateMonster(packet.Id, packet.Vnum, packet.Position, packet.Direction, packet.HpPercentage, packet.MpPercentage);
                     break;
                 case EntityType.DROP:
-                    var owner = map.GetEntity<IPlayer>(packet.DropOwnerId);
+                    var owner = map.GetEntity<Player>(packet.DropOwnerId);
                     entity = _entityFactory.CreateDrop(packet.Id, packet.Vnum, packet.Amount, packet.Position, owner);
                     break;
                 case EntityType.PLAYER:

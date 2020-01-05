@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using NtCore.Clients;
-using NtCore.Extensions;
-using NtCore.Game.Entities.Impl;
-using NtCore.Game.Relation.Impl;
+using NtCore.Game.Entities;
+using NtCore.Game.Relation;
 using NtCore.Network.Packets.Relation;
 
 namespace NtCore.Network.Handlers.Relation
@@ -11,7 +10,7 @@ namespace NtCore.Network.Handlers.Relation
     {
         public override void Handle(IClient client, FInitPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             character.Friends = packet.Friends.Select(x => new Friend(client, x.Id, x.Name)
             {

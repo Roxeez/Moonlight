@@ -10,7 +10,7 @@ namespace NtCore.Events.Entity
     /// </summary>
     public class EntityMoveEvent : Event
     {
-        public EntityMoveEvent([NotNull] IClient client, [NotNull] ILivingEntity entity, Position from) : base(client)
+        public EntityMoveEvent([NotNull] IClient client, [NotNull] LivingEntity entity, Position from) : base(client)
         {
             Entity = entity;
             From = from;
@@ -19,7 +19,7 @@ namespace NtCore.Events.Entity
         /// <summary>
         ///     Entity involved in this event
         /// </summary>
-        public ILivingEntity Entity { get; }
+        public LivingEntity Entity { get; }
 
         /// <summary>
         ///     Position of entity before movement

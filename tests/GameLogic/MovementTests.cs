@@ -6,8 +6,7 @@ using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
-using NtCore.Game.Maps.Impl;
+using NtCore.Game.Maps;
 using NtCore.Tests.Utility;
 using Xunit;
 
@@ -36,8 +35,8 @@ namespace NtCore.Tests.GameLogic
         {
             Map map = new MapBuilder().WithId(1).Create();
 
-            ICharacter character = _client.Character;
-            character.As<Character>().Position = new Position(0, 0);
+            Character character = _client.Character;
+            character.Position = new Position(0, 0);
 
             map.AddEntity(character);
 

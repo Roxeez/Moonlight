@@ -1,7 +1,6 @@
 ﻿using NtCore.Clients;
-using NtCore.Extensions;
-using NtCore.Game.Battle.Impl;
-using NtCore.Game.Entities.Impl;
+using NtCore.Game.Battle;
+using NtCore.Game.Entities;
 using NtCore.Network.Packets.Battle;
 
 namespace NtCore.Network.Handlers.Battle
@@ -10,15 +9,15 @@ namespace NtCore.Network.Handlers.Battle
     {
         public override void Handle(IClient client, StPacket packet)
         {
-            var target = client.Character.Target.As<Target>();
+            Target target = client.Character.Target;
 
             if (target == null)
             {
                 return;
             }
-            
-            var entity = target.Entity.As<LivingEntity>();
-            
+
+            LivingEntity entity = target.Entity;
+
             target.Hp = packet.CurrentHp;
             target.Mp = packet.CurrentMp;
             entity.HpPercentage = packet.HpPercentage;
