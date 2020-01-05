@@ -1,7 +1,7 @@
 using NtCore.Clients;
 using NtCore.Core;
 using NtCore.Extensions;
-using NtCore.Game.Entities.Impl;
+using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Characters;
 

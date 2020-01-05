@@ -1,7 +1,7 @@
 ﻿using NtCore.Clients;
 using NtCore.Extensions;
-using NtCore.Game.Battle.Impl;
-using NtCore.Game.Entities.Impl;
+using NtCore.Game.Battle;
+using NtCore.Game.Entities;
 using NtCore.Network.Packets.Battle;
 
 namespace NtCore.Network.Handlers.Battle

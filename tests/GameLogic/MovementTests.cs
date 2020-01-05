@@ -6,7 +6,6 @@ using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps.Impl;
 using NtCore.Tests.Utility;
 using Xunit;

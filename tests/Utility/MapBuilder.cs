@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NtCore.Enums;
-using NtCore.Game.Entities.Impl;
+using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 using NtCore.Game.Maps.Impl;
 using NtCore.Resources;

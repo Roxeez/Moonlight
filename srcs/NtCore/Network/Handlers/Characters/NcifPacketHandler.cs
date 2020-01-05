@@ -3,9 +3,7 @@ using NtCore.Events;
 using NtCore.Events.Character;
 using NtCore.Extensions;
 using NtCore.Game.Battle;
-using NtCore.Game.Battle.Impl;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 using NtCore.Network.Packets.Characters;
 
 namespace NtCore.Network.Handlers.Characters

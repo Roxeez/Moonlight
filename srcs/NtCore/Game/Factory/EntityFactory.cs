@@ -1,7 +1,6 @@
 ﻿using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 using NtCore.Game.Items.Impl;
 using NtCore.I18N;
 using NtCore.Registry;
@@ -55,7 +54,7 @@ namespace NtCore.Game.Factory
             return npc;
         }
 
-        public Drop CreateDrop(int id, int vnum, int amount, Position position, IPlayer owner)
+        public Drop CreateDrop(int id, int vnum, int amount, Position position, Player owner)
         {
             ItemInfo itemInfo = _registry.GetItemInfo(vnum);
             var drop = new Drop

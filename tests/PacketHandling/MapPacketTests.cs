@@ -4,7 +4,6 @@ using NtCore.Clients;
 using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
 using NtCore.Game.Maps.Impl;
 using NtCore.Network;

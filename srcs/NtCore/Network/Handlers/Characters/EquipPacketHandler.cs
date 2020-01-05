@@ -1,7 +1,7 @@
 ﻿using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Extensions;
-using NtCore.Game.Entities.Impl;
+using NtCore.Game.Entities;
 using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Items.Impl;
 using NtCore.Network.Packets.Characters;

@@ -3,7 +3,6 @@ using NtCore.Events;
 using NtCore.Events.Battle;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Battle;
 

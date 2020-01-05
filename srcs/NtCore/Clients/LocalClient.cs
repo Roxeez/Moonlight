@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using NtCore.Enums;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 using NtCore.Import;
 
 namespace NtCore.Clients
@@ -42,7 +41,7 @@ namespace NtCore.Clients
         }
 
         public Guid Id { get; }
-        public ICharacter Character { get; }
+        public Character Character { get; }
         public ClientType Type { get; }
 
         public Task SendPacket(string packet)

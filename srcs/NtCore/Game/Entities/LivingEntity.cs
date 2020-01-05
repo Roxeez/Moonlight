@@ -1,10 +1,11 @@
-﻿using NtCore.Core;
+﻿using System;
+using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Game.Maps;
 
-namespace NtCore.Game.Entities.Impl
+namespace NtCore.Game.Entities
 {
-    public abstract class LivingEntity : ILivingEntity
+    public abstract class LivingEntity : IEquatable<LivingEntity>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -17,6 +18,6 @@ namespace NtCore.Game.Entities.Impl
         public byte HpPercentage { get; set; }
         public byte MpPercentage { get; set; }
 
-        public bool Equals(ILivingEntity other) => other != null && other.EntityType == EntityType && other.Id == Id;
+        public bool Equals(LivingEntity other) => other != null && other.EntityType == EntityType && other.Id == Id;
     }
 }

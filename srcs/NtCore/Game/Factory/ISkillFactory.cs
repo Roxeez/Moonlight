@@ -4,6 +4,6 @@ namespace NtCore.Game.Factory
 {
     public interface ISkillFactory
     {
-        ISkill CreateSkill(int vnum);
+        Skill CreateSkill(int vnum);
     }
 }

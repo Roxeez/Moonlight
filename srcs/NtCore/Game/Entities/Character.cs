@@ -1,52 +1,49 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using NtCore.Clients;
 using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Battle;
-using NtCore.Game.Battle.Impl;
 using NtCore.Game.Data;
 using NtCore.Game.Inventories;
 using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
-using NtCore.Game.Relation.Impl;
 using NtCore.Import;
 
-namespace NtCore.Game.Entities.Impl
+namespace NtCore.Game.Entities
 {
-    public class Character : Player, ICharacter
+    public class Character : Player
     {
         public Character(IClient client)
         {
             Client = client;
             LastMapChange = DateTime.Now;
             Equipment = new Equipment();
-            Skills = new HashSet<ISkill>();
+            Skills = new HashSet<Skill>();
             Friends = new List<IFriend>();
             SpPointInfo = new SpPointInfo();
         }
 
         private IClient Client { get; }
-        public IEquipment Equipment { get; set; }
-        public ITarget Target { get; set; }
-        public int Hp { get; set; }
-        public int MaxHp { get; set; }
-        public int Mp { get; set; }
-        public int MaxMp { get; set; }
-        public IParty Party { get; set; }
-        public byte JobLevel { get; set; }
+        public IEquipment Equipment { get; }
+        public Target Target { get; internal set; }
+        public int Hp { get; internal set; }
+        public int MaxHp { get; internal set; }
+        public int Mp { get; internal set; }
+        public int MaxMp { get; internal set; }
+        public IParty Party { get; internal set; }
+        public byte JobLevel { get; internal set; }
         public SpPointInfo SpPointInfo { get; }
-        public int Gold { get; set; }
-        public DateTime LastMapChange { get; set; }
-        public HashSet<ISkill> Skills { get; }
-        public IEnumerable<IFriend> Friends { get; set; }
+        public int Gold { get; internal set; }
+        public DateTime LastMapChange { get; internal set; }
+        public HashSet<Skill> Skills { get; }
+        public IEnumerable<IFriend> Friends { get; internal set; }
 
         private Task _worker;
         
-        public async Task UseSkill(ISkill skill)
+        public async Task UseSkill(Skill skill)
         {
             if (!Skills.Contains(skill))
             {
@@ -61,7 +58,7 @@ namespace NtCore.Game.Entities.Impl
             await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)EntityType} {Id}");
         }
 
-        public async Task UseSkill(ISkill skill, ILivingEntity target)
+        public async Task UseSkill(Skill skill, LivingEntity target)
         {
             if (!Skills.Contains(skill))
             {
@@ -81,7 +78,7 @@ namespace NtCore.Game.Entities.Impl
             await Client.SendPacket($"u_s {skill.Info.CastId} {(byte)target.EntityType} {target.Id}");
         }
 
-        public async Task UseSkill(ISkill skill, Position position)
+        public async Task UseSkill(Skill skill, Position position)
         {
             if (!Skills.Contains(skill))
             {
@@ -101,7 +98,7 @@ namespace NtCore.Game.Entities.Impl
             await Client.SendPacket($"u_as {skill.Info.CastId} {position.X} {position.Y}");
         }
 
-        public async Task PickUp(IDrop drop)
+        public async Task PickUp(Drop drop)
         {
             if (drop.Owner != null && !drop.Owner.Equals(this))
             {
@@ -157,12 +154,11 @@ namespace NtCore.Game.Entities.Impl
                 Position = position;
             }
         }
-
-
+        
         /**
          * Looks crap but i'm gonna keep like this until i've something in NtNative for selecting entities for local client
          */
-        public async Task SelectEntity(ILivingEntity entity)
+        public async Task SelectEntity(LivingEntity entity)
         {
             if (entity == null) // Reset target
             {
@@ -176,18 +172,11 @@ namespace NtCore.Game.Entities.Impl
 
             if (entity != null)
             {
-                _worker = Task.Run(async () =>
-                {
-                    do
-                    {
-                        await Client.SendPacket($"ncif {(byte)entity.EntityType} {entity.Id}");
-                        await Task.Delay(1000);
-                    } while (Target != null && Target.Entity.Equals(entity)); // While entity is our selected target
-                });
+
             }
         }
 
-        public async Task SendFriendRequest(IPlayer player)
+        public async Task SendFriendRequest(Player player)
         {
             await Client.SendPacket($"fins {(byte)player.EntityType} {player.Id}");
         }
@@ -212,7 +201,7 @@ namespace NtCore.Game.Entities.Impl
             await Client.ReceivePacket($"say {(byte)EntityType} {Id} 1 {message}");
         }
 
-        public async Task ShowBubbleMessage(string message, ILivingEntity entity)
+        public async Task ShowBubbleMessage(string message, LivingEntity entity)
         {
             await Client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
         }

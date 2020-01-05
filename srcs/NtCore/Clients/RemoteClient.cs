@@ -3,14 +3,13 @@ using System.Threading.Tasks;
 using NtCore.Clients.Remote.Network;
 using NtCore.Enums;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 
 namespace NtCore.Clients
 {
     public class RemoteClient : IClient
     {
         public Guid Id { get; }
-        public ICharacter Character { get; }
+        public Character Character { get; }
         public ClientType Type { get; }
 
         private readonly INetworkClient _networkClient;

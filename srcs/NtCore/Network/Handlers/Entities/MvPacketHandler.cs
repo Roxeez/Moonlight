@@ -5,7 +5,6 @@ using NtCore.Events.Character;
 using NtCore.Events.Entity;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Entities.Impl;
 using NtCore.Network.Packets.Entities;
 
 namespace NtCore.Network.Handlers.Entities
