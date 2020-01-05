@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Moq;
 using NFluent;
 using NtCore.Clients;
@@ -49,7 +50,7 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Theory]
-        [InlineData("stat 2500 2000 1500 1000", 2500, 2000, 1500, 1000)]
+        [InlineData("stat 2000 3000 1000 1500", 2000, 3000, 1000, 1500)]
         [InlineData("stat 1 2 3 4", 1, 2, 3, 4)]
         public void Stat_Packet_Update_Character_Stats(string packet, int hp, int maxHp, int mp, int maxMp)
         {
@@ -61,6 +62,8 @@ namespace NtCore.Tests.PacketHandling
             Check.That(_client.Character.MaxMp).IsEqualTo(maxMp);
             Check.That(_client.Character.HpPercentage).IsNotZero();
             Check.That(_client.Character.MpPercentage).IsNotZero();
+            
+            Trace.WriteLine(_client.Character.HpPercentage);
         }
 
         [Theory]

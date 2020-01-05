@@ -42,7 +42,7 @@ namespace NtCore.Tests.GameLogic
 
             await character.Walk(new Position(10, 10));
 
-            Check.That(character.Position).IsEqualTo(new Position(2, 3));
+            Check.That(character.Position).IsEqualTo(new Position(10, 10));
         }
     }
 }

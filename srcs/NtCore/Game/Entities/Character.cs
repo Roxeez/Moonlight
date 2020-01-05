@@ -80,6 +80,8 @@ namespace NtCore.Game.Entities
 
         public async Task Rest()
         {
+            IsResting = !IsResting;
+            
             await Client.SendPacket($"rest 1 1 {Id}");
         }
 
@@ -120,7 +122,6 @@ namespace NtCore.Game.Entities
 
         public async Task Walk(Position destination)
         {
-            Trace.WriteLine("WALKING");
             if (!Map.IsWalkable(destination))
             {
                 return;
