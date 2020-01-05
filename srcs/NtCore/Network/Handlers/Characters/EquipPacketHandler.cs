@@ -2,17 +2,26 @@
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
-using NtCore.Game.Inventories.Impl;
-using NtCore.Game.Items.Impl;
+using NtCore.Game.Factory;
+using NtCore.Game.Inventories;
+using NtCore.Game.Items;
 using NtCore.Network.Packets.Characters;
+using NtCore.Registry;
 
 namespace NtCore.Network.Handlers.Characters
 {
     public class EquipPacketHandler : PacketHandler<EquipPacket>
     {
+        private readonly IItemFactory _itemFactory;
+
+        public EquipPacketHandler(IItemFactory itemFactory)
+        {
+            _itemFactory = itemFactory;
+        }
+        
         public override void Handle(IClient client, EquipPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             EquipSubPacket mainWeaponSub = packet.EquipSubPackets.GetValueOrDefault(EquipmentType.MAIN_WEAPON);
             EquipSubPacket armorSub = packet.EquipSubPackets.GetValueOrDefault(EquipmentType.ARMOR);
@@ -23,40 +32,22 @@ namespace NtCore.Network.Handlers.Characters
 
             if (mainWeaponSub != null)
             {
-                equipment.MainWeapon = new Weapon
-                {
-                    Vnum = mainWeaponSub.Vnum,
-                    Rarity = mainWeaponSub.Rarity,
-                    Upgrade = mainWeaponSub.Upgrade
-                };
+                equipment.MainWeapon = _itemFactory.CreateWeapon(mainWeaponSub.Vnum, mainWeaponSub.Rarity, mainWeaponSub.Upgrade);
             }
 
             if (armorSub != null)
             {
-                equipment.Armor = new Armor
-                {
-                    Vnum = armorSub.Vnum,
-                    Rarity = armorSub.Rarity,
-                    Upgrade = armorSub.Upgrade
-                };
+                equipment.Armor = _itemFactory.CreateArmor(armorSub.Vnum, armorSub.Rarity, armorSub.Upgrade);
             }
 
             if (secondaryWeaponSub != null)
             {
-                equipment.SecondaryWeapon = new Weapon
-                {
-                    Vnum = secondaryWeaponSub.Vnum,
-                    Rarity = secondaryWeaponSub.Rarity,
-                    Upgrade = secondaryWeaponSub.Upgrade
-                };
+                equipment.SecondaryWeapon = _itemFactory.CreateWeapon(secondaryWeaponSub.Vnum, secondaryWeaponSub.Rarity, secondaryWeaponSub.Upgrade);
             }
 
             if (fairySub != null)
             {
-                equipment.Fairy = new Fairy
-                {
-                    Vnum = fairySub.Vnum
-                };
+                equipment.Fairy = _itemFactory.CreateFairy(fairySub.Vnum);
             }
 
             character.Equipment = equipment;

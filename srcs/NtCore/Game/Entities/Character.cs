@@ -8,7 +8,6 @@ using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Data;
 using NtCore.Game.Inventories;
-using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
 using NtCore.Import;
 
@@ -27,7 +26,7 @@ namespace NtCore.Game.Entities
         }
 
         private IClient Client { get; }
-        public IEquipment Equipment { get; }
+        public Equipment Equipment { get; internal set; }
         public Target Target { get; internal set; }
         public int Hp { get; internal set; }
         public int MaxHp { get; internal set; }

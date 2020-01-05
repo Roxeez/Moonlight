@@ -14,7 +14,7 @@ namespace NtCore.Game.Entities
             DropTime = DateTime.Now;
         }
         
-        public IItem Item { get; internal set; }
+        public Item Item { get; internal set; }
         public int Amount { get; internal set; }
         public Player Owner { get; internal set; }
         public DateTime DropTime { get; }

@@ -9,7 +9,7 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, FdPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             character.Reputation = packet.Reputation;
             character.Dignity = packet.Dignity;

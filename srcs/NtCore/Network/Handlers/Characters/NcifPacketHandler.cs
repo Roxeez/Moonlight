@@ -19,15 +19,15 @@ namespace NtCore.Network.Handlers.Characters
         
         public override void Handle(IClient client, NcifPacket packet)
         {
-            var character = client.Character.As<Character>();
-            var entity = character.Map.GetEntity(packet.EntityType, packet.EntityId).As<ILivingEntity>();
+            Character character = client.Character;
+            var entity = character.Map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
 
             if (entity == null)
             {
                 return;
             }
 
-            ITarget currentTarget = character.Target;
+            Target currentTarget = character.Target;
             
             character.Target = new Target(entity);
             

@@ -9,7 +9,7 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, CInfoPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             character.Id = packet.CharacterId;
             character.Class = packet.Class;

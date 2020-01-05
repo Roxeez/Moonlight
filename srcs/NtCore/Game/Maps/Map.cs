@@ -57,6 +57,8 @@ namespace NtCore.Game.Maps
             return (T)GetEntity(entityType, id);
         }
 
+        public T GetEntity<T>(EntityType entityType, int id) where T : Entity => GetEntity(entityType, id) as T;
+
         public Entity GetEntity(EntityType entityType, int id)
         {
             switch (entityType)
@@ -92,22 +94,22 @@ namespace NtCore.Game.Maps
             switch (entity.EntityType)
             {
                 case EntityType.PLAYER:
-                    var player = entity.As<Player>();
+                    var player = (Player)entity;
                     player.Map = this;
                     _players[entity.Id] = player;
                     break;
                 case EntityType.MONSTER:
-                    var monster = entity.As<Monster>();
+                    var monster = (Monster)entity;
                     monster.Map = this;
                     _monsters[entity.Id] = monster;
                     break;
                 case EntityType.NPC:
-                    var npc = entity.As<Npc>();
+                    var npc = (Npc)entity;
                     npc.Map = this;
                     _npcs[entity.Id] = npc;
                     break;
                 case EntityType.DROP:
-                    var drop = entity.As<Drop>();
+                    var drop = (Drop)entity;
                     drop.Map = this;
                     _drops[entity.Id] = drop;
                     break;
