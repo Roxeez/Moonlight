@@ -38,12 +38,12 @@ public class MyApplication
         IClientManager clientManager = NtCoreAPI.GetClientManager();
         IEventManager eventManager = NtCoreAPI.GetEventManager();
         ICommandManager commandManager = NtCoreAPI.GetCommandManager();
-        
+
         IClient localClient = clientManager.CreateLocalClient();
-        
+
         eventManager.RegisterEventListener<MyListener>(localClient);
         commandManager.RegisterCommandHandler<MyCommandHandler>();
-        
+
         string command;
         do
         {
@@ -56,9 +56,9 @@ public class MyApplication
 public class MyCommandHandler : ICommandHandler
 {
     [Command("MapInfo")]
-    public async void OnMapInfoCommand(ICharacter sender)
+    public async void OnMapInfoCommand(Character sender)
     {
-        IMap map = sender.Map;
+        Map map = sender.Map;
 
         await sender.ReceiveChatMessage($"Id: {map.Id}", ChatMessageColor.GREEN);
         await sender.ReceiveChatMessage($"Monsters: {map.Monsters.Count()}", ChatMessageColor.GREEN);
@@ -66,34 +66,43 @@ public class MyCommandHandler : ICommandHandler
         await sender.ReceiveChatMessage($"Npcs: {map.Npcs.Count()}", ChatMessageColor.GREEN);
         await sender.ReceiveChatMessage($"Drops: {map.Drops.Count()}", ChatMessageColor.GREEN);
     }
-    
-    [Command("SelectClosestEntity")]
-    public async void OnSelectClosestEntityCommand(ICharacter sender)
+
+    [Command("KillClosest")]
+    public async void OnKillClosestCommand(Character sender)
     {
-        IMap map = sender.Map;
-        IMonster closestMonster = map.Monsters.OrderBy(x => x.Position.GetDistance(sender.Position)).FirstOrDefault();
+        Map map = sender.Map;
+        Monster closestMonster = map.Monsters.OrderBy(x => x.Position.GetDistance(sender.Position)).FirstOrDefault();
+        Skill basicAttack = sender.Skills.First();
 
         if (closestMonster == null)
         {
             await sender.ReceiveChatMessage("Can't find monster in range.", ChatMessageColor.RED);
             return;
         }
-        
+
         await sender.ShowBubbleMessage(@"/!\ TARGET /!\", closestMonster);
-        await sender.SelectEntity(closestMonster);
+
+        await Task.Run(async () =>
+        {
+            while (closestMonster.HpPercentage > 0)
+            {
+                await sender.Move(closestMonster);
+                await sender.UseSkill(basicAttack, closestMonster);
+
+                await Task.Delay(1000);
+            }
+        });
     }
 }
 
 public class MyListener : IEventListener
 {
     [Handler]
-    public async void OnTargetMove(TargetMoveEvent e)
+    public async void OnEntityDeath(EntityDeathEvent e)
     {
-        ICharacter character = e.Character;
-        ITarget target = character.Target;
+        Character character = e.Client.Character;
 
-        await character.Move(target.Entity.Position);
-        await character.ShowBubbleMessage("Following target.");
+        await character.ReceiveChatMessage($"{e.Entity.Name} killed by {e.Killer.Name}", ChatMessageColor.RED);
     }
 }
 ```
