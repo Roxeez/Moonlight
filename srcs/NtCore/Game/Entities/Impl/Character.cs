@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using NtCore.Clients;
 using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Battle;
+using NtCore.Game.Battle.Impl;
+using NtCore.Game.Data;
 using NtCore.Game.Inventories;
 using NtCore.Game.Inventories.Impl;
 using NtCore.Game.Relation;
@@ -23,6 +26,7 @@ namespace NtCore.Game.Entities.Impl
             Equipment = new Equipment();
             Skills = new HashSet<ISkill>();
             Friends = new List<IFriend>();
+            SpPointInfo = new SpPointInfo();
         }
 
         private IClient Client { get; }
@@ -34,15 +38,14 @@ namespace NtCore.Game.Entities.Impl
         public int MaxMp { get; set; }
         public IParty Party { get; set; }
         public byte JobLevel { get; set; }
-        public int SpPoints { get; set; }
-        public int AdditionalSpPoints { get; set; }
-        public int MaximumSpPoints { get; set; }
-        public int MaximumAdditionalSpPoints { get; set; }
+        public SpPointInfo SpPointInfo { get; }
         public int Gold { get; set; }
         public DateTime LastMapChange { get; set; }
         public HashSet<ISkill> Skills { get; }
         public IEnumerable<IFriend> Friends { get; set; }
 
+        private Task _worker;
+        
         public async Task UseSkill(ISkill skill)
         {
             if (!Skills.Contains(skill))
@@ -155,9 +158,33 @@ namespace NtCore.Game.Entities.Impl
             }
         }
 
-        public async Task SetTarget(ILivingEntity entity)
+
+        /**
+         * Looks crap but i'm gonna keep like this until i've something in NtNative for selecting entities for local client
+         */
+        public async Task SelectEntity(ILivingEntity entity)
         {
-            await Client.SendPacket($"ncif {(byte)entity.EntityType} {entity.Id}");
+            if (entity == null) // Reset target
+            {
+                Target = null;
+            }
+            
+            if (_worker != null && !_worker.IsCompleted) // Wait current running task
+            {
+                await _worker;
+            }
+
+            if (entity != null)
+            {
+                _worker = Task.Run(async () =>
+                {
+                    do
+                    {
+                        await Client.SendPacket($"ncif {(byte)entity.EntityType} {entity.Id}");
+                        await Task.Delay(1000);
+                    } while (Target != null && Target.Entity.Equals(entity)); // While entity is our selected target
+                });
+            }
         }
 
         public async Task SendFriendRequest(IPlayer player)
@@ -188,6 +215,16 @@ namespace NtCore.Game.Entities.Impl
         public async Task ShowBubbleMessage(string message, ILivingEntity entity)
         {
             await Client.ReceivePacket($"say {(byte)entity.EntityType} {entity.Id} 1 {message}");
+        }
+
+        public void Dispose()
+        {
+            Target = null;
+            if (_worker != null)
+            {
+                Target = null;
+                Task.WaitAll(_worker);
+            }
         }
     }
 }

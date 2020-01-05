@@ -21,7 +21,7 @@ namespace NtCore.Services.Registry
                     return Optional.OfNullable(value);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return Optional.Empty<T>();
             }
