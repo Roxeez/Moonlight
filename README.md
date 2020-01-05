@@ -31,15 +31,19 @@ You can find a full example [HERE](https://github.com/Roxeez/NtCore.Example)
 ```csharp
 public class MyApplication
 {
-    /// <summary>
-    /// My application entry point
-    /// </summary>
     public void Run()
     {
-        // Register our event listener
-        NtCoreAPI.GetEventManager().RegisterEventListener<MyEventListener>();
+        Kernel32.AllocConsole();
 
-        // Wait for exit command (because i'm using a console and not an UI app)
+        IClientManager clientManager = NtCoreAPI.GetClientManager();
+        IEventManager eventManager = NtCoreAPI.GetEventManager();
+        ICommandManager commandManager = NtCoreAPI.GetCommandManager();
+        
+        IClient localClient = clientManager.CreateLocalClient();
+        
+        eventManager.RegisterEventListener<MyListener>(localClient);
+        commandManager.RegisterCommandHandler<MyCommandHandler>();
+        
         string command;
         do
         {
@@ -48,21 +52,48 @@ public class MyApplication
         while (command != "exit");
     }
 }
-    
-public class MyEventListener : IEventListener
-{
-    [Handler]
-    public void OnItemDrop(ItemDropEvent e)
-    {
-        ICharacter character = e.Client.Character;
 
-        if (e.Drop.Owner != null && character.Equals(e.Drop.Owner))
+public class MyCommandHandler : ICommandHandler
+{
+    [Command("MapInfo")]
+    public async void OnMapInfoCommand(ICharacter sender)
+    {
+        IMap map = sender.Map;
+
+        await sender.ReceiveChatMessage($"Id: {map.Id}", ChatMessageColor.GREEN);
+        await sender.ReceiveChatMessage($"Monsters: {map.Monsters.Count()}", ChatMessageColor.GREEN);
+        await sender.ReceiveChatMessage($"Players: {map.Players.Count()}", ChatMessageColor.GREEN);
+        await sender.ReceiveChatMessage($"Npcs: {map.Npcs.Count()}", ChatMessageColor.GREEN);
+        await sender.ReceiveChatMessage($"Drops: {map.Drops.Count()}", ChatMessageColor.GREEN);
+    }
+    
+    [Command("SelectClosestEntity")]
+    public async void OnSelectClosestEntityCommand(ICharacter sender)
+    {
+        IMap map = sender.Map;
+        IMonster closestMonster = map.Monsters.OrderBy(x => x.Position.GetDistance(sender.Position)).FirstOrDefault();
+
+        if (closestMonster == null)
         {
+            await sender.ReceiveChatMessage("Can't find monster in range.", ChatMessageColor.RED);
             return;
         }
+        
+        await sender.ShowBubbleMessage(@"/!\ TARGET /!\", closestMonster);
+        await sender.SelectEntity(closestMonster);
+    }
+}
 
-        character.Move(e.Drop.Position);
-        character.PickUp(e.Drop);
+public class MyListener : IEventListener
+{
+    [Handler]
+    public async void OnTargetMove(TargetMoveEvent e)
+    {
+        ICharacter character = e.Character;
+        ITarget target = character.Target;
+
+        await character.Move(target.Entity.Position);
+        await character.ShowBubbleMessage("Following target.");
     }
 }
 ```
