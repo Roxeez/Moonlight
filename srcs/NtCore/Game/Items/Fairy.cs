@@ -5,8 +5,8 @@ namespace NtCore.Game.Items
 {
     public class Fairy : Item
     {
-        public Element Element { get; set; }
-        public short Power { get; set; }
+        public Element Element { get; internal set; }
+        public short Power { get; internal set; }
 
         public Fairy(int vnum, string name, ItemInfo itemInfo) : base(vnum, name, itemInfo)
         {

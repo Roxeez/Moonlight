@@ -4,8 +4,8 @@ namespace NtCore.Game.Items
 {
     public class Armor : Item
     {
-        public byte Rarity { get; set; }
-        public byte Upgrade { get; set; }
+        public byte Rarity { get; internal set; }
+        public byte Upgrade { get; internal set; }
 
         public Armor(int vnum, string name, ItemInfo itemInfo) : base(vnum, name, itemInfo)
         {

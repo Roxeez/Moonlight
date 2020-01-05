@@ -16,7 +16,7 @@ namespace NtCore.Game.Relation
 
         public int Id { get; }
         public string Name { get; }
-        public bool IsConnected { get; set; }
+        public bool IsConnected { get; internal set; }
 
         public bool Equals(Friend other) => other != null && other.Id == Id;
 

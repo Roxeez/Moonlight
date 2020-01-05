@@ -7,14 +7,14 @@ namespace NtCore.Game.Entities
 {
     public abstract class LivingEntity : Entity, IEquatable<LivingEntity>
     {
-        public string Name { get; set; }
-        public Map Map { get; set; }
-        public Position Position { get; set; }
-        public byte Speed { get; set; }
-        public byte Level { get; set; }
-        public byte Direction { get; set; }
-        public byte HpPercentage { get; set; }
-        public byte MpPercentage { get; set; }
+        public string Name { get; internal set; }
+        public Map Map { get; internal set; }
+        public Position Position { get; internal set; }
+        public byte Speed { get; internal set; }
+        public byte Level { get; internal set; }
+        public byte Direction { get; internal set; }
+        public byte HpPercentage { get; internal set; }
+        public byte MpPercentage { get; internal set; }
 
         public bool Equals(LivingEntity other) => other != null && other.EntityType == EntityType && other.Id == Id;
     }

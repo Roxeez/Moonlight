@@ -43,6 +43,7 @@ namespace NtCore
             services.AddSingleton<IMapManager, MapManager>();
             services.AddSingleton<ISerializer, JsonSerializer>();
             services.AddSingleton<IGameforgeAuthService, GameforgeAuthService>();
+            services.AddSingleton<IItemFactory, ItemFactory>();
             services.AddSingleton<ResourceManager>();
 
             foreach (Type type in typeof(IPacketHandler).Assembly.GetTypes())

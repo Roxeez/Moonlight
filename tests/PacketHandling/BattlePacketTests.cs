@@ -39,12 +39,12 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("st 3 124 1 1 74 98 14250 1987", EntityType.MONSTER, 124, 74, 98, 14250, 1987)]
         public void St_Packet_Update_Target(string packet, EntityType entityType, int entityId, int hpPercent, int mpPercent, int hp, int mp)
         {
-            var character = _client.Character.As<Character>();
+            Character character = _client.Character;
             
             Map map = new MapBuilder().WithEntity(entityType, entityId).Create();
             map.AddEntity(character);
 
-            character.Target = new Target(map.GetEntity(entityType, entityId).As<ILivingEntity>());
+            character.Target = new Target(map.GetEntity<LivingEntity>(entityType, entityId));
             
             _client.ReceivePacket(packet);
 
@@ -59,15 +59,15 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("su 1 99999 3 50 250 10 0 0 0 0 0 78 1000 1 1", EntityType.MONSTER, 50, 78)]
         public void Su_Packet_Update_Entity_Hp(string packet, EntityType entityType, int entityId, int hpPercentage)
         {
-            ICharacter character = _client.Character;
+            Character character = _client.Character;
             
             Map map = new MapBuilder().WithEntity(entityType, entityId).Create();
             map.AddEntity(character);
 
             _client.ReceivePacket(packet);
 
-            var entity = map.GetEntity(entityType, entityId).As<ILivingEntity>();
-
+            var entity = map.GetEntity<LivingEntity>(entityType, entityId);
+            
             Check.That(entity.HpPercentage).IsEqualTo(hpPercentage);
         }
 
@@ -76,7 +76,7 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("ncif 1 999", EntityType.PLAYER, 999)]
         public void Ncif_Packet_Set_Target(string packet, EntityType entityType, int id)
         {
-            ICharacter character = _client.Character;
+            Character character = _client.Character;
 
             Map map = new MapBuilder().WithEntity(entityType, id).Create();
             map.AddEntity(character);

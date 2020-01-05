@@ -5,8 +5,10 @@ using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Extensions;
 using NtCore.Game.Entities;
+using NtCore.Game.Items;
 using NtCore.Game.Maps;
 using NtCore.Network;
+using NtCore.Registry;
 using NtCore.Tests.Utility;
 using Xunit;
 
@@ -106,7 +108,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var entity = _client.Character.Map.GetEntity(entityType, entityId).As<ILivingEntity>();
+            var entity = _client.Character.Map.GetEntity<LivingEntity>(entityType, entityId);
 
             Check.That(entity).IsNotNull();
             Check.That(entity.Speed).IsEqualTo(speed);
@@ -134,7 +136,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var entity = _client.Character.Map.GetEntity(entityType, id).As<ILivingEntity>();
+            var entity = _client.Character.Map.GetEntity<LivingEntity>(entityType, id);
 
             Check.That(entity.Position).IsEqualTo(new Position(x, y));
             Check.That(entity.Speed).IsEqualTo(speed);
@@ -168,7 +170,7 @@ namespace NtCore.Tests.PacketHandling
         public void At_Packet_Change_Position()
         {
             Map map = new MapBuilder().WithId(1).Create();
-            ICharacter character = _client.Character;
+            Character character = _client.Character;
 
             map.AddEntity(character);
 
@@ -182,7 +184,7 @@ namespace NtCore.Tests.PacketHandling
         {
             _client.ReceivePacket("equip 0 0 0.124.1.0 1.148.7.10 10.87.0.0");
 
-            ICharacter character = _client.Character;
+            Character character = _client.Character;
 
             Check.That(character.Equipment).IsNotNull();
             Check.That(character.Equipment.MainWeapon).IsNotNull();
@@ -197,11 +199,12 @@ namespace NtCore.Tests.PacketHandling
         }
 
         [Fact]
-        public void Pairy_Packet_Change_Fairy()
+        public void Pairy_Packet_Set_Fairy_Element_And_Power()
         {
+            Character character = _client.Character;
+            character.Equipment.Fairy = new Fairy(1, "", new ItemInfo());
+            
             _client.ReceivePacket($"pairy 1 {CharacterId} 0 4 2 41 0");
-
-            ICharacter character = _client.Character;
 
             Check.That(character.Equipment.Fairy).IsNotNull();
             Check.That(character.Equipment.Fairy.Element).IsEqualTo(Element.WATER);
@@ -212,7 +215,7 @@ namespace NtCore.Tests.PacketHandling
         public void PInit_Set_Character_Party()
         {
             Map map = new MapBuilder().WithId(1).WithNpcs(55, 66).WithPlayers(77).Create();
-            ICharacter character = _client.Character;
+            Character character = _client.Character;
 
             map.AddEntity(character);
 
@@ -226,7 +229,7 @@ namespace NtCore.Tests.PacketHandling
         [Fact]
         public void At_Packet_Set_Map()
         {
-            ICharacter character = _client.Character;
+            Character character = _client.Character;
 
             _client.ReceivePacket($"at {CharacterId} 1 50 50 1 0 0 0 0");
 

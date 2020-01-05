@@ -7,10 +7,10 @@ namespace NtCore.Game.Battle
     {
         public LivingEntity Entity { get; }
         
-        public int Hp { get; set; }
-        public int Mp { get; set; }
+        public int Hp { get; internal set; }
+        public int Mp { get; internal set; }
 
-        public Target(LivingEntity entity)
+        internal Target(LivingEntity entity)
         {
             Entity = entity;
         }

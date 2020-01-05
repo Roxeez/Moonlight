@@ -35,8 +35,8 @@ namespace NtCore.Tests.GameLogic
         {
             Map map = new MapBuilder().WithId(1).Create();
 
-            ICharacter character = _client.Character;
-            character.As<Character>().Position = new Position(0, 0);
+            Character character = _client.Character;
+            character.Position = new Position(0, 0);
 
             map.AddEntity(character);
 
