@@ -25,6 +25,7 @@ namespace NtCore.Game.Maps
         private readonly IDictionary<int, Monster> _monsters;
         private readonly IDictionary<int, Npc> _npcs;
         private readonly IDictionary<int, Player> _players;
+        private readonly IDictionary<int, Portal> _portals;
 
         public Map(int id, byte[] data)
         {
@@ -37,6 +38,7 @@ namespace NtCore.Game.Maps
             _npcs = new ConcurrentDictionary<int, Npc>();
             _drops = new ConcurrentDictionary<int, Drop>();
             _players = new ConcurrentDictionary<int, Player>();
+            _portals = new ConcurrentDictionary<int, Portal>();
         }
 
         private byte this[int x, int y] => Data.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
@@ -51,6 +53,7 @@ namespace NtCore.Game.Maps
         public IEnumerable<Npc> Npcs => _npcs.Values;
         public IEnumerable<Drop> Drops => _drops.Values;
         public IEnumerable<Player> Players => _players.Values;
+        public IEnumerable<Portal> Portals => _portals.Values;
 
         [CanBeNull]
         public T GetEntity<T>(int id) where T : Entity
@@ -80,6 +83,11 @@ namespace NtCore.Game.Maps
             }
         }
 
+        internal Portal GetPortal(int id)
+        {
+            return _portals.GetValueOrDefault(id);
+        }
+        
         public bool IsWalkable(Position position)
         {
             if (position.X > Width || position.X < 0 || position.Y > Height || position.Y < 0)
@@ -119,6 +127,11 @@ namespace NtCore.Game.Maps
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        internal void AddPortal(Portal portal)
+        {
+            _portals[portal.Id] = portal;
         }
 
         internal void RemoveEntity(Entity entity)

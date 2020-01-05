@@ -141,6 +141,7 @@
     <Compile Include="Enums\Faction.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\MessageType.cs" />
+    <Compile Include="Enums\PortalType.cs" />
     <Compile Include="Enums\SkillType.cs" />
     <Compile Include="Enums\TargetingType.cs" />
     <Compile Include="Events\Battle\EntityDamageEvent.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Game\Maps\MapManager.cs" />
     <Compile Include="Game\Maps\Miniland.cs" />
     <Compile Include="Game\Maps\MinilandObject.cs" />
+    <Compile Include="Game\Maps\Portal.cs" />
     <Compile Include="Game\Relation\Friend.cs" />
     <Compile Include="Game\Relation\Party.cs" />
     <Compile Include="I18N\ILanguageService.cs" />
@@ -216,6 +218,7 @@
     <Compile Include="Network\Handlers\Entities\RestPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\DropPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\GetPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Maps\GpPacketHandler.cs" />
     <Compile Include="Network\Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="Network\Handlers\Relation\FInfoPacketHandler.cs" />
     <Compile Include="Network\Handlers\Relation\FInitPacketHandler.cs" />
@@ -236,6 +239,7 @@
     <Compile Include="Network\Packets\Entities\RestPacket.cs" />
     <Compile Include="Network\Packets\Maps\DropPacket.cs" />
     <Compile Include="Network\Packets\Maps\GetPacket.cs" />
+    <Compile Include="Network\Packets\Maps\GpPacket.cs" />
     <Compile Include="Network\Packets\Maps\OutPacket.cs" />
     <Compile Include="Network\Packets\Relation\FInfoPacket.cs" />
     <Compile Include="Network\Packets\Relation\FInitPacket.cs" />
