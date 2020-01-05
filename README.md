@@ -26,7 +26,7 @@ NtCore can be used with local client (injected .dll) or remote client (clientles
 > <sub><sup>Since NtCore use only packets (no memory reading) for compatibility with local & remote client, your dll need to be injected BEFORE selecting your character</sub></sup>
 
 ## Example
-> This example code will make character move to dropped item when they spawn & pick up them.  
+> This example is simple bot, killing monsters around & pickup drops of player.  
 You can find a full example [HERE](https://github.com/Roxeez/NtCore.Example)
 ```csharp
 public class MyApplication
@@ -41,8 +41,10 @@ public class MyApplication
 
         IClient localClient = clientManager.CreateLocalClient();
 
-        eventManager.RegisterEventListener<MyListener>(localClient);
-        commandManager.RegisterCommandHandler<MyCommandHandler>();
+        var bot = new Bot();
+
+        eventManager.RegisterEventListener(bot, localClient);
+        commandManager.RegisterCommandHandler(bot);
 
         string command;
         do
@@ -53,56 +55,95 @@ public class MyApplication
     }
 }
 
-public class MyCommandHandler : ICommandHandler
+public class Bot : IEventListener, ICommandHandler
 {
-    [Command("MapInfo")]
-    public async void OnMapInfoCommand(Character sender)
+    private bool _pickUpDrops;
+    private bool _isRunning;
+
+    private Task _worker;
+
+    [Handler]
+    public async void OnItemDrop(ItemDropEvent e)
     {
-        Map map = sender.Map;
+        Character character = e.Client.Character;
+        Drop drop = e.Drop;
 
-        await sender.ReceiveChatMessage($"Id: {map.Id}", ChatMessageColor.GREEN);
-        await sender.ReceiveChatMessage($"Monsters: {map.Monsters.Count()}", ChatMessageColor.GREEN);
-        await sender.ReceiveChatMessage($"Players: {map.Players.Count()}", ChatMessageColor.GREEN);
-        await sender.ReceiveChatMessage($"Npcs: {map.Npcs.Count()}", ChatMessageColor.GREEN);
-        await sender.ReceiveChatMessage($"Drops: {map.Drops.Count()}", ChatMessageColor.GREEN);
-    }
-
-    [Command("KillClosest")]
-    public async void OnKillClosestCommand(Character sender)
-    {
-        Map map = sender.Map;
-        Monster closestMonster = map.Monsters.OrderBy(x => x.Position.GetDistance(sender.Position)).FirstOrDefault();
-        Skill basicAttack = sender.Skills.First();
-
-        if (closestMonster == null)
+        if (!_isRunning)
         {
-            await sender.ReceiveChatMessage("Can't find monster in range.", ChatMessageColor.RED);
             return;
         }
 
-        await sender.ShowBubbleMessage(@"/!\ TARGET /!\", closestMonster);
-
-        await Task.Run(async () =>
+        if (!_pickUpDrops)
         {
-            while (closestMonster.HpPercentage > 0)
-            {
-                await sender.Move(closestMonster);
-                await sender.UseSkill(basicAttack, closestMonster);
+            return;
+        }
 
-                await Task.Delay(1000);
-            }
-        });
+        if (!drop.Owner.Equals(character))
+        {
+            return;
+        }
+
+        await character.Move(drop);
+        await character.PickUp(drop);
     }
-}
 
-public class MyListener : IEventListener
-{
-    [Handler]
-    public async void OnEntityDeath(EntityDeathEvent e)
+    [Command("stop")]
+    public async void StopCommand(Character sender)
     {
-        Character character = e.Client.Character;
+        if (_worker == null || _worker.IsCompleted)
+        {
+            await sender.ReceiveChatMessage("Not yet started.", ChatMessageColor.RED);
+            return;
+        }
 
-        await character.ReceiveChatMessage($"{e.Entity.Name} killed by {e.Killer.Name}", ChatMessageColor.RED);
+        _isRunning = false;
+        await _worker;
+    }
+
+    [Command("start")]
+    public async void OnStartCommand(Character sender)
+    {
+        if (_worker != null)
+        {
+            await sender.ReceiveChatMessage("Already started.", ChatMessageColor.RED);
+            return;
+        }
+
+        _worker = Task.Run(() => Work(sender));
+        await sender.ReceiveChatMessage("Bot started", ChatMessageColor.RED);
+    }
+
+    [Command("pickup")]
+    public async void OnPickUpCommand(Character sender)
+    {
+        _pickUpDrops = !_pickUpDrops;
+
+        await sender.ReceiveChatMessage($"Drop {(_pickUpDrops ? "Enabled" : "Disabled")}", ChatMessageColor.GREEN);
+    }
+
+    private async Task Work(Character character)
+    {
+        _isRunning = true;
+
+        while (_isRunning)
+        {
+            Map map = character.Map;
+            Monster closestMonster = map.Monsters.OrderBy(x => x.Position.GetDistance(character.Position)).FirstOrDefault();
+            Skill skill = character.Skills.First();
+
+            if (closestMonster == null)
+            {
+                continue;
+            }
+
+            while (closestMonster.HpPercentage > 0 && _isRunning)
+            {
+                await character.Move(closestMonster);
+                await character.UseSkill(skill, closestMonster);
+
+                await Task.Delay(1500);
+            }
+        }
     }
 }
 ```
