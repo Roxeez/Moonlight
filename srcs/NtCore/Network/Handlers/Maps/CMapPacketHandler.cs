@@ -23,18 +23,15 @@ namespace NtCore.Network.Handlers.Maps
         {
             Character character = client.Character;
             Map source = client.Character.Map;
-            Map destination = _mapManager.GetMapById(packet.MapId);
 
-            if (!packet.IsJoining)
+            if (!packet.IsBaseMap)
             {
                 return;
             }
+            
+            Map destination = _mapManager.GetMapById(packet.MapId);
 
-            if (source != null)
-            {
-                source.RemoveEntity(character);
-            }
-
+            source?.RemoveEntity(character);
             destination.AddEntity(character);
 
             if (source != null)

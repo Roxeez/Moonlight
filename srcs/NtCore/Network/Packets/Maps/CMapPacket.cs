@@ -7,6 +7,6 @@
         public short MapId { get; set; }
 
         [PacketIndex(2)]
-        public bool IsJoining { get; set; }
+        public bool IsBaseMap { get; set; }
     }
 }

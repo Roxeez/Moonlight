@@ -9,27 +9,25 @@ namespace NtCore.Game.Maps
     public class MapManager : IMapManager
     {
         private readonly ILanguageService _languageService;
-        private readonly IDictionary<int, Map> _maps;
         private readonly IRegistry _registry;
-
+        private readonly IDictionary<int, byte[]> _maps;
         public MapManager(ILanguageService languageService, IRegistry registry)
         {
-            _maps = new Dictionary<int, Map>();
+            _maps = new Dictionary<int, byte[]>();
             _languageService = languageService;
             _registry = registry;
         }
 
         public Map GetMapById(int id)
         {
-            Map map = _maps.GetValueOrDefault(id);
-            if (map != null)
+            byte[] data = _maps.GetValueOrDefault(id);
+            if (data == null)
             {
-                return map;
+                data = ResourceManager.Read($"maps.{id}");
+                _maps[id] = data;
             }
-
+            
             MapInfo info = _registry.GetMapInfo(id);
-            byte[] data = ResourceManager.Read($"maps.{id}");
-
             if (id == 20001)
             {
                 return new Miniland(data)
@@ -38,11 +36,10 @@ namespace NtCore.Game.Maps
                 };
             }
 
-            map = new Map(id, data)
+            var map = new Map(id, data)
             {
                 Name = info != null ? _languageService.GetTranslation(LanguageKey.MAP, info.NameKey) : $"{id}"
             };
-            _maps[id] = map;
 
             return map;
         }
