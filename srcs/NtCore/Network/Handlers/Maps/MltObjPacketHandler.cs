@@ -9,21 +9,14 @@ namespace NtCore.Network.Handlers.Maps
     {
         public override void Handle(IClient client, MltObjPacket packet)
         {
-            var miniland = client.Character.Map.As<Miniland>();
-
-            if (miniland == null)
+            if (!(client.Character.Map is Miniland miniland))
             {
                 return;
             }
 
             foreach (MltObjSubPacket obj in packet.MinilandObjects)
             {
-                miniland.AddMinilandObject(new MinilandObject
-                {
-                    Vnum = obj.Vnum,
-                    Id = obj.Id,
-                    Position = obj.Position
-                });
+                miniland.AddMinilandObject(new MinilandObject(obj.Vnum, obj.Id, obj.Position));
             }
         }
     }

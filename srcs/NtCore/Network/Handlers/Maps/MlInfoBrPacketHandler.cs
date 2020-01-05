@@ -15,9 +15,7 @@ namespace NtCore.Network.Handlers.Maps
 
         public override void Handle(IClient client, MlInfoBrPacket packet)
         {
-            var miniland = client.Character.Map.As<Miniland>();
-
-            if (miniland == null)
+            if (!(client.Character.Map is Miniland miniland))
             {
                 return;
             }

@@ -1,14 +1,19 @@
-﻿namespace NtCore.Game.Items.Impl
+﻿using NtCore.Registry;
+
+namespace NtCore.Game.Items
 {
-    public class Item : IItem
+    public class Item
     {
         public int Vnum { get; }
         public string Name { get; }
 
-        public Item(int vnum, string name)
+        public ItemInfo Info { get; }
+        
+        public Item(int vnum, string name, ItemInfo itemInfo)
         {
             Vnum = vnum;
             Name = name;
+            Info = itemInfo;
         }
     }
 }

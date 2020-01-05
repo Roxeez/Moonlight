@@ -16,11 +16,11 @@ namespace NtCore.Network.Handlers.Relation
 
         public override void Handle(IClient client, FInfoPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             foreach (FInfoPacket.Info info in packet.Infos)
             {
-                IFriend friend = character.FindFriendById(info.Id);
+                Friend friend = character.FindFriendById(info.Id);
 
                 if (friend == null)
                 {
@@ -28,7 +28,8 @@ namespace NtCore.Network.Handlers.Relation
                 }
 
                 bool wasConnected = friend.IsConnected;
-                friend.As<Friend>().IsConnected = info.IsConnected;
+                
+                friend.IsConnected = info.IsConnected;
 
                 if (!wasConnected && friend.IsConnected)
                 {

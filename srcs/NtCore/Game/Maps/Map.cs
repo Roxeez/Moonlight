@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using JetBrains.Annotations;
 using NtCore.Core;
 using NtCore.Enums;
 using NtCore.Extensions;
@@ -51,14 +52,17 @@ namespace NtCore.Game.Maps
         public IEnumerable<Drop> Drops => _drops.Values;
         public IEnumerable<Player> Players => _players.Values;
 
+        [CanBeNull]
         public T GetEntity<T>(int id) where T : Entity
         {
             EntityType entityType = _mapping.GetValueOrDefault(typeof(T));
-            return (T)GetEntity(entityType, id);
+            return GetEntity<T>(entityType, id);
         }
 
+        [CanBeNull]
         public T GetEntity<T>(EntityType entityType, int id) where T : Entity => GetEntity(entityType, id) as T;
 
+        [CanBeNull]
         public Entity GetEntity(EntityType entityType, int id)
         {
             switch (entityType)

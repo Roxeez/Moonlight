@@ -9,7 +9,7 @@ namespace NtCore.Network.Handlers.Characters
     {
         public override void Handle(IClient client, SpPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             character.SpPointInfo.MaximumSpPoints = packet.MaximumPoints;
             character.SpPointInfo.MaximumAdditionalSpPoints = packet.MaximumAdditionalPoints;

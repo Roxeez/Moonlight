@@ -16,7 +16,7 @@ namespace NtCore.Network.Handlers.Characters
 
         public override void Handle(IClient client, WalkPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             Position from = character.Position;
 

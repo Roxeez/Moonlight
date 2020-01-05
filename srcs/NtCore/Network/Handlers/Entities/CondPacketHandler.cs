@@ -12,17 +12,17 @@ namespace NtCore.Network.Handlers.Entities
     {
         public override void Handle(IClient client, CondPacket packet)
         {
-            IMap map = client.Character.Map;
+            Map map = client.Character.Map;
             if (map == null)
             {
                 if (packet.EntityType == EntityType.PLAYER && packet.EntityId == client.Character.Id)
                 {
-                    client.Character.As<Character>().Speed = packet.Speed;
+                    client.Character.Speed = packet.Speed;
                 }
                 return;
             }
 
-            var entity = map.GetEntity(packet.EntityType, packet.EntityId).As<LivingEntity>();
+            var entity = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
             if (entity == null)
             {
                 return;

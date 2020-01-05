@@ -16,9 +16,8 @@ namespace NtCore.Network.Handlers.Maps
 
         public override void Handle(IClient client, OutPacket packet)
         {
-            var map = client.Character.Map.As<Map>();
-
-            IEntity entity = map.GetEntity(packet.EntityType, packet.EntityId);
+            Map map = client.Character.Map;
+            Entity entity = map.GetEntity(packet.EntityType, packet.EntityId);
 
             if (entity == null)
             {

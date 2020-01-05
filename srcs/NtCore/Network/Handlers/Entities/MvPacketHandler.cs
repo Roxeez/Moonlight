@@ -17,8 +17,8 @@ namespace NtCore.Network.Handlers.Entities
 
         public override void Handle(IClient client, MvPacket packet)
         {
-            ICharacter character = client.Character;
-            var entity = client.Character.Map.GetEntity(packet.EntityType, packet.EntityId).As<LivingEntity>();
+            Character character = client.Character;
+            var entity = client.Character.Map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
 
             if (entity == null)
             {

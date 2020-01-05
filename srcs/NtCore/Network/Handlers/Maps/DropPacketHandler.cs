@@ -23,7 +23,7 @@ namespace NtCore.Network.Handlers.Maps
 
         public override void Handle(IClient client, DropPacket packet)
         {
-            var map = client.Character.Map.As<Map>();
+            Map map = client.Character.Map;
 
             if (map == null)
             {
@@ -31,7 +31,7 @@ namespace NtCore.Network.Handlers.Maps
             }
 
             var position = new Position(packet.PositionX, packet.PositionY);
-            var owner = map.GetEntity<IPlayer>(packet.OwnerId);
+            var owner = map.GetEntity<Player>(packet.OwnerId);
 
             Drop drop = _entityFactory.CreateDrop(packet.DropId, packet.VNum, packet.Amount, position, owner);
 

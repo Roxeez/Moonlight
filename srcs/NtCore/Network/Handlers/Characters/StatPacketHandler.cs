@@ -15,7 +15,7 @@ namespace NtCore.Network.Handlers.Characters
 
         public override void Handle(IClient client, StatPacket packet)
         {
-            var character = client.Character.As<Character>();
+            Character character = client.Character;
 
             character.Hp = packet.Hp;
             character.Mp = packet.Mp;
