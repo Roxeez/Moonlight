@@ -62,31 +62,6 @@ public class Bot : IEventListener, ICommandHandler
 
     private Task _worker;
 
-    [Handler]
-    public async void OnItemDrop(ItemDropEvent e)
-    {
-        Character character = e.Client.Character;
-        Drop drop = e.Drop;
-
-        if (!_isRunning)
-        {
-            return;
-        }
-
-        if (!_pickUpDrops)
-        {
-            return;
-        }
-
-        if (!drop.Owner.Equals(character))
-        {
-            return;
-        }
-
-        await character.WalkTo(drop);
-        await character.PickUp(drop);
-    }
-
     [Command("stop")]
     public async void StopCommand(Character sender)
     {
@@ -118,7 +93,7 @@ public class Bot : IEventListener, ICommandHandler
     {
         _pickUpDrops = !_pickUpDrops;
 
-        await sender.ReceiveChatMessage($"Drop {(_pickUpDrops ? "Enabled" : "Disabled")}", ChatMessageColor.GREEN);
+        await sender.ReceiveChatMessage($"Drop pickup : {(_pickUpDrops ? "Enabled" : "Disabled")}", ChatMessageColor.GREEN);
     }
 
     private async Task Work(Character character)
@@ -131,10 +106,33 @@ public class Bot : IEventListener, ICommandHandler
             Monster closestMonster = map.Monsters.OrderBy(x => x.Position.GetDistance(character.Position)).FirstOrDefault();
             Skill skill = character.Skills.First();
 
+            if (_pickUpDrops)
+            {
+                IEnumerable<Drop> drops = map.Drops.Where(x => (x.Owner.Equals(character) || x.DropTime.AddMinutes(1) < DateTime.Now)  && x.Position.IsInArea(character.Position, 5));
+                foreach (Drop drop in drops)
+                {
+                    await character.WalkTo(drop);
+                    await character.PickUp(drop);
+                }
+            }
+
+            if (character.HpPercentage < 20)
+            {
+                await character.Rest();
+                do
+                {
+                    await Task.Delay(100);
+                } 
+                while (character.HpPercentage < 100 && character.IsResting);
+            }
+
             if (closestMonster == null)
             {
                 continue;
             }
+
+            await character.ShowBubbleMessage("Attacking target.");
+            await character.ShowBubbleMessageOn($"-> Id {closestMonster.Id} / Name {closestMonster.Name} / Level {closestMonster.Level} <-", closestMonster);
 
             while (closestMonster.HpPercentage > 0 && _isRunning)
             {
