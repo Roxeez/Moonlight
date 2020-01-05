@@ -83,7 +83,7 @@ public class Bot : IEventListener, ICommandHandler
             return;
         }
 
-        await character.Move(drop);
+        await character.WalkTo(drop);
         await character.PickUp(drop);
     }
 
@@ -138,10 +138,10 @@ public class Bot : IEventListener, ICommandHandler
 
             while (closestMonster.HpPercentage > 0 && _isRunning)
             {
-                await character.Move(closestMonster);
-                await character.UseSkill(skill, closestMonster);
+                await character.WalkTo(closestMonster);
+                await character.UseSkillOn(skill, closestMonster);
 
-                await Task.Delay(1500);
+                await Task.Delay(skill.Info.Cooldown * 1000);
             }
         }
     }
