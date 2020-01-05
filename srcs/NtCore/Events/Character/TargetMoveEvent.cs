@@ -19,7 +19,7 @@ namespace NtCore.Events.Character
         /// <summary>
         ///     Character involved in this event
         /// </summary>
-        public ICharacter Character { get; }
+        public Game.Entities.Character Character { get; }
 
         /// <summary>
         ///     Position of target before movement

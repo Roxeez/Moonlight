@@ -11,7 +11,7 @@ namespace NtCore.Events.Map
     /// </summary>
     public class MinilandJoinEvent : Event
     {
-        public MinilandJoinEvent([NotNull] IClient client, [NotNull] IMiniland miniland) : base(client)
+        public MinilandJoinEvent([NotNull] IClient client, [NotNull] Miniland miniland) : base(client)
         {
             Character = client.Character;
             Miniland = miniland;
@@ -20,11 +20,11 @@ namespace NtCore.Events.Map
         /// <summary>
         ///     Character involved in this event
         /// </summary>
-        public ICharacter Character { get; }
+        public Game.Entities.Character Character { get; }
 
         /// <summary>
         ///     Miniland joined
         /// </summary>
-        public IMiniland Miniland { get; }
+        public Miniland Miniland { get; }
     }
 }

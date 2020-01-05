@@ -5,13 +5,13 @@ namespace NtCore.Events.Map
 {
     public class EntityPickupDropEvent : Event
     {
-        public EntityPickupDropEvent(IClient client, ILivingEntity entity, IDrop drop) : base(client)
+        public EntityPickupDropEvent(IClient client, LivingEntity entity, Drop drop) : base(client)
         {
             Entity = entity;
             Drop = drop;
         }
 
-        public ILivingEntity Entity { get; set; }
-        public IDrop Drop { get; set; }
+        public LivingEntity Entity { get; }
+        public Drop Drop { get; }
     }
 }

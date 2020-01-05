@@ -6,12 +6,12 @@ namespace NtCore.Events.Battle
 {
     public class EntityDamageEvent : Event
     {
-        public ILivingEntity Target { get; }
-        public ILivingEntity Caster { get; }
+        public LivingEntity Target { get; }
+        public LivingEntity Caster { get; }
         public int Damage { get; }
 
 
-        public EntityDamageEvent(IClient client, ILivingEntity target, ILivingEntity caster, int damage) : base(client)
+        public EntityDamageEvent(IClient client, LivingEntity target, LivingEntity caster, int damage) : base(client)
         {
             Target = target;
             Caster = caster;
