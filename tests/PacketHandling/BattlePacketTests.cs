@@ -3,6 +3,7 @@ using NFluent;
 using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Extensions;
+using NtCore.Game.Battle.Impl;
 using NtCore.Game.Entities;
 using NtCore.Game.Entities.Impl;
 using NtCore.Game.Maps.Impl;
@@ -39,14 +40,15 @@ namespace NtCore.Tests.PacketHandling
         [InlineData("st 3 124 1 1 74 98 14250 1987", EntityType.MONSTER, 124, 74, 98, 14250, 1987)]
         public void St_Packet_Update_Target(string packet, EntityType entityType, int entityId, int hpPercent, int mpPercent, int hp, int mp)
         {
-            ICharacter character = _client.Character;
+            var character = _client.Character.As<Character>();
             
             Map map = new MapBuilder().WithEntity(entityType, entityId).Create();
             map.AddEntity(character);
 
+            character.Target = new Target(map.GetEntity(entityType, entityId).As<ILivingEntity>());
+            
             _client.ReceivePacket(packet);
 
-            Check.That(character.Target).IsNotNull();
             Check.That(character.Target.Hp).IsEqualTo(hp);
             Check.That(character.Target.Mp).IsEqualTo(mp);
             Check.That(character.Target.Entity.HpPercentage).IsEqualTo(hpPercent);
@@ -68,6 +70,23 @@ namespace NtCore.Tests.PacketHandling
             var entity = map.GetEntity(entityType, entityId).As<ILivingEntity>();
 
             Check.That(entity.HpPercentage).IsEqualTo(hpPercentage);
+        }
+
+        [Theory]
+        [InlineData("ncif 3 100", EntityType.MONSTER, 100)]
+        [InlineData("ncif 1 999", EntityType.PLAYER, 999)]
+        public void Ncif_Packet_Set_Target(string packet, EntityType entityType, int id)
+        {
+            ICharacter character = _client.Character;
+
+            Map map = new MapBuilder().WithEntity(entityType, id).Create();
+            map.AddEntity(character);
+
+            _client.SendPacket(packet);
+
+            Check.That(character.Target).IsNotNull();
+            Check.That(character.Target.Entity.EntityType).IsEqualTo(entityType);
+            Check.That(character.Target.Entity.Id).IsEqualTo(id);
         }
     }
 }

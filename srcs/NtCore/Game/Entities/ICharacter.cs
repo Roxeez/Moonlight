@@ -110,11 +110,13 @@ namespace NtCore.Game.Entities
         /// <param name="position">Position where you want to move</param>
         Task Move(Position position);
 
+        Task SelectEntity([CanBeNull] ILivingEntity entity);
+
         /// <summary>
         ///     Send a friend request to selected player
         /// </summary>
         /// <param name="player">Selected player</param>
-        Task SendFriendRequest(IPlayer player);
+        Task SendFriendRequest([NotNull] IPlayer player);
 
         /// <summary>
         ///     Show info dialog with selected message

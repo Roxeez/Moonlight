@@ -30,13 +30,13 @@ namespace NtCore.Network.Handlers.Characters
             }
 
             ITarget currentTarget = character.Target;
-
-            if (!currentTarget.Entity.Equals(entity))
+            
+            character.Target = new Target(entity);
+            
+            if (currentTarget != null && !currentTarget.Entity.Equals(entity))
             {
                 _eventManager.CallEvent(new TargetChangeEvent(client));
             }
-            
-            character.Target = new Target(entity);
         }
     }
 }

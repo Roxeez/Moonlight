@@ -44,6 +44,8 @@ namespace NtCore.Game.Entities.Impl
         public HashSet<ISkill> Skills { get; }
         public IEnumerable<IFriend> Friends { get; set; }
 
+        private Task _worker;
+        
         public async Task UseSkill(ISkill skill)
         {
             if (!Skills.Contains(skill))
@@ -156,9 +158,33 @@ namespace NtCore.Game.Entities.Impl
             }
         }
 
-        public async Task SetTarget(ILivingEntity entity)
+
+        /**
+         * Looks crap but i'm gonna keep like this until i've something in NtNative for selecting entities for local client
+         */
+        public async Task SelectEntity(ILivingEntity entity)
         {
-            await Client.SendPacket($"ncif {(byte)entity.EntityType} {entity.Id}");
+            if (entity == null) // Reset target
+            {
+                Target = null;
+            }
+            
+            if (_worker != null && !_worker.IsCompleted) // Wait current running task
+            {
+                await _worker;
+            }
+
+            if (entity != null)
+            {
+                _worker = Task.Run(async () =>
+                {
+                    do
+                    {
+                        await Client.SendPacket($"ncif {(byte)entity.EntityType} {entity.Id}");
+                        await Task.Delay(1000);
+                    } while (Target != null && Target.Entity.Equals(entity)); // While entity is our selected target
+                });
+            }
         }
 
         public async Task SendFriendRequest(IPlayer player)
@@ -193,7 +219,12 @@ namespace NtCore.Game.Entities.Impl
 
         public void Dispose()
         {
-            
+            Target = null;
+            if (_worker != null)
+            {
+                Target = null;
+                Task.WaitAll(_worker);
+            }
         }
     }
 }
