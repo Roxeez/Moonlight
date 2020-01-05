@@ -1,5 +1,4 @@
 ﻿using NtCore.Clients;
-using NtCore.Extensions;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;
 

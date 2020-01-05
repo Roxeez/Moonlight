@@ -1,7 +1,6 @@
 ﻿using NtCore.Clients;
 using NtCore.Events;
 using NtCore.Events.Character;
-using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Entities;
 using NtCore.Network.Packets.Characters;
@@ -12,11 +11,8 @@ namespace NtCore.Network.Handlers.Characters
     {
         private readonly IEventManager _eventManager;
 
-        public NcifPacketHandler(IEventManager eventManager)
-        {
-            _eventManager = eventManager;
-        }
-        
+        public NcifPacketHandler(IEventManager eventManager) => _eventManager = eventManager;
+
         public override void Handle(IClient client, NcifPacket packet)
         {
             Character character = client.Character;
@@ -28,9 +24,9 @@ namespace NtCore.Network.Handlers.Characters
             }
 
             Target currentTarget = character.Target;
-            
+
             character.Target = new Target(entity);
-            
+
             if (currentTarget != null && !currentTarget.Entity.Equals(entity))
             {
                 _eventManager.CallEvent(new TargetChangeEvent(client));

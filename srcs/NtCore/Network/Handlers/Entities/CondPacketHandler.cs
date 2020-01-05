@@ -1,7 +1,5 @@
-using System;
 using NtCore.Clients;
 using NtCore.Enums;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Entities;
@@ -19,6 +17,7 @@ namespace NtCore.Network.Handlers.Entities
                 {
                     client.Character.Speed = packet.Speed;
                 }
+
                 return;
             }
 

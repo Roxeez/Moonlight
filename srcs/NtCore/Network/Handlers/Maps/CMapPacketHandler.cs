@@ -2,7 +2,6 @@
 using NtCore.Clients;
 using NtCore.Events;
 using NtCore.Events.Map;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Maps;

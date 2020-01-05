@@ -15,11 +15,11 @@ namespace NtCore.Clients.Remote
     {
         private const string RegistryPath = "SOFTWARE\\WOW6432Node\\Gameforge4d\\TNTClient\\MainApp";
         private const string RegistryKey = "InstallationId";
-        
-        private readonly Random _random = new Random();
         private readonly IGameforgeAuthService _gameforgeAuthService;
+
+        private readonly Random _random = new Random();
         private readonly IRegistryReader _registryReader;
-        
+
         public RemoteClientFactory(IGameforgeAuthService gameforgeAuthService, IRegistryReader registryReader)
         {
             _gameforgeAuthService = gameforgeAuthService;
@@ -35,9 +35,9 @@ namespace NtCore.Clients.Remote
             {
                 return new LoginResult(false);
             }
-            
+
             Guid installationId = _registryReader.GetValue<Guid>(Microsoft.Win32.Registry.LocalMachine, RegistryPath, RegistryKey).OrElse(Guid.NewGuid());
-            
+
             string packet;
             if (type == LoginType.NEW)
             {
@@ -58,16 +58,17 @@ namespace NtCore.Clients.Remote
                 {
                     return new LoginResult(false);
                 }
-                
+
                 string version = "00" + _random.Next(0, 126).ToString("X")
                     + _random.Next(0, 126).ToString("X")
                     + _random.Next(0, 126).ToString("X")
                     + $"{(char)0xB}" + clientInformation.Version;
-                
+
                 string fileHash = (clientInformation.DxHash.ToUpper() + clientInformation.GlHash.ToUpper()).ToMd5();
-                
+
                 packet = $"NoS0577 {token.Get().ToHex()} {installationId.ToString()} {version} 0 {fileHash}";
-;            }
+                ;
+            }
             else
             {
                 string usernameHash = (clientInformation.DxHash.ToUpper() + clientInformation.GlHash.ToUpper() + username).ToMd5();
@@ -88,7 +89,7 @@ namespace NtCore.Clients.Remote
             {
                 return new LoginResult(false);
             }
-            
+
             return new LoginResult(true, new WorldServer[0]);
         }
     }

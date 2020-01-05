@@ -18,9 +18,9 @@ namespace NtCore.Game.Factory
         public Skill CreateSkill(int vnum)
         {
             SkillInfo skillInfo = _registry.GetSkillInfo(vnum);
-            
+
             string name = _languageService.GetTranslation(LanguageKey.SKILL, skillInfo?.NameKey ?? $"{vnum}");
-            
+
             return new Skill(vnum, name, skillInfo);
         }
     }

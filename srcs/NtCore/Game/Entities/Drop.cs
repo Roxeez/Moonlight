@@ -13,7 +13,7 @@ namespace NtCore.Game.Entities
             EntityType = EntityType.DROP;
             DropTime = DateTime.Now;
         }
-        
+
         public Item Item { get; internal set; }
         public int Amount { get; internal set; }
         public Player Owner { get; internal set; }

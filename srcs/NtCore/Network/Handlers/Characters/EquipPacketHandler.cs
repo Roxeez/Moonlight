@@ -4,9 +4,7 @@ using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Factory;
 using NtCore.Game.Inventories;
-using NtCore.Game.Items;
 using NtCore.Network.Packets.Characters;
-using NtCore.Registry;
 
 namespace NtCore.Network.Handlers.Characters
 {
@@ -14,11 +12,8 @@ namespace NtCore.Network.Handlers.Characters
     {
         private readonly IItemFactory _itemFactory;
 
-        public EquipPacketHandler(IItemFactory itemFactory)
-        {
-            _itemFactory = itemFactory;
-        }
-        
+        public EquipPacketHandler(IItemFactory itemFactory) => _itemFactory = itemFactory;
+
         public override void Handle(IClient client, EquipPacket packet)
         {
             Character character = client.Character;

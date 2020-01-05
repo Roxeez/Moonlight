@@ -1,6 +1,5 @@
 using NtCore.Clients;
 using NtCore.Core;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Characters;
@@ -11,10 +10,7 @@ namespace NtCore.Network.Handlers.Characters
     {
         private readonly IMapManager _mapManager;
 
-        public AtPacketHandler(IMapManager mapManager)
-        {
-            _mapManager = mapManager;
-        }
+        public AtPacketHandler(IMapManager mapManager) => _mapManager = mapManager;
 
         public override void Handle(IClient client, AtPacket packet)
         {

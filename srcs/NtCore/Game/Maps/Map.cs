@@ -13,11 +13,6 @@ namespace NtCore.Game.Maps
 {
     public class Map
     {
-        private readonly IDictionary<int, Drop> _drops;
-        private readonly IDictionary<int, Monster> _monsters;
-        private readonly IDictionary<int, Npc> _npcs;
-        private readonly IDictionary<int, Player> _players;
-
         private static readonly IDictionary<Type, EntityType> _mapping = new Dictionary<Type, EntityType>
         {
             [typeof(Monster)] = EntityType.MONSTER,
@@ -25,7 +20,12 @@ namespace NtCore.Game.Maps
             [typeof(Player)] = EntityType.PLAYER,
             [typeof(Drop)] = EntityType.DROP
         };
-        
+
+        private readonly IDictionary<int, Drop> _drops;
+        private readonly IDictionary<int, Monster> _monsters;
+        private readonly IDictionary<int, Npc> _npcs;
+        private readonly IDictionary<int, Player> _players;
+
         public Map(int id, byte[] data)
         {
             Id = id;

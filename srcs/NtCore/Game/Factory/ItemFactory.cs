@@ -19,7 +19,7 @@ namespace NtCore.Game.Factory
         {
             ItemInfo info = _registry.GetItemInfo(vnum);
             string name = _languageService.GetTranslation(LanguageKey.ITEM, info?.NameKey ?? $"{vnum}");
-            
+
             return new Item(vnum, name, info);
         }
 
@@ -51,7 +51,7 @@ namespace NtCore.Game.Factory
         {
             ItemInfo info = _registry.GetItemInfo(vnum);
             string name = _languageService.GetTranslation(LanguageKey.ITEM, info?.NameKey ?? $"{vnum}");
-            
+
             return new Fairy(vnum, name, info);
         }
     }

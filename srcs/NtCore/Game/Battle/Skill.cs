@@ -10,7 +10,7 @@ namespace NtCore.Game.Battle
             Vnum = vnum;
             Info = skillInfo;
             Name = name;
-        } 
+        }
 
         public int Vnum { get; }
         public string Name { get; }

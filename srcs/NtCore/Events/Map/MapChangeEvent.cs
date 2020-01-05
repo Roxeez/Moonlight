@@ -1,7 +1,5 @@
 ﻿using JetBrains.Annotations;
 using NtCore.Clients;
-using NtCore.Game.Entities;
-using NtCore.Game.Maps;
 
 namespace NtCore.Events.Map
 {

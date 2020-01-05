@@ -151,10 +151,10 @@ namespace NtCore.Game.Entities
                 Position = position;
             }
         }
-        
-        public async Task SelectEntity(LivingEntity entity)
+
+        public Task SelectEntity(LivingEntity entity)
         {
-            // TODO : Find a way to handle selection
+            throw new NotImplementedException("Not implemented yet (need to find something for compatibility with remote/local)");
         }
 
         public async Task SendFriendRequest(Player player)
@@ -189,7 +189,6 @@ namespace NtCore.Game.Entities
 
         public void Dispose()
         {
-
         }
     }
 }

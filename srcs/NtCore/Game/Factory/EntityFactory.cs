@@ -8,8 +8,8 @@ namespace NtCore.Game.Factory
 {
     public class EntityFactory : IEntityFactory
     {
-        private readonly ILanguageService _languageService;
         private readonly IItemFactory _itemFactory;
+        private readonly ILanguageService _languageService;
         private readonly IRegistry _registry;
 
         public EntityFactory(ILanguageService languageService, IRegistry registry, IItemFactory itemFactory)
@@ -83,9 +83,8 @@ namespace NtCore.Game.Factory
                 HpPercentage = hpPercentage,
                 MpPercentage = mpPercentage
             };
-            
+
             return player;
         }
-
     }
 }

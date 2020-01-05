@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using NtCore.Clients;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Relation;
 using NtCore.Network.Packets.Relation;

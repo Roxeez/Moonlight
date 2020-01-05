@@ -28,7 +28,7 @@ namespace NtCore.Network.Handlers.Relation
                 }
 
                 bool wasConnected = friend.IsConnected;
-                
+
                 friend.IsConnected = info.IsConnected;
 
                 if (!wasConnected && friend.IsConnected)

@@ -1,5 +1,4 @@
 ﻿using NtCore.Clients;
-using NtCore.Extensions;
 using NtCore.Game.Battle;
 using NtCore.Game.Entities;
 using NtCore.Network.Packets.Battle;
@@ -18,7 +17,7 @@ namespace NtCore.Network.Handlers.Battle
             }
 
             LivingEntity entity = target.Entity;
-            
+
             target.Hp = packet.CurrentHp;
             target.Mp = packet.CurrentMp;
             entity.HpPercentage = packet.HpPercentage;

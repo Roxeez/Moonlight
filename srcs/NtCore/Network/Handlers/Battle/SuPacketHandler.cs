@@ -1,7 +1,6 @@
 ﻿using NtCore.Clients;
 using NtCore.Events;
 using NtCore.Events.Battle;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Maps;
 using NtCore.Network.Packets.Battle;
@@ -12,15 +11,12 @@ namespace NtCore.Network.Handlers.Battle
     {
         private readonly IEventManager _eventManager;
 
-        public SuPacketHandler(IEventManager eventManager)
-        {
-            _eventManager = eventManager;
-        }
-        
+        public SuPacketHandler(IEventManager eventManager) => _eventManager = eventManager;
+
         public override void Handle(IClient client, SuPacket packet)
         {
             Map map = client.Character.Map;
-            
+
             if (packet.Damage == 0)
             {
                 return;

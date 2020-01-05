@@ -2,7 +2,6 @@
 using NtCore.Core;
 using NtCore.Events;
 using NtCore.Events.Map;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Factory;
 using NtCore.Game.Maps;

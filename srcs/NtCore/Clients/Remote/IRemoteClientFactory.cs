@@ -10,9 +10,6 @@ namespace NtCore.Clients.Remote
 
     public class LoginResult
     {
-        public bool IsConnected { get; }
-        public IEnumerable<WorldServer> WorldServers { get; }
-
         public LoginResult(bool isConnected) => IsConnected = isConnected;
 
         public LoginResult(bool isConnected, IEnumerable<WorldServer> worldServers)
@@ -20,5 +17,8 @@ namespace NtCore.Clients.Remote
             IsConnected = isConnected;
             WorldServers = worldServers;
         }
+
+        public bool IsConnected { get; }
+        public IEnumerable<WorldServer> WorldServers { get; }
     }
 }

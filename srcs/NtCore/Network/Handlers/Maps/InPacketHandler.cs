@@ -3,7 +3,6 @@ using NtCore.Clients;
 using NtCore.Enums;
 using NtCore.Events;
 using NtCore.Events.Entity;
-using NtCore.Extensions;
 using NtCore.Game.Entities;
 using NtCore.Game.Factory;
 using NtCore.Game.Maps;

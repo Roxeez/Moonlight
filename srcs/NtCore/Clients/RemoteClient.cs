@@ -8,12 +8,8 @@ namespace NtCore.Clients
 {
     public class RemoteClient : IClient
     {
-        public Guid Id { get; }
-        public Character Character { get; }
-        public ClientType Type { get; }
-
         private readonly INetworkClient _networkClient;
-        
+
         public RemoteClient(INetworkClient networkClient)
         {
             Id = Guid.NewGuid();
@@ -24,6 +20,10 @@ namespace NtCore.Clients
 
             _networkClient.PacketReceived += packet => PacketReceived?.Invoke(packet);
         }
+
+        public Guid Id { get; }
+        public Character Character { get; }
+        public ClientType Type { get; }
 
         public async Task SendPacket(string packet)
         {
@@ -39,7 +39,7 @@ namespace NtCore.Clients
 
         public event Func<string, bool> PacketSend;
         public event Func<string, bool> PacketReceived;
-        
+
         public void Dispose()
         {
             _networkClient.Dispose();

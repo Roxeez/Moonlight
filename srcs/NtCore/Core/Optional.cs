@@ -10,11 +10,11 @@ namespace NtCore.Core
         public static Optional<T> Empty<T>() => new Optional<T>();
         public static Optional<T> OfNullable<T>([CanBeNull] T value) => value == null ? new Optional<T>() : new Optional<T>(value);
     }
-    
+
     public struct Optional<T> : IEquatable<Optional<T>>
     {
         private readonly T _value;
-        
+
         internal Optional([CanBeNull] T value) => _value = value;
 
         [NotNull]
@@ -45,7 +45,7 @@ namespace NtCore.Core
 
             return default;
         }
-        
+
         public Task<K> IfPresent<K>([NotNull] Func<T, Task<K>> action)
         {
             if (IsPresent())

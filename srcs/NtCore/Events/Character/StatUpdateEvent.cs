@@ -1,5 +1,4 @@
 ﻿using NtCore.Clients;
-using NtCore.Game.Entities;
 
 namespace NtCore.Events.Character
 {

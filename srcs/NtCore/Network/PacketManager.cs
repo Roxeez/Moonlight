@@ -41,7 +41,7 @@ namespace NtCore.Network
 
             if (packetType == PacketType.Send && header[0] == '$')
             {
-                return _commandManager.ExecuteCommand(client, header.Substring(1), arguments.Skip(1).ToArray());
+                return _commandManager.ExecuteCommand(client, header.Substring(1), arguments.Skip(1).ToArray()).ConfigureAwait(false).GetAwaiter().GetResult();
             }
 
             IPacketHandler packetHandler = _packetHandlers.GetValueOrDefault((header, packetType));
