@@ -32,11 +32,6 @@ namespace NtCore.Tests.Services
             Guid installationId = _registryReader.GetValue<Guid>(Microsoft.Win32.Registry.LocalMachine, "SOFTWARE\\WOW6432Node\\Gameforge4d\\TNTClient\\MainApp", "InstallationId").OrElse(Guid.NewGuid());
             
             Optional<string> authToken = await _gameforgeAuthService.GetAuthToken(Username, Password, Language.FR);
-            if (!authToken.IsPresent())
-            {
-                return;
-            }
-
             Check.That(authToken.IsPresent()).IsTrue();
 
             Optional<IEnumerable<GameforgeAccount>> accounts = await _gameforgeAuthService.GetAllAccounts(authToken.Get(), installationId);
