@@ -17,6 +17,7 @@ namespace NtCore.Tests.Utility
         private IEnumerable<Monster> _monsters = new List<Monster>();
         private IEnumerable<Npc> _npcs = new List<Npc>();
         private IEnumerable<Player> _players = new List<Player>();
+        private Character _character;
 
         public MapBuilder WithId(int id)
         {
@@ -30,6 +31,12 @@ namespace NtCore.Tests.Utility
             {
                 Id = x
             });
+            return this;
+        }
+
+        public MapBuilder WithCharacter(Character character)
+        {
+            _character = character;
             return this;
         }
 
@@ -111,6 +118,11 @@ namespace NtCore.Tests.Utility
             foreach (Drop drop in _drops)
             {
                 map.AddEntity(drop);
+            }
+
+            if (_character != null)
+            {
+                map.AddEntity(_character);
             }
 
             if (map is Miniland miniland)

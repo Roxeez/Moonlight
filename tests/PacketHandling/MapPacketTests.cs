@@ -175,17 +175,45 @@ namespace NtCore.Tests.PacketHandling
             Check.That(drop.IsGold).IsEqualTo(isGold);
         }
 
-        [Theory]
-        [InlineData("get 1 252525 12645 0", EntityType.PLAYER, 252525, 12645)]
-        [InlineData("get 1 1294576 478569 0", EntityType.PLAYER, 1294576, 478569)]
-        public void Get_Packet_Remove_Drop_From_Map(string packet, EntityType entityType, int entityId, int dropId)
+        [Fact]
+        public void Get_Packet_Remove_Drop_From_Map()
         {
-            Map fakeMap = new MapBuilder().WithEntity(entityType, entityId).WithDrops(dropId).Create();
+            const EntityType entityType = EntityType.PLAYER;
+            const int entityId = 252525;
+            const int dropId = 12345;
+            
+            Map map = new MapBuilder()
+                .WithCharacter(_client.Character)
+                .WithEntity(entityType, entityId)
+                .WithDrops(dropId).Create();
+            
+            _client.ReceivePacket($"get {(byte)entityType} {entityId} {dropId} 0");
 
-            fakeMap.AddEntity(_client.Character);
-            _client.ReceivePacket(packet);
+            Check.That(map.GetEntity<Drop>(dropId)).IsNull();
+        }
 
-            Check.That(fakeMap.GetEntity<Drop>(dropId)).IsNull();
+        [Fact]
+        public void Gp_Packet_Add_Portal()
+        {
+            const int positionX = 48;
+            const int positionY = 54;
+            const int portalId = 1;
+            const int destinationId = 24;
+            const PortalType type = PortalType.OPEN;
+
+            Map map = new MapBuilder()
+                .WithCharacter(_client.Character)
+                .Create();
+
+            _client.ReceivePacket($"gp {positionX} {positionY} {destinationId} {(sbyte)type} {portalId}");
+
+            Portal portal = map.GetPortal(portalId);
+
+            Check.That(portal).IsNotNull();
+            Check.That(portal.Id).IsEqualTo(portalId);
+            Check.That(portal.DestinationId).IsEqualTo(destinationId);
+            Check.That(portal.Position).IsEqualTo(new Position(positionX, positionY));
+            Check.That(portal.Type).IsEqualTo(type);
         }
     }
 }
