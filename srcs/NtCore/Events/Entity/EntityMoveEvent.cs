@@ -19,6 +19,7 @@ namespace NtCore.Events.Entity
         /// <summary>
         ///     Entity involved in this event
         /// </summary>
+        [NotNull]
         public LivingEntity Entity { get; }
 
         /// <summary>

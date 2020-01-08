@@ -26,11 +26,6 @@ namespace NtCore.Network.Handlers.Maps
             Character character = client.Character;
             Map map = client.Character.Map;
 
-            if (map == null)
-            {
-                return;
-            }
-
             if (map.GetEntity(packet.EntityType, packet.Id) != null)
             {
                 return;
@@ -46,7 +41,7 @@ namespace NtCore.Network.Handlers.Maps
                     entity = _entityFactory.CreateMonster(packet.Id, packet.Vnum, packet.Position, packet.Direction, packet.HpPercentage, packet.MpPercentage);
                     break;
                 case EntityType.DROP:
-                    var owner = map.GetEntity<Player>(packet.DropOwnerId);
+                    Player owner = map.GetEntity<Player>(packet.DropOwnerId);
                     entity = _entityFactory.CreateDrop(packet.Id, packet.Vnum, packet.Amount, packet.Position, owner);
                     break;
                 case EntityType.PLAYER:

@@ -19,11 +19,13 @@ namespace NtCore.Events.Map
         /// <summary>
         ///     Character involved in this event
         /// </summary>
+        [NotNull]
         public Game.Entities.Character Character { get; }
 
         /// <summary>
         ///     Miniland joined
         /// </summary>
+        [NotNull]
         public Miniland Miniland { get; }
     }
 }

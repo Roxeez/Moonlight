@@ -5,7 +5,7 @@ using NtCore.Game.Entities;
 namespace NtCore.Events.Entity
 {
     /// <summary>
-    ///     Event called when an Entity Spawn (player, monster, npc, drop)
+    ///     Event called when an entity join the map (player, monster, npc, drop)
     ///     It's basically called when you receive in packet
     /// </summary>
     public class EntityJoinEvent : Event
@@ -19,11 +19,13 @@ namespace NtCore.Events.Entity
         /// <summary>
         ///     Entity involved in this event
         /// </summary>
+        [NotNull]
         public LivingEntity Entity { get; }
 
         /// <summary>
         ///     Map where this entity spawned
         /// </summary>
+        [NotNull]
         public Game.Maps.Map Map { get; }
     }
 }

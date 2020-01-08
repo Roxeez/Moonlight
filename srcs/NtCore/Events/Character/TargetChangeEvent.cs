@@ -14,6 +14,7 @@ namespace NtCore.Events.Character
         /// <summary>
         ///     Character involved in this event
         /// </summary>
+        [NotNull]
         public Game.Entities.Character Character { get; }
     }
 }

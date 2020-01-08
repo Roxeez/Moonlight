@@ -113,7 +113,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var entity = _client.Character.Map.GetEntity<LivingEntity>(entityType, entityId);
+            LivingEntity entity = _client.Character.Map.GetEntity<LivingEntity>(entityType, entityId);
 
             Check.That(entity).IsNotNull();
             Check.That(entity.Speed).IsEqualTo(speed);
@@ -141,7 +141,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var entity = _client.Character.Map.GetEntity<LivingEntity>(entityType, id);
+            LivingEntity entity = _client.Character.Map.GetEntity<LivingEntity>(entityType, id);
 
             Check.That(entity.Position).IsEqualTo(new Position(x, y));
             Check.That(entity.Speed).IsEqualTo(speed);

@@ -6,6 +6,9 @@ namespace NtCore.Game.Entities
     {
         public Npc() => EntityType = EntityType.NPC;
 
+        /// <summary>
+        /// Vnum of the npc
+        /// </summary>
         public int Vnum { get; internal set; }
     }
 }

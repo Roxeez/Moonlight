@@ -21,7 +21,7 @@ namespace NtCore.Commands
         {
             foreach (MethodInfo methodInfo in handler.GetType().GetMethods())
             {
-                var command = methodInfo.GetCustomAttribute<CommandAttribute>();
+                CommandAttribute command = methodInfo.GetCustomAttribute<CommandAttribute>();
                 if (command == null)
                 {
                     continue;
@@ -56,7 +56,7 @@ namespace NtCore.Commands
 
         public void RegisterCommandHandler<T>() where T : ICommandHandler
         {
-            var obj = Activator.CreateInstance<T>();
+            T obj = Activator.CreateInstance<T>();
             RegisterCommandHandler(obj);
         }
 
@@ -66,7 +66,7 @@ namespace NtCore.Commands
 
             if (handler == default((ICommandHandler, MethodInfo)))
             {
-                await client.Character.ReceiveChatMessage($"There is no command : {command}", ChatMessageColor.RED);
+                await client.Character.ShowChatMessage($"There is no command : {command}", ChatMessageColor.RED);
                 return true;
             }
 

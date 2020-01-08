@@ -12,8 +12,19 @@ namespace NtCore.Game.Maps
             Position = position;
         }
 
+        /// <summary>
+        /// Vnum of object
+        /// </summary>
         public int Vnum { get; }
+        
+        /// <summary>
+        /// Id of object
+        /// </summary>
         public int Id { get; }
+        
+        /// <summary>
+        /// Position in miniland
+        /// </summary>
         public Position Position { get; }
 
         public bool Equals(MinilandObject other) => other != null && other.Id == Id;

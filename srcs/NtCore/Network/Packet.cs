@@ -11,7 +11,7 @@ namespace NtCore.Network
 
             foreach (PropertyInfo propertyInfo in type.GetProperties())
             {
-                var packetIndexAttribute = propertyInfo.GetCustomAttribute<PacketIndex>();
+                PacketIndex packetIndexAttribute = propertyInfo.GetCustomAttribute<PacketIndex>();
                 if (packetIndexAttribute == null)
                 {
                     continue;

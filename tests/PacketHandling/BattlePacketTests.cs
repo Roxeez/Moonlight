@@ -65,7 +65,7 @@ namespace NtCore.Tests.PacketHandling
             map.AddEntity(character);
             _client.ReceivePacket(packet);
 
-            var entity = map.GetEntity<LivingEntity>(entityType, entityId);
+            LivingEntity entity = map.GetEntity<LivingEntity>(entityType, entityId);
             Check.That(entity).IsNotNull();
             Check.That(entity?.HpPercentage).IsEqualTo(hpPercentage);
         }

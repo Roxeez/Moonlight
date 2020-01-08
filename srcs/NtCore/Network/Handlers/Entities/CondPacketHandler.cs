@@ -11,17 +11,8 @@ namespace NtCore.Network.Handlers.Entities
         public override void Handle(IClient client, CondPacket packet)
         {
             Map map = client.Character.Map;
-            if (map == null)
-            {
-                if (packet.EntityType == EntityType.PLAYER && packet.EntityId == client.Character.Id)
-                {
-                    client.Character.Speed = packet.Speed;
-                }
 
-                return;
-            }
-
-            var entity = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
+            LivingEntity entity = map?.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
             if (entity == null)
             {
                 return;

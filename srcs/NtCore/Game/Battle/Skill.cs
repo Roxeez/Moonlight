@@ -12,8 +12,19 @@ namespace NtCore.Game.Battle
             Name = name;
         }
 
+        /// <summary>
+        /// Skill vnum
+        /// </summary>
         public int Vnum { get; }
+        
+        /// <summary>
+        /// Name of the skill
+        /// </summary>
         public string Name { get; }
+        
+        /// <summary>
+        /// Information about this skill
+        /// </summary>
         public SkillInfo Info { get; }
 
         public bool Equals(Skill other) => other != null && other.Vnum.Equals(Vnum);

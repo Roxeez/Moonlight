@@ -6,6 +6,9 @@ namespace NtCore.Game.Entities
     {
         public Monster() => EntityType = EntityType.MONSTER;
 
+        /// <summary>
+        /// Vnum of the monster
+        /// </summary>
         public int Vnum { get; internal set; }
     }
 }

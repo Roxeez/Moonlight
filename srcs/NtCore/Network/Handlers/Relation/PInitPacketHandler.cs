@@ -14,7 +14,7 @@ namespace NtCore.Network.Handlers.Relation
         {
             Character character = client.Character;
 
-            List<LivingEntity> members = packet.PartyMemberInfos
+            var members = packet.PartyMemberInfos
                 .Select(info => character.Map.GetEntity<LivingEntity>(info.EntityType, info.EntityId))
                 .Where(entity => entity != null)
                 .ToList();

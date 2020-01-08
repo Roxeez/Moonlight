@@ -86,13 +86,52 @@ namespace NtCore
             Logger.Information("NtCoreAPI successfully initialized.");
         }
 
+        /// <summary>
+        /// Get client manager
+        /// </summary>
+        /// <returns>Client manager</returns>
         public static IClientManager GetClientManager() => ClientManager;
+
+        /// <summary>
+        /// Get packet manager
+        /// </summary>
+        /// <returns>Packet manager</returns>
         public static IPacketManager GetPacketManager() => PacketManager;
+
+        /// <summary>
+        /// Get current logger
+        /// </summary>
+        /// <returns>Logger</returns>
         public static ILogger GetLogger() => Logger;
+
+        /// <summary>
+        /// Get EventManager
+        /// </summary>
+        /// <returns>Event manager</returns>
         public static IEventManager GetEventManager() => EventManager;
+
+        /// <summary>
+        /// Get CommandManager
+        /// </summary>
+        /// <returns>Command manager</returns>
         public static ICommandManager GetCommandManager() => CommandManager;
+
+        /// <summary>
+        /// Get scheduler
+        /// </summary>
+        /// <returns>Scheduler</returns>
         public static IScheduler GetScheduler() => Scheduler;
+
+        /// <summary>
+        /// Get registry
+        /// </summary>
+        /// <returns>Registry</returns>
         public static IRegistry GetRegistry() => Registry;
+
+        /// <summary>
+        /// Get language service
+        /// </summary>
+        /// <returns>Language service</returns>
         public static ILanguageService GetLanguageService() => LanguageService;
     }
 }

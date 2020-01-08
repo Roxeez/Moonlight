@@ -16,7 +16,7 @@ namespace NtCore.Network.Handlers.Characters
         public override void Handle(IClient client, NcifPacket packet)
         {
             Character character = client.Character;
-            var entity = character.Map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
+            LivingEntity entity = character.Map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
 
             if (entity == null)
             {

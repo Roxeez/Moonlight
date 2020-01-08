@@ -19,7 +19,7 @@ namespace NtCore.Events
         {
             foreach (MethodInfo methodInfo in eventListener.GetType().GetMethods())
             {
-                var handler = methodInfo.GetCustomAttribute<Handler>();
+                Handler handler = methodInfo.GetCustomAttribute<Handler>();
                 if (handler == null)
                 {
                     continue;
@@ -56,7 +56,7 @@ namespace NtCore.Events
 
         public void RegisterEventListener<T>(IClient client) where T : IEventListener
         {
-            var obj = Activator.CreateInstance<T>();
+            T obj = Activator.CreateInstance<T>();
             RegisterEventListener(obj, client);
         }
 

@@ -22,8 +22,8 @@ namespace NtCore.Network.Handlers.Battle
                 return;
             }
 
-            var caster = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
-            var target = map.GetEntity<LivingEntity>(packet.TargetEntityType, packet.TargetEntityId);
+            LivingEntity caster = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
+            LivingEntity target = map.GetEntity<LivingEntity>(packet.TargetEntityType, packet.TargetEntityId);
             
             if (target == null || caster == null)
             {

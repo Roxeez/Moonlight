@@ -19,16 +19,19 @@ namespace NtCore.Events.Map
         /// <summary>
         ///     Character involved in this event
         /// </summary>
+        [NotNull]
         public Game.Entities.Character Character { get; }
 
         /// <summary>
         ///     Source map
         /// </summary>
+        [NotNull]
         public Game.Maps.Map Source { get; }
 
         /// <summary>
         ///     Destination map
         /// </summary>
+        [NotNull]
         public Game.Maps.Map Destination { get; }
     }
 }

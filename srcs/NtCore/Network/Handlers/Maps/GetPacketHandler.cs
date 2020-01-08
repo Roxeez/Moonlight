@@ -17,8 +17,8 @@ namespace NtCore.Network.Handlers.Maps
         {
             Map map = client.Character.Map;
 
-            var entity = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
-            var drop = map.GetEntity<Drop>(packet.DropId);
+            LivingEntity entity = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
+            Drop drop = map.GetEntity<Drop>(packet.DropId);
 
             if (entity == null && drop == null)
             {

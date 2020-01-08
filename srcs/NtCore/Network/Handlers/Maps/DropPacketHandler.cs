@@ -24,13 +24,8 @@ namespace NtCore.Network.Handlers.Maps
         {
             Map map = client.Character.Map;
 
-            if (map == null)
-            {
-                return;
-            }
-
             var position = new Position(packet.PositionX, packet.PositionY);
-            var owner = map.GetEntity<Player>(packet.OwnerId);
+            Player owner = map.GetEntity<Player>(packet.OwnerId);
 
             Drop drop = _entityFactory.CreateDrop(packet.DropId, packet.VNum, packet.Amount, position, owner);
 

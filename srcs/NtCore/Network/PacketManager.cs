@@ -94,7 +94,7 @@ namespace NtCore.Network
                 return;
             }
 
-            var info = packetType.GetCustomAttribute<PacketInfo>();
+            PacketInfo info = packetType.GetCustomAttribute<PacketInfo>();
             if (info == null)
             {
                 _logger.Debug($"Missing header annotation on packet {packetType.Name}");

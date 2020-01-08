@@ -17,7 +17,7 @@ namespace NtCore.Network.Handlers.Entities
         
         public override void Handle(IClient client, RestPacket packet)
         {
-            var entity = client.Character.Map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
+            LivingEntity entity = client.Character.Map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
 
             if (entity == null)
             {

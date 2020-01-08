@@ -1,4 +1,5 @@
-﻿using NtCore.Registry;
+﻿using JetBrains.Annotations;
+using NtCore.Registry;
 
 namespace NtCore.Game.Items
 {
@@ -14,6 +15,7 @@ namespace NtCore.Game.Items
         public int Vnum { get; }
         public string Name { get; }
 
+        [NotNull]
         public ItemInfo Info { get; }
     }
 }

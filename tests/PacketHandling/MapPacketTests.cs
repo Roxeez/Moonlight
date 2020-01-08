@@ -52,7 +52,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var npc = _client.Character.Map.GetEntity<Npc>(id);
+            Npc npc = _client.Character.Map.GetEntity<Npc>(id);
 
             Check.That(npc).IsNotNull();
             Check.That(npc.Vnum).IsEqualTo(vnum);
@@ -75,7 +75,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var monster = _client.Character.Map.GetEntity<Monster>(id);
+            Monster monster = _client.Character.Map.GetEntity<Monster>(id);
 
             Check.That(monster).IsNotNull();
             Check.That(monster.Vnum).IsEqualTo(vnum);
@@ -101,7 +101,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var player = _client.Character.Map.GetEntity<Player>(id);
+            Player player = _client.Character.Map.GetEntity<Player>(id);
 
             Check.That(player).IsNotNull();
             Check.That(player.Name).IsEqualTo(name);
@@ -126,7 +126,7 @@ namespace NtCore.Tests.PacketHandling
 
             _client.ReceivePacket(packet);
 
-            var drop = _client.Character.Map.GetEntity<Drop>(id);
+            Drop drop = _client.Character.Map.GetEntity<Drop>(id);
 
             Check.That(drop).IsNotNull();
             Check.That(drop.Item.Vnum).IsEqualTo(vnum);
@@ -164,8 +164,8 @@ namespace NtCore.Tests.PacketHandling
 
             Map map = _client.Character.Map;
 
-            var drop = map.GetEntity<Drop>(dropId);
-            var owner = map.GetEntity<Player>(ownerId);
+            Drop drop = map.GetEntity<Drop>(dropId);
+            Player owner = map.GetEntity<Player>(ownerId);
 
             Check.That(drop).IsNotNull();
             Check.That(drop.Item.Vnum).IsEqualTo(vnum);

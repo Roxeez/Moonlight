@@ -11,7 +11,14 @@ namespace NtCore.Game.Relation
             Members = members;
         }
 
+        /// <summary>
+        /// Owner of the party
+        /// </summary>
         public Player Owner { get; }
+        
+        /// <summary>
+        /// All entities in party (pets/players)
+        /// </summary>
         public IEnumerable<LivingEntity> Members { get; }
     }
 }

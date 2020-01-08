@@ -51,7 +51,7 @@ namespace NtCore.Services.Gameforge
                 }
 
                 string content = await response.Content.ReadAsStringAsync();
-                var jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
+                Dictionary<string, string> jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
 
                 string token = jsonContent.GetValueOrDefault("token");
 
@@ -77,7 +77,7 @@ namespace NtCore.Services.Gameforge
                 }
 
                 string content = await response.Content.ReadAsStringAsync();
-                var jsonContent = _serializer.Deserialize<Dictionary<string, GameforgeAccount>>(content);
+                Dictionary<string, GameforgeAccount> jsonContent = _serializer.Deserialize<Dictionary<string, GameforgeAccount>>(content);
 
                 return Optional.Of<IEnumerable<GameforgeAccount>>(jsonContent.Values);
             }
@@ -106,7 +106,7 @@ namespace NtCore.Services.Gameforge
                 }
 
                 string content = await response.Content.ReadAsStringAsync();
-                var jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
+                Dictionary<string, string> jsonContent = _serializer.Deserialize<Dictionary<string, string>>(content);
 
                 string token = jsonContent.GetValueOrDefault("code");
 
