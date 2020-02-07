@@ -52,7 +52,7 @@
     <Compile Include="Core\Extensions\DictionaryExtension.cs" />
     <Compile Include="Core\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Core\Import\Kernel32.cs" />
-    <Compile Include="Core\Import\NtNative.cs" />
+    <Compile Include="Core\Import\Moon.cs" />
     <Compile Include="Core\Import\User32.cs" />
     <Compile Include="Core\Logging\ILogger.cs" />
     <Compile Include="Core\Logging\SerilogLogger.cs" />
@@ -248,9 +248,7 @@
       <Version>1.0.112</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utility" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

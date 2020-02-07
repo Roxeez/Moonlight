@@ -4,12 +4,12 @@ namespace Moonlight.Clients
 {
     public sealed class LocalClient : Client
     {
-        private readonly NtNative.PacketCallback _recvCallback;
+        private readonly Moon.PacketCallback _recvCallback;
 
         /// <summary>
         ///     Need to keep a reference to both callback to avoid GC
         /// </summary>
-        private readonly NtNative.PacketCallback _sendCallback;
+        private readonly Moon.PacketCallback _sendCallback;
 
 
         public LocalClient()
@@ -17,25 +17,25 @@ namespace Moonlight.Clients
             _sendCallback = OnPacketSend;
             _recvCallback = OnPacketReceived;
 
-            NtNative.Initialize();
+            Moon.Initialize();
 
-            NtNative.SetSendCallback(_sendCallback);
-            NtNative.SetRecvCallback(_recvCallback);
+            Moon.SetSendCallback(_sendCallback);
+            Moon.SetRecvCallback(_recvCallback);
         }
 
         public override void SendPacket(string packet)
         {
-            NtNative.SendPacket(packet);
+            Moon.SendPacket(packet);
         }
 
         public override void ReceivePacket(string packet)
         {
-            NtNative.RecvPacket(packet);
+            Moon.RecvPacket(packet);
         }
 
         public override void Dispose()
         {
-            NtNative.Clean();
+            Moon.Clean();
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace Moonlight.Core.Import
 {
-    public static class NtNative
+    internal static class Moon
     {
         public delegate bool PacketCallback(string packet);
 
-        private const string LibraryName = "Moonlight/NtNative.dll";
+        private const string LibraryName = "Moonlight/Moon.dll";
 
         [DllImport(LibraryName, EntryPoint = "setRecvCallback", CallingConvention = CallingConvention.StdCall)]
         public static extern void SetRecvCallback(PacketCallback callback);
