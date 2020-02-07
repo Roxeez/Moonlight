@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Moonlight.Core.Enums;
 using Moonlight.Core.Logging;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
@@ -10,11 +11,11 @@ using TextReader = Moonlight.Utility.Reader.TextReader;
 
 namespace Moonlight.Toolkit.Parsing
 {
-    public class SkillParser : Parser
+    internal class SkillParser : Parser
     {
         private readonly IRepository<SkillDto> _skillRepository;
 
-        internal SkillParser(ILogger logger, IRepository<SkillDto> skillRepository) : base(logger) => _skillRepository = skillRepository;
+        public SkillParser(ILogger logger, IRepository<SkillDto> skillRepository) : base(logger) => _skillRepository = skillRepository;
 
         public override void Parse(ParseConfiguration configuration, string directory)
         {
@@ -42,21 +43,29 @@ namespace Moonlight.Toolkit.Parsing
             var skills = new List<SkillDto>();
             foreach (FileRegion region in regions)
             {
-                FileLine firstLine = region.GetLine(x => x.StartWith("VNUM"));
-                FileLine secondLine = region.GetLine(x => x.StartWith("NAME"));
-
-                int vnum = firstLine.GetValue<int>(1);
-                string name = secondLine.GetValue(1);
+                FileLine vnumLine = region.GetLine(x => x.StartWith("VNUM"));
+                FileLine nameLine = region.GetLine(x => x.StartWith("NAME"));
+                FileLine typeLine = region.GetLine(x => x.StartWith("TYPE"));
+                FileLine dataLine = region.GetLine(x => x.StartWith("DATA"));
+                FileLine targetLine = region.GetLine(x => x.StartWith("TARGET"));
 
                 skills.Add(new SkillDto
                 {
-                    Id = vnum,
-                    NameKey = name
+                    Id = vnumLine.GetValue<int>(1),
+                    NameKey = nameLine.GetValue(1),
+                    SkillType = (SkillType)typeLine.GetValue<int>(1),
+                    CastId = typeLine.GetValue<int>(2),
+                    Cooldown = dataLine.GetValue<int>(6),
+                    MpCost = dataLine.GetValue<int>(7),
+                    TargetType = (TargetType)targetLine.GetValue<int>(1),
+                    Range = targetLine.GetValue<short>(3)
                 });
             }
 
+            _skillRepository.Clear();
+            
             Logger.Info("Saving skills to database");
-            IEnumerable<SkillDto> result = _skillRepository.SaveAll(skills);
+            IEnumerable<SkillDto> result = _skillRepository.InsertAll(skills);
             Logger.Info($"{result.Count()} skills successfully parsed");
         }
     }

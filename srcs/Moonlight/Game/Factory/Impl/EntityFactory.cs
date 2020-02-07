@@ -25,19 +25,19 @@ namespace Moonlight.Game.Factory.Impl
 
         public Monster CreateMonster(long id, int vnum)
         {
-            MonsterDto monsterDto = _monsterRepository.Find(vnum);
+            MonsterDto monsterDto = _monsterRepository.Select(vnum);
             if (monsterDto == null)
             {
                 throw new InvalidOperationException($"Can't find monster {vnum} in database");
             }
 
             string name = _languageService.GetTranslation(RootKey.MONSTER, monsterDto.NameKey);
-            return new Monster(id, monsterDto, name);
+            return new Monster(monsterDto, name);
         }
 
         public Npc CreateNpc(long id, int vnum, string name)
         {
-            MonsterDto monsterDto = _monsterRepository.Find(vnum);
+            MonsterDto monsterDto = _monsterRepository.Select(vnum);
             if (monsterDto == null)
             {
                 throw new InvalidOperationException($"Can't find monster {vnum} in database");
@@ -48,7 +48,7 @@ namespace Moonlight.Game.Factory.Impl
                 name = _languageService.GetTranslation(RootKey.MONSTER, monsterDto.NameKey);
             }
 
-            return new Npc(id, monsterDto, name);
+            return new Npc(monsterDto, name);
         }
 
         public Drop CreateDrop(long id, int vnum, int amount)

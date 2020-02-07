@@ -12,11 +12,11 @@ using TextReader = Moonlight.Utility.Reader.TextReader;
 
 namespace Moonlight.Toolkit.Parsing
 {
-    public class MapParser : Parser
+    internal class MapParser : Parser
     {
         private readonly IRepository<MapDto> _mapRepository;
 
-        internal MapParser(ILogger logger, IRepository<MapDto> mapRepository) : base(logger) => _mapRepository = mapRepository;
+        public MapParser(ILogger logger, IRepository<MapDto> mapRepository) : base(logger) => _mapRepository = mapRepository;
 
         public override void Parse(ParseConfiguration configuration, string directory)
         {
@@ -80,8 +80,10 @@ namespace Moonlight.Toolkit.Parsing
                 });
             }
 
+            _mapRepository.Clear();
+            
             Logger.Info("Saving maps to database");
-            IEnumerable<MapDto> result = _mapRepository.SaveAll(maps);
+            IEnumerable<MapDto> result = _mapRepository.InsertAll(maps);
             Logger.Info($"{result.Count()} maps successfully parsed");
         }
     }

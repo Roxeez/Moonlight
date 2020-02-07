@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Moonlight.Toolkit.Handlers
 {
-    public class ParseCommandHandler : CommandHandler<ParseCommand>
+    internal class ParseCommandHandler : CommandHandler<ParseCommand>
     {
         private readonly ILogger _logger;
         private readonly IEnumerable<Parser> _parsers;

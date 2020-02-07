@@ -20,7 +20,7 @@ namespace Moonlight.Game.Factory.Impl
 
         public Item CreateItem(int vnum)
         {
-            ItemDto itemDto = _itemRepository.Find(vnum);
+            ItemDto itemDto = _itemRepository.Select(vnum);
             if (itemDto == null)
             {
                 throw new InvalidOperationException($"Can't find item {vnum} in database");

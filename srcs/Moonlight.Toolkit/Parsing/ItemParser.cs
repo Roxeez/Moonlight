@@ -10,11 +10,11 @@ using TextReader = Moonlight.Utility.Reader.TextReader;
 
 namespace Moonlight.Toolkit.Parsing
 {
-    public class ItemParser : Parser
+    internal class ItemParser : Parser
     {
         private readonly IRepository<ItemDto> _itemRepository;
 
-        internal ItemParser(ILogger logger, IRepository<ItemDto> itemRepository) : base(logger) => _itemRepository = itemRepository;
+        public ItemParser(ILogger logger, IRepository<ItemDto> itemRepository) : base(logger) => _itemRepository = itemRepository;
 
         public override void Parse(ParseConfiguration configuration, string directory)
         {
@@ -54,8 +54,10 @@ namespace Moonlight.Toolkit.Parsing
                 });
             }
 
+            _itemRepository.Clear();
+            
             Logger.Info("Saving items to database");
-            IEnumerable<ItemDto> result = _itemRepository.SaveAll(items);
+            IEnumerable<ItemDto> result = _itemRepository.InsertAll(items);
             Logger.Info($"{result.Count()} items successfully parsed");
         }
     }

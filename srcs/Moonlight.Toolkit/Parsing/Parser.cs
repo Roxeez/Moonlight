@@ -3,9 +3,9 @@ using Moonlight.Toolkit.Commands;
 
 namespace Moonlight.Toolkit.Parsing
 {
-    public abstract class Parser
+    internal abstract class Parser
     {
-        protected Parser(ILogger logger) => Logger = logger;
+        public Parser(ILogger logger) => Logger = logger;
 
         protected ILogger Logger { get; }
 

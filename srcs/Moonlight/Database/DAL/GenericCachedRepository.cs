@@ -11,12 +11,12 @@ namespace Moonlight.Database.DAL
 
         protected GenericCachedRepository(IContextFactory<TContext> contextFactory, IMapper<TEntity, TDto> mapper) : base(contextFactory, mapper) => _cache = new Dictionary<TObjectId, TDto>();
 
-        public override TDto Find(TObjectId id)
+        public override TDto Select(TObjectId id)
         {
             TDto dto = _cache.GetValueOrDefault(id);
             if (dto == default)
             {
-                dto = base.Find(id);
+                dto = base.Select(id);
                 _cache[id] = dto;
             }
 

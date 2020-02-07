@@ -1,4 +1,8 @@
-﻿using Moonlight.Clients;
+﻿using System.Collections.Generic;
+using Moonlight.Clients;
+using Moonlight.Core;
+using Moonlight.Core.Import;
+using Moonlight.Game.Battle;
 using Moonlight.Game.Inventories;
 using Moonlight.Game.Maps;
 
@@ -73,8 +77,43 @@ namespace Moonlight.Game.Entities
         ///     Current character production points
         /// </summary>
         public short ProductionPoints { get; internal set; }
+        
+        /// <summary>
+        /// Current character skills
+        /// </summary>
+        public IEnumerable<Skill> Skills { get; internal set; }
 
         public override byte HpPercentage => (byte)(Hp == 0 ? 0 : (double)Hp / MaxHp * 100);
         public override byte MpPercentage => (byte)(Mp == 0 ? 0 : (double)Mp / MaxMp * 100);
+
+        public void Walk(Position position)
+        {
+            Moon.Walk(position.X, position.Y);
+        }
+
+        public void WalkInRange(Position position, int range)
+        {
+            int distance = Position.GetDistance(position);
+            if (distance <= range)
+            {
+                return;
+            }
+            
+            double distRatio = (distance - range) / (double)distance;
+            double x = Position.X + distRatio * (position.X - Position.X);
+            double y = Position.Y + distRatio * (position.Y - Position.Y);
+            
+            Walk(new Position((short)x, (short)y));
+        }
+
+        public void Attack(Skill skill)
+        {
+            
+        }
+        
+        public void Attack(Skill skill, LivingEntity target)
+        {
+            
+        }
     }
 }

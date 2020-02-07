@@ -16,7 +16,7 @@ namespace Moonlight.Translation
         public string GetTranslation(RootKey rootKey, string key)
         {
             string fullKey = $"{Language}:{rootKey}:{key}".ToLower(CultureInfo.InvariantCulture);
-            return _repository.Find(fullKey)?.Value ?? fullKey;
+            return _repository.Select(fullKey)?.Value ?? fullKey;
         }
     }
 }

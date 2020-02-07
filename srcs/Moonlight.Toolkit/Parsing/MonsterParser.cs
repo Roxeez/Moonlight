@@ -10,11 +10,11 @@ using TextReader = Moonlight.Utility.Reader.TextReader;
 
 namespace Moonlight.Toolkit.Parsing
 {
-    public class MonsterParser : Parser
+    internal class MonsterParser : Parser
     {
         private readonly IRepository<MonsterDto> _monsterRepository;
 
-        internal MonsterParser(ILogger logger, IRepository<MonsterDto> monsterRepository) : base(logger) => _monsterRepository = monsterRepository;
+        public MonsterParser(ILogger logger, IRepository<MonsterDto> monsterRepository) : base(logger) => _monsterRepository = monsterRepository;
 
         public override void Parse(ParseConfiguration configuration, string directory)
         {
@@ -58,8 +58,10 @@ namespace Moonlight.Toolkit.Parsing
                 });
             }
 
+            _monsterRepository.Clear();
+            
             Logger.Info("Saving monsters to database");
-            IEnumerable<MonsterDto> result = _monsterRepository.SaveAll(monsters);
+            IEnumerable<MonsterDto> result = _monsterRepository.InsertAll(monsters);
             Logger.Info($"{result.Count()} monsters successfully parsed");
         }
     }

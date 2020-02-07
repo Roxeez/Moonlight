@@ -20,8 +20,7 @@ namespace Moonlight.Database
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var initializer = new SqliteCreateDatabaseIfNotExists<MoonlightContext>(modelBuilder);
-            System.Data.Entity.Database.SetInitializer(initializer);
+            System.Data.Entity.Database.SetInitializer(new SqliteCreateDatabaseIfNotExists<MoonlightContext>(modelBuilder));
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 

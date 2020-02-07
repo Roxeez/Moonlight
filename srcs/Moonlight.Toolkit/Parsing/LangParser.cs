@@ -14,11 +14,11 @@ using TextReader = Moonlight.Utility.Reader.TextReader;
 
 namespace Moonlight.Toolkit.Parsing
 {
-    public class LangParser : Parser
+    internal class LangParser : Parser
     {
         private readonly IStringRepository<TranslationDto> _translationRepository;
 
-        internal LangParser(ILogger logger, IStringRepository<TranslationDto> translationRepository) : base(logger) => _translationRepository = translationRepository;
+        public LangParser(ILogger logger, IStringRepository<TranslationDto> translationRepository) : base(logger) => _translationRepository = translationRepository;
 
         public override void Parse(ParseConfiguration configuration, string directory)
         {
@@ -77,9 +77,11 @@ namespace Moonlight.Toolkit.Parsing
                     }
                 }
             }
+            
+            _translationRepository.Clear();
 
-            Logger.Info("Saving all translations to database (can take 1-2mn)");
-            IEnumerable<TranslationDto> result = _translationRepository.SaveAll(translations);
+            Logger.Info("Saving all translations to database");
+            IEnumerable<TranslationDto> result = _translationRepository.InsertAll(translations);
             Logger.Info($"{result.Count()} translations successfully parsed");
         }
     }

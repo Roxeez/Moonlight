@@ -26,7 +26,7 @@ namespace Moonlight.Database.DAL
             }
         }
 
-        public virtual TDto Find(TObjectId id)
+        public virtual TDto Select(TObjectId id)
         {
             using (TContext context = _contextFactory.CreateContext())
             {
@@ -35,52 +35,27 @@ namespace Moonlight.Database.DAL
             }
         }
 
-        public virtual TDto Save(TDto obj)
+        public virtual TDto Insert(TDto obj)
         {
             using (TContext context = _contextFactory.CreateContext())
             {
-                TEntity entity = context.Set<TEntity>().Find(obj.Id);
-
-                if (entity == null)
-                {
-                    entity = _mapper.Map(obj);
-                    entity = context.Set<TEntity>().Add(entity);
-                }
-                else
-                {
-                    context.Entry(entity).CurrentValues.SetValues(obj);
-                }
-
+                TEntity entity = _mapper.Map(obj);
+                context.Set<TEntity>().Add(entity);
                 context.SaveChanges();
                 return _mapper.Map(entity);
             }
         }
 
-        public virtual IEnumerable<TDto> SaveAll(IEnumerable<TDto> objects)
+        public virtual IEnumerable<TDto> InsertAll(IEnumerable<TDto> objects)
         {
             using (TContext context = _contextFactory.CreateContext())
             {
-                var result = new List<TEntity>();
-                var entities = context.Set<TEntity>().ToDictionary(x => x.Id);
+                List<TEntity> entities = _mapper.Map(objects.ToList());
 
-                foreach (TDto dto in objects)
-                {
-                    TEntity entity = entities.GetValueOrDefault(dto.Id);
-                    if (entity == default)
-                    {
-                        entity = _mapper.Map(dto);
-                        context.Set<TEntity>().Add(entity);
-                    }
-                    else
-                    {
-                        context.Entry(entity).CurrentValues.SetValues(dto);
-                    }
-
-                    result.Add(entity);
-                }
+                context.Set<TEntity>().AddRange(entities);
 
                 context.SaveChanges();
-                return _mapper.Map(result);
+                return _mapper.Map(entities);
             }
         }
 
@@ -95,6 +70,15 @@ namespace Moonlight.Database.DAL
                 }
 
                 context.Set<TEntity>().Remove(entity);
+                context.SaveChanges();
+            }
+        }
+
+        public void Clear()
+        {
+            using (TContext context = _contextFactory.CreateContext())
+            {
+                context.Set<TEntity>().RemoveRange(context.Set<TEntity>());
                 context.SaveChanges();
             }
         }

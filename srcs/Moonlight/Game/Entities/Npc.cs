@@ -11,7 +11,7 @@ namespace Moonlight.Game.Entities
     {
         private readonly MonsterDto _monsterDto;
 
-        internal Npc(long id, MonsterDto monsterDto, string name) : base(id, name, EntityType.NPC) => _monsterDto = monsterDto;
+        internal Npc(MonsterDto monsterDto, string name) : base(monsterDto.Id, name, EntityType.NPC) => _monsterDto = monsterDto;
 
         public int Vnum => _monsterDto.Id;
     }

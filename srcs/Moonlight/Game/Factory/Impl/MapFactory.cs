@@ -20,7 +20,7 @@ namespace Moonlight.Game.Factory.Impl
 
         public Map CreateMap(int mapId)
         {
-            MapDto mapDto = _mapRepository.Find(mapId);
+            MapDto mapDto = _mapRepository.Select(mapId);
             if (mapDto == null)
             {
                 throw new InvalidOperationException($"Can't found map with id {mapId} in database.");
