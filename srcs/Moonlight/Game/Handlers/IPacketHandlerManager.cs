@@ -49,7 +49,7 @@ namespace Moonlight.Game.Handlers
 
                 if (deserialized is CommandPacket commandPacket)
                 {
-                    // Command manager;
+                    // Command manager
                     return true;
                 }
 

@@ -9,7 +9,7 @@ namespace Moonlight.Database.DAL
     {
         private readonly Dictionary<TObjectId, TDto> _cache;
 
-        public GenericCachedRepository(IContextFactory<TContext> contextFactory, IMapper<TEntity, TDto> mapper) : base(contextFactory, mapper) => _cache = new Dictionary<TObjectId, TDto>();
+        protected GenericCachedRepository(IContextFactory<TContext> contextFactory, IMapper<TEntity, TDto> mapper) : base(contextFactory, mapper) => _cache = new Dictionary<TObjectId, TDto>();
 
         public override TDto Find(TObjectId id)
         {

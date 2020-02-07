@@ -41,6 +41,8 @@ namespace Moonlight.Packet.Core.Converters
                 case EntityType.DROP:
                     packet.DropSubPacket = (InDropSubPacket)factory.ToObject(content, typeof(InDropSubPacket));
                     break;
+                default:
+                    throw new InvalidOperationException();
             }
 
             return packet;

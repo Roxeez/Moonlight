@@ -12,6 +12,7 @@ namespace Moonlight.Game.Handlers.Maps.Minilands
 
         protected override void Handle(Client client, MlObjLstPacket packet)
         {
+            // TODO : Impl
         }
     }
 }

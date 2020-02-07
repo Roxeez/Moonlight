@@ -5,13 +5,13 @@ using Moonlight.Core.Extensions;
 
 namespace Moonlight.Database.DAL
 {
-    internal class GenericRepository<TEntity, TDto, TObjectId, TContext> : IGenericRepository<TObjectId, TDto>
+    internal abstract class GenericRepository<TEntity, TDto, TObjectId, TContext> : IGenericRepository<TObjectId, TDto>
     where TDto : class, IDto<TObjectId>, new() where TEntity : class, IEntity<TObjectId>, new() where TContext : DbContext
     {
         private readonly IContextFactory<TContext> _contextFactory;
         private readonly IMapper<TEntity, TDto> _mapper;
 
-        public GenericRepository(IContextFactory<TContext> contextFactory, IMapper<TEntity, TDto> mapper)
+        protected GenericRepository(IContextFactory<TContext> contextFactory, IMapper<TEntity, TDto> mapper)
         {
             _contextFactory = contextFactory;
             _mapper = mapper;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using Moonlight.Core.Enums;
@@ -40,7 +41,7 @@ namespace Moonlight.Toolkit.Parsing
                     continue;
                 }
 
-                if (!Enum.TryParse(languageName.ToUpper(), out Language language))
+                if (!Enum.TryParse(languageName.ToUpper(CultureInfo.InvariantCulture), out Language language))
                 {
                     Logger.Warn($"Undefined language {languageName}, skipping it.");
                     continue;
@@ -50,7 +51,7 @@ namespace Moonlight.Toolkit.Parsing
                 foreach (string file in Directory.GetFiles(specificLangDirectory))
                 {
                     string rootKeyName = Path.GetFileName(file);
-                    if (!Enum.TryParse(rootKeyName.ToUpper(), out RootKey rootKey))
+                    if (!Enum.TryParse(rootKeyName.ToUpper(CultureInfo.InvariantCulture), out RootKey rootKey))
                     {
                         Logger.Warn($"Undefined root key {rootKeyName}, skipping it");
                         continue;
@@ -70,7 +71,7 @@ namespace Moonlight.Toolkit.Parsing
 
                         translations.Add(new TranslationDto
                         {
-                            Id = $"{language}:{rootKey}:{key}".ToLower(),
+                            Id = $"{language}:{rootKey}:{key}".ToLower(CultureInfo.InvariantCulture),
                             Value = value
                         });
                     }
