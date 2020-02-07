@@ -19,7 +19,7 @@ namespace Moonlight.Tests.Factory
         {
             var contextFactory = new SqliteContextFactory(new AppConfig
             {
-                Database = "../../database.db"
+                Database = "../../database.sqlite"
             });
 
             var itemRepository = new Repository<Item, ItemDto, MoonlightContext>(contextFactory, new MapsterMapper<Item, ItemDto>());
