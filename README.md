@@ -1,1 +1,50 @@
-Moonlight
+# Moonlight
+
+Moonlight aims to make NosTale .NET Application developer life easier by giving them access to a complete & easy to use API allowing them to interact with (almost) everything in the game  
+Moonlight can be used with local client (injected .dll) or remote client (clientless)
+<br><br>
+![Codacy grade](https://img.shields.io/codacy/grade/d7ecbcba4d48445f8a7e12f1bb4fb8e7?style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Roxeez/NtCore/Main.Legacy?style=flat-square)
+![GitHub top language](https://img.shields.io/github/languages/top/Roxeez/NtCore?style=flat-square)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Roxeez/NtCore?style=flat-square)
+![GitHub](https://img.shields.io/github/license/Roxeez/NtCore?style=flat-square)
+![Maintenance](https://img.shields.io/maintenance/yes/2020?style=flat-square)
+
+## Getting Started
+
+- Create a new .NET library project targeting .NET Framework 4.7+
+- Add Moonlight.dll as dependency
+- Install DllExport to your project using DllExport.bat
+- Build your application
+- Create your database.db sqlite file using Toolkit parser
+- Copy your generated .dll & dependencies to your NosTale folder
+- Copy database.db & NtNative.dll to your NosTale folder in a subdirectory named Moonlight
+- Inject your generated .dll to NosTale process
+- Enjoy
+
+> <sub><sup>Since Moonlight use only packets (no memory reading) for compatibility with local & remote client, your dll need to be injected BEFORE selecting your character</sub></sup>
+
+## Example
+
+Coming soon
+
+### Prerequisites
+
+- **.NET Framework 4.7**
+- **DllExport** (More information [HERE](https://github.com/3F/DllExport))
+- **Costura Fody**
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Contributors
+* **Roxeez**
+
+### Special thanks
+
+* **Pumba98**
+
+### License
+
+This project is licensed under the GPL-3.0 License - see the [LICENSE.md](LICENSE.md) file for details
