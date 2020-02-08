@@ -71,7 +71,6 @@ while (isRunning)
 
 - **.NET Framework 4.7**
 - **DllExport** (More information [HERE](https://github.com/3F/DllExport))
-- **Costura Fody**
 
 ## Contributors
 * **Roxeez**
