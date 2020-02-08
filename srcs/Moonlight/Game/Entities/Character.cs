@@ -20,12 +20,8 @@ namespace Moonlight.Game.Entities
     /// </summary>
     public class Character : Player
     {
-        private readonly ILogger _logger;
-
-        internal Character(long id, string name, Client client, Miniland miniland, ILogger logger) : base(id, name)
+        internal Character(long id, string name, Client client, Miniland miniland) : base(id, name)
         {
-            _logger = logger;
-            
             Client = client;
             Inventory = new Inventory();
             Miniland = miniland;
@@ -137,6 +133,11 @@ namespace Moonlight.Game.Entities
             {
                 return;
             }
+
+            if (skill.IsOnCooldown)
+            {
+                return;
+            }
             
             if (skill.TargetType == TargetType.TARGET || skill.TargetType == TargetType.NO_TARGET)
             {
@@ -144,13 +145,17 @@ namespace Moonlight.Game.Entities
             }
 
             Client.SendPacket($"u_s {skill.CastId} {(int)EntityType} {Id}");
-            skill.IsOnCooldown = true;
-            await Task.Delay(skill.CastTime).ConfigureAwait(false);
+            await Task.Delay(skill.CastTime * 100).ConfigureAwait(false);
         }
 
         public async Task Attack(Skill skill, LivingEntity target)
         {
             if (!Skills.Contains(skill))
+            {
+                return;
+            }
+            
+            if (skill.IsOnCooldown)
             {
                 return;
             }
@@ -168,13 +173,17 @@ namespace Moonlight.Game.Entities
 
             await WalkInRange(target.Position, skill.Range).ConfigureAwait(false);
             Client.SendPacket($"u_s {skill.CastId} {(int)target.EntityType} {target.Id}");
-            skill.IsOnCooldown = true;
-            await Task.Delay(skill.CastTime).ConfigureAwait(false);
+            await Task.Delay(skill.CastTime * 100).ConfigureAwait(false);
         }
 
         public async Task Attack(Skill skill, Position position)
         {
             if (!Skills.Contains(skill))
+            {
+                return;
+            }
+            
+            if (skill.IsOnCooldown)
             {
                 return;
             }
@@ -186,8 +195,7 @@ namespace Moonlight.Game.Entities
         
             await WalkInRange(position, skill.Range).ConfigureAwait(false);
             Client.SendPacket($"u_as {skill.CastId} {position.X} {position.Y}");
-            skill.IsOnCooldown = true;
-            await Task.Delay(skill.CastTime).ConfigureAwait(false);
+            await Task.Delay(skill.CastTime * 100).ConfigureAwait(false);
         }
 
         public async Task PickUp(Drop drop)

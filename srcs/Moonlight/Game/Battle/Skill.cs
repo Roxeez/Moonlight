@@ -4,7 +4,7 @@ using Moonlight.Database.Dto;
 
 namespace Moonlight.Game.Battle
 {
-    public sealed class Skill
+    public sealed class Skill : IEquatable<Skill>
     {
         private readonly SkillDto _skillDto;
 
@@ -26,6 +26,7 @@ namespace Moonlight.Game.Battle
             _skillDto = skillDto;
             Name = name;
         }
-        
+
+        public bool Equals(Skill other) => other != null && other.Id == Id;
     }
 }

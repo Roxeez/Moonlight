@@ -92,6 +92,7 @@
     <Compile Include="Game\Entities\Monster.cs" />
     <Compile Include="Game\Entities\Npc.cs" />
     <Compile Include="Game\Entities\Player.cs" />
+    <Compile Include="Game\Extensions\CharacterExtension.cs" />
     <Compile Include="Game\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Game\Factory\IEntityFactory.cs" />
     <Compile Include="Game\Factory\IItemFactory.cs" />

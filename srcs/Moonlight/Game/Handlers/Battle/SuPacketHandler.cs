@@ -1,4 +1,6 @@
-﻿using Moonlight.Clients;
+﻿using System.Linq;
+using Moonlight.Clients;
+using Moonlight.Game.Battle;
 using Moonlight.Game.Entities;
 using Moonlight.Game.Maps;
 using Moonlight.Packet.Battle;
@@ -22,6 +24,17 @@ namespace Moonlight.Game.Handlers.Battle
             if (target == null || caster == null)
             {
                 return;
+            }
+
+            if (caster is Character character)
+            {
+                Skill skill = character.Skills.FirstOrDefault(x => x.Id == packet.SkillVnum);
+                if (skill == null)
+                {
+                    return;
+                }
+
+                skill.IsOnCooldown = true;
             }
 
             target.HpPercentage = packet.TargetHpPercentage;
