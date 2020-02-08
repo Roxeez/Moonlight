@@ -162,7 +162,7 @@ namespace Moonlight.Game.Entities
             
             if (skill.TargetType == TargetType.SELF)
             {
-                await Attack(skill);
+                await Attack(skill).ConfigureAwait(false);
                 return;
             }
 
