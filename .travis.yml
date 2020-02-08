@@ -1,5 +1,6 @@
 language: csharp
 solution: Moonlight.sln
+os: windows
 
 install:
   - nuget restore Moonlight.sln
