@@ -32,10 +32,15 @@ while (isRunning)
     Map map = character.Map;
     Skill skill = character.Skills.First();
     
+    // Keep in memory character start position
     Position startPosition = character.Position;
     
-    IEnumerable<Monster> monsters = map.Monsters.Where(x => x.Position.IsInRange(startPosition, RADIUS)).OrderBy(x => x.Position.GetDistance(character.Position));
-
+    // Get all monsters in a radius of 10 around start position
+    IEnumerable<Monster> monsters = map.Monsters
+        .Where(x => x.Position.IsInRange(startPosition, RADIUS))
+        .OrderBy(x => x.Position.GetDistance(character.Position));
+    
+    // Kill all monsters found
     foreach (Monster monster in monsters)
     {
         while (monster.HpPercentage > 0 && isRunning)
@@ -44,7 +49,12 @@ while (isRunning)
         }
     }
 
-    IEnumerable<Drop> drops = map.Drops.Where(x => x.Position.IsInRange(startPosition, RADIUS)).OrderBy(x => x.Position.GetDistance(character.Position));
+    // Get all drops in a radius of 10 around start position
+    IEnumerable<Drop> drops = map.Drops
+        .Where(x => x.Position.IsInRange(startPosition, RADIUS))
+        .OrderBy(x => x.Position.GetDistance(character.Position));
+    
+    // Pickup all drops found
     foreach (Drop drop in drops)
     {
         if (!character.Equals(drop.Owner))
