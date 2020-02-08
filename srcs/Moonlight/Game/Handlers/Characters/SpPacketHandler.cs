@@ -11,6 +11,7 @@ namespace Moonlight.Game.Handlers.Characters
             Character character = client.Character;
 
             character.SpPoints = packet.Points;
+            character.AdditionalSpPoints = packet.AdditionalPoints;
         }
     }
 }

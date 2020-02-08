@@ -55,10 +55,13 @@ namespace Moonlight.Toolkit.Parsing
                     NameKey = nameLine.GetValue(1),
                     SkillType = (SkillType)typeLine.GetValue<int>(1),
                     CastId = typeLine.GetValue<int>(2),
+                    CastTime = dataLine.GetValue<int>(5),
                     Cooldown = dataLine.GetValue<int>(6),
                     MpCost = dataLine.GetValue<int>(7),
                     TargetType = (TargetType)targetLine.GetValue<int>(1),
-                    Range = targetLine.GetValue<short>(3)
+                    HitType = (HitType)targetLine.GetValue<int>(2),
+                    Range = targetLine.GetValue<short>(3),
+                    ZoneRange = targetLine.GetValue<short>(4)
                 });
             }
 

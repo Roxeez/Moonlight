@@ -27,7 +27,7 @@ namespace Moonlight.Game.Factory.Impl
             }
 
             string name = _languageService.GetTranslation(RootKey.MAP, mapDto.NameKey);
-            return mapId != 20001 ? new Map(mapDto.Id, name, mapDto.Grid) : new Miniland(name, mapDto.Grid);
+            return mapId != 20001 ? new Map(mapId, name, mapDto.Grid) : new Miniland(name, mapDto.Grid);
         }
 
         public Miniland CreateMiniland() => (Miniland)CreateMap(20001);

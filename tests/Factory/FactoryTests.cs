@@ -1,4 +1,5 @@
 ﻿using Moonlight.Core;
+using Moonlight.Core.Enums;
 using Moonlight.Database;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
@@ -6,6 +7,7 @@ using Moonlight.Database.Entities;
 using Moonlight.Game.Factory;
 using Moonlight.Game.Factory.Impl;
 using Moonlight.Game.Maps;
+using Moonlight.Tests.Extensions;
 using Moonlight.Translation;
 using NFluent;
 using Xunit;
@@ -28,14 +30,14 @@ namespace Moonlight.Tests.Factory
             var translationRepository =
                 new StringRepository<Database.Entities.Translation, TranslationDto, MoonlightContext>(contextFactory, new MapsterMapper<Database.Entities.Translation, TranslationDto>());
 
-            var languageService = new LanguageService(translationRepository)
+            _languageService = new LanguageService(translationRepository)
             {
                 Language = Language.EN
             };
 
-            _itemFactory = new ItemFactory(itemRepository, languageService);
-            _entityFactory = new EntityFactory(languageService, monsterRepository, _itemFactory);
-            _mapFactory = new MapFactory(languageService, mapRepository);
+            _itemFactory = new ItemFactory(itemRepository, _languageService);
+            _entityFactory = new EntityFactory(_languageService, monsterRepository, _itemFactory);
+            _mapFactory = new MapFactory(_languageService, mapRepository);
             _minilandObjectFactory = new MinilandObjectFactory(_itemFactory);
         }
 
@@ -43,7 +45,8 @@ namespace Moonlight.Tests.Factory
         private readonly IEntityFactory _entityFactory;
         private readonly IMapFactory _mapFactory;
         private readonly IMinilandObjectFactory _minilandObjectFactory;
-
+        private readonly ILanguageService _languageService;
+        
         [Fact]
         public void Entity_Factory_Create_Correct_Entity()
         {
@@ -80,6 +83,14 @@ namespace Moonlight.Tests.Factory
             Check.That(minilandObject.Item.Vnum).IsEqualTo(3125);
             Check.That(minilandObject.Slot).IsEqualTo(1);
             Check.That(minilandObject.Position).IsEqualTo(new Position(5, 5));
+        }
+
+        [Fact]
+        public void Language_Service_Return_Correct_Value()
+        {
+            string value = _languageService.GetTranslation(RootKey.SKILL, "zts174e");
+            
+            Check.That(value).Is("Rain of Arrows");
         }
     }
 }

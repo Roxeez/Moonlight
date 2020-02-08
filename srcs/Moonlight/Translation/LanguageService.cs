@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text;
 using Moonlight.Core.Enums;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
@@ -16,7 +17,13 @@ namespace Moonlight.Translation
         public string GetTranslation(RootKey rootKey, string key)
         {
             string fullKey = $"{Language}:{rootKey}:{key}".ToLower(CultureInfo.InvariantCulture);
-            return _repository.Select(fullKey)?.Value ?? fullKey;
+            TranslationDto dto = _repository.Select(fullKey);
+            if (dto == null)
+            {
+                return fullKey;
+            }
+
+            return dto.Value;
         }
     }
 }

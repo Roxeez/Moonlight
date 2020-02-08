@@ -22,7 +22,7 @@ namespace Moonlight.Tests.Handling
             clientMock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback<string>(x => moonlight.GetPacketHandlerManager().Handle(clientMock.Object, x));
 
             Client = clientMock.Object;
-            Client.Character = Character = new Character(999, "Moonlight", Client, new Miniland("Miniland", new byte[0]), new SerilogLogger());
+            Client.Character = Character = new Character(999, "Moonlight", Client, new Miniland("Miniland", new byte[4096]));
         }
 
         protected Client Client { get; }

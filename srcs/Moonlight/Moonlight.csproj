@@ -45,6 +45,7 @@
     <Compile Include="Core\Enums\EntityType.cs" />
     <Compile Include="Core\Enums\FactionType.cs" />
     <Compile Include="Core\Enums\GenderType.cs" />
+    <Compile Include="Core\Enums\HitType.cs" />
     <Compile Include="Core\Enums\PortalType.cs" />
     <Compile Include="Core\Enums\RarityType.cs" />
     <Compile Include="Core\Enums\RootKey.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Game\Entities\Monster.cs" />
     <Compile Include="Game\Entities\Npc.cs" />
     <Compile Include="Game\Entities\Player.cs" />
+    <Compile Include="Game\Extensions\CharacterExtension.cs" />
     <Compile Include="Game\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Game\Factory\IEntityFactory.cs" />
     <Compile Include="Game\Factory\IItemFactory.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Game\Factory\Impl\MinilandObjectFactory.cs" />
     <Compile Include="Game\Factory\Impl\SkillFactory.cs" />
     <Compile Include="Game\Factory\ISkillFactory.cs" />
+    <Compile Include="Game\Handlers\Battle\SrPacketHandler.cs" />
     <Compile Include="Game\Handlers\Battle\SuPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\AtPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\CInfoPacketHandler.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="Game\Maps\Portal.cs" />
     <Compile Include="Game\Utility\EntityUtility.cs" />
     <Compile Include="MoonlightAPI.cs" />
+    <Compile Include="Packet\Battle\SrPacket.cs" />
     <Compile Include="Packet\Battle\StPacket.cs" />
     <Compile Include="Packet\Battle\SuPacket.cs" />
     <Compile Include="Packet\Character\AtPacket.cs" />

@@ -18,6 +18,10 @@ namespace Moonlight.Database.Entities
         
         public short Range { get; set; }
         
+        public short ZoneRange { get; set; }
+        
+        public int CastTime { get; set; }
+        
         public int Cooldown { get; set; }
         
         public SkillType SkillType { get; set; }
@@ -27,5 +31,7 @@ namespace Moonlight.Database.Entities
         public int CastId { get; set; }
         
         public TargetType TargetType { get; set; }
+        
+        public HitType HitType { get; set; }
     }
 }

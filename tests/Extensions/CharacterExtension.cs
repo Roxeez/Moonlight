@@ -7,13 +7,13 @@ namespace Moonlight.Tests.Extensions
     {
         public static Miniland SetFakeMiniland(this Character character)
         {
-            character.Map = new Miniland("Miniland", new byte[0]);
+            character.Map = new Miniland("Miniland", new byte[4096]);
             return character.Map as Miniland;
         }
 
         public static Map SetFakeMap(this Character character)
         {
-            character.Map = new Map(1, "NosVille", new byte[0]);
+            character.Map = new Map(1, "NosVille", new byte[4096]);
             return character.Map;
         }
     }
