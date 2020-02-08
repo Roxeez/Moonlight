@@ -2,6 +2,6 @@
 {
     internal class AppConfig
     {
-        public string Database { get; set; } = "Moonlight/database.sqlite";
+        public string Database { get; set; } = "Moonlight/database.db";
     }
 }
