@@ -25,7 +25,37 @@ Moonlight can be used with local client (injected .dll) or remote client (client
 
 ## Example
 
-Coming soon
+```
+while (isRunning)
+{
+    Character character = Client.Character;
+    Map map = character.Map;
+    Skill skill = character.Skills.First();
+    
+    Position startPosition = character.Position;
+    
+    IEnumerable<Monster> monsters = map.Monsters.Where(x => x.Position.IsInRange(startPosition, RADIUS)).OrderBy(x => x.Position.GetDistance(character.Position));
+
+    foreach (Monster monster in monsters)
+    {
+        while (monster.HpPercentage > 0 && isRunning)
+        {
+            character.Attack(skill, monster);
+        }
+    }
+
+    IEnumerable<Drop> drops = map.Drops.Where(x => x.Position.IsInRange(startPosition, RADIUS)).OrderBy(x => x.Position.GetDistance(character.Position));
+    foreach (Drop drop in drops)
+    {
+        if (!character.Equals(drop.Owner))
+        {
+            return;
+        }
+        
+        character.PickUp(drop);
+    }
+}
+```
 
 ### Prerequisites
 
