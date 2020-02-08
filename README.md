@@ -25,7 +25,7 @@ Moonlight can be used with local client (injected .dll) or remote client (client
 
 ## Example
 
-```
+```csharp
 while (isRunning)
 {
     Character character = Client.Character;
