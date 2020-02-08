@@ -1,4 +1,6 @@
-﻿using NFluent;
+﻿using Moonlight.Core;
+using Moonlight.Tests.Extensions;
+using NFluent;
 using Xunit;
 
 namespace Moonlight.Tests.Handling
@@ -12,6 +14,15 @@ namespace Moonlight.Tests.Handling
 
             Check.That(Client.Character.Skills).HasElementThatMatches(x => x.Id == 833);
             Check.That(Client.Character.Skills).HasElementThatMatches(x => x.Id == 356);
+        }
+
+        [Fact]
+        public void Walk_Packet_Set_Last_Movement()
+        {
+            Client.ReceivePacket("walk 140 87 1 12");
+            
+            Check.That(Client.Character.Position).Is(new Position(140, 87));
+            Check.That(Client.Character.LastMovement).Not.IsDefaultValue();
         }
     }
 }
