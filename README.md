@@ -4,8 +4,8 @@ Moonlight aims to make NosTale .NET Application developer life easier by giving 
 Moonlight can be used with local client (injected .dll) or remote client (clientless)
 <br><br>
 ![Codacy grade](https://img.shields.io/codacy/grade/d7ecbcba4d48445f8a7e12f1bb4fb8e7?style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Roxeez/NtCore/Main.Legacy?style=flat-square)
-![GitHub top language](https://img.shields.io/github/languages/top/Roxeez/NtCore?style=flat-square)
+![AppVeyor](https://img.shields.io/appveyor/build/Roxeez/Moonlight?style=flat-square)
+![AppVeyor tests](https://img.shields.io/appveyor/tests/Roxeez/Moonlight?style=flat-square)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Roxeez/NtCore?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/Roxeez/NtCore?style=flat-square)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020?style=flat-square)
