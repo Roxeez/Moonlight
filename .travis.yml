@@ -3,7 +3,7 @@ solution: Moonlight.sln
 
 install:
   - nuget restore Moonlight.sln
-  - nuget install xunit.runners -Version 2.1.0 -OutputDirectory testrunner
+  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
 script:
   - msbuild /p:Configuration=Release solution-name.sln
-  - mono ./testrunner/xunit.runners.2.1.0/tools/xunit.console.clr4.exe ./test/bin/Release/Moonlight.Tests.dll
+  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./test/bin/Release/Moonlight.Tests.dll
