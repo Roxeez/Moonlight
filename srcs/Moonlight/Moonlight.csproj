@@ -133,6 +133,7 @@
     <Compile Include="Game\Maps\Map.cs" />
     <Compile Include="Game\Maps\Miniland.cs" />
     <Compile Include="Game\Maps\MinilandObject.cs" />
+    <Compile Include="Game\Maps\Portal.cs" />
     <Compile Include="Game\Utility\EntityUtility.cs" />
     <Compile Include="MoonlightAPI.cs" />
     <Compile Include="Packet\Battle\StPacket.cs" />

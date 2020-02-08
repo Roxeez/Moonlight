@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using Moonlight.Clients;
 using Moonlight.Core;
 using Moonlight.Core.Enums;
@@ -21,13 +20,6 @@ namespace Moonlight.Game.Entities
     {
         private readonly ILogger _logger;
         
-        /// <summary>
-        ///     Create a new character
-        /// </summary>
-        /// <param name="id">Character id (retrieved from c_info packet)</param>
-        /// <param name="name">Character name (retrieved from c_info packet)</param>
-        /// <param name="client">Client used for updating this character</param>
-        /// <param name="miniland">Character own miniland</param>
         internal Character(long id, string name, Client client, Miniland miniland, ILogger logger) : base(id, name)
         {
             _logger = logger;
@@ -99,6 +91,7 @@ namespace Moonlight.Game.Entities
 
         public void Walk(Position position)
         {
+            
             if (Position.Equals(position))
             {
                 return;
