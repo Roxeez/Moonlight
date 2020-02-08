@@ -17,7 +17,7 @@ Moonlight can be used with local client (injected .dll) or remote client (client
 - Build your application
 - Create your database.db sqlite file using Toolkit parser
 - Copy your generated .dll & dependencies to your NosTale folder
-- Copy database.db & NtNative.dll to your NosTale folder in a subdirectory named Moonlight
+- Copy database.db & Moon.dll to your NosTale folder in a subdirectory named Moonlight
 - Inject your generated .dll to NosTale process
 - Enjoy
 
