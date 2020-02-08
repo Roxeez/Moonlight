@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Moonlight.Clients;
 using Moonlight.Core;
 using Moonlight.Core.Import;
@@ -82,6 +85,8 @@ namespace Moonlight.Game.Entities
         /// Current character skills
         /// </summary>
         public IEnumerable<Skill> Skills { get; internal set; }
+        
+        internal DateTime LastMovement { get; set; }
 
         public override byte HpPercentage => (byte)(Hp == 0 ? 0 : (double)Hp / MaxHp * 100);
         public override byte MpPercentage => (byte)(Mp == 0 ? 0 : (double)Mp / MaxMp * 100);
@@ -89,6 +94,16 @@ namespace Moonlight.Game.Entities
         public void Walk(Position position)
         {
             Moon.Walk(position.X, position.Y);
+            LastMovement = DateTime.Now;
+            
+            while (!Position.Equals(position))
+            {
+                Thread.Sleep(100);
+                if (LastMovement.AddSeconds(2) < DateTime.Now)
+                {
+                    break;
+                }
+            }
         }
 
         public void WalkInRange(Position position, int range)
@@ -106,14 +121,9 @@ namespace Moonlight.Game.Entities
             Walk(new Position((short)x, (short)y));
         }
 
-        public void Attack(Skill skill)
+        public void UseSkill(Skill skill, LivingEntity target)
         {
-            
-        }
-        
-        public void Attack(Skill skill, LivingEntity target)
-        {
-            
+            Client.SendPacket($"u_s {skill.CastId} {(int)target.EntityType} {target.Id}");
         }
     }
 }

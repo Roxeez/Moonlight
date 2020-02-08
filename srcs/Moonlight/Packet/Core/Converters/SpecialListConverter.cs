@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Moonlight.Utility.Conversion;
@@ -10,10 +11,6 @@ namespace Moonlight.Packet.Core.Converters
 {
     internal class SpecialListConverter : Converter<IList>
     {
-        private readonly IReflectionCache _reflectionCache;
-
-        public SpecialListConverter(IReflectionCache reflectionCache) => _reflectionCache = reflectionCache;
-
         public override bool IsGeneric => true;
 
         protected override IList ToObject(string value, Type type, IConversionFactory factory)
@@ -23,7 +20,7 @@ namespace Moonlight.Packet.Core.Converters
             var list = (IList)Activator.CreateInstance(listType);
 
             char separator = ' ';
-            if (typeof(IPacket).IsAssignableFrom(listType))
+            if (typeof(IPacket).IsAssignableFrom(generic))
             {
                 separator = '^';
             }

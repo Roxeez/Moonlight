@@ -32,7 +32,7 @@ namespace Moonlight.Game.Factory.Impl
             }
 
             string name = _languageService.GetTranslation(RootKey.MONSTER, monsterDto.NameKey);
-            return new Monster(monsterDto, name);
+            return new Monster(id, monsterDto, name);
         }
 
         public Npc CreateNpc(long id, int vnum, string name)
@@ -48,7 +48,7 @@ namespace Moonlight.Game.Factory.Impl
                 name = _languageService.GetTranslation(RootKey.MONSTER, monsterDto.NameKey);
             }
 
-            return new Npc(monsterDto, name);
+            return new Npc(id, monsterDto, name);
         }
 
         public Drop CreateDrop(long id, int vnum, int amount)

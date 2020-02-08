@@ -12,6 +12,7 @@ namespace Moonlight.Game.Extensions
             services.AddTransient<IEntityFactory, EntityFactory>();
             services.AddTransient<IItemFactory, ItemFactory>();
             services.AddTransient<IMinilandObjectFactory, MinilandObjectFactory>();
+            services.AddTransient<ISkillFactory, SkillFactory>();
         }
     }
 }
