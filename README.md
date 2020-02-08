@@ -33,16 +33,12 @@ Coming soon
 - **DllExport** (More information [HERE](https://github.com/3F/DllExport))
 - **Costura Fody**
 
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Contributors
 * **Roxeez**
 
 ### Special thanks
 
-* **Pumba98**
+* **Pumba98** for helping me with some C++/RE related stuff
 
 ### License
 
