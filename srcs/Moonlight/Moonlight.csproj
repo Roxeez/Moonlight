@@ -102,6 +102,7 @@
     <Compile Include="Game\Factory\Impl\MinilandObjectFactory.cs" />
     <Compile Include="Game\Factory\Impl\SkillFactory.cs" />
     <Compile Include="Game\Factory\ISkillFactory.cs" />
+    <Compile Include="Game\Handlers\Battle\SuPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\AtPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\CInfoPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\FactionPacketHandler.cs" />
@@ -112,9 +113,12 @@
     <Compile Include="Game\Handlers\Characters\SpPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\StatPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\WalkPacketHandler.cs" />
+    <Compile Include="Game\Handlers\Entities\CondPacketHandler.cs" />
+    <Compile Include="Game\Handlers\Entities\MvPacketHandler.cs" />
     <Compile Include="Game\Handlers\IPacketHandler.cs" />
     <Compile Include="Game\Handlers\IPacketHandlerManager.cs" />
     <Compile Include="Game\Handlers\Maps\CMapPacketHandler.cs" />
+    <Compile Include="Game\Handlers\Maps\GetPacketHandler.cs" />
     <Compile Include="Game\Handlers\Maps\InPacketHandler.cs" />
     <Compile Include="Game\Handlers\Maps\Minilands\MlInfoBrPacketHandler.cs" />
     <Compile Include="Game\Handlers\Maps\Minilands\MlInfoPacketHandler.cs" />

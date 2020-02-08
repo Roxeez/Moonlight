@@ -34,22 +34,14 @@ namespace Moonlight.Core
         public int GetDistanceX(Position destination) => Math.Abs(X - destination.X);
 
         public int GetDistanceY(Position destination) => Math.Abs(Y - destination.Y);
-
-        /// <summary>
-        ///     Check if the position is in range
-        /// </summary>
-        /// <param name="position">Position to check</param>
-        /// <param name="range">Range</param>
-        /// <returns></returns>
-        public bool IsInRange(Position position, int range) => GetDistance(position) <= range;
-
+        
         /// <summary>
         ///     Check if the position is in area range
         /// </summary>
         /// <param name="position">Position to check</param>
         /// <param name="range">Range of the area</param>
         /// <returns></returns>
-        public bool IsInArea(Position position, int range)
+        public bool IsInRange(Position position, int range)
         {
             int dx = Math.Abs(X - position.X);
             int dy = Math.Abs(Y - position.Y);

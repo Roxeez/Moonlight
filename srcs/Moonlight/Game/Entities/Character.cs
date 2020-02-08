@@ -4,7 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Moonlight.Clients;
 using Moonlight.Core;
+using Moonlight.Core.Enums;
 using Moonlight.Core.Import;
+using Moonlight.Core.Logging;
 using Moonlight.Game.Battle;
 using Moonlight.Game.Inventories;
 using Moonlight.Game.Maps;
@@ -17,6 +19,8 @@ namespace Moonlight.Game.Entities
     /// </summary>
     public class Character : Player
     {
+        private readonly ILogger _logger;
+        
         /// <summary>
         ///     Create a new character
         /// </summary>
@@ -24,8 +28,10 @@ namespace Moonlight.Game.Entities
         /// <param name="name">Character name (retrieved from c_info packet)</param>
         /// <param name="client">Client used for updating this character</param>
         /// <param name="miniland">Character own miniland</param>
-        internal Character(long id, string name, Client client, Miniland miniland) : base(id, name)
+        internal Character(long id, string name, Client client, Miniland miniland, ILogger logger) : base(id, name)
         {
+            _logger = logger;
+            
             Client = client;
             Inventory = new Inventory();
             Miniland = miniland;
@@ -93,6 +99,11 @@ namespace Moonlight.Game.Entities
 
         public void Walk(Position position)
         {
+            if (Position.Equals(position))
+            {
+                return;
+            }
+            
             Moon.Walk(position.X, position.Y);
             LastMovement = DateTime.Now;
             
@@ -108,6 +119,11 @@ namespace Moonlight.Game.Entities
 
         public void WalkInRange(Position position, int range)
         {
+            if (Position.IsInRange(position, range))
+            {
+                return;
+            }
+            
             int distance = Position.GetDistance(position);
             if (distance <= range)
             {
@@ -121,9 +137,42 @@ namespace Moonlight.Game.Entities
             Walk(new Position((short)x, (short)y));
         }
 
-        public void UseSkill(Skill skill, LivingEntity target)
+        public void Attack(Skill skill)
         {
+            if (skill.TargetType == TargetType.TARGET || skill.TargetType == TargetType.NO_TARGET)
+            {
+                return;
+            }
+            
+            Client.SendPacket($"u_s {skill.CastId} {(int)EntityType} {Id}");
+        }
+        
+        public void Attack(Skill skill, LivingEntity target)
+        {
+            if (skill.TargetType == TargetType.SELF || skill.TargetType == TargetType.NO_TARGET)
+            {
+                return;
+            }
+
+            WalkInRange(target.Position, skill.Range);
             Client.SendPacket($"u_s {skill.CastId} {(int)target.EntityType} {target.Id}");
+        }
+
+        public void Attack(Skill skill, Position position)
+        {
+            if (skill.TargetType != TargetType.NO_TARGET)
+            {
+                return;
+            }
+            
+            WalkInRange(position, skill.Range);
+            Client.SendPacket($"u_as {skill.CastId} {position.X} {position.Y}");
+        }
+
+        public void PickUp(Drop drop)
+        {
+            WalkInRange(drop.Position, 1);
+            Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
         }
     }
 }

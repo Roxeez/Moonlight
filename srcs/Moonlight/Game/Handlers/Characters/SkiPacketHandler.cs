@@ -24,7 +24,7 @@ namespace Moonlight.Game.Handlers.Characters
             foreach (int skillVnum in packet.Skills)
             {
                 Skill skill = _skillFactory.CreateSkill(skillVnum);
-                if (skill.SkillType != SkillType.PLAYER)
+                if (skill.SkillType == SkillType.PLAYER)
                 {
                     skills.Add(skill);
                 }

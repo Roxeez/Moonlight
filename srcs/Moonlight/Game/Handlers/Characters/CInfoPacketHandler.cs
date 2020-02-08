@@ -19,7 +19,7 @@ namespace Moonlight.Game.Handlers.Characters
 
         protected override void Handle(Client client, CInfoPacket packet)
         {
-            client.Character = new Character(packet.CharacterId, packet.Name, client, _mapFactory.CreateMiniland())
+            client.Character = new Character(packet.CharacterId, packet.Name, client, _mapFactory.CreateMiniland(), _logger)
             {
                 Class = packet.Class,
                 Gender = packet.Gender

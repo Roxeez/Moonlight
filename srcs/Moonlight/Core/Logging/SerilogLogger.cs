@@ -43,12 +43,12 @@ namespace Moonlight.Core.Logging
 
         public void Error(object message, Exception ex)
         {
-            _logger.Error($"{message}", ex);
+            _logger.Error(ex, $"{message}");
         }
 
         public void Fatal(object message, Exception ex)
         {
-            _logger.Fatal($"{message}", ex);
+            _logger.Fatal(ex, $"{message}");
         }
     }
 }
