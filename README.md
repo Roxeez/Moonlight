@@ -70,7 +70,6 @@ while (isRunning)
 ### Prerequisites
 
 - **.NET Framework 4.7**
-- **DllExport** (More information [HERE](https://github.com/3F/DllExport))
 
 ## Contributors
 * **Roxeez**
