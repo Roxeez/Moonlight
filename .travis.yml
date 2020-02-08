@@ -6,6 +6,5 @@ install:
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
 script:
   - msbuild /p:Configuration=Release Moonlight.sln
-  - mv ./lib/x64 ./tests/bin/Release/x64
-  - mv ./lib/x86 ./tests/bin/Release/x86
+  - mv ./lib/* ./tests/bin/Release/
   - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./tests/bin/Release/Moonlight.Tests.dll
