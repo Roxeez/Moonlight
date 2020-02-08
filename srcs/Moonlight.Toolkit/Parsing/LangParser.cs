@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Moonlight.Core.Enums;
 using Moonlight.Core.Logging;
 using Moonlight.Database.DAL;
@@ -72,7 +73,7 @@ namespace Moonlight.Toolkit.Parsing
                         translations.Add(new TranslationDto
                         {
                             Id = $"{language}:{rootKey}:{key}".ToLower(CultureInfo.InvariantCulture),
-                            Value = value
+                            Value = Encoding.UTF8.GetBytes(value)
                         });
                     }
                 }

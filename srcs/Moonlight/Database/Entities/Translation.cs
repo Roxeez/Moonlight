@@ -8,7 +8,7 @@ namespace Moonlight.Database.Entities
     internal class Translation : IEntity<string>
     {
         [Required]
-        public string Value { get; set; }
+        public byte[] Value { get; set; }
 
         [Key]
         [Required]

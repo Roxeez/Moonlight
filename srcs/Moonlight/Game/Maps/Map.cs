@@ -8,7 +8,6 @@ using Moonlight.Core.Enums;
 using Moonlight.Core.Extensions;
 using Moonlight.Game.Entities;
 using Moonlight.Game.Utility;
-using Swordfish.NET.Collections;
 
 namespace Moonlight.Game.Maps
 {

@@ -257,9 +257,6 @@
     <PackageReference Include="SQLite.CodeFirst">
       <Version>1.5.3.29</Version>
     </PackageReference>
-    <PackageReference Include="Swordfish.NET.Collections">
-      <Version>2.0.0</Version>
-    </PackageReference>
     <PackageReference Include="System.Data.SQLite">
       <Version>1.0.112</Version>
     </PackageReference>

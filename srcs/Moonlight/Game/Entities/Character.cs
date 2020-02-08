@@ -155,7 +155,13 @@ namespace Moonlight.Game.Entities
                 return;
             }
             
-            if (skill.TargetType == TargetType.SELF || skill.TargetType == TargetType.NO_TARGET)
+            if (skill.TargetType == TargetType.SELF)
+            {
+                await Attack(skill);
+                return;
+            }
+
+            if (skill.TargetType == TargetType.NO_TARGET)
             {
                 return;
             }
