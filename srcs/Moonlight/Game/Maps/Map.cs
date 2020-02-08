@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Moonlight.Core;
@@ -13,11 +14,11 @@ namespace Moonlight.Game.Maps
 {
     public class Map
     {
-        private readonly ConcurrentObservableCollection<Monster> _monsters;
-        private readonly ConcurrentObservableCollection<Npc> _npcs;
-        private readonly ConcurrentObservableCollection<Drop> _drops;
-        private readonly ConcurrentObservableCollection<Player> _players;
-        private readonly ConcurrentObservableCollection<Portal> _portals;
+        private readonly ObservableCollection<Monster> _monsters;
+        private readonly ObservableCollection<Npc> _npcs;
+        private readonly ObservableCollection<Drop> _drops;
+        private readonly ObservableCollection<Player> _players;
+        private readonly ObservableCollection<Portal> _portals;
 
         private byte this[int x, int y] => Grid.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
         
@@ -29,11 +30,17 @@ namespace Moonlight.Game.Maps
             Width = BitConverter.ToInt16(Grid.Take(2).ToArray(), 0);
             Height = BitConverter.ToInt16(Grid.Skip(2).Take(2).ToArray(), 0);
             
-            _monsters = new ConcurrentObservableCollection<Monster>();
-            _npcs = new ConcurrentObservableCollection<Npc>();
-            _drops = new ConcurrentObservableCollection<Drop>();
-            _players = new ConcurrentObservableCollection<Player>();
-            _portals = new ConcurrentObservableCollection<Portal>();
+            _monsters = new ObservableCollection<Monster>();
+            _npcs = new ObservableCollection<Npc>();
+            _drops = new ObservableCollection<Drop>();
+            _players = new ObservableCollection<Player>();
+            _portals = new ObservableCollection<Portal>();
+            
+            Monsters = new ReadOnlyObservableCollection<Monster>(_monsters);
+            Npcs = new ReadOnlyObservableCollection<Npc>(_npcs);
+            Drops = new ReadOnlyObservableCollection<Drop>(_drops);
+            Players = new ReadOnlyObservableCollection<Player>(_players);
+            Portals = new ReadOnlyObservableCollection<Portal>(_portals);
         }
 
         public int Id { get; }
@@ -42,12 +49,12 @@ namespace Moonlight.Game.Maps
         
         public short Width { get; }
         public short Height { get; }
-
-        public IEnumerable<Monster> Monsters => _monsters;
-        public IEnumerable<Npc> Npcs => _npcs;
-        public IEnumerable<Player> Players => _players;
-        public IEnumerable<Drop> Drops => _drops;
-        public IEnumerable<Portal> Portals => _portals;
+        
+        public ReadOnlyObservableCollection<Monster> Monsters { get; }
+        public ReadOnlyObservableCollection<Npc> Npcs { get; }
+        public ReadOnlyObservableCollection<Player> Players { get; }
+        public ReadOnlyObservableCollection<Drop> Drops { get; }
+        public ReadOnlyObservableCollection<Portal> Portals { get; }
 
         public Entity GetEntity(EntityType entityType, long entityId)
         {
@@ -90,7 +97,7 @@ namespace Moonlight.Game.Maps
 
         internal void AddPortal(Portal portal)
         {
-            _portals[portal.Id] = portal;
+            _portals.Add(portal);
         }
 
         internal void AddEntity(Entity entity)
