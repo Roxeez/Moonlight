@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Moonlight.Clients;
 using Moonlight.Core;
 using Moonlight.Core.Enums;
@@ -19,7 +21,7 @@ namespace Moonlight.Game.Entities
     public class Character : Player
     {
         private readonly ILogger _logger;
-        
+
         internal Character(long id, string name, Client client, Miniland miniland, ILogger logger) : base(id, name)
         {
             _logger = logger;
@@ -89,28 +91,23 @@ namespace Moonlight.Game.Entities
         public override byte HpPercentage => (byte)(Hp == 0 ? 0 : (double)Hp / MaxHp * 100);
         public override byte MpPercentage => (byte)(Mp == 0 ? 0 : (double)Mp / MaxMp * 100);
 
-        public void Walk(Position position)
+        public async Task Walk(Position position)
         {
-            
             if (Position.Equals(position))
             {
                 return;
             }
-            
+
             Moon.Walk(position.X, position.Y);
             LastMovement = DateTime.Now;
             
-            while (!Position.Equals(position))
+            while (LastMovement.AddSeconds(1) < DateTime.Now)
             {
-                Thread.Sleep(100);
-                if (LastMovement.AddSeconds(2) < DateTime.Now)
-                {
-                    break;
-                }
+                await Task.Delay(100);
             }
         }
 
-        public void WalkInRange(Position position, int range)
+        public async Task WalkInRange(Position position, int range)
         {
             if (Position.IsInRange(position, range))
             {
@@ -127,44 +124,65 @@ namespace Moonlight.Game.Entities
             double x = Position.X + distRatio * (position.X - Position.X);
             double y = Position.Y + distRatio * (position.Y - Position.Y);
             
-            Walk(new Position((short)x, (short)y));
+            await Walk(new Position((short)x, (short)y));
         }
 
-        public void Attack(Skill skill)
+        public async Task Attack(Skill skill)
         {
-            if (skill.TargetType == TargetType.TARGET || skill.TargetType == TargetType.NO_TARGET)
+            if (!Skills.Contains(skill))
             {
                 return;
             }
             
+            if (skill.TargetType == TargetType.TARGET || skill.TargetType == TargetType.NO_TARGET)
+            {
+                return;
+            }
+
             Client.SendPacket($"u_s {skill.CastId} {(int)EntityType} {Id}");
+            skill.IsOnCooldown = true;
+            await Task.Delay(skill.CastTime);
         }
-        
-        public void Attack(Skill skill, LivingEntity target)
+
+        public async Task Attack(Skill skill, LivingEntity target)
         {
+            if (!Skills.Contains(skill))
+            {
+                return;
+            }
+            
             if (skill.TargetType == TargetType.SELF || skill.TargetType == TargetType.NO_TARGET)
             {
                 return;
             }
 
-            WalkInRange(target.Position, skill.Range);
+            await WalkInRange(target.Position, skill.Range);
             Client.SendPacket($"u_s {skill.CastId} {(int)target.EntityType} {target.Id}");
+            skill.IsOnCooldown = true;
+            await Task.Delay(skill.CastTime);
         }
 
-        public void Attack(Skill skill, Position position)
+        public async Task Attack(Skill skill, Position position)
         {
-            if (skill.TargetType != TargetType.NO_TARGET)
+            if (!Skills.Contains(skill))
             {
                 return;
             }
             
-            WalkInRange(position, skill.Range);
+            if (skill.TargetType != TargetType.NO_TARGET)
+            {
+                return;
+            }
+        
+            await WalkInRange(position, skill.Range);
             Client.SendPacket($"u_as {skill.CastId} {position.X} {position.Y}");
+            skill.IsOnCooldown = true;
+            await Task.Delay(skill.CastTime);
         }
 
-        public void PickUp(Drop drop)
+        public async Task PickUp(Drop drop)
         {
-            WalkInRange(drop.Position, 1);
+            await WalkInRange(drop.Position, 1);
             Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
         }
     }

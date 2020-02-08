@@ -102,6 +102,7 @@
     <Compile Include="Game\Factory\Impl\MinilandObjectFactory.cs" />
     <Compile Include="Game\Factory\Impl\SkillFactory.cs" />
     <Compile Include="Game\Factory\ISkillFactory.cs" />
+    <Compile Include="Game\Handlers\Battle\SrPacketHandler.cs" />
     <Compile Include="Game\Handlers\Battle\SuPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\AtPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\CInfoPacketHandler.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Game\Maps\Portal.cs" />
     <Compile Include="Game\Utility\EntityUtility.cs" />
     <Compile Include="MoonlightAPI.cs" />
+    <Compile Include="Packet\Battle\SrPacket.cs" />
     <Compile Include="Packet\Battle\StPacket.cs" />
     <Compile Include="Packet\Battle\SuPacket.cs" />
     <Compile Include="Packet\Character\AtPacket.cs" />
