@@ -10,7 +10,7 @@ namespace Moonlight.Tests.Handling
         [Fact]
         public void Sr_Packet_Reset_Skill_Cooldown()
         {
-            var skill = new Skill("dummy", new SkillDto() { CastId = 5 })
+            var skill = new Skill("dummy", new SkillDto { CastId = 5 })
             {
                 IsOnCooldown = true
             };

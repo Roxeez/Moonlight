@@ -107,7 +107,7 @@ namespace Moonlight.Game.Entities
             
             while (LastMovement.AddSeconds(1) < DateTime.Now)
             {
-                await Task.Delay(100);
+                await Task.Delay(100).ConfigureAwait(false);
             }
         }
 
@@ -128,7 +128,7 @@ namespace Moonlight.Game.Entities
             double x = Position.X + distRatio * (position.X - Position.X);
             double y = Position.Y + distRatio * (position.Y - Position.Y);
             
-            await Walk(new Position((short)x, (short)y));
+            await Walk(new Position((short)x, (short)y)).ConfigureAwait(false);
         }
 
         public async Task Attack(Skill skill)
@@ -145,7 +145,7 @@ namespace Moonlight.Game.Entities
 
             Client.SendPacket($"u_s {skill.CastId} {(int)EntityType} {Id}");
             skill.IsOnCooldown = true;
-            await Task.Delay(skill.CastTime);
+            await Task.Delay(skill.CastTime).ConfigureAwait(false);
         }
 
         public async Task Attack(Skill skill, LivingEntity target)
@@ -160,10 +160,10 @@ namespace Moonlight.Game.Entities
                 return;
             }
 
-            await WalkInRange(target.Position, skill.Range);
+            await WalkInRange(target.Position, skill.Range).ConfigureAwait(false);
             Client.SendPacket($"u_s {skill.CastId} {(int)target.EntityType} {target.Id}");
             skill.IsOnCooldown = true;
-            await Task.Delay(skill.CastTime);
+            await Task.Delay(skill.CastTime).ConfigureAwait(false);
         }
 
         public async Task Attack(Skill skill, Position position)
@@ -178,15 +178,15 @@ namespace Moonlight.Game.Entities
                 return;
             }
         
-            await WalkInRange(position, skill.Range);
+            await WalkInRange(position, skill.Range).ConfigureAwait(false);
             Client.SendPacket($"u_as {skill.CastId} {position.X} {position.Y}");
             skill.IsOnCooldown = true;
-            await Task.Delay(skill.CastTime);
+            await Task.Delay(skill.CastTime).ConfigureAwait(false);
         }
 
         public async Task PickUp(Drop drop)
         {
-            await WalkInRange(drop.Position, 1);
+            await WalkInRange(drop.Position, 1).ConfigureAwait(false);
             Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
         }
     }
