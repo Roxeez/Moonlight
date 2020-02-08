@@ -73,7 +73,7 @@ namespace Moonlight.Toolkit.Parsing
                         translations.Add(new TranslationDto
                         {
                             Id = $"{language}:{rootKey}:{key}".ToLower(CultureInfo.InvariantCulture),
-                            Value = Encoding.UTF8.GetBytes(value)
+                            Value = value
                         });
                     }
                 }

@@ -22,8 +22,8 @@ namespace Moonlight.Translation
             {
                 return fullKey;
             }
-            
-            return Encoding.UTF8.GetString(dto.Value);
+
+            return dto.Value;
         }
     }
 }
