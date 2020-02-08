@@ -22,5 +22,7 @@ namespace Moonlight.Database.Dto
         public int CastId { get; set; }
         
         public TargetType TargetType { get; set; }
+        
+        public HitType HitType { get; set; }
     }
 }

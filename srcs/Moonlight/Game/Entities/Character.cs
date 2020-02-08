@@ -75,6 +75,10 @@ namespace Moonlight.Game.Entities
         ///     Current sp points
         /// </summary>
         public int SpPoints { get; internal set; }
+        /// <summary>
+        ///     Current sp points
+        /// </summary>
+        public int AdditionalSpPoints { get; internal set; }
 
         /// <summary>
         ///     Current character production points

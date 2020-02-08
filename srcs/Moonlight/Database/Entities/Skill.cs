@@ -31,5 +31,7 @@ namespace Moonlight.Database.Entities
         public int CastId { get; set; }
         
         public TargetType TargetType { get; set; }
+        
+        public HitType HitType { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Moonlight.Core.Enums;
+using Moonlight.Packet.Battle;
 using Moonlight.Packet.Character;
 using Moonlight.Tests.Extensions;
 using NFluent;

@@ -59,6 +59,7 @@ namespace Moonlight.Toolkit.Parsing
                     Cooldown = dataLine.GetValue<int>(6),
                     MpCost = dataLine.GetValue<int>(7),
                     TargetType = (TargetType)targetLine.GetValue<int>(1),
+                    HitType = (HitType)targetLine.GetValue<int>(2),
                     Range = targetLine.GetValue<short>(3),
                     ZoneRange = targetLine.GetValue<short>(4)
                 });

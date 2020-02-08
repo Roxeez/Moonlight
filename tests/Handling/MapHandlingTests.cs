@@ -99,7 +99,7 @@ namespace Moonlight.Tests.Handling
 
             Client.ReceivePacket($"out {player.EntityType} {player.Id}");
 
-            Check.That(map.Entities).Not.Contains(player);
+            Check.That(map.Players).Not.Contains(player);
         }
     }
 }

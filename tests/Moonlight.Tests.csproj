@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Deserialization\BattlePacketDeserializationTests.cs" />
     <Compile Include="Deserialization\CharacterPacketDeserializationTests.cs" />
     <Compile Include="Deserialization\DeserializationTests.cs" />
     <Compile Include="Deserialization\EntityPacketDeserializationTests.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Extensions\CharacterExtension.cs" />
     <Compile Include="Extensions\CheckExtension.cs" />
     <Compile Include="Factory\FactoryTests.cs" />
+    <Compile Include="Handling\BattleHandlingTests.cs" />
     <Compile Include="Handling\CharacterHandlingTests.cs" />
     <Compile Include="Handling\InventoryHandlingTests.cs" />
     <Compile Include="Handling\MapHandlingTests.cs" />

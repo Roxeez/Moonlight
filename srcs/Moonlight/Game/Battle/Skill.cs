@@ -18,6 +18,7 @@ namespace Moonlight.Game.Battle
         public int MpCost => _skillDto.MpCost;
         public int CastId => _skillDto.CastId;
         public TargetType TargetType => _skillDto.TargetType;
+        public HitType HitType => _skillDto.HitType;
         public bool IsOnCooldown { get; internal set; }
 
         internal Skill(string name, SkillDto skillDto)
