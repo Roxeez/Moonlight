@@ -26,44 +26,37 @@ Moonlight can be used with local client (injected .dll) or remote client (client
 ## Example
 
 ```csharp
-while (isRunning)
-{
-    Character character = Client.Character;
-    Map map = character.Map;
-    Skill skill = character.Skills.First();
-    
-    // Keep in memory character start position
-    Position startPosition = character.Position;
-    
-    // Get all monsters in a radius of 10 around start position
-    IEnumerable<Monster> monsters = map.Monsters
-        .Where(x => x.Position.IsInRange(startPosition, RADIUS))
-        .OrderBy(x => x.Position.GetDistance(character.Position));
-    
-    // Kill all monsters found
-    foreach (Monster monster in monsters)
-    {
-        while (monster.HpPercentage > 0 && isRunning)
-        {
-            character.Attack(skill, monster);
-        }
-    }
+Character character = _client.Character;
+Skill basicAttack = character.Skills.FirstOrDefault();
 
-    // Get all drops in a radius of 10 around start position
-    IEnumerable<Drop> drops = map.Drops
-        .Where(x => x.Position.IsInRange(startPosition, RADIUS))
-        .OrderBy(x => x.Position.GetDistance(character.Position));
+while (IsRunning)
+{
+    IEnumerable<Monster> allPii;
+    Skill skill;
     
-    // Pickup all drops found
-    foreach (Drop drop in drops)
+    do
     {
-        if (!character.Equals(drop.Owner))
+        Monster pod;
+        do
         {
-            return;
-        }
+            pod = character.GetClosestMonsterInRadius(Constants.SoftPiiPodVnum, Radius);
+            if (pod == null)
+            {
+                await Task.Delay(100);
+            }
+        } 
+        while (pod == null);
+
+        await character.Attack(basicAttack, pod);
         
-        character.PickUp(drop);
-    }
+        allPii = character.GetClosestMonstersInRadius(Constants.SoftPiiVnum, Radius);
+        skill = skills.FirstOrDefault(x => !x.IsOnCooldown);
+
+        await Task.Delay(100);
+    } 
+    while (allPii.Count() < 10 || skill == null);
+
+    await character.Attack(skill, allPii.First());
 }
 ```
 
