@@ -1,52 +1,44 @@
 ﻿using Moonlight.Clients;
-using Moonlight.Core.Enums;
 using Moonlight.Core.Logging;
 using Moonlight.Game.Factory;
 using Moonlight.Game.Inventories;
-using Moonlight.Game.Inventories.Items;
 using Moonlight.Packet.Character.Inventory;
 
 namespace Moonlight.Game.Handlers.Characters.Inventories
 {
     internal class InvPacketHandler : PacketHandler<InvPacket>
     {
-        private readonly IItemFactory _itemFactory;
         private readonly ILogger _logger;
+        private readonly IItemInstanceFactory _itemInstanceFactory;
 
-        public InvPacketHandler(ILogger logger, IItemFactory itemFactory)
+        public InvPacketHandler(ILogger logger, IItemInstanceFactory itemInstanceFactory)
         {
             _logger = logger;
-            _itemFactory = itemFactory;
+            _itemInstanceFactory = itemInstanceFactory;
         }
 
         protected override void Handle(Client client, InvPacket packet)
         {
-            var bag = new Bag();
+            Bag bag = client.Character.Inventory.GetBag(packet.BagType);
+
+            if (bag == null)
+            {
+                _logger.Error($"Can't found bad {packet.BagType}");
+                return;
+            }
+            
             foreach (IvnSubPacket sub in packet.SubPackets)
             {
-                ItemStack itemStack;
-                Item item = _itemFactory.CreateItem(sub.VNum);
-
-                if (packet.BagType == BagType.EQUIPMENT)
+                ItemInstance item = _itemInstanceFactory.CreateItemInstance(sub.VNum, packet.BagType, sub.Slot, sub.RareAmount, sub.UpgradeDesign);
+                if (item == null)
                 {
-                    itemStack = new Equipment(item)
-                    {
-                        Rarity = (RarityType)sub.RareAmount,
-                        Upgrade = sub.UpgradeDesign
-                    };
-                }
-                else
-                {
-                    itemStack = new ItemStack(item)
-                    {
-                        Amount = sub.RareAmount == 0 ? 1 : sub.RareAmount
-                    };
+                    _logger.Error($"Can't create item instance for {sub.VNum}");
+                    return;
                 }
 
-                bag.SetItem(sub.Slot, itemStack);
+                bag.AddItem(item);
             }
-
-            client.Character.Inventory.AddBag(packet.BagType, bag);
+            
             _logger.Info($"{packet.BagType} bag initialized.");
         }
     }

@@ -96,10 +96,12 @@
     <Compile Include="Game\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Game\Factory\IEntityFactory.cs" />
     <Compile Include="Game\Factory\IItemFactory.cs" />
+    <Compile Include="Game\Factory\IItemInstanceFactory.cs" />
     <Compile Include="Game\Factory\IMapFactory.cs" />
     <Compile Include="Game\Factory\IMinilandObjectFactory.cs" />
     <Compile Include="Game\Factory\Impl\EntityFactory.cs" />
     <Compile Include="Game\Factory\Impl\ItemFactory.cs" />
+    <Compile Include="Game\Factory\Impl\ItemInstanceFactory.cs" />
     <Compile Include="Game\Factory\Impl\MapFactory.cs" />
     <Compile Include="Game\Factory\Impl\MinilandObjectFactory.cs" />
     <Compile Include="Game\Factory\Impl\SkillFactory.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Game\Handlers\Characters\FactionPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\GoldPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\Inventories\InvPacketHandler.cs" />
+    <Compile Include="Game\Handlers\Characters\Inventories\IvnPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\LevPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\SkiPacketHandler.cs" />
     <Compile Include="Game\Handlers\Characters\SpPacketHandler.cs" />
@@ -130,7 +133,7 @@
     <Compile Include="Game\Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="Game\Inventories\Bag.cs" />
     <Compile Include="Game\Inventories\Inventory.cs" />
-    <Compile Include="Game\Inventories\ItemStack.cs" />
+    <Compile Include="Game\Inventories\ItemInstance.cs" />
     <Compile Include="Game\Inventories\Items\Equipment.cs" />
     <Compile Include="Game\Inventories\Items\Item.cs" />
     <Compile Include="Game\Maps\Map.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="Packet\Core\CachedType.cs" />
     <Compile Include="Packet\Core\Converters\InPacketConverter.cs" />
     <Compile Include="Packet\Core\Converters\InvPacketConverter.cs" />
+    <Compile Include="Packet\Core\Converters\IvnPacketConverter.cs" />
     <Compile Include="Packet\Core\Converters\PacketConverter.cs" />
     <Compile Include="Packet\Core\Converters\SkiPacketConverter.cs" />
     <Compile Include="Packet\Core\Converters\SpecialListConverter.cs" />

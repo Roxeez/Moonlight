@@ -7,7 +7,7 @@ namespace Moonlight.Game.Handlers.Characters
     {
         protected override void Handle(Client client, GoldPacket packet)
         {
-            client.Character.Inventory.Gold = packet.Gold;
+            client.Character.Gold = packet.Gold;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Moonlight.Core;
 using Moonlight.Core.Enums;
 using Moonlight.Game.Maps;
+using PropertyChanged;
 
 namespace Moonlight.Game.Entities
 {
@@ -10,7 +11,8 @@ namespace Moonlight.Game.Entities
     ///     Represent any kind of Entity existing in the game.
     ///     It can be a Player a Monster a Drop or a Npc
     /// </summary>
-    public abstract class Entity : IEquatable<Entity>, INotifyPropertyChanged
+    [AddINotifyPropertyChangedInterface]
+    public abstract class Entity : IEquatable<Entity>
     {
         protected Entity(long id, string name, EntityType entityType)
         {
@@ -57,8 +59,5 @@ namespace Moonlight.Game.Entities
             && other.EntityType == EntityType
             && other.Map.Equals(Map)
             && other.Position.Equals(Position);
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
