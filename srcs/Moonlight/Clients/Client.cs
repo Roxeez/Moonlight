@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using Moonlight.Game.Entities;
+using PropertyChanged;
 
 namespace Moonlight.Clients
 {
-    public abstract class Client : IDisposable, INotifyPropertyChanged
+    [AddINotifyPropertyChangedInterface]
+    public abstract class Client : IDisposable
     {
         public Character Character { get; internal set; }
 
@@ -12,9 +14,7 @@ namespace Moonlight.Clients
         {
             // Do nothing
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        
         public event Func<string, bool> PacketSend;
         public event Func<string, bool> PacketReceived;
 

@@ -130,7 +130,7 @@
     <Compile Include="Game\Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="Game\Inventories\Bag.cs" />
     <Compile Include="Game\Inventories\Inventory.cs" />
-    <Compile Include="Game\Inventories\ItemStack.cs" />
+    <Compile Include="Game\Inventories\InventoryItem.cs" />
     <Compile Include="Game\Inventories\Items\Equipment.cs" />
     <Compile Include="Game\Inventories\Items\Item.cs" />
     <Compile Include="Game\Maps\Map.cs" />

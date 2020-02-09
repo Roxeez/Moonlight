@@ -25,11 +25,11 @@ namespace Moonlight.Tests.Handling
 
             Check.That(bag).IsNotNull();
 
-            ItemStack itemStack = bag.GetItem(0);
+            InventoryItem inventoryItem = bag.GetItemBySlot(0);
 
-            Check.That(itemStack).IsNotNull();
-            Check.That(itemStack.Item.Vnum).Is(8112);
-            Check.That(itemStack.Amount).Is(1);
+            Check.That(inventoryItem).IsNotNull();
+            Check.That(inventoryItem.Item.Vnum).Is(8112);
+            Check.That(inventoryItem.Amount).Is(1);
         }
 
         [Fact]
@@ -42,11 +42,11 @@ namespace Moonlight.Tests.Handling
 
             Check.That(bag).IsNotNull();
 
-            ItemStack itemStack = bag.GetItem(0);
+            InventoryItem inventoryItem = bag.GetItemByVnum(1012);
 
-            Check.That(itemStack).IsNotNull();
-            Check.That(itemStack.Item.Vnum).Is(1012);
-            Check.That(itemStack.Amount).Is(23);
+            Check.That(inventoryItem).IsNotNull();
+            Check.That(inventoryItem.Slot).Is(0);
+            Check.That(inventoryItem.Amount).Is(23);
         }
     }
 }

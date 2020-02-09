@@ -21,15 +21,14 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
 
         protected override void Handle(Client client, InvPacket packet)
         {
-            var bag = new Bag();
             foreach (IvnSubPacket sub in packet.SubPackets)
             {
-                ItemStack itemStack;
+                InventoryItem inventoryItem;
                 Item item = _itemFactory.CreateItem(sub.VNum);
 
                 if (packet.BagType == BagType.EQUIPMENT)
                 {
-                    itemStack = new Equipment(item)
+                    inventoryItem = new Equipment(item, sub.Slot)
                     {
                         Rarity = (RarityType)sub.RareAmount,
                         Upgrade = sub.UpgradeDesign
@@ -37,16 +36,15 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
                 }
                 else
                 {
-                    itemStack = new ItemStack(item)
+                    inventoryItem = new InventoryItem(item, packet.BagType, sub.Slot)
                     {
                         Amount = sub.RareAmount == 0 ? 1 : sub.RareAmount
                     };
                 }
 
-                bag.SetItem(sub.Slot, itemStack);
+                client.Character.Inventory.GetBag(packet.BagType)?.AddItem(inventoryItem);
             }
-
-            client.Character.Inventory.AddBag(packet.BagType, bag);
+            
             _logger.Info($"{packet.BagType} bag initialized.");
         }
     }
