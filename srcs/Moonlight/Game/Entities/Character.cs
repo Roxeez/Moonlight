@@ -185,14 +185,16 @@ namespace Moonlight.Game.Entities
             {
                 return;
             }
-            
-            switch (skill.TargetType)
+
+            if (skill.TargetType == TargetType.SELF)
             {
-                case TargetType.SELF:
-                    await UseSkill(skill).ConfigureAwait(false);
-                    return;
-                case TargetType.NO_TARGET:
-                    return;
+                await UseSkill(skill).ConfigureAwait(false);
+                return;
+            }
+
+            if (skill.TargetType == TargetType.NO_TARGET)
+            {
+                return;
             }
 
             await WalkInRange(target.Position, skill.Range).ConfigureAwait(false);
