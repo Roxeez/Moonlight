@@ -57,5 +57,16 @@ namespace Moonlight.Tests.Deserialization
 
             Check.That(packet.BagType).Is(BagType.SPECIALIST);
         }
+
+        [Fact]
+        public void Ivn_Packet()
+        {
+            IvnPacket packet = Deserialize<IvnPacket>("ivn 1 13.9033.5.0");
+            
+            Check.That(packet.BagType).Is(BagType.MAIN);
+            Check.That(packet.SubPacket.Slot).Is(13);
+            Check.That(packet.SubPacket.VNum).Is(9033);
+            Check.That(packet.SubPacket.RareAmount).Is(5);
+        }
     }
 }
