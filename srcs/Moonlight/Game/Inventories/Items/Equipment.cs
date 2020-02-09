@@ -2,11 +2,15 @@
 
 namespace Moonlight.Game.Inventories.Items
 {
-    public class Equipment : InventoryItem
+    public class Equipment : ItemInstance
     {
-        internal Equipment(Item item, int slot) : base(item, BagType.EQUIPMENT, slot) => Amount = 1;
+        internal Equipment(Item item, int slot, RarityType rarity, int upgrade) : base(item, BagType.EQUIPMENT, slot, 1)
+        {
+            Rarity = rarity;
+            Upgrade = upgrade;
+        }
 
-        public RarityType Rarity { get; internal set; }
-        public int Upgrade { get; internal set; }
+        public RarityType Rarity { get; }
+        public int Upgrade { get; }
     }
 }

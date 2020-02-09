@@ -23,7 +23,7 @@ namespace Moonlight.Game.Entities
         internal Character(long id, string name, Client client, Miniland miniland) : base(id, name)
         {
             Client = client;
-            Inventory = new Inventory();
+            Inventory = new Inventory(this);
             Miniland = miniland;
         }
 
@@ -66,6 +66,11 @@ namespace Moonlight.Game.Entities
         /// Represent character global inventory (gold, bags etc...)
         /// </summary>
         public Inventory Inventory { get; }
+        
+        /// <summary>
+        /// Current character gold
+        /// </summary>
+        public int Gold { get; set; }
 
         /// <summary>
         ///     Current sp points
@@ -241,55 +246,6 @@ namespace Moonlight.Game.Entities
         {
             await WalkInRange(drop.Position, 1).ConfigureAwait(false);
             Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
-        }
-
-        /// <summary>
-        /// Use an item in your inventory
-        /// Item won't be used if not in your inventory
-        /// </summary>
-        /// <param name="inventoryItem">Item to use</param>
-        public void UseItem(InventoryItem inventoryItem)
-        {
-            if (!Inventory.Contains(inventoryItem))
-            {
-                return;
-            }
-            
-            Client.SendPacket($"u_i {(int)EntityType} {Id} {(int)inventoryItem.BagType} {inventoryItem.Slot} 0 0 ");
-        }
-
-        /// <summary>
-        /// Drop item from your inventory to ground
-        /// </summary>
-        /// <param name="inventoryItem">Item to drop</param>
-        public void DropItem(InventoryItem inventoryItem)
-        {
-            DropItem(inventoryItem, inventoryItem.Amount);
-        }
-        
-        /// <summary>
-        /// Drop item from your inventory to ground
-        /// </summary>
-        /// <param name="inventoryItem">Item to drop</param>
-        /// <param name="amount">Amount of item to drop</param>
-        public void DropItem(InventoryItem inventoryItem, int amount)
-        {
-            if (!Inventory.Contains(inventoryItem))
-            {
-                return;
-            }
-
-            if (amount <= 0)
-            {
-                return;
-            }
-
-            if (amount > inventoryItem.Amount)
-            {
-                return;
-            }
-            
-            Client.SendPacket($"put {(int)inventoryItem.BagType} {inventoryItem.Slot} {amount}");
         }
     }
 }

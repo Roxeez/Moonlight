@@ -15,11 +15,11 @@ namespace Moonlight.Packet.Character.Inventory
     public class IvnSubPacket
     {
         public int Slot { get; set; }
-
+        
         public int VNum { get; set; }
-
+        
         public int RareAmount { get; set; }
-
+        
         public int UpgradeDesign { get; set; }
 
         public int SecondUpgrade { get; set; }
