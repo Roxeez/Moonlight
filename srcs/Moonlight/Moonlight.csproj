@@ -57,6 +57,7 @@
     <Compile Include="Core\Import\Kernel32.cs" />
     <Compile Include="Core\Import\Moon.cs" />
     <Compile Include="Core\Import\User32.cs" />
+    <Compile Include="Core\SafeObservableCollection.cs" />
     <Compile Include="Core\Logging\ILogger.cs" />
     <Compile Include="Core\Logging\SerilogLogger.cs" />
     <Compile Include="Core\Position.cs" />
@@ -227,10 +228,12 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="mscorlib" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Costura.Fody">

@@ -20,6 +20,8 @@ namespace Moonlight.Game.Handlers.Characters
         
         protected override void Handle(Client client, SkiPacket packet)
         {
+            client.Character.Skills.Clear();
+            
             var skills = new List<Skill>();
             foreach (int skillVnum in packet.Skills)
             {
@@ -31,7 +33,7 @@ namespace Moonlight.Game.Handlers.Characters
                 // TODO : Maybe we can add passive etc...
             }
 
-            client.Character.Skills = skills;
+            client.Character.Skills.AddRange(skills);
         }
     }
 }

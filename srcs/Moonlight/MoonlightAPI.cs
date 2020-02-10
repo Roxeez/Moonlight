@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Mime;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Moonlight.Clients;
 using Moonlight.Core;
@@ -29,7 +31,7 @@ namespace Moonlight
         internal MoonlightAPI(AppConfig config)
         {
             IServiceCollection services = new ServiceCollection();
-
+            
             services.AddLogger();
             services.AddPacketDependencies();
             services.AddDatabaseDependencies(config);
@@ -42,7 +44,7 @@ namespace Moonlight
             services.AddImplementingTypes<IPacketHandler>();
 
             IServiceProvider provider = services.BuildServiceProvider();
-
+            
             _clientManager = provider.GetService<IClientManager>();
             _packetHandlerManager = provider.GetService<IPacketHandlerManager>();
             _languageService = provider.GetService<ILanguageService>();

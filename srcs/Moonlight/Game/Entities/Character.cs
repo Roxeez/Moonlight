@@ -25,6 +25,7 @@ namespace Moonlight.Game.Entities
             Client = client;
             Inventory = new Inventory(this);
             Miniland = miniland;
+            Skills = new SafeObservableCollection<Skill>();
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Moonlight.Game.Entities
         /// <summary>
         /// Current character skills
         /// </summary>
-        public IEnumerable<Skill> Skills { get; internal set; }
+        public SafeObservableCollection<Skill> Skills { get; }
         
         internal DateTime LastMovement { get; set; }
 

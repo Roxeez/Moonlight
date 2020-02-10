@@ -20,12 +20,12 @@ namespace Moonlight.Game.Inventories
         {
             _character = character;
             
-            Equipment = new Bag(new ObservableCollection<ItemInstance>());
-            Main = new Bag(new ObservableCollection<ItemInstance>());
-            Etc = new Bag(new ObservableCollection<ItemInstance>());
-            Miniland = new Bag(new ObservableCollection<ItemInstance>());
-            Specialist = new Bag(new ObservableCollection<ItemInstance>());
-            Costume = new Bag(new ObservableCollection<ItemInstance>());
+            Equipment = new Bag();
+            Main = new Bag();
+            Etc = new Bag();
+            Miniland = new Bag();
+            Specialist = new Bag();
+            Costume = new Bag();
         }
 
         /// <summary>

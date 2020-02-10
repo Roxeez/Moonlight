@@ -13,12 +13,6 @@ namespace Moonlight.Game.Maps
 {
     public class Map
     {
-        private readonly ObservableCollection<Monster> _monsters;
-        private readonly ObservableCollection<Npc> _npcs;
-        private readonly ObservableCollection<Drop> _drops;
-        private readonly ObservableCollection<Player> _players;
-        private readonly ObservableCollection<Portal> _portals;
-
         private byte this[int x, int y] => Grid.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
         
         internal Map(int id, string name, byte[] grid)
@@ -29,44 +23,37 @@ namespace Moonlight.Game.Maps
             Width = BitConverter.ToInt16(Grid.Take(2).ToArray(), 0);
             Height = BitConverter.ToInt16(Grid.Skip(2).Take(2).ToArray(), 0);
             
-            _monsters = new ObservableCollection<Monster>();
-            _npcs = new ObservableCollection<Npc>();
-            _drops = new ObservableCollection<Drop>();
-            _players = new ObservableCollection<Player>();
-            _portals = new ObservableCollection<Portal>();
-            
-            Monsters = new ReadOnlyObservableCollection<Monster>(_monsters);
-            Npcs = new ReadOnlyObservableCollection<Npc>(_npcs);
-            Drops = new ReadOnlyObservableCollection<Drop>(_drops);
-            Players = new ReadOnlyObservableCollection<Player>(_players);
-            Portals = new ReadOnlyObservableCollection<Portal>(_portals);
+            Monsters = new SafeObservableCollection<Monster>();
+            Npcs = new SafeObservableCollection<Npc>();
+            Drops = new SafeObservableCollection<Drop>();
+            Players = new SafeObservableCollection<Player>();
+            Portals = new SafeObservableCollection<Portal>();
         }
 
         public int Id { get; }
         public string Name { get; }
         public byte[] Grid { get; }
-        
         public short Width { get; }
         public short Height { get; }
         
-        public ReadOnlyObservableCollection<Monster> Monsters { get; }
-        public ReadOnlyObservableCollection<Npc> Npcs { get; }
-        public ReadOnlyObservableCollection<Player> Players { get; }
-        public ReadOnlyObservableCollection<Drop> Drops { get; }
-        public ReadOnlyObservableCollection<Portal> Portals { get; }
+        public SafeObservableCollection<Monster> Monsters { get; }
+        public SafeObservableCollection<Npc> Npcs { get; }
+        public SafeObservableCollection<Player> Players { get; }
+        public SafeObservableCollection<Drop> Drops { get; }
+        public SafeObservableCollection<Portal> Portals { get; }
 
         public Entity GetEntity(EntityType entityType, long entityId)
         {
             switch (entityType)
             {
                 case EntityType.NPC:
-                    return _npcs.FirstOrDefault(x => x.Id == entityId);
+                    return Npcs.FirstOrDefault(x => x.Id == entityId);
                 case EntityType.MONSTER:
-                    return _monsters.FirstOrDefault(x => x.Id == entityId);
+                    return Monsters.FirstOrDefault(x => x.Id == entityId);
                 case EntityType.PLAYER:
-                    return _players.FirstOrDefault(x => x.Id == entityId);
+                    return Players.FirstOrDefault(x => x.Id == entityId);
                 case EntityType.DROP:
-                    return _drops.FirstOrDefault(x => x.Id == entityId);
+                    return Drops.FirstOrDefault(x => x.Id == entityId);
                 default:
                     throw new InvalidOperationException();
             }
@@ -91,12 +78,12 @@ namespace Moonlight.Game.Maps
 
         public Portal GetPortal(int id)
         {
-            return _portals.FirstOrDefault(x => x.Id == id);
+            return Portals.FirstOrDefault(x => x.Id == id);
         }
 
         internal void AddPortal(Portal portal)
         {
-            _portals.Add(portal);
+            Portals.Add(portal);
         }
 
         internal void AddEntity(Entity entity)
@@ -104,16 +91,16 @@ namespace Moonlight.Game.Maps
             switch (entity.EntityType)
             {
                 case EntityType.NPC:
-                    _npcs.Add((Npc)entity);
+                    Npcs.Add((Npc)entity);
                     break;
                 case EntityType.MONSTER:
-                    _monsters.Add((Monster)entity);
+                    Monsters.Add((Monster)entity);
                     break;
                 case EntityType.PLAYER:
-                    _players.Add((Player)entity);
+                    Players.Add((Player)entity);
                     break;
                 case EntityType.DROP:
-                    _drops.Add((Drop)entity);
+                    Drops.Add((Drop)entity);
                     break;
                 default:
                     throw new InvalidOperationException();
@@ -127,16 +114,16 @@ namespace Moonlight.Game.Maps
             switch (entity.EntityType)
             {
                 case EntityType.NPC:
-                    _npcs.Remove((Npc)entity);
+                    Npcs.Remove((Npc)entity);
                     break;
                 case EntityType.MONSTER:
-                    _monsters.Remove((Monster)entity);
+                    Monsters.Remove((Monster)entity);
                     break;
                 case EntityType.PLAYER:
-                    _players.Remove((Player)entity);
+                    Players.Remove((Player)entity);
                     break;
                 case EntityType.DROP:
-                    _drops.Remove((Drop)entity);
+                    Drops.Remove((Drop)entity);
                     break;
                 default:
                     throw new InvalidOperationException();

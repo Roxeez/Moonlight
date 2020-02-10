@@ -16,7 +16,7 @@ namespace Moonlight.Tests.Handling
             };
 
 
-            Character.Skills = new[] { skill };
+            Character.Skills.Add(skill);
             
             Client.ReceivePacket("sr 5");
 
