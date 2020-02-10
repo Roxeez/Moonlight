@@ -31,17 +31,17 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
 
             if (packet.SubPacket.VNum == -1)
             {
-                bag.RemoveItemInSlot(packet.SubPacket.Slot);
+                bag.RemoveItem(packet.SubPacket.Slot);
                 return;
             }
 
-            ItemInstance item = _itemInstanceFactory.CreateItemInstance(packet.SubPacket.VNum, packet.BagType, packet.SubPacket.Slot, packet.SubPacket.RareAmount, packet.SubPacket.UpgradeDesign);
+            ItemInstance item = _itemInstanceFactory.CreateItemInstance(packet.SubPacket.VNum, packet.BagType, packet.SubPacket.RareAmount, packet.SubPacket.UpgradeDesign);
             if (item == null)
             {
                 return;
             }
 
-            bag.AddItem(item);
+            bag.AddItem(packet.SubPacket.Slot, item);
         }
     }
 }

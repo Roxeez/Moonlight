@@ -58,6 +58,7 @@
     <Compile Include="Core\Import\Moon.cs" />
     <Compile Include="Core\Import\User32.cs" />
     <Compile Include="Core\SafeObservableCollection.cs" />
+    <Compile Include="Core\SafeObservableDictionary.cs" />
     <Compile Include="Core\Logging\ILogger.cs" />
     <Compile Include="Core\Logging\SerilogLogger.cs" />
     <Compile Include="Core\Position.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Game\Entities\Npc.cs" />
     <Compile Include="Game\Entities\Player.cs" />
     <Compile Include="Game\Extensions\CharacterExtension.cs" />
+    <Compile Include="Game\Extensions\ItemExtension.cs" />
     <Compile Include="Game\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Game\Factory\IEntityFactory.cs" />
     <Compile Include="Game\Factory\IItemFactory.cs" />

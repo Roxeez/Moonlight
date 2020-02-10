@@ -8,38 +8,28 @@ using Item = Moonlight.Game.Inventories.Items.Item;
 
 namespace Moonlight.Game.Inventories
 {
-    public class Bag : SafeObservableCollection<ItemInstance>
+    public class Bag : SafeObservableDictionary<int, ItemInstance>
     {
-        public ItemInstance GetItemBySlot(int slot)
+        public ItemInstance GetItemInSlot(int slot) => this[slot];
+
+        public ItemInstance GetItemWithVnum(int vnum)
         {
-            return this.FirstOrDefault(x => x.Slot == slot);
+            return Values.FirstOrDefault(x => x.Item.Vnum == vnum);
         }
 
-        public ItemInstance GetItemByVnum(int vnum)
+        public int GetSlot(ItemInstance instance)
         {
-            return this.FirstOrDefault(x => x.Item.Vnum == vnum);
+            return Internal.FirstOrDefault(x => x.Value.Equals(instance)).Key;
+        }
+        
+        internal void AddItem(int slot, ItemInstance item)
+        {
+            this[slot] = item;
         }
 
-        internal void RemoveItemInSlot(int slot)
+        internal void RemoveItem(int slot)
         {
-            ItemInstance itemInstance = this.FirstOrDefault(x => x.Slot == slot);
-            if (itemInstance == null)
-            {
-                return;
-            }
-
-            Remove(itemInstance);
-        }
-
-        internal void AddItem(ItemInstance itemInstance)
-        {
-            ItemInstance stack = this.FirstOrDefault(x => x.Slot == itemInstance.Slot);
-            if (stack != null)
-            {
-                Remove(stack);
-            }
-            
-            Add(itemInstance);
+            Remove(slot);
         }
     }
 }

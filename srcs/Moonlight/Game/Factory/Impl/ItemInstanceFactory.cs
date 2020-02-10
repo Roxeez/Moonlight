@@ -12,16 +12,16 @@ namespace Moonlight.Game.Factory.Impl
 
         public ItemInstanceFactory(IItemFactory itemFactory) => _itemFactory = itemFactory;
 
-        public ItemInstance CreateItemInstance(int vnum, BagType bagType, int slot, int rareOrAmount, int upgrade)
+        public ItemInstance CreateItemInstance(int vnum, BagType bagType, int rareOrAmount, int upgrade)
         {
             Item item = _itemFactory.CreateItem(vnum);
 
             switch (bagType)
             {
                 case BagType.EQUIPMENT:
-                    return new Equipment(item, slot, (RarityType)rareOrAmount, upgrade);
+                    return new Equipment(item, (RarityType)rareOrAmount, upgrade);
                 default:
-                    return new ItemInstance(item, bagType, slot, rareOrAmount);
+                    return new ItemInstance(item, rareOrAmount);
             }
         }
     }

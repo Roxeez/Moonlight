@@ -37,8 +37,7 @@ namespace Moonlight.Game.Inventories
         {
             Move(item, destinationSlot, item.Amount);
         }
-        
-        
+
         /// <summary>
         /// Move amount of item to another slot in inventory
         /// </summary>
@@ -47,12 +46,14 @@ namespace Moonlight.Game.Inventories
         /// <param name="amount">Amount of item to move</param>
         public void Move(ItemInstance item, int destinationSlot, int amount)
         {
-            if (!Contains(item))
+            int slot = GetItemSlot(item);
+
+            if (slot == -1)
             {
                 return;
             }
-
-            if (destinationSlot == item.Slot)
+            
+            if (destinationSlot == slot)
             {
                 return;
             }
@@ -62,22 +63,24 @@ namespace Moonlight.Game.Inventories
                 return;
             }
             
-            _character.Client.SendPacket($"mvi {item.BagType} {item.Slot} {amount} {destinationSlot}");
+            _character.Client.SendPacket($"mvi {item.Item.BagType} {slot} {amount} {destinationSlot}");
         }
         
         /// <summary>
         /// Use an item in your inventory
         /// Item won't be used if not in your inventory
         /// </summary>
-        /// <param name="itemInstance">Item to use</param>
-        public void Use(ItemInstance itemInstance)
+        /// <param name="item">Item to use</param>
+        public void Use(ItemInstance item)
         {
-            if (!Contains(itemInstance))
+            int slot = GetItemSlot(item);
+
+            if (slot == -1)
             {
                 return;
             }
             
-            _character.Client.SendPacket($"u_i {(int)_character.EntityType} {_character.Id} {(int)itemInstance.BagType} {itemInstance.Slot} 0 0 ");
+            _character.Client.SendPacket($"u_i {(int)_character.EntityType} {_character.Id} {(int)item.Item.BagType} {slot} 0 0 ");
         }
 
         /// <summary>
@@ -92,11 +95,13 @@ namespace Moonlight.Game.Inventories
         /// <summary>
         /// Drop item from your inventory to ground
         /// </summary>
-        /// <param name="itemInstance">Item to drop</param>
+        /// <param name="item">Item to drop</param>
         /// <param name="amount">Amount of item to drop</param>
-        public void Drop(ItemInstance itemInstance, int amount)
+        public void Drop(ItemInstance item, int amount)
         {
-            if (!Contains(itemInstance))
+            int slot = GetItemSlot(item);
+
+            if (slot == -1)
             {
                 return;
             }
@@ -106,25 +111,14 @@ namespace Moonlight.Game.Inventories
                 return;
             }
 
-            if (amount > itemInstance.Amount)
+            if (amount > item.Amount)
             {
                 return;
             }
             
-            _character.Client.SendPacket($"put {(int)itemInstance.BagType} {itemInstance.Slot} {amount}");
+            _character.Client.SendPacket($"put {(int)item.Item.BagType} {slot} {amount}");
         }
-        
-        internal bool Contains(ItemInstance itemInstance)
-        {
-            Bag bag = GetBag(itemInstance.BagType);
-            if (bag == null)
-            {
-                return false;
-            }
 
-            return bag.Contains(itemInstance);
-        }
-        
         internal Bag GetBag(BagType bagType)
         {
             switch (bagType)
@@ -144,6 +138,11 @@ namespace Moonlight.Game.Inventories
                 default:
                     throw new InvalidOperationException("Unknown bag type");
             }
+        }
+
+        internal int GetItemSlot(ItemInstance item)
+        {
+            return GetBag(item.Item.BagType).GetSlot(item);
         }
     }
 }

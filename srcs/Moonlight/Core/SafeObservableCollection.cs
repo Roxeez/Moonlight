@@ -52,18 +52,16 @@ namespace Moonlight.Core
 
         internal bool Remove(T item)
         {
-            int index = _collection.IndexOf(item);
-            if (index < 0)
+            bool removed = _collection.Remove(item);
+            if (!removed)
             {
                 return false;
             }
-            
-            _collection.RemoveAt(index);
 
             Dispatch(() =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
-                CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, index));
+                CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
             });
             return true;
         }

@@ -29,14 +29,14 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
             
             foreach (IvnSubPacket sub in packet.SubPackets)
             {
-                ItemInstance item = _itemInstanceFactory.CreateItemInstance(sub.VNum, packet.BagType, sub.Slot, sub.RareAmount, sub.UpgradeDesign);
+                ItemInstance item = _itemInstanceFactory.CreateItemInstance(sub.VNum, packet.BagType, sub.RareAmount, sub.UpgradeDesign);
                 if (item == null)
                 {
                     _logger.Error($"Can't create item instance for {sub.VNum}");
                     return;
                 }
 
-                bag.AddItem(item);
+                bag.AddItem(sub.Slot, item);
             }
             
             _logger.Info($"{packet.BagType} bag initialized.");
