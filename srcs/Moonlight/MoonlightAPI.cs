@@ -6,6 +6,7 @@ using Moonlight.Core;
 using Moonlight.Core.Extensions;
 using Moonlight.Core.Logging;
 using Moonlight.Database.Extensions;
+using Moonlight.Event;
 using Moonlight.Game.Extensions;
 using Moonlight.Game.Handlers;
 using Moonlight.Packet.Extensions;
@@ -21,6 +22,7 @@ namespace Moonlight
         private readonly IClientManager _clientManager;
         private readonly ILanguageService _languageService;
         private readonly IPacketHandlerManager _packetHandlerManager;
+        private readonly IEventManager _eventManager;
 
         public MoonlightAPI() : this(new AppConfig())
         {
@@ -38,6 +40,7 @@ namespace Moonlight
             services.AddSingleton<ILanguageService, LanguageService>();
             services.AddSingleton<IClientManager, ClientManager>();
             services.AddSingleton<IPacketHandlerManager, PacketHandlerManager>();
+            services.AddSingleton<IEventManager, EventManager>();
 
             services.AddImplementingTypes<IPacketHandler>();
 
@@ -46,6 +49,7 @@ namespace Moonlight
             _clientManager = provider.GetService<IClientManager>();
             _packetHandlerManager = provider.GetService<IPacketHandlerManager>();
             _languageService = provider.GetService<ILanguageService>();
+            _eventManager = provider.GetService<IEventManager>();
 
             Logger = provider.GetService<ILogger>();
         }
@@ -59,6 +63,11 @@ namespace Moonlight
         public ILogger Logger { get; }
 
         public Client CreateLocalClient() => _clientManager.CreateLocalClient();
+
+        public void AddListener<T>(EventListener<T> listener) where T : IEventNotification
+        {
+            _eventManager.RegisterListener(listener);
+        }
 
         /**
          * Trick to use it in tests to handling mock packet send/recv but hide to classic users

@@ -50,6 +50,9 @@
     <Compile Include="Deserialization\EntityPacketDeserializationTests.cs" />
     <Compile Include="Deserialization\InventoryPacketDeserializationTests.cs" />
     <Compile Include="Deserialization\MapPacketDeserializationTests.cs" />
+    <Compile Include="Events\ListenerTest.cs" />
+    <Compile Include="Events\EntityLeaveTestListener.cs" />
+    <Compile Include="Events\TestObject.cs" />
     <Compile Include="Extensions\CharacterExtension.cs" />
     <Compile Include="Extensions\CheckExtension.cs" />
     <Compile Include="Factory\FactoryTests.cs" />

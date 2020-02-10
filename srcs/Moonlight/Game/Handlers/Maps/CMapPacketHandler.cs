@@ -1,5 +1,7 @@
 ﻿using Moonlight.Clients;
 using Moonlight.Core.Logging;
+using Moonlight.Event;
+using Moonlight.Event.Maps;
 using Moonlight.Game.Factory;
 using Moonlight.Game.Maps;
 using Moonlight.Packet.Map;
@@ -10,11 +12,13 @@ namespace Moonlight.Game.Handlers.Maps
     {
         private readonly ILogger _logger;
         private readonly IMapFactory _mapFactory;
+        private readonly IEventManager _eventManager;
 
-        public CMapPacketHandler(ILogger logger, IMapFactory mapFactory)
+        public CMapPacketHandler(ILogger logger, IMapFactory mapFactory, IEventManager eventManager)
         {
             _logger = logger;
             _mapFactory = mapFactory;
+            _eventManager = eventManager;
         }
 
         protected override void Handle(Client client, CMapPacket packet)
@@ -25,14 +29,25 @@ namespace Moonlight.Game.Handlers.Maps
                 return;
             }
 
-            Map map = _mapFactory.CreateMap(packet.MapId);
-            if (client.Character.Map?.Id == map.Id)
+            Map destination = _mapFactory.CreateMap(packet.MapId);
+            if (client.Character.Map?.Id == destination.Id)
             {
                 return;
             }
 
-            map.AddEntity(client.Character);
-            _logger.Debug($"Map changed to {map.Id}");
+            Map source = client.Character.Map;
+            
+            destination.AddEntity(client.Character);
+            
+            if (source != null)
+            {
+                _eventManager.Emit(new MapChangeEvent
+                {
+                    Character = client.Character,
+                    Source = source,
+                    Destination = destination
+                });
+            }
         }
     }
 }

@@ -3,6 +3,8 @@ using Moonlight.Clients;
 using Moonlight.Core;
 using Moonlight.Core.Enums;
 using Moonlight.Core.Logging;
+using Moonlight.Event;
+using Moonlight.Event.Maps;
 using Moonlight.Game.Entities;
 using Moonlight.Game.Factory;
 using Moonlight.Game.Maps;
@@ -14,11 +16,13 @@ namespace Moonlight.Game.Handlers.Maps
     {
         private readonly IEntityFactory _entityFactory;
         private readonly ILogger _logger;
-
-        public InPacketHandler(ILogger logger, IEntityFactory entityFactory)
+        private readonly IEventManager _eventManager;
+        
+        public InPacketHandler(ILogger logger, IEntityFactory entityFactory, IEventManager eventManager)
         {
             _logger = logger;
             _entityFactory = entityFactory;
+            _eventManager = eventManager;
         }
 
         protected override void Handle(Client client, InPacket packet)
@@ -83,7 +87,12 @@ namespace Moonlight.Game.Handlers.Maps
             }
 
             map.AddEntity(entity);
-            _logger.Info($"{entity.EntityType} with id {entity.Id} joined map");
+            
+            _eventManager.Emit(new EntityJoinEvent
+            {
+                Map = map,
+                Entity = entity
+            });
         }
     }
 }

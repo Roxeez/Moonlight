@@ -1,5 +1,8 @@
 ﻿using Moonlight.Clients;
 using Moonlight.Core.Logging;
+using Moonlight.Event;
+using Moonlight.Event.Maps;
+using Moonlight.Game.Entities;
 using Moonlight.Game.Maps;
 using Moonlight.Packet.Map;
 
@@ -8,8 +11,13 @@ namespace Moonlight.Game.Handlers.Maps
     internal class OutPacketHandler : PacketHandler<OutPacket>
     {
         private readonly ILogger _logger;
+        private readonly IEventManager _eventManager;
 
-        public OutPacketHandler(ILogger logger) => _logger = logger;
+        public OutPacketHandler(ILogger logger, IEventManager eventManager)
+        {
+            _logger = logger;
+            _eventManager = eventManager;
+        }
 
         protected override void Handle(Client client, OutPacket packet)
         {
@@ -21,8 +29,19 @@ namespace Moonlight.Game.Handlers.Maps
                 return;
             }
 
+            Entity entity = map.GetEntity(packet.EntityType, packet.EntityId);
+            if (entity == null)
+            {
+                return;
+            }
+
             map.RemoveEntity(packet.EntityType, packet.EntityId);
-            _logger.Info($"Entity {packet.EntityType} with id {packet.EntityId} removed from map {map.Id}");
+            
+            _eventManager.Emit(new EntityLeaveEvent
+            {
+                Map = map,
+                Entity = entity,
+            });
         }
     }
 }

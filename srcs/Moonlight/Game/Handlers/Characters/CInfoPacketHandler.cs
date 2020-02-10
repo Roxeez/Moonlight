@@ -8,12 +8,10 @@ namespace Moonlight.Game.Handlers.Characters
 {
     internal class CInfoPacketHandler : PacketHandler<CInfoPacket>
     {
-        private readonly ILogger _logger;
         private readonly IMapFactory _mapFactory;
 
-        public CInfoPacketHandler(ILogger logger, IMapFactory mapFactory)
+        public CInfoPacketHandler(IMapFactory mapFactory)
         {
-            _logger = logger;
             _mapFactory = mapFactory;
         }
 
@@ -27,8 +25,6 @@ namespace Moonlight.Game.Handlers.Characters
                     Gender = packet.Gender
                 };
             }
-
-            _logger.Info("Character initialized");
         }
     }
 }

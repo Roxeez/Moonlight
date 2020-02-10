@@ -91,7 +91,7 @@ namespace Moonlight.Game.Entities
         public SafeObservableCollection<Skill> Skills { get; }
 
         internal DateTime LastMovement { get; set; }
-
+        
         public override byte HpPercentage => (byte)(Hp == 0 ? 0 : (double)Hp / MaxHp * 100);
         public override byte MpPercentage => (byte)(Mp == 0 ? 0 : (double)Mp / MaxMp * 100);
 
@@ -140,6 +140,10 @@ namespace Moonlight.Game.Entities
             await Walk(new Position((short)x, (short)y)).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Attack entity with basic attack
+        /// </summary>
+        /// <param name="entity">Entity to attack</param>
         public async Task Attack(LivingEntity entity)
         {
             if (entity.Equals(this))

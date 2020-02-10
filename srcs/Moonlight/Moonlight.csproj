@@ -86,6 +86,16 @@
     <Compile Include="Database\MoonlightContext.cs" />
     <Compile Include="Database\SqliteConfiguration.cs" />
     <Compile Include="Database\SqliteContextFactory.cs" />
+    <Compile Include="Event\Entities\EntityDamageEvent.cs" />
+    <Compile Include="Event\Entities\EntityDeathEvent.cs" />
+    <Compile Include="Event\Entities\EntityMoveEvent.cs" />
+    <Compile Include="Event\EventManager.cs" />
+    <Compile Include="Event\IEventManager.cs" />
+    <Compile Include="Event\IEventListener.cs" />
+    <Compile Include="Event\IEventNotification.cs" />
+    <Compile Include="Event\Maps\EntityJoinEvent.cs" />
+    <Compile Include="Event\Maps\EntityLeaveEvent.cs" />
+    <Compile Include="Event\Maps\MapChangeEvent.cs" />
     <Compile Include="Game\Battle\Skill.cs" />
     <Compile Include="Game\Entities\Character.cs" />
     <Compile Include="Game\Entities\Drop.cs" />
