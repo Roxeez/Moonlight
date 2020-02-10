@@ -5,6 +5,6 @@ namespace Moonlight.Game.Factory
 {
     public interface IItemInstanceFactory
     {
-        ItemInstance CreateItemInstance(int vnum, BagType bagType, int rareOrAmount, int upgrade);
+        ItemInstance CreateItemInstance(int vnum, int amount);
     }
 }

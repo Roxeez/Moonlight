@@ -35,7 +35,7 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
                 return;
             }
 
-            ItemInstance item = _itemInstanceFactory.CreateItemInstance(packet.SubPacket.VNum, packet.BagType, packet.SubPacket.RareAmount, packet.SubPacket.UpgradeDesign);
+            ItemInstance item = _itemInstanceFactory.CreateItemInstance(packet.SubPacket.VNum, packet.SubPacket.RareAmount);
             if (item == null)
             {
                 return;

@@ -29,7 +29,7 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
             
             foreach (IvnSubPacket sub in packet.SubPackets)
             {
-                ItemInstance item = _itemInstanceFactory.CreateItemInstance(sub.VNum, packet.BagType, sub.RareAmount, sub.UpgradeDesign);
+                ItemInstance item = _itemInstanceFactory.CreateItemInstance(sub.VNum, sub.RareAmount);
                 if (item == null)
                 {
                     _logger.Error($"Can't create item instance for {sub.VNum}");

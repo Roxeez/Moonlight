@@ -137,7 +137,6 @@
     <Compile Include="Game\Inventories\Bag.cs" />
     <Compile Include="Game\Inventories\Inventory.cs" />
     <Compile Include="Game\Inventories\ItemInstance.cs" />
-    <Compile Include="Game\Inventories\Items\Equipment.cs" />
     <Compile Include="Game\Inventories\Items\Item.cs" />
     <Compile Include="Game\Maps\Map.cs" />
     <Compile Include="Game\Maps\Miniland.cs" />
