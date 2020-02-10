@@ -12,15 +12,13 @@ namespace Moonlight.Core
     public class SafeObservableCollection<T> : IEnumerable<T>, INotifyPropertyChanged, INotifyCollectionChanged
     {
         private readonly Collection<T> _collection;
-
+        
         public SafeObservableCollection() => _collection = new Collection<T>();
-
-        public IEnumerator<T> GetEnumerator() => _collection.GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        
         public event NotifyCollectionChangedEventHandler CollectionChanged;
-
         public event PropertyChangedEventHandler PropertyChanged;
+        
+        public int Count => _collection.Count;
 
         internal void Add(T item)
         {
@@ -80,5 +78,9 @@ namespace Moonlight.Core
 
             dispatcher.Invoke(action);
         }
+        
+        public IEnumerator<T> GetEnumerator() => _collection.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

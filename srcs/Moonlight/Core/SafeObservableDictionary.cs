@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using Moonlight.Core.Extensions;
@@ -15,6 +16,9 @@ namespace Moonlight.Core
     {
         public SafeObservableDictionary() => Internal = new Dictionary<K, V>();
 
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+        
         internal IEnumerable<V> Values => Internal.Values;
         internal Dictionary<K, V> Internal { get; }
 
@@ -24,11 +28,7 @@ namespace Moonlight.Core
             set => Add(key, value);
         }
 
-        public IEnumerator<V> GetEnumerator() => Internal.Values.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public int Count => Internal.Count;
 
         internal void Add(K key, V value)
         {
@@ -78,5 +78,8 @@ namespace Moonlight.Core
 
             dispatcher.Invoke(action);
         }
+        
+        public IEnumerator<V> GetEnumerator() => Internal.Values.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
