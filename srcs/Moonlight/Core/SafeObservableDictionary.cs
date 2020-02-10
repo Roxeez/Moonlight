@@ -17,25 +17,23 @@ namespace Moonlight.Core
     [SuppressPropertyChangedWarnings]
     public class SafeObservableDictionary<K, V> : INotifyPropertyChanged, INotifyCollectionChanged, IEnumerable<V>
     {
-        private readonly Dictionary<K, V> _internalDictionary;
+        internal IEnumerable<V> Values => Internal.Values;
+        internal Dictionary<K, V> Internal { get; }
 
-        internal IEnumerable<V> Values => _internalDictionary.Values;
-        internal Dictionary<K, V> Internal => _internalDictionary;
-        
         public SafeObservableDictionary()
         {
-            _internalDictionary = new Dictionary<K, V>();
+            Internal = new Dictionary<K, V>();
         }
         
         internal V this[K key]
         {
-            get => _internalDictionary.GetValueOrDefault(key);
+            get => Internal.GetValueOrDefault(key);
             set => Add(key, value);
         }
         
         internal void Add(K key, V value)
         {
-            _internalDictionary[key] = value;
+            Internal[key] = value;
             
             Dispatch(() =>
             {
@@ -46,7 +44,7 @@ namespace Moonlight.Core
 
         internal void Clear()
         {
-            _internalDictionary.Clear();
+            Internal.Clear();
             
             Dispatch(() =>
             {
@@ -57,8 +55,8 @@ namespace Moonlight.Core
 
         internal void Remove(K key)
         {
-            V item = _internalDictionary.GetValueOrDefault(key);
-            bool removed = _internalDictionary.Remove(key);
+            V item = Internal.GetValueOrDefault(key);
+            bool removed = Internal.Remove(key);
             if (!removed)
             {
                 return;
@@ -85,7 +83,7 @@ namespace Moonlight.Core
         public event PropertyChangedEventHandler PropertyChanged;
         public event NotifyCollectionChangedEventHandler CollectionChanged;
         
-        public IEnumerator<V> GetEnumerator() => _internalDictionary.Values.GetEnumerator();
+        public IEnumerator<V> GetEnumerator() => Internal.Values.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

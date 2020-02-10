@@ -52,6 +52,22 @@ namespace Moonlight.Toolkit.Parsing
                 int type = indexLine.GetValue<int>(2);
                 int subType = indexLine.GetValue<int>(3);
 
+                switch (inventoryType)
+                {
+                    case 4:
+                        inventoryType = 0;
+                        break;
+                    case 8:
+                        inventoryType = 0;
+                        break;
+                    case 9:
+                        inventoryType = 1;
+                        break;
+                    case 10:
+                        inventoryType = 2;
+                        break;
+                }
+                
                 items.Add(new ItemDto
                 {
                     Id = vnum,
