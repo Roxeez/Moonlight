@@ -1,6 +1,5 @@
 ﻿using Moonlight.Clients;
 using Moonlight.Core;
-using Moonlight.Core.Logging;
 using Moonlight.Game.Entities;
 using Moonlight.Game.Maps;
 using Moq;

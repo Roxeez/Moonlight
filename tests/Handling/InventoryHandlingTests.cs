@@ -54,13 +54,13 @@ namespace Moonlight.Tests.Handling
         [Fact]
         public void Ivn_Packet_Change_Inventory()
         {
-            Client.Character.Inventory.Equipment.AddItem(35, new ItemInstance(new Item( "dummy", new ItemDto()
+            Client.Character.Inventory.Equipment.AddItem(35, new ItemInstance(new Item("dummy", new ItemDto
             {
                 Id = 1000
             }), 1));
 
             Check.That(Client.Character.Inventory.Equipment).HasElementThatMatches(x => x.Item.Vnum == 1000);
-            
+
             Client.ReceivePacket("ivn 0 5.-1.0.0.0.0");
             Client.ReceivePacket("ivn 0 35.148.4.0.0.0");
 

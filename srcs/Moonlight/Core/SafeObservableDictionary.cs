@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using Moonlight.Core.Extensions;
-using Moonlight.Game.Inventories;
 using PropertyChanged;
 
 namespace Moonlight.Core
@@ -17,24 +13,27 @@ namespace Moonlight.Core
     [SuppressPropertyChangedWarnings]
     public class SafeObservableDictionary<K, V> : INotifyPropertyChanged, INotifyCollectionChanged, IEnumerable<V>
     {
+        public SafeObservableDictionary() => Internal = new Dictionary<K, V>();
+
         internal IEnumerable<V> Values => Internal.Values;
         internal Dictionary<K, V> Internal { get; }
 
-        public SafeObservableDictionary()
-        {
-            Internal = new Dictionary<K, V>();
-        }
-        
         internal V this[K key]
         {
             get => Internal.GetValueOrDefault(key);
             set => Add(key, value);
         }
-        
+
+        public IEnumerator<V> GetEnumerator() => Internal.Values.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         internal void Add(K key, V value)
         {
             Internal[key] = value;
-            
+
             Dispatch(() =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
@@ -45,7 +44,7 @@ namespace Moonlight.Core
         internal void Clear()
         {
             Internal.Clear();
-            
+
             Dispatch(() =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
@@ -61,14 +60,14 @@ namespace Moonlight.Core
             {
                 return;
             }
-            
+
             Dispatch(() =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
             });
         }
-        
+
         private void Dispatch(Action action)
         {
             Dispatcher dispatcher = Application.Current?.Dispatcher;
@@ -79,11 +78,5 @@ namespace Moonlight.Core
 
             dispatcher.Invoke(action);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-        
-        public IEnumerator<V> GetEnumerator() => Internal.Values.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

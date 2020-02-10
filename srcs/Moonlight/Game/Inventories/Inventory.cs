@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using Moonlight.Core.Enums;
 using Moonlight.Game.Entities;
 
@@ -8,18 +7,11 @@ namespace Moonlight.Game.Inventories
     public class Inventory
     {
         private readonly Character _character;
-        
-        public Bag Equipment { get; }
-        public Bag Main { get; }
-        public Bag Etc { get; }
-        public Bag Miniland { get; }
-        public Bag Specialist { get; }
-        public Bag Costume { get; }
 
         public Inventory(Character character)
         {
             _character = character;
-            
+
             Equipment = new Bag();
             Main = new Bag();
             Etc = new Bag();
@@ -28,8 +20,15 @@ namespace Moonlight.Game.Inventories
             Costume = new Bag();
         }
 
+        public Bag Equipment { get; }
+        public Bag Main { get; }
+        public Bag Etc { get; }
+        public Bag Miniland { get; }
+        public Bag Specialist { get; }
+        public Bag Costume { get; }
+
         /// <summary>
-        /// Move item to another slot in inventory
+        ///     Move item to another slot in inventory
         /// </summary>
         /// <param name="item">Item to move</param>
         /// <param name="destinationSlot"> Destination slot</param>
@@ -39,7 +38,7 @@ namespace Moonlight.Game.Inventories
         }
 
         /// <summary>
-        /// Move amount of item to another slot in inventory
+        ///     Move amount of item to another slot in inventory
         /// </summary>
         /// <param name="item">Item to move</param>
         /// <param name="destinationSlot">Destination slot</param>
@@ -52,7 +51,7 @@ namespace Moonlight.Game.Inventories
             {
                 return;
             }
-            
+
             if (destinationSlot == slot)
             {
                 return;
@@ -62,13 +61,13 @@ namespace Moonlight.Game.Inventories
             {
                 return;
             }
-            
+
             _character.Client.SendPacket($"mvi {item.Item.BagType} {slot} {amount} {destinationSlot}");
         }
-        
+
         /// <summary>
-        /// Use an item in your inventory
-        /// Item won't be used if not in your inventory
+        ///     Use an item in your inventory
+        ///     Item won't be used if not in your inventory
         /// </summary>
         /// <param name="item">Item to use</param>
         public void Use(ItemInstance item)
@@ -79,21 +78,21 @@ namespace Moonlight.Game.Inventories
             {
                 return;
             }
-            
+
             _character.Client.SendPacket($"u_i {(int)_character.EntityType} {_character.Id} {(int)item.Item.BagType} {slot} 0 0 ");
         }
 
         /// <summary>
-        /// Drop item from your inventory to ground
+        ///     Drop item from your inventory to ground
         /// </summary>
         /// <param name="itemInstance">Item to drop</param>
         public void Drop(ItemInstance itemInstance)
         {
             Drop(itemInstance, itemInstance.Amount);
         }
-        
+
         /// <summary>
-        /// Drop item from your inventory to ground
+        ///     Drop item from your inventory to ground
         /// </summary>
         /// <param name="item">Item to drop</param>
         /// <param name="amount">Amount of item to drop</param>
@@ -115,7 +114,7 @@ namespace Moonlight.Game.Inventories
             {
                 return;
             }
-            
+
             _character.Client.SendPacket($"put {(int)item.Item.BagType} {slot} {amount}");
         }
 
@@ -140,9 +139,6 @@ namespace Moonlight.Game.Inventories
             }
         }
 
-        internal int GetItemSlot(ItemInstance item)
-        {
-            return GetBag(item.Item.BagType).GetSlot(item);
-        }
+        internal int GetItemSlot(ItemInstance item) => GetBag(item.Item.BagType).GetSlot(item);
     }
 }

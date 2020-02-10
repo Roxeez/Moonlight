@@ -1,8 +1,5 @@
-﻿using Moonlight.Core.Enums;
-using Moonlight.Database.Entities;
-using Moonlight.Game.Inventories;
+﻿using Moonlight.Game.Inventories;
 using Moonlight.Game.Inventories.Items;
-using Item = Moonlight.Game.Inventories.Items.Item;
 
 namespace Moonlight.Game.Factory.Impl
 {

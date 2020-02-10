@@ -46,7 +46,7 @@ namespace Moonlight.Tests.Factory
         private readonly IMapFactory _mapFactory;
         private readonly IMinilandObjectFactory _minilandObjectFactory;
         private readonly ILanguageService _languageService;
-        
+
         [Fact]
         public void Entity_Factory_Create_Correct_Entity()
         {
@@ -67,6 +67,14 @@ namespace Moonlight.Tests.Factory
         }
 
         [Fact]
+        public void Language_Service_Return_Correct_Value()
+        {
+            string value = _languageService.GetTranslation(RootKey.SKILL, "zts174e");
+
+            Check.That(value).Is("Rain of Arrows");
+        }
+
+        [Fact]
         public void Map_Factory_Create_Correct_Map()
         {
             Game.Maps.Map map = _mapFactory.CreateMap(1);
@@ -83,14 +91,6 @@ namespace Moonlight.Tests.Factory
             Check.That(minilandObject.Item.Vnum).IsEqualTo(3125);
             Check.That(minilandObject.Slot).IsEqualTo(1);
             Check.That(minilandObject.Position).IsEqualTo(new Position(5, 5));
-        }
-
-        [Fact]
-        public void Language_Service_Return_Correct_Value()
-        {
-            string value = _languageService.GetTranslation(RootKey.SKILL, "zts174e");
-            
-            Check.That(value).Is("Rain of Arrows");
         }
     }
 }

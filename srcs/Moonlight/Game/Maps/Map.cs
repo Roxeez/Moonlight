@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Moonlight.Core;
 using Moonlight.Core.Enums;
-using Moonlight.Core.Extensions;
 using Moonlight.Game.Entities;
 using Moonlight.Game.Utility;
 
@@ -13,8 +9,6 @@ namespace Moonlight.Game.Maps
 {
     public class Map
     {
-        private byte this[int x, int y] => Grid.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
-        
         internal Map(int id, string name, byte[] grid)
         {
             Id = id;
@@ -22,7 +16,7 @@ namespace Moonlight.Game.Maps
             Grid = grid;
             Width = BitConverter.ToInt16(Grid.Take(2).ToArray(), 0);
             Height = BitConverter.ToInt16(Grid.Skip(2).Take(2).ToArray(), 0);
-            
+
             Monsters = new SafeObservableDictionary<long, Monster>();
             Npcs = new SafeObservableDictionary<long, Npc>();
             Drops = new SafeObservableDictionary<long, Drop>();
@@ -30,12 +24,14 @@ namespace Moonlight.Game.Maps
             Portals = new SafeObservableDictionary<long, Portal>();
         }
 
+        private byte this[int x, int y] => Grid.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
+
         public int Id { get; }
         public string Name { get; }
         public byte[] Grid { get; }
         public short Width { get; }
         public short Height { get; }
-        
+
         public SafeObservableDictionary<long, Monster> Monsters { get; }
         public SafeObservableDictionary<long, Npc> Npcs { get; }
         public SafeObservableDictionary<long, Player> Players { get; }
@@ -76,10 +72,7 @@ namespace Moonlight.Game.Maps
             return GetEntity<T>(entityType, entityId);
         }
 
-        public Portal GetPortal(int id)
-        {
-            return Portals[id];
-        }
+        public Portal GetPortal(int id) => Portals[id];
 
         internal void AddPortal(Portal portal)
         {
@@ -134,7 +127,7 @@ namespace Moonlight.Game.Maps
                     throw new InvalidOperationException();
             }
         }
-        
+
         public bool IsWalkable(Position position)
         {
             if (position.X > Width || position.X < 0 || position.Y > Height || position.Y < 0)

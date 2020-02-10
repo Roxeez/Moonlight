@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using Moonlight.Game.Entities;
 using PropertyChanged;
 
@@ -14,7 +13,7 @@ namespace Moonlight.Clients
         {
             // Do nothing
         }
-        
+
         public event Func<string, bool> PacketSend;
         public event Func<string, bool> PacketReceived;
 

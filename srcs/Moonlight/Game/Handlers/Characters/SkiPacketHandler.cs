@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using Moonlight.Clients;
 using Moonlight.Core.Enums;
 using Moonlight.Game.Battle;
@@ -13,15 +11,12 @@ namespace Moonlight.Game.Handlers.Characters
     {
         private readonly ISkillFactory _skillFactory;
 
-        public SkiPacketHandler(ISkillFactory skillFactory)
-        {
-            _skillFactory = skillFactory;
-        }
-        
+        public SkiPacketHandler(ISkillFactory skillFactory) => _skillFactory = skillFactory;
+
         protected override void Handle(Client client, SkiPacket packet)
         {
             client.Character.Skills.Clear();
-            
+
             var skills = new List<Skill>();
             foreach (int skillVnum in packet.Skills)
             {
@@ -30,6 +25,7 @@ namespace Moonlight.Game.Handlers.Characters
                 {
                     skills.Add(skill);
                 }
+
                 // TODO : Maybe we can add passive etc...
             }
 

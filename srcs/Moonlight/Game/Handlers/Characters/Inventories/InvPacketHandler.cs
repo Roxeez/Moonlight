@@ -8,8 +8,8 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
 {
     internal class InvPacketHandler : PacketHandler<InvPacket>
     {
-        private readonly ILogger _logger;
         private readonly IItemInstanceFactory _itemInstanceFactory;
+        private readonly ILogger _logger;
 
         public InvPacketHandler(ILogger logger, IItemInstanceFactory itemInstanceFactory)
         {
@@ -26,7 +26,7 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
                 _logger.Error($"Can't found bad {packet.BagType}");
                 return;
             }
-            
+
             foreach (IvnSubPacket sub in packet.SubPackets)
             {
                 ItemInstance item = _itemInstanceFactory.CreateItemInstance(sub.VNum, sub.RareAmount);
@@ -38,7 +38,7 @@ namespace Moonlight.Game.Handlers.Characters.Inventories
 
                 bag.AddItem(sub.Slot, item);
             }
-            
+
             _logger.Info($"{packet.BagType} bag initialized.");
         }
     }

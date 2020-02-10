@@ -20,7 +20,7 @@ namespace Moonlight.Game.Handlers.Battle
 
             LivingEntity caster = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
             LivingEntity target = map.GetEntity<LivingEntity>(packet.TargetEntityType, packet.TargetEntityId);
-            
+
             if (target == null || caster == null)
             {
                 return;
@@ -43,7 +43,7 @@ namespace Moonlight.Game.Handlers.Battle
             {
                 return;
             }
-            
+
             map.RemoveEntity(target);
         }
     }

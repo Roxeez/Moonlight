@@ -81,7 +81,7 @@ namespace Moonlight.Toolkit.Parsing
             }
 
             _mapRepository.Clear();
-            
+
             Logger.Info("Saving maps to database");
             IEnumerable<MapDto> result = _mapRepository.InsertAll(maps);
             Logger.Info($"{result.Count()} maps successfully parsed");

@@ -6,7 +6,7 @@ namespace Moonlight.Game.Inventories.Items
     public class Item
     {
         private readonly ItemDto _itemDto;
-        
+
         internal Item(string name, ItemDto itemDto)
         {
             Name = name;

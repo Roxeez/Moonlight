@@ -17,7 +17,7 @@ namespace Moonlight.Tests.Handling
 
 
             Character.Skills.Add(skill);
-            
+
             Client.ReceivePacket("sr 5");
 
             Check.That(skill.IsOnCooldown).IsFalse();

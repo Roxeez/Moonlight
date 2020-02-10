@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Linq;
 using Moonlight.Core;
-using Moonlight.Core.Extensions;
-using Moonlight.Database.Entities;
-using Item = Moonlight.Game.Inventories.Items.Item;
 
 namespace Moonlight.Game.Inventories
 {
@@ -21,7 +16,7 @@ namespace Moonlight.Game.Inventories
         {
             return Internal.FirstOrDefault(x => x.Value.Equals(instance)).Key;
         }
-        
+
         internal void AddItem(int slot, ItemInstance item)
         {
             this[slot] = item;

@@ -5,7 +5,7 @@ namespace Moonlight.Core
     public struct Position : IEquatable<Position>
     {
         private static readonly double Sqrt = Math.Sqrt(2);
-        
+
         public short X { get; }
         public short Y { get; }
 
@@ -14,7 +14,7 @@ namespace Moonlight.Core
             X = x;
             Y = y;
         }
-        
+
         /// <summary>
         ///     Get distance between this position and destination
         /// </summary>
@@ -34,7 +34,7 @@ namespace Moonlight.Core
         public int GetDistanceX(Position destination) => Math.Abs(X - destination.X);
 
         public int GetDistanceY(Position destination) => Math.Abs(Y - destination.Y);
-        
+
         /// <summary>
         ///     Check if the position is in area range
         /// </summary>

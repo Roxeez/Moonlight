@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Moonlight.Clients;
 using Moonlight.Core;
 using Moonlight.Core.Enums;
 using Moonlight.Core.Import;
-using Moonlight.Core.Logging;
 using Moonlight.Game.Battle;
 using Moonlight.Game.Inventories;
 using Moonlight.Game.Maps;
@@ -62,14 +58,14 @@ namespace Moonlight.Game.Entities
         ///     Character own miniland
         /// </summary>
         public Miniland Miniland { get; }
-        
+
         /// <summary>
-        /// Represent character global inventory (gold, bags etc...)
+        ///     Represent character global inventory (gold, bags etc...)
         /// </summary>
         public Inventory Inventory { get; }
-        
+
         /// <summary>
-        /// Current character gold
+        ///     Current character gold
         /// </summary>
         public int Gold { get; set; }
 
@@ -77,6 +73,7 @@ namespace Moonlight.Game.Entities
         ///     Current sp points
         /// </summary>
         public int SpPoints { get; internal set; }
+
         /// <summary>
         ///     Current sp points
         /// </summary>
@@ -86,19 +83,19 @@ namespace Moonlight.Game.Entities
         ///     Current character production points
         /// </summary>
         public short ProductionPoints { get; internal set; }
-        
+
         /// <summary>
-        /// Current character skills
+        ///     Current character skills
         /// </summary>
         public SafeObservableCollection<Skill> Skills { get; }
-        
+
         internal DateTime LastMovement { get; set; }
 
         public override byte HpPercentage => (byte)(Hp == 0 ? 0 : (double)Hp / MaxHp * 100);
         public override byte MpPercentage => (byte)(Mp == 0 ? 0 : (double)Mp / MaxMp * 100);
 
         /// <summary>
-        /// Walk to the specified position
+        ///     Walk to the specified position
         /// </summary>
         /// <param name="position">Position where you want to walk</param>
         public async Task Walk(Position position)
@@ -110,7 +107,7 @@ namespace Moonlight.Game.Entities
 
             Moon.Walk(position.X, position.Y);
             LastMovement = DateTime.Now;
-            
+
             while (LastMovement.AddSeconds(1) < DateTime.Now)
             {
                 await Task.Delay(100).ConfigureAwait(false);
@@ -118,7 +115,7 @@ namespace Moonlight.Game.Entities
         }
 
         /// <summary>
-        /// Walk to until in range of the specific position
+        ///     Walk to until in range of the specific position
         /// </summary>
         /// <param name="position">Position where you want to walk</param>
         /// <param name="range">Range wanted</param>
@@ -128,26 +125,26 @@ namespace Moonlight.Game.Entities
             {
                 return;
             }
-            
+
             int distance = Position.GetDistance(position);
             if (distance <= range)
             {
                 return;
             }
-            
+
             double distRatio = (distance - range) / (double)distance;
             double x = Position.X + distRatio * (position.X - Position.X);
             double y = Position.Y + distRatio * (position.Y - Position.Y);
-            
+
             await Walk(new Position((short)x, (short)y)).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Use a skill on yourself
-        /// Skill wont be used if
-        /// - Skill is not in your skills
-        /// - Skill is on cooldown
-        /// - If this skill can't target you
+        ///     Use a skill on yourself
+        ///     Skill wont be used if
+        ///     - Skill is not in your skills
+        ///     - Skill is on cooldown
+        ///     - If this skill can't target you
         /// </summary>
         /// <param name="skill">Skill to use</param>
         public async Task UseSkill(Skill skill)
@@ -161,7 +158,7 @@ namespace Moonlight.Game.Entities
             {
                 return;
             }
-            
+
             if (skill.TargetType == TargetType.TARGET || skill.TargetType == TargetType.NO_TARGET)
             {
                 return;
@@ -172,11 +169,11 @@ namespace Moonlight.Game.Entities
         }
 
         /// <summary>
-        /// Use a skill on target (walk to target if not in range)
-        /// Skill wont be used if
-        /// - Skill is not in your skills
-        /// - Skill is on cooldown
-        /// - If this skill has no target
+        ///     Use a skill on target (walk to target if not in range)
+        ///     Skill wont be used if
+        ///     - Skill is not in your skills
+        ///     - Skill is on cooldown
+        ///     - If this skill has no target
         /// </summary>
         /// <param name="skill">Skill to use</param>
         /// <param name="target">Target to hit with skill</param>
@@ -186,7 +183,7 @@ namespace Moonlight.Game.Entities
             {
                 return;
             }
-            
+
             if (skill.IsOnCooldown)
             {
                 return;
@@ -209,11 +206,11 @@ namespace Moonlight.Game.Entities
         }
 
         /// <summary>
-        /// Use a skill at position (walk to position range if not in range)
-        /// Skill wont be used if
-        /// - Skill is not in your skills
-        /// - Skill is on cooldown
-        /// - Skill need a target
+        ///     Use a skill at position (walk to position range if not in range)
+        ///     Skill wont be used if
+        ///     - Skill is not in your skills
+        ///     - Skill is on cooldown
+        ///     - Skill need a target
         /// </summary>
         /// <param name="skill">Skill to use</param>
         /// <param name="position">Position where you want to use the skill</param>
@@ -223,24 +220,24 @@ namespace Moonlight.Game.Entities
             {
                 return;
             }
-            
+
             if (skill.IsOnCooldown)
             {
                 return;
             }
-            
+
             if (skill.TargetType != TargetType.NO_TARGET)
             {
                 return;
             }
-        
+
             await WalkInRange(position, skill.Range).ConfigureAwait(false);
             Client.SendPacket($"u_as {skill.CastId} {position.X} {position.Y}");
             await Task.Delay(skill.CastTime * 100).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Pickup a drop (walk to drop if not in range)
+        ///     Pickup a drop (walk to drop if not in range)
         /// </summary>
         /// <param name="drop">Drop to pickup</param>
         public async Task PickUp(Drop drop)

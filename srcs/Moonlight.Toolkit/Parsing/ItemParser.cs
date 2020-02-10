@@ -45,7 +45,7 @@ namespace Moonlight.Toolkit.Parsing
                 FileLine firstLine = region.GetLine(x => x.StartWith("VNUM"));
                 FileLine secondLine = region.GetLine(x => x.StartWith("NAME"));
                 FileLine indexLine = region.GetLine(x => x.StartWith("INDEX"));
-                
+
                 int vnum = firstLine.GetValue<int>(1);
                 string name = secondLine.GetValue(1);
                 int inventoryType = indexLine.GetValue<int>(1);
@@ -67,7 +67,7 @@ namespace Moonlight.Toolkit.Parsing
                         inventoryType = 2;
                         break;
                 }
-                
+
                 items.Add(new ItemDto
                 {
                     Id = vnum,
@@ -79,7 +79,7 @@ namespace Moonlight.Toolkit.Parsing
             }
 
             _itemRepository.Clear();
-            
+
             Logger.Info("Saving items to database");
             IEnumerable<ItemDto> result = _itemRepository.InsertAll(items);
             Logger.Info($"{result.Count()} items successfully parsed");

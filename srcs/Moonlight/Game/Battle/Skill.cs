@@ -8,6 +8,12 @@ namespace Moonlight.Game.Battle
     {
         private readonly SkillDto _skillDto;
 
+        internal Skill(string name, SkillDto skillDto)
+        {
+            _skillDto = skillDto;
+            Name = name;
+        }
+
         public int Id => _skillDto.Id;
         public string Name { get; }
         public short Range => _skillDto.Range;
@@ -20,12 +26,6 @@ namespace Moonlight.Game.Battle
         public TargetType TargetType => _skillDto.TargetType;
         public HitType HitType => _skillDto.HitType;
         public bool IsOnCooldown { get; internal set; }
-
-        internal Skill(string name, SkillDto skillDto)
-        {
-            _skillDto = skillDto;
-            Name = name;
-        }
 
         public bool Equals(Skill other) => other != null && other.Id == Id;
     }
