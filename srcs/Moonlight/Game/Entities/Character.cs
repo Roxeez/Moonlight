@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Moonlight.Clients;
 using Moonlight.Core;
@@ -139,6 +140,22 @@ namespace Moonlight.Game.Entities
             await Walk(new Position((short)x, (short)y)).ConfigureAwait(false);
         }
 
+        public async Task Attack(LivingEntity entity)
+        {
+            if (entity.Equals(this))
+            {
+                return;
+            }
+            
+            Skill skill = Skills.FirstOrDefault();
+            if (skill == null)
+            {
+                return;
+            }
+
+            await UseSkillOn(skill, entity);
+        }
+
         /// <summary>
         ///     Use a skill on yourself
         ///     Skill wont be used if
@@ -195,6 +212,11 @@ namespace Moonlight.Game.Entities
                 return;
             }
 
+            if (target.Equals(this))
+            {
+                return;
+            }
+            
             if (skill.TargetType == TargetType.NO_TARGET)
             {
                 return;
