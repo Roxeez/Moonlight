@@ -16,7 +16,7 @@ namespace Moonlight.Game.Factory.Impl
         {
             Item item = _itemFactory.CreateItem(vnum);
 
-            return new ItemInstance(item, amount);
+            return new ItemInstance(item, amount == 0 ? 1 : amount);
         }
     }
 }
