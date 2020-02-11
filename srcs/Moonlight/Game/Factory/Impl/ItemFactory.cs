@@ -27,7 +27,7 @@ namespace Moonlight.Game.Factory.Impl
             }
 
             string name = _languageService.GetTranslation(RootKey.ITEM, itemDto.NameKey);
-            return new Item(vnum, name);
+            return new Item(name, itemDto);
         }
     }
 }

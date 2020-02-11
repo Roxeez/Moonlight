@@ -1,8 +1,5 @@
-﻿using Moonlight.Core.Enums;
-using Moonlight.Database.Entities;
-using Moonlight.Game.Inventories;
+﻿using Moonlight.Game.Inventories;
 using Moonlight.Game.Inventories.Items;
-using Item = Moonlight.Game.Inventories.Items.Item;
 
 namespace Moonlight.Game.Factory.Impl
 {
@@ -12,17 +9,11 @@ namespace Moonlight.Game.Factory.Impl
 
         public ItemInstanceFactory(IItemFactory itemFactory) => _itemFactory = itemFactory;
 
-        public ItemInstance CreateItemInstance(int vnum, BagType bagType, int slot, int rareOrAmount, int upgrade)
+        public ItemInstance CreateItemInstance(int vnum, int amount)
         {
             Item item = _itemFactory.CreateItem(vnum);
 
-            switch (bagType)
-            {
-                case BagType.EQUIPMENT:
-                    return new Equipment(item, slot, (RarityType)rareOrAmount, upgrade);
-                default:
-                    return new ItemInstance(item, bagType, slot, rareOrAmount);
-            }
+            return new ItemInstance(item, amount == 0 ? 1 : amount);
         }
     }
 }

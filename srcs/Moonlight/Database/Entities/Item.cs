@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Moonlight.Core.Enums;
 using Moonlight.Database.DAL;
 
 namespace Moonlight.Database.Entities
@@ -9,6 +10,15 @@ namespace Moonlight.Database.Entities
     {
         [Required]
         public string NameKey { get; set; }
+
+        [Required]
+        public int Type { get; set; }
+
+        [Required]
+        public int SubType { get; set; }
+
+        [Required]
+        public BagType BagType { get; set; }
 
         [Key]
         [Required]

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Moonlight.Core.Extensions;
+using Moonlight.Extensions;
 using Moonlight.Core.Logging;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
@@ -81,7 +81,7 @@ namespace Moonlight.Toolkit.Parsing
             }
 
             _mapRepository.Clear();
-            
+
             Logger.Info("Saving maps to database");
             IEnumerable<MapDto> result = _mapRepository.InsertAll(maps);
             Logger.Info($"{result.Count()} maps successfully parsed");

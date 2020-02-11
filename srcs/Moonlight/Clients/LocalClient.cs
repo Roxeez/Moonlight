@@ -4,11 +4,10 @@ namespace Moonlight.Clients
 {
     public sealed class LocalClient : Client
     {
-        private readonly Moon.PacketCallback _recvCallback;
-
         /// <summary>
         ///     Need to keep a reference to both callback to avoid GC
         /// </summary>
+        private readonly Moon.PacketCallback _recvCallback;
         private readonly Moon.PacketCallback _sendCallback;
 
 

@@ -1,5 +1,4 @@
 ﻿using Moonlight.Core.Enums;
-using Moonlight.Packet.Battle;
 using Moonlight.Packet.Character;
 using Moonlight.Tests.Extensions;
 using NFluent;
@@ -86,6 +85,14 @@ namespace Moonlight.Tests.Deserialization
         }
 
         [Fact]
+        public void Ski_Packet()
+        {
+            SkiPacket packet = Deserialize<SkiPacket>("ski 833 833 833 834 835 836 837 838 839 840 841 21 25 37 45 353 356");
+
+            Check.That(packet.Skills).ContainsExactly(833, 833, 833, 834, 835, 836, 837, 838, 839, 840, 841, 21, 25, 37, 45, 353, 356);
+        }
+
+        [Fact]
         public void Sp_Packet()
         {
             SpPacket packet = Deserialize<SpPacket>("sp 115488 1000000 10000 10000");
@@ -115,14 +122,6 @@ namespace Moonlight.Tests.Deserialization
             Check.That(packet.PositionX).Is<short>(140);
             Check.That(packet.PositionY).Is<short>(87);
             Check.That(packet.Speed).Is<byte>(12);
-        }
-
-        [Fact]
-        public void Ski_Packet()
-        {
-            SkiPacket packet = Deserialize<SkiPacket>("ski 833 833 833 834 835 836 837 838 839 840 841 21 25 37 45 353 356");
-
-            Check.That(packet.Skills).ContainsExactly(833, 833, 833, 834, 835, 836, 837, 838, 839, 840, 841, 21, 25, 37, 45, 353, 356);
         }
     }
 }

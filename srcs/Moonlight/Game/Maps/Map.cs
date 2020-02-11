@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Moonlight.Core;
+using Moonlight.Core.Collection;
 using Moonlight.Core.Enums;
-using Moonlight.Core.Extensions;
 using Moonlight.Game.Entities;
-using Moonlight.Game.Utility;
+using Moonlight.Utility;
 
 namespace Moonlight.Game.Maps
 {
     public class Map
     {
-        private byte this[int x, int y] => Grid.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
-        
         internal Map(int id, string name, byte[] grid)
         {
             Id = id;
@@ -22,38 +17,40 @@ namespace Moonlight.Game.Maps
             Grid = grid;
             Width = BitConverter.ToInt16(Grid.Take(2).ToArray(), 0);
             Height = BitConverter.ToInt16(Grid.Skip(2).Take(2).ToArray(), 0);
-            
-            Monsters = new SafeObservableCollection<Monster>();
-            Npcs = new SafeObservableCollection<Npc>();
-            Drops = new SafeObservableCollection<Drop>();
-            Players = new SafeObservableCollection<Player>();
-            Portals = new SafeObservableCollection<Portal>();
+
+            Monsters = new InternalObservableDictionary<long, Monster>();
+            Npcs = new InternalObservableDictionary<long, Npc>();
+            Drops = new InternalObservableDictionary<long, GroundItem>();
+            Players = new InternalObservableDictionary<long, Player>();
+            Portals = new InternalObservableDictionary<long, Portal>();
         }
+
+        private byte this[int x, int y] => Grid.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
 
         public int Id { get; }
         public string Name { get; }
         public byte[] Grid { get; }
         public short Width { get; }
         public short Height { get; }
-        
-        public SafeObservableCollection<Monster> Monsters { get; }
-        public SafeObservableCollection<Npc> Npcs { get; }
-        public SafeObservableCollection<Player> Players { get; }
-        public SafeObservableCollection<Drop> Drops { get; }
-        public SafeObservableCollection<Portal> Portals { get; }
+
+        public InternalObservableDictionary<long, Monster> Monsters { get; }
+        public InternalObservableDictionary<long, Npc> Npcs { get; }
+        public InternalObservableDictionary<long, Player> Players { get; }
+        public InternalObservableDictionary<long, GroundItem> Drops { get; }
+        public InternalObservableDictionary<long, Portal> Portals { get; }
 
         public Entity GetEntity(EntityType entityType, long entityId)
         {
             switch (entityType)
             {
                 case EntityType.NPC:
-                    return Npcs.FirstOrDefault(x => x.Id == entityId);
+                    return Npcs.GetValueOrDefault(entityId);
                 case EntityType.MONSTER:
-                    return Monsters.FirstOrDefault(x => x.Id == entityId);
+                    return Monsters.GetValueOrDefault(entityId);
                 case EntityType.PLAYER:
-                    return Players.FirstOrDefault(x => x.Id == entityId);
-                case EntityType.DROP:
-                    return Drops.FirstOrDefault(x => x.Id == entityId);
+                    return Players.GetValueOrDefault(entityId);
+                case EntityType.GROUND_ITEM:
+                    return Drops.GetValueOrDefault(entityId);
                 default:
                     throw new InvalidOperationException();
             }
@@ -76,14 +73,11 @@ namespace Moonlight.Game.Maps
             return GetEntity<T>(entityType, entityId);
         }
 
-        public Portal GetPortal(int id)
-        {
-            return Portals.FirstOrDefault(x => x.Id == id);
-        }
+        public Portal GetPortal(int id) => Portals[id];
 
         internal void AddPortal(Portal portal)
         {
-            Portals.Add(portal);
+            Portals[portal.Id] = portal;
         }
 
         internal void AddEntity(Entity entity)
@@ -91,16 +85,16 @@ namespace Moonlight.Game.Maps
             switch (entity.EntityType)
             {
                 case EntityType.NPC:
-                    Npcs.Add((Npc)entity);
+                    Npcs[entity.Id] = (Npc)entity;
                     break;
                 case EntityType.MONSTER:
-                    Monsters.Add((Monster)entity);
+                    Monsters[entity.Id] = (Monster)entity;
                     break;
                 case EntityType.PLAYER:
-                    Players.Add((Player)entity);
+                    Players[entity.Id] = (Player)entity;
                     break;
-                case EntityType.DROP:
-                    Drops.Add((Drop)entity);
+                case EntityType.GROUND_ITEM:
+                    Drops[entity.Id] = (GroundItem)entity;
                     break;
                 default:
                     throw new InvalidOperationException();
@@ -111,36 +105,30 @@ namespace Moonlight.Game.Maps
 
         internal void RemoveEntity(Entity entity)
         {
-            switch (entity.EntityType)
+            RemoveEntity(entity.EntityType, entity.Id);
+        }
+
+        internal void RemoveEntity(EntityType entityType, long entityId)
+        {
+            switch (entityType)
             {
                 case EntityType.NPC:
-                    Npcs.Remove((Npc)entity);
+                    Npcs.Remove(entityId);
                     break;
                 case EntityType.MONSTER:
-                    Monsters.Remove((Monster)entity);
+                    Monsters.Remove(entityId);
                     break;
                 case EntityType.PLAYER:
-                    Players.Remove((Player)entity);
+                    Players.Remove(entityId);
                     break;
-                case EntityType.DROP:
-                    Drops.Remove((Drop)entity);
+                case EntityType.GROUND_ITEM:
+                    Drops.Remove(entityId);
                     break;
                 default:
                     throw new InvalidOperationException();
             }
         }
 
-        internal void RemoveEntity(EntityType entityType, long entityId)
-        {
-            Entity entity = GetEntity(entityType, entityId);
-            if (entity == null)
-            {
-                return;
-            }
-            
-            RemoveEntity(entity);
-        }
-        
         public bool IsWalkable(Position position)
         {
             if (position.X > Width || position.X < 0 || position.Y > Height || position.Y < 0)

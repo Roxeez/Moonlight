@@ -66,7 +66,7 @@ namespace Moonlight.Toolkit.Parsing
             }
 
             _skillRepository.Clear();
-            
+
             Logger.Info("Saving skills to database");
             IEnumerable<SkillDto> result = _skillRepository.InsertAll(skills);
             Logger.Info($"{result.Count()} skills successfully parsed");

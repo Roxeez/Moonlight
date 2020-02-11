@@ -20,7 +20,7 @@ namespace Moonlight.Tests.Deserialization
         public void Su_Packet()
         {
             SuPacket packet = Deserialize<SuPacket>("su 1 12345 3 2080 240 8 11 257 0 0 0 0 723 0 0");
-            
+
             Check.That(packet.EntityType).Is(EntityType.PLAYER);
             Check.That(packet.EntityId).Is(12345);
             Check.That(packet.TargetEntityType).Is(EntityType.MONSTER);

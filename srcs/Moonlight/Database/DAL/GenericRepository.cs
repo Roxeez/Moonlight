@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Moonlight.Core.Extensions;
 
 namespace Moonlight.Database.DAL
 {

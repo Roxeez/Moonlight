@@ -59,7 +59,7 @@ namespace Moonlight.Toolkit.Parsing
             }
 
             _monsterRepository.Clear();
-            
+
             Logger.Info("Saving monsters to database");
             IEnumerable<MonsterDto> result = _monsterRepository.InsertAll(monsters);
             Logger.Info($"{result.Count()} monsters successfully parsed");

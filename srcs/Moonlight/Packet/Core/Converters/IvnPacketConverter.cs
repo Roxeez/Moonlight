@@ -14,7 +14,7 @@ namespace Moonlight.Packet.Core.Converters
             string[] itemData = values[1].Split('.');
 
             var bagType = (BagType)Convert.ToInt32(values[0]);
-            
+
             int slot = Convert.ToInt32(itemData[0]);
             int vnum = Convert.ToInt32(itemData[1]);
 

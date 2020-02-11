@@ -7,6 +7,6 @@ namespace Moonlight.Game.Factory
         Player CreatePlayer(long id, string name);
         Monster CreateMonster(long id, int vnum);
         Npc CreateNpc(long id, int vnum, string name);
-        Drop CreateDrop(long id, int vnum, int amount);
+        GroundItem CreateDrop(long id, int vnum, int amount);
     }
 }

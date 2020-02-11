@@ -11,7 +11,7 @@ namespace Moonlight.Game.Factory.Impl
     {
         private readonly ILanguageService _languageService;
         private readonly IRepository<SkillDto> _skillRepository;
-        
+
         public SkillFactory(ILanguageService languageService, IRepository<SkillDto> skillRepository)
         {
             _languageService = languageService;

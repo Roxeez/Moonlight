@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Moonlight.Core.Enums;
 using Moonlight.Core.Logging;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
@@ -43,19 +44,42 @@ namespace Moonlight.Toolkit.Parsing
             {
                 FileLine firstLine = region.GetLine(x => x.StartWith("VNUM"));
                 FileLine secondLine = region.GetLine(x => x.StartWith("NAME"));
+                FileLine indexLine = region.GetLine(x => x.StartWith("INDEX"));
 
                 int vnum = firstLine.GetValue<int>(1);
                 string name = secondLine.GetValue(1);
+                int inventoryType = indexLine.GetValue<int>(1);
+                int type = indexLine.GetValue<int>(2);
+                int subType = indexLine.GetValue<int>(3);
+
+                switch (inventoryType)
+                {
+                    case 4:
+                        inventoryType = 0;
+                        break;
+                    case 8:
+                        inventoryType = 0;
+                        break;
+                    case 9:
+                        inventoryType = 1;
+                        break;
+                    case 10:
+                        inventoryType = 2;
+                        break;
+                }
 
                 items.Add(new ItemDto
                 {
                     Id = vnum,
-                    NameKey = name
+                    NameKey = name,
+                    BagType = (BagType)inventoryType,
+                    Type = type,
+                    SubType = subType
                 });
             }
 
             _itemRepository.Clear();
-            
+
             Logger.Info("Saving items to database");
             IEnumerable<ItemDto> result = _itemRepository.InsertAll(items);
             Logger.Info($"{result.Count()} items successfully parsed");
