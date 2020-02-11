@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using Moonlight.Core;
+using Moonlight.Core.Collection;
 
 namespace Moonlight.Game.Inventories
 {
-    public class Bag : SafeObservableDictionary<int, ItemInstance>
+    public class Bag : InternalObservableDictionary<int, ItemInstance>
     {
         public ItemInstance GetItemInSlot(int slot) => this[slot];
 
@@ -14,7 +15,7 @@ namespace Moonlight.Game.Inventories
 
         public int GetSlot(ItemInstance instance)
         {
-            return Internal.FirstOrDefault(x => x.Value.Equals(instance)).Key;
+            return ThreadSafeInternalDictionary.FirstOrDefault(x => x.Value.Equals(instance)).Key;
         }
 
         internal void AddItem(int slot, ItemInstance item)

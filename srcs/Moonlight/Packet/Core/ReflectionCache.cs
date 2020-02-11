@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using Moonlight.Extensions;
-using Moonlight.Core.Utility;
+using Moonlight.Utility;
 using Moonlight.Packet.Core.Attributes;
 
 namespace Moonlight.Packet.Core

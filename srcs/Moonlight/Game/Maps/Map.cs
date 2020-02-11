@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Moonlight.Core;
+using Moonlight.Core.Collection;
 using Moonlight.Core.Enums;
 using Moonlight.Game.Entities;
-using Moonlight.Game.Utility;
+using Moonlight.Utility;
 
 namespace Moonlight.Game.Maps
 {
@@ -17,11 +18,11 @@ namespace Moonlight.Game.Maps
             Width = BitConverter.ToInt16(Grid.Take(2).ToArray(), 0);
             Height = BitConverter.ToInt16(Grid.Skip(2).Take(2).ToArray(), 0);
 
-            Monsters = new SafeObservableDictionary<long, Monster>();
-            Npcs = new SafeObservableDictionary<long, Npc>();
-            Drops = new SafeObservableDictionary<long, GroundItem>();
-            Players = new SafeObservableDictionary<long, Player>();
-            Portals = new SafeObservableDictionary<long, Portal>();
+            Monsters = new InternalObservableDictionary<long, Monster>();
+            Npcs = new InternalObservableDictionary<long, Npc>();
+            Drops = new InternalObservableDictionary<long, GroundItem>();
+            Players = new InternalObservableDictionary<long, Player>();
+            Portals = new InternalObservableDictionary<long, Portal>();
         }
 
         private byte this[int x, int y] => Grid.Skip(4 + y * Width + x).Take(1).FirstOrDefault();
@@ -32,24 +33,24 @@ namespace Moonlight.Game.Maps
         public short Width { get; }
         public short Height { get; }
 
-        public SafeObservableDictionary<long, Monster> Monsters { get; }
-        public SafeObservableDictionary<long, Npc> Npcs { get; }
-        public SafeObservableDictionary<long, Player> Players { get; }
-        public SafeObservableDictionary<long, GroundItem> Drops { get; }
-        public SafeObservableDictionary<long, Portal> Portals { get; }
+        public InternalObservableDictionary<long, Monster> Monsters { get; }
+        public InternalObservableDictionary<long, Npc> Npcs { get; }
+        public InternalObservableDictionary<long, Player> Players { get; }
+        public InternalObservableDictionary<long, GroundItem> Drops { get; }
+        public InternalObservableDictionary<long, Portal> Portals { get; }
 
         public Entity GetEntity(EntityType entityType, long entityId)
         {
             switch (entityType)
             {
                 case EntityType.NPC:
-                    return Npcs[entityId];
+                    return Npcs.GetValueOrDefault(entityId);
                 case EntityType.MONSTER:
-                    return Monsters[entityId];
+                    return Monsters.GetValueOrDefault(entityId);
                 case EntityType.PLAYER:
-                    return Players[entityId];
+                    return Players.GetValueOrDefault(entityId);
                 case EntityType.GROUND_ITEM:
-                    return Drops[entityId];
+                    return Drops.GetValueOrDefault(entityId);
                 default:
                     throw new InvalidOperationException();
             }

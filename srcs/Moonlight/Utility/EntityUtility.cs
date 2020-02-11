@@ -4,7 +4,7 @@ using Moonlight.Core.Enums;
 using Moonlight.Extensions;
 using Moonlight.Game.Entities;
 
-namespace Moonlight.Game.Utility
+namespace Moonlight.Utility
 {
     public static class EntityUtility
     {

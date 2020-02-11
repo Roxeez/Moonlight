@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Moonlight.Clients;
 using Moonlight.Core;
+using Moonlight.Core.Collection;
 using Moonlight.Core.Enums;
 using Moonlight.Core.Import;
 using Moonlight.Game.Battle;
@@ -22,7 +23,7 @@ namespace Moonlight.Game.Entities
             Client = client;
             Inventory = new Inventory(this);
             Miniland = miniland;
-            Skills = new SafeObservableCollection<Skill>();
+            Skills = new InternalObservableList<Skill>();
             Unsafe = new Unsafe(this);
         }
 
@@ -89,7 +90,7 @@ namespace Moonlight.Game.Entities
         /// <summary>
         ///     Current character skills
         /// </summary>
-        public SafeObservableCollection<Skill> Skills { get; }
+        public InternalObservableList<Skill> Skills { get; }
         
         /// <summary>
         /// Class containing unsafe code (game exploit) (use it at your own risk)

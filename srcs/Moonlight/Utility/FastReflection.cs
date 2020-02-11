@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Moonlight.Core.Utility
+namespace Moonlight.Utility
 {
     internal static class FastReflection
     {

@@ -28,8 +28,8 @@ namespace Moonlight.Game.Handlers.Characters
 
                 // TODO : Maybe we can add passive etc...
             }
-
-            client.Character.Skills.AddRange(skills);
+            
+            skills.ForEach(x => client.Character.Skills.Add(x));
         }
     }
 }
