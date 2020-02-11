@@ -93,6 +93,7 @@
     <Compile Include="Event\Maps\EntityJoinEvent.cs" />
     <Compile Include="Event\Maps\EntityLeaveEvent.cs" />
     <Compile Include="Event\Maps\MapChangeEvent.cs" />
+    <Compile Include="Event\Maps\MapCleanEvent.cs" />
     <Compile Include="Extensions\AssemblyExtension.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\ServiceCollectionExtension.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Handlers\Maps\GetPacketHandler.cs" />
     <Compile Include="Handlers\Maps\GpPacketHandler.cs" />
     <Compile Include="Handlers\Maps\InPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\MapCleanPacketHandler.cs" />
     <Compile Include="Handlers\Maps\Minilands\MlInfoBrPacketHandler.cs" />
     <Compile Include="Handlers\Maps\Minilands\MlInfoPacketHandler.cs" />
     <Compile Include="Handlers\Maps\Minilands\MlObjLstPacketHandler.cs" />
@@ -195,6 +197,7 @@
     <Compile Include="Packet\Map\GetPacket.cs" />
     <Compile Include="Packet\Map\GpPacket.cs" />
     <Compile Include="Packet\Map\InPacket.cs" />
+    <Compile Include="Packet\Map\MapCleanPacket.cs" />
     <Compile Include="Packet\Map\Miniland\Minigame\MgPacket.cs" />
     <Compile Include="Packet\Map\Miniland\Minigame\MloInfoPacket.cs" />
     <Compile Include="Packet\Map\Miniland\Minigame\MloLvPacket.cs" />

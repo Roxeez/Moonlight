@@ -51,7 +51,7 @@ namespace Moonlight.Handlers.Battle
 
             target.HpPercentage = packet.TargetHpPercentage;
 
-            _eventManager.Emit(new EntityDamageEvent
+            _eventManager.Emit(new EntityDamageEvent(client)
             {
                 Entity = target,
                 Attacker = caster,
@@ -65,7 +65,7 @@ namespace Moonlight.Handlers.Battle
 
             map.RemoveEntity(target);
             
-            _eventManager.Emit(new EntityDeathEvent()
+            _eventManager.Emit(new EntityDeathEvent(client)
             {
                 Entity = target,
                 Killer = caster

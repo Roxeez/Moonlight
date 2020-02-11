@@ -41,7 +41,7 @@ namespace Moonlight.Handlers.Maps
             
             if (source != null)
             {
-                _eventManager.Emit(new MapChangeEvent
+                _eventManager.Emit(new MapChangeEvent(client)
                 {
                     Character = client.Character,
                     Source = source,

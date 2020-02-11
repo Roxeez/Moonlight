@@ -88,7 +88,7 @@ namespace Moonlight.Handlers.Maps
 
             map.AddEntity(entity);
             
-            _eventManager.Emit(new EntityJoinEvent
+            _eventManager.Emit(new EntityJoinEvent(client)
             {
                 Map = map,
                 Entity = entity

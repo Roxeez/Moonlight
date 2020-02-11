@@ -37,7 +37,7 @@ namespace Moonlight.Handlers.Maps
 
             map.RemoveEntity(packet.EntityType, packet.EntityId);
             
-            _eventManager.Emit(new EntityLeaveEvent
+            _eventManager.Emit(new EntityLeaveEvent(client)
             {
                 Map = map,
                 Entity = entity,
