@@ -19,7 +19,7 @@ namespace Moonlight.Game.Maps
 
             Monsters = new SafeObservableDictionary<long, Monster>();
             Npcs = new SafeObservableDictionary<long, Npc>();
-            Drops = new SafeObservableDictionary<long, Drop>();
+            Drops = new SafeObservableDictionary<long, GroundItem>();
             Players = new SafeObservableDictionary<long, Player>();
             Portals = new SafeObservableDictionary<long, Portal>();
         }
@@ -35,7 +35,7 @@ namespace Moonlight.Game.Maps
         public SafeObservableDictionary<long, Monster> Monsters { get; }
         public SafeObservableDictionary<long, Npc> Npcs { get; }
         public SafeObservableDictionary<long, Player> Players { get; }
-        public SafeObservableDictionary<long, Drop> Drops { get; }
+        public SafeObservableDictionary<long, GroundItem> Drops { get; }
         public SafeObservableDictionary<long, Portal> Portals { get; }
 
         public Entity GetEntity(EntityType entityType, long entityId)
@@ -48,7 +48,7 @@ namespace Moonlight.Game.Maps
                     return Monsters[entityId];
                 case EntityType.PLAYER:
                     return Players[entityId];
-                case EntityType.DROP:
+                case EntityType.GROUND_ITEM:
                     return Drops[entityId];
                 default:
                     throw new InvalidOperationException();
@@ -92,8 +92,8 @@ namespace Moonlight.Game.Maps
                 case EntityType.PLAYER:
                     Players[entity.Id] = (Player)entity;
                     break;
-                case EntityType.DROP:
-                    Drops[entity.Id] = (Drop)entity;
+                case EntityType.GROUND_ITEM:
+                    Drops[entity.Id] = (GroundItem)entity;
                     break;
                 default:
                     throw new InvalidOperationException();
@@ -120,7 +120,7 @@ namespace Moonlight.Game.Maps
                 case EntityType.PLAYER:
                     Players.Remove(entityId);
                     break;
-                case EntityType.DROP:
+                case EntityType.GROUND_ITEM:
                     Drops.Remove(entityId);
                     break;
                 default:

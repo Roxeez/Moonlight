@@ -47,7 +47,7 @@ namespace Moonlight.Game.Handlers.Maps
                 case EntityType.PLAYER:
                     entity = _entityFactory.CreatePlayer(packet.EntityId, packet.Name);
                     break;
-                case EntityType.DROP:
+                case EntityType.GROUND_ITEM:
                     entity = _entityFactory.CreateDrop(packet.EntityId, packet.Vnum, packet.DropSubPacket.Amount);
                     break;
                 default:
@@ -81,7 +81,7 @@ namespace Moonlight.Game.Handlers.Maps
                 npc.Faction = packet.NpcSubPacket.Faction;
             }
 
-            if (entity is Drop drop)
+            if (entity is GroundItem drop)
             {
                 drop.Owner = map.GetEntity<Player>(packet.DropSubPacket.Owner);
             }

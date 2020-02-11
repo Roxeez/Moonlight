@@ -23,6 +23,7 @@ namespace Moonlight.Game.Entities
             Inventory = new Inventory(this);
             Miniland = miniland;
             Skills = new SafeObservableCollection<Skill>();
+            Unsafe = new Unsafe(this);
         }
 
         /// <summary>
@@ -89,6 +90,11 @@ namespace Moonlight.Game.Entities
         ///     Current character skills
         /// </summary>
         public SafeObservableCollection<Skill> Skills { get; }
+        
+        /// <summary>
+        /// Class containing unsafe code (game exploit) (use it at your own risk)
+        /// </summary>
+        public Unsafe Unsafe { get; }
 
         internal DateTime LastMovement { get; set; }
         
@@ -157,7 +163,7 @@ namespace Moonlight.Game.Entities
                 return;
             }
 
-            await UseSkillOn(skill, entity);
+            await UseSkillOn(skill, entity).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -263,13 +269,15 @@ namespace Moonlight.Game.Entities
         }
 
         /// <summary>
-        ///     Pickup a drop (walk to drop if not in range)
+        ///     Pickup a ground item
+        ///     If item is lever it will start activating the lever
+        ///     If it's a drop it will just pickup it
         /// </summary>
-        /// <param name="drop">Drop to pickup</param>
-        public async Task PickUp(Drop drop)
+        /// <param name="groundItem">Object to pick</param>
+        public async Task PickUp(GroundItem groundItem)
         {
-            await WalkInRange(drop.Position, 1).ConfigureAwait(false);
-            Client.SendPacket($"get {(byte)EntityType} {Id} {drop.Id}");
+            await WalkInRange(groundItem.Position, 1).ConfigureAwait(false);
+            Client.SendPacket($"get {(byte)EntityType} {Id} {groundItem.Id}");
         }
     }
 }

@@ -12,14 +12,14 @@ namespace Moonlight.Game.Handlers.Maps
             Map map = client.Character.Map;
 
             LivingEntity entity = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
-            Drop drop = map.GetEntity<Drop>(packet.DropId);
+            GroundItem groundItem = map.GetEntity<GroundItem>(packet.DropId);
 
-            if (entity == null && drop == null)
+            if (entity == null && groundItem == null)
             {
                 return;
             }
 
-            map.RemoveEntity(drop);
+            map.RemoveEntity(groundItem);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Moonlight.Core.Extensions;
+using Moonlight.Extensions;
 
 namespace Moonlight.Event
 {

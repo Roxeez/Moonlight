@@ -32,8 +32,7 @@ namespace Moonlight.Game.Handlers.Battle
 
             LivingEntity caster = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
             LivingEntity target = map.GetEntity<LivingEntity>(packet.TargetEntityType, packet.TargetEntityId);
-
-            Skill usedSkill = _skillFactory.CreateSkill(packet.SkillVnum);
+            
             if (target == null || caster == null)
             {
                 return;
@@ -57,7 +56,6 @@ namespace Moonlight.Game.Handlers.Battle
                 Entity = target,
                 Attacker = caster,
                 Damage = packet.Damage,
-                Skill = usedSkill
             });
             
             if (packet.TargetIsAlive)

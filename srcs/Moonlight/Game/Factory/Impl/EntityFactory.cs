@@ -51,10 +51,10 @@ namespace Moonlight.Game.Factory.Impl
             return new Npc(id, monsterDto, name);
         }
 
-        public Drop CreateDrop(long id, int vnum, int amount)
+        public GroundItem CreateDrop(long id, int vnum, int amount)
         {
             Item item = _itemFactory.CreateItem(vnum);
-            return new Drop(id, item, amount);
+            return new GroundItem(id, item, amount);
         }
     }
 }

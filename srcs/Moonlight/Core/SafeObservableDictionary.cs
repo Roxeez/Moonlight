@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using Moonlight.Core.Extensions;
+using Moonlight.Extensions;
 using PropertyChanged;
 
 namespace Moonlight.Core

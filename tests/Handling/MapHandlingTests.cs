@@ -26,13 +26,13 @@ namespace Moonlight.Tests.Handling
 
             Client.ReceivePacket("in 9 503 4808544 82 4 1 0 0 -1");
 
-            Drop drop = map.GetEntity<Drop>(4808544);
+            GroundItem groundItem = map.GetEntity<GroundItem>(4808544);
 
-            Check.That(drop).IsNotNull();
-            Check.That(drop.Item.Vnum).Is(503);
-            Check.That(drop.Owner).IsNull();
-            Check.That(drop.Position).Is(new Position(82, 4));
-            Check.That(drop.Amount).Is(1);
+            Check.That(groundItem).IsNotNull();
+            Check.That(groundItem.Item.Vnum).Is(503);
+            Check.That(groundItem.Owner).IsNull();
+            Check.That(groundItem.Position).Is(new Position(82, 4));
+            Check.That(groundItem.Amount).Is(1);
         }
 
         [Fact]

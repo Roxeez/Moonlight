@@ -51,9 +51,6 @@
     <Compile Include="Core\Enums\RootKey.cs" />
     <Compile Include="Core\Enums\SkillType.cs" />
     <Compile Include="Core\Enums\TargetType.cs" />
-    <Compile Include="Core\Extensions\AssemblyExtension.cs" />
-    <Compile Include="Core\Extensions\DictionaryExtension.cs" />
-    <Compile Include="Core\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Core\Import\Kernel32.cs" />
     <Compile Include="Core\Import\Moon.cs" />
     <Compile Include="Core\Import\User32.cs" />
@@ -81,7 +78,6 @@
     <Compile Include="Database\Entities\Monster.cs" />
     <Compile Include="Database\Entities\Skill.cs" />
     <Compile Include="Database\Entities\Translation.cs" />
-    <Compile Include="Database\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Database\MapsterMapper.cs" />
     <Compile Include="Database\MoonlightContext.cs" />
     <Compile Include="Database\SqliteConfiguration.cs" />
@@ -96,17 +92,17 @@
     <Compile Include="Event\Maps\EntityJoinEvent.cs" />
     <Compile Include="Event\Maps\EntityLeaveEvent.cs" />
     <Compile Include="Event\Maps\MapChangeEvent.cs" />
+    <Compile Include="Extensions\AssemblyExtension.cs" />
+    <Compile Include="Extensions\DictionaryExtension.cs" />
+    <Compile Include="Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Game\Battle\Skill.cs" />
     <Compile Include="Game\Entities\Character.cs" />
-    <Compile Include="Game\Entities\Drop.cs" />
+    <Compile Include="Game\Entities\GroundItem.cs" />
     <Compile Include="Game\Entities\Entity.cs" />
     <Compile Include="Game\Entities\LivingEntity.cs" />
     <Compile Include="Game\Entities\Monster.cs" />
     <Compile Include="Game\Entities\Npc.cs" />
     <Compile Include="Game\Entities\Player.cs" />
-    <Compile Include="Game\Extensions\CharacterExtension.cs" />
-    <Compile Include="Game\Extensions\ItemExtension.cs" />
-    <Compile Include="Game\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Game\Factory\IEntityFactory.cs" />
     <Compile Include="Game\Factory\IItemFactory.cs" />
     <Compile Include="Game\Factory\IItemInstanceFactory.cs" />
@@ -138,6 +134,7 @@
     <Compile Include="Game\Handlers\IPacketHandlerManager.cs" />
     <Compile Include="Game\Handlers\Maps\CMapPacketHandler.cs" />
     <Compile Include="Game\Handlers\Maps\GetPacketHandler.cs" />
+    <Compile Include="Game\Handlers\Maps\GpPacketHandler.cs" />
     <Compile Include="Game\Handlers\Maps\InPacketHandler.cs" />
     <Compile Include="Game\Handlers\Maps\Minilands\MlInfoBrPacketHandler.cs" />
     <Compile Include="Game\Handlers\Maps\Minilands\MlInfoPacketHandler.cs" />
@@ -152,6 +149,7 @@
     <Compile Include="Game\Maps\Miniland.cs" />
     <Compile Include="Game\Maps\MinilandObject.cs" />
     <Compile Include="Game\Maps\Portal.cs" />
+    <Compile Include="Game\Unsafe.cs" />
     <Compile Include="Game\Utility\EntityUtility.cs" />
     <Compile Include="MoonlightAPI.cs" />
     <Compile Include="Packet\Battle\SrPacket.cs" />
@@ -192,7 +190,6 @@
     <Compile Include="Packet\Entity\CondPacket.cs" />
     <Compile Include="Packet\Entity\MvPacket.cs" />
     <Compile Include="Packet\Entity\RestPacket.cs" />
-    <Compile Include="Packet\Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Packet\Map\CMapPacket.cs" />
     <Compile Include="Packet\Map\DropPacket.cs" />
     <Compile Include="Packet\Map\GetPacket.cs" />

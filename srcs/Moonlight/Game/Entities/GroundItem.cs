@@ -6,9 +6,9 @@ namespace Moonlight.Game.Entities
     /// <summary>
     ///     Represent a dropped item on ground
     /// </summary>
-    public class Drop : Entity
+    public class GroundItem : Entity
     {
-        internal Drop(long id, Item item, int amount) : base(id, item.Name, EntityType.DROP)
+        internal GroundItem(long id, Item item, int amount) : base(id, item.Name, EntityType.GROUND_ITEM)
         {
             Item = item;
             Amount = amount;

@@ -57,7 +57,7 @@ namespace Moonlight.Tests.Deserialization
         {
             InPacket packet = Deserialize<InPacket>("in 9 503 4808544 82 4 1 0 0 -1");
 
-            Check.That(packet.EntityType).Is(EntityType.DROP);
+            Check.That(packet.EntityType).Is(EntityType.GROUND_ITEM);
             Check.That(packet.Vnum).Is(503);
             Check.That(packet.EntityId).Is(4808544);
             Check.That(packet.PositionX).Is<short>(82);

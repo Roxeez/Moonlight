@@ -8,6 +8,6 @@
         PLAYER = 1,
         NPC = 2,
         MONSTER = 3,
-        DROP = 9
+        GROUND_ITEM = 9
     }
 }

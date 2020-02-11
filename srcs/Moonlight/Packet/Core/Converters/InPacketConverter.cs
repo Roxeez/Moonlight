@@ -24,10 +24,10 @@ namespace Moonlight.Packet.Core.Converters
                 EntityId = Convert.ToInt32(split[startIndex]),
                 PositionX = Convert.ToInt16(split[startIndex + 1]),
                 PositionY = Convert.ToInt16(split[startIndex + 2]),
-                Direction = entityType != EntityType.DROP ? Convert.ToByte(split[startIndex + 3]) : (byte)0
+                Direction = entityType != EntityType.GROUND_ITEM ? Convert.ToByte(split[startIndex + 3]) : (byte)0
             };
 
-            string content = string.Join(" ", split.Skip(startIndex + (entityType == EntityType.DROP ? 3 : 4)));
+            string content = string.Join(" ", split.Skip(startIndex + (entityType == EntityType.GROUND_ITEM ? 3 : 4)));
 
             switch (entityType)
             {
@@ -38,7 +38,7 @@ namespace Moonlight.Packet.Core.Converters
                 case EntityType.PLAYER:
                     packet.PlayerSubPacket = (InPlayerSubPacket)factory.ToObject(content, typeof(InPlayerSubPacket));
                     break;
-                case EntityType.DROP:
+                case EntityType.GROUND_ITEM:
                     packet.DropSubPacket = (InDropSubPacket)factory.ToObject(content, typeof(InDropSubPacket));
                     break;
                 default:

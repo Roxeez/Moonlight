@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Moonlight.Core.Extensions
+namespace Moonlight.Extensions
 {
     internal static class DictionaryExtension
     {

@@ -3,13 +3,10 @@ using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using Moonlight.Clients;
 using Moonlight.Core;
-using Moonlight.Core.Extensions;
+using Moonlight.Extensions;
 using Moonlight.Core.Logging;
-using Moonlight.Database.Extensions;
 using Moonlight.Event;
-using Moonlight.Game.Extensions;
 using Moonlight.Game.Handlers;
-using Moonlight.Packet.Extensions;
 using Moonlight.Translation;
 
 [assembly: InternalsVisibleTo("Moonlight.Tests")]

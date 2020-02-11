@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Moonlight.Core.Enums;
-using Moonlight.Core.Extensions;
+using Moonlight.Extensions;
 using Moonlight.Game.Entities;
 
 namespace Moonlight.Game.Utility
@@ -16,7 +16,7 @@ namespace Moonlight.Game.Utility
                 [typeof(Monster)] = EntityType.MONSTER,
                 [typeof(Npc)] = EntityType.NPC,
                 [typeof(Player)] = EntityType.PLAYER,
-                [typeof(Drop)] = EntityType.DROP
+                [typeof(GroundItem)] = EntityType.GROUND_ITEM
             };
 
         public static EntityType GetEntityType<T>() where T : Entity => _typeMapping.GetValueOrDefault(typeof(T));

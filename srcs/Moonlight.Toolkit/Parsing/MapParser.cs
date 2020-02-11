@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Moonlight.Core.Extensions;
+using Moonlight.Extensions;
 using Moonlight.Core.Logging;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
