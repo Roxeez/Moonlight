@@ -11,15 +11,15 @@ Moonlight can be used with local client (injected .dll) or remote client (client
 
 ## Getting Started
 
-- Create a new .NET library project targeting .NET Framework 4.7+
-- Add Moonlight.dll as dependency
-- Install DllExport to your project using DllExport.bat
-- Build your application
-- Create your database.db sqlite file using Toolkit parser
-- Copy your generated .dll & dependencies to your NosTale folder
-- Copy database.db & Moon.dll to your NosTale folder in a subdirectory named Moonlight
-- Inject your generated .dll to NosTale process
-- Enjoy
+- Clone Moonlight
+- Build Moonlight
+- Create a C# .dll project targeting .NET Framework 4.7+
+- Install DllExport to your project and create your export function (cf. DllExport wiki)
+- Build your project
+- Create database.db using Moonlight.Toolkit CLI*
+- Copy previously generated database.db & Moon.dll* to a subfolder named Moonlight in your NosTale folder
+- Copy your generated .dll to NosTale folder
+- Inject your .dll using an injector supporting custom export function.
 
 > <sub><sup>Since Moonlight use only packets (no memory reading) for compatibility with local & remote client, your dll need to be injected BEFORE selecting your character</sub></sup>
 
