@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Moonlight.Core.Collection
 {
-    public class ThreadSafeDictionary<K, V> : IDictionary<K, V>
+    public sealed class ThreadSafeDictionary<K, V> : IDictionary<K, V>
     {
         private readonly object _lock = new object();
         private readonly IDictionary<K, V> _internalDictionary = new Dictionary<K, V>();

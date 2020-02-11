@@ -1,4 +1,4 @@
-﻿using Moonlight.Game.Handlers;
+﻿using Moonlight.Handlers;
 
 namespace Moonlight.Clients
 {

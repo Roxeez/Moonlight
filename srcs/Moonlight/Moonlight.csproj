@@ -116,32 +116,6 @@
     <Compile Include="Game\Factory\Impl\MinilandObjectFactory.cs" />
     <Compile Include="Game\Factory\Impl\SkillFactory.cs" />
     <Compile Include="Game\Factory\ISkillFactory.cs" />
-    <Compile Include="Game\Handlers\Battle\SrPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Battle\SuPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\AtPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\CInfoPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\FactionPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\GoldPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\Inventories\InvPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\Inventories\IvnPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\LevPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\SkiPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\SpPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\StatPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Characters\WalkPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Entities\CondPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Entities\MvPacketHandler.cs" />
-    <Compile Include="Game\Handlers\IPacketHandler.cs" />
-    <Compile Include="Game\Handlers\IPacketHandlerManager.cs" />
-    <Compile Include="Game\Handlers\Maps\CMapPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Maps\GetPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Maps\GpPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Maps\InPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Maps\Minilands\MlInfoBrPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Maps\Minilands\MlInfoPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Maps\Minilands\MlObjLstPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Maps\Minilands\MltObjPacketHandler.cs" />
-    <Compile Include="Game\Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="Game\Inventories\Bag.cs" />
     <Compile Include="Game\Inventories\Inventory.cs" />
     <Compile Include="Game\Inventories\ItemInstance.cs" />
@@ -151,6 +125,32 @@
     <Compile Include="Game\Maps\MinilandObject.cs" />
     <Compile Include="Game\Maps\Portal.cs" />
     <Compile Include="Game\Unsafe.cs" />
+    <Compile Include="Handlers\Battle\SrPacketHandler.cs" />
+    <Compile Include="Handlers\Battle\SuPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\AtPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\CInfoPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\FactionPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\GoldPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\Inventories\InvPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\Inventories\IvnPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\LevPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\SkiPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\SpPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\StatPacketHandler.cs" />
+    <Compile Include="Handlers\Characters\WalkPacketHandler.cs" />
+    <Compile Include="Handlers\Entities\CondPacketHandler.cs" />
+    <Compile Include="Handlers\Entities\MvPacketHandler.cs" />
+    <Compile Include="Handlers\IPacketHandler.cs" />
+    <Compile Include="Handlers\IPacketHandlerManager.cs" />
+    <Compile Include="Handlers\Maps\CMapPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\GetPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\GpPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\InPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\Minilands\MlInfoBrPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\Minilands\MlInfoPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\Minilands\MlObjLstPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\Minilands\MltObjPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="MoonlightAPI.cs" />
     <Compile Include="Packet\Battle\SrPacket.cs" />
     <Compile Include="Packet\Battle\StPacket.cs" />
@@ -281,9 +281,6 @@
     <PackageReference Include="System.Data.SQLite.Core">
       <Version>1.0.112</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Game\Utility" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

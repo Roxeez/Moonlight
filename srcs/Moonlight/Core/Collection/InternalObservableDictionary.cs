@@ -4,9 +4,11 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
 using Moonlight.Extensions;
+using PropertyChanged;
 
 namespace Moonlight.Core.Collection
 {
+    [SuppressPropertyChangedWarnings]
     public class InternalObservableDictionary<K, V> : IEnumerable<V>, INotifyPropertyChanged, INotifyCollectionChanged
     {
         protected ThreadSafeDictionary<K, V> ThreadSafeInternalDictionary { get; } = new ThreadSafeDictionary<K, V>();

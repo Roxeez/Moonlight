@@ -3,10 +3,11 @@ using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using Moonlight.Clients;
 using Moonlight.Core;
+using Moonlight.Core.Import;
 using Moonlight.Extensions;
 using Moonlight.Core.Logging;
 using Moonlight.Event;
-using Moonlight.Game.Handlers;
+using Moonlight.Handlers;
 using Moonlight.Translation;
 
 [assembly: InternalsVisibleTo("Moonlight.Tests")]
@@ -64,6 +65,11 @@ namespace Moonlight
         public void AddListener<T>(EventListener<T> listener) where T : IEventNotification
         {
             _eventManager.RegisterListener(listener);
+        }
+
+        public void OpenConsole()
+        {
+            Kernel32.AllocConsole();
         }
 
         /**
