@@ -8,10 +8,12 @@ namespace Moonlight.Handlers.Characters
 {
     internal class CInfoPacketHandler : PacketHandler<CInfoPacket>
     {
+        private readonly ILogger _logger;
         private readonly IMapFactory _mapFactory;
 
-        public CInfoPacketHandler(IMapFactory mapFactory)
+        public CInfoPacketHandler(ILogger logger, IMapFactory mapFactory)
         {
+            _logger = logger;
             _mapFactory = mapFactory;
         }
 
@@ -19,7 +21,7 @@ namespace Moonlight.Handlers.Characters
         {
             if (client.Character == null)
             {
-                client.Character = new Character(packet.CharacterId, packet.Name, client, _mapFactory.CreateMiniland())
+                client.Character = new Character(_logger, packet.CharacterId, packet.Name, client, _mapFactory.CreateMiniland())
                 {
                     Class = packet.Class,
                     Gender = packet.Gender

@@ -14,7 +14,7 @@ namespace Moonlight.Handlers.Maps
             LivingEntity entity = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
             GroundItem groundItem = map.GetEntity<GroundItem>(packet.DropId);
 
-            if (entity == null && groundItem == null)
+            if (entity == null || groundItem == null)
             {
                 return;
             }

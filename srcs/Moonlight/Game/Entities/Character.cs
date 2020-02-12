@@ -6,6 +6,7 @@ using Moonlight.Core;
 using Moonlight.Core.Collection;
 using Moonlight.Core.Enums;
 using Moonlight.Core.Import;
+using Moonlight.Core.Logging;
 using Moonlight.Game.Battle;
 using Moonlight.Game.Inventories;
 using Moonlight.Game.Maps;
@@ -18,8 +19,11 @@ namespace Moonlight.Game.Entities
     /// </summary>
     public class Character : Player
     {
-        internal Character(long id, string name, Client client, Miniland miniland) : base(id, name)
+        private readonly ILogger _logger;
+        internal Character(ILogger logger, long id, string name, Client client, Miniland miniland) : base(id, name)
         {
+            _logger = logger;
+            
             Client = client;
             Inventory = new Inventory(this);
             Miniland = miniland;
@@ -110,33 +114,31 @@ namespace Moonlight.Game.Entities
         {
             if (Position.Equals(position))
             {
+                _logger.Info("Walk cancelled : already at target position");
                 return;
             }
 
             Moon.Walk(position.X, position.Y);
             LastMovement = DateTime.Now;
 
-            while (LastMovement.AddSeconds(1) < DateTime.Now)
+            while (LastMovement.AddMilliseconds(500) > DateTime.Now)
             {
-                await Task.Delay(100).ConfigureAwait(false);
+                _logger.Info("Waiting to reach target position");
+                await Task.Delay(10).ConfigureAwait(false);
             }
         }
 
         /// <summary>
-        ///     Walk to until in range of the specific position
+        ///     Walk until character in range of the specific position
         /// </summary>
         /// <param name="position">Position where you want to walk</param>
         /// <param name="range">Range wanted</param>
         public async Task WalkInRange(Position position, int range)
         {
-            if (Position.IsInRange(position, range))
-            {
-                return;
-            }
-
             int distance = Position.GetDistance(position);
             if (distance <= range)
             {
+                _logger.Info("Walk cancelled : already in range");
                 return;
             }
 
@@ -155,12 +157,14 @@ namespace Moonlight.Game.Entities
         {
             if (entity.Equals(this))
             {
+                _logger.Info("Attack cancelled : Can't attack yourself");
                 return;
             }
             
             Skill skill = Skills.FirstOrDefault();
             if (skill == null)
             {
+                _logger.Info("Attack cancelled : No base skill");
                 return;
             }
 
@@ -179,6 +183,7 @@ namespace Moonlight.Game.Entities
         {
             if (!Skills.Contains(skill))
             {
+                _logger.Info("Attack cancelled : Skill is not in skill list");
                 return;
             }
 
@@ -209,6 +214,7 @@ namespace Moonlight.Game.Entities
         {
             if (!Skills.Contains(skill))
             {
+                _logger.Info("Attack cancelled : Skill is not in skill list");
                 return;
             }
 
@@ -232,7 +238,7 @@ namespace Moonlight.Game.Entities
             {
                 return;
             }
-
+            
             await WalkInRange(target.Position, skill.Range).ConfigureAwait(false);
             Client.SendPacket($"u_s {skill.CastId} {(int)target.EntityType} {target.Id}");
             await Task.Delay(skill.CastTime * 100).ConfigureAwait(false);

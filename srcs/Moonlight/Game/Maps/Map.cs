@@ -20,7 +20,7 @@ namespace Moonlight.Game.Maps
 
             Monsters = new InternalObservableDictionary<long, Monster>();
             Npcs = new InternalObservableDictionary<long, Npc>();
-            Drops = new InternalObservableDictionary<long, GroundItem>();
+            GroundItems = new InternalObservableDictionary<long, GroundItem>();
             Players = new InternalObservableDictionary<long, Player>();
             Portals = new InternalObservableDictionary<long, Portal>();
         }
@@ -36,7 +36,7 @@ namespace Moonlight.Game.Maps
         public InternalObservableDictionary<long, Monster> Monsters { get; }
         public InternalObservableDictionary<long, Npc> Npcs { get; }
         public InternalObservableDictionary<long, Player> Players { get; }
-        public InternalObservableDictionary<long, GroundItem> Drops { get; }
+        public InternalObservableDictionary<long, GroundItem> GroundItems { get; }
         public InternalObservableDictionary<long, Portal> Portals { get; }
 
         public Entity GetEntity(EntityType entityType, long entityId)
@@ -50,7 +50,7 @@ namespace Moonlight.Game.Maps
                 case EntityType.PLAYER:
                     return Players.GetValueOrDefault(entityId);
                 case EntityType.GROUND_ITEM:
-                    return Drops.GetValueOrDefault(entityId);
+                    return GroundItems.GetValueOrDefault(entityId);
                 default:
                     throw new InvalidOperationException();
             }
@@ -94,7 +94,7 @@ namespace Moonlight.Game.Maps
                     Players[entity.Id] = (Player)entity;
                     break;
                 case EntityType.GROUND_ITEM:
-                    Drops[entity.Id] = (GroundItem)entity;
+                    GroundItems[entity.Id] = (GroundItem)entity;
                     break;
                 default:
                     throw new InvalidOperationException();
@@ -122,7 +122,7 @@ namespace Moonlight.Game.Maps
                     Players.Remove(entityId);
                     break;
                 case EntityType.GROUND_ITEM:
-                    Drops.Remove(entityId);
+                    GroundItems.Remove(entityId);
                     break;
                 default:
                     throw new InvalidOperationException();

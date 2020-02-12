@@ -1,5 +1,7 @@
 ﻿using Moonlight.Core;
+using Moonlight.Database.Dto;
 using Moonlight.Game.Entities;
+using Moonlight.Game.Inventories.Items;
 using Moonlight.Game.Maps;
 using Moonlight.Tests.Extensions;
 using NFluent;
@@ -100,6 +102,17 @@ namespace Moonlight.Tests.Handling
             Client.ReceivePacket($"out {player.EntityType} {player.Id}");
 
             Check.That(map.Players).Not.Contains(player);
+        }
+
+        [Fact]
+        public void Get_Packet_Remove_Entity()
+        {
+            var item = new GroundItem(123456, new Item("dummy", new ItemDto()), 1);
+
+            Map map = Character.SetFakeMap();
+            map.AddEntity(item);
+            
+            Client.ReceivePacket("get 9 123456");
         }
     }
 }
