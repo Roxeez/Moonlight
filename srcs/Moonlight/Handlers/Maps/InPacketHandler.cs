@@ -1,7 +1,7 @@
 ﻿using System;
 using Moonlight.Clients;
 using Moonlight.Core;
-using Moonlight.Core.Enums;
+using Moonlight.Core.Enums.Game;
 using Moonlight.Core.Logging;
 using Moonlight.Event;
 using Moonlight.Event.Maps;
@@ -32,6 +32,12 @@ namespace Moonlight.Handlers.Maps
             if (map == null)
             {
                 _logger.Warn("Handling InPacket but character map is null");
+                return;
+            }
+
+            if (map.Contains(packet.EntityType, packet.EntityId))
+            {
+                _logger.Warn($"Entity {packet.EntityType} {packet.EntityId} already on map");
                 return;
             }
 
@@ -87,6 +93,7 @@ namespace Moonlight.Handlers.Maps
             }
 
             map.AddEntity(entity);
+            _logger.Info($"Entity {entity.EntityType} {entity.Id} joined map");
             
             _eventManager.Emit(new EntityJoinEvent(client)
             {

@@ -1,4 +1,4 @@
-﻿using Moonlight.Core.Enums;
+﻿using Moonlight.Core.Enums.Game;
 using NFluent;
 
 namespace Moonlight.Tests.Extensions

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Moonlight.Clients;
+using Moonlight.Core.Logging;
 using Moonlight.Event;
 using Moonlight.Event.Entities;
 using Moonlight.Game.Battle;
@@ -12,12 +13,12 @@ namespace Moonlight.Handlers.Battle
 {
     internal class SuPacketHandler : PacketHandler<SuPacket>
     {
-        private readonly ISkillFactory _skillFactory;
+        private readonly ILogger _logger;
         private readonly IEventManager _eventManager;
 
-        public SuPacketHandler(ISkillFactory skillFactory, IEventManager eventManager)
+        public SuPacketHandler(ILogger logger, IEventManager eventManager)
         {
-            _skillFactory = skillFactory;
+            _logger = logger;
             _eventManager = eventManager;
         }
         
@@ -63,7 +64,10 @@ namespace Moonlight.Handlers.Battle
                 return;
             }
 
+            target.HpPercentage = 0;
+            
             map.RemoveEntity(target);
+            _logger.Info($"Entity {target.EntityType} {target.Id} died");
             
             _eventManager.Emit(new EntityDeathEvent(client)
             {

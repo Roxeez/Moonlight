@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Moonlight.Core.Extensions;
 using Moonlight.Packet.Core.Serialization;
 using Moonlight.Extensions;
+using Moonlight.Packet.Extensions;
 using NFluent;
 
 namespace Moonlight.Tests.Deserialization

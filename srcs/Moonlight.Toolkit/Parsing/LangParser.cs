@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using Moonlight.Core.Enums;
+using Moonlight.Core.Enums.Game;
+using Moonlight.Core.Enums.Translation;
 using Moonlight.Core.Logging;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
 using Moonlight.Toolkit.Commands;
-using Moonlight.Translation;
-using Moonlight.Utility.Reader;
-using TextReader = Moonlight.Utility.Reader.TextReader;
+using Moonlight.Parser.Reader;
+using TextReader = Moonlight.Parser.Reader.TextReader;
 
 namespace Moonlight.Toolkit.Parsing
 {

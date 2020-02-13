@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Moonlight.Extensions;
+using Moonlight.Core.Extensions;
 using Moonlight.Core.Logging;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
 using Moonlight.Toolkit.Commands;
-using Moonlight.Utility.Reader;
-using TextReader = Moonlight.Utility.Reader.TextReader;
+using Moonlight.Parser.Reader;
+using TextReader = Moonlight.Parser.Reader.TextReader;
 
 namespace Moonlight.Toolkit.Parsing
 {

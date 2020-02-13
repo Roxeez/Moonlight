@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Moonlight.Clients;
 using Moonlight.Core;
 using Moonlight.Core.Collection;
-using Moonlight.Core.Enums;
+using Moonlight.Core.Enums.Game;
 using Moonlight.Core.Import;
 using Moonlight.Core.Logging;
 using Moonlight.Game.Battle;

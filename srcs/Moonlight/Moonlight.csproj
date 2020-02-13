@@ -38,51 +38,11 @@
     <Compile Include="Clients\Client.cs" />
     <Compile Include="Clients\IClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
-    <Compile Include="Core\AppConfig.cs" />
     <Compile Include="Core\Collection\InternalObservableDictionary.cs" />
     <Compile Include="Core\Collection\InternalObservableList.cs" />
-    <Compile Include="Core\Collection\ThreadSafeDictionary.cs" />
-    <Compile Include="Core\Collection\ThreadSafeList.cs" />
-    <Compile Include="Core\Enums\BagType.cs" />
-    <Compile Include="Core\Enums\ClassType.cs" />
-    <Compile Include="Core\Enums\ElementType.cs" />
-    <Compile Include="Core\Enums\EntityType.cs" />
-    <Compile Include="Core\Enums\FactionType.cs" />
-    <Compile Include="Core\Enums\GenderType.cs" />
-    <Compile Include="Core\Enums\HitType.cs" />
-    <Compile Include="Core\Enums\PortalType.cs" />
-    <Compile Include="Core\Enums\RarityType.cs" />
-    <Compile Include="Core\Enums\RootKey.cs" />
-    <Compile Include="Core\Enums\SkillType.cs" />
-    <Compile Include="Core\Enums\TargetType.cs" />
     <Compile Include="Core\Import\Kernel32.cs" />
     <Compile Include="Core\Import\Moon.cs" />
     <Compile Include="Core\Import\User32.cs" />
-    <Compile Include="Core\Logging\ILogger.cs" />
-    <Compile Include="Core\Logging\SerilogLogger.cs" />
-    <Compile Include="Core\Position.cs" />
-    <Compile Include="Core\Range.cs" />
-    <Compile Include="Database\DAL\GenericCachedRepository.cs" />
-    <Compile Include="Database\DAL\GenericRepository.cs" />
-    <Compile Include="Database\DAL\IContextFactory.cs" />
-    <Compile Include="Database\DAL\IDto.cs" />
-    <Compile Include="Database\DAL\IEntity.cs" />
-    <Compile Include="Database\DAL\IGenericRepository.cs" />
-    <Compile Include="Database\DAL\IMapper.cs" />
-    <Compile Include="Database\DTO\ItemDto.cs" />
-    <Compile Include="Database\DTO\MapDto.cs" />
-    <Compile Include="Database\DTO\MonsterDto.cs" />
-    <Compile Include="Database\DTO\SkillDto.cs" />
-    <Compile Include="Database\DTO\TranslationDto.cs" />
-    <Compile Include="Database\Entities\Item.cs" />
-    <Compile Include="Database\Entities\Map.cs" />
-    <Compile Include="Database\Entities\Monster.cs" />
-    <Compile Include="Database\Entities\Skill.cs" />
-    <Compile Include="Database\Entities\Translation.cs" />
-    <Compile Include="Database\MapsterMapper.cs" />
-    <Compile Include="Database\MoonlightContext.cs" />
-    <Compile Include="Database\SqliteConfiguration.cs" />
-    <Compile Include="Database\SqliteContextFactory.cs" />
     <Compile Include="Event\Entities\EntityDamageEvent.cs" />
     <Compile Include="Event\Entities\EntityDeathEvent.cs" />
     <Compile Include="Event\Entities\EntityMoveEvent.cs" />
@@ -95,7 +55,6 @@
     <Compile Include="Event\Maps\MapChangeEvent.cs" />
     <Compile Include="Event\Maps\MapCleanEvent.cs" />
     <Compile Include="Extensions\AssemblyExtension.cs" />
-    <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Game\Battle\Skill.cs" />
     <Compile Include="Game\Entities\Character.cs" />
@@ -144,6 +103,7 @@
     <Compile Include="Handlers\IPacketHandler.cs" />
     <Compile Include="Handlers\IPacketHandlerManager.cs" />
     <Compile Include="Handlers\Maps\CMapPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\DiePacketHandler.cs" />
     <Compile Include="Handlers\Maps\GetPacketHandler.cs" />
     <Compile Include="Handlers\Maps\GpPacketHandler.cs" />
     <Compile Include="Handlers\Maps\InPacketHandler.cs" />
@@ -154,89 +114,7 @@
     <Compile Include="Handlers\Maps\Minilands\MltObjPacketHandler.cs" />
     <Compile Include="Handlers\Maps\OutPacketHandler.cs" />
     <Compile Include="MoonlightAPI.cs" />
-    <Compile Include="Packet\Battle\SrPacket.cs" />
-    <Compile Include="Packet\Battle\StPacket.cs" />
-    <Compile Include="Packet\Battle\SuPacket.cs" />
-    <Compile Include="Packet\Character\AtPacket.cs" />
-    <Compile Include="Packet\Character\CInfoPacket.cs" />
-    <Compile Include="Packet\Character\FdPacket.cs" />
-    <Compile Include="Packet\Character\FsPacket.cs" />
-    <Compile Include="Packet\Character\GoldPacket.cs" />
-    <Compile Include="Packet\Character\Inventory\InvPacket.cs" />
-    <Compile Include="Packet\Character\Inventory\IvnPacket.cs" />
-    <Compile Include="Packet\Character\LevPacket.cs" />
-    <Compile Include="Packet\Character\NcifPacket.cs" />
-    <Compile Include="Packet\Character\PairyPacket.cs" />
-    <Compile Include="Packet\Character\SkiPacket.cs" />
-    <Compile Include="Packet\Character\SpPacket.cs" />
-    <Compile Include="Packet\Character\StatPacket.cs" />
-    <Compile Include="Packet\Character\WalkPacket.cs" />
-    <Compile Include="Packet\CommandPacket.cs" />
-    <Compile Include="Packet\Core\Attributes\PacketHeaderAttribute.cs" />
-    <Compile Include="Packet\Core\Attributes\PacketIndexAttribute.cs" />
-    <Compile Include="Packet\Core\CachedType.cs" />
-    <Compile Include="Packet\Core\Converters\InPacketConverter.cs" />
-    <Compile Include="Packet\Core\Converters\InvPacketConverter.cs" />
-    <Compile Include="Packet\Core\Converters\IvnPacketConverter.cs" />
-    <Compile Include="Packet\Core\Converters\PacketConverter.cs" />
-    <Compile Include="Packet\Core\Converters\SkiPacketConverter.cs" />
-    <Compile Include="Packet\Core\Converters\SpecialListConverter.cs" />
-    <Compile Include="Packet\Core\IPacketReader.cs" />
-    <Compile Include="Packet\Core\IReflectionCache.cs" />
-    <Compile Include="Packet\Core\PacketOutput.cs" />
-    <Compile Include="Packet\Core\PacketReader.cs" />
-    <Compile Include="Packet\Core\PropertyData.cs" />
-    <Compile Include="Packet\Core\ReflectionCache.cs" />
-    <Compile Include="Packet\Core\Serialization\Deserializer.cs" />
-    <Compile Include="Packet\Core\Serialization\IDeserializer.cs" />
-    <Compile Include="Packet\Entity\CondPacket.cs" />
-    <Compile Include="Packet\Entity\MvPacket.cs" />
-    <Compile Include="Packet\Entity\RestPacket.cs" />
-    <Compile Include="Packet\Map\CMapPacket.cs" />
-    <Compile Include="Packet\Map\DropPacket.cs" />
-    <Compile Include="Packet\Map\GetPacket.cs" />
-    <Compile Include="Packet\Map\GpPacket.cs" />
-    <Compile Include="Packet\Map\InPacket.cs" />
-    <Compile Include="Packet\Map\MapCleanPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\Minigame\MgPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\Minigame\MloInfoPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\Minigame\MloLvPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\Minigame\MloRwPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\Minigame\MloStPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\Minigame\MlPtPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\MlInfoBrPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\MlInfoPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\MlObjLstPacket.cs" />
-    <Compile Include="Packet\Map\Miniland\MltObjPacket.cs" />
-    <Compile Include="Packet\Map\OutPacket.cs" />
-    <Compile Include="Packet\Packet.cs" />
-    <Compile Include="Packet\UnknownPacket.cs" />
-    <Compile Include="Translation\ILanguageService.cs" />
-    <Compile Include="Translation\Language.cs" />
-    <Compile Include="Translation\LanguageService.cs" />
-    <Compile Include="Utility\Conversion\ConversionException.cs" />
-    <Compile Include="Utility\Conversion\ConversionFactory.cs" />
-    <Compile Include="Utility\Conversion\Converters\BoolConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\ByteConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\EnumConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\GuidConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\IConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\IntConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\ListConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\LongConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\NullableByteConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\NullableIntConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\NullableLongConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\NullableShortConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\ShortConverter.cs" />
-    <Compile Include="Utility\Conversion\Converters\StringConverter.cs" />
-    <Compile Include="Utility\Conversion\IConversionFactory.cs" />
     <Compile Include="Utility\EntityUtility.cs" />
-    <Compile Include="Utility\FastReflection.cs" />
-    <Compile Include="Utility\Reader\FileContent.cs" />
-    <Compile Include="Utility\Reader\FileLine.cs" />
-    <Compile Include="Utility\Reader\FileRegion.cs" />
-    <Compile Include="Utility\Reader\TextReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -284,6 +162,24 @@
     <PackageReference Include="System.Data.SQLite.Core">
       <Version>1.0.112</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Moonlight.Core\Moonlight.Core.csproj">
+      <Project>{9e99f499-edae-4a74-86b6-397d8ca5d9fa}</Project>
+      <Name>Moonlight.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Moonlight.Database\Moonlight.Database.csproj">
+      <Project>{704c7883-c75a-4860-b775-7b84eac5a470}</Project>
+      <Name>Moonlight.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Moonlight.Packet\Moonlight.Packet.csproj">
+      <Project>{30dc4429-62d6-4552-99a1-766d9be645d1}</Project>
+      <Name>Moonlight.Packet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Moonlight.Translation\Moonlight.Translation.csproj">
+      <Project>{25394b56-6943-456e-b146-f27cdd928d11}</Project>
+      <Name>Moonlight.Translation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
