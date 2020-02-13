@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
-using Moonlight.Extensions;
+using Moonlight.Core.Extensions;
 using PropertyChanged;
 
 namespace Moonlight.Core.Collection

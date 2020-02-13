@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30DC4429-62D6-4552-99A1-766D9BE645D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Moonlight.Packet</RootNamespace>
+    <AssemblyName>Moonlight.Packet</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\..\packages\Microsoft.Extensions.DependencyInjection.3.1.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Battle\SrPacket.cs" />
+    <Compile Include="Battle\StPacket.cs" />
+    <Compile Include="Battle\SuPacket.cs" />
+    <Compile Include="Character\AtPacket.cs" />
+    <Compile Include="Character\CInfoPacket.cs" />
+    <Compile Include="Character\FdPacket.cs" />
+    <Compile Include="Character\FsPacket.cs" />
+    <Compile Include="Character\GoldPacket.cs" />
+    <Compile Include="Character\Inventory\InvPacket.cs" />
+    <Compile Include="Character\Inventory\IvnPacket.cs" />
+    <Compile Include="Character\LevPacket.cs" />
+    <Compile Include="Character\NcifPacket.cs" />
+    <Compile Include="Character\PairyPacket.cs" />
+    <Compile Include="Character\SkiPacket.cs" />
+    <Compile Include="Character\SpPacket.cs" />
+    <Compile Include="Character\StatPacket.cs" />
+    <Compile Include="Character\WalkPacket.cs" />
+    <Compile Include="CommandPacket.cs" />
+    <Compile Include="Core\Attributes\PacketHeaderAttribute.cs" />
+    <Compile Include="Core\Attributes\PacketIndexAttribute.cs" />
+    <Compile Include="Core\CachedType.cs" />
+    <Compile Include="Core\Converters\InPacketConverter.cs" />
+    <Compile Include="Core\Converters\InvPacketConverter.cs" />
+    <Compile Include="Core\Converters\IvnPacketConverter.cs" />
+    <Compile Include="Core\Converters\PacketConverter.cs" />
+    <Compile Include="Core\Converters\SkiPacketConverter.cs" />
+    <Compile Include="Core\Converters\SpecialListConverter.cs" />
+    <Compile Include="Core\IPacketReader.cs" />
+    <Compile Include="Core\IReflectionCache.cs" />
+    <Compile Include="Core\PacketOutput.cs" />
+    <Compile Include="Core\PacketReader.cs" />
+    <Compile Include="Core\PropertyData.cs" />
+    <Compile Include="Core\ReflectionCache.cs" />
+    <Compile Include="Core\Serialization\Deserializer.cs" />
+    <Compile Include="Core\Serialization\IDeserializer.cs" />
+    <Compile Include="Entity\CondPacket.cs" />
+    <Compile Include="Entity\MvPacket.cs" />
+    <Compile Include="Entity\RestPacket.cs" />
+    <Compile Include="Extensions\ServiceCollectionExtension.cs" />
+    <Compile Include="FastReflection.cs" />
+    <Compile Include="Map\CMapPacket.cs" />
+    <Compile Include="Map\DiePacket.cs" />
+    <Compile Include="Map\DropPacket.cs" />
+    <Compile Include="Map\GetPacket.cs" />
+    <Compile Include="Map\GpPacket.cs" />
+    <Compile Include="Map\InPacket.cs" />
+    <Compile Include="Map\MapCleanPacket.cs" />
+    <Compile Include="Map\Miniland\Minigame\MgPacket.cs" />
+    <Compile Include="Map\Miniland\Minigame\MloInfoPacket.cs" />
+    <Compile Include="Map\Miniland\Minigame\MloLvPacket.cs" />
+    <Compile Include="Map\Miniland\Minigame\MloRwPacket.cs" />
+    <Compile Include="Map\Miniland\Minigame\MloStPacket.cs" />
+    <Compile Include="Map\Miniland\Minigame\MlPtPacket.cs" />
+    <Compile Include="Map\Miniland\MlInfoBrPacket.cs" />
+    <Compile Include="Map\Miniland\MlInfoPacket.cs" />
+    <Compile Include="Map\Miniland\MlObjLstPacket.cs" />
+    <Compile Include="Map\Miniland\MltObjPacket.cs" />
+    <Compile Include="Map\OutPacket.cs" />
+    <Compile Include="Packet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnknownPacket.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Moonlight.Conversion\Moonlight.Conversion.csproj">
+      <Project>{ad2adc56-76b5-4e4d-9f50-75baf536ba28}</Project>
+      <Name>Moonlight.Conversion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Moonlight.Core\Moonlight.Core.csproj">
+      <Project>{9e99f499-edae-4a74-86b6-397d8ca5d9fa}</Project>
+      <Name>Moonlight.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>

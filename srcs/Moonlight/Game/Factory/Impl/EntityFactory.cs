@@ -1,5 +1,6 @@
 ﻿using System;
-using Moonlight.Core.Enums;
+using Moonlight.Core.Enums.Game;
+using Moonlight.Core.Enums.Translation;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
 using Moonlight.Game.Entities;

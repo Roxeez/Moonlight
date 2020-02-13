@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Moonlight.Clients;
-using Moonlight.Core.Enums;
+using Moonlight.Core.Enums.Game;
 using Moonlight.Game.Battle;
 using Moonlight.Game.Factory;
 using Moonlight.Packet.Character;

@@ -1,4 +1,4 @@
-﻿using Moonlight.Core.Enums;
+﻿using Moonlight.Core.Enums.Game;
 using Moonlight.Game.Inventories.Items;
 
 namespace Moonlight.Game.Entities

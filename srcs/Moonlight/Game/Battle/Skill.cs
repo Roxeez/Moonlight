@@ -1,5 +1,5 @@
 ﻿using System;
-using Moonlight.Core.Enums;
+using Moonlight.Core.Enums.Game;
 using Moonlight.Database.Dto;
 
 namespace Moonlight.Game.Battle

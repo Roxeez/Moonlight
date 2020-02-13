@@ -1,5 +1,5 @@
 ﻿using Moonlight.Core;
-using Moonlight.Core.Enums;
+using Moonlight.Core.Enums.Game;
 
 namespace Moonlight.Game.Maps
 {
