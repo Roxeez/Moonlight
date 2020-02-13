@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Moonlight.Core.Enums;
@@ -45,12 +46,14 @@ namespace Moonlight.Toolkit.Parsing
                 FileLine firstLine = region.GetLine(x => x.StartWith("VNUM"));
                 FileLine secondLine = region.GetLine(x => x.StartWith("NAME"));
                 FileLine indexLine = region.GetLine(x => x.StartWith("INDEX"));
+                FileLine dataLine = region.GetLine(x => x.StartWith("DATA"));
 
                 int vnum = firstLine.GetValue<int>(1);
                 string name = secondLine.GetValue(1);
                 int inventoryType = indexLine.GetValue<int>(1);
                 int type = indexLine.GetValue<int>(2);
                 int subType = indexLine.GetValue<int>(3);
+                short[] data = dataLine.GetValues().Skip(1).Select(x => Convert.ToInt16(x)).ToArray();
 
                 switch (inventoryType)
                 {
@@ -74,7 +77,8 @@ namespace Moonlight.Toolkit.Parsing
                     NameKey = name,
                     BagType = (BagType)inventoryType,
                     Type = type,
-                    SubType = subType
+                    SubType = subType,
+                    Data = data
                 });
             }
 
