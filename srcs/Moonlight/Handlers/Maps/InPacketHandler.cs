@@ -1,7 +1,7 @@
 ﻿using System;
 using Moonlight.Clients;
 using Moonlight.Core;
-using Moonlight.Core.Enums.Game;
+using Moonlight.Core.Enums;
 using Moonlight.Core.Logging;
 using Moonlight.Event;
 using Moonlight.Event.Maps;

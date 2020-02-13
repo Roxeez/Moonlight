@@ -1,4 +1,4 @@
-﻿using Moonlight.Core.Enums.Game;
+﻿using Moonlight.Core.Enums;
 using Moonlight.Packet.Entity;
 using Moonlight.Tests.Extensions;
 using NFluent;

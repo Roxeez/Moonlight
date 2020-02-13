@@ -1,4 +1,4 @@
-﻿using Moonlight.Parser.Reader;
+﻿using Moonlight.Utility.Reader;
 using NFluent;
 using Xunit;
 

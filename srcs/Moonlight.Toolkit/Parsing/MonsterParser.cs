@@ -5,8 +5,8 @@ using Moonlight.Core.Logging;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
 using Moonlight.Toolkit.Commands;
-using Moonlight.Parser.Reader;
-using TextReader = Moonlight.Parser.Reader.TextReader;
+using Moonlight.Utility.Reader;
+using TextReader = Moonlight.Utility.Reader.TextReader;
 
 namespace Moonlight.Toolkit.Parsing
 {

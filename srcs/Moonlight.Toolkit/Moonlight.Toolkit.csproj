@@ -57,17 +57,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Moonlight.Core\Moonlight.Core.csproj">
-      <Project>{9e99f499-edae-4a74-86b6-397d8ca5d9fa}</Project>
-      <Name>Moonlight.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Moonlight.Database\Moonlight.Database.csproj">
-      <Project>{704c7883-c75a-4860-b775-7b84eac5a470}</Project>
-      <Name>Moonlight.Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Moonlight.Parser\Moonlight.Parser.csproj">
-      <Project>{a07953d8-5007-47d3-958e-42954fc8cb16}</Project>
-      <Name>Moonlight.Parser</Name>
+    <ProjectReference Include="..\Moonlight\Moonlight.csproj">
+      <Project>{3a2a4024-b86c-4291-a91e-fc6ec7eb480c}</Project>
+      <Name>Moonlight</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

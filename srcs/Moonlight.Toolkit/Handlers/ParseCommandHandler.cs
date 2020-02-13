@@ -11,9 +11,9 @@ namespace Moonlight.Toolkit.Handlers
     internal class ParseCommandHandler : CommandHandler<ParseCommand>
     {
         private readonly ILogger _logger;
-        private readonly IEnumerable<Parsing.Parser> _parsers;
+        private readonly IEnumerable<Parser> _parsers;
 
-        public ParseCommandHandler(ILogger logger, IEnumerable<Parsing.Parser> parsers)
+        public ParseCommandHandler(ILogger logger, IEnumerable<Parser> parsers)
         {
             _logger = logger;
             _parsers = parsers;
@@ -47,7 +47,7 @@ namespace Moonlight.Toolkit.Handlers
             }
 
             DateTime start = DateTime.Now;
-            foreach (Parsing.Parser parser in _parsers)
+            foreach (Parser parser in _parsers)
             {
                 _logger.Info("---------------------------------------------------");
                 parser.Parse(configuration, path);

@@ -3,19 +3,16 @@ using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using Moonlight.Clients;
 using Moonlight.Core;
-using Moonlight.Core.Enums.Game;
-using Moonlight.Core.Enums.Translation;
-using Moonlight.Core.Extensions;
 using Moonlight.Core.Import;
 using Moonlight.Extensions;
 using Moonlight.Core.Logging;
-using Moonlight.Database.Extensions;
 using Moonlight.Event;
 using Moonlight.Handlers;
-using Moonlight.Packet.Extensions;
 using Moonlight.Translation;
 
 [assembly: InternalsVisibleTo("Moonlight.Tests")]
+[assembly: InternalsVisibleTo("Moonlight.Toolkit")]
+
 namespace Moonlight
 {
     public sealed class MoonlightAPI
@@ -70,7 +67,7 @@ namespace Moonlight
             _eventManager.RegisterListener(listener);
         }
 
-        public void CreateConsole()
+        public void OpenConsole()
         {
             Kernel32.AllocConsole();
         }
