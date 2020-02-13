@@ -3,7 +3,7 @@
 namespace Moonlight.Packet.Map.Miniland.Minigame
 {
     [PacketHeader("mlo_lv")]
-    internal class MloLvPacket : Packet
+    public class MloLvPacket : Packet
     {
         [PacketIndex(0)]
         public int Level { get; set; }
