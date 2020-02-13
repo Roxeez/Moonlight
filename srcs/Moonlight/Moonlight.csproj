@@ -144,6 +144,7 @@
     <Compile Include="Handlers\IPacketHandler.cs" />
     <Compile Include="Handlers\IPacketHandlerManager.cs" />
     <Compile Include="Handlers\Maps\CMapPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\DiePacketHandler.cs" />
     <Compile Include="Handlers\Maps\GetPacketHandler.cs" />
     <Compile Include="Handlers\Maps\GpPacketHandler.cs" />
     <Compile Include="Handlers\Maps\InPacketHandler.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Packet\Entity\MvPacket.cs" />
     <Compile Include="Packet\Entity\RestPacket.cs" />
     <Compile Include="Packet\Map\CMapPacket.cs" />
+    <Compile Include="Packet\Map\DiePacket.cs" />
     <Compile Include="Packet\Map\DropPacket.cs" />
     <Compile Include="Packet\Map\GetPacket.cs" />
     <Compile Include="Packet\Map\GpPacket.cs" />

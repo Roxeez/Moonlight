@@ -32,10 +32,12 @@ namespace Moonlight.Handlers.Maps
             Entity entity = map.GetEntity(packet.EntityType, packet.EntityId);
             if (entity == null)
             {
+                _logger.Warn($"Can't found entity {packet.EntityType} {packet.EntityId} in map");
                 return;
             }
 
             map.RemoveEntity(packet.EntityType, packet.EntityId);
+            _logger.Info($"Entity {entity.EntityType} {entity.Id} leaved map");
             
             _eventManager.Emit(new EntityLeaveEvent(client)
             {

@@ -35,6 +35,12 @@ namespace Moonlight.Handlers.Maps
                 return;
             }
 
+            if (map.Contains(packet.EntityType, packet.EntityId))
+            {
+                _logger.Warn($"Entity {packet.EntityType} {packet.EntityId} already on map");
+                return;
+            }
+
             Entity entity;
             switch (packet.EntityType)
             {
@@ -87,6 +93,7 @@ namespace Moonlight.Handlers.Maps
             }
 
             map.AddEntity(entity);
+            _logger.Info($"Entity {entity.EntityType} {entity.Id} joined map");
             
             _eventManager.Emit(new EntityJoinEvent(client)
             {
