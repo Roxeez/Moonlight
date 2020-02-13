@@ -20,6 +20,9 @@ namespace Moonlight.Database.Entities
         [Required]
         public BagType BagType { get; set; }
 
+        [Required]
+        public short[] Data { get; set; }
+        
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

@@ -19,5 +19,6 @@ namespace Moonlight.Game.Inventories.Items
         public int Type => _itemDto.Type;
         public int SubType => _itemDto.SubType;
         public BagType BagType => _itemDto.BagType;
+        public short[] Data => _itemDto.Data;
     }
 }
