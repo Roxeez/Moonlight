@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Moonlight.Core;
 using Moonlight.Core.Collection;
@@ -38,6 +39,7 @@ namespace Moonlight.Game.Maps
         public InternalObservableDictionary<long, Player> Players { get; }
         public InternalObservableDictionary<long, GroundItem> GroundItems { get; }
         public InternalObservableDictionary<long, Portal> Portals { get; }
+        public IEnumerable<Entity> Entities => Monsters.Concat(Npcs.Cast<Entity>()).Concat(Players).Concat(GroundItems);
 
         public Entity GetEntity(EntityType entityType, long entityId)
         {
@@ -77,6 +79,29 @@ namespace Moonlight.Game.Maps
 
         public bool Contains(EntityType entityType, long entityId) => GetEntity(entityType, entityId) != null;
 
+        public IEnumerable<Entity> GetEntities(EntityType entityType)
+        {
+            switch (entityType)
+            {
+                case EntityType.NPC:
+                    return Npcs;
+                case EntityType.PLAYER:
+                    return Players;
+                case EntityType.MONSTER:
+                    return Monsters;
+                case EntityType.GROUND_ITEM:
+                    return GroundItems;
+                default:
+                    return Array.Empty<Entity>();
+            }
+        }
+
+        public IEnumerable<T> GetEntities<T>() where T : Entity
+        {
+            EntityType entityType = EntityUtility.GetEntityType<T>();
+            return GetEntities(entityType).Cast<T>();
+        }
+        
         internal void AddPortal(Portal portal)
         {
             Portals[portal.Id] = portal;
