@@ -66,30 +66,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\srcs\Moonlight.Conversion\Moonlight.Conversion.csproj">
-      <Project>{ad2adc56-76b5-4e4d-9f50-75baf536ba28}</Project>
-      <Name>Moonlight.Conversion</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\srcs\Moonlight.Core\Moonlight.Core.csproj">
-      <Project>{9e99f499-edae-4a74-86b6-397d8ca5d9fa}</Project>
-      <Name>Moonlight.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\srcs\Moonlight.Database\Moonlight.Database.csproj">
-      <Project>{704c7883-c75a-4860-b775-7b84eac5a470}</Project>
-      <Name>Moonlight.Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\srcs\Moonlight.Packet\Moonlight.Packet.csproj">
-      <Project>{30dc4429-62d6-4552-99a1-766d9be645d1}</Project>
-      <Name>Moonlight.Packet</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\srcs\Moonlight.Parser\Moonlight.Parser.csproj">
-      <Project>{a07953d8-5007-47d3-958e-42954fc8cb16}</Project>
-      <Name>Moonlight.Parser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\srcs\Moonlight.Translation\Moonlight.Translation.csproj">
-      <Project>{25394b56-6943-456e-b146-f27cdd928d11}</Project>
-      <Name>Moonlight.Translation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\srcs\Moonlight\Moonlight.csproj">
       <Project>{3a2a4024-b86c-4291-a91e-fc6ec7eb480c}</Project>
       <Name>Moonlight</Name>

@@ -1,4 +1,4 @@
-﻿using Moonlight.Core.Enums.Game;
+﻿using Moonlight.Core.Enums;
 
 namespace Moonlight.Game.Entities
 {

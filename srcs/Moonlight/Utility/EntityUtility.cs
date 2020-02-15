@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Moonlight.Core.Enums.Game;
-using Moonlight.Core.Extensions;
+using Moonlight.Core.Enums;
+using Moonlight.Extensions;
 using Moonlight.Game.Entities;
 
 namespace Moonlight.Utility

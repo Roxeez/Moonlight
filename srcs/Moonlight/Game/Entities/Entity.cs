@@ -1,6 +1,6 @@
 ﻿using System;
 using Moonlight.Core;
-using Moonlight.Core.Enums.Game;
+using Moonlight.Core.Enums;
 using Moonlight.Game.Maps;
 using PropertyChanged;
 

@@ -1,5 +1,5 @@
 ﻿using System;
-using Moonlight.Core.Enums.Game;
+using Moonlight.Core.Enums;
 using Moonlight.Game.Entities;
 
 namespace Moonlight.Game.Inventories

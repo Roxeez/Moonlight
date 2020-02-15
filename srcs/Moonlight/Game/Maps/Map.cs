@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Moonlight.Core;
 using Moonlight.Core.Collection;
-using Moonlight.Core.Enums.Game;
+using Moonlight.Core.Enums;
 using Moonlight.Game.Entities;
 using Moonlight.Utility;
 

@@ -2,10 +2,10 @@ using System;
 using CommandLine;
 using Microsoft.Extensions.DependencyInjection;
 using Moonlight.Core;
-using Moonlight.Core.Extensions;
-using Moonlight.Database.Extensions;
+using Moonlight.Extensions;
 using Moonlight.Toolkit.Commands;
 using Moonlight.Toolkit.Handlers;
+using Parser = Moonlight.Toolkit.Parsing.Parser;
 
 namespace Moonlight.Toolkit
 {
@@ -24,7 +24,7 @@ namespace Moonlight.Toolkit
             });
 
             services.AddImplementingTypes<ICommandHandler>();
-            services.AddImplementingTypes<Parsing.Parser>();
+            services.AddImplementingTypes<Parser>();
 
             IServiceProvider provider = services.BuildServiceProvider();
 
