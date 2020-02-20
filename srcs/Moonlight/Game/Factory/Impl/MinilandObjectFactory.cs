@@ -13,7 +13,7 @@ namespace Moonlight.Game.Factory.Impl
         static MinilandObjectFactory()
         {
             MinigameId = new HashSet<int>();
-            for (int i = 3117; i < 3128; i++)
+            for (int i = 3117; i <= 3128; i++)
             {
                 MinigameId.Add(i);
             }

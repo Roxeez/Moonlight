@@ -149,6 +149,8 @@
     <Compile Include="Handlers\Maps\GpPacketHandler.cs" />
     <Compile Include="Handlers\Maps\InPacketHandler.cs" />
     <Compile Include="Handlers\Maps\MapCleanPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\Minilands\Minigames\MloInfoPacketHandler.cs" />
+    <Compile Include="Handlers\Maps\Minilands\Minigames\MlPtPacketHandler.cs" />
     <Compile Include="Handlers\Maps\Minilands\MlInfoBrPacketHandler.cs" />
     <Compile Include="Handlers\Maps\Minilands\MlInfoPacketHandler.cs" />
     <Compile Include="Handlers\Maps\Minilands\MlObjLstPacketHandler.cs" />
@@ -248,6 +250,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>

@@ -26,19 +26,9 @@ namespace Moonlight.Handlers.Battle
         {
             Map map = client.Character.Map;
 
-            if (packet.Damage == 0)
-            {
-                return;
-            }
-
             LivingEntity caster = map.GetEntity<LivingEntity>(packet.EntityType, packet.EntityId);
             LivingEntity target = map.GetEntity<LivingEntity>(packet.TargetEntityType, packet.TargetEntityId);
             
-            if (target == null || caster == null)
-            {
-                return;
-            }
-
             if (caster is Character character)
             {
                 Skill skill = character.Skills.FirstOrDefault(x => x.Id == packet.SkillVnum);
@@ -48,6 +38,11 @@ namespace Moonlight.Handlers.Battle
                 }
 
                 skill.IsOnCooldown = true;
+            }
+            
+            if (target == null || caster == null)
+            {
+                return;
             }
 
             target.HpPercentage = packet.TargetHpPercentage;

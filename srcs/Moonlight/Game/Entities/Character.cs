@@ -20,6 +20,7 @@ namespace Moonlight.Game.Entities
     public class Character : Player
     {
         private readonly ILogger _logger;
+        
         internal Character(ILogger logger, long id, string name, Client client, Miniland miniland) : base(id, name)
         {
             _logger = logger;
@@ -192,7 +193,7 @@ namespace Moonlight.Game.Entities
                 return;
             }
 
-            if (skill.TargetType == TargetType.TARGET || skill.TargetType == TargetType.NO_TARGET)
+            if (skill.TargetType == TargetType.TARGET)
             {
                 return;
             }
