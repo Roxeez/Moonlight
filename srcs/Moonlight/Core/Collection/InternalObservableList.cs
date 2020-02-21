@@ -19,11 +19,11 @@ namespace Moonlight.Core.Collection
         {
             ThreadSafeInternalList.Add(item);
             
-            Application.Current?.Dispatcher?.Invoke(() =>
+            MoonlightAPI.Context?.Post(x =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
-            });
+            }, null);
         }
 
         internal void Remove(T item)
@@ -34,22 +34,22 @@ namespace Moonlight.Core.Collection
                 return;
             }
             
-            Application.Current?.Dispatcher?.Invoke(() =>
+            MoonlightAPI.Context?.Post(x =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
-            });
+            }, null);
         }
 
         internal void Clear()
         {
             ThreadSafeInternalList.Clear();
             
-            Application.Current?.Dispatcher?.Invoke(() =>
+            MoonlightAPI.Context?.Post(x =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            });
+            }, null);
         }
 
         public bool Contains(T item) => ThreadSafeInternalList.Contains(item);

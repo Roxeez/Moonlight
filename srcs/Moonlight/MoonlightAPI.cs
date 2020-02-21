@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Moonlight.Clients;
 using Moonlight.Core;
@@ -12,11 +13,12 @@ using Moonlight.Translation;
 
 [assembly: InternalsVisibleTo("Moonlight.Tests")]
 [assembly: InternalsVisibleTo("Moonlight.Toolkit")]
-
 namespace Moonlight
 {
     public sealed class MoonlightAPI
     {
+        internal static SynchronizationContext Context { get; private set; }
+        
         private readonly IClientManager _clientManager;
         private readonly ILanguageService _languageService;
         private readonly IPacketHandlerManager _packetHandlerManager;
@@ -24,6 +26,11 @@ namespace Moonlight
 
         public MoonlightAPI() : this(new AppConfig())
         {
+        }
+
+        public MoonlightAPI(SynchronizationContext context) : this()
+        {
+            Context = context;
         }
 
         internal MoonlightAPI(AppConfig config)

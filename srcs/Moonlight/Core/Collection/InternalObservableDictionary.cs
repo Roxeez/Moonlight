@@ -26,11 +26,11 @@ namespace Moonlight.Core.Collection
             {
                 ThreadSafeInternalDictionary[key] = value; 
                 
-                Application.Current?.Dispatcher?.Invoke(() =>
+                MoonlightAPI.Context?.Post(x =>
                 {
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
                     CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, value));
-                });
+                }, null);
             }
         }
         
@@ -38,11 +38,11 @@ namespace Moonlight.Core.Collection
         {
             ThreadSafeInternalDictionary.Add(key, value);
             
-            Application.Current?.Dispatcher?.Invoke(() =>
+            MoonlightAPI.Context?.Post(x =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, value));
-            });
+            }, null);
         }
 
         internal void Remove(K key)
@@ -53,22 +53,22 @@ namespace Moonlight.Core.Collection
             }
 
             ThreadSafeInternalDictionary.Remove(key);
-            Application.Current?.Dispatcher?.Invoke(() =>
+            MoonlightAPI.Context?.Post(x =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, value));
-            });
+            }, null);
         }
 
         internal void Clear()
         {
             ThreadSafeInternalDictionary.Clear();
             
-            Application.Current?.Dispatcher?.Invoke(() =>
+            MoonlightAPI.Context?.Post(x =>
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            });
+            }, null);
         }
 
         internal V GetValueOrDefault(K key) => ThreadSafeInternalDictionary.GetValueOrDefault(key);
