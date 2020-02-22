@@ -119,7 +119,7 @@ namespace Moonlight.Game.Entities
                 return;
             }
 
-            Moon.Walk(position.X, position.Y);
+            MoonlightInterop.Walk(position.X, position.Y);
             LastMovement = DateTime.Now;
 
             while (LastMovement.AddMilliseconds(500) > DateTime.Now)

@@ -2,11 +2,11 @@ using System.Runtime.InteropServices;
 
 namespace Moonlight.Core.Import
 {
-    internal static class Moon
+    internal static class MoonlightInterop
     {
         public delegate bool PacketCallback(string packet);
 
-        private const string LibraryName = "Moonlight/Moon.dll";
+        private const string LibraryName = "Moonlight/MoonlightInterop.dll";
 
         [DllImport(LibraryName, EntryPoint = "setRecvCallback", CallingConvention = CallingConvention.StdCall)]
         public static extern void SetRecvCallback(PacketCallback callback);

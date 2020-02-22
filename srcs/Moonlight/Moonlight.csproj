@@ -56,7 +56,7 @@
     <Compile Include="Core\Enums\SkillType.cs" />
     <Compile Include="Core\Enums\TargetType.cs" />
     <Compile Include="Core\Import\Kernel32.cs" />
-    <Compile Include="Core\Import\Moon.cs" />
+    <Compile Include="Core\Import\MoonlightInterop.cs" />
     <Compile Include="Core\Import\User32.cs" />
     <Compile Include="Core\Logging\ILogger.cs" />
     <Compile Include="Core\Logging\SerilogLogger.cs" />

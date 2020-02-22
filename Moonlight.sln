@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moonlight.Tests", "tests\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moonlight.Toolkit", "srcs\Moonlight.Toolkit\Moonlight.Toolkit.csproj", "{680BC078-FBC5-4A82-B723-E342E52F0BF7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moon", "srcs\Moon\Moon.vcxproj", "{5098DE71-AA35-471C-8C6B-CE533888401A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moonlight.Interop", "srcs\Moonlight.Interop\Moonlight.Interop.vcxproj", "{5098DE71-AA35-471C-8C6B-CE533888401A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
