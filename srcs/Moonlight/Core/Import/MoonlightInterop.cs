@@ -6,7 +6,7 @@ namespace Moonlight.Core.Import
     {
         public delegate bool PacketCallback(string packet);
 
-        private const string LibraryName = "Moonlight/MoonlightInterop.dll";
+        private const string LibraryName = "Moonlight/Moonlight.Interop.dll";
 
         [DllImport(LibraryName, EntryPoint = "setRecvCallback", CallingConvention = CallingConvention.StdCall)]
         public static extern void SetRecvCallback(PacketCallback callback);
