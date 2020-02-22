@@ -26,37 +26,56 @@ Moonlight can be used with local client (injected .dll) or remote client (client
 ## Example
 >Example application can be found here : https://github.com/Roxeez/Moonlight.Example
 ```csharp
-Character character = _client.Character;
-Skill basicAttack = character.Skills.FirstOrDefault();
-
-while (IsRunning)
+private async Task BotLoop()
 {
-    IEnumerable<Monster> allPii;
-    Skill skill;
-    
-    do
+    while (IsRunning)
     {
-        Monster pod;
+        IEnumerable<Monster> monsters;
+        Skill zoneSkill;
         do
         {
-            pod = character.GetClosestMonsterInRadius(Constants.SoftPiiPodVnum, Radius);
-            if (pod == null)
+            zoneSkill = Configuration.UsedSkills.FirstOrDefault(x => !x.IsOnCooldown);
+            monsters = Client.Character.Map.Monsters
+                .Where(x => x.Vnum == MonsterConstants.SoftPii)
+                .Where(x => x.Position.IsInRange(Client.Character.Position, Radius))
+                .OrderBy(x => x.Position.GetDistance(Client.Character.Position));
+            
+            Monster closestPod = await GetClosestPod();
+            if (closestPod == null)
             {
-                await Task.Delay(100);
+                return;
             }
+
+            await Client.Character.Attack(closestPod);
         } 
-        while (pod == null);
+        while ((monsters.Count() < 10 || zoneSkill == null) && IsRunning);
 
-        await character.Attack(basicAttack, pod);
+        if (monsters.Count() < 10)
+        {
+            return;
+        }
         
-        allPii = character.GetClosestMonstersInRadius(Constants.SoftPiiVnum, Radius);
-        skill = skills.FirstOrDefault(x => !x.IsOnCooldown);
+        await Client.Character.UseSkillOn(zoneSkill, monsters.First());
+        await Task.Delay(100);
+    }
+}
 
+private async Task<Monster> GetClosestPod()
+{
+    Monster pod;
+    do
+    {
+        pod = Client.Character.Map.Monsters
+            .Where(x => x.Vnum == MonsterConstants.SoftPiiPod)
+            .Where(x => x.Position.IsInRange(Client.Character.Position, Radius))
+            .OrderBy(x => x.Position.GetDistance(Client.Character.Position))
+            .FirstOrDefault();
+        
         await Task.Delay(100);
     } 
-    while (allPii.Count() < 10 || skill == null);
+    while (pod == null && IsRunning);
 
-    await character.Attack(skill, allPii.First());
+    return pod;
 }
 ```
 
