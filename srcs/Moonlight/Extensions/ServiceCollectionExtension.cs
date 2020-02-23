@@ -17,9 +17,9 @@ using Moonlight.Utility.Conversion.Converters;
 
 namespace Moonlight.Extensions
 {
-    internal static class ServiceCollectionExtension
+    public static class ServiceCollectionExtension
     {
-        public static void AddFactories(this IServiceCollection services)
+        internal static void AddFactories(this IServiceCollection services)
         {
             services.AddTransient<IMapFactory, MapFactory>();
             services.AddTransient<IEntityFactory, EntityFactory>();
@@ -29,7 +29,7 @@ namespace Moonlight.Extensions
             services.AddTransient<IItemInstanceFactory, ItemInstanceFactory>();
         }
         
-        public static void AddPacketDependencies(this IServiceCollection services)
+        internal static void AddPacketDependencies(this IServiceCollection services)
         {
             services.AddSingleton<IConversionFactory, ConversionFactory>();
             services.AddSingleton<IReflectionCache, ReflectionCache>();
@@ -37,7 +37,7 @@ namespace Moonlight.Extensions
             services.AddTransient<IDeserializer, Deserializer>();
         }
         
-        public static void AddDatabaseDependencies(this IServiceCollection services, AppConfig config)
+        internal static void AddDatabaseDependencies(this IServiceCollection services, AppConfig config)
         {
             services.AddTransient<AppConfig>(x => config);
             services.AddTransient<IContextFactory<MoonlightContext>, SqliteContextFactory>();
@@ -68,7 +68,7 @@ namespace Moonlight.Extensions
             }
         }
 
-        public static void AddLogger(this IServiceCollection services)
+        internal static void AddLogger(this IServiceCollection services)
         {
             services.AddTransient<ILogger, SerilogLogger>();
         }
