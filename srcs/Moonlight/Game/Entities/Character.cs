@@ -199,7 +199,7 @@ namespace Moonlight.Game.Entities
             }
 
             Client.SendPacket($"u_s {skill.CastId} {(int)EntityType} {Id}");
-            await Task.Delay(skill.CastTime * 100).ConfigureAwait(false);
+            await Task.Delay(skill.CastTime * 200).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Moonlight.Game.Entities
             
             await WalkInRange(target.Position, skill.Range).ConfigureAwait(false);
             Client.SendPacket($"u_s {skill.CastId} {(int)target.EntityType} {target.Id}");
-            await Task.Delay(skill.CastTime * 100).ConfigureAwait(false);
+            await Task.Delay(skill.CastTime * 200).ConfigureAwait(false);
         }
 
         /// <summary>
