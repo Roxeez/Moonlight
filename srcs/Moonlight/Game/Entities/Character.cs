@@ -28,7 +28,7 @@ namespace Moonlight.Game.Entities
             Client = client;
             Inventory = new Inventory(this);
             Miniland = miniland;
-            Skills = new InternalObservableList<Skill>();
+            Skills = new InternalObservableHashSet<Skill>();
             Unsafe = new Unsafe(this);
         }
 
@@ -95,7 +95,7 @@ namespace Moonlight.Game.Entities
         /// <summary>
         ///     Current character skills
         /// </summary>
-        public InternalObservableList<Skill> Skills { get; }
+        public InternalObservableHashSet<Skill> Skills { get; }
         
         /// <summary>
         /// Class containing unsafe code (game exploit) (use it at your own risk)

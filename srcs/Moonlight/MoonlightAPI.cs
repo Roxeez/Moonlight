@@ -74,7 +74,7 @@ namespace Moonlight
             _eventManager.RegisterListener(listener);
         }
 
-        public void OpenConsole()
+        public void AllocConsole()
         {
             Kernel32.AllocConsole();
         }

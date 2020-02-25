@@ -40,8 +40,10 @@
     <Compile Include="Clients\LocalClient.cs" />
     <Compile Include="Core\AppConfig.cs" />
     <Compile Include="Core\Collection\InternalObservableDictionary.cs" />
+    <Compile Include="Core\Collection\InternalObservableHashSet.cs" />
     <Compile Include="Core\Collection\InternalObservableList.cs" />
     <Compile Include="Core\Collection\ThreadSafeDictionary.cs" />
+    <Compile Include="Core\Collection\ThreadSafeHashSet.cs" />
     <Compile Include="Core\Collection\ThreadSafeList.cs" />
     <Compile Include="Core\Enums\BagType.cs" />
     <Compile Include="Core\Enums\ClassType.cs" />
