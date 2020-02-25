@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Moonlight.Core.Import
+namespace Moonlight.Core.Interop
 {
     public static class Kernel32
     {

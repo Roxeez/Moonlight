@@ -1,5 +1,7 @@
 ﻿using Moonlight.Clients;
 using Moonlight.Core.Logging;
+using Moonlight.Event;
+using Moonlight.Event.Characters;
 using Moonlight.Game.Entities;
 using Moonlight.Game.Factory;
 using Moonlight.Packet.Character;
@@ -10,11 +12,13 @@ namespace Moonlight.Handlers.Characters
     {
         private readonly ILogger _logger;
         private readonly IMapFactory _mapFactory;
+        private readonly IEventManager _eventManager;
 
-        public CInfoPacketHandler(ILogger logger, IMapFactory mapFactory)
+        public CInfoPacketHandler(ILogger logger, IMapFactory mapFactory, IEventManager eventManager)
         {
             _logger = logger;
             _mapFactory = mapFactory;
+            _eventManager = eventManager;
         }
 
         protected override void Handle(Client client, CInfoPacket packet)
@@ -26,6 +30,11 @@ namespace Moonlight.Handlers.Characters
                     Class = packet.Class,
                     Gender = packet.Gender
                 };
+                
+                _eventManager.Emit(new CharacterInitializeEvent(client)
+                {
+                    Character = client.Character
+                });
             }
         }
     }

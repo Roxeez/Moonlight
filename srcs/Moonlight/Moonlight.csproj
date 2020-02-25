@@ -38,6 +38,7 @@
     <Compile Include="Clients\Client.cs" />
     <Compile Include="Clients\IClientManager.cs" />
     <Compile Include="Clients\LocalClient.cs" />
+    <Compile Include="Clients\Local\Window.cs" />
     <Compile Include="Core\AppConfig.cs" />
     <Compile Include="Core\Collection\InternalObservableDictionary.cs" />
     <Compile Include="Core\Collection\InternalObservableHashSet.cs" />
@@ -57,9 +58,9 @@
     <Compile Include="Core\Enums\RootKey.cs" />
     <Compile Include="Core\Enums\SkillType.cs" />
     <Compile Include="Core\Enums\TargetType.cs" />
-    <Compile Include="Core\Import\Kernel32.cs" />
-    <Compile Include="Core\Import\MoonlightInterop.cs" />
-    <Compile Include="Core\Import\User32.cs" />
+    <Compile Include="Core\Interop\Kernel32.cs" />
+    <Compile Include="Core\Interop\Native.cs" />
+    <Compile Include="Core\Interop\User32.cs" />
     <Compile Include="Core\Logging\ILogger.cs" />
     <Compile Include="Core\Logging\SerilogLogger.cs" />
     <Compile Include="Core\Position.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Database\MoonlightContext.cs" />
     <Compile Include="Database\SqliteConfiguration.cs" />
     <Compile Include="Database\SqliteContextFactory.cs" />
+    <Compile Include="Event\Characters\CharacterInitializeEvent.cs" />
     <Compile Include="Event\Entities\EntityDamageEvent.cs" />
     <Compile Include="Event\Entities\EntityDeathEvent.cs" />
     <Compile Include="Event\Entities\EntityMoveEvent.cs" />

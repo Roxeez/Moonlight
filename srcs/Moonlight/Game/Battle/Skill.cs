@@ -27,6 +27,27 @@ namespace Moonlight.Game.Battle
         public HitType HitType => _skillDto.HitType;
         public bool IsOnCooldown { get; internal set; }
 
-        public bool Equals(Skill other) => other != null && other.Id == Id;
+        public bool Equals(Skill other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Id == other.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return Id.GetHashCode() * 397;
+            }
+        }
     }
 }

@@ -53,10 +53,27 @@ namespace Moonlight.Game.Entities
         /// </summary>
         /// <param name="other">Other entity</param>
         /// <returns>true if equals false if not</returns>
-        public bool Equals(Entity other) =>
-            other != null && other.Id == Id
-            && other.EntityType == EntityType
-            && other.Map.Equals(Map)
-            && other.Position.Equals(Position);
+        public bool Equals(Entity other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Id == other.Id && EntityType == other.EntityType;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return Id.GetHashCode() * 397 ^ (int) EntityType;
+            }
+        }
     }
 }

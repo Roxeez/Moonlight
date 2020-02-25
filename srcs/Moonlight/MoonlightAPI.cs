@@ -4,7 +4,7 @@ using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Moonlight.Clients;
 using Moonlight.Core;
-using Moonlight.Core.Import;
+using Moonlight.Core.Interop;
 using Moonlight.Extensions;
 using Moonlight.Core.Logging;
 using Moonlight.Event;

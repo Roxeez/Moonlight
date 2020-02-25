@@ -1,4 +1,6 @@
-﻿using Moonlight.Core.Import;
+﻿using System;
+using Moonlight.Clients.Local;
+using Moonlight.Core.Interop;
 
 namespace Moonlight.Clients
 {
@@ -7,34 +9,37 @@ namespace Moonlight.Clients
         /// <summary>
         ///     Need to keep a reference to both callback to avoid GC
         /// </summary>
-        private readonly MoonlightInterop.PacketCallback _recvCallback;
-        private readonly MoonlightInterop.PacketCallback _sendCallback;
+        private readonly Native.PacketCallback _recvCallback;
+        private readonly Native.PacketCallback _sendCallback;
 
+        public Window Window { get; }
 
-        public LocalClient()
+        public LocalClient(Window window)
         {
+            Window = window;
+            
             _sendCallback = OnPacketSend;
             _recvCallback = OnPacketReceived;
 
-            MoonlightInterop.Initialize();
+            Native.Initialize();
 
-            MoonlightInterop.SetSendCallback(_sendCallback);
-            MoonlightInterop.SetRecvCallback(_recvCallback);
+            Native.SetSendCallback(_sendCallback);
+            Native.SetRecvCallback(_recvCallback);
         }
 
         public override void SendPacket(string packet)
         {
-            MoonlightInterop.SendPacket(packet);
+            Native.SendPacket(packet);
         }
 
         public override void ReceivePacket(string packet)
         {
-            MoonlightInterop.RecvPacket(packet);
+            Native.RecvPacket(packet);
         }
 
         public override void Dispose()
         {
-            MoonlightInterop.Clean();
+            Native.Clean();
         }
     }
 }

@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
 
-namespace Moonlight.Core.Import
+namespace Moonlight.Core.Interop
 {
-    internal static class MoonlightInterop
+    internal static class Native
     {
         public delegate bool PacketCallback(string packet);
 
