@@ -17,11 +17,11 @@ Moonlight can be used with local client (injected .dll) or remote client (client
 - Install DllExport to your project and create your export function (cf. DllExport wiki)
 - Build your project
 - Create database.db using Moonlight.Toolkit CLI*
-- Copy previously generated database.db & Moon.dll* to a subfolder named Moonlight in your NosTale folder
+- Copy previously generated database.db & Moonlight.Interop.dll* to a subfolder named Moonlight in your NosTale folder
 - Copy your generated .dll to NosTale folder
 - Inject your .dll using an injector supporting custom export function.
 
-> <sub><sup>*Moon.dll & Moonlight.Toolkit are located in Moonlight build folder.</sub></sup>  
+> <sub><sup>*Moonlight.Interop.dll & Moonlight.Toolkit are located in Moonlight build folder.</sub></sup>  
 > Moonlight is a packet based lib, so if you want everything to work correctly using local client, it should be injected before character selection.
 ## Example
 >Example application can be found here : https://github.com/Roxeez/Moonlight.Example
