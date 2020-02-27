@@ -1,6 +1,4 @@
-using System;
-using Moonlight.Clients.Local;
-using Moonlight.Core.Interop;
+﻿using Moonlight.Clients.Local;
 using MoonlightCore;
 
 namespace Moonlight.Clients
@@ -8,7 +6,6 @@ namespace Moonlight.Clients
     public sealed class LocalClient : Client
     {
         public ManagedMoonlightCore ManagedMoonlightCore { get; }
-
         public Window Window { get; }
 
         public LocalClient(Window window)

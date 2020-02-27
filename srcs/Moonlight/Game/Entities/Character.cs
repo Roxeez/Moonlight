@@ -5,7 +5,6 @@ using Moonlight.Clients;
 using Moonlight.Core;
 using Moonlight.Core.Collection;
 using Moonlight.Core.Enums;
-using Moonlight.Core.Interop;
 using Moonlight.Core.Logging;
 using Moonlight.Game.Battle;
 using Moonlight.Game.Inventories;
