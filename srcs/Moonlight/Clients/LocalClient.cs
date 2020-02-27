@@ -5,8 +5,9 @@ namespace Moonlight.Clients
 {
     public sealed class LocalClient : Client
     {
-        public ManagedMoonlightCore ManagedMoonlightCore { get; }
         public Window Window { get; }
+        
+        internal ManagedMoonlightCore ManagedMoonlightCore { get; }
 
         public LocalClient(Window window)
         {
