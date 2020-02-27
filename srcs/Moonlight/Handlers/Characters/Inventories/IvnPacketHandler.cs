@@ -15,26 +15,34 @@ namespace Moonlight.Handlers.Characters.Inventories
         protected override void Handle(Client client, IvnPacket packet)
         {
             Character character = client.Character;
-
+            IvnSubPacket ivn = packet.SubPacket;
+            
             Bag bag = character.Inventory.GetBag(packet.BagType);
             if (bag == null)
             {
                 return;
             }
-
-            if (packet.SubPacket.VNum == -1)
+            
+            if (ivn.VNum == -1)
             {
-                bag.RemoveItem(packet.SubPacket.Slot);
+                bag.Remove(ivn.Slot);
                 return;
             }
 
-            ItemInstance item = _itemInstanceFactory.CreateItemInstance(packet.SubPacket.VNum, packet.SubPacket.RareAmount);
-            if (item == null)
+            ItemInstance existingItem = bag.GetValueOrDefault(ivn.Slot);
+            if (existingItem == null || existingItem.Item.Vnum == ivn.VNum)
             {
+                ItemInstance item = _itemInstanceFactory.CreateItemInstance(packet.SubPacket.VNum, packet.SubPacket.RareAmount);
+                if (item == null)
+                {
+                    return;
+                }
+                
+                bag[ivn.Slot] = item;
                 return;
             }
 
-            bag.AddItem(packet.SubPacket.Slot, item);
+            existingItem.Amount = packet.SubPacket.RareAmount;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Moonlight.Core.Enums;
+﻿using System.Linq;
+using Moonlight.Core.Enums;
 using Moonlight.Database.Dto;
 using Moonlight.Game.Inventories;
 using Moonlight.Game.Inventories.Items;
@@ -27,7 +28,7 @@ namespace Moonlight.Tests.Handling
 
             Check.That(bag).IsNotNull();
 
-            ItemInstance itemInstance = bag.GetItemInSlot(0);
+            ItemInstance itemInstance = bag.GetValueOrDefault(0);
 
             Check.That(itemInstance).IsNotNull();
             Check.That(itemInstance.Item.Vnum).Is(8112);
@@ -44,17 +45,16 @@ namespace Moonlight.Tests.Handling
 
             Check.That(bag).IsNotNull();
 
-            ItemInstance itemInstance = bag.GetItemWithVnum(1012);
+            ItemInstance itemInstance = bag.First(x => x.Item.Vnum == 1012);
 
             Check.That(itemInstance).IsNotNull();
-            Check.That(bag.GetSlot(itemInstance)).Is(0);
             Check.That(itemInstance.Amount).Is(23);
         }
 
         [Fact]
         public void Ivn_Packet_Change_Inventory()
         {
-            Client.Character.Inventory.Equipment.AddItem(35, new ItemInstance(new Item("dummy", new ItemDto
+            Client.Character.Inventory.Equipment.Add(5, new ItemInstance(new Item("dummy", new ItemDto
             {
                 Id = 1000
             }), 1));

@@ -1,31 +1,112 @@
-﻿using System.Linq;
-using Moonlight.Core;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Moonlight.Core.Collection;
+using Moonlight.Core.Enums;
+using Moonlight.Extensions;
+using Moonlight.Game.Entities;
+using Moonlight.Game.Inventories.Items;
 
 namespace Moonlight.Game.Inventories
 {
     public class Bag : InternalObservableDictionary<int, ItemInstance>
     {
-        public ItemInstance GetItemInSlot(int slot) => this[slot];
+        private readonly Character _character;
+        public BagType BagType { get; }
 
-        public ItemInstance GetItemWithVnum(int vnum)
+        public Bag(Character character, BagType bagType)
         {
-            return Values.FirstOrDefault(x => x.Item.Vnum == vnum);
+            _character = character;
+            BagType = bagType;
         }
 
-        public int GetSlot(ItemInstance instance)
+        public void Move(int sourceSlot, int destinationSlot)
         {
-            return ThreadSafeInternalDictionary.FirstOrDefault(x => x.Value.Equals(instance)).Key;
+            ItemInstance item = GetValueOrDefault(sourceSlot);
+            if (item == null)
+            {
+                return;
+            }
+
+            if (destinationSlot == sourceSlot)
+            {
+                return;
+            }
+
+            _character.Client.SendPacket($"mvi {BagType} {sourceSlot} {item.Amount} {destinationSlot}");
         }
 
-        internal void AddItem(int slot, ItemInstance item)
+        public void Move(int sourceSlot, int destinationSlot, int amount)
         {
-            this[slot] = item;
+            ItemInstance item = GetValueOrDefault(sourceSlot);
+            if (item == null)
+            {
+                return;
+            }
+
+            if (destinationSlot == sourceSlot)
+            {
+                return;
+            }
+
+            if (amount > item.Amount || amount < 1)
+            {
+                return;
+            }
+
+            _character.Client.SendPacket($"mvi {BagType} {sourceSlot} {amount} {destinationSlot}");
         }
 
-        internal void RemoveItem(int slot)
+        public void Use(Item item)
         {
-            Remove(slot);
+            KeyValuePair<int, ItemInstance> entry = ThreadSafeInternalDictionary.FirstOrDefault(x => x.Value.Item.Equals(item));
+            if (entry.Equals(default))
+            {
+                return;
+            }
+            
+            Use(entry.Key);
+        }
+        
+        public void Use(int slot)
+        {
+            if (!ContainsKey(slot))
+            {
+                return;
+            }
+
+            _character.Client.SendPacket($"u_i {(int)_character.EntityType} {_character.Id} {(int)BagType} {slot} 0 0 ");
+        }
+        
+        public void Drop(int slot, int amount)
+        {
+            ItemInstance item = GetValueOrDefault(slot);
+            if (item == null)
+            {
+                return;
+            }
+
+            if (amount <= 0)
+            {
+                return;
+            }
+
+            if (amount > item.Amount || amount < 1)
+            {
+                return;
+            }
+
+            _character.Client.SendPacket($"put {(int)BagType} {slot} {amount}");
+        }
+        
+        public void Drop(int slot)
+        {
+            ItemInstance item = GetValueOrDefault(slot);
+            if (item == null)
+            {
+                return;
+            }
+
+            _character.Client.SendPacket($"put {(int)BagType} {slot} {item.Amount}");
         }
     }
 }

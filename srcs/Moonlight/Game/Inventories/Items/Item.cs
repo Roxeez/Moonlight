@@ -1,9 +1,10 @@
-﻿using Moonlight.Core.Enums;
+﻿using System;
+using Moonlight.Core.Enums;
 using Moonlight.Database.Dto;
 
 namespace Moonlight.Game.Inventories.Items
 {
-    public class Item
+    public class Item : IEquatable<Item>
     {
         private readonly ItemDto _itemDto;
 
@@ -20,5 +21,6 @@ namespace Moonlight.Game.Inventories.Items
         public int SubType => _itemDto.SubType;
         public BagType BagType => _itemDto.BagType;
         public short[] Data => _itemDto.Data;
+        public bool Equals(Item other) => other != null && other.Vnum == Vnum;
     }
 }

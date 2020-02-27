@@ -87,6 +87,7 @@
     <Compile Include="Database\SqliteConfiguration.cs" />
     <Compile Include="Database\SqliteContextFactory.cs" />
     <Compile Include="Event\Characters\CharacterInitializeEvent.cs" />
+    <Compile Include="Event\Characters\StatChangeEvent.cs" />
     <Compile Include="Event\Entities\EntityDamageEvent.cs" />
     <Compile Include="Event\Entities\EntityDeathEvent.cs" />
     <Compile Include="Event\Entities\EntityMoveEvent.cs" />

@@ -29,14 +29,20 @@ namespace Moonlight.Handlers.Characters.Inventories
 
             foreach (IvnSubPacket sub in packet.SubPackets)
             {
-                ItemInstance item = _itemInstanceFactory.CreateItemInstance(sub.VNum, sub.RareAmount);
-                if (item == null)
+                ItemInstance existingItem = bag.GetValueOrDefault(sub.Slot);
+                if (existingItem == null)
                 {
-                    _logger.Error($"Can't create item instance for {sub.VNum}");
-                    return;
+                    ItemInstance item = _itemInstanceFactory.CreateItemInstance(sub.VNum, sub.RareAmount);
+                    if (item == null)
+                    {
+                        return;
+                    }
+                
+                    bag[sub.Slot] = item;
+                    continue;
                 }
-
-                bag.AddItem(sub.Slot, item);
+                
+                existingItem.Amount = sub.RareAmount;
             }
 
             _logger.Info($"{packet.BagType} bag initialized.");

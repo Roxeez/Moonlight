@@ -13,9 +13,8 @@ namespace Moonlight.Game.Inventories
         }
 
         public Guid Id { get; }
-
         public Item Item { get; }
-        public int Amount { get; }
+        public int Amount { get; internal set; }
 
         public bool Equals(ItemInstance other) => other != null && other.Id.Equals(Id);
     }
