@@ -1,0 +1,3 @@
+[submodule "lib/MoonlightCore"]
+	path = lib/MoonlightCore
+	url = https://github.com/Roxeez/MoonlightCore.git

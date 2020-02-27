@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moonlight.Tests", "tests\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moonlight.Toolkit", "srcs\Moonlight.Toolkit\Moonlight.Toolkit.csproj", "{680BC078-FBC5-4A82-B723-E342E52F0BF7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moonlight.Interop", "srcs\Moonlight.Interop\Moonlight.Interop.vcxproj", "{5098DE71-AA35-471C-8C6B-CE533888401A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoonlightCore", "lib\MoonlightCore\srcs\MoonlightCore\MoonlightCore.vcxproj", "{6713436A-4B03-46B9-A638-16223CBF45BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,16 +57,16 @@ Global
 		{680BC078-FBC5-4A82-B723-E342E52F0BF7}.Release|x64.Build.0 = Release|Any CPU
 		{680BC078-FBC5-4A82-B723-E342E52F0BF7}.Release|x86.ActiveCfg = Release|Any CPU
 		{680BC078-FBC5-4A82-B723-E342E52F0BF7}.Release|x86.Build.0 = Release|Any CPU
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Debug|x64.ActiveCfg = Debug|x64
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Debug|x64.Build.0 = Debug|x64
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Debug|x86.ActiveCfg = Debug|Win32
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Debug|x86.Build.0 = Debug|Win32
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Release|Any CPU.ActiveCfg = Release|Win32
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Release|x64.ActiveCfg = Release|x64
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Release|x64.Build.0 = Release|x64
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Release|x86.ActiveCfg = Release|Win32
-		{5098DE71-AA35-471C-8C6B-CE533888401A}.Release|x86.Build.0 = Release|Win32
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Debug|x64.ActiveCfg = Debug|x64
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Debug|x64.Build.0 = Debug|x64
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Debug|x86.ActiveCfg = Debug|Win32
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Debug|x86.Build.0 = Debug|Win32
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Release|Any CPU.ActiveCfg = Release|Win32
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Release|x64.ActiveCfg = Release|x64
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Release|x64.Build.0 = Release|x64
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Release|x86.ActiveCfg = Release|Win32
+		{6713436A-4B03-46B9-A638-16223CBF45BF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

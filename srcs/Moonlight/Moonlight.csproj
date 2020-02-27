@@ -59,7 +59,6 @@
     <Compile Include="Core\Enums\SkillType.cs" />
     <Compile Include="Core\Enums\TargetType.cs" />
     <Compile Include="Core\Interop\Kernel32.cs" />
-    <Compile Include="Core\Interop\Native.cs" />
     <Compile Include="Core\Interop\User32.cs" />
     <Compile Include="Core\Logging\ILogger.cs" />
     <Compile Include="Core\Logging\SerilogLogger.cs" />
@@ -291,6 +290,12 @@
     <PackageReference Include="System.Data.SQLite.Core">
       <Version>1.0.112</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\lib\MoonlightCore\srcs\MoonlightCore\MoonlightCore.vcxproj">
+      <Project>{6713436a-4b03-46b9-a638-16223cbf45bf}</Project>
+      <Name>MoonlightCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
