@@ -6,14 +6,9 @@ using PropertyChanged;
 namespace Moonlight.Clients
 {
     [AddINotifyPropertyChangedInterface]
-    public abstract class Client : IDisposable
+    public abstract class Client
     {
         public Character Character { get; internal set; }
-
-        public virtual void Dispose()
-        {
-            // Do nothing
-        }
 
         public event Func<string, bool> PacketSend;
         public event Func<string, bool> PacketReceived;
