@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Moonlight.Clients;
@@ -119,7 +119,10 @@ namespace Moonlight.Game.Entities
                 return;
             }
 
-            Native.Walk(position.X, position.Y);
+            if (Client is LocalClient local)
+            {
+                local.ManagedMoonlightCore.Walk(position.X, position.Y);
+            }
             LastMovement = DateTime.Now;
 
             while (LastMovement.AddMilliseconds(500) > DateTime.Now)
