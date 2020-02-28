@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Moonlight.Extensions
 {
-    internal static class AssemblyExtension
+    public static class AssemblyExtension
     {
         public static IEnumerable<Type> GetAssignableTypes<T>(this Assembly assembly)
         {

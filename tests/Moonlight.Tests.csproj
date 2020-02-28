@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Extensions\DeserializerExtension.cs" />
     <Compile Include="Extensions\NFluentExtension.cs" />
+    <Compile Include="FactoryTests.cs" />
     <Compile Include="Packet\Deserialization\BattlePacketDeserializationTests.cs" />
     <Compile Include="Packet\Deserialization\CharacterPacketDeserializationTests.cs" />
     <Compile Include="Packet\Deserialization\EntityPacketDeserializationTests.cs" />

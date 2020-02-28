@@ -9,10 +9,11 @@ namespace Moonlight.Game.Entities
     /// </summary>
     public class Npc : LivingEntity
     {
-        private readonly MonsterDto _monsterDto;
+        internal Npc(long id, string name) : base(id, name, EntityType.NPC)
+        {
+            
+        }
 
-        internal Npc(long id, MonsterDto monsterDto, string name) : base(id, name, EntityType.NPC) => _monsterDto = monsterDto;
-
-        public int Vnum => _monsterDto.Id;
+        public int Vnum { get; internal set; }
     }
 }

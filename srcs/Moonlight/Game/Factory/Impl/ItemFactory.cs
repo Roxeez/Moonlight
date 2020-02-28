@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Moonlight.Core.Enums;
 using Moonlight.Database.DAL;
 using Moonlight.Database.Dto;
@@ -27,7 +28,13 @@ namespace Moonlight.Game.Factory.Impl
             }
 
             string name = _languageService.GetTranslation(RootKey.ITEM, itemDto.NameKey);
-            return new Item(name, itemDto);
+            return new Item(itemDto.Id, name)
+            {
+                BagType = itemDto.BagType,
+                Type = itemDto.Type,
+                SubType = itemDto.SubType,
+                Data = itemDto.Data.Split('|').Select(x => Convert.ToInt16(x)).ToArray()
+            };
         }
     }
 }

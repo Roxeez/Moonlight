@@ -75,7 +75,7 @@ namespace Moonlight.Game.Maps
             return GetEntity<T>(entityType, entityId);
         }
 
-        public Portal GetPortal(int id) => Portals[id];
+        public Portal GetPortal(int id) => Portals.GetValueOrDefault(id);
 
         public bool Contains(EntityType entityType, long entityId) => GetEntity(entityType, entityId) != null;
 

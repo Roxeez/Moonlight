@@ -8,10 +8,11 @@ namespace Moonlight.Game.Entities
     /// </summary>
     public class Monster : LivingEntity
     {
-        private readonly MonsterDto _monsterDto;
-
-        internal Monster(long id, MonsterDto monsterDto, string name) : base(id, name, EntityType.MONSTER) => _monsterDto = monsterDto;
-
-        public int Vnum => _monsterDto.Id;
+        public int Vnum { get; internal set; }
+        
+        internal Monster(long id, string name) : base(id, name, EntityType.MONSTER)
+        {
+            
+        }
     }
 }

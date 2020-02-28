@@ -32,7 +32,11 @@ namespace Moonlight.Game.Factory.Impl
             }
 
             string name = _languageService.GetTranslation(RootKey.MONSTER, monsterDto.NameKey);
-            return new Monster(id, monsterDto, name);
+            return new Monster(id, name)
+            {
+                Vnum = monsterDto.Id,
+                Level = monsterDto.Level
+            };
         }
 
         public Npc CreateNpc(long id, int vnum, string name)
@@ -43,12 +47,16 @@ namespace Moonlight.Game.Factory.Impl
                 throw new InvalidOperationException($"Can't find monster {vnum} in database");
             }
 
-            if (name == null || name == "-")
+            if (string.IsNullOrEmpty(name) || name == "-")
             {
                 name = _languageService.GetTranslation(RootKey.MONSTER, monsterDto.NameKey);
             }
 
-            return new Npc(id, monsterDto, name);
+            return new Npc(id, name)
+            {
+                Vnum = monsterDto.Id,
+                Level = monsterDto.Level
+            };
         }
 
         public GroundItem CreateGroundItem(long id, int vnum, int amount)
