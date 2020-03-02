@@ -39,7 +39,7 @@ namespace Moonlight.Core.Interop
             EnumWindows(delegate(IntPtr hWnd, IntPtr lParam)
             {
                 string windowTitle = GetWindowTitle(hWnd);
-                if (windowTitle.Equals(title, StringComparison.CurrentCultureIgnoreCase))
+                if (windowTitle.Equals(title))
                 {
                     windows.Add(hWnd);
                 }
