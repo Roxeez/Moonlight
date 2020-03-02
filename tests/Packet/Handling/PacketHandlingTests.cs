@@ -31,7 +31,7 @@ namespace Moonlight.Tests.Packet.Handling
             clientMock.Setup(x => x.ReceivePacket(It.IsAny<string>())).Callback<string>(x => _packetHandlerManager.Handle(clientMock.Object, x));
 
             Client = clientMock.Object;
-            Client.Character = Character = new Character(new SerilogLogger(), 999, "Moonlight", Client, new Miniland("Miniland", new byte[4096]));
+            Client.Character = Character = new Character(new SerilogLogger(), 999, "Moonlight", Client);
 
             Map map = MapFactory.CreateMap(1);
             map.AddEntity(Client.Character);
