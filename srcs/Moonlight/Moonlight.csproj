@@ -100,6 +100,10 @@
     <Compile Include="Event\Maps\MapCleanEvent.cs" />
     <Compile Include="Extensions\AssemblyExtension.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
+    <Compile Include="Extensions\Game\EntityExtension.cs" />
+    <Compile Include="Extensions\Game\GroundItemExtension.cs" />
+    <Compile Include="Extensions\Game\ItemExtension.cs" />
+    <Compile Include="Extensions\Game\ItemInstanceExtension.cs" />
     <Compile Include="Extensions\ServiceCollectionExtension.cs" />
     <Compile Include="Game\Battle\Skill.cs" />
     <Compile Include="Game\Entities\Character.cs" />
