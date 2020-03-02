@@ -28,7 +28,7 @@ namespace Moonlight.Handlers.Maps
                 _logger.Debug("Is base map");
                 return;
             }
-
+            
             Map destination = _mapFactory.CreateMap(packet.MapId);
             if (client.Character.Map?.Id == destination.Id)
             {

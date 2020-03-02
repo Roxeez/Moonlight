@@ -7,6 +7,7 @@ namespace Moonlight.Game.Factory.Impl
 {
     internal class MinilandObjectFactory : IMinilandObjectFactory
     {
+        // TODO : Use Item#Data for defining if a game is a minigame instead of this static HashSet
         private static readonly HashSet<int> MinigameId;
         private readonly IItemFactory _itemFactory;
 
@@ -25,6 +26,11 @@ namespace Moonlight.Game.Factory.Impl
         {
             Item item = _itemFactory.CreateItem(vnum);
             return MinigameId.Contains(vnum) ? new Minigame(item, slot, position) : new MinilandObject(item, slot, position);
+        }
+
+        public MinilandObject CreateMinilandObject(Item item, int slot, Position position)
+        {
+            return MinigameId.Contains(item.Vnum) ? new Minigame(item, slot, position) : new MinilandObject(item, slot, position);
         }
     }
 }

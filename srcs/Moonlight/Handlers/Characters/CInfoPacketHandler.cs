@@ -4,6 +4,7 @@ using Moonlight.Event;
 using Moonlight.Event.Characters;
 using Moonlight.Game.Entities;
 using Moonlight.Game.Factory;
+using Moonlight.Game.Maps;
 using Moonlight.Packet.Character;
 
 namespace Moonlight.Handlers.Characters
@@ -25,7 +26,11 @@ namespace Moonlight.Handlers.Characters
         {
             if (client.Character == null)
             {
-                client.Character = new Character(_logger, packet.CharacterId, packet.Name, client, _mapFactory.CreateMiniland())
+                Miniland miniland = _mapFactory.CreateMiniland();
+
+                miniland.Owner = packet.Name;
+                
+                client.Character = new Character(_logger, packet.CharacterId, packet.Name, client)
                 {
                     Class = packet.Class,
                     Gender = packet.Gender

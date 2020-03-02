@@ -19,14 +19,13 @@ namespace Moonlight.Game.Entities
     public class Character : Player
     {
         private readonly ILogger _logger;
-
-        internal Character(ILogger logger, long id, string name, Client client, Miniland miniland) : base(id, name)
+        
+        internal Character(ILogger logger, long id, string name, Client client) : base(id, name)
         {
             _logger = logger;
 
             Client = client;
             Inventory = new Inventory(this);
-            Miniland = miniland;
             Skills = new InternalObservableHashSet<Skill>();
             Unsafe = new Unsafe(this);
         }
@@ -60,11 +59,6 @@ namespace Moonlight.Game.Entities
         ///     Maximum player Mp
         /// </summary>
         public int MaxMp { get; internal set; }
-
-        /// <summary>
-        ///     Character own miniland
-        /// </summary>
-        public Miniland Miniland { get; }
 
         /// <summary>
         ///     Represent character global inventory (gold, bags etc...)
