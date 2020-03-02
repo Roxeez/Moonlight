@@ -31,10 +31,6 @@ namespace Moonlight.Core
             return (int)(min * Sqrt + max - min);
         }
 
-        public int GetDistanceX(Position destination) => Math.Abs(X - destination.X);
-
-        public int GetDistanceY(Position destination) => Math.Abs(Y - destination.Y);
-
         /// <summary>
         ///     Check if the position is in area range
         /// </summary>

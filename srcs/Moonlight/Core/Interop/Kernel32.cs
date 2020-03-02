@@ -2,7 +2,7 @@
 
 namespace Moonlight.Core.Interop
 {
-    public static class Kernel32
+    internal static class Kernel32
     {
         [DllImport("kernel32")]
         public static extern bool AllocConsole();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Moonlight.Core.Interop
 {
-    public static class User32
+    internal static class User32
     {
         public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
