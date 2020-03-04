@@ -119,10 +119,9 @@ namespace Moonlight.Game.Entities
 
             LastMovement = DateTime.Now;
 
-            while (LastMovement.AddMilliseconds(500) > DateTime.Now)
+            while (LastMovement.AddSeconds(1) > DateTime.Now)
             {
-                _logger.Info("Waiting to reach target position");
-                await Task.Delay(10).ConfigureAwait(false);
+                await Task.Delay(100).ConfigureAwait(false);
             }
         }
 
