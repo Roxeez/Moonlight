@@ -119,7 +119,7 @@ namespace Moonlight.Game.Entities
 
             LastMovement = DateTime.Now;
 
-            while (LastMovement.AddSeconds(1) > DateTime.Now)
+            while (LastMovement.AddMilliseconds(1100) > DateTime.Now)
             {
                 await Task.Delay(100).ConfigureAwait(false);
             }
