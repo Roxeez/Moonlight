@@ -15,6 +15,13 @@ namespace Moonlight.Packet.Core.Converters
             string[] split = value.Split(' ');
             foreach (string entry in split)
             {
+                string[] skillId = entry.Split('|');
+                if (skillId.Length > 0)
+                {
+                    skills.Add(Convert.ToInt32(skillId[0]));
+                    continue;
+                }
+                
                 skills.Add(Convert.ToInt32(entry));
             }
 

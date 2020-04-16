@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +9,8 @@ using Moonlight.Core.Interop;
 using Moonlight.Core.Logging;
 using Moonlight.Event;
 using Moonlight.Extensions;
+using Moonlight.Game.Entities;
+using Moonlight.Game.Maps;
 using Moonlight.Handlers;
 using Moonlight.Translation;
 
@@ -25,6 +28,7 @@ namespace Moonlight
 
         public MoonlightAPI() : this(new AppConfig())
         {
+            
         }
 
         public MoonlightAPI(SynchronizationContext context) : this() => Context = context;

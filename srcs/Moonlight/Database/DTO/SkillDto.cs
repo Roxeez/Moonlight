@@ -5,7 +5,7 @@ namespace Moonlight.Database.Dto
 {
     internal class SkillDto : IDto<int>
     {
-        public string NameKey { get; set; }
+        public string NameKey { get; set; } = string.Empty;
         public short Range { get; set; }
 
         public short ZoneRange { get; set; }
